@@ -228,10 +228,10 @@ IGAS Toolbox применяется в составе программно-ап�
 
 🟦 **Минимальный набор скриншотов для developer handover**
 
-- `img/lvproj_overview.png` — дерево проекта `.lvproj`: точка входа, Build Specs, Dependencies
-- `img/build_specs_list.png` — список Build Specifications (Runtime / EXE / Installer)
-- `img/destination_view_installer.png` — Destination View: состав папки установки/релиза
-- `img/release_folder_example.png` — пример релизной папки после установки/сборки (EXE + ini + aliases + ресурсы)
+![Runtime model](img/lvproj_overview.png) — дерево проекта `.lvproj`: точка входа, Build Specs, Dependencies
+![Runtime model](img/build_specs_list.png) — список Build Specifications (Runtime / EXE / Installer)
+![Runtime model](img/destination_view_installer.png) — Destination View: состав папки установки/релиза
+![Runtime model](img/release_folder_example.png) — пример релизной папки после установки/сборки (EXE + ini + aliases + ресурсы)
 
 ---
 
@@ -344,7 +344,7 @@ IGAS Toolbox применяется в составе программно-ап�
 ---
 🖼️ **Рисунок 8 — Модель выполнения приложения (Setup → Main Loop → Event Structure)**
 
-![Runtime model](docs/img/runtime_model.png)
+![Runtime model](img/runtime_model.png)
 
 ---
 
