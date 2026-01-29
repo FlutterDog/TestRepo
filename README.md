@@ -214,10 +214,6 @@ IGAS Toolbox применяется в составе программно-ап�
 
 
 
-
-Перечень скриншотов (дерево проекта, Build Specs, Destination View) и состав релизной папки.
-
-
 ## 3. Технические характеристики
 
 > 🟦 **Назначение раздела**
@@ -320,9 +316,6 @@ IGAS Toolbox применяется в составе программно-ап�
   * подключена в `.lvproj`,
   * зафиксирована в этом разделе (класс зависимости, расположение, назначение).
 
-> 🟦 **Цель политики**
->
-> Разработчик сопровождения должен иметь возможность: клонировать репозиторий → открыть `.lvproj` → собрать EXE без дополнительных ручных установок, кроме установки Runtime.
 
 ---
 
@@ -389,7 +382,7 @@ Setup выполняется один раз при запуске и приво
 ---
 🖼️ **Рисунок 9 — Setup (one-shot): инициализация UI и подготовка параметров связи**
 
-![Setup frame](docs/img/setup_frame.png)
+![Setup frame](img/setup_frame.png)
 
 ---
 
@@ -449,7 +442,7 @@ Setup выполняется один раз при запуске и приво
 ---
 🖼️ **Рисунок 10 — Event Structure: общий вид диспетчера событий**
 
-![Event Structure overview](docs/img/event_structure_overview.png)
+![Event Structure overview](img/event_structure_overview.png)
 
 ---
 
@@ -509,7 +502,7 @@ Event Catalog используется как индекс обработчик�
 ---
 🖼️ **Рисунок 11 — Timeout Scheduler: TaskCounter**
 
-![Timeout TaskCounter](docs/img/timeout_taskcounter.png)
+![Timeout TaskCounter](img/timeout_taskcounter.png)
 
 ---
 
@@ -526,12 +519,12 @@ Event Catalog используется как индекс обработчик�
 ---
 🖼️ **Рисунок 12 — Timeout Scheduler:распределённый опрос шаг 1**
 
-![Timeout TaskCounter 1](docs/img/timeout_loop_state_1.png)
+![Timeout TaskCounter 1](img/timeout_loop_state_1.png)
 
 ---
 🖼️ **Рисунок 13 — Timeout Scheduler:распределённый опрос шаг 2**
 
-![Timeout TaskCounter 2](docs/img/timeout_loop_state_1.png)
+![Timeout TaskCounter 2](timeout_loop_state_1.png)
 
 ---
 
@@ -587,7 +580,7 @@ Event Catalog используется как индекс обработчик�
 ---
 🖼️ **Рисунок 12 — Типовой паттерн Modbus-транзакции (Read/Write) и обработка статуса**
 
-![Modbus transaction pattern](docs/img/modbus_transaction_pattern.png)
+![Modbus transaction pattern](img/modbus_transaction_pattern.png)
 
 ---
 
@@ -703,19 +696,19 @@ Event Catalog используется как индекс обработчик�
 
 * 🧩 **`RunTime 2025 Q1`** — формирование инсталлятора среды исполнения (Runtime prerequisites).
 
-![Build specs runtime](docs/img/build_specs_destination.png)
+![Build specs runtime](img/build_specs_destination.png)
 
 ---
 
 * 🧪 **`Toolbox 6.0.2`** — сборка исполняемого файла **`Toolbox.exe`**.
 
-![Build specs exe view](docs/img/build_specs_exe.png)
+![Build specs exe view](img/build_specs_exe.png)
 
 ---
 
 * 📦 **`Toolbox Installer`** — компактный инсталлятор приложения (без включения Runtime).
 
-![Build specs installer view](docs/img/build_specs_installer.png)
+![Build specs installer view](img/build_specs_installer.png)
 
 ---
 
@@ -811,14 +804,6 @@ Runtime устанавливается отдельно и использует�
 > * смешение в одном месте логики UI, транспорта и «смысла регистров» (карта регистров должна оставаться в документации прибора).
 
 ---
-
-> 🟦 **Рекомендуемые иллюстрации для README (по структуре раздела 3)**
->
-> * `docs/img/project_tree.png` — дерево `.lvproj` (точка входа, Build Specs, Dependencies)
-> * `docs/img/runtime_setup.png` — Setup‑кадр (инициализация UI/портов)
-> * `docs/img/event_structure_overview.png` — общий вид Event Structure
-> * `docs/img/timeout_taskcounter.png` — Timeout‑ветка и схема `TaskCounter`
-> * `docs/img/build_specs_destination.png` — Destination View инсталлятора
 
 
 ## 4. Ожидаемые технико-экономические показатели
