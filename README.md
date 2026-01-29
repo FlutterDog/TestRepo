@@ -228,18 +228,22 @@ IGAS Toolbox применяется в составе программно-ап�
 
 ---
 🖼️ ** Дерево проекта `.lvproj`: точка входа, Build Specs, Dependencies**
+
 ![Runtime model](img/lvproj_overview.png) 
 
 ---
 🖼️ ** Список Build Specifications (Runtime / EXE / Installer)**
+
 ![Runtime model](img/build_specs_list.png)
 
 ---
 🖼️ ** Destination View: состав папки установки/релиза **
+
 ![Runtime model](img/destination_view_installer.png)
 
 ---
 🖼️ ** Пример релизной папки после установки/сборки (EXE + ini + aliases + ресурсы) **
+
 ![Runtime model](img/release_folder_example.png)
 
 ---
