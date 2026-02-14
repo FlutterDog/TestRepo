@@ -12,9 +12,9 @@
 | Тип компонента | Comment | Description | Manufacturer | Manufacturer Part Number | BOM Description |
 |---|---:|---:|---:|---:|---:|
 | Пассивки (R/C/L/простые диоды) | ✅ | ❌ | ✅ | ✅ | ✅ |
-| Уникальные ИС/MCU | ❌ | ✅ | ✅ | ✅ | ✅ |
-| Разъёмы/клеммы | ❌ | ✅ | ✅ | ✅ | ✅ |
-| Питание/модули/реле | ❌ | ✅ | ✅ | ✅ | ✅ |
+| Уникальные ИС/MCU | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Разъёмы/клеммы | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Питание/модули/реле | ❌ | ❌ | ✅ | ✅ | ✅ |
 
 
 
@@ -57,7 +57,7 @@
 |---|---|
 | Designator | `U1` *(пример)* |
 | Comment | *(пусто)* |
-| Description | `MCU SAM3X8E, ARM Cortex-M3, LQFP144` *(пример)* |
+| Description | *(пусто)* |
 | Manufacturer | `Microchip` *(пример)* |
 | Manufacturer Part Number | `ATSAM3X8EA-AU` *(пример)* |
 | BOM Description | `MCU ATSAM3X8E, ARM Cortex-M3, LQFP144` *(пример)* |
