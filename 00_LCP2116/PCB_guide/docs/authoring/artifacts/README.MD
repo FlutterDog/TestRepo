@@ -5,7 +5,7 @@
 <br>
 
 <p align="center">
-  <img src="IMG/01.%20StartPage.png" alt="Плата LCP2116" width="430">
+  <img src="IMG/01.%20StartPage.png" alt="Плата LCP2116" width="450">
 </p>
 
 <br>
