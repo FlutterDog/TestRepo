@@ -1,22 +1,28 @@
-<table>
-  <tr>
-    <td align="left" valign="top" width="38%">
-      <img src="IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="220">
-    </td>
-    <td align="center" valign="top" width="62%">
-      <img src="IMG/01.%20StartPage.png" alt="Газоанализатор IGAS IR" width="320">
-    </td>
-  </tr>
-</table>
+<p align="left">
+  <img src="IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="210">
+</p>
+
+<br>
+
+<p align="center">
+  <img src="IMG/01.%20StartPage.png" alt="Плата LCP2116" width="430">
+</p>
+
+<br>
 
 ---
 
 # Газоанализатор IGAS IR
 
+---
+
 МЦТР.000031.00.000
 
 Пояснительная записка
 
+---
+
+## Оглавление
 ---
 
 ## Оглавление
