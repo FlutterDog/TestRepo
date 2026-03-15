@@ -1,3 +1,26 @@
+<table>
+  <tr>
+    <td align="left" valign="top" width="38%">
+      <img src="IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="220">
+    </td>
+    <td align="center" valign="top" width="62%">
+      <img src="IMG/01.%20StartPage.png" alt="Газоанализатор IGAS IR" width="320">
+    </td>
+  </tr>
+</table>
+
+---
+
+# Газоанализатор IGAS IR
+
+МЦТР.000031.00.000
+
+Пояснительная записка
+
+---
+
+## Оглавление
+
 
 ## Оглавление
 
