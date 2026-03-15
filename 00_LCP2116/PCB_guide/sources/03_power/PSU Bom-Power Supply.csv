@@ -1,0 +1,17 @@
+Comment,Designator,Part Description,Part Number,Quantity
+
+"6.8n,""C1, C22, C28"",""50V 6800pF X7R 0603 10%"",""CC0603KRX7R9BB682"",""3"""
+"22uF,""C2, C9, C10, C24"",""16V 22uF X5R 1206"",""CC1206KKX5R7BB226"",""4"""
+"10uF,""C15"",""10UF 50V 10% 1206"",""GRM31CR61H106KA12L"",""1"""
+"0.1u,""C23, C32"",""0.1 uF 100 VDC 10% 0603 X7R"",""GRM188R72A104KA35D"",""2"""
+"18pf,""C27"",""18 pF 50 VDC 5% 0603 C0G"",""GRM1885C1H180JA01D"",""1"""
+",""D1, D2"",""Schottky Diodes & Rectifiers 60V 3A"",""B360A-13-F"",""2"""
+",""F2"",""PPTC 30V 300MA"",""MF-MSMF030-2"",""1"""
+",""L5"",""Power Inductors - SMD 22uH 4.7A"",""CDRH127/LDNP-220MC"",""1"""
+"510,""R7"",""Resistor 0603, 510Ohms, 5%, 1/10W"",""RC0603JR-07510RL"",""1"""
+"10k,""R8, R11, R12"",""Resistor 0603, 10kOhms, 5%, 1/10W"",""RC0603JR-0710K"",""3"""
+"100k,""R9"",""Resistor 0603, 100kOhms, 1%, 1/10W"",""RC0603FR-07100KL"",""1"""
+"1k,""R10, R75"",""Resistor 0603, 1kOhms, 5%, 1/10W"",""RC0603JR-071KL"",""2"""
+",""TVS1"",""ESD Protection Diodes 5V"",""SMAJ5.0CA"",""1"""
+",""U2"",""Switching Voltage Regulators 3A 28V In Step Down"",""TPS54331DR"",""1"""
+",""U3"",""LDO Voltage Regulators 800MA 3.3V"",""LM1117MPX-3.3"",""1"""

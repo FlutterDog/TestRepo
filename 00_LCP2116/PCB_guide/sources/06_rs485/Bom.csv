@@ -1,0 +1,13 @@
+Comment,Designator,Part Description,Part Number,Quantity
+
+"0.1u,""C25, C36, C39, C42, C60, C61, C62"",""0.1 uF 100 VDC 10% 0603 X7R"",""GRM188R72A104KA35D"",""7"""
+"18pf,""C40, C41"",""18 pF 50 VDC 5% 0603 C0G"",""GRM1885C1H180JA01D"",""2"""
+",""F1, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15"",""PPTC 30V 50MA"",""MF-USMF005-2"",""14"""
+"10k,""R6, R14, R15, R23, R25, R26, R32, R34"",""Resistor 0603, 10kOhms, 5%, 1/10W"",""RC0603JR-0710K"",""8"""
+"240,""R18, R19, R24, R28, R33, R37, R76, R77, R78, R79, R80, R81"",""Resistor 0603, 240Ohms, 1%, 1/10W"",""RC0603FR-07240RL"",""12"""
+"1k,""R27, R29"",""Resistor 0603, 1kOhms, 5%, 1/10W"",""RC0603JR-071KL"",""2"""
+",""TVS2, TVS3, TVS4, TVS5, TVS6, TVS7, TVS8, TVS9, TVS10, TVS11, TVS12, TVS13, TVS14, TVS15, TVS16, TVS17, TVS18, TVS19, TVS20, TVS21, TVS22"",""ESD Protection Diodes 5V"",""SMAJ5.0CA"",""21"""
+",""U4, U5, U6, U7, U8, U9, U10"",""RS-485 Interface IC Low-Power"",""SN65HVD3082EDR"",""7"""
+",""U12, U13, U14, U15, U17"",""SINGLE BUS BUFFER GATE"",""SN74LVC1G125DBVR"",""5"""
+",""U18"",""UART Interface IC I2C/SPI"",""SC16IS752IPW,128"",""1"""
+",""XTL2"",""Clock Oscillators 14.7456MHz"",""Geyer KX-7 14.7456MHz"",""1"""
