@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: D:\IGAS_Transfer\TestRepo\02_LDO1118\02_Электроника\01_Проект печатной платы\Altium Designer\МЦТР.00010582.00.002.PcbDoc
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=8.66
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=11.81
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

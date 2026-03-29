@@ -1,0 +1,15 @@
+"Bill of Material for "
+"On 16.03.2026 at 11:17:39"
+
+"Comment","Pattern","Quantity","Components"
+
+"","0603 - LED","2","LED1, LED2",""
+"","Atmega168","1","Atm1",""
+"","DipSwitch 5","1","Dip1",""
+"","IDC-10MS","1","PL3",""
+"","LED SMD DayLight","1","LG1",""
+"100n","0603_Cap","1","C4",""
+"10k","0603_Res","6","R6, R22, R23, R24, R25, R26",""
+"16.0 MHz","KX-7 XTAL","1","XTL2",""
+"18p","0603_Cap","2","C5, C6",""
+"1k","0603_Res","4","R7, R8, R11, R27",""

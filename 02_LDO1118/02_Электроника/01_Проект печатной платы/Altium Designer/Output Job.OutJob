@@ -15,7 +15,7 @@ LifeCycleDefinitionGUID=
 RevisionNamingSchemeGUID=
 
 [OutputGroup1]
-Name=Job Group
+Name=Output Job.OutJob
 Description=
 TargetOutputMedium=Folder Structure
 VariantName=[No Variations]
@@ -90,6 +90,8 @@ OutputEnabled5_OutputMedium2=0
 OutputEnabled5_OutputMedium3=0
 OutputEnabled5_OutputMedium4=0
 OutputDefault5=0
+Configuration5_Name1=OutputConfigurationParameter1
+Configuration5_Item1=Record=SimpleBOMView|SimpleBOMMode=0
 OutputType6=SimpleBOM
 OutputName6=Copy of Simple BOM
 OutputCategory6=Report
@@ -101,6 +103,8 @@ OutputEnabled6_OutputMedium2=0
 OutputEnabled6_OutputMedium3=0
 OutputEnabled6_OutputMedium4=0
 OutputDefault6=0
+Configuration6_Name1=OutputConfigurationParameter1
+Configuration6_Item1=Record=SimpleBOMView|SimpleBOMMode=0
 OutputType7=SimpleBOM
 OutputName7=Copy of Copy of Simple BOM
 OutputCategory7=Report
@@ -123,17 +127,21 @@ OutputEnabled8_OutputMedium2=0
 OutputEnabled8_OutputMedium3=0
 OutputEnabled8_OutputMedium4=0
 OutputDefault8=0
+Configuration8_Name1=OutputConfigurationParameter1
+Configuration8_Item1=Record=SimpleBOMView|SimpleBOMMode=0
 OutputType9=SimpleBOM
 OutputName9=Copy of Copy of Copy of Copy of Simple BOM
 OutputCategory9=Report
 OutputDocumentPath9=Relays.SchDoc
 OutputVariantName9=
-OutputEnabled9=0
+OutputEnabled9=1
 OutputEnabled9_OutputMedium1=0
 OutputEnabled9_OutputMedium2=0
-OutputEnabled9_OutputMedium3=0
+OutputEnabled9_OutputMedium3=1
 OutputEnabled9_OutputMedium4=0
 OutputDefault9=0
+Configuration9_Name1=OutputConfigurationParameter1
+Configuration9_Item1=Record=SimpleBOMView|SimpleBOMMode=0
 OutputType10=SimpleBOM
 OutputName10=Copy of Copy of Copy of Copy of Copy of Simple BOM
 OutputCategory10=Report
@@ -145,11 +153,13 @@ OutputEnabled10_OutputMedium2=0
 OutputEnabled10_OutputMedium3=0
 OutputEnabled10_OutputMedium4=0
 OutputDefault10=0
+Configuration10_Name1=OutputConfigurationParameter1
+Configuration10_Item1=Record=SimpleBOMView|SimpleBOMMode=0
 
 [PublishSettings]
 OutputFilePath2=Project Outputs for Free Documents\.PDF
 ReleaseManaged2=1
-OutputBasePath2=Project Outputs for Free Documents
+OutputBasePath2=Project Outputs for pr1
 OutputPathMedia2=
 OutputPathMediaValue2=
 OutputPathOutputer2=[Output Type]
@@ -174,9 +184,9 @@ ShowComponentParameters2=1
 GlobalBookmarks2=0
 PDFACompliance2=Disabled
 PDFVersion2=Default
-OutputFilePath3=
+OutputFilePath3=D:\IGAS_Transfer\TestRepo\02_LDO1118\02_Электроника\01_Проект печатной платы\Altium Designer\Project Outputs for pr1\
 ReleaseManaged3=1
-OutputBasePath3=
+OutputBasePath3=Project Outputs for pr1
 OutputPathMedia3=
 OutputPathMediaValue3=
 OutputPathOutputer3=[Output Type]
@@ -189,7 +199,7 @@ OutputFileNameSpecial3=
 OpenOutput3=1
 OutputFilePath4=
 ReleaseManaged4=1
-OutputBasePath4=
+OutputBasePath4=Project Outputs for pr1
 OutputPathMedia4=
 OutputPathMediaValue4=
 OutputPathOutputer4=[Output Type]
@@ -228,7 +238,7 @@ WmvQuality4=80
 [GeneratedFilesSettings]
 RelativeOutputPath2=Project Outputs for Free Documents\.PDF
 OpenOutputs2=1
-RelativeOutputPath3=
+RelativeOutputPath3=D:\IGAS_Transfer\TestRepo\02_LDO1118\02_Электроника\01_Проект печатной платы\Altium Designer\Project Outputs for pr1\
 OpenOutputs3=1
 AddToProject3=1
 TimestampFolder3=0
