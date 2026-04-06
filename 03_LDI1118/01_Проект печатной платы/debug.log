@@ -37,3 +37,5 @@
 [0329/204117:INFO:CONSOLE(146)] "MktoForms2 found, registering form handler", source: https://www.altium.com/ (146)
 [0329/204117:INFO:CONSOLE(149)] "Registering onFormRender handler for dynamically added forms", source: https://www.altium.com/ (149)
 [0329/204131:INFO:CONSOLE(175)] "Timeout reached waiting for MktoForms2", source: https://www.altium.com/ (175)
+[0330/144902:WARNING:dns_config_service_win.cc(711)] Failed to read DnsHosts.
+[0330/144902:WARNING:dns_config_service_win.cc(711)] Failed to read DnsHosts.

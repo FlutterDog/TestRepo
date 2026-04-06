@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 9:31:26 On 30.03.2026
+
+Output: PSU
+Type  : BOM
+From  : Variant [[No Variations]] of Schematic Document [PSU.SchDoc]
+   Generated File[PSU-PSU.xls]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 9:31:29 On 30.03.2026
