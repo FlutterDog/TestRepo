@@ -1,25 +1,14 @@
-Output: Gerber Files
-Type  : Gerber
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 19:51:56 On 12.04.2026
+
+Output: Bill of Materials
+Type  : BOM
 From  : Variant [[No Variations]] of Project [ÌÖÒÐ.00010592.00.002.PrjPcb]
-   Generated File[ÌÖÒÐ.00010592.00.002.GTL]
-   Generated File[ÌÖÒÐ.00010592.00.002.G1]
-   Generated File[ÌÖÒÐ.00010592.00.002.G2]
-   Generated File[ÌÖÒÐ.00010592.00.002.GBL]
-   Generated File[ÌÖÒÐ.00010592.00.002.GTO]
-   Generated File[ÌÖÒÐ.00010592.00.002.GTP]
-   Generated File[ÌÖÒÐ.00010592.00.002.GTS]
-   Generated File[ÌÖÒÐ.00010592.00.002.GBS]
-   Generated File[ÌÖÒÐ.00010592.00.002.GBP]
-   Generated File[ÌÖÒÐ.00010592.00.002.GBO]
-   Generated File[ÌÖÒÐ.00010592.00.002.GM1]
-   Generated File[ÌÖÒÐ.00010592.00.002.GM3]
-   Generated File[ÌÖÒÐ.00010592.00.002.GM13]
-   Generated File[ÌÖÒÐ.00010592.00.002.RUL]
-   Generated File[ÌÖÒÐ.00010592.00.002.EXTREP]
-   Generated File[ÌÖÒÐ.00010592.00.002.REP]
+   Generated File[Bill of Materials-ÌÖÒÐ.00010592.00.002.xls]
 
 
-Files Generated   : 16
+Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 20:34:47 On 06.04.2026
+Finished Output Generation At 19:51:59 On 12.04.2026
