@@ -1,0 +1,30 @@
+Removed Pin From Net: NetName=5V_Noisy Pin=SW1-1
+Removed Pin From Net: NetName=5V_Noisy Pin=SW1-2
+Removed Pin From Net: NetName=5V_Noisy Pin=SW1-3
+Removed Pin From Net: NetName=5V_Noisy Pin=SW1-4
+Removed Pin From Net: NetName=5V_Noisy Pin=SW1-5
+Removed Pin From Net: NetName=A1 Pin=SW1-12
+Removed Pin From Net: NetName=A2 Pin=SW1-13
+Removed Pin From Net: NetName=A3 Pin=SW1-14
+Removed Pin From Net: NetName=A4 Pin=SW1-15
+Removed Pin From Net: NetName=A5 Pin=SW1-16
+Removed Pin From Net: NetName=BIT_9 Pin=U?-6
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=ADC_CS Pin=U?-6
+Added Pin To Net: NetName=BIT_1 Pin=U?-6
+Added Pin To Net: NetName=BIT_3 Pin=U?-6
+Added Pin To Net: NetName=BIT_5 Pin=U?-6
+Added Pin To Net: NetName=BIT_7 Pin=U?-6
+Added Pin To Net: NetName=BIT_9 Pin=U?-6
+Added Net: Name=NetSW?_2
+Added Net: Name=NetSW?_4
+Added Net: Name=NetSW?_5
+Added Net: Name=NetSW?_6
+Added Net: Name=NetSW?_7
+Added Net: Name=NetSW?_8
+Added Net: Name=NetSW?_9
+Added Net: Name=NetSW?_10

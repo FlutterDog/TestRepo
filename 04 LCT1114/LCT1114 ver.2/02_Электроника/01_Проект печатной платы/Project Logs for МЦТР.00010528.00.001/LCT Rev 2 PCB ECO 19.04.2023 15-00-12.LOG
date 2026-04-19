@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=2V5 Pin=CT1-1
+Removed Pin From Net: NetName=NetCT1_2 Pin=CT1-2
+Removed Pin From Net: NetName=2V5 Pin=CT2-1
+Removed Pin From Net: NetName=2V5 Pin=CT3-1
+Added Pin To Net: NetName=NetCT1_2 Pin=CT1-1
+Added Pin To Net: NetName=2V5 Pin=CT1-2
+Added Pin To Net: NetName=2V5 Pin=CT2-2
+Added Pin To Net: NetName=2V5 Pin=CT3-2
+Change Net Name : Old Net Name=NetCT1_2 New Net Name=NetCT1_1
+Added Pin To Net: NetName=NetCT2_1 Pin=CT2-1
+Added Pin To Net: NetName=NetCT2_1 Pin=TVS6-1
+Added Net: Name=NetCT2_1
+Added Pin To Net: NetName=NetCT3_1 Pin=CT3-1
+Added Pin To Net: NetName=NetCT3_1 Pin=TVS7-1
+Added Net: Name=NetCT3_1

@@ -1,0 +1,20 @@
+Added Component: Designator=R5(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R6(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R8(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R10(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=24V_PWR Pin=R5-1
+Added Pin To Net: NetName=12V_Ref Pin=R5-2
+Added Pin To Net: NetName=24V_PWR Pin=R6-1
+Added Pin To Net: NetName=NetR6_2 Pin=R6-2
+Added Pin To Net: NetName=NetR8_1 Pin=R8-1
+Added Pin To Net: NetName=GND Pin=R8-2
+Added Pin To Net: NetName=NetR10_1 Pin=R10-1
+Added Pin To Net: NetName=GND Pin=R10-2

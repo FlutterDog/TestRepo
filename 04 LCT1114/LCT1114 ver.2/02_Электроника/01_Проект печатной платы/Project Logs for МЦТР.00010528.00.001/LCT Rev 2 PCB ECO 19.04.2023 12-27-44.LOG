@@ -1,0 +1,4 @@
+Added Component: Designator=R24(0603)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetC27_1 Pin=R24-1
+Added Pin To Net: NetName=NetC27_2 Pin=R24-2

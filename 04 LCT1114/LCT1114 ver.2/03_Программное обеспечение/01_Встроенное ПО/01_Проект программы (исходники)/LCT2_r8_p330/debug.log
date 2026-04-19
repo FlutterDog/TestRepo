@@ -1,0 +1,9 @@
+[0604/205727:ERROR:tcp_socket_win.cc(335)] bind() returned an error: Обычно разрешается только одно использование адреса сокета (протокол/сетевой адрес/порт). (0x2740)
+[0604/205727:ERROR:devtools_http_handler.cc(229)] Cannot start http server for devtools. Stop devtools.
+[0604/205728:ERROR:backend_impl.cc(2020)] Corrupt Index file
+[0604/205728:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0604/205728:ERROR:cache_util.cc(134)] Unable to move cache folder C:\ProgramData\Altium\Altium Designer {38ED491E-C6A5-456C-ACF3-D5C6F2B4D80F}\BrowserCache to C:\ProgramData\Altium\Altium Designer {38ED491E-C6A5-456C-ACF3-D5C6F2B4D80F}\old_BrowserCache_000
+[0604/205728:ERROR:cache_creator.cc(129)] Unable to create cache
+[0604/205729:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ad-start/ (0)
+[0604/205729:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ad-start/ (0)

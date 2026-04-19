@@ -1,0 +1,1938 @@
+Removed Pin From Net: NetName=GND Pin=C13-1
+Removed Pin From Net: NetName=+3V3 Pin=C13-2
+Removed Pin From Net: NetName=GND Pin=C16-1
+Removed Pin From Net: NetName=GND Pin=C24-1
+Removed Pin From Net: NetName=GND Pin=C27-1
+Removed Pin From Net: NetName=GND Pin=C28-1
+Removed Pin From Net: NetName=GND Pin=C29-1
+Removed Pin From Net: NetName=GND Pin=C30-1
+Removed Pin From Net: NetName=GND Pin=C31-1
+Removed Pin From Net: NetName=GND Pin=C32-1
+Removed Pin From Net: NetName=GND Pin=C33-1
+Removed Pin From Net: NetName=GND Pin=C38-1
+Removed Pin From Net: NetName=GND Pin=C39-1
+Removed Pin From Net: NetName=GND Pin=C40-1
+Removed Pin From Net: NetName=GND Pin=C41-1
+Removed Pin From Net: NetName=GND Pin=C42-1
+Removed Pin From Net: NetName=+5V Noise Pin=C44-2
+Removed Pin From Net: NetName=+5V Noise Pin=C45-2
+Removed Pin From Net: NetName=+5V Noise Pin=C46-2
+Removed Pin From Net: NetName=+5V Noise Pin=C47-2
+Removed Pin From Net: NetName=GND Pin=D10-1
+Removed Pin From Net: NetName=GND Pin=D11-1
+Removed Pin From Net: NetName=GND Pin=D12-1
+Removed Pin From Net: NetName=GND Pin=D13-1
+Removed Pin From Net: NetName=NetC27_2 Pin=D13-2
+Removed Pin From Net: NetName=GND Pin=D14-1
+Removed Pin From Net: NetName=NetC28_2 Pin=D14-2
+Removed Pin From Net: NetName=GND Pin=D15-1
+Removed Pin From Net: NetName=GND Pin=D16-1
+Removed Pin From Net: NetName=GND Pin=D17-1
+Removed Pin From Net: NetName=GND Pin=D18-1
+Removed Pin From Net: NetName=GND Pin=D19-1
+Removed Pin From Net: NetName=GND Pin=D20-1
+Removed Pin From Net: NetName=GND Pin=D21-1
+Removed Pin From Net: NetName=GND Pin=D22-1
+Removed Pin From Net: NetName=GND Pin=D24-1
+Removed Pin From Net: NetName=NetD25_1 Pin=D25-1
+Removed Pin From Net: NetName=GND Pin=D26-1
+Removed Pin From Net: NetName=GND Pin=D28-1
+Removed Pin From Net: NetName=NetJ1_9 Pin=J1-9
+Removed Pin From Net: NetName=+24V_Pwr Pin=P1-1
+Removed Pin From Net: NetName=GND Pin=P1-2
+Removed Pin From Net: NetName=NetC27_2 Pin=P1-5
+Removed Pin From Net: NetName=NetC28_2 Pin=P1-9
+Removed Pin From Net: NetName=NetC18_1 Pin=P2-1
+Removed Pin From Net: NetName=NetC20_1 Pin=P2-3
+Removed Pin From Net: NetName=NetC22_1 Pin=P2-5
+Removed Pin From Net: NetName=NetC19_1 Pin=P2-7
+Removed Pin From Net: NetName=NetC21_1 Pin=P2-9
+Removed Pin From Net: NetName=NetC23_1 Pin=P2-11
+Removed Pin From Net: NetName=NetF3_1 Pin=P3-1
+Removed Pin From Net: NetName=NetF4_1 Pin=P3-2
+Removed Pin From Net: NetName=+24V Pin=P3-4
+Removed Pin From Net: NetName=GND Pin=P3-5
+Removed Pin From Net: NetName=GND Pin=PL1-1
+Removed Pin From Net: NetName=NetPL1_2 Pin=PL1-2
+Removed Pin From Net: NetName=+5V Proc Pin=PL1-4
+Removed Pin From Net: NetName=GND Pin=PL2-1
+Removed Pin From Net: NetName=+5V Proc Pin=PL2-4
+Removed Pin From Net: NetName=GND Pin=PL3-1
+Removed Pin From Net: NetName=+5V Proc Pin=PL3-4
+Removed Pin From Net: NetName=GND Pin=PL4-1
+Removed Pin From Net: NetName=+5V Proc Pin=PL4-4
+Removed Pin From Net: NetName=GND Pin=PL5-1
+Removed Pin From Net: NetName=+5V Proc Pin=PL5-4
+Removed Pin From Net: NetName=GND Pin=PL6-1
+Removed Pin From Net: NetName=+5V Proc Pin=PL6-4
+Removed Pin From Net: NetName=NetJ1_7 Pin=R14-1
+Removed Pin From Net: NetName=+5V Noise Pin=R14-2
+Removed Pin From Net: NetName=NetJ1_1 Pin=R15-1
+Removed Pin From Net: NetName=+5V Noise Pin=R15-2
+Removed Pin From Net: NetName=+3V3 Pin=R16-2
+Removed Pin From Net: NetName=NetJ1_9 Pin=R17-1
+Removed Pin From Net: NetName=+5V Noise Pin=R17-2
+Removed Pin From Net: NetName=GND Pin=R26-1
+Removed Pin From Net: NetName=NetD25_1 Pin=R27-2
+Removed Pin From Net: NetName=GND Pin=R30-1
+Removed Pin From Net: NetName=GND Pin=R33-1
+Removed Pin From Net: NetName=GND Pin=R37-1
+Removed Pin From Net: NetName=GND Pin=R40-1
+Removed Pin From Net: NetName=NetP2_8 Pin=R48-1
+Removed Pin From Net: NetName=NetP2_4 Pin=R54-1
+Removed Pin From Net: NetName=NetP2_10 Pin=R58-1
+Removed Pin From Net: NetName=NetP2_6 Pin=R64-1
+Removed Pin From Net: NetName=NetP2_12 Pin=R68-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R71-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R72-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R73-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R74-1
+Removed Pin From Net: NetName=NetC27_2 Pin=R74-2
+Removed Pin From Net: NetName=GND Pin=R75-1
+Removed Pin From Net: NetName=GND Pin=R76-1
+Removed Pin From Net: NetName=GND Pin=R77-1
+Removed Pin From Net: NetName=GND Pin=R78-1
+Removed Pin From Net: NetName=NetC27_2 Pin=R78-2
+Removed Pin From Net: NetName=+24V_Pwr Pin=R79-1
+Removed Pin From Net: NetName=NetC28_2 Pin=R79-2
+Removed Pin From Net: NetName=+24V_Pwr Pin=R80-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R81-1
+Removed Pin From Net: NetName=GND Pin=R82-1
+Removed Pin From Net: NetName=NetC28_2 Pin=R82-2
+Removed Pin From Net: NetName=GND Pin=R83-1
+Removed Pin From Net: NetName=GND Pin=R84-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R85-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R86-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R87-1
+Removed Pin From Net: NetName=GND Pin=R88-1
+Removed Pin From Net: NetName=GND Pin=R89-1
+Removed Pin From Net: NetName=GND Pin=R90-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R92-1
+Removed Pin From Net: NetName=GND Pin=R93-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R94-1
+Removed Pin From Net: NetName=GND Pin=R95-1
+Removed Pin From Net: NetName=+24V_Pwr Pin=R96-1
+Removed Pin From Net: NetName=GND Pin=R97-1
+Removed Pin From Net: NetName=+5V Noise Pin=R103-2
+Removed Pin From Net: NetName=NetR16_1 Pin=SD1-2
+Removed Pin From Net: NetName=+3V3 Pin=SD1-4
+Removed Pin From Net: NetName=GND Pin=SD1-6
+Removed Pin From Net: NetName=+5V Noise Pin=SD1-SWA
+Removed Pin From Net: NetName=GND Pin=T4-2
+Removed Pin From Net: NetName=GND Pin=T5-2
+Removed Pin From Net: NetName=GND Pin=T6-2
+Removed Pin From Net: NetName=GND Pin=TVS5-1
+Removed Pin From Net: NetName=GND Pin=TVS6-1
+Removed Pin From Net: NetName=GND Pin=TVS7-1
+Removed Pin From Net: NetName=GND Pin=U1-TP
+Removed Pin From Net: NetName=GND Pin=U5-1
+Removed Pin From Net: NetName=NetJ1_7 Pin=U5-2
+Removed Pin From Net: NetName=GND Pin=U5-3
+Removed Pin From Net: NetName=+3V3 Pin=U5-5
+Removed Pin From Net: NetName=GND Pin=U6-1
+Removed Pin From Net: NetName=NetJ1_1 Pin=U6-2
+Removed Pin From Net: NetName=GND Pin=U6-3
+Removed Pin From Net: NetName=+3V3 Pin=U6-5
+Removed Pin From Net: NetName=GND Pin=U7-1
+Removed Pin From Net: NetName=NetJ1_9 Pin=U7-2
+Removed Pin From Net: NetName=GND Pin=U7-3
+Removed Pin From Net: NetName=+3V3 Pin=U7-5
+Removed Pin From Net: NetName=+5V Proc Pin=U9-1
+Removed Pin From Net: NetName=NetJ1_7 Pin=U9-4
+Removed Pin From Net: NetName=NetJ1_9 Pin=U9-5
+Removed Pin From Net: NetName=GND Pin=U10-4
+Removed Pin From Net: NetName=GND Pin=U10-5
+Removed Pin From Net: NetName=+5V Proc Pin=U10-8
+Removed Pin From Net: NetName=GND Pin=U11-4
+Removed Pin From Net: NetName=GND Pin=U11-6
+Removed Pin From Net: NetName=+5V Proc Pin=U11-8
+Removed Pin From Net: NetName=+5V Proc Pin=U12-1
+Removed Pin From Net: NetName=GND Pin=U12-2
+Removed Pin From Net: NetName=NetPL1_2 Pin=U12-3
+Removed Pin From Net: NetName=NetJ1_7 Pin=U12-4
+Removed Pin From Net: NetName=GND Pin=U13-4
+Removed Pin From Net: NetName=GND Pin=U13-5
+Removed Pin From Net: NetName=+5V Proc Pin=U13-8
+Removed Pin From Net: NetName=GND Pin=U14-4
+Removed Pin From Net: NetName=GND Pin=U14-6
+Removed Pin From Net: NetName=+5V Proc Pin=U14-8
+Removed Pin From Net: NetName=+5V Proc Pin=U15-1
+Removed Pin From Net: NetName=GND Pin=U15-2
+Removed Pin From Net: NetName=NetPL4_3 Pin=U15-3
+Removed Pin From Net: NetName=NetJ1_7 Pin=U15-4
+Removed Pin From Net: NetName=+5V Proc Pin=U16-1
+Removed Pin From Net: NetName=GND Pin=U16-2
+Removed Pin From Net: NetName=NetPL4_2 Pin=U16-3
+Removed Pin From Net: NetName=NetJ1_7 Pin=U16-4
+Removed Pin From Net: NetName=GND Pin=U17-4
+Removed Pin From Net: NetName=GND Pin=U17-5
+Removed Pin From Net: NetName=+5V Proc Pin=U17-8
+Removed Pin From Net: NetName=GND Pin=U18-4
+Removed Pin From Net: NetName=GND Pin=U18-6
+Removed Pin From Net: NetName=+5V Proc Pin=U18-8
+Removed Pin From Net: NetName=+5V Proc Pin=U19-1
+Removed Pin From Net: NetName=GND Pin=U19-2
+Removed Pin From Net: NetName=NetJ1_7 Pin=U19-4
+Removed Pin From Net: NetName=NetJ1_9 Pin=U19-5
+Removed Pin From Net: NetName=+5V Proc Pin=U20-1
+Removed Pin From Net: NetName=GND Pin=U20-2
+Removed Pin From Net: NetName=NetJ1_7 Pin=U20-4
+Removed Pin From Net: NetName=NetJ1_9 Pin=U20-5
+Removed Pin From Net: NetName=GND Pin=U21-1
+Removed Pin From Net: NetName=GND Pin=U21-3
+Removed Pin From Net: NetName=GND Pin=U21-4
+Removed Pin From Net: NetName=GND Pin=U21-5
+Removed Pin From Net: NetName=GND Pin=U21-8
+Removed Pin From Net: NetName=NetC27_2 Pin=U21-11
+Removed Pin From Net: NetName=GND Pin=U21-12
+Removed Pin From Net: NetName=GND Pin=U21-13
+Removed Pin From Net: NetName=+5V Noise Pin=U21-16
+Removed Pin From Net: NetName=+5V Noise Pin=U22-1
+Removed Pin From Net: NetName=+5V Noise Pin=U22-4
+Removed Pin From Net: NetName=GND Pin=U22-7
+Removed Pin From Net: NetName=+5V Noise Pin=U22-14
+Removed Pin From Net: NetName=GND Pin=U23-1
+Removed Pin From Net: NetName=GND Pin=U23-3
+Removed Pin From Net: NetName=GND Pin=U23-4
+Removed Pin From Net: NetName=GND Pin=U23-8
+Removed Pin From Net: NetName=NetC28_2 Pin=U23-11
+Removed Pin From Net: NetName=GND Pin=U23-12
+Removed Pin From Net: NetName=GND Pin=U23-13
+Removed Pin From Net: NetName=+5V Noise Pin=U23-16
+Removed Pin From Net: NetName=GND Pin=U24-1
+Removed Pin From Net: NetName=GND Pin=U24-3
+Removed Pin From Net: NetName=GND Pin=U24-4
+Removed Pin From Net: NetName=GND Pin=U24-8
+Removed Pin From Net: NetName=GND Pin=U24-12
+Removed Pin From Net: NetName=GND Pin=U24-13
+Removed Pin From Net: NetName=+5V Noise Pin=U24-16
+Removed Pin From Net: NetName=NetU12_6 Pin=U25-10
+Removed Pin From Net: NetName=NetJ1_1 Pin=U25-12
+Removed Pin From Net: NetName=NetJ1_9 Pin=U25-13
+Removed Pin From Net: NetName=NetU16_6 Pin=U25-16
+Removed Pin From Net: NetName=NetU15_6 Pin=U25-25
+Removed Pin From Net: NetName=NetC27_2 Pin=U25-38
+Removed Pin From Net: NetName=NetC28_2 Pin=U25-42
+Removed Pin From Net: NetName=GND Pin=U26-1
+Removed Pin From Net: NetName=GND Pin=U26-3
+Removed Pin From Net: NetName=NetR16_1 Pin=U26-4
+Removed Pin From Net: NetName=+3V3 Pin=U26-5
+Removed Member From Class: ClassName=Encoder AFE Member=C24
+Removed Member From Class: ClassName=Encoder AFE Member=C25
+Removed Member From Class: ClassName=Encoder AFE Member=C26
+Removed Member From Class: ClassName=Encoder AFE Member=C27
+Removed Member From Class: ClassName=Encoder AFE Member=C28
+Removed Member From Class: ClassName=Encoder AFE Member=C29
+Removed Member From Class: ClassName=Encoder AFE Member=C30
+Removed Member From Class: ClassName=Encoder AFE Member=C31
+Removed Member From Class: ClassName=Encoder AFE Member=C32
+Removed Member From Class: ClassName=Encoder AFE Member=C33
+Removed Member From Class: ClassName=MCU Member=C48
+Removed Member From Class: ClassName=MCU Member=C49
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=D6
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=D7
+Removed Member From Class: ClassName=Encoder AFE Member=D10
+Removed Member From Class: ClassName=Encoder AFE Member=D11
+Removed Member From Class: ClassName=Encoder AFE Member=D12
+Removed Member From Class: ClassName=Encoder AFE Member=D13
+Removed Member From Class: ClassName=Encoder AFE Member=D14
+Removed Member From Class: ClassName=Encoder AFE Member=D15
+Removed Member From Class: ClassName=Encoder AFE Member=D16
+Removed Member From Class: ClassName=Encoder AFE Member=D17
+Removed Member From Class: ClassName=Encoder AFE Member=D18
+Removed Member From Class: ClassName=Encoder AFE Member=D19
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=D25
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=D26
+Removed Member From Class: ClassName=Plugs Member=PL9
+Removed Member From Class: ClassName=Encoder AFE Member=R89
+Removed Member From Class: ClassName=Encoder AFE Member=R90
+Removed Member From Class: ClassName=MCU Member=R100
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=U13
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=U14
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=U15
+Removed Member From Class: ClassName=Transformer FrontEnd 2 Member=U16
+Removed Member From Class: ClassName=Encoder AFE incremental Member=U21
+Removed Member From Class: ClassName=Encoder AFE incremental Member=U22
+Removed Member From Class: ClassName=Encoder AFE incremental Member=U23
+Removed Member From Class: ClassName=Encoder AFE incremental Member=U24
+Change Component Footprint: Designator=R16 Old Footprint=0603 New Footprint=1206
+Change Component Footprint: Designator=R17 Old Footprint=0603 New Footprint=1206
+Change Component Footprint: Designator=R31 Old Footprint=0603 New Footprint=1206
+Change Component Footprint: Designator=C15 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C16 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C17 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C24 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C25 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C42 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C43 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C44 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C45 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C46 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=C47 Old Footprint=0603 New Footprint=CAP CER 0603 NP
+Change Component Footprint: Designator=R71 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R72 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R73 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R74 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R75 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R76 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R77 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R78 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R79 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R80 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R81 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R82 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R83 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R84 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R85 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R86 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R87 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R88 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R95 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R96 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R103 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R97 Old Footprint=0603 New Footprint=RES 1210
+Change Component Footprint: Designator=R24 Old Footprint=1206 New Footprint=0603
+Change Component Footprint: Designator=R37 Old Footprint=1206 New Footprint=0603
+Change Component Footprint: Designator=P2 Old Footprint=mcd 1,5/6-G1-3.81 New Footprint=Connector 6x2
+Change Component Footprint: Designator=P1 Old Footprint=mcd 1,5/6-G1-3.81 New Footprint=Connector X2X
+Change Component Footprint: Designator=P3 Old Footprint=PhClass5 New Footprint=Connector 6x2
+Change Component Footprint: Designator=PL3 Old Footprint=PLS 4 New Footprint=PLS-5 2.54
+Change Component Footprint: Designator=PL4 Old Footprint=PLS 4 New Footprint=PLS-5 2.54
+Change Component Footprint: Designator=U13 Old Footprint=SOIC 8 New Footprint=SOIC-8
+Change Component Footprint: Designator=U14 Old Footprint=SOIC 8 New Footprint=SOIC-8
+Change Component Footprint: Designator=U10 Old Footprint=SOIC 8 New Footprint=SOT23 - 6
+Change Component Footprint: Designator=U11 Old Footprint=SOIC 8 New Footprint=SOT235
+Change Component Footprint: Designator=U18 Old Footprint=SOIC 8 New Footprint=SOT-23-6
+Change Component Footprint: Designator=U6 Old Footprint=SOT23 - 5 lead New Footprint=SOT23 - 6
+Change Component Footprint: Designator=U7 Old Footprint=SOT23 - 5 lead New Footprint=SOT23 - 6
+Change Component Footprint: Designator=U19 Old Footprint=SOT23 - 6 New Footprint=LQFP 48
+Change Component Footprint: Designator=U12 Old Footprint=SOT23 - 6 New Footprint=SOIC-8
+Change Component Footprint: Designator=U15 Old Footprint=SOT23 - 6 New Footprint=SOIC-8
+Change Component Footprint: Designator=U16 Old Footprint=SOT23 - 6 New Footprint=SOIC-8
+Change Component Footprint: Designator=U20 Old Footprint=SOT23 - 6 New Footprint=SOIC-14
+Change Component Footprint: Designator=U9 Old Footprint=SOT23 - 6 New Footprint=SOT235
+Change Component Footprint: Designator=U21 Old Footprint=TSSOP-16 New Footprint=SOT-23-6
+Change Component Comment : Designator=R21 Old Comment=1k New Comment=4k7
+Change Component Comment : Designator=R35 Old Comment=1k New Comment=10k
+Change Component Comment : Designator=R28 Old Comment=1k New Comment=47k
+Change Component Comment : Designator=R38 Old Comment=1k New Comment=47k
+Change Component Comment : Designator=R23 Old Comment=1k New Comment=100k
+Change Component Comment : Designator=R31 Old Comment=1k New Comment=100R
+Change Component Comment : Designator=R75 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R76 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R82 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R83 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R84 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R88 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R20 Old Comment=10k New Comment=4k7
+Change Component Comment : Designator=R33 Old Comment=10k New Comment=4k7
+Change Component Comment : Designator=R29 Old Comment=10k New Comment=47k
+Change Component Comment : Designator=R77 Old Comment=10k New Comment=47k
+Change Component Comment : Designator=R78 Old Comment=10k New Comment=47k
+Change Component Comment : Designator=R95 Old Comment=10k New Comment=47k
+Change Component Comment : Designator=R103 Old Comment=10k New Comment=47k
+Change Component Comment : Designator=R22 Old Comment=10k New Comment=100k
+Change Component Comment : Designator=R34 Old Comment=10k New Comment=100k
+Change Component Comment : Designator=R16 Old Comment=10k New Comment=100R
+Change Component Comment : Designator=R17 Old Comment=10k New Comment=100R
+Change Component Comment : Designator=R97 Old Comment=10k New Comment=200R
+Change Component Comment : Designator=R26 Old Comment=10k New Comment=300R
+Change Component Comment : Designator=R27 Old Comment=10k New Comment=300R
+Change Component Comment : Designator=R36 Old Comment=10k New Comment=430k
+Change Component Comment : Designator=R73 Old Comment=47k New Comment=1k
+Change Component Comment : Designator=R74 Old Comment=47k New Comment=1k
+Change Component Comment : Designator=R81 Old Comment=47k New Comment=1k
+Change Component Comment : Designator=R87 Old Comment=47k New Comment=1k
+Change Component Comment : Designator=R32 Old Comment=82k New Comment=10k
+Change Component Comment : Designator=R25 Old Comment=82k New Comment=430k
+Change Component Comment : Designator=R30 Old Comment=100 New Comment=100R
+Change Component Comment : Designator=R37 Old Comment=100 New Comment=300R
+Change Component Comment : Designator=R24 Old Comment=100 New Comment=430k
+Change Component Comment : Designator=C44 Old Comment=100n New Comment=1n
+Change Component Comment : Designator=C45 Old Comment=100n New Comment=1n
+Change Component Comment : Designator=C46 Old Comment=100n New Comment=1n
+Change Component Comment : Designator=C47 Old Comment=100n New Comment=1n
+Change Component Comment : Designator=C16 Old Comment=100n New Comment=1u
+Change Component Comment : Designator=C24 Old Comment=100n New Comment=1u
+Change Component Comment : Designator=C42 Old Comment=100n New Comment=1u
+Change Component Comment : Designator=C28 Old Comment=100n New Comment=10u
+Change Component Comment : Designator=U12 Old Comment=ADS New Comment=Comparator x2 Small
+Change Component Comment : Designator=U15 Old Comment=ADS New Comment=Comparator x2 Small
+Change Component Comment : Designator=U16 Old Comment=ADS New Comment=Comparator x2 Small
+Change Component Comment : Designator=U20 Old Comment=ADS New Comment=OpAmp x4 Small
+Change Component Comment : Designator=U9 Old Comment=ADS New Comment=TS321ILT
+Change Component Comment : Designator=U19 Old Comment=ADS New Comment=W5500
+Change Component Comment : Designator=U21 Old Comment=CD4516 New Comment=SAR ADC
+Change Component Comment : Designator=T4 Old Comment=Current Trans New Comment=Current Transformer
+Change Component Comment : Designator=T5 Old Comment=Current Trans New Comment=Current Transformer
+Change Component Comment : Designator=T6 Old Comment=Current Trans New Comment=Current Transformer
+Change Component Comment : Designator=U6 Old Comment=Gate New Comment=ADC121
+Change Component Comment : Designator=U7 Old Comment=Gate New Comment=ADC121
+Change Component Comment : Designator=P2 Old Comment=MCD 1.5/6-G1-3.81 New Comment=Conncector 6x2
+Change Component Comment : Designator=P1 Old Comment=MCD 1.5/6-G1-3.81 New Comment=Conncector X2X
+Change Component Comment : Designator=U10 Old Comment=OPAMP 2Ch New Comment=ADC121
+Change Component Comment : Designator=U13 Old Comment=OPAMP 2Ch New Comment=Comparator x2 Small
+Change Component Comment : Designator=U14 Old Comment=OPAMP 2Ch New Comment=Comparator x2 Small
+Change Component Comment : Designator=U18 Old Comment=OPAMP 2Ch New Comment=SAR ADC
+Change Component Comment : Designator=U11 Old Comment=OPAMP 2Ch New Comment=TS321ILT
+Change Component Comment : Designator=PL3 Old Comment=plug New Comment=Pin Line
+Change Component Comment : Designator=PL4 Old Comment=plug New Comment=Pin Line
+Change Component Comment : Designator=TVS5 Old Comment=SMAJ5.0CA New Comment=5V
+Change Component Comment : Designator=TVS6 Old Comment=SMAJ5.0CA New Comment=5V
+Change Component Comment : Designator=TVS7 Old Comment=SMAJ5.0CA New Comment=5V
+Change Component Comment : Designator=P3 Old Comment=X2X New Comment=Conncector 6x2
+Change Component Designator: OldDesignator=C14 NewDesignator=C13
+Change Component Designator: OldDesignator=C18 NewDesignator=C29
+Change Component Designator: OldDesignator=C19 NewDesignator=C30
+Change Component Designator: OldDesignator=C20 NewDesignator=C31
+Change Component Designator: OldDesignator=C21 NewDesignator=C32
+Change Component Designator: OldDesignator=C22 NewDesignator=C33
+Change Component Designator: OldDesignator=C23 NewDesignator=C34
+Change Component Designator: OldDesignator=C34 NewDesignator=C37
+Change Component Designator: OldDesignator=C35 NewDesignator=C39
+Change Component Designator: OldDesignator=C36 NewDesignator=C40
+Change Component Designator: OldDesignator=C37 NewDesignator=C41
+Change Component Designator: OldDesignator=C48 NewDesignator=C35
+Change Component Designator: OldDesignator=C49 NewDesignator=C36
+Change Component Designator: OldDesignator=C50 NewDesignator=C38
+Change Component Designator: OldDesignator=LED6 NewDesignator=LED4
+Change Component Designator: OldDesignator=PL7 NewDesignator=PL1
+Change Component Designator: OldDesignator=PL8 NewDesignator=PL2
+Change Component Designator: OldDesignator=R11 NewDesignator=R12
+Change Component Designator: OldDesignator=R12 NewDesignator=R11
+Change Component Designator: OldDesignator=R18 NewDesignator=R14
+Change Component Designator: OldDesignator=R19 NewDesignator=R15
+Change Component Designator: OldDesignator=R41 NewDesignator=R39
+Change Component Designator: OldDesignator=R42 NewDesignator=R40
+Change Component Designator: OldDesignator=R43 NewDesignator=R41
+Change Component Designator: OldDesignator=R44 NewDesignator=R42
+Change Component Designator: OldDesignator=R45 NewDesignator=R43
+Change Component Designator: OldDesignator=R46 NewDesignator=R44
+Change Component Designator: OldDesignator=R47 NewDesignator=R45
+Change Component Designator: OldDesignator=R48 NewDesignator=R46
+Change Component Designator: OldDesignator=R49 NewDesignator=R47
+Change Component Designator: OldDesignator=R50 NewDesignator=R48
+Change Component Designator: OldDesignator=R51 NewDesignator=R49
+Change Component Designator: OldDesignator=R52 NewDesignator=R50
+Change Component Designator: OldDesignator=R53 NewDesignator=R51
+Change Component Designator: OldDesignator=R54 NewDesignator=R52
+Change Component Designator: OldDesignator=R55 NewDesignator=R53
+Change Component Designator: OldDesignator=R56 NewDesignator=R54
+Change Component Designator: OldDesignator=R57 NewDesignator=R55
+Change Component Designator: OldDesignator=R58 NewDesignator=R56
+Change Component Designator: OldDesignator=R59 NewDesignator=R57
+Change Component Designator: OldDesignator=R60 NewDesignator=R58
+Change Component Designator: OldDesignator=R61 NewDesignator=R59
+Change Component Designator: OldDesignator=R62 NewDesignator=R60
+Change Component Designator: OldDesignator=R63 NewDesignator=R61
+Change Component Designator: OldDesignator=R64 NewDesignator=R62
+Change Component Designator: OldDesignator=R65 NewDesignator=R63
+Change Component Designator: OldDesignator=R66 NewDesignator=R64
+Change Component Designator: OldDesignator=R67 NewDesignator=R65
+Change Component Designator: OldDesignator=R68 NewDesignator=R66
+Change Component Designator: OldDesignator=R69 NewDesignator=R67
+Change Component Designator: OldDesignator=R70 NewDesignator=R68
+Change Component Designator: OldDesignator=R91 NewDesignator=R94
+Change Component Designator: OldDesignator=R98 NewDesignator=R89
+Change Component Designator: OldDesignator=R99 NewDesignator=R90
+Change Component Designator: OldDesignator=R100 NewDesignator=R91
+Change Component Designator: OldDesignator=R101 NewDesignator=R92
+Change Component Designator: OldDesignator=R102 NewDesignator=R93
+Change Component Designator: OldDesignator=U8 NewDesignator=U5
+Change Component Designator: OldDesignator=U25 NewDesignator=U17
+Change component parameters: Designator = "C15"; Footprint = "CAP CER 0603 NP"; UniqueID = "\TBSHWMJO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C16"; Footprint = "CAP CER 0603 NP"; UniqueID = "\RQKISOIT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C17"; Footprint = "CAP CER 0603 NP"; UniqueID = "\AQIAHDMS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C24"; Footprint = "CAP CER 0603 NP"; UniqueID = "\BPJOGLXK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C25"; Footprint = "CAP CER 0603 NP"; UniqueID = "\WXYKNBEC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C42"; Footprint = "CAP CER 0603 NP"; UniqueID = "\APCVYFVW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C43"; Footprint = "CAP CER 0603 NP"; UniqueID = "\YXGKUFBY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C44"; Footprint = "CAP CER 0603 NP"; UniqueID = "\MBLTECMR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C45"; Footprint = "CAP CER 0603 NP"; UniqueID = "\WLHDFSDC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C46"; Footprint = "CAP CER 0603 NP"; UniqueID = "\BXXKFACM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C47"; Footprint = "CAP CER 0603 NP"; UniqueID = "\XRWYFJEX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R71"; Footprint = "RES 0603"; UniqueID = "\UQVGJRGA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R72"; Footprint = "RES 0603"; UniqueID = "\IOCXIWHI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R73"; Footprint = "RES 0603"; UniqueID = "\MLIDMRGJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R74"; Footprint = "RES 0603"; UniqueID = "\AUKSAMHT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R75"; Footprint = "RES 0603"; UniqueID = "\JAAGFCIX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R76"; Footprint = "RES 0603"; UniqueID = "\JPTIFYSQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R77"; Footprint = "RES 0603"; UniqueID = "\IJMMISIP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R78"; Footprint = "RES 0603"; UniqueID = "\RAMFSKQI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R79"; Footprint = "RES 0603"; UniqueID = "\URJWYXLW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R80"; Footprint = "RES 0603"; UniqueID = "\CAWTPQXY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R81"; Footprint = "RES 0603"; UniqueID = "\WYTOQEJO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R82"; Footprint = "RES 0603"; UniqueID = "\DMIMTDOH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R83"; Footprint = "RES 0603"; UniqueID = "\NEVWUABH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R84"; Footprint = "RES 0603"; UniqueID = "\MSWNRJLD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R85"; Footprint = "RES 0603"; UniqueID = "\MDRUFCKK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R86"; Footprint = "RES 0603"; UniqueID = "\LJRRYQGK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R87"; Footprint = "RES 0603"; UniqueID = "\KCGWOBBL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R88"; Footprint = "RES 0603"; UniqueID = "\YLTNNCVA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R95"; Footprint = "RES 0603"; UniqueID = "\KICTIQKC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R96"; Footprint = "RES 0603"; UniqueID = "\INJWLHAF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R97"; Footprint = "RES 1210"; UniqueID = "\EYUTMDPQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R103"; Footprint = "RES 0603"; UniqueID = "\LKDNJBRX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P1"; Footprint = "Connector X2X"; UniqueID = "\WFPMPUOX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "P2"; Footprint = "Connector 6x2"; UniqueID = "\GBWOTAIC"
+Change component parameters. Clean all parameters for all variants
+Added Component: Designator=C14(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C18(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C19(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C20(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C21(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C22(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C23(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C48(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C49(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C50(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C51(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C52(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C53(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C54(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C55(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C56(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C57(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C58(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C59(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C60(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C61(1206)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C62(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C63(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C64(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C65(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C66(1206)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C67(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C68(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C69(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C70(1206)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C71(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C72(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C73(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C74(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C75(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C76(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C77(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 50V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C78(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 25V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C79(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 25V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=ETH1(RJ45)
+Add component. Clean all parameters for all variants
+Added Component: Designator=L2(0805)
+Add component. Clean all parameters for all variants
+Added Component: Designator=L3(0805)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q1(SOT23)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q2(SOT23)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q3(SOT23)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q4(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q5(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q6(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q7(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q8(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q9(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q10(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q11(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q12(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q13(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "20V 1.2A Vgs=12V SOT-23"; VariantName = "[No Variations]"
+Added Component: Designator=Q14(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "65 V 100 mA SOT-23 (TO-236AB)"; VariantName = "[No Variations]"
+Added Component: Designator=Q15(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "65 V 100 mA SOT-23 (TO-236AB)"; VariantName = "[No Variations]"
+Added Component: Designator=R5(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R6(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R18(1206)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R19(1206)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R69(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R70(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R98(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R99(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R100(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R101(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R102(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R104(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R105(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R106(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R107(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R108(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R109(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R110(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R111(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R112(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R113(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R114(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R115(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R116(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R117(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R118(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R119(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R120(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R121(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R122(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R123(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R124(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R125(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R126(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R127(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R128(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R129(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R130(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R131(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R132(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R133(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R134(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R135(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R136(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R137(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R138(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R139(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R140(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R141(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R142(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R143(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R144(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R145(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R146(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R147(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R148(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R149(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R150(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R151(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R152(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R153(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R154(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R155(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R156(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R157(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R158(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R159(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R160(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R161(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R162(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K"; VariantName = "[No Variations]"
+Added Component: Designator=R163(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R164(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R165(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R166(RES 0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R167(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R168(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R169(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R170(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R171(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R172(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R173(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=Rxxx1(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=U8(SOT235)
+Add component. Clean all parameters for all variants
+Added Component: Designator=VD1(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1%"; VariantName = "[No Variations]"
+Added Component: Designator=XTL2(KX-7 XTAL)
+Add component. Clean all parameters for all variants
+Added Component: Designator=ZD1(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD2(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD3(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD4(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD5(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD6(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD7(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD8(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD9(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Component: Designator=ZD10(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5V Proc Pin=C14-1
+Added Pin To Net: NetName=GND Pin=C14-2
+Added Pin To Net: NetName=+5V Proc Pin=C15-2
+Added Pin To Net: NetName=+5V Proc Pin=C16-1
+Added Pin To Net: NetName=GND Pin=C16-2
+Added Pin To Net: NetName=+5V Proc Pin=C17-2
+Added Pin To Net: NetName=GND Pin=C18-1
+Added Pin To Net: NetName=+5V Proc Pin=C18-2
+Added Pin To Net: NetName=GND Pin=C19-1
+Added Pin To Net: NetName=+5V Proc Pin=C19-2
+Added Pin To Net: NetName=+5V Proc Pin=C24-1
+Added Pin To Net: NetName=GND Pin=C24-2
+Added Pin To Net: NetName=+5V Proc Pin=C25-2
+Added Pin To Net: NetName=+5V Proc Pin=C26-2
+Added Pin To Net: NetName=GND Pin=C42-2
+Added Pin To Net: NetName=GND Pin=C48-1
+Added Pin To Net: NetName=GND Pin=C49-1
+Added Pin To Net: NetName=GND Pin=C50-1
+Added Pin To Net: NetName=GND Pin=C51-1
+Added Pin To Net: NetName=GND Pin=C52-1
+Added Pin To Net: NetName=GND Pin=C53-1
+Added Pin To Net: NetName=GND Pin=C54-2
+Added Pin To Net: NetName=GND Pin=C55-2
+Added Pin To Net: NetName=GND Pin=C56-2
+Added Pin To Net: NetName=GND Pin=C57-2
+Added Pin To Net: NetName=GND Pin=C58-2
+Added Pin To Net: NetName=GND Pin=C59-2
+Added Pin To Net: NetName=GND Pin=C60-2
+Added Pin To Net: NetName=GND Pin=C61-1
+Added Pin To Net: NetName=GND Pin=C62-2
+Added Pin To Net: NetName=GND Pin=C65-1
+Added Pin To Net: NetName=GND Pin=C66-1
+Added Pin To Net: NetName=GND Pin=C67-2
+Added Pin To Net: NetName=GND Pin=C68-1
+Added Pin To Net: NetName=GND Pin=C69-2
+Added Pin To Net: NetName=GND Pin=C70-1
+Added Pin To Net: NetName=GND Pin=C71-2
+Added Pin To Net: NetName=GND Pin=C72-2
+Added Pin To Net: NetName=+5V Proc Pin=C73-1
+Added Pin To Net: NetName=GND Pin=C73-2
+Added Pin To Net: NetName=+5V Proc Pin=C74-1
+Added Pin To Net: NetName=GND Pin=C74-2
+Added Pin To Net: NetName=+5V Proc Pin=C75-1
+Added Pin To Net: NetName=GND Pin=C75-2
+Added Pin To Net: NetName=+5V Proc Pin=C76-1
+Added Pin To Net: NetName=GND Pin=C76-2
+Added Pin To Net: NetName=GND Pin=C78-1
+Added Pin To Net: NetName=GND Pin=C79-1
+Added Pin To Net: NetName=+5V Noise Pin=Dip1-1
+Added Pin To Net: NetName=+5V Noise Pin=Dip1-2
+Added Pin To Net: NetName=+5V Noise Pin=Dip1-3
+Added Pin To Net: NetName=+5V Noise Pin=Dip1-4
+Added Pin To Net: NetName=+5V Noise Pin=Dip1-5
+Added Pin To Net: NetName=+3V3 Pin=L2-1
+Added Pin To Net: NetName=+3V3 Pin=L3-1
+Added Pin To Net: NetName=GND Pin=P1-1
+Added Pin To Net: NetName=+24V_Pwr Pin=P1-2
+Added Pin To Net: NetName=GND Pin=P1-3
+Added Pin To Net: NetName=NetF4_1 Pin=P1-4
+Added Pin To Net: NetName=NetF3_1 Pin=P1-5
+Added Pin To Net: NetName=GND Pin=P2-1
+Added Pin To Net: NetName=+24V_Pwr Pin=P2-2
+Added Pin To Net: NetName=GND Pin=P3-6
+Added Pin To Net: NetName=NetPL1_2 Pin=PL1-2
+Added Pin To Net: NetName=NetJ1_7 Pin=PL3-4
+Added Pin To Net: NetName=+5V Proc Pin=PL4-1
+Added Pin To Net: NetName=GND Pin=PL4-5
+Added Pin To Net: NetName=GND Pin=Q1-2
+Added Pin To Net: NetName=GND Pin=Q2-2
+Added Pin To Net: NetName=GND Pin=Q3-2
+Added Pin To Net: NetName=GND Pin=Q4-2
+Added Pin To Net: NetName=GND Pin=Q5-2
+Added Pin To Net: NetName=GND Pin=Q6-2
+Added Pin To Net: NetName=GND Pin=Q7-2
+Added Pin To Net: NetName=GND Pin=Q8-2
+Added Pin To Net: NetName=GND Pin=Q9-2
+Added Pin To Net: NetName=GND Pin=Q10-2
+Added Pin To Net: NetName=GND Pin=Q11-2
+Added Pin To Net: NetName=GND Pin=Q12-2
+Added Pin To Net: NetName=GND Pin=Q13-2
+Added Pin To Net: NetName=+5V Proc Pin=Q14-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R5-1
+Added Pin To Net: NetName=NetJ1_9 Pin=R5-2
+Added Pin To Net: NetName=GND Pin=R6-2
+Added Pin To Net: NetName=NetD25_1 Pin=R16-2
+Added Pin To Net: NetName=NetR16_1 Pin=R17-1
+Added Pin To Net: NetName=NetD25_1 Pin=R17-2
+Added Pin To Net: NetName=NetD25_1 Pin=R18-2
+Added Pin To Net: NetName=NetD25_1 Pin=R19-2
+Added Pin To Net: NetName=GND Pin=R25-1
+Added Pin To Net: NetName=NetPL4_2 Pin=R26-1
+Added Pin To Net: NetName=GND Pin=R28-1
+Added Pin To Net: NetName=GND Pin=R29-1
+Added Pin To Net: NetName=NetD25_1 Pin=R31-2
+Added Pin To Net: NetName=+5V Noise Pin=R32-1
+Added Pin To Net: NetName=NetD25_1 Pin=R32-2
+Added Pin To Net: NetName=NetC28_2 Pin=R33-1
+Added Pin To Net: NetName=NetC27_2 Pin=R34-2
+Added Pin To Net: NetName=NetD25_1 Pin=R35-1
+Added Pin To Net: NetName=GND Pin=R35-2
+Added Pin To Net: NetName=GND Pin=R36-1
+Added Pin To Net: NetName=NetPL4_3 Pin=R37-1
+Added Pin To Net: NetName=GND Pin=R38-1
+Added Pin To Net: NetName=+24V_Pwr Pin=R69-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R70-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R71-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R72-2
+Added Pin To Net: NetName=NetP2_4 Pin=R74-2
+Added Pin To Net: NetName=NetP2_6 Pin=R76-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R77-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R78-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R79-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R80-2
+Added Pin To Net: NetName=NetP2_8 Pin=R82-2
+Added Pin To Net: NetName=NetP2_10 Pin=R84-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R85-2
+Added Pin To Net: NetName=+24V_Pwr Pin=R86-2
+Added Pin To Net: NetName=NetP2_12 Pin=R88-2
+Added Pin To Net: NetName=GND Pin=R99-1
+Added Pin To Net: NetName=GND Pin=R100-1
+Added Pin To Net: NetName=GND Pin=R107-1
+Added Pin To Net: NetName=GND Pin=R108-1
+Added Pin To Net: NetName=GND Pin=R117-1
+Added Pin To Net: NetName=GND Pin=R118-1
+Added Pin To Net: NetName=GND Pin=R119-1
+Added Pin To Net: NetName=GND Pin=R129-1
+Added Pin To Net: NetName=GND Pin=R130-1
+Added Pin To Net: NetName=GND Pin=R131-1
+Added Pin To Net: NetName=GND Pin=R144-2
+Added Pin To Net: NetName=GND Pin=R145-2
+Added Pin To Net: NetName=GND Pin=R146-2
+Added Pin To Net: NetName=GND Pin=R147-2
+Added Pin To Net: NetName=GND Pin=R148-2
+Added Pin To Net: NetName=GND Pin=R158-2
+Added Pin To Net: NetName=GND Pin=R160-2
+Added Pin To Net: NetName=+5V Proc Pin=R161-2
+Added Pin To Net: NetName=GND Pin=R165-1
+Added Pin To Net: NetName=GND Pin=R173-1
+Added Pin To Net: NetName=NetD25_1 Pin=T4-1
+Added Pin To Net: NetName=NetR16_1 Pin=T4-2
+Added Pin To Net: NetName=NetD25_1 Pin=T6-1
+Added Pin To Net: NetName=NetR16_1 Pin=TVS5-1
+Added Pin To Net: NetName=NetD25_1 Pin=TVS5-2
+Added Pin To Net: NetName=NetD25_1 Pin=TVS7-2
+Added Pin To Net: NetName=+5V Proc Pin=U6-1
+Added Pin To Net: NetName=GND Pin=U6-2
+Added Pin To Net: NetName=NetJ1_7 Pin=U6-4
+Added Pin To Net: NetName=+5V Proc Pin=U7-1
+Added Pin To Net: NetName=GND Pin=U7-2
+Added Pin To Net: NetName=NetJ1_7 Pin=U7-4
+Added Pin To Net: NetName=GND Pin=U8-2
+Added Pin To Net: NetName=NetR16_1 Pin=U8-3
+Added Pin To Net: NetName=+5V Proc Pin=U8-5
+Added Pin To Net: NetName=+5V Proc Pin=U9-5
+Added Pin To Net: NetName=+5V Proc Pin=U10-1
+Added Pin To Net: NetName=GND Pin=U10-2
+Added Pin To Net: NetName=NetC27_2 Pin=U10-3
+Added Pin To Net: NetName=NetJ1_7 Pin=U10-4
+Added Pin To Net: NetName=NetC27_2 Pin=U11-1
+Added Pin To Net: NetName=GND Pin=U11-2
+Added Pin To Net: NetName=+5V Proc Pin=U11-5
+Added Pin To Net: NetName=NetJ1_9 Pin=U12-3
+Added Pin To Net: NetName=+24V_Pwr Pin=U12-7
+Added Pin To Net: NetName=GND Pin=U12-8
+Added Pin To Net: NetName=NetJ1_9 Pin=U13-3
+Added Pin To Net: NetName=NetJ1_9 Pin=U13-5
+Added Pin To Net: NetName=+24V_Pwr Pin=U13-7
+Added Pin To Net: NetName=GND Pin=U13-8
+Added Pin To Net: NetName=NetJ1_9 Pin=U14-3
+Added Pin To Net: NetName=NetJ1_9 Pin=U14-5
+Added Pin To Net: NetName=+24V_Pwr Pin=U14-7
+Added Pin To Net: NetName=GND Pin=U14-8
+Added Pin To Net: NetName=NetJ1_9 Pin=U15-3
+Added Pin To Net: NetName=+24V_Pwr Pin=U15-7
+Added Pin To Net: NetName=GND Pin=U15-8
+Added Pin To Net: NetName=NetJ1_9 Pin=U16-3
+Added Pin To Net: NetName=+24V_Pwr Pin=U16-7
+Added Pin To Net: NetName=GND Pin=U16-8
+Added Pin To Net: NetName=NetJ1_1 Pin=U17-2
+Added Pin To Net: NetName=A4 Pin=U17-18
+Added Pin To Net: NetName=A5 Pin=U17-19
+Added Pin To Net: NetName=NetPL4_2 Pin=U17-30
+Added Pin To Net: NetName=NetPL4_3 Pin=U17-32
+Added Pin To Net: NetName=A1 Pin=U17-33
+Added Pin To Net: NetName=A2 Pin=U17-34
+Added Pin To Net: NetName=NetU12_6 Pin=U17-36
+Added Pin To Net: NetName=NetU15_6 Pin=U17-42
+Added Pin To Net: NetName=A3 Pin=U17-43
+Added Pin To Net: NetName=NetU16_6 Pin=U17-44
+Added Pin To Net: NetName=GND Pin=U18-2
+Added Pin To Net: NetName=GND Pin=U19-3
+Added Pin To Net: NetName=GND Pin=U19-9
+Added Pin To Net: NetName=GND Pin=U19-14
+Added Pin To Net: NetName=GND Pin=U19-16
+Added Pin To Net: NetName=GND Pin=U19-19
+Added Pin To Net: NetName=GND Pin=U19-29
+Added Pin To Net: NetName=GND Pin=U19-48
+Added Pin To Net: NetName=+5V Proc Pin=U20-13
+Added Pin To Net: NetName=GND Pin=U20-14
+Added Pin To Net: NetName=+5V Proc Pin=U21-1
+Added Pin To Net: NetName=GND Pin=U21-2
+Added Pin To Net: NetName=NetJ1_7 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=VD1-1
+Added Pin To Net: NetName=GND Pin=XTL2-2
+Added Pin To Net: NetName=GND Pin=XTL2-2
+Added Pin To Net: NetName=GND Pin=ZD1-2
+Added Pin To Net: NetName=GND Pin=ZD2-2
+Added Pin To Net: NetName=GND Pin=ZD3-2
+Added Pin To Net: NetName=GND Pin=ZD4-2
+Added Pin To Net: NetName=GND Pin=ZD5-2
+Added Pin To Net: NetName=GND Pin=ZD6-2
+Added Pin To Net: NetName=GND Pin=ZD7-2
+Added Pin To Net: NetName=GND Pin=ZD8-2
+Added Pin To Net: NetName=GND Pin=ZD9-2
+Added Pin To Net: NetName=GND Pin=ZD10-2
+Change Net Name : Old Net Name=NetC18_1 New Net Name=NetC29_1
+Change Net Name : Old Net Name=NetC18_2 New Net Name=NetC29_2
+Change Net Name : Old Net Name=NetC19_1 New Net Name=NetC30_1
+Change Net Name : Old Net Name=NetC19_2 New Net Name=NetC30_2
+Change Net Name : Old Net Name=NetC20_1 New Net Name=NetC31_1
+Change Net Name : Old Net Name=NetC20_2 New Net Name=NetC31_2
+Change Net Name : Old Net Name=NetC21_1 New Net Name=NetC32_1
+Change Net Name : Old Net Name=NetC21_2 New Net Name=NetC32_2
+Change Net Name : Old Net Name=NetC22_1 New Net Name=NetC33_1
+Change Net Name : Old Net Name=NetC22_2 New Net Name=NetC33_2
+Change Net Name : Old Net Name=NetC23_1 New Net Name=NetC34_1
+Change Net Name : Old Net Name=NetC23_2 New Net Name=NetC34_2
+Change Net Name : Old Net Name=NetC34_2 New Net Name=NetC37_2
+Change Net Name : Old Net Name=NetC35_2 New Net Name=NetC39_2
+Change Net Name : Old Net Name=NetC36_2 New Net Name=NetC40_2
+Change Net Name : Old Net Name=NetC37_2 New Net Name=NetC41_2
+Change Net Name : Old Net Name=NetD25_1 New Net Name=2V5
+Change Net Name : Old Net Name=NetJ1_9 New Net Name=NetR5_2
+Change Net Name : Old Net Name=NetLED6_2 New Net Name=NetLED4_2
+Change Net Name : Old Net Name=NetPL7_1 New Net Name=NetPL1_1
+Change Net Name : Old Net Name=NetPL7_3 New Net Name=NetPL1_3
+Change Net Name : Old Net Name=NetPL8_3 New Net Name=NetPL2_3
+Change Net Name : Old Net Name=NetPL8_4 New Net Name=NetPL2_4
+Change Net Name : Old Net Name=NetPL8_5 New Net Name=NetPL2_5
+Change Net Name : Old Net Name=NetR12_2 New Net Name=NetR11_2
+Change Net Name : Old Net Name=NetR18_1 New Net Name=NetR14_1
+Change Net Name : Old Net Name=NetR19_1 New Net Name=NetR15_1
+Change Net Name : Old Net Name=NetR41_1 New Net Name=NetR39_1
+Change Net Name : Old Net Name=NetR42_1 New Net Name=NetR40_1
+Change Net Name : Old Net Name=NetR43_1 New Net Name=NetR41_1
+Change Net Name : Old Net Name=NetR44_2 New Net Name=NetR42_2
+Change Net Name : Old Net Name=NetR47_1 New Net Name=NetR45_1
+Change Net Name : Old Net Name=NetR48_2 New Net Name=NetR46_2
+Change Net Name : Old Net Name=NetR51_1 New Net Name=NetR49_1
+Change Net Name : Old Net Name=NetR52_1 New Net Name=NetR50_1
+Change Net Name : Old Net Name=NetR53_1 New Net Name=NetR51_1
+Change Net Name : Old Net Name=NetR54_2 New Net Name=NetR52_2
+Change Net Name : Old Net Name=NetR57_1 New Net Name=NetR55_1
+Change Net Name : Old Net Name=NetR58_2 New Net Name=NetR56_2
+Change Net Name : Old Net Name=NetR61_1 New Net Name=NetR59_1
+Change Net Name : Old Net Name=NetR62_1 New Net Name=NetR60_1
+Change Net Name : Old Net Name=NetR63_1 New Net Name=NetR61_1
+Change Net Name : Old Net Name=NetR64_2 New Net Name=NetR62_2
+Change Net Name : Old Net Name=NetR67_1 New Net Name=NetR65_1
+Change Net Name : Old Net Name=NetR68_2 New Net Name=NetR66_2
+Change Net Name : Old Net Name=NetU8_4 New Net Name=NetU5_4
+Added Pin To Net: NetName=+3V3A Pin=C55-1
+Added Pin To Net: NetName=+3V3A Pin=C56-1
+Added Pin To Net: NetName=+3V3A Pin=C57-1
+Added Pin To Net: NetName=+3V3A Pin=C58-1
+Added Pin To Net: NetName=+3V3A Pin=C59-1
+Added Pin To Net: NetName=+3V3A Pin=C60-1
+Added Pin To Net: NetName=+3V3A Pin=C61-2
+Added Pin To Net: NetName=+3V3A Pin=L3-2
+Added Pin To Net: NetName=+3V3A Pin=R135-2
+Added Pin To Net: NetName=+3V3A Pin=R136-2
+Added Pin To Net: NetName=+3V3A Pin=R137-2
+Added Pin To Net: NetName=+3V3A Pin=U19-4
+Added Pin To Net: NetName=+3V3A Pin=U19-8
+Added Pin To Net: NetName=+3V3A Pin=U19-11
+Added Pin To Net: NetName=+3V3A Pin=U19-15
+Added Pin To Net: NetName=+3V3A Pin=U19-17
+Added Pin To Net: NetName=+3V3A Pin=U19-21
+Added Net: Name=+3V3A
+Added Pin To Net: NetName=+3V3D Pin=C69-1
+Added Pin To Net: NetName=+3V3D Pin=C70-2
+Added Pin To Net: NetName=+3V3D Pin=ETH1-9
+Added Pin To Net: NetName=+3V3D Pin=ETH1-12
+Added Pin To Net: NetName=+3V3D Pin=L2-2
+Added Pin To Net: NetName=+3V3D Pin=R138-2
+Added Pin To Net: NetName=+3V3D Pin=R139-2
+Added Pin To Net: NetName=+3V3D Pin=R140-2
+Added Pin To Net: NetName=+3V3D Pin=R141-2
+Added Pin To Net: NetName=+3V3D Pin=R151-2
+Added Pin To Net: NetName=+3V3D Pin=R152-2
+Added Pin To Net: NetName=+3V3D Pin=U19-28
+Added Net: Name=+3V3D
+Added Pin To Net: NetName=ACTLED Pin=R142-1
+Added Pin To Net: NetName=ACTLED Pin=U19-27
+Added Net: Name=ACTLED
+Added Pin To Net: NetName=CGND Pin=C66-2
+Added Pin To Net: NetName=CGND Pin=ETH1-8
+Added Pin To Net: NetName=CGND Pin=ETH1-SHIELD
+Added Pin To Net: NetName=CGND Pin=ETH1-SHIELD
+Added Net: Name=CGND
+Added Pin To Net: NetName=CS_ETH Pin=R152-1
+Added Pin To Net: NetName=CS_ETH Pin=U19-32
+Added Net: Name=CS_ETH
+Added Pin To Net: NetName=INTN Pin=R151-1
+Added Pin To Net: NetName=INTN Pin=U19-36
+Added Net: Name=INTN
+Added Pin To Net: NetName=LINKLED Pin=R143-1
+Added Pin To Net: NetName=LINKLED Pin=U19-25
+Added Net: Name=LINKLED
+Added Pin To Net: NetName=MISO Pin=U19-34
+Added Net: Name=MISO
+Added Pin To Net: NetName=MOSI Pin=U19-35
+Added Net: Name=MOSI
+Added Pin To Net: NetName=NetC20_1 Pin=C20-1
+Added Pin To Net: NetName=NetC20_1 Pin=R20-2
+Added Pin To Net: NetName=NetC20_1 Pin=R22-1
+Added Pin To Net: NetName=NetC20_1 Pin=U8-4
+Added Net: Name=NetC20_1
+Added Pin To Net: NetName=NetC20_2 Pin=C20-2
+Added Pin To Net: NetName=NetC20_2 Pin=R22-2
+Added Pin To Net: NetName=NetC20_2 Pin=U6-3
+Added Pin To Net: NetName=NetC20_2 Pin=U8-1
+Added Net: Name=NetC20_2
+Added Pin To Net: NetName=NetC21_1 Pin=C21-1
+Added Pin To Net: NetName=NetC21_1 Pin=R21-2
+Added Pin To Net: NetName=NetC21_1 Pin=R23-1
+Added Pin To Net: NetName=NetC21_1 Pin=U9-4
+Added Net: Name=NetC21_1
+Added Pin To Net: NetName=NetC21_2 Pin=C21-2
+Added Pin To Net: NetName=NetC21_2 Pin=R23-2
+Added Pin To Net: NetName=NetC21_2 Pin=U7-3
+Added Pin To Net: NetName=NetC21_2 Pin=U9-1
+Added Net: Name=NetC21_2
+Added Pin To Net: NetName=NetC22_1 Pin=C22-1
+Added Pin To Net: NetName=NetC22_1 Pin=Q1-3
+Added Pin To Net: NetName=NetC22_1 Pin=R24-2
+Added Net: Name=NetC22_1
+Added Pin To Net: NetName=NetC22_2 Pin=C22-2
+Added Pin To Net: NetName=NetC22_2 Pin=R20-1
+Added Net: Name=NetC22_2
+Added Pin To Net: NetName=NetC23_1 Pin=C23-1
+Added Pin To Net: NetName=NetC23_1 Pin=Q2-3
+Added Pin To Net: NetName=NetC23_1 Pin=R25-2
+Added Net: Name=NetC23_1
+Added Pin To Net: NetName=NetC23_2 Pin=C23-2
+Added Pin To Net: NetName=NetC23_2 Pin=R21-1
+Added Net: Name=NetC23_2
+Added Pin To Net: NetName=NetC27_1 Pin=C27-1
+Added Pin To Net: NetName=NetC27_1 Pin=R33-2
+Added Pin To Net: NetName=NetC27_1 Pin=R34-1
+Added Pin To Net: NetName=NetC27_1 Pin=U11-4
+Added Net: Name=NetC27_1
+Added Pin To Net: NetName=NetC28_1 Pin=C28-1
+Added Pin To Net: NetName=NetC28_1 Pin=Q3-3
+Added Pin To Net: NetName=NetC28_1 Pin=R36-2
+Added Net: Name=NetC28_1
+Added Pin To Net: NetName=NetC44_2 Pin=C44-2
+Added Pin To Net: NetName=NetC44_2 Pin=R95-1
+Added Pin To Net: NetName=NetC44_2 Pin=R99-2
+Added Pin To Net: NetName=NetC44_2 Pin=ZD1-1
+Added Net: Name=NetC44_2
+Added Pin To Net: NetName=NetC45_2 Pin=C45-2
+Added Pin To Net: NetName=NetC45_2 Pin=R96-1
+Added Pin To Net: NetName=NetC45_2 Pin=R100-2
+Added Pin To Net: NetName=NetC45_2 Pin=U18-3
+Added Pin To Net: NetName=NetC45_2 Pin=ZD2-1
+Added Net: Name=NetC45_2
+Added Pin To Net: NetName=NetC46_2 Pin=C46-2
+Added Pin To Net: NetName=NetC46_2 Pin=R103-1
+Added Pin To Net: NetName=NetC46_2 Pin=R107-2
+Added Pin To Net: NetName=NetC46_2 Pin=ZD3-1
+Added Net: Name=NetC46_2
+Added Pin To Net: NetName=NetC47_2 Pin=C47-2
+Added Pin To Net: NetName=NetC47_2 Pin=R104-1
+Added Pin To Net: NetName=NetC47_2 Pin=R108-2
+Added Pin To Net: NetName=NetC47_2 Pin=ZD4-1
+Added Net: Name=NetC47_2
+Added Pin To Net: NetName=NetC48_2 Pin=C48-2
+Added Pin To Net: NetName=NetC48_2 Pin=R111-1
+Added Pin To Net: NetName=NetC48_2 Pin=R117-2
+Added Pin To Net: NetName=NetC48_2 Pin=ZD5-1
+Added Net: Name=NetC48_2
+Added Pin To Net: NetName=NetC49_2 Pin=C49-2
+Added Pin To Net: NetName=NetC49_2 Pin=R112-1
+Added Pin To Net: NetName=NetC49_2 Pin=R118-2
+Added Pin To Net: NetName=NetC49_2 Pin=ZD6-1
+Added Net: Name=NetC49_2
+Added Pin To Net: NetName=NetC50_2 Pin=C50-2
+Added Pin To Net: NetName=NetC50_2 Pin=R113-1
+Added Pin To Net: NetName=NetC50_2 Pin=R119-2
+Added Pin To Net: NetName=NetC50_2 Pin=ZD7-1
+Added Net: Name=NetC50_2
+Added Pin To Net: NetName=NetC51_2 Pin=C51-2
+Added Pin To Net: NetName=NetC51_2 Pin=R123-1
+Added Pin To Net: NetName=NetC51_2 Pin=R129-2
+Added Pin To Net: NetName=NetC51_2 Pin=ZD8-1
+Added Net: Name=NetC51_2
+Added Pin To Net: NetName=NetC52_2 Pin=C52-2
+Added Pin To Net: NetName=NetC52_2 Pin=R124-1
+Added Pin To Net: NetName=NetC52_2 Pin=R130-2
+Added Pin To Net: NetName=NetC52_2 Pin=ZD9-1
+Added Net: Name=NetC52_2
+Added Pin To Net: NetName=NetC53_2 Pin=C53-2
+Added Pin To Net: NetName=NetC53_2 Pin=R125-1
+Added Pin To Net: NetName=NetC53_2 Pin=R131-2
+Added Pin To Net: NetName=NetC53_2 Pin=ZD10-1
+Added Net: Name=NetC53_2
+Added Pin To Net: NetName=NetC54_1 Pin=C54-1
+Added Pin To Net: NetName=NetC54_1 Pin=ETH1-4
+Added Pin To Net: NetName=NetC54_1 Pin=R137-1
+Added Net: Name=NetC54_1
+Added Pin To Net: NetName=NetC65_2 Pin=C65-2
+Added Pin To Net: NetName=NetC65_2 Pin=U19-31
+Added Pin To Net: NetName=NetC65_2 Pin=XTL2-3
+Added Net: Name=NetC65_2
+Added Pin To Net: NetName=NetC67_1 Pin=C67-1
+Added Pin To Net: NetName=NetC67_1 Pin=ETH1-5
+Added Pin To Net: NetName=NetC67_1 Pin=R149-1
+Added Pin To Net: NetName=NetC67_1 Pin=R150-1
+Added Net: Name=NetC67_1
+Added Pin To Net: NetName=NetC68_2 Pin=C68-2
+Added Pin To Net: NetName=NetC68_2 Pin=U19-30
+Added Pin To Net: NetName=NetC68_2 Pin=XTL2-1
+Added Net: Name=NetC68_2
+Added Pin To Net: NetName=NetC71_1 Pin=C71-1
+Added Pin To Net: NetName=NetC71_1 Pin=U19-22
+Added Net: Name=NetC71_1
+Added Pin To Net: NetName=NetC72_1 Pin=C72-1
+Added Pin To Net: NetName=NetC72_1 Pin=U19-20
+Added Net: Name=NetC72_1
+Added Pin To Net: NetName=NetC77_1 Pin=C77-1
+Added Pin To Net: NetName=NetC77_1 Pin=C78-2
+Added Pin To Net: NetName=NetC77_1 Pin=R169-2
+Added Pin To Net: NetName=NetC77_1 Pin=R170-1
+Added Net: Name=NetC77_1
+Added Pin To Net: NetName=NetC77_2 Pin=C77-2
+Added Pin To Net: NetName=NetC77_2 Pin=R166-1
+Added Net: Name=NetC77_2
+Added Pin To Net: NetName=NetC79_2 Pin=C79-2
+Added Pin To Net: NetName=NetC79_2 Pin=R170-2
+Added Pin To Net: NetName=NetC79_2 Pin=U20-10
+Added Net: Name=NetC79_2
+Added Pin To Net: NetName=NetETH1_10 Pin=ETH1-10
+Added Pin To Net: NetName=NetETH1_10 Pin=R142-2
+Added Net: Name=NetETH1_10
+Added Pin To Net: NetName=NetETH1_11 Pin=ETH1-11
+Added Pin To Net: NetName=NetETH1_11 Pin=R143-2
+Added Net: Name=NetETH1_11
+Added Pin To Net: NetName=NetJ1_9 Pin=J1-9
+Added Pin To Net: NetName=NetJ1_9 Pin=U17-3
+Added Net: Name=NetJ1_9
+Added Pin To Net: NetName=NetP2_3 Pin=P2-3
+Added Pin To Net: NetName=NetP2_3 Pin=R73-2
+Added Net: Name=NetP2_3
+Added Pin To Net: NetName=NetP2_5 Pin=P2-5
+Added Pin To Net: NetName=NetP2_5 Pin=R75-2
+Added Net: Name=NetP2_5
+Added Pin To Net: NetName=NetP2_7 Pin=P2-7
+Added Pin To Net: NetName=NetP2_7 Pin=R81-2
+Added Net: Name=NetP2_7
+Added Pin To Net: NetName=NetP2_9 Pin=P2-9
+Added Pin To Net: NetName=NetP2_9 Pin=R83-2
+Added Net: Name=NetP2_9
+Added Pin To Net: NetName=NetP2_11 Pin=P2-11
+Added Pin To Net: NetName=NetP2_11 Pin=R87-2
+Added Net: Name=NetP2_11
+Added Pin To Net: NetName=NetP3_1 Pin=P3-1
+Added Net: Name=NetP3_1
+Added Pin To Net: NetName=NetP3_2 Pin=P3-2
+Added Pin To Net: NetName=NetP3_2 Pin=R162-1
+Added Pin To Net: NetName=NetP3_2 Pin=R167-1
+Added Pin To Net: NetName=NetP3_2 Pin=U20-4
+Added Net: Name=NetP3_2
+Added Pin To Net: NetName=NetP3_3 Pin=P3-3
+Added Net: Name=NetP3_3
+Added Pin To Net: NetName=NetP3_4 Pin=P3-4
+Added Pin To Net: NetName=NetP3_4 Pin=R171-1
+Added Net: Name=NetP3_4
+Added Pin To Net: NetName=NetP3_5 Pin=P3-5
+Added Net: Name=NetP3_5
+Added Pin To Net: NetName=NetP3_7 Pin=P3-7
+Added Net: Name=NetP3_7
+Added Pin To Net: NetName=NetP3_8 Pin=P3-8
+Added Pin To Net: NetName=NetP3_8 Pin=R103-2
+Added Pin To Net: NetName=NetP3_8 Pin=R105-2
+Added Net: Name=NetP3_8
+Added Pin To Net: NetName=NetP3_9 Pin=P3-9
+Added Net: Name=NetP3_9
+Added Pin To Net: NetName=NetP3_10 Pin=P3-10
+Added Pin To Net: NetName=NetP3_10 Pin=R95-2
+Added Pin To Net: NetName=NetP3_10 Pin=R97-2
+Added Net: Name=NetP3_10
+Added Pin To Net: NetName=NetP3_11 Pin=P3-11
+Added Net: Name=NetP3_11
+Added Pin To Net: NetName=NetP3_12 Pin=P3-12
+Added Pin To Net: NetName=NetP3_12 Pin=R104-2
+Added Pin To Net: NetName=NetP3_12 Pin=R106-2
+Added Net: Name=NetP3_12
+Added Pin To Net: NetName=NetPL3_1 Pin=PL3-1
+Added Pin To Net: NetName=NetPL3_1 Pin=U6-6
+Added Pin To Net: NetName=NetPL3_1 Pin=U17-14
+Added Net: Name=NetPL3_1
+Added Pin To Net: NetName=NetPL3_2 Pin=PL3-2
+Added Pin To Net: NetName=NetPL3_2 Pin=U7-6
+Added Pin To Net: NetName=NetPL3_2 Pin=U17-15
+Added Net: Name=NetPL3_2
+Added Pin To Net: NetName=NetPL3_3 Pin=PL3-3
+Added Pin To Net: NetName=NetPL3_3 Pin=U10-6
+Added Pin To Net: NetName=NetPL3_3 Pin=U17-16
+Added Net: Name=NetPL3_3
+Added Pin To Net: NetName=NetPL3_5 Pin=PL3-5
+Added Pin To Net: NetName=NetPL3_5 Pin=U6-5
+Added Pin To Net: NetName=NetPL3_5 Pin=U7-5
+Added Pin To Net: NetName=NetPL3_5 Pin=U10-5
+Added Pin To Net: NetName=NetPL3_5 Pin=U17-13
+Added Pin To Net: NetName=NetPL3_5 Pin=U21-5
+Added Net: Name=NetPL3_5
+Added Pin To Net: NetName=NetPL4_4 Pin=PL4-4
+Added Pin To Net: NetName=NetPL4_4 Pin=R27-1
+Added Pin To Net: NetName=NetPL4_4 Pin=U17-31
+Added Net: Name=NetPL4_4
+Added Pin To Net: NetName=NetQ1_1 Pin=Q1-1
+Added Pin To Net: NetName=NetQ1_1 Pin=R26-2
+Added Pin To Net: NetName=NetQ1_1 Pin=R28-2
+Added Net: Name=NetQ1_1
+Added Pin To Net: NetName=NetQ2_1 Pin=Q2-1
+Added Pin To Net: NetName=NetQ2_1 Pin=R27-2
+Added Pin To Net: NetName=NetQ2_1 Pin=R29-2
+Added Net: Name=NetQ2_1
+Added Pin To Net: NetName=NetQ3_1 Pin=Q3-1
+Added Pin To Net: NetName=NetQ3_1 Pin=R37-2
+Added Pin To Net: NetName=NetQ3_1 Pin=R38-2
+Added Net: Name=NetQ3_1
+Added Pin To Net: NetName=NetQ4_1 Pin=Q4-1
+Added Pin To Net: NetName=NetQ4_1 Pin=R101-1
+Added Net: Name=NetQ4_1
+Added Pin To Net: NetName=NetQ4_3 Pin=Q4-3
+Added Pin To Net: NetName=NetQ4_3 Pin=R97-1
+Added Net: Name=NetQ4_3
+Added Pin To Net: NetName=NetQ5_1 Pin=Q5-1
+Added Pin To Net: NetName=NetQ5_1 Pin=R102-1
+Added Net: Name=NetQ5_1
+Added Pin To Net: NetName=NetQ5_3 Pin=Q5-3
+Added Pin To Net: NetName=NetQ5_3 Pin=R98-1
+Added Net: Name=NetQ5_3
+Added Pin To Net: NetName=NetQ6_1 Pin=Q6-1
+Added Pin To Net: NetName=NetQ6_1 Pin=R109-1
+Added Net: Name=NetQ6_1
+Added Pin To Net: NetName=NetQ6_3 Pin=Q6-3
+Added Pin To Net: NetName=NetQ6_3 Pin=R105-1
+Added Net: Name=NetQ6_3
+Added Pin To Net: NetName=NetQ7_1 Pin=Q7-1
+Added Pin To Net: NetName=NetQ7_1 Pin=R110-1
+Added Net: Name=NetQ7_1
+Added Pin To Net: NetName=NetQ7_3 Pin=Q7-3
+Added Pin To Net: NetName=NetQ7_3 Pin=R106-1
+Added Net: Name=NetQ7_3
+Added Pin To Net: NetName=NetQ8_1 Pin=Q8-1
+Added Pin To Net: NetName=NetQ8_1 Pin=R120-1
+Added Net: Name=NetQ8_1
+Added Pin To Net: NetName=NetQ8_3 Pin=Q8-3
+Added Pin To Net: NetName=NetQ8_3 Pin=R114-1
+Added Net: Name=NetQ8_3
+Added Pin To Net: NetName=NetQ9_1 Pin=Q9-1
+Added Pin To Net: NetName=NetQ9_1 Pin=R121-1
+Added Net: Name=NetQ9_1
+Added Pin To Net: NetName=NetQ9_3 Pin=Q9-3
+Added Pin To Net: NetName=NetQ9_3 Pin=R115-1
+Added Net: Name=NetQ9_3
+Added Pin To Net: NetName=NetQ10_1 Pin=Q10-1
+Added Pin To Net: NetName=NetQ10_1 Pin=R122-1
+Added Net: Name=NetQ10_1
+Added Pin To Net: NetName=NetQ10_3 Pin=Q10-3
+Added Pin To Net: NetName=NetQ10_3 Pin=R116-1
+Added Net: Name=NetQ10_3
+Added Pin To Net: NetName=NetQ11_1 Pin=Q11-1
+Added Pin To Net: NetName=NetQ11_1 Pin=R132-1
+Added Net: Name=NetQ11_1
+Added Pin To Net: NetName=NetQ11_3 Pin=Q11-3
+Added Pin To Net: NetName=NetQ11_3 Pin=R126-1
+Added Net: Name=NetQ11_3
+Added Pin To Net: NetName=NetQ12_1 Pin=Q12-1
+Added Pin To Net: NetName=NetQ12_1 Pin=R133-1
+Added Net: Name=NetQ12_1
+Added Pin To Net: NetName=NetQ12_3 Pin=Q12-3
+Added Pin To Net: NetName=NetQ12_3 Pin=R127-1
+Added Net: Name=NetQ12_3
+Added Pin To Net: NetName=NetQ13_1 Pin=Q13-1
+Added Pin To Net: NetName=NetQ13_1 Pin=R134-1
+Added Net: Name=NetQ13_1
+Added Pin To Net: NetName=NetQ13_3 Pin=Q13-3
+Added Pin To Net: NetName=NetQ13_3 Pin=R128-1
+Added Net: Name=NetQ13_3
+Added Pin To Net: NetName=NetQ14_1 Pin=Q14-1
+Added Pin To Net: NetName=NetQ14_1 Pin=Q15-2
+Added Pin To Net: NetName=NetQ14_1 Pin=R161-1
+Added Net: Name=NetQ14_1
+Added Pin To Net: NetName=NetQ14_3 Pin=Q14-3
+Added Pin To Net: NetName=NetQ14_3 Pin=Q15-1
+Added Pin To Net: NetName=NetQ14_3 Pin=R165-2
+Added Net: Name=NetQ14_3
+Added Pin To Net: NetName=NetQ15_3 Pin=Q15-3
+Added Pin To Net: NetName=NetQ15_3 Pin=R164-2
+Added Pin To Net: NetName=NetQ15_3 Pin=VD1-2
+Added Pin To Net: NetName=NetQ15_3 Pin=VD1-3
+Added Net: Name=NetQ15_3
+Added Pin To Net: NetName=NetR18_1 Pin=R18-1
+Added Pin To Net: NetName=NetR18_1 Pin=R19-1
+Added Pin To Net: NetName=NetR18_1 Pin=T5-2
+Added Pin To Net: NetName=NetR18_1 Pin=TVS6-1
+Added Pin To Net: NetName=NetR18_1 Pin=U9-3
+Added Net: Name=NetR18_1
+Added Pin To Net: NetName=NetR30_1 Pin=R30-1
+Added Pin To Net: NetName=NetR30_1 Pin=R31-1
+Added Pin To Net: NetName=NetR30_1 Pin=T6-2
+Added Pin To Net: NetName=NetR30_1 Pin=TVS7-1
+Added Pin To Net: NetName=NetR30_1 Pin=U11-3
+Added Net: Name=NetR30_1
+Added Pin To Net: NetName=NetR42_1 Pin=R42-1
+Added Net: Name=NetR42_1
+Added Pin To Net: NetName=NetR46_1 Pin=R46-1
+Added Net: Name=NetR46_1
+Added Pin To Net: NetName=NetR52_1 Pin=R52-1
+Added Net: Name=NetR52_1
+Added Pin To Net: NetName=NetR56_1 Pin=R56-1
+Added Net: Name=NetR56_1
+Added Pin To Net: NetName=NetR62_1 Pin=R62-1
+Added Net: Name=NetR62_1
+Added Pin To Net: NetName=NetR66_1 Pin=R66-1
+Added Net: Name=NetR66_1
+Added Pin To Net: NetName=NetR69_1 Pin=R69-1
+Added Pin To Net: NetName=NetR69_1 Pin=R73-1
+Added Pin To Net: NetName=NetR69_1 Pin=U12-2
+Added Net: Name=NetR69_1
+Added Pin To Net: NetName=NetR70_1 Pin=R70-1
+Added Pin To Net: NetName=NetR70_1 Pin=R74-1
+Added Pin To Net: NetName=NetR70_1 Pin=U12-4
+Added Net: Name=NetR70_1
+Added Pin To Net: NetName=NetR71_1 Pin=R71-1
+Added Pin To Net: NetName=NetR71_1 Pin=R75-1
+Added Pin To Net: NetName=NetR71_1 Pin=U13-2
+Added Net: Name=NetR71_1
+Added Pin To Net: NetName=NetR72_1 Pin=R72-1
+Added Pin To Net: NetName=NetR72_1 Pin=R76-1
+Added Pin To Net: NetName=NetR72_1 Pin=U13-4
+Added Net: Name=NetR72_1
+Added Pin To Net: NetName=NetR77_1 Pin=R77-1
+Added Pin To Net: NetName=NetR77_1 Pin=R81-1
+Added Pin To Net: NetName=NetR77_1 Pin=U14-2
+Added Net: Name=NetR77_1
+Added Pin To Net: NetName=NetR78_1 Pin=R78-1
+Added Pin To Net: NetName=NetR78_1 Pin=R82-1
+Added Pin To Net: NetName=NetR78_1 Pin=U14-4
+Added Net: Name=NetR78_1
+Added Pin To Net: NetName=NetR79_1 Pin=R79-1
+Added Pin To Net: NetName=NetR79_1 Pin=R83-1
+Added Pin To Net: NetName=NetR79_1 Pin=U15-2
+Added Net: Name=NetR79_1
+Added Pin To Net: NetName=NetR80_1 Pin=R80-1
+Added Pin To Net: NetName=NetR80_1 Pin=R84-1
+Added Pin To Net: NetName=NetR80_1 Pin=U15-4
+Added Net: Name=NetR80_1
+Added Pin To Net: NetName=NetR85_1 Pin=R85-1
+Added Pin To Net: NetName=NetR85_1 Pin=R87-1
+Added Pin To Net: NetName=NetR85_1 Pin=U16-2
+Added Net: Name=NetR85_1
+Added Pin To Net: NetName=NetR86_1 Pin=R86-1
+Added Pin To Net: NetName=NetR86_1 Pin=R88-1
+Added Pin To Net: NetName=NetR86_1 Pin=U16-4
+Added Net: Name=NetR86_1
+Added Pin To Net: NetName=NetR96_2 Pin=R96-2
+Added Pin To Net: NetName=NetR96_2 Pin=R98-2
+Added Net: Name=NetR96_2
+Added Pin To Net: NetName=NetR101_2 Pin=R101-2
+Added Net: Name=NetR101_2
+Added Pin To Net: NetName=NetR102_2 Pin=R102-2
+Added Net: Name=NetR102_2
+Added Pin To Net: NetName=NetR109_2 Pin=R109-2
+Added Net: Name=NetR109_2
+Added Pin To Net: NetName=NetR110_2 Pin=R110-2
+Added Net: Name=NetR110_2
+Added Pin To Net: NetName=NetR111_2 Pin=R111-2
+Added Pin To Net: NetName=NetR111_2 Pin=R114-2
+Added Net: Name=NetR111_2
+Added Pin To Net: NetName=NetR112_2 Pin=R112-2
+Added Pin To Net: NetName=NetR112_2 Pin=R115-2
+Added Net: Name=NetR112_2
+Added Pin To Net: NetName=NetR113_2 Pin=R113-2
+Added Pin To Net: NetName=NetR113_2 Pin=R116-2
+Added Net: Name=NetR113_2
+Added Pin To Net: NetName=NetR120_2 Pin=R120-2
+Added Net: Name=NetR120_2
+Added Pin To Net: NetName=NetR121_2 Pin=R121-2
+Added Net: Name=NetR121_2
+Added Pin To Net: NetName=NetR122_2 Pin=R122-2
+Added Net: Name=NetR122_2
+Added Pin To Net: NetName=NetR123_2 Pin=R123-2
+Added Pin To Net: NetName=NetR123_2 Pin=R126-2
+Added Net: Name=NetR123_2
+Added Pin To Net: NetName=NetR124_2 Pin=R124-2
+Added Pin To Net: NetName=NetR124_2 Pin=R127-2
+Added Net: Name=NetR124_2
+Added Pin To Net: NetName=NetR125_2 Pin=R125-2
+Added Pin To Net: NetName=NetR125_2 Pin=R128-2
+Added Net: Name=NetR125_2
+Added Pin To Net: NetName=NetR132_2 Pin=R132-2
+Added Net: Name=NetR132_2
+Added Pin To Net: NetName=NetR133_2 Pin=R133-2
+Added Net: Name=NetR133_2
+Added Pin To Net: NetName=NetR134_2 Pin=R134-2
+Added Net: Name=NetR134_2
+Added Pin To Net: NetName=NetR139_1 Pin=R139-1
+Added Pin To Net: NetName=NetR139_1 Pin=U19-43
+Added Net: Name=NetR139_1
+Added Pin To Net: NetName=NetR140_1 Pin=R140-1
+Added Pin To Net: NetName=NetR140_1 Pin=U19-44
+Added Net: Name=NetR140_1
+Added Pin To Net: NetName=NetR141_1 Pin=R141-1
+Added Pin To Net: NetName=NetR141_1 Pin=U19-45
+Added Net: Name=NetR141_1
+Added Pin To Net: NetName=NetR144_1 Pin=R144-1
+Added Pin To Net: NetName=NetR144_1 Pin=U19-38
+Added Net: Name=NetR144_1
+Added Pin To Net: NetName=NetR145_1 Pin=R145-1
+Added Pin To Net: NetName=NetR145_1 Pin=U19-39
+Added Net: Name=NetR145_1
+Added Pin To Net: NetName=NetR146_1 Pin=R146-1
+Added Pin To Net: NetName=NetR146_1 Pin=U19-40
+Added Net: Name=NetR146_1
+Added Pin To Net: NetName=NetR147_1 Pin=R147-1
+Added Pin To Net: NetName=NetR147_1 Pin=U19-41
+Added Net: Name=NetR147_1
+Added Pin To Net: NetName=NetR148_1 Pin=R148-1
+Added Pin To Net: NetName=NetR148_1 Pin=U19-42
+Added Net: Name=NetR148_1
+Added Pin To Net: NetName=NetR157_1 Pin=R157-1
+Added Pin To Net: NetName=NetR157_1 Pin=R158-1
+Added Net: Name=NetR157_1
+Added Pin To Net: NetName=NetR157_2 Pin=R157-2
+Added Pin To Net: NetName=NetR157_2 Pin=U19-10
+Added Net: Name=NetR157_2
+Added Pin To Net: NetName=NetR159_1 Pin=R159-1
+Added Pin To Net: NetName=NetR159_1 Pin=R162-2
+Added Pin To Net: NetName=NetR159_1 Pin=U20-3
+Added Net: Name=NetR159_1
+Added Pin To Net: NetName=NetR159_2 Pin=R159-2
+Added Pin To Net: NetName=NetR159_2 Pin=R160-1
+Added Pin To Net: NetName=NetR159_2 Pin=U20-2
+Added Net: Name=NetR159_2
+Added Pin To Net: NetName=NetR163_1 Pin=R163-1
+Added Pin To Net: NetName=NetR163_1 Pin=U20-5
+Added Pin To Net: NetName=NetR163_1 Pin=U20-6
+Added Net: Name=NetR163_1
+Added Pin To Net: NetName=NetR163_2 Pin=R163-2
+Added Pin To Net: NetName=NetR163_2 Pin=R164-1
+Added Pin To Net: NetName=NetR163_2 Pin=U20-1
+Added Net: Name=NetR163_2
+Added Pin To Net: NetName=NetR166_2 Pin=R166-2
+Added Pin To Net: NetName=NetR166_2 Pin=R172-2
+Added Pin To Net: NetName=NetR166_2 Pin=U20-12
+Added Pin To Net: NetName=NetR166_2 Pin=U21-3
+Added Net: Name=NetR166_2
+Added Pin To Net: NetName=NetR167_2 Pin=R167-2
+Added Pin To Net: NetName=NetR167_2 Pin=R168-1
+Added Pin To Net: NetName=NetR167_2 Pin=U20-8
+Added Net: Name=NetR167_2
+Added Pin To Net: NetName=NetR168_2 Pin=R168-2
+Added Pin To Net: NetName=NetR168_2 Pin=R169-1
+Added Pin To Net: NetName=NetR168_2 Pin=U20-9
+Added Net: Name=NetR168_2
+Added Pin To Net: NetName=NetR171_2 Pin=R171-2
+Added Pin To Net: NetName=NetR171_2 Pin=U20-7
+Added Net: Name=NetR171_2
+Added Pin To Net: NetName=NetR172_1 Pin=R172-1
+Added Pin To Net: NetName=NetR172_1 Pin=R173-2
+Added Pin To Net: NetName=NetR172_1 Pin=U20-11
+Added Net: Name=NetR172_1
+Added Pin To Net: NetName=NetU12_3 Pin=U12-1
+Added Pin To Net: NetName=NetU12_3 Pin=U17-35
+Added Net: Name=NetU12_3
+Added Pin To Net: NetName=NetU13_3 Pin=U13-1
+Added Pin To Net: NetName=NetU13_3 Pin=U17-37
+Added Net: Name=NetU13_3
+Added Pin To Net: NetName=NetU13_6 Pin=U13-6
+Added Pin To Net: NetName=NetU13_6 Pin=U17-38
+Added Net: Name=NetU13_6
+Added Pin To Net: NetName=NetU14_3 Pin=U14-1
+Added Pin To Net: NetName=NetU14_3 Pin=U17-39
+Added Net: Name=NetU14_3
+Added Pin To Net: NetName=NetU14_6 Pin=U14-6
+Added Pin To Net: NetName=NetU14_6 Pin=U17-40
+Added Net: Name=NetU14_6
+Added Pin To Net: NetName=NetU15_3 Pin=U15-1
+Added Pin To Net: NetName=NetU15_3 Pin=U17-41
+Added Net: Name=NetU15_3
+Added Pin To Net: NetName=NetU16_3 Pin=U16-1
+Added Pin To Net: NetName=NetU16_3 Pin=U17-45
+Added Net: Name=NetU16_3
+Added Pin To Net: NetName=NetU17_17 Pin=U17-17
+Added Pin To Net: NetName=NetU17_17 Pin=U21-6
+Added Net: Name=NetU17_17
+Added Pin To Net: NetName=NetU18_4 Pin=U18-4
+Added Net: Name=NetU18_4
+Added Pin To Net: NetName=NetU18_5 Pin=U18-5
+Added Net: Name=NetU18_5
+Added Pin To Net: NetName=NetU18_6 Pin=U18-6
+Added Net: Name=NetU18_6
+Added Pin To Net: NetName=RSTn_Eth1 Pin=C62-1
+Added Pin To Net: NetName=RSTn_Eth1 Pin=R138-1
+Added Pin To Net: NetName=RSTn_Eth1 Pin=U19-37
+Added Net: Name=RSTn_Eth1
+Added Pin To Net: NetName=RX_N Pin=C64-1
+Added Pin To Net: NetName=RX_N Pin=R150-2
+Added Pin To Net: NetName=RX_N Pin=R155-2
+Added Net: Name=RX_N
+Added Pin To Net: NetName=RX_P Pin=C63-1
+Added Pin To Net: NetName=RX_P Pin=R149-2
+Added Pin To Net: NetName=RX_P Pin=R156-2
+Added Net: Name=RX_P
+Added Pin To Net: NetName=RXC_N Pin=C64-2
+Added Pin To Net: NetName=RXC_N Pin=ETH1-6
+Added Net: Name=RXC_N
+Added Pin To Net: NetName=RXC_P Pin=C63-2
+Added Pin To Net: NetName=RXC_P Pin=ETH1-3
+Added Net: Name=RXC_P
+Added Pin To Net: NetName=RXW_N Pin=R156-1
+Added Pin To Net: NetName=RXW_N Pin=U19-5
+Added Net: Name=RXW_N
+Added Pin To Net: NetName=RXW_P Pin=R155-1
+Added Pin To Net: NetName=RXW_P Pin=U19-6
+Added Net: Name=RXW_P
+Added Pin To Net: NetName=SPCK Pin=U19-33
+Added Net: Name=SPCK
+Added Pin To Net: NetName=TX_N Pin=ETH1-2
+Added Pin To Net: NetName=TX_N Pin=R135-1
+Added Pin To Net: NetName=TX_N Pin=R153-2
+Added Net: Name=TX_N
+Added Pin To Net: NetName=TX_P Pin=ETH1-1
+Added Pin To Net: NetName=TX_P Pin=R136-1
+Added Pin To Net: NetName=TX_P Pin=R154-2
+Added Net: Name=TX_P
+Added Pin To Net: NetName=TXW_N Pin=R154-1
+Added Pin To Net: NetName=TXW_N Pin=U19-1
+Added Net: Name=TXW_N
+Added Pin To Net: NetName=TXW_P Pin=R153-1
+Added Pin To Net: NetName=TXW_P Pin=U19-2
+Added Net: Name=TXW_P
+Added Pin To Net: NetName=VCC Pin=C42-1
+Added Pin To Net: NetName=VCC Pin=C43-2
+Added Pin To Net: NetName=VCC Pin=U18-1
+Added Net: Name=VCC
+Change Class Name : Old Net Name=Digital_Inputs New Net Name=DI 220V DC
+Change Class Name : Old Net Name=Encoder AFE New Net Name=Encoder NPN
+Change Class Name : Old Net Name=Encoder AFE incremental New Net Name=4-20 + DI
+Change Class Name : Old Net Name=Power Supply New Net Name=PSU
+Change Class Name : Old Net Name=Transformer FrontEnd 2 New Net Name=CT Main
+Added Class: Name=Ethernet
+Added Class: Name=PT100
+Added Differential Pair: Name=RXC
+Added Differential Pair: Name=RX
+Added Differential Pair: Name=RXW
+Added Differential Pair: Name=TX
+Added Differential Pair: Name=TXW
+Added Member To Class: ClassName=CT Main Member=Component C14 1u
+Added Member To Class: ClassName=CT Main Member=Component C15 100n
+Added Member To Class: ClassName=CT Main Member=Component C18 100n
+Added Member To Class: ClassName=CT Main Member=Component C19 100n
+Added Member To Class: ClassName=CT Main Member=Component C20 100n
+Added Member To Class: ClassName=CT Main Member=Component C21 100n
+Added Member To Class: ClassName=CT Main Member=Component C22 10u
+Added Member To Class: ClassName=CT Main Member=Component C23 10u
+Added Member To Class: ClassName=CT Main Member=Component C24 1u
+Added Member To Class: ClassName=CT Main Member=Component C25 100n
+Added Member To Class: ClassName=CT Main Member=Component C26 100n
+Added Member To Class: ClassName=CT Main Member=Component C27 100n
+Added Member To Class: ClassName=CT Main Member=Component C28 10u
+Added Member To Class: ClassName=MCU Member=Component C39 100n
+Added Member To Class: ClassName=MCU Member=Component C40 18p
+Added Member To Class: ClassName=4-20 + DI Member=Component C42 1u
+Added Member To Class: ClassName=4-20 + DI Member=Component C43 100n
+Added Member To Class: ClassName=4-20 + DI Member=Component C48 1n
+Added Member To Class: ClassName=4-20 + DI Member=Component C49 1n
+Added Member To Class: ClassName=4-20 + DI Member=Component C50 1n
+Added Member To Class: ClassName=4-20 + DI Member=Component C51 1n
+Added Member To Class: ClassName=4-20 + DI Member=Component C52 1n
+Added Member To Class: ClassName=4-20 + DI Member=Component C53 1n
+Added Member To Class: ClassName=CT Main Member=Component Q1 MOSFET-N
+Added Member To Class: ClassName=CT Main Member=Component Q2 MOSFET-N
+Added Member To Class: ClassName=CT Main Member=Component Q3 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q4 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q5 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q6 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q7 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q8 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q9 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q10 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q11 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q12 MOSFET-N
+Added Member To Class: ClassName=4-20 + DI Member=Component Q13 MOSFET-N
+Added Member To Class: ClassName=PSU Member=Component R5 47k
+Added Member To Class: ClassName=PSU Member=Component R6 47k
+Added Member To Class: ClassName=CT Main Member=Component R16 100R
+Added Member To Class: ClassName=CT Main Member=Component R17 100R
+Added Member To Class: ClassName=CT Main Member=Component R18 100R
+Added Member To Class: ClassName=CT Main Member=Component R19 100R
+Added Member To Class: ClassName=CT Main Member=Component R20 4k7
+Added Member To Class: ClassName=CT Main Member=Component R21 4k7
+Added Member To Class: ClassName=CT Main Member=Component R22 100k
+Added Member To Class: ClassName=CT Main Member=Component R23 100k
+Added Member To Class: ClassName=CT Main Member=Component R24 430k
+Added Member To Class: ClassName=CT Main Member=Component R25 430k
+Added Member To Class: ClassName=CT Main Member=Component R26 300R
+Added Member To Class: ClassName=CT Main Member=Component R34 100k
+Added Member To Class: ClassName=CT Main Member=Component R35 10k
+Added Member To Class: ClassName=CT Main Member=Component R36 430k
+Added Member To Class: ClassName=CT Main Member=Component R37 300R
+Added Member To Class: ClassName=CT Main Member=Component R38 47k
+Added Member To Class: ClassName=Encoder NPN Member=Component R69 47k
+Added Member To Class: ClassName=Encoder NPN Member=Component R70 47k
+Added Member To Class: ClassName=MCU Member=Component R94 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R95 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R96 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R97 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R98 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R99 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R100 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R101 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R102 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R103 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R104 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R105 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R106 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R107 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R108 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R109 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R110 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R111 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R112 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R113 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R114 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R115 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R116 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R117 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R118 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R119 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R120 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R121 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R122 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R123 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R124 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R125 47k
+Added Member To Class: ClassName=4-20 + DI Member=Component R126 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R127 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R128 200R
+Added Member To Class: ClassName=4-20 + DI Member=Component R129 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R130 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R131 1M
+Added Member To Class: ClassName=4-20 + DI Member=Component R132 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R133 10k
+Added Member To Class: ClassName=4-20 + DI Member=Component R134 10k
+Added Member To Class: ClassName=CT Main Member=Component T4 Current Transformer
+Added Member To Class: ClassName=CT Main Member=Component T6 Current Transformer
+Added Member To Class: ClassName=CT Main Member=Component TVS5 5V
+Added Member To Class: ClassName=CT Main Member=Component TVS7 5V
+Added Member To Class: ClassName=CT Main Member=Component U6 ADC121
+Added Member To Class: ClassName=CT Main Member=Component U7 ADC121
+Added Member To Class: ClassName=CT Main Member=Component U8 TS321ILT
+Added Member To Class: ClassName=CT Main Member=Component U9 TS321ILT
+Added Member To Class: ClassName=CT Main Member=Component U10 ADC121
+Added Member To Class: ClassName=CT Main Member=Component U11 TS321ILT
+Added Member To Class: ClassName=Encoder NPN Member=Component U12 Comparator x2 Small
+Added Member To Class: ClassName=Encoder NPN Member=Component U13 Comparator x2 Small
+Added Member To Class: ClassName=Encoder NPN Member=Component U14 Comparator x2 Small
+Added Member To Class: ClassName=Encoder NPN Member=Component U15 Comparator x2 Small
+Added Member To Class: ClassName=Encoder NPN Member=Component U16 Comparator x2 Small
+Added Member To Class: ClassName=4-20 + DI Member=Component U18 SAR ADC
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD1 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD2 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD3 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD4 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD5 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD6 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD7 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD8 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD9 4V7
+Added Member To Class: ClassName=4-20 + DI Member=Component ZD10 4V7
+Added Room: Name=4-20 + DI
+Added Room: Name=CT Main
+Added Room: Name=DI 220V DC
+Added Room: Name=Encoder NPN
+Added Room: Name=Ethernet
+Added Room: Name=LEDs
+Added Room: Name=MCU
+Added Room: Name=Plugs
+Added Room: Name=PSU
+Added Room: Name=PT100
+Added Room: Name=RS485

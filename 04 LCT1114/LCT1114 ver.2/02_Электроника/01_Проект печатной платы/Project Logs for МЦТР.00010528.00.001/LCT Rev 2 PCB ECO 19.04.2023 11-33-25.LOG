@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=SCK Pin=PL1M-4
+Removed Pin From Net: NetName=MISO Pin=PL1M-5
+Removed Pin From Net: NetName=SCK Pin=PL1S-4
+Removed Pin From Net: NetName=MISO Pin=PL1S-5
+Removed Pin From Net: NetName=5V Pin=PL2M-1
+Removed Pin From Net: NetName=GND Pin=PL2M-5
+Removed Pin From Net: NetName=5V Pin=PL2S-1
+Removed Pin From Net: NetName=GND Pin=PL2S-5
+Removed Pin From Net: NetName=GND Pin=U1-TP

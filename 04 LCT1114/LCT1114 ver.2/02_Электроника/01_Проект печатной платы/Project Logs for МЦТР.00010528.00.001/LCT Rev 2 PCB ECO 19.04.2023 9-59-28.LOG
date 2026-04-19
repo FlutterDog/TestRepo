@@ -1,0 +1,5 @@
+Change Component Footprint: Designator=CT1 Old Footprint=Talema New Footprint=Talema AC1005
+Change Component Footprint: Designator=CT2 Old Footprint=Talema New Footprint=Talema AC1005
+Change Component Footprint: Designator=CT3 Old Footprint=Talema New Footprint=Talema AC1005
+Added Component: Designator=SW1(Switch DIP-5)
+Add component. Clean all parameters for all variants

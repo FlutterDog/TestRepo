@@ -1,0 +1,52 @@
+Change Component Footprint: Designator=R8 Old Footprint=0603 New Footprint=RES 0603
+Change Component Footprint: Designator=R24 Old Footprint=1206 New Footprint=0603
+Change Component Footprint: Designator=R30 Old Footprint=1206 New Footprint=0603
+Change Component Footprint: Designator=R37 Old Footprint=1206 New Footprint=0603
+Change Component Footprint: Designator=P2 Old Footprint=mcd 1,5/6-G1-3.81 New Footprint=Connector 6x2
+Change Component Footprint: Designator=U3 Old Footprint=SOT223 New Footprint=SOT-23-5
+Change Component Comment : Designator=R30 Old Comment=100 New Comment=47k
+Change Component Comment : Designator=R24 Old Comment=100 New Comment=100k
+Change Component Comment : Designator=R37 Old Comment=100 New Comment=100k
+Change Component Comment : Designator=R8 Old Comment=560R New Comment=47k
+Change Component Comment : Designator=U25 Old Comment=ATmega128A-AU New Comment=MCU
+Change Component Comment : Designator=T1 Old Comment=BSS138BK.215 New Comment=NPN
+Change Component Comment : Designator=T3 Old Comment=BSS138BK.215 New Comment=NPN
+Change Component Comment : Designator=LED1 Old Comment=KP-1608SGC New Comment=LED Green
+Change Component Comment : Designator=LED2 Old Comment=KP-1608SGC New Comment=LED Green
+Change Component Comment : Designator=LED3 Old Comment=KP-1608SGC New Comment=LED Green
+Change Component Comment : Designator=LED6 Old Comment=KP-1608SGC New Comment=LED Green
+Change Component Comment : Designator=U3 Old Comment=LD1117S33CTR New Comment=LDO with Enable Pin
+Change Component Comment : Designator=U4 Old Comment=LD1117S50CTR New Comment=LDO 5V
+Change Component Comment : Designator=P2 Old Comment=MCD 1.5/6-G1-3.81 New Comment=Conncector 6x2
+Change Component Comment : Designator=TVS5 Old Comment=SMAJ5.0CA New Comment=5V
+Change Component Comment : Designator=TVS6 Old Comment=SMAJ5.0CA New Comment=5V
+Change Component Comment : Designator=TVS7 Old Comment=SMAJ5.0CA New Comment=5V
+Change Component Comment : Designator=U8 Old Comment=SN65HVD3082EDR New Comment=RS485 Driver
+Change Component Comment : Designator=TVS2 Old Comment=TVS Diode New Comment=TVS 6V
+Change Component Comment : Designator=TVS3 Old Comment=TVS Diode New Comment=TVS 6V
+Change Component Comment : Designator=TVS4 Old Comment=TVS Diode New Comment=TVS 6V
+Change Component Designator: OldDesignator=T1 NewDesignator=Q6
+Change Component Designator: OldDesignator=T3 NewDesignator=Q8
+Change component parameters: Designator = "R8"; Footprint = "RES 0603"; UniqueID = "\BQEDBSOE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ""; Value = "5% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P2"; Footprint = "Connector 6x2"; UniqueID = "\KJHFRGPC"
+Change component parameters. Clean all parameters for all variants
+Change Net Name : Old Net Name=+5V Noise New Net Name=5V
+Change Net Name : Old Net Name=+6.5V New Net Name=6V5
+Change Net Name : Old Net Name=NetC21_1 New Net Name=AI_COM
+Change Net Name : Old Net Name=NetC35_2 New Net Name=RESET
+Change Net Name : Old Net Name=NetC36_2 New Net Name=XTAL1
+Change Net Name : Old Net Name=NetC37_2 New Net Name=XTAL2
+Change Net Name : Old Net Name=NetR7_2 New Net Name=NetQ6_3
+Change Net Name : Old Net Name=NetR9_1 New Net Name=NetQ6_1
+Change Net Name : Old Net Name=NetR12_2 New Net Name=NetQ8_3
+Change Net Name : Old Net Name=NetR13_1 New Net Name=NetQ8_1
+Change Net Name : Old Net Name=NetR18_1 New Net Name=RX
+Change Net Name : Old Net Name=NetR41_1 New Net Name=DI_01
+Change Net Name : Old Net Name=NetR42_1 New Net Name=DI_04
+Change Net Name : Old Net Name=NetR51_1 New Net Name=DI_02
+Change Net Name : Old Net Name=NetR52_1 New Net Name=DI_05
+Change Net Name : Old Net Name=NetR61_1 New Net Name=DI_03
+Change Net Name : Old Net Name=NetR62_1 New Net Name=DI_06
+Change Net Name : Old Net Name=NetU8_4 New Net Name=TX

@@ -1,0 +1,20 @@
+Added Component: Designator=C41(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C42(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C47(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=R92(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R95(RES 1210)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 1210 200V 1/2W 100 ppm/K Metal Glaze/Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=U16(SOT-23-6)
+Add component. Clean all parameters for all variants
+Added Component: Designator=ZD1(SOD323 (SC-76))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "Imin=1mA SOD-323"; VariantName = "[No Variations]"

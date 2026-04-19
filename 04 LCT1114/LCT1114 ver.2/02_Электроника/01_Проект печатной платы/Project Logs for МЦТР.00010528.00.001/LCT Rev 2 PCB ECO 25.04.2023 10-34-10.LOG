@@ -1,0 +1,15 @@
+Change Net Name : Old Net Name=RX_N1 New Net Name=RX_1_N
+Change Net Name : Old Net Name=RX_N2 New Net Name=RX_2_N
+Change Net Name : Old Net Name=RX_N3 New Net Name=RX_3_N
+Change Net Name : Old Net Name=RX_P1 New Net Name=RX_1_P
+Change Net Name : Old Net Name=RX_P2 New Net Name=RX_2_P
+Change Net Name : Old Net Name=RX_P3 New Net Name=RX_3_P
+Change Net Name : Old Net Name=TX_N1 New Net Name=TX_1_N
+Change Net Name : Old Net Name=TX_N2 New Net Name=TX_2_N
+Change Net Name : Old Net Name=TX_P1 New Net Name=TX_1_P
+Change Net Name : Old Net Name=TX_P2 New Net Name=TX_2_P
+Added Differential Pair: Name=RX_1
+Added Differential Pair: Name=RX_2
+Added Differential Pair: Name=RX_3
+Added Differential Pair: Name=TX_1
+Added Differential Pair: Name=TX_2

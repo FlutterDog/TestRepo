@@ -1,0 +1,16 @@
+Added Pin To Net: NetName=NetR79_1 Pin=R79-1
+Added Pin To Net: NetName=24V_PWR Pin=R79-2
+Added Pin To Net: NetName=NetR80_1 Pin=R80-1
+Added Pin To Net: NetName=24V_PWR Pin=R80-2
+Added Pin To Net: NetName=NetR79_1 Pin=R83-1
+Added Pin To Net: NetName=Enc_4 Pin=R83-2
+Added Pin To Net: NetName=NetR80_1 Pin=R84-1
+Added Pin To Net: NetName=Enc_5 Pin=R84-2
+Added Pin To Net: NetName=BIT_4 Pin=U13-1
+Added Pin To Net: NetName=12V_Ref Pin=U13-2
+Added Pin To Net: NetName=NetR79_1 Pin=U13-3
+Added Pin To Net: NetName=GND Pin=U13-4
+Added Pin To Net: NetName=NetR80_1 Pin=U13-5
+Added Pin To Net: NetName=12V_Ref Pin=U13-6
+Added Pin To Net: NetName=BIT_5 Pin=U13-7
+Added Pin To Net: NetName=24V_PWR Pin=U13-8

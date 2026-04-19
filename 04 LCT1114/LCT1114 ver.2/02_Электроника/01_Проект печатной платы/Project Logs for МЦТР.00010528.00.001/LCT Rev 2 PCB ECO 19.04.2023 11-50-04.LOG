@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=LED_OK Pin=R9-2
+Removed Pin From Net: NetName=LED_X2X Pin=R13-2
+Removed Pin From Net: NetName=LED_BUF Pin=R15-2
+Change Component Designator: OldDesignator=LED_BUF NewDesignator=LED4
+Change Component Designator: OldDesignator=LED_DC NewDesignator=LED1
+Change Component Designator: OldDesignator=LED_OK NewDesignator=LED2
+Change Component Designator: OldDesignator=LED_X2X NewDesignator=LED3
+Change Component Designator: OldDesignator=Q7 NewDesignator=Q8
+Change Component Designator: OldDesignator=Q8 NewDesignator=Q7
+Added Pin To Net: NetName=LED_X2X Pin=R9-2
+Added Pin To Net: NetName=LED_BUF Pin=R13-2
+Added Pin To Net: NetName=LED_OK Pin=R15-2
+Change Net Name : Old Net Name=NetQ7_1 New Net Name=NetQ8_1
+Change Net Name : Old Net Name=NetQ7_3 New Net Name=NetQ8_3
+Change Net Name : Old Net Name=NetQ8_1 New Net Name=NetQ7_1
+Change Net Name : Old Net Name=NetQ8_3 New Net Name=NetQ7_3

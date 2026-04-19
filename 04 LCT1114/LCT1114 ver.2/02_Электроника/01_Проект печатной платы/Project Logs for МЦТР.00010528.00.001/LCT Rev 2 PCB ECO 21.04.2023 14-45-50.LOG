@@ -1,0 +1,12 @@
+Added Pin To Net: NetName=DI_05 Pin=R52-1
+Added Pin To Net: NetName=5V Pin=R52-2
+Added Pin To Net: NetName=DI_03 Pin=R61-1
+Added Pin To Net: NetName=5V Pin=R61-2
+Added Pin To Net: NetName=NetC21_2 Pin=U*4-1
+Added Pin To Net: NetName=AI_COM Pin=U*4-2
+Added Pin To Net: NetName=GND Pin=U*4-3
+Added Pin To Net: NetName=DI_05 Pin=U*4-4
+Added Pin To Net: NetName=NetC22_2 Pin=U*5-1
+Added Pin To Net: NetName=AI_COM Pin=U*5-2
+Added Pin To Net: NetName=GND Pin=U*5-3
+Added Pin To Net: NetName=DI_03 Pin=U*5-4

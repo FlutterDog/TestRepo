@@ -1,0 +1,12 @@
+Added Component: Designator=Q4(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "65 V 100 mA SOT-23 (TO-236AB)"; VariantName = "[No Variations]"
+Added Component: Designator=Q5(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "65 V 100 mA SOT-23 (TO-236AB)"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetQ4_1 Pin=Q4-1
+Added Pin To Net: NetName=5V Pin=Q4-2
+Added Pin To Net: NetName=NetQ4_3 Pin=Q4-3
+Added Pin To Net: NetName=NetQ4_3 Pin=Q5-1
+Added Pin To Net: NetName=NetQ4_1 Pin=Q5-2
+Added Pin To Net: NetName=NetQ5_3 Pin=Q5-3

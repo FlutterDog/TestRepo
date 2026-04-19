@@ -1,0 +1,30 @@
+Added Component: Designator=CT1(Talema)
+Add component. Clean all parameters for all variants
+Added Component: Designator=CT2(Talema)
+Add component. Clean all parameters for all variants
+Added Component: Designator=CT3(Talema)
+Add component. Clean all parameters for all variants
+Added Component: Designator=ETH1(RJ45)
+Add component. Clean all parameters for all variants
+Added Component: Designator=J1(PLD-6 2.54)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P1(Connector 6x2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P3(Connector X2X)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P4(Connector 6x2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL1M(PLS-5 2.54)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL1S(PLS-5 2.54)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL2M(PLS-5 2.54)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL2S(PLS-5 2.54)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL3M(PLS-5 2.54)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL3S(PLS-5 2.54)
+Add component. Clean all parameters for all variants
+Change Net Name : Old Net Name=NetLED1_2 New Net Name=NetLED2_2
+Change Net Name : Old Net Name=NetLED6_2 New Net Name=NetLED1_2

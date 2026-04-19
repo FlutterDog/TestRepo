@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=LED_BUF Pin=PL3M-2
+Added Pin To Net: NetName=LED_OK Pin=PL3M-4
+Added Pin To Net: NetName=LED_BUF Pin=PL3S-2
+Added Pin To Net: NetName=LED_OK Pin=PL3S-4

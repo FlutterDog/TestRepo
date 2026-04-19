@@ -1,0 +1,16 @@
+Added Pin To Net: NetName=AI_COM Pin=C23-1
+Added Pin To Net: NetName=NetC23_2 Pin=C23-2
+Added Pin To Net: NetName=DI_06 Pin=R62-1
+Added Pin To Net: NetName=5V Pin=R62-2
+Added Pin To Net: NetName=NetR67_1 Pin=R67-1
+Added Pin To Net: NetName=NetC23_2 Pin=R67-2
+Added Pin To Net: NetName=R_Off Pin=R68-1
+Added Pin To Net: NetName=NetR68_2 Pin=R68-2
+Added Pin To Net: NetName=NetR67_1 Pin=R69-1
+Added Pin To Net: NetName=NetR68_2 Pin=R69-2
+Added Pin To Net: NetName=AI_COM Pin=R70-1
+Added Pin To Net: NetName=NetC23_2 Pin=R70-2
+Added Pin To Net: NetName=NetC23_2 Pin=U*6-1
+Added Pin To Net: NetName=AI_COM Pin=U*6-2
+Added Pin To Net: NetName=GND Pin=U*6-3
+Added Pin To Net: NetName=DI_06 Pin=U*6-4

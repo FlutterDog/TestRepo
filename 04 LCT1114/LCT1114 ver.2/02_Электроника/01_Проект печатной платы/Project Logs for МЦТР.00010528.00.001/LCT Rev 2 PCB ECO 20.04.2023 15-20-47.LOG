@@ -1,0 +1,140 @@
+Added Component: Designator=C87(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C88(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C89(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 16V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C90(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 100V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C91(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "5% 0603 50V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=C92(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 25V X5R"; VariantName = "[No Variations]"
+Added Component: Designator=C93(CAP CER 0603 NP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "10% 0603 25V X7R"; VariantName = "[No Variations]"
+Added Component: Designator=R137(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R138(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R139(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R140(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K"; VariantName = "[No Variations]"
+Added Component: Designator=R141(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R142(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R143(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "0.1% 0603 25 ppm/K Thin Film Precision High Stability"; VariantName = "[No Variations]"
+Added Component: Designator=R144(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R145(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R146(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R147(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R148(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R149(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R150(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100 ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=R151(RES 0603)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1% 0603 100ppm/K Thick Film"; VariantName = "[No Variations]"
+Added Component: Designator=U28(SOIC-14)
+Add component. Clean all parameters for all variants
+Added Component: Designator=U29(SOT-23-6)
+Add component. Clean all parameters for all variants
+Added Component: Designator=VD1(SOT-23)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "1%"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=C87-1
+Added Pin To Net: NetName=GND Pin=C87-2
+Added Pin To Net: NetName=5V Pin=C88-1
+Added Pin To Net: NetName=GND Pin=C88-2
+Added Pin To Net: NetName=5V Pin=C89-1
+Added Pin To Net: NetName=GND Pin=C89-2
+Added Pin To Net: NetName=5V Pin=C90-1
+Added Pin To Net: NetName=GND Pin=C90-2
+Added Pin To Net: NetName=NetC91_1 Pin=C91-1
+Added Pin To Net: NetName=NetC91_2 Pin=C91-2
+Added Pin To Net: NetName=GND Pin=C92-1
+Added Pin To Net: NetName=NetC91_1 Pin=C92-2
+Added Pin To Net: NetName=GND Pin=C93-1
+Added Pin To Net: NetName=NetC93_2 Pin=C93-2
+Added Pin To Net: NetName=NetR137_1 Pin=R137-1
+Added Pin To Net: NetName=NetR137_2 Pin=R137-2
+Added Pin To Net: NetName=NetR137_2 Pin=R138-1
+Added Pin To Net: NetName=GND Pin=R138-2
+Added Pin To Net: NetName=NetQ4_1 Pin=R139-1
+Added Pin To Net: NetName=5V Pin=R139-2
+Added Pin To Net: NetName=Rw1 Pin=R140-1
+Added Pin To Net: NetName=NetR137_1 Pin=R140-2
+Added Pin To Net: NetName=NetR141_1 Pin=R141-1
+Added Pin To Net: NetName=NetR141_2 Pin=R141-2
+Added Pin To Net: NetName=NetR141_2 Pin=R142-1
+Added Pin To Net: NetName=NetQ5_3 Pin=R142-2
+Added Pin To Net: NetName=GND Pin=R143-1
+Added Pin To Net: NetName=NetQ4_3 Pin=R143-2
+Added Pin To Net: NetName=NetC91_2 Pin=R144-1
+Added Pin To Net: NetName=NetR144_2 Pin=R144-2
+Added Pin To Net: NetName=Rw1 Pin=R145-1
+Added Pin To Net: NetName=NetR145_2 Pin=R145-2
+Added Pin To Net: NetName=NetR145_2 Pin=R146-1
+Added Pin To Net: NetName=NetR146_2 Pin=R146-2
+Added Pin To Net: NetName=NetR146_2 Pin=R147-1
+Added Pin To Net: NetName=NetC91_1 Pin=R147-2
+Added Pin To Net: NetName=NetC91_1 Pin=R148-1
+Added Pin To Net: NetName=NetC93_2 Pin=R148-2
+Added Pin To Net: NetName=Rw2 Pin=R149-1
+Added Pin To Net: NetName=NetR149_2 Pin=R149-2
+Added Pin To Net: NetName=NetR150_1 Pin=R150-1
+Added Pin To Net: NetName=NetR144_2 Pin=R150-2
+Added Pin To Net: NetName=GND Pin=R151-1
+Added Pin To Net: NetName=NetR150_1 Pin=R151-2
+Added Pin To Net: NetName=NetR137_1 Pin=U28-1
+Added Pin To Net: NetName=NetR141_2 Pin=U28-2
+Added Pin To Net: NetName=NetR137_2 Pin=U28-3
+Added Pin To Net: NetName=Rw1 Pin=U28-4
+Added Pin To Net: NetName=NetR141_1 Pin=U28-5
+Added Pin To Net: NetName=NetR141_1 Pin=U28-6
+Added Pin To Net: NetName=NetR149_2 Pin=U28-7
+Added Pin To Net: NetName=NetR145_2 Pin=U28-8
+Added Pin To Net: NetName=NetR146_2 Pin=U28-9
+Added Pin To Net: NetName=NetC93_2 Pin=U28-10
+Added Pin To Net: NetName=NetR150_1 Pin=U28-11
+Added Pin To Net: NetName=NetR144_2 Pin=U28-12
+Added Pin To Net: NetName=5V Pin=U28-13
+Added Pin To Net: NetName=GND Pin=U28-14
+Added Pin To Net: NetName=5V Pin=U29-1
+Added Pin To Net: NetName=GND Pin=U29-2
+Added Pin To Net: NetName=NetR144_2 Pin=U29-3
+Added Pin To Net: NetName=ADC_CLK Pin=U29-4
+Added Pin To Net: NetName=ADC_PT100 Pin=U29-5
+Added Pin To Net: NetName=ADC_CS Pin=U29-6
+Added Pin To Net: NetName=NetQ5_3 Pin=VD1-1
+Added Pin To Net: NetName=NetQ5_3 Pin=VD1-2
+Added Pin To Net: NetName=GND Pin=VD1-3

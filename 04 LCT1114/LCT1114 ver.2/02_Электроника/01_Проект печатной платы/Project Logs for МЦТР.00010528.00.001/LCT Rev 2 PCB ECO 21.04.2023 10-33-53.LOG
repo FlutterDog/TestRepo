@@ -1,0 +1,4 @@
+Added Component: Designator=XTL3(XTAL KX-327NHT)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetC94_2 Pin=XTL3-1
+Added Pin To Net: NetName=NetC95_2 Pin=XTL3-3

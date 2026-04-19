@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=12V_Ref Pin=U?-5
+Removed Pin From Net: NetName=BIT_9 Pin=U?-6
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=12V_Ref Pin=U?-5
+Added Pin To Net: NetName=ADC_A1 Pin=U?-5
+Added Pin To Net: NetName=ADC_CS Pin=U?-6
+Added Pin To Net: NetName=BIT_1 Pin=U?-6
+Added Pin To Net: NetName=BIT_3 Pin=U?-6
+Added Pin To Net: NetName=BIT_5 Pin=U?-6
+Added Pin To Net: NetName=BIT_7 Pin=U?-6
+Added Pin To Net: NetName=BIT_9 Pin=U?-6
