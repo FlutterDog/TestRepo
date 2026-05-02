@@ -1,0 +1,44 @@
+Removed Pin From Net: NetName=GND Pin=R23-1
+Removed Pin From Net: NetName=GND Pin=R30-1
+Removed Pin From Net: NetName=GND Pin=R37-1
+Removed Pin From Net: NetName=NetR23_2 Pin=U11-6
+Removed Pin From Net: NetName=NetR30_2 Pin=U15-6
+Removed Pin From Net: NetName=NetR37_2 Pin=U19-6
+Change Component Comment : Designator=R23 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R30 Old Comment=10k New Comment=1k
+Change Component Comment : Designator=R37 Old Comment=10k New Comment=1k
+Added Component: Designator=C41(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C42(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C43(0603)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=C41-1
+Added Pin To Net: NetName=GND Pin=C42-1
+Added Pin To Net: NetName=GND Pin=C43-1
+Added Pin To Net: NetName=NetR23_2 Pin=R25-1
+Added Pin To Net: NetName=NetR30_2 Pin=R32-1
+Added Pin To Net: NetName=NetR37_2 Pin=R39-1
+Added Pin To Net: NetName=NetR23_2 Pin=U11-1
+Added Pin To Net: NetName=GND Pin=U11-6
+Added Pin To Net: NetName=NetR30_2 Pin=U15-1
+Added Pin To Net: NetName=GND Pin=U15-6
+Added Pin To Net: NetName=NetR37_2 Pin=U19-1
+Added Pin To Net: NetName=GND Pin=U19-6
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Pin To Net: NetName=NetC41_2 Pin=C41-2
+Added Pin To Net: NetName=NetC41_2 Pin=R23-1
+Added Pin To Net: NetName=NetC41_2 Pin=U12-3
+Added Net: Name=NetC41_2
+Added Pin To Net: NetName=NetC42_2 Pin=C42-2
+Added Pin To Net: NetName=NetC42_2 Pin=R30-1
+Added Pin To Net: NetName=NetC42_2 Pin=U16-3
+Added Net: Name=NetC42_2
+Added Pin To Net: NetName=NetC43_2 Pin=C43-2
+Added Pin To Net: NetName=NetC43_2 Pin=R37-1
+Added Pin To Net: NetName=NetC43_2 Pin=U20-3
+Added Net: Name=NetC43_2
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component C41 100n
+Added Member To Class: ClassName=Transformer FrontEnd 2 Member=Component C42 100n
+Added Member To Class: ClassName=Transformer FrontEnd 3 Member=Component C43 100n

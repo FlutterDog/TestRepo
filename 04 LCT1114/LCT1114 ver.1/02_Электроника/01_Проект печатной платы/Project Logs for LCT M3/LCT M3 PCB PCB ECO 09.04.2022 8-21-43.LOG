@@ -1,0 +1,15 @@
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Room: Name=Digital_Inputs
+Added Room: Name=Encoder AFE
+Added Room: Name=Encoder AFE incremental
+Added Room: Name=LEDs
+Added Room: Name=MCU
+Added Room: Name=Plugs
+Added Room: Name=Power Supply
+Added Room: Name=RS485
+Added Room: Name=SD Holder
+Added Room: Name=Solenoid Current Detector
+Added Room: Name=Transformer FrontEnd 1
+Added Room: Name=Transformer FrontEnd 2
+Added Room: Name=Transformer FrontEnd 3

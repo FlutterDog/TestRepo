@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=GND Pin=U1-TP
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Pin To Net: NetName=NetPL1_4 Pin=PL1-4
+Added Pin To Net: NetName=NetPL1_4 Pin=R20-2
+Added Pin To Net: NetName=NetPL1_4 Pin=TVS5-2
+Added Net: Name=NetPL1_4
+Added Pin To Net: NetName=NetPL3_4 Pin=PL3-4
+Added Pin To Net: NetName=NetPL3_4 Pin=R27-2
+Added Pin To Net: NetName=NetPL3_4 Pin=TVS6-2
+Added Net: Name=NetPL3_4
+Added Pin To Net: NetName=NetPL5_4 Pin=PL5-4
+Added Pin To Net: NetName=NetPL5_4 Pin=R34-2
+Added Pin To Net: NetName=NetPL5_4 Pin=TVS7-2
+Added Net: Name=NetPL5_4
+Added Room: Name=MCU

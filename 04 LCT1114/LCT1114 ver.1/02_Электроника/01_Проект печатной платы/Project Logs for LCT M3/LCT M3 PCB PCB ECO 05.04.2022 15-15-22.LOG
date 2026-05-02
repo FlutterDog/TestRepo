@@ -1,0 +1,35 @@
+Removed Pin From Net: NetName=NetC18_1 Pin=C19-1
+Removed Pin From Net: NetName=NetC18_1 Pin=C21-1
+Removed Pin From Net: NetName=NetC18_1 Pin=C23-1
+Removed Pin From Net: NetName=NetC18_1 Pin=R50-1
+Removed Pin From Net: NetName=NetC18_1 Pin=R60-1
+Removed Pin From Net: NetName=NetC18_1 Pin=R70-1
+Removed Pin From Net: NetName=NetC18_1 Pin=U*2-2
+Removed Pin From Net: NetName=NetC18_1 Pin=U*4-2
+Removed Pin From Net: NetName=NetC18_1 Pin=U*6-2
+Added Pin To Net: NetName=NetPL2_1 Pin=T4-1
+Added Pin To Net: NetName=NetPL2_4 Pin=T4-2
+Added Pin To Net: NetName=NetPL4_1 Pin=T5-1
+Added Pin To Net: NetName=NetPL4_4 Pin=T5-2
+Added Pin To Net: NetName=NetPL6_1 Pin=T6-1
+Added Pin To Net: NetName=NetPL6_4 Pin=T6-2
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Pin To Net: NetName=NetC19_1 Pin=C19-1
+Added Pin To Net: NetName=NetC19_1 Pin=P2-8
+Added Pin To Net: NetName=NetC19_1 Pin=R50-1
+Added Pin To Net: NetName=NetC19_1 Pin=U*2-2
+Added Net: Name=NetC19_1
+Added Pin To Net: NetName=NetC21_1 Pin=C21-1
+Added Pin To Net: NetName=NetC21_1 Pin=P2-10
+Added Pin To Net: NetName=NetC21_1 Pin=R60-1
+Added Pin To Net: NetName=NetC21_1 Pin=U*4-2
+Added Net: Name=NetC21_1
+Added Pin To Net: NetName=NetC23_1 Pin=C23-1
+Added Pin To Net: NetName=NetC23_1 Pin=P2-12
+Added Pin To Net: NetName=NetC23_1 Pin=R70-1
+Added Pin To Net: NetName=NetC23_1 Pin=U*6-2
+Added Net: Name=NetC23_1
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component T4 Current Trans
+Added Member To Class: ClassName=Transformer FrontEnd 2 Member=Component T5 Current Trans
+Added Member To Class: ClassName=Transformer FrontEnd 3 Member=Component T6 Current Trans

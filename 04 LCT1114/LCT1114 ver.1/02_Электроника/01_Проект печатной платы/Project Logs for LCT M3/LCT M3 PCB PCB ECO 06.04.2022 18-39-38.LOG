@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=NetC40_2 Pin=U25-59
+Removed Pin From Net: NetName=NetC38_2 Pin=U25-61
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Pin To Net: NetName=NetC38_2 Pin=U25-59
+Added Pin To Net: NetName=NetC40_2 Pin=U25-61
+Added Member To Class: ClassName=MCU Member=Component R91 10k

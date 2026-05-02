@@ -1,0 +1,23 @@
+Added Component: Designator=C44(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C45(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C46(0603)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=C44-1
+Added Pin To Net: NetName=+5V Noise Pin=C44-2
+Added Pin To Net: NetName=GND Pin=C45-1
+Added Pin To Net: NetName=+5V Noise Pin=C45-2
+Added Pin To Net: NetName=GND Pin=C46-1
+Added Pin To Net: NetName=+5V Noise Pin=C46-2
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Pin To Net: NetName=NetU21_9 Pin=U21-9
+Added Pin To Net: NetName=NetU21_9 Pin=U23-9
+Added Pin To Net: NetName=NetU21_9 Pin=U24-9
+Added Pin To Net: NetName=NetU21_9 Pin=U25-32
+Added Net: Name=NetU21_9
+Added Member To Class: ClassName=Encoder AFE incremental Member=Component C44 100n
+Added Member To Class: ClassName=Encoder AFE incremental Member=Component C45 100n
+Added Member To Class: ClassName=Encoder AFE incremental Member=Component C46 100n
+Added Room: Name=Encoder AFE incremental

@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND Pin=LED6-2
+Removed Pin From Net: NetName=+5V Noise Pin=R11-2
+Added Pin To Net: NetName=+5V Noise Pin=LED6-1
+Added Pin To Net: NetName=GND Pin=R11-1
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Pin To Net: NetName=NetLED6_2 Pin=LED6-2
+Added Pin To Net: NetName=NetLED6_2 Pin=R11-2
+Added Net: Name=NetLED6_2

@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetU9_6 Pin=U25-10
+Removed Pin From Net: NetName=NetU12_6 Pin=U25-14
+Added Pin To Net: NetName=+5V Proc Pin=U9-1
+Added Pin To Net: NetName=+5V Proc Pin=U12-1
+Added Pin To Net: NetName=+5V Proc Pin=U15-1
+Added Pin To Net: NetName=+5V Proc Pin=U16-1
+Added Pin To Net: NetName=+5V Proc Pin=U19-1
+Added Pin To Net: NetName=+5V Proc Pin=U20-1
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Pin To Net: NetName=NetU12_6 Pin=U25-10
+Added Pin To Net: NetName=NetU9_6 Pin=U25-14
+Added Member To Class: ClassName=LEDs Member=Component PL7 plug

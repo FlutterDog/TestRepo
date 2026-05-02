@@ -1,0 +1,73 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Serge\YandexDisk\Levin\Разработки\Lorentz\Модули\LCT1114\LCT BGA\Altium\LCT M3 PCB.PcbDoc
+Date     : 10.04.2022
+Time     : 11:16:26
+
+WARNING: Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again
+   Polygon named: Top-GND On Top
+
+Processing Rule : Clearance Constraint (Gap=0.25mm) (All),(All)
+   Violation between Clearance Constraint: (0.245mm < 0.25mm) Between Track (63.63mm,47.87mm)(63.63mm,51.78mm) on Top And Pad XTL1-2(64.45mm,51.15mm) on Top 
+Rule Violations :1
+
+Processing Rule : Clearance Constraint (Gap=0.21mm) (Disabled)(IsPad),(IsVia)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.21mm) (Disabled)((InLayerClass('Signal Layers') AND IsTrack)),(IsVia)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.21mm) (Disabled)(IsPad),(IsPad)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.21mm) (Disabled)((InLayerClass('Signal Layers') AND IsTrack)),(IsPad)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.21mm) (Disabled)((InLayerClass('Signal Layers') AND IsTrack)),((InLayerClass('Signal Layers') AND IsTrack))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.21mm) (Disabled)(IsVia),(IsVia)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.08mm) (Disabled)(WithinRoom('BGA')),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Isolated copper: Split Plane  (GND) on Gnd. Dead copper detected. Copper area is : 0.152 sq. mm
+   Violation between Isolated copper: Split Plane  (GND) on Gnd. Dead copper detected. Copper area is : 0.074 sq. mm
+   Violation between Isolated copper: Split Plane  (+5V Noise) on Power. Dead copper detected. Copper area is : 0.152 sq. mm
+   Violation between Un-Routed Net Constraint: Net +5V Proc Between Track (40.42mm,150.92mm)(55.65mm,166.15mm) on High speed And Pad U13-8(60.45mm,163.06mm) on Top 
+   Violation between Un-Routed Net Constraint: Net +5V Proc Between Track (64.62mm,148.62mm)(78.7mm,162.7mm) on High speed And Pad U10-8(89.347mm,162.46mm) on Top 
+   Violation between Un-Routed Net Constraint: Net +5V Proc Between Track (62.4mm,132.45mm)(86.87mm,132.45mm) on Bottom And Track (88.92mm,144.35mm)(88.92mm,148.37mm) on High speed 
+Rule Violations :6
+
+Processing Rule : Width Constraint (Min=0.25mm) (Max=2540mm) (Preferred=0.25mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.08mm) (Max=0.5mm) (Preferred=0.15mm) (Disabled)(WithinRoom('BGA'))
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.35mm) (Max=2540mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.21mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.254mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (Disabled)(All)
+Rule Violations :0
+
+
+Violations Detected : 7
+Waived Violations : 0
+Time Elapsed        : 00:00:01

@@ -1,0 +1,16 @@
+Removed Member From Class: ClassName=LEDs Member=PL?
+Change Component Designator: OldDesignator=PL? NewDesignator=PL7
+Change Component Designator: OldDesignator=PL? NewDesignator=PL8
+Change Component Designator: OldDesignator=PL? NewDesignator=PL9
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Change Net Name : Old Net Name=NetPL?_1 New Net Name=NetPL7_1
+Change Net Name : Old Net Name=NetPL?_2 New Net Name=NetPL7_2
+Change Net Name : Old Net Name=NetPL?_3 New Net Name=NetPL8_3
+Change Net Name : Old Net Name=NetPL?_4 New Net Name=NetPL8_4
+Change Net Name : Old Net Name=NetPL?_5 New Net Name=NetPL8_5
+Added Pin To Net: NetName=NetPL7_3 Pin=PL7-3
+Added Pin To Net: NetName=NetPL7_3 Pin=U25-9
+Added Net: Name=NetPL7_3
+Added Member To Class: ClassName=LEDs Member=Component PL7 plug
+Added Member To Class: ClassName=LEDs Member=Component PL8 plug

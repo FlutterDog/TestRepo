@@ -1,0 +1,9 @@
+Removed Member From Class: ClassName=Plugs Member=PL7
+Added Component: Designator=PL?(3.81 Plug)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetC38_2 Pin=PL?-1
+Added Pin To Net: NetName=NetC39_2 Pin=PL?-2
+Added Pin To Net: NetName=NetC40_2 Pin=PL?-3
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Member To Class: ClassName=Plugs Member=Component PL? Plug 3Pin

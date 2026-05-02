@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"10-03022014-112294";"";
+"REFERENCE";"A9D49606";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartTitle";"iDif K-AD63 K C 6A…32A 1PN  RCCB with overcurrent protection (RCBO)";"";
+"TraceParts.InstanceId";"10-03022014-112294DTVSNQ2UKCDDCRQ58R08WBL8Y";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.ClassPath";"SCHNEIDER_ELECTRIC_DISTRI:/SCHNEIDER_DISTRI/F_SCHNEIDER_DISTRI/SCHNEIDER_DISTRI.030/SCHNEIDER_DISTRI.030.020/10-03022014-112294";"";
+"SUPPLIER";"Schneider Electric";"";
+"DESIGN";"iDif K-AD63 K C 6A…32A 1PN  RCCB with overcurrent protection (RCBO) - A9D49606";"";
+"TraceParts.PartVersion";"1.0.4";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";

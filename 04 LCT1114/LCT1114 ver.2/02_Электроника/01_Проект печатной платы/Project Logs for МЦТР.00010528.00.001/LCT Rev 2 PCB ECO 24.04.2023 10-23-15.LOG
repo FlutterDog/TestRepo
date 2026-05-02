@@ -1,8 +1,0 @@
-Removed Pin From Net: NetName=Enc_4 Pin=R83-2
-Removed Pin From Net: NetName=Enc_5 Pin=R84-2
-Removed Pin From Net: NetName=BIT_4 Pin=U13-1
-Removed Pin From Net: NetName=BIT_5 Pin=U13-7
-Added Pin To Net: NetName=Enc_5 Pin=R83-2
-Added Pin To Net: NetName=Enc_4 Pin=R84-2
-Added Pin To Net: NetName=BIT_5 Pin=U13-1
-Added Pin To Net: NetName=BIT_4 Pin=U13-7

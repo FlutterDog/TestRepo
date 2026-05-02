@@ -1,4 +1,0 @@
-Removed Pin From Net: NetName=ADC_CS Pin=U25-29
-Removed Pin From Net: NetName=TX_En Pin=U25-31
-Added Pin To Net: NetName=TX_En Pin=U25-29
-Added Pin To Net: NetName=ADC_CS Pin=U25-31

@@ -1,0 +1,6 @@
+DRC Rules Export File for PCB: D:\IGAS_Transfer\TestRepo\04 LCT1114\LCT1114 ver.2\02_Электроника\01_Проект печатной платы\МЦТР.00010528.00.001.PcbDoc
+RuleKind=Clearance|RuleName=ANY to 24V_PWR|Scope=Board|Minimum=19.69
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=2.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=7.87
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=7.87
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

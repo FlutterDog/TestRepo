@@ -1,0 +1,18 @@
+Removed Member From Class: ClassName=Plugs Member=PL8
+Added Pin To Net: NetName=GND Pin=PL1-1
+Added Pin To Net: NetName=NetPL1_4 Pin=PL1-4
+Added Pin To Net: NetName=GND Pin=PL3-1
+Added Pin To Net: NetName=NetPL3_4 Pin=PL3-4
+Added Pin To Net: NetName=GND Pin=PL5-1
+Added Pin To Net: NetName=NetPL5_4 Pin=PL5-4
+Added Pin To Net: NetName=NetPL7_1 Pin=PL7-1
+Added Pin To Net: NetName=NetPL7_2 Pin=PL7-2
+Added Pin To Net: NetName=NetPL7_3 Pin=PL7-3
+Added Pin To Net: NetName=+5V Noise Pin=PL7-4
+Added Pin To Net: NetName=GND Pin=PL7-5
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component PL1 plug
+Added Member To Class: ClassName=Transformer FrontEnd 2 Member=Component PL3 plug
+Added Member To Class: ClassName=Transformer FrontEnd 3 Member=Component PL5 plug
+Added Member To Class: ClassName=Plugs Member=Component PL9 Plug 3Pin

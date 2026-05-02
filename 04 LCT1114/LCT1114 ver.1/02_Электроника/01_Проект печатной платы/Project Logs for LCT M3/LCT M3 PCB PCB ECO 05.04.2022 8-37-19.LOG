@@ -1,0 +1,54 @@
+Removed Pin From Net: NetName=CT1- Pin=R24-1
+Removed Pin From Net: NetName=CT1- Pin=R31-1
+Removed Pin From Net: NetName=CT1- Pin=R38-1
+Removed Pin From Net: NetName=CT1- Pin=T4-2
+Removed Pin From Net: NetName=CT1- Pin=T5-2
+Removed Pin From Net: NetName=CT1- Pin=T6-2
+Added Component: Designator=PL1(PLS 4)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL2(PLS 4)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL3(PLS 4)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL4(PLS 4)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL5(PLS 4)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL6(PLS 4)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=CT1- Pin=PL1-1
+Added Pin To Net: NetName=CT1- Pin=PL3-1
+Added Pin To Net: NetName=CT1- Pin=PL5-1
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=CT1- Pin=U23-4
+Change Net Name : Old Net Name=CT1- New Net Name=GND
+Added Pin To Net: NetName=NetPL2_1 Pin=PL2-1
+Added Pin To Net: NetName=NetPL2_1 Pin=R24-2
+Added Pin To Net: NetName=NetPL2_1 Pin=T4-1
+Added Net: Name=NetPL2_1
+Added Pin To Net: NetName=NetPL2_4 Pin=PL2-4
+Added Pin To Net: NetName=NetPL2_4 Pin=R24-1
+Added Pin To Net: NetName=NetPL2_4 Pin=T4-2
+Added Net: Name=NetPL2_4
+Added Pin To Net: NetName=NetPL4_1 Pin=PL4-1
+Added Pin To Net: NetName=NetPL4_1 Pin=R31-2
+Added Pin To Net: NetName=NetPL4_1 Pin=T5-1
+Added Net: Name=NetPL4_1
+Added Pin To Net: NetName=NetPL4_4 Pin=PL4-4
+Added Pin To Net: NetName=NetPL4_4 Pin=R31-1
+Added Pin To Net: NetName=NetPL4_4 Pin=T5-2
+Added Net: Name=NetPL4_4
+Added Pin To Net: NetName=NetPL6_1 Pin=PL6-1
+Added Pin To Net: NetName=NetPL6_1 Pin=R38-2
+Added Pin To Net: NetName=NetPL6_1 Pin=T6-1
+Added Net: Name=NetPL6_1
+Added Pin To Net: NetName=NetPL6_4 Pin=PL6-4
+Added Pin To Net: NetName=NetPL6_4 Pin=R38-1
+Added Pin To Net: NetName=NetPL6_4 Pin=T6-2
+Added Net: Name=NetPL6_4
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component PL1 plug
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component PL2 plug
+Added Member To Class: ClassName=Transformer FrontEnd 2 Member=Component PL3 plug
+Added Member To Class: ClassName=Transformer FrontEnd 2 Member=Component PL4 plug
+Added Member To Class: ClassName=Transformer FrontEnd 3 Member=Component PL5 plug
+Added Member To Class: ClassName=Transformer FrontEnd 3 Member=Component PL6 plug

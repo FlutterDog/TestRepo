@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=GND Pin=R6-1
+Removed Pin From Net: NetName=GND Pin=U1-TP
+Removed Member From Class: ClassName=Power Supply Member=R5
+Removed Member From Class: ClassName=Power Supply Member=R6
+Change Component Comment : Designator=R3 Old Comment=2k32 New Comment=2k55
+Change Component Comment : Designator=U3 Old Comment=LD1117S50CTR New Comment=LD1117S33CTR
+Change Component Description : Designator=R3 Old Description=RC0603FR-072K32L New Description=RC0603FR-072K55L
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Room: Name=Digital_Inputs
+Added Room: Name=Encoder AFE
+Added Room: Name=Encoder AFE incremental
+Added Room: Name=LEDs
+Added Room: Name=MCU
+Added Room: Name=Plugs
+Added Room: Name=Power Supply
+Added Room: Name=RS485
+Added Room: Name=SD Holder
+Added Room: Name=Solenoid Current Detector
+Added Room: Name=Transformer FrontEnd 1
+Added Room: Name=Transformer FrontEnd 2
+Added Room: Name=Transformer FrontEnd 3

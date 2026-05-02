@@ -1,0 +1,46 @@
+Added Component: Designator=Dip1(DipSwitch 5)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R98(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R99(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R100(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R101(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=R102(0603)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=CT1- Pin=R98-2
+Added Pin To Net: NetName=CT1- Pin=R99-2
+Added Pin To Net: NetName=CT1- Pin=R100-2
+Added Pin To Net: NetName=CT1- Pin=R101-2
+Added Pin To Net: NetName=CT1- Pin=R102-2
+Added Pin To Net: NetName=CT1- Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Pin To Net: NetName=+5V Pin=Dip1-1
+Added Pin To Net: NetName=+5V Pin=Dip1-2
+Added Pin To Net: NetName=+5V Pin=Dip1-3
+Added Pin To Net: NetName=+5V Pin=Dip1-4
+Added Pin To Net: NetName=+5V Pin=Dip1-5
+Added Net: Name=+5V
+Added Pin To Net: NetName=A1 Pin=Dip1-12
+Added Pin To Net: NetName=A1 Pin=R98-1
+Added Net: Name=A1
+Added Pin To Net: NetName=A2 Pin=Dip1-13
+Added Pin To Net: NetName=A2 Pin=R99-1
+Added Net: Name=A2
+Added Pin To Net: NetName=A3 Pin=Dip1-14
+Added Pin To Net: NetName=A3 Pin=R100-1
+Added Net: Name=A3
+Added Pin To Net: NetName=A4 Pin=Dip1-15
+Added Pin To Net: NetName=A4 Pin=R101-1
+Added Net: Name=A4
+Added Pin To Net: NetName=A5 Pin=Dip1-16
+Added Pin To Net: NetName=A5 Pin=R102-1
+Added Net: Name=A5
+Added Member To Class: ClassName=MCU Member=Component Dip1 DS1040-05RT
+Added Member To Class: ClassName=MCU Member=Component R98 10k
+Added Member To Class: ClassName=MCU Member=Component R99 10k
+Added Member To Class: ClassName=MCU Member=Component R100 10k
+Added Member To Class: ClassName=MCU Member=Component R101 10k
+Added Member To Class: ClassName=MCU Member=Component R102 10k

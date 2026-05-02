@@ -1,0 +1,13 @@
+Added Pin To Net: NetName=+5V Proc Pin=C7-1
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=+5V Proc Pin=C8-1
+Added Pin To Net: NetName=GND Pin=C8-2
+Added Pin To Net: NetName=GND Pin=U2-1
+Added Pin To Net: NetName=+5V Proc Pin=U2-2
+Added Pin To Net: NetName=+5V Proc Pin=U2-2
+Added Pin To Net: NetName=+6.5V Pin=U2-3
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Member To Class: ClassName=Power Supply Member=Component C7 100n
+Added Member To Class: ClassName=Power Supply Member=Component C8 10uF
+Added Member To Class: ClassName=Power Supply Member=Component U2 LD1117S50CTR

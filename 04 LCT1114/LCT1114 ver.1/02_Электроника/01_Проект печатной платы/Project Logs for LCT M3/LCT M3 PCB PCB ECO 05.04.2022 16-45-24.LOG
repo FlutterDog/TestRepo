@@ -1,0 +1,5 @@
+Added Component: Designator=PL7(3.81 Plug)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Member To Class: ClassName=Plugs Member=Component PL7 Plug 3Pin

@@ -1,3 +1,0 @@
-Removed Pin From Net: NetName=24V Pin=R6-1
-Added Pin To Net: NetName=NetD2_2 Pin=R6-1
-Change Net Name : Old Net Name=NetD2_2 New Net Name=24V_CTRL

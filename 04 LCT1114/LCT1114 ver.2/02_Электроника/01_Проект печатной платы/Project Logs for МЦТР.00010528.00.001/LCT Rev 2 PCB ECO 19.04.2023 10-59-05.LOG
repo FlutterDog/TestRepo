@@ -1,5 +1,0 @@
-Change Net Name : Old Net Name=SCK_ISP New Net Name=SCK
-Added Pin To Net: NetName=ADC_A1 Pin=U25-2
-Added Net: Name=ADC_A1
-Added Pin To Net: NetName=ADC_A2 Pin=U25-3
-Added Net: Name=ADC_A2

@@ -1,0 +1,17 @@
+Added Component: Designator=C48(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C49(0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C50(0603)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=C48-1
+Added Pin To Net: NetName=+5V Noise Pin=C48-2
+Added Pin To Net: NetName=GND Pin=C49-1
+Added Pin To Net: NetName=+5V Noise Pin=C49-2
+Added Pin To Net: NetName=GND Pin=C50-1
+Added Pin To Net: NetName=+5V Noise Pin=C50-2
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4
+Added Member To Class: ClassName=MCU Member=Component C48 100n
+Added Member To Class: ClassName=MCU Member=Component C49 100n
+Added Member To Class: ClassName=MCU Member=Component C50 100n

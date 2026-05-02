@@ -1,0 +1,27 @@
+Added Component: Designator=PL?(PLS 5)
+Add component. Clean all parameters for all variants
+Added Component: Designator=PL?(PLS 5)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=PL?-1
+Added Pin To Net: NetName=+5V Noise Pin=PL?-2
+Added Pin To Net: NetName=+5V Noise Pin=PL?-4
+Added Pin To Net: NetName=GND Pin=PL?-5
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Pin To Net: NetName=NetC31_2 Pin=U23-4
+Added Pin To Net: NetName=NetPL?_1 Pin=PL?-1
+Added Pin To Net: NetName=NetPL?_1 Pin=U25-7
+Added Net: Name=NetPL?_1
+Added Pin To Net: NetName=NetPL?_2 Pin=PL?-2
+Added Pin To Net: NetName=NetPL?_2 Pin=U25-8
+Added Net: Name=NetPL?_2
+Added Pin To Net: NetName=NetPL?_3 Pin=PL?-3
+Added Pin To Net: NetName=NetPL?_3 Pin=R13-2
+Added Net: Name=NetPL?_3
+Added Pin To Net: NetName=NetPL?_4 Pin=PL?-4
+Added Pin To Net: NetName=NetPL?_4 Pin=R10-2
+Added Net: Name=NetPL?_4
+Added Pin To Net: NetName=NetPL?_5 Pin=PL?-5
+Added Pin To Net: NetName=NetPL?_5 Pin=R9-2
+Added Net: Name=NetPL?_5
+Added Member To Class: ClassName=LEDs Member=Component PL? plug
+Added Member To Class: ClassName=LEDs Member=Component PL? plug

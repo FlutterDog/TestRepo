@@ -1,0 +1,28 @@
+Removed Pin From Net: NetName=GND Pin=U1-TP
+Change Component Comment : Designator=R3 Old Comment=2k55 New Comment=2k32
+Change Component Description : Designator=R3 Old Description=RC0603FR-072K55L New Description=RC0603FR-072K32L
+Added Component: Designator=D23(SOD80C)
+Add component. Clean all parameters for all variants
+Added Component: Designator=D24(SOD80C)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetR20_2 Pin=D23-1
+Added Pin To Net: NetName=GND Pin=D24-1
+Change Net Name : Old Net Name=NetR20_2 New Net Name=NetD23_1
+Added Pin To Net: NetName=NetD23_2 Pin=D23-2
+Added Pin To Net: NetName=NetD23_2 Pin=D24-2
+Added Net: Name=NetD23_2
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component D23 5V1
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component D24 5V1
+Added Room: Name=Digital_Inputs
+Added Room: Name=Encoder AFE
+Added Room: Name=Encoder AFE incremental
+Added Room: Name=LEDs
+Added Room: Name=MCU
+Added Room: Name=Plugs
+Added Room: Name=Power Supply
+Added Room: Name=RS485
+Added Room: Name=SD Holder
+Added Room: Name=Solenoid Current Detector
+Added Room: Name=Transformer FrontEnd 1
+Added Room: Name=Transformer FrontEnd 2
+Added Room: Name=Transformer FrontEnd 3

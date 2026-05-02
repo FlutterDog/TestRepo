@@ -1,0 +1,4 @@
+Removed Member From Class: ClassName=LEDs Member=LED4
+Removed Member From Class: ClassName=LEDs Member=LED5
+Added Pin To Net: NetName=NetC30_2 Pin=U21-4
+Added Pin To Net: NetName=GND Pin=U23-4

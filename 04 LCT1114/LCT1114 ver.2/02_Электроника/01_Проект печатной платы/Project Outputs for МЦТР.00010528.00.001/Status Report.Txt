@@ -1,0 +1,24 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [ÌÖÒÐ.00010528.00.001.PrjPcb]
+   Generated File[ÌÖÒÐ.00010528.00.001.GTL]
+   Generated File[ÌÖÒÐ.00010528.00.001.G1]
+   Generated File[ÌÖÒÐ.00010528.00.001.G2]
+   Generated File[ÌÖÒÐ.00010528.00.001.G3]
+   Generated File[ÌÖÒÐ.00010528.00.001.G4]
+   Generated File[ÌÖÒÐ.00010528.00.001.GBL]
+   Generated File[ÌÖÒÐ.00010528.00.001.GTO]
+   Generated File[ÌÖÒÐ.00010528.00.001.GTS]
+   Generated File[ÌÖÒÐ.00010528.00.001.GBS]
+   Generated File[ÌÖÒÐ.00010528.00.001.GBO]
+   Generated File[ÌÖÒÐ.00010528.00.001.GM10]
+   Generated File[ÌÖÒÐ.00010528.00.001.GM14]
+   Generated File[ÌÖÒÐ.00010528.00.001.RUL]
+   Generated File[ÌÖÒÐ.00010528.00.001.EXTREP]
+   Generated File[ÌÖÒÐ.00010528.00.001.REP]
+
+
+Files Generated   : 15
+Documents Printed : 0
+
+Finished Output Generation At 13:23:07 On 02.05.2026

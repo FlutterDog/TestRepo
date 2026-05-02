@@ -1,0 +1,10 @@
+Added Component: Designator=D23(SOD80C)
+Add component. Clean all parameters for all variants
+Added Component: Designator=D24(SOD80C)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetD23_1 Pin=D23-1
+Added Pin To Net: NetName=NetD23_2 Pin=D23-2
+Added Pin To Net: NetName=GND Pin=D24-1
+Added Pin To Net: NetName=NetD23_2 Pin=D24-2
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component D23 5V1
+Added Member To Class: ClassName=Transformer FrontEnd 1 Member=Component D24 5V1
