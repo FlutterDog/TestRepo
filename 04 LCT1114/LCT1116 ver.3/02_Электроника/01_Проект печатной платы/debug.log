@@ -1,0 +1,61 @@
+[0316/155433:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ad-start/ (0)
+[0316/155433:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ad-start/ (0)
+[0316/163320:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0316/214048:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0316/225311:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0317/091350:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0423/114133:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ad-start/ (0)
+[0423/114133:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ad-start/ (0)
+[0423/205929:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0424/064557:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0424/064557:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0424/210410:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0604/203553:ERROR:backend_impl.cc(2020)] Corrupt Index file
+[0604/203553:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0604/203553:ERROR:cache_util.cc(134)] Unable to move cache folder C:\ProgramData\Altium\Altium Designer {38ED491E-C6A5-456C-ACF3-D5C6F2B4D80F}\BrowserCache to C:\ProgramData\Altium\Altium Designer {38ED491E-C6A5-456C-ACF3-D5C6F2B4D80F}\old_BrowserCache_000
+[0604/203553:ERROR:cache_creator.cc(129)] Unable to create cache
+[0604/203554:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ad-start/ (0)
+[0604/203554:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ad-start/ (0)
+[1117/060811:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ad-start (0)
+[1117/060811:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ad-start (0)
+[1117/171602:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[1117/183054:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[1123/104459:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ad-start (0)
+[1123/104459:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ad-start (0)
+[0207/181639:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: https://www.altium.com/ (0)
+[0207/181639:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: https://www.altium.com/ (0)
+[0207/181639:INFO:CONSOLE(0)] "Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.", source:  (0)
+[0207/181639:INFO:CONSOLE(0)] "Setting 'XMLHttpRequest.withCredentials' for synchronous requests is deprecated.", source:  (0)
+[0207/181639:INFO:CONSOLE(242)] "Uncaught SyntaxError: Unexpected token {", source: https://www.altium.com/ (242)
+[0207/181639:INFO:CONSOLE(280)] "Uncaught TypeError: Cannot read property 'utility' of undefined", source: https://www.altium.com/ (280)
+[0207/181639:INFO:CONSOLE(3)] "Uncaught SyntaxError: Unexpected token ...", source: https://js.qualified.com/qualified.js?token=9Ye7VbKcmoDFGWrj (3)
+[0207/181639:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token ...", source: https://cdn-shared.altium.com/production/dams/dams.min.js (1)
+[0207/181640:INFO:CONSOLE(3)] "Uncaught SyntaxError: Unexpected token .", source: https://cdn-shared.altium.com/production/drift/driftChat.js (3)
+[0207/181640:INFO:CONSOLE(146)] "Uncaught ReferenceError: globalThis is not defined", source: https://www.googletagmanager.com/gtm.js?id=GTM-5LFC7W (146)
+[0207/181640:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token ...", source: https://cdn.files.altium.com/themes/master-1770292120/web/themes/custom/altium_designer_new/html/dist/js/main.min.js (1)
+[0207/181640:INFO:CONSOLE(412)] "Uncaught SyntaxError: Unexpected token ...", source: https://cdn.files.altium.com/themes/master-1770292120/web/themes/custom/altium_designer_new/js/altium_func.js (412)
+[0207/181640:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token =", source: https://cdn-shared.altium.com/production/navigation_new/app/dist_prod_server_html/footer.js (1)
+[0207/181640:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token ...", source: https://cdn-shared.altium.com/production/navigation_new/app/dist_prod_server_html/header.js (1)
+[0207/181640:INFO:CONSOLE(0)] "The source list for Content Security Policy directive 'script-src' contains an invalid source: ''report-sample''. It will be ignored.", source: about:blank (0)
+[0207/181640:INFO:CONSOLE(0)] "Unrecognized Content-Security-Policy directive 'worker-src'.
+", source: about:blank (0)
+[0207/181640:INFO:CONSOLE(144)] "Attempting to initialize MktoForms2 (attempt 1/5)", source: https://www.altium.com/ (144)
+[0207/181640:INFO:CONSOLE(159)] "Loading MktoForms2 script", source: https://www.altium.com/ (159)
+[0207/181640:INFO:CONSOLE(412)] "Uncaught TypeError: window.DriftChat is not a constructor", source: https://www.altium.com/ (412)
+[0207/181640:INFO:CONSOLE(416)] "Uncaught TypeError: window.DriftChat is not a constructor", source: https://www.altium.com/ (416)
+[0207/181640:INFO:CONSOLE(11)] "Uncaught TypeError: fetchGeoip(...).finally is not a function", source: https://www.altium.com/sites/default/assets/js/js_2TzWm_qgXIAq3qsJzyc4d_mqDFHNiqPlyIwCq2Pm6X8.js?scope=footer&delta=0&language=en&theme=altium_designer_new&include=eJx1UFtuhDAMvNBCjhSZxASzSYxss1tuX9olCFH1w_F4ZvxQIEZjqJuDA_SjcLUHZKO1-DC7D-rCfHKrGhcXhUbrwgR2E1LmAXJnExbsqI5806lGguoFIwkG0yZHVEoVxVd8tyFqW6aaTouq26OVH5NXBAlTO7R1_pLNmTmxf1NMaMfoK9UvwrFZC8gTjd2Ru5GlnBsrvCiBEVc_ZA5PdSOzofyvTwjxog-6uAtuvE6w_4f7uaOHnP0CCc-lui4oGoQWc3-p5nqBEBiLC7xWk-2RmFNGb5Bc2p973cMMX9-XTMok (11)
+[0207/181640:INFO:CONSOLE(143)] "Uncaught TypeError: link.closest(...).after is not a function", source: https://cdn-shared.altium.com/production/onetrust/onetrust.js (143)
+[0207/181640:INFO:CONSOLE(3)] "cj values -> ", source: https://www.altium.com/sites/default/assets/js/js_psxYSNZSCLnyuDauTxNKxOpqWuPZO-Kq5oiaXhENur8.js?scope=footer&delta=2&language=en&theme=altium_designer_new&include=eJx1UFtuhDAMvNBCjhSZxASzSYxss1tuX9olCFH1w_F4ZvxQIEZjqJuDA_SjcLUHZKO1-DC7D-rCfHKrGhcXhUbrwgR2E1LmAXJnExbsqI5806lGguoFIwkG0yZHVEoVxVd8tyFqW6aaTouq26OVH5NXBAlTO7R1_pLNmTmxf1NMaMfoK9UvwrFZC8gTjd2Ru5GlnBsrvCiBEVc_ZA5PdSOzofyvTwjxog-6uAtuvE6w_4f7uaOHnP0CCc-lui4oGoQWc3-p5nqBEBiLC7xWk-2RmFNGb5Bc2p973cMMX9-XTMok (3)
+[0207/181641:INFO:CONSOLE(7)] "Uncaught (in promise) TypeError: Object.entries is not a function", source: https://cdn.cookielaw.org/scripttemplates/202510.1.0/otBannerSdk.js (7)
+[0207/181641:INFO:CONSOLE(144)] "Attempting to initialize MktoForms2 (attempt 2/5)", source: https://www.altium.com/ (144)
+[0207/181641:INFO:CONSOLE(146)] "MktoForms2 found, registering form handler", source: https://www.altium.com/ (146)
+[0207/181641:INFO:CONSOLE(149)] "Registering onFormRender handler for dynamically added forms", source: https://www.altium.com/ (149)
+[0207/181654:INFO:CONSOLE(175)] "Timeout reached waiting for MktoForms2", source: https://www.altium.com/ (175)
+[0208/101033:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0208/101033:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
