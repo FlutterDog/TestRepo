@@ -1,6 +1,0 @@
-DRC Rules Export File for PCB: D:\IGAS_Transfer\TestRepo\03_LDI1118\01_Проект печатной платы\МЦТР.00010592.00.002.PcbDoc
-RuleKind=Clearance|RuleName=Polygon - 0.5 mm|Scope=Board|Minimum=19.69
-RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
-RuleKind=Width|RuleName=Width|Scope=Board|Minimum=7.87
-RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=19.69
-RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
