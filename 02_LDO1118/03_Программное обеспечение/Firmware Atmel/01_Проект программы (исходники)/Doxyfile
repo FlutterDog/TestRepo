@@ -1,0 +1,59 @@
+# ==== Project ====
+PROJECT_NAME           = "IGAS Firmware (ATmega328)"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = Russian
+USE_MDFILE_AS_MAINPAGE = README.md
+GENERATE_TREEVIEW      = YES
+
+# ==== Markdown ====
+MARKDOWN_SUPPORT       = YES
+
+# ==== Input ====
+INPUT                  = .
+FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.md
+RECURSIVE              = YES
+
+EXCLUDE_PATTERNS       = */build/* */bin/* */obj/* */.git/* \
+                         */Debug/* */Release/* */docs/* */.vs/* \
+                         */.vscode/* */.idea/* */.pio/* */.cache/* \
+                         */cmake-build-*/* */out/* */dist/*
+
+# ==== Encoding ====
+INPUT_ENCODING         = UTF-8
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+FULL_PATH_NAMES        = NO
+TAB_SIZE               = 4
+
+# ==== Extraction ====
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+
+# ==== Warnings ====
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_LOGFILE           = doxygen_warnings.log
+
+# ==== Preprocessor (для AVR) ====
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = YES
+PREDEFINED             = __AVR_ATmega328P__ F_CPU=16000000UL
+SKIP_FUNCTION_MACROS   = YES
+
+INCLUDE_PATH           = . app hal Libs
+
+# ==== Path stripping (Source Browser / include paths) ====
+STRIP_FROM_PATH        = .
+STRIP_FROM_INC_PATH    = . app hal Libs
+
+# ==== Graphs (временно отключаем Graphviz) ====
+HAVE_DOT               = NO
+
+# ==== Outputs ====
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO

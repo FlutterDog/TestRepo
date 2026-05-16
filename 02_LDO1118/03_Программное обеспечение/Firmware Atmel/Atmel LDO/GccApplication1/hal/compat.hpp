@@ -1,0 +1,779 @@
+/**
+ * @file compat.hpp
+ * @brief Минимальная обёртка совместимости и HAL для восьмибитных AVR.
+ *
+ * @details
+ * Заголовок предоставляет:
+ * - совместимые базовые типы byte, word, boolean;
+ * - константы формата UART-кадра SERIAL_*;
+ * - утилиты отображения диапазонов и ограничения значений;
+ * - пространство имён hal для низкоуровневых аппаратных вызовов;
+ * - лёгкий потоковый класс SerialPort поверх hal::uart0_*;
+ * - глобальные inline-обёртки pinMode(), digitalWrite(), digitalRead(),
+ *   millis(), delay(), delayMicroseconds(), noInterrupts(), interrupts().
+ *
+ * @note
+ * Для корректной работы таймингов требуется корректное значение F_CPU
+ * на этапе компиляции.
+ *
+ * @warning
+ * Этот файл не должен содержать привязку к конкретной плате LDO.
+ * Назначение портов, реле, светодиодов и адресных переключателей должно
+ * описываться в прикладном board/app-слое.
+ */
+
+#pragma once
+
+#ifndef F_CPU
+#  define F_CPU 16000000UL
+#endif
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+/*----------------------------------------------------------------------------
+ * Очистка возможных макро-замещений из сторонних заголовков
+ *---------------------------------------------------------------------------*/
+
+#ifdef byte
+#  undef byte
+#endif
+
+#ifdef word
+#  undef word
+#endif
+
+#ifdef boolean
+#  undef boolean
+#endif
+
+/**
+ * @brief Восьмибитное беззнаковое значение.
+ *
+ * @details
+ * Проектный алиас, оставленный для совместимости со старым Arduino-подобным
+ * кодом и библиотеками.
+ */
+typedef uint8_t byte;
+
+/**
+ * @brief Шестнадцатибитное беззнаковое значение.
+ *
+ * @details
+ * Проектный алиас, оставленный для совместимости со старым Arduino-подобным
+ * кодом и библиотеками.
+ */
+typedef uint16_t word;
+
+/**
+ * @brief Логический тип.
+ *
+ * @details
+ * Проектный алиас, оставленный для совместимости со старым Arduino-подобным
+ * кодом и библиотеками.
+ */
+typedef bool boolean;
+
+#ifndef HIGH
+/**
+ * @brief Логическая единица для цифровых линий.
+ */
+#  define HIGH 0x1
+#endif
+
+#ifndef LOW
+/**
+ * @brief Логический ноль для цифровых линий.
+ */
+#  define LOW 0x0
+#endif
+
+/*----------------------------------------------------------------------------
+ * Форматы кадра UART
+ *---------------------------------------------------------------------------*/
+
+/**
+ * @name UART frame config
+ * @brief Константы формата кадра для инициализации UART.
+ *
+ * @details
+ * Значения соответствуют кодированию data bits / parity / stop bits,
+ * принятому в совместимом слое проекта.
+ *
+ * @{
+ */
+#ifndef SERIAL_5N1
+#  define SERIAL_5N1 0x00
+#  define SERIAL_6N1 0x02
+#  define SERIAL_7N1 0x04
+#  define SERIAL_8N1 0x06
+
+#  define SERIAL_5N2 0x08
+#  define SERIAL_6N2 0x0A
+#  define SERIAL_7N2 0x0C
+#  define SERIAL_8N2 0x0E
+
+#  define SERIAL_5E1 0x20
+#  define SERIAL_6E1 0x22
+#  define SERIAL_7E1 0x24
+#  define SERIAL_8E1 0x26
+
+#  define SERIAL_5E2 0x28
+#  define SERIAL_6E2 0x2A
+#  define SERIAL_7E2 0x2C
+#  define SERIAL_8E2 0x2E
+
+#  define SERIAL_5O1 0x30
+#  define SERIAL_6O1 0x32
+#  define SERIAL_7O1 0x34
+#  define SERIAL_8O1 0x36
+
+#  define SERIAL_5O2 0x38
+#  define SERIAL_6O2 0x3A
+#  define SERIAL_7O2 0x3C
+#  define SERIAL_8O2 0x3E
+#endif
+/** @} */
+
+/**
+ * @brief Режимы конфигурации цифровой линии ввода-вывода.
+ */
+enum PinMode
+{
+    INPUT = 0,        /**< Вход без внутренней подтяжки. */
+    OUTPUT = 1,       /**< Цифровой выход. */
+    INPUT_PULLUP = 2  /**< Вход с внутренней подтяжкой к Vcc. */
+};
+
+/*----------------------------------------------------------------------------
+ * Утилиты
+ *---------------------------------------------------------------------------*/
+
+/**
+ * @brief Линейное отображение значения из одного диапазона в другой.
+ *
+ * @details
+ * Вычисление выполняется в целочисленной арифметике.
+ *
+ * @param x       Входное значение.
+ * @param in_min  Нижняя граница входного диапазона.
+ * @param in_max  Верхняя граница входного диапазона.
+ * @param out_min Нижняя граница выходного диапазона.
+ * @param out_max Верхняя граница выходного диапазона.
+ *
+ * @return Значение, отображённое в выходной диапазон.
+ *
+ * @warning
+ * При in_max == in_min произойдёт деление на ноль.
+ * Вызывающая сторона обязана передавать корректные границы диапазона.
+ */
+static inline long map_long(
+    long x,
+    long in_min,
+    long in_max,
+    long out_min,
+    long out_max
+)
+{
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+#ifdef __cplusplus
+
+/**
+ * @brief Ограничивает значение диапазоном [a; b].
+ *
+ * @tparam T Тип значения.
+ *
+ * @param x Значение.
+ * @param a Нижняя граница.
+ * @param b Верхняя граница.
+ *
+ * @return Значение, ограниченное диапазоном [a; b].
+ */
+template <typename T>
+static inline T constrainT(T x, T a, T b)
+{
+    return (x < a) ? a : (x > b) ? b : x;
+}
+
+#else
+
+/**
+ * @brief C-совместимый вариант ограничения значения диапазоном [a; b].
+ */
+#  define constrainT(x, a, b) (((x) < (a)) ? (a) : (((x) > (b)) ? (b) : (x)))
+
+#endif
+
+/*----------------------------------------------------------------------------
+ * HAL API
+ *---------------------------------------------------------------------------*/
+
+#ifdef __cplusplus
+
+/**
+ * @namespace hal
+ * @brief Низкоуровневые аппаратные вызовы.
+ *
+ * @details
+ * Пространство имён содержит минимальный аппаратный слой проекта.
+ * HAL не должен знать о назначении конкретных сигналов платы LDO.
+ * Он предоставляет только базовые механизмы:
+ * - миллисекундный тикер;
+ * - задержки;
+ * - GPIO;
+ * - UART0;
+ * - SPI.
+ *
+ * Функции не используют динамическую память.
+ */
+namespace hal
+{
+    /* ---------------------------------------------------------------------
+     * Тикер / задержки
+     * ------------------------------------------------------------------ */
+
+    /**
+     * @brief Инициализирует базовый миллисекундный тикер.
+     *
+     * @details
+     * После вызова этой функции становятся валидными:
+     * - hal::millis();
+     * - hal::delay();
+     * - глобальные совместимые millis() и delay().
+     *
+     * Обычно вызывается один раз из main() до setup().
+     */
+    void tick_init(void);
+
+    /**
+     * @brief Возвращает количество миллисекунд с момента старта тикера.
+     *
+     * @return Время в миллисекундах.
+     *
+     * @note
+     * Значение переполняется по модулю два в степени тридцать два.
+     * Разницу времени следует вычислять через вычитание беззнаковых значений.
+     */
+    uint32_t millis(void);
+
+    /**
+     * @brief Выполняет блокирующую задержку в миллисекундах.
+     *
+     * @param ms Время задержки в миллисекундах.
+     */
+    void delay(uint32_t ms);
+
+    /**
+     * @brief Выполняет блокирующую задержку в микросекундах.
+     *
+     * @param us Время задержки в микросекундах.
+     */
+    void delayMicroseconds(uint16_t us);
+
+    /* ---------------------------------------------------------------------
+     * GPIO
+     * ------------------------------------------------------------------ */
+
+    /**
+     * @brief Настраивает режим цифрового пина.
+     *
+     * @param pin Номер пина в проектной нумерации.
+     * @param mode Режим из enum PinMode.
+     *
+     * @note
+     * Проектная нумерация пинов задаётся реализацией compat_gpio.cpp.
+     * Для прикладного кода LDO предпочтительнее использовать board-слой
+     * и прямые именованные функции платы.
+     */
+    void pinMode(uint8_t pin, PinMode mode);
+
+    /**
+     * @brief Устанавливает уровень на цифровом выходе.
+     *
+     * @param pin Номер пина в проектной нумерации.
+     * @param hi true — логическая единица, false — логический ноль.
+     */
+    void digitalWrite(uint8_t pin, bool hi);
+
+    /**
+     * @brief Читает уровень с цифрового входа.
+     *
+     * @param pin Номер пина в проектной нумерации.
+     *
+     * @return true — логическая единица, false — логический ноль.
+     */
+    bool digitalRead(uint8_t pin);
+
+    /* ---------------------------------------------------------------------
+     * UART0
+     * ------------------------------------------------------------------ */
+
+    /**
+     * @brief Инициализирует UART0.
+     *
+     * @param baud Скорость обмена, бод.
+     * @param cfg Формат кадра SERIAL_*.
+     *
+     * @post
+     * UART0 готов к передаче и приёму.
+     */
+    void uart0_init(uint32_t baud, uint8_t cfg);
+
+    /**
+     * @brief Возвращает количество байт, доступных для чтения из UART0.
+     *
+     * @return Количество байт в приёмном буфере.
+     */
+    uint8_t uart0_available(void);
+
+    /**
+     * @brief Читает один байт из UART0.
+     *
+     * @return Значение от нуля до двухсот пятидесяти пяти, если байт прочитан.
+     * @return Минус один, если данных нет.
+     */
+    int16_t uart0_read(void);
+
+    /**
+     * @brief Передаёт один байт через UART0.
+     *
+     * @param b Передаваемый байт.
+     */
+    void uart0_write(uint8_t b);
+
+    /* ---------------------------------------------------------------------
+     * SPI
+     * ------------------------------------------------------------------ */
+
+    /**
+     * @brief Инициализирует SPI в режиме ведущего.
+     *
+     * @post
+     * MOSI и SCK настроены как выходы, MISO — как вход.
+     * Линия SS должна настраиваться прикладным кодом под конкретное устройство.
+     */
+    void spi_init(void);
+
+    /**
+     * @brief Передаёт байт по SPI и одновременно принимает ответный байт.
+     *
+     * @param v Передаваемый байт.
+     *
+     * @return Принятый байт.
+     */
+    uint8_t spi_txrx(uint8_t v);
+}
+
+#endif /* __cplusplus */
+
+/*----------------------------------------------------------------------------
+ * Потоковый интерфейс UART0
+ *---------------------------------------------------------------------------*/
+
+#ifdef __cplusplus
+
+/**
+ * @class SerialPort
+ * @brief Минимальный потоковый интерфейс поверх hal::uart0_*.
+ *
+ * @details
+ * Класс имитирует небольшую часть Arduino Serial API, достаточную для старых
+ * библиотек и простого отладочного вывода.
+ *
+ * Поддерживаются:
+ * - begin();
+ * - end();
+ * - available();
+ * - read();
+ * - write();
+ * - print() для строк и целых чисел;
+ * - println() для строк и целых чисел.
+ *
+ * Динамическая память не используется.
+ */
+class SerialPort
+{
+public:
+    /**
+     * @brief Инициализирует UART0 со стандартным форматом 8N1.
+     *
+     * @param baud Скорость обмена, бод.
+     */
+    void begin(uint32_t baud)
+    {
+        hal::uart0_init(baud, SERIAL_8N1);
+    }
+
+    /**
+     * @brief Инициализирует UART0 с явным форматом кадра.
+     *
+     * @param baud Скорость обмена, бод.
+     * @param cfg Формат кадра SERIAL_*.
+     */
+    void begin(uint32_t baud, uint8_t cfg)
+    {
+        hal::uart0_init(baud, cfg);
+    }
+
+    /**
+     * @brief Завершает работу порта.
+     *
+     * @details
+     * Оставлено для совместимости.
+     * Фактическое выключение UART0 здесь не выполняется.
+     */
+    void end(void)
+    {
+        /* no-op */
+    }
+
+    /**
+     * @brief Возвращает количество доступных байт для чтения.
+     *
+     * @return Количество байт в приёмном буфере.
+     */
+    int available(void)
+    {
+        return static_cast<int>(hal::uart0_available());
+    }
+
+    /**
+     * @brief Читает один байт.
+     *
+     * @return Значение от нуля до двухсот пятидесяти пяти.
+     * @return Минус один, если данных нет.
+     */
+    int read(void)
+    {
+        return static_cast<int>(hal::uart0_read());
+    }
+
+    /**
+     * @brief Передаёт один байт.
+     *
+     * @param b Передаваемый байт.
+     *
+     * @return Количество переданных байт.
+     */
+    size_t write(uint8_t b)
+    {
+        hal::uart0_write(b);
+        return 1u;
+    }
+
+    /**
+     * @brief Выводит ASCIIZ-строку.
+     *
+     * @param s Указатель на строку.
+     *
+     * @return Количество переданных символов.
+     */
+    size_t print(const char* s)
+    {
+        size_t n = 0u;
+
+        while (s && *s)
+        {
+            hal::uart0_write(static_cast<uint8_t>(*s++));
+            ++n;
+        }
+
+        return n;
+    }
+
+    /**
+     * @brief Выводит ASCIIZ-строку и перевод строки CRLF.
+     *
+     * @param s Указатель на строку.
+     *
+     * @return Количество переданных символов, включая CRLF.
+     */
+    size_t println(const char* s)
+    {
+        size_t n = print(s);
+
+        hal::uart0_write(static_cast<uint8_t>('\r'));
+        hal::uart0_write(static_cast<uint8_t>('\n'));
+
+        return n + 2u;
+    }
+
+    /**
+     * @brief Выводит беззнаковое тридцатидвухбитное число в десятичном виде.
+     *
+     * @param v Число.
+     *
+     * @return Количество переданных символов.
+     */
+    size_t print(uint32_t v)
+    {
+        char buf[11];
+        char* p = buf + sizeof(buf);
+
+        *--p = '\0';
+
+        if (v == 0u)
+        {
+            hal::uart0_write(static_cast<uint8_t>('0'));
+            return 1u;
+        }
+
+        while (v != 0u)
+        {
+            *--p = static_cast<char>('0' + (v % 10u));
+            v /= 10u;
+        }
+
+        size_t n = 0u;
+
+        while (*p)
+        {
+            hal::uart0_write(static_cast<uint8_t>(*p++));
+            ++n;
+        }
+
+        return n;
+    }
+
+    /**
+     * @brief Выводит знаковое тридцатидвухбитное число в десятичном виде.
+     *
+     * @param v Число.
+     *
+     * @return Количество переданных символов.
+     */
+    size_t print(int32_t v)
+    {
+        if (v < 0)
+        {
+            hal::uart0_write(static_cast<uint8_t>('-'));
+
+            /*
+             * Преобразование через -(v + one) нужно, чтобы избежать переполнения
+             * при INT32_MIN.
+             */
+            uint32_t magnitude =
+                static_cast<uint32_t>(-(v + 1)) + 1u;
+
+            return print(magnitude) + 1u;
+        }
+
+        return print(static_cast<uint32_t>(v));
+    }
+
+    /**
+     * @brief Выводит беззнаковое число и перевод строки CRLF.
+     *
+     * @param v Число.
+     *
+     * @return Количество переданных символов, включая CRLF.
+     */
+    size_t println(uint32_t v)
+    {
+        size_t n = print(v);
+
+        hal::uart0_write(static_cast<uint8_t>('\r'));
+        hal::uart0_write(static_cast<uint8_t>('\n'));
+
+        return n + 2u;
+    }
+
+    /**
+     * @brief Выводит знаковое число и перевод строки CRLF.
+     *
+     * @param v Число.
+     *
+     * @return Количество переданных символов, включая CRLF.
+     */
+    size_t println(int32_t v)
+    {
+        size_t n = print(v);
+
+        hal::uart0_write(static_cast<uint8_t>('\r'));
+        hal::uart0_write(static_cast<uint8_t>('\n'));
+
+        return n + 2u;
+    }
+};
+
+/**
+ * @brief Глобальный объект последовательного порта.
+ *
+ * @details
+ * Экземпляр должен быть определён ровно в одном .cpp файле:
+ *
+ * @code
+ * SerialPort Serial;
+ * @endcode
+ */
+extern SerialPort Serial;
+
+#endif /* __cplusplus */
+
+/*----------------------------------------------------------------------------
+ * Инлайн-обёртки совместимости
+ *---------------------------------------------------------------------------*/
+
+#ifdef __cplusplus
+
+/**
+ * @brief Настраивает режим цифрового пина.
+ *
+ * @param p Номер пина.
+ * @param m Режим пина.
+ *
+ * @see hal::pinMode
+ */
+static inline void pinMode(uint8_t p, PinMode m)
+{
+    hal::pinMode(p, m);
+}
+
+/**
+ * @brief Устанавливает уровень цифрового выхода.
+ *
+ * @param p Номер пина.
+ * @param v Ненулевое значение трактуется как HIGH.
+ *
+ * @see hal::digitalWrite
+ */
+static inline void digitalWrite(uint8_t p, int v)
+{
+    hal::digitalWrite(p, (v != 0));
+}
+
+/**
+ * @brief Читает уровень цифрового входа.
+ *
+ * @param p Номер пина.
+ *
+ * @return HIGH или LOW.
+ *
+ * @see hal::digitalRead
+ */
+static inline int digitalRead(uint8_t p)
+{
+    return hal::digitalRead(p) ? HIGH : LOW;
+}
+
+/**
+ * @brief Возвращает текущее время в миллисекундах.
+ *
+ * @return Время в миллисекундах.
+ *
+ * @see hal::millis
+ */
+static inline uint32_t millis(void)
+{
+    return hal::millis();
+}
+
+/**
+ * @brief Выполняет блокирующую задержку в миллисекундах.
+ *
+ * @param ms Время задержки.
+ *
+ * @see hal::delay
+ */
+static inline void delay(uint32_t ms)
+{
+    hal::delay(ms);
+}
+
+/**
+ * @brief Выполняет блокирующую задержку в микросекундах.
+ *
+ * @param us Время задержки.
+ *
+ * @see hal::delayMicroseconds
+ */
+static inline void delayMicroseconds(uint16_t us)
+{
+    hal::delayMicroseconds(us);
+}
+
+/**
+ * @brief Глобально запрещает прерывания.
+ *
+ * @details
+ * Совместимая обёртка над cli().
+ * Оставлена для старого Arduino-подобного кода и библиотек.
+ */
+static inline void noInterrupts(void)
+{
+    cli();
+}
+
+/**
+ * @brief Глобально разрешает прерывания.
+ *
+ * @details
+ * Совместимая обёртка над sei().
+ * Оставлена для старого Arduino-подобного кода и библиотек.
+ */
+static inline void interrupts(void)
+{
+    sei();
+}
+
+#endif /* __cplusplus */
+
+/*----------------------------------------------------------------------------
+ * Совместимые утилиты с короткими именами
+ *---------------------------------------------------------------------------*/
+
+#ifdef __cplusplus
+
+/**
+ * @brief Ограничивает значение диапазоном [a; b].
+ *
+ * @tparam T Тип значения.
+ *
+ * @param x Значение.
+ * @param a Нижняя граница.
+ * @param b Верхняя граница.
+ *
+ * @return Значение, ограниченное диапазоном [a; b].
+ *
+ * @note
+ * Возвращается значение, а не ссылка. Это безопасно при передаче временных
+ * объектов.
+ */
+template <typename T>
+static inline T constrain(T x, T a, T b)
+{
+    return constrainT<T>(x, a, b);
+}
+
+#else
+
+/**
+ * @brief C-совместимое короткое имя для ограничения значения диапазоном.
+ */
+#  define constrain(x, a, b) constrainT((x), (a), (b))
+
+#endif
+
+/**
+ * @brief Линейно отображает значение из одного диапазона в другой.
+ *
+ * @param x Входное значение.
+ * @param a Нижняя граница входного диапазона.
+ * @param b Верхняя граница входного диапазона.
+ * @param c Нижняя граница выходного диапазона.
+ * @param d Верхняя граница выходного диапазона.
+ *
+ * @return Значение, отображённое в выходной диапазон.
+ *
+ * @see map_long
+ */
+static inline long map(long x, long a, long b, long c, long d)
+{
+    return map_long(x, a, b, c, d);
+}
