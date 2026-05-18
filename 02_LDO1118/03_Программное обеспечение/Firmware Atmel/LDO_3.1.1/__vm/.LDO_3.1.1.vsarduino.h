@@ -5,23 +5,25 @@
 			all non-arduino files created by visual micro and all visual studio project or solution files can be freely deleted and are not required to compile a sketch (do not delete your own code!).
 			note: debugger breakpoints are stored in '.sln' or '.asln' files, knowledge of last uploaded breakpoints is stored in the upload.vmps.xml file. Both files are required to continue a previous debug session without needing to compile and upload again
 	
-	Hardware: Arduino Yún                                                                                                                        (yun), Platform=avr, Package=arduino
+	Hardware: LCP (Native USB Port)                                                                                                         (arduino_due_x), Platform=sam, Package=arduino
 */
 
-#define __AVR_ATmega32u4__
-#define __AVR_ATmega32U4__
 #define ARDUINO 108010
 #define ARDUINO_MAIN
-#define F_CPU 16000000L
-#define __AVR__
-#define F_CPU 16000000L
+#define F_CPU 84000000L
+#define printf iprintf
+#define __SAM__
+#define F_CPU 84000000L
 #define ARDUINO 108010
-#define ARDUINO_AVR_YUN
-#define ARDUINO_ARCH_AVR
-#define USB_VID 0x2341
-#define USB_PID 0x8041
+#define ARDUINO_SAM_DUE
+#define ARDUINO_ARCH_SAM
+#define __SAM3X8E__
+#define USB_VID 0x03EB
+#define USB_PID 0x6124
+#define USBCON
 #define USB_MANUFACTURER "\"Unknown\""
 #define USB_PRODUCT "\"Arduino
 #include "pins_arduino.h" 
+#include "variant.h" 
 #include "arduino.h"
 #include "..\LDO_3.1.1.ino"
