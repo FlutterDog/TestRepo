@@ -1,0 +1,4939 @@
+
+LDI_Atmel.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000006  00800100  000016ec  00001780  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000016ec  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          000000b4  00800106  00800106  00001786  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001786  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000017b8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000378  00000000  00000000  000017f8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000043b7  00000000  00000000  00001b70  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000015b8  00000000  00000000  00005f27  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001daa  00000000  00000000  000074df  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000990  00000000  00000000  0000928c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000016db  00000000  00000000  00009c1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00002a88  00000000  00000000  0000b2f7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000310  00000000  00000000  0000dd7f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 35 00 	jmp	0x6a	; 0x6a <__ctors_end>
+       4:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+       8:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+       c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      10:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      14:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      18:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      1c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      20:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      24:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      28:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      2c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      30:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      34:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      38:	0c 94 c9 06 	jmp	0xd92	; 0xd92 <__vector_14>
+      3c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      40:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      44:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      48:	0c 94 08 06 	jmp	0xc10	; 0xc10 <__vector_18>
+      4c:	0c 94 40 06 	jmp	0xc80	; 0xc80 <__vector_19>
+      50:	0c 94 6b 06 	jmp	0xcd6	; 0xcd6 <__vector_20>
+      54:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      58:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      5c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      60:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+      64:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+
+00000068 <__ctors_start>:
+      68:	04 03       	mulsu	r16, r20
+
+0000006a <__ctors_end>:
+      6a:	11 24       	eor	r1, r1
+      6c:	1f be       	out	0x3f, r1	; 63
+      6e:	cf ef       	ldi	r28, 0xFF	; 255
+      70:	d8 e0       	ldi	r29, 0x08	; 8
+      72:	de bf       	out	0x3e, r29	; 62
+      74:	cd bf       	out	0x3d, r28	; 61
+
+00000076 <__do_copy_data>:
+      76:	11 e0       	ldi	r17, 0x01	; 1
+      78:	a0 e0       	ldi	r26, 0x00	; 0
+      7a:	b1 e0       	ldi	r27, 0x01	; 1
+      7c:	ec ee       	ldi	r30, 0xEC	; 236
+      7e:	f6 e1       	ldi	r31, 0x16	; 22
+      80:	02 c0       	rjmp	.+4      	; 0x86 <__do_copy_data+0x10>
+      82:	05 90       	lpm	r0, Z+
+      84:	0d 92       	st	X+, r0
+      86:	a6 30       	cpi	r26, 0x06	; 6
+      88:	b1 07       	cpc	r27, r17
+      8a:	d9 f7       	brne	.-10     	; 0x82 <__do_copy_data+0xc>
+
+0000008c <__do_clear_bss>:
+      8c:	21 e0       	ldi	r18, 0x01	; 1
+      8e:	a6 e0       	ldi	r26, 0x06	; 6
+      90:	b1 e0       	ldi	r27, 0x01	; 1
+      92:	01 c0       	rjmp	.+2      	; 0x96 <.do_clear_bss_start>
+
+00000094 <.do_clear_bss_loop>:
+      94:	1d 92       	st	X+, r1
+
+00000096 <.do_clear_bss_start>:
+      96:	aa 3b       	cpi	r26, 0xBA	; 186
+      98:	b2 07       	cpc	r27, r18
+      9a:	e1 f7       	brne	.-8      	; 0x94 <.do_clear_bss_loop>
+
+0000009c <__do_global_ctors>:
+      9c:	10 e0       	ldi	r17, 0x00	; 0
+      9e:	c5 e3       	ldi	r28, 0x35	; 53
+      a0:	d0 e0       	ldi	r29, 0x00	; 0
+      a2:	04 c0       	rjmp	.+8      	; 0xac <__do_global_ctors+0x10>
+      a4:	21 97       	sbiw	r28, 0x01	; 1
+      a6:	fe 01       	movw	r30, r28
+      a8:	0e 94 31 0b 	call	0x1662	; 0x1662 <__tablejump2__>
+      ac:	c4 33       	cpi	r28, 0x34	; 52
+      ae:	d1 07       	cpc	r29, r17
+      b0:	c9 f7       	brne	.-14     	; 0xa4 <__do_global_ctors+0x8>
+      b2:	0e 94 eb 0a 	call	0x15d6	; 0x15d6 <main>
+      b6:	0c 94 74 0b 	jmp	0x16e8	; 0x16e8 <_exit>
+
+000000ba <__bad_interrupt>:
+      ba:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000be <_ZN12_GLOBAL__N_116jumpToBootloaderEv>:
+    /**
+     * @brief Передаёт управление в bootloader.
+     */
+    void jumpToBootloader(void)
+    {
+        cli();
+      be:	f8 94       	cli
+				"out __SREG__,__tmp_reg__"   "\n\t"
+				: [TEMPREG] "=d" (temp_reg)
+				: [WDTREG]  "n"  (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+				[WDCE_WDE]  "n"  ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE)))
+				: "r0"
+		);
+      c0:	0f b6       	in	r0, 0x3f	; 63
+      c2:	f8 94       	cli
+      c4:	a8 95       	wdr
+      c6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+      ca:	88 61       	ori	r24, 0x18	; 24
+      cc:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+      d0:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+      d4:	0f be       	out	0x3f, r0	; 63
+
+        wdt_disable();
+
+#ifdef UCSR0B
+        UCSR0B = 0U;
+      d6:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+#endif
+
+#ifdef SPCR
+        SPCR = 0U;
+      da:	1c bc       	out	0x2c, r1	; 44
+#endif
+
+#ifdef TWCR
+        TWCR = 0U;
+      dc:	10 92 bc 00 	sts	0x00BC, r1	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+#endif
+
+        /*
+         * Восстановление нулевого регистра ABI AVR-GCC.
+         */
+        asm volatile ("clr __zero_reg__");
+      e0:	11 24       	eor	r1, r1
+
+        /*
+         * Установка стека в конец SRAM.
+         */
+        SP = RAMEND;
+      e2:	8f ef       	ldi	r24, 0xFF	; 255
+      e4:	98 e0       	ldi	r25, 0x08	; 8
+      e6:	9e bf       	out	0x3e, r25	; 62
+      e8:	8d bf       	out	0x3d, r24	; 61
+        /*
+         * Перенос таблицы векторов прерываний в boot-секцию.
+         * Последовательность IVCE -> IVSEL должна выполняться без задержки
+         * между двумя записями.
+         */
+        MCUCR = static_cast<uint8_t>(_BV(IVCE));
+      ea:	81 e0       	ldi	r24, 0x01	; 1
+      ec:	85 bf       	out	0x35, r24	; 53
+        MCUCR = static_cast<uint8_t>(_BV(IVSEL));
+      ee:	82 e0       	ldi	r24, 0x02	; 2
+      f0:	85 bf       	out	0x35, r24	; 53
+
+        /*
+         * Прямой переход в bootloader.
+         * Адрес задаётся в словах flash.
+         */
+        reinterpret_cast<BootEntryPtr>(BOOT_START_ADDR_WORDS)();
+      f2:	e0 e0       	ldi	r30, 0x00	; 0
+      f4:	f8 e3       	ldi	r31, 0x38	; 56
+      f6:	09 95       	icall
+      f8:	08 95       	ret
+
+000000fa <_ZN12_GLOBAL__N_111loop100TaskEv>:
+     * Выполняет:
+     * - программную перезагрузку;
+     * - отложенный переход в bootloader.
+     */
+    void loop100Task(void)
+    {
+      fa:	0f 93       	push	r16
+      fc:	1f 93       	push	r17
+        if (static_cast<uint32_t>(currentTime - loop100StartTime) >= LOOP_100_MS)
+      fe:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <_ZN12_GLOBAL__N_111currentTimeE>
+     102:	90 91 18 01 	lds	r25, 0x0118	; 0x800118 <_ZN12_GLOBAL__N_111currentTimeE+0x1>
+     106:	a0 91 19 01 	lds	r26, 0x0119	; 0x800119 <_ZN12_GLOBAL__N_111currentTimeE+0x2>
+     10a:	b0 91 1a 01 	lds	r27, 0x011A	; 0x80011a <_ZN12_GLOBAL__N_111currentTimeE+0x3>
+     10e:	40 91 0b 01 	lds	r20, 0x010B	; 0x80010b <_ZN12_GLOBAL__N_116loop100StartTimeE>
+     112:	50 91 0c 01 	lds	r21, 0x010C	; 0x80010c <_ZN12_GLOBAL__N_116loop100StartTimeE+0x1>
+     116:	60 91 0d 01 	lds	r22, 0x010D	; 0x80010d <_ZN12_GLOBAL__N_116loop100StartTimeE+0x2>
+     11a:	70 91 0e 01 	lds	r23, 0x010E	; 0x80010e <_ZN12_GLOBAL__N_116loop100StartTimeE+0x3>
+     11e:	8c 01       	movw	r16, r24
+     120:	9d 01       	movw	r18, r26
+     122:	04 1b       	sub	r16, r20
+     124:	15 0b       	sbc	r17, r21
+     126:	26 0b       	sbc	r18, r22
+     128:	37 0b       	sbc	r19, r23
+     12a:	04 36       	cpi	r16, 0x64	; 100
+     12c:	11 05       	cpc	r17, r1
+     12e:	21 05       	cpc	r18, r1
+     130:	31 05       	cpc	r19, r1
+     132:	08 f4       	brcc	.+2      	; 0x136 <_ZN12_GLOBAL__N_111loop100TaskEv+0x3c>
+     134:	42 c0       	rjmp	.+132    	; 0x1ba <_ZN12_GLOBAL__N_111loop100TaskEv+0xc0>
+        {
+            loop100StartTime = currentTime;
+     136:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <_ZN12_GLOBAL__N_116loop100StartTimeE>
+     13a:	90 93 0c 01 	sts	0x010C, r25	; 0x80010c <_ZN12_GLOBAL__N_116loop100StartTimeE+0x1>
+     13e:	a0 93 0d 01 	sts	0x010D, r26	; 0x80010d <_ZN12_GLOBAL__N_116loop100StartTimeE+0x2>
+     142:	b0 93 0e 01 	sts	0x010E, r27	; 0x80010e <_ZN12_GLOBAL__N_116loop100StartTimeE+0x3>
+
+            if (rebootRequested != 0U)
+     146:	20 91 1b 01 	lds	r18, 0x011B	; 0x80011b <_ZN12_GLOBAL__N_115rebootRequestedE>
+     14a:	22 23       	and	r18, r18
+     14c:	b1 f0       	breq	.+44     	; 0x17a <_ZN12_GLOBAL__N_111loop100TaskEv+0x80>
+     14e:	0f b6       	in	r0, 0x3f	; 63
+     150:	f8 94       	cli
+     152:	a8 95       	wdr
+     154:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     158:	88 61       	ori	r24, 0x18	; 24
+     15a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     15e:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     162:	0f be       	out	0x3f, r0	; 63
+				: "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
+				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
+						_BV(WDE) | (value & 0x07)) )
+				: "r0"
+		);
+     164:	98 e0       	ldi	r25, 0x08	; 8
+     166:	88 e1       	ldi	r24, 0x18	; 24
+     168:	0f b6       	in	r0, 0x3f	; 63
+     16a:	f8 94       	cli
+     16c:	a8 95       	wdr
+     16e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     172:	0f be       	out	0x3f, r0	; 63
+     174:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     178:	ff cf       	rjmp	.-2      	; 0x178 <_ZN12_GLOBAL__N_111loop100TaskEv+0x7e>
+                     * Ожидание перезагрузки по watchdog.
+                     */
+                }
+            }
+
+            if ((bootloaderRequestTime != 0UL) &&
+     17a:	40 91 13 01 	lds	r20, 0x0113	; 0x800113 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE>
+     17e:	50 91 14 01 	lds	r21, 0x0114	; 0x800114 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x1>
+     182:	60 91 15 01 	lds	r22, 0x0115	; 0x800115 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x2>
+     186:	70 91 16 01 	lds	r23, 0x0116	; 0x800116 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x3>
+     18a:	41 15       	cp	r20, r1
+     18c:	51 05       	cpc	r21, r1
+     18e:	61 05       	cpc	r22, r1
+     190:	71 05       	cpc	r23, r1
+     192:	99 f0       	breq	.+38     	; 0x1ba <_ZN12_GLOBAL__N_111loop100TaskEv+0xc0>
+                (static_cast<uint32_t>(currentTime - bootloaderRequestTime) > BOOTLOADER_JUMP_DELAY_MS))
+     194:	84 1b       	sub	r24, r20
+     196:	95 0b       	sbc	r25, r21
+     198:	a6 0b       	sbc	r26, r22
+     19a:	b7 0b       	sbc	r27, r23
+                     * Ожидание перезагрузки по watchdog.
+                     */
+                }
+            }
+
+            if ((bootloaderRequestTime != 0UL) &&
+     19c:	c3 97       	sbiw	r24, 0x33	; 51
+     19e:	a1 05       	cpc	r26, r1
+     1a0:	b1 05       	cpc	r27, r1
+     1a2:	58 f0       	brcs	.+22     	; 0x1ba <_ZN12_GLOBAL__N_111loop100TaskEv+0xc0>
+                (static_cast<uint32_t>(currentTime - bootloaderRequestTime) > BOOTLOADER_JUMP_DELAY_MS))
+            {
+                bootloaderRequestTime = 0UL;
+     1a4:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE>
+     1a8:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x1>
+     1ac:	10 92 15 01 	sts	0x0115, r1	; 0x800115 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x2>
+     1b0:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x3>
+                jumpToBootloader();
+     1b4:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN12_GLOBAL__N_116jumpToBootloaderEv>
+     1b8:	ff cf       	rjmp	.-2      	; 0x1b8 <_ZN12_GLOBAL__N_111loop100TaskEv+0xbe>
+                     * Защитный цикл на случай возврата из bootloader.
+                     */
+                }
+            }
+        }
+    }
+     1ba:	1f 91       	pop	r17
+     1bc:	0f 91       	pop	r16
+     1be:	08 95       	ret
+
+000001c0 <_ZN12_GLOBAL__N_111initBoardIoEv>:
+    /**
+     * @brief Инициализирует аппаратные линии платы LDI.
+     */
+    void initBoardIo(void)
+    {
+        ldi_board::initIo();
+     1c0:	0e 94 cd 03 	call	0x79a	; 0x79a <_ZN9ldi_board6initIoEv>
+     1c4:	08 95       	ret
+
+000001c6 <_ZN12_GLOBAL__N_116readSlaveAddressEv>:
+     *
+     * @return Адрес устройства.
+     */
+    uint8_t readSlaveAddress(void)
+    {
+        return ldi_board::readSlaveAddress();
+     1c6:	0e 94 89 03 	call	0x712	; 0x712 <_ZN9ldi_board16readSlaveAddressEv>
+    }
+     1ca:	08 95       	ret
+
+000001cc <_ZN12_GLOBAL__N_112updateInputsEv>:
+    /**
+     * @brief Считывает состояние дискретных входов.
+     */
+    void updateInputs(void)
+    {
+        inputState = ldi_board::readInputs();
+     1cc:	0e 94 ab 03 	call	0x756	; 0x756 <_ZN9ldi_board10readInputsEv>
+     1d0:	90 93 1d 01 	sts	0x011D, r25	; 0x80011d <_ZN12_GLOBAL__N_110inputStateE+0x1>
+     1d4:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <_ZN12_GLOBAL__N_110inputStateE>
+     1d8:	08 95       	ret
+
+000001da <_ZN12_GLOBAL__N_121updateInputIndicationEv>:
+     * Для снижения лишнего тактирования сдвигового регистра данные выводятся
+     * только при изменении состояния входов.
+     */
+    void updateInputIndication(void)
+    {
+        if (displayedInputState != inputState)
+     1da:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <_ZN12_GLOBAL__N_119displayedInputStateE>
+     1de:	30 91 02 01 	lds	r19, 0x0102	; 0x800102 <_ZN12_GLOBAL__N_119displayedInputStateE+0x1>
+     1e2:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <_ZN12_GLOBAL__N_110inputStateE>
+     1e6:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <_ZN12_GLOBAL__N_110inputStateE+0x1>
+     1ea:	28 17       	cp	r18, r24
+     1ec:	39 07       	cpc	r19, r25
+     1ee:	51 f0       	breq	.+20     	; 0x204 <_ZN12_GLOBAL__N_121updateInputIndicationEv+0x2a>
+        {
+            ldi_board::writeInputLeds(inputState);
+     1f0:	0e 94 01 04 	call	0x802	; 0x802 <_ZN9ldi_board14writeInputLedsEj>
+            displayedInputState = inputState;
+     1f4:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <_ZN12_GLOBAL__N_110inputStateE>
+     1f8:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <_ZN12_GLOBAL__N_110inputStateE+0x1>
+     1fc:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <_ZN12_GLOBAL__N_119displayedInputStateE+0x1>
+     200:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <_ZN12_GLOBAL__N_119displayedInputStateE>
+     204:	08 95       	ret
+
+00000206 <_ZN12_GLOBAL__N_117initCommunicationEv>:
+     * @details
+     * Настраивает скорость обмена, формат кадра, обработчик карты регистров
+     * и slave-адрес устройства.
+     */
+    void initCommunication(void)
+    {
+     206:	0f 93       	push	r16
+     208:	1f 93       	push	r17
+        IGAS_mb_X.initMB(MODBUS_BAUDRATE, SERIAL_8N1, MODBUS_REGISTER_LIMIT);
+     20a:	01 ed       	ldi	r16, 0xD1	; 209
+     20c:	17 e0       	ldi	r17, 0x07	; 7
+     20e:	26 e0       	ldi	r18, 0x06	; 6
+     210:	40 e8       	ldi	r20, 0x80	; 128
+     212:	55 e2       	ldi	r21, 0x25	; 37
+     214:	60 e0       	ldi	r22, 0x00	; 0
+     216:	70 e0       	ldi	r23, 0x00	; 0
+     218:	8e e1       	ldi	r24, 0x1E	; 30
+     21a:	91 e0       	ldi	r25, 0x01	; 1
+     21c:	0e 94 08 07 	call	0xe10	; 0xe10 <_ZN11IGAS_mb_4856initMBEmhj>
+        IGAS_mb_X.setDelegate(modbusProceed);
+     220:	66 e2       	ldi	r22, 0x26	; 38
+     222:	71 e0       	ldi	r23, 0x01	; 1
+     224:	8e e1       	ldi	r24, 0x1E	; 30
+     226:	91 e0       	ldi	r25, 0x01	; 1
+     228:	0e 94 e8 08 	call	0x11d0	; 0x11d0 <_ZN11IGAS_mb_48511setDelegateEPFvPiiiiE>
+        IGAS_mb_X.slave = slaveAddr;
+     22c:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     230:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <_ZN12_GLOBAL__N_19IGAS_mb_XE>
+    }
+     234:	1f 91       	pop	r17
+     236:	0f 91       	pop	r16
+     238:	08 95       	ret
+
+0000023a <_ZN12_GLOBAL__N_114statusLedWriteEb>:
+     *
+     * @param state true — включить светодиод; false — выключить светодиод.
+     */
+    void statusLedWrite(bool state)
+    {
+        ldi_board::statusLedWrite(state);
+     23a:	0e 94 92 03 	call	0x724	; 0x724 <_ZN9ldi_board14statusLedWriteEb>
+     23e:	08 95       	ret
+
+00000240 <_ZN12_GLOBAL__N_116eepromUpdateWordEjj>:
+    void eepromUpdateWord(uint16_t address, uint16_t value)
+    {
+        eeprom_update_word(
+            reinterpret_cast<uint16_t*>(address),
+            value
+        );
+     240:	0e 94 4c 0b 	call	0x1698	; 0x1698 <eeprom_update_word>
+     244:	08 95       	ret
+
+00000246 <_ZN12_GLOBAL__N_114eepromReadWordEj>:
+     */
+    uint16_t eepromReadWord(uint16_t address)
+    {
+        return eeprom_read_word(
+            reinterpret_cast<const uint16_t*>(address)
+        );
+     246:	0e 94 46 0b 	call	0x168c	; 0x168c <eeprom_read_word>
+    }
+     24a:	08 95       	ret
+
+0000024c <_ZN12_GLOBAL__N_113modbusProceedEPiiii>:
+        int16_t* regs,
+        int16_t startAddr,
+        int16_t regCount,
+        int16_t value
+    )
+    {
+     24c:	7f 92       	push	r7
+     24e:	8f 92       	push	r8
+     250:	9f 92       	push	r9
+     252:	af 92       	push	r10
+     254:	bf 92       	push	r11
+     256:	cf 92       	push	r12
+     258:	df 92       	push	r13
+     25a:	ef 92       	push	r14
+     25c:	ff 92       	push	r15
+     25e:	0f 93       	push	r16
+     260:	1f 93       	push	r17
+     262:	cf 93       	push	r28
+     264:	df 93       	push	r29
+     266:	6c 01       	movw	r12, r24
+     268:	eb 01       	movw	r28, r22
+     26a:	7a 01       	movw	r14, r20
+     26c:	49 01       	movw	r8, r18
+        int16_t registerAddr = startAddr;
+        bool writeReg = false;
+
+        lastModbusRequestTime = currentTime;
+     26e:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <_ZN12_GLOBAL__N_111currentTimeE>
+     272:	90 91 18 01 	lds	r25, 0x0118	; 0x800118 <_ZN12_GLOBAL__N_111currentTimeE+0x1>
+     276:	a0 91 19 01 	lds	r26, 0x0119	; 0x800119 <_ZN12_GLOBAL__N_111currentTimeE+0x2>
+     27a:	b0 91 1a 01 	lds	r27, 0x011A	; 0x80011a <_ZN12_GLOBAL__N_111currentTimeE+0x3>
+     27e:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <_ZN12_GLOBAL__N_121lastModbusRequestTimeE>
+     282:	90 93 10 01 	sts	0x0110, r25	; 0x800110 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x1>
+     286:	a0 93 11 01 	sts	0x0111, r26	; 0x800111 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x2>
+     28a:	b0 93 12 01 	sts	0x0112, r27	; 0x800112 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x3>
+
+        if ((IGAS_mb_X.func == FC_WRITE_REGS) || (IGAS_mb_X.func == FC_WRITE_REG))
+     28e:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <_ZN12_GLOBAL__N_19IGAS_mb_XE+0x2>
+     292:	80 31       	cpi	r24, 0x10	; 16
+     294:	21 f0       	breq	.+8      	; 0x29e <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x52>
+     296:	86 30       	cpi	r24, 0x06	; 6
+     298:	29 f0       	breq	.+10     	; 0x2a4 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x58>
+        int16_t regCount,
+        int16_t value
+    )
+    {
+        int16_t registerAddr = startAddr;
+        bool writeReg = false;
+     29a:	71 2c       	mov	r7, r1
+     29c:	05 c0       	rjmp	.+10     	; 0x2a8 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x5c>
+
+        lastModbusRequestTime = currentTime;
+
+        if ((IGAS_mb_X.func == FC_WRITE_REGS) || (IGAS_mb_X.func == FC_WRITE_REG))
+        {
+            writeReg = true;
+     29e:	77 24       	eor	r7, r7
+     2a0:	73 94       	inc	r7
+     2a2:	02 c0       	rjmp	.+4      	; 0x2a8 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x5c>
+     2a4:	77 24       	eor	r7, r7
+     2a6:	73 94       	inc	r7
+        }
+
+        if (communicationState == 0x00U)
+     2a8:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__data_end>
+     2ac:	81 11       	cpse	r24, r1
+     2ae:	05 c0       	rjmp	.+10     	; 0x2ba <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x6e>
+        {
+            communicationState = 0x01U;
+     2b0:	81 e0       	ldi	r24, 0x01	; 1
+     2b2:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <__data_end>
+            statusLedWrite(true);
+     2b6:	0e 94 1d 01 	call	0x23a	; 0x23a <_ZN12_GLOBAL__N_114statusLedWriteEb>
+
+        lastModbusRequestTime = currentTime;
+
+        if ((IGAS_mb_X.func == FC_WRITE_REGS) || (IGAS_mb_X.func == FC_WRITE_REG))
+        {
+            writeReg = true;
+     2ba:	00 e0       	ldi	r16, 0x00	; 0
+     2bc:	10 e0       	ldi	r17, 0x00	; 0
+        {
+            communicationState = 0x01U;
+            statusLedWrite(true);
+        }
+
+        for (int16_t i = 0; i < regCount; ++i)
+     2be:	0e 15       	cp	r16, r14
+     2c0:	1f 05       	cpc	r17, r15
+     2c2:	0c f0       	brlt	.+2      	; 0x2c6 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x7a>
+     2c4:	e2 c0       	rjmp	.+452    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+        {
+            switch (registerAddr)
+     2c6:	cf 34       	cpi	r28, 0x4F	; 79
+     2c8:	82 e0       	ldi	r24, 0x02	; 2
+     2ca:	d8 07       	cpc	r29, r24
+     2cc:	09 f4       	brne	.+2      	; 0x2d0 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x84>
+     2ce:	5f c0       	rjmp	.+190    	; 0x38e <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x142>
+     2d0:	74 f4       	brge	.+28     	; 0x2ee <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xa2>
+     2d2:	c7 32       	cpi	r28, 0x27	; 39
+     2d4:	d1 05       	cpc	r29, r1
+     2d6:	71 f1       	breq	.+92     	; 0x334 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xe8>
+     2d8:	1c f4       	brge	.+6      	; 0x2e0 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x94>
+     2da:	20 97       	sbiw	r28, 0x00	; 0
+     2dc:	f9 f0       	breq	.+62     	; 0x31c <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xd0>
+     2de:	c8 c0       	rjmp	.+400    	; 0x470 <__EEPROM_REGION_LENGTH__+0x70>
+     2e0:	c8 32       	cpi	r28, 0x28	; 40
+     2e2:	d1 05       	cpc	r29, r1
+     2e4:	a1 f1       	breq	.+104    	; 0x34e <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x102>
+     2e6:	c4 36       	cpi	r28, 0x64	; 100
+     2e8:	d1 05       	cpc	r29, r1
+     2ea:	d9 f1       	breq	.+118    	; 0x362 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x116>
+     2ec:	c1 c0       	rjmp	.+386    	; 0x470 <__EEPROM_REGION_LENGTH__+0x70>
+     2ee:	c4 38       	cpi	r28, 0x84	; 132
+     2f0:	f3 e0       	ldi	r31, 0x03	; 3
+     2f2:	df 07       	cpc	r29, r31
+     2f4:	09 f4       	brne	.+2      	; 0x2f8 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xac>
+     2f6:	73 c0       	rjmp	.+230    	; 0x3de <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x192>
+     2f8:	34 f4       	brge	.+12     	; 0x306 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xba>
+     2fa:	c2 35       	cpi	r28, 0x52	; 82
+     2fc:	e2 e0       	ldi	r30, 0x02	; 2
+     2fe:	de 07       	cpc	r29, r30
+     300:	09 f4       	brne	.+2      	; 0x304 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xb8>
+     302:	59 c0       	rjmp	.+178    	; 0x3b6 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x16a>
+     304:	b5 c0       	rjmp	.+362    	; 0x470 <__EEPROM_REGION_LENGTH__+0x70>
+     306:	c8 3e       	cpi	r28, 0xE8	; 232
+     308:	f3 e0       	ldi	r31, 0x03	; 3
+     30a:	df 07       	cpc	r29, r31
+     30c:	09 f4       	brne	.+2      	; 0x310 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xc4>
+     30e:	92 c0       	rjmp	.+292    	; 0x434 <__EEPROM_REGION_LENGTH__+0x34>
+     310:	c9 3e       	cpi	r28, 0xE9	; 233
+     312:	83 e0       	ldi	r24, 0x03	; 3
+     314:	d8 07       	cpc	r29, r24
+     316:	09 f4       	brne	.+2      	; 0x31a <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0xce>
+     318:	a1 c0       	rjmp	.+322    	; 0x45c <__EEPROM_REGION_LENGTH__+0x5c>
+     31a:	aa c0       	rjmp	.+340    	; 0x470 <__EEPROM_REGION_LENGTH__+0x70>
+                case 0:
+                    /*
+                     * HR 0.
+                     * Read: текущее состояние шестнадцати дискретных входов.
+                     */
+                    regs[i] = static_cast<int16_t>(inputState);
+     31c:	f8 01       	movw	r30, r16
+     31e:	ee 0f       	add	r30, r30
+     320:	ff 1f       	adc	r31, r31
+     322:	ec 0d       	add	r30, r12
+     324:	fd 1d       	adc	r31, r13
+     326:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <_ZN12_GLOBAL__N_110inputStateE>
+     32a:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <_ZN12_GLOBAL__N_110inputStateE+0x1>
+     32e:	91 83       	std	Z+1, r25	; 0x01
+     330:	80 83       	st	Z, r24
+                    break;
+     332:	a7 c0       	rjmp	.+334    	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                case 39:
+                    /*
+                     * HR 39.
+                     * Read: серийный номер устройства.
+                     */
+                    regs[i] = static_cast<int16_t>(
+     334:	58 01       	movw	r10, r16
+     336:	aa 0c       	add	r10, r10
+     338:	bb 1c       	adc	r11, r11
+     33a:	ac 0c       	add	r10, r12
+     33c:	bd 1c       	adc	r11, r13
+                        eepromReadWord(EEPROM_DEVICE_SERIAL_NUMBER_ADDR)
+     33e:	81 e0       	ldi	r24, 0x01	; 1
+     340:	90 e0       	ldi	r25, 0x00	; 0
+     342:	0e 94 23 01 	call	0x246	; 0x246 <_ZN12_GLOBAL__N_114eepromReadWordEj>
+                    );
+     346:	f5 01       	movw	r30, r10
+     348:	91 83       	std	Z+1, r25	; 0x01
+     34a:	80 83       	st	Z, r24
+                    break;
+     34c:	9a c0       	rjmp	.+308    	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                case 40:
+                    /*
+                     * HR 40.
+                     * Read: версия встроенного программного обеспечения.
+                     */
+                    regs[i] = static_cast<int16_t>(DEVICE_SOFTWARE_VERSION);
+     34e:	f8 01       	movw	r30, r16
+     350:	ee 0f       	add	r30, r30
+     352:	ff 1f       	adc	r31, r31
+     354:	ec 0d       	add	r30, r12
+     356:	fd 1d       	adc	r31, r13
+     358:	81 e0       	ldi	r24, 0x01	; 1
+     35a:	90 e0       	ldi	r25, 0x00	; 0
+     35c:	91 83       	std	Z+1, r25	; 0x01
+     35e:	80 83       	st	Z, r24
+                    break;
+     360:	90 c0       	rjmp	.+288    	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                     * Read: текущий Modbus-адрес устройства.
+                     *
+                     * Адрес, записанный через этот регистр, действует до перезапуска.
+                     * При старте адрес снова считывается с аппаратного переключателя.
+                     */
+                    if (writeReg)
+     362:	77 20       	and	r7, r7
+     364:	49 f0       	breq	.+18     	; 0x378 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x12c>
+                    {
+                        if ((value > 0) && (value < 248))
+     366:	c4 01       	movw	r24, r8
+     368:	01 97       	sbiw	r24, 0x01	; 1
+     36a:	87 3f       	cpi	r24, 0xF7	; 247
+     36c:	91 05       	cpc	r25, r1
+     36e:	20 f4       	brcc	.+8      	; 0x378 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x12c>
+                        {
+                            slaveAddr = static_cast<uint8_t>(value);
+     370:	80 92 00 01 	sts	0x0100, r8	; 0x800100 <__DATA_REGION_ORIGIN__>
+                            IGAS_mb_X.slave = slaveAddr;
+     374:	80 92 1e 01 	sts	0x011E, r8	; 0x80011e <_ZN12_GLOBAL__N_19IGAS_mb_XE>
+                        }
+                    }
+
+                    regs[i] = static_cast<int16_t>(slaveAddr);
+     378:	f8 01       	movw	r30, r16
+     37a:	ee 0f       	add	r30, r30
+     37c:	ff 1f       	adc	r31, r31
+     37e:	ec 0d       	add	r30, r12
+     380:	fd 1d       	adc	r31, r13
+     382:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     386:	90 e0       	ldi	r25, 0x00	; 0
+     388:	91 83       	std	Z+1, r25	; 0x01
+     38a:	80 83       	st	Z, r24
+                    break;
+     38c:	7a c0       	rjmp	.+244    	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                    /*
+                     * HR 591.
+                     * Write: запись серийного номера устройства.
+                     * Read: текущий серийный номер устройства.
+                     */
+                    if (writeReg)
+     38e:	77 20       	and	r7, r7
+     390:	29 f0       	breq	.+10     	; 0x39c <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x150>
+                    {
+                        eepromUpdateWord(
+                            EEPROM_DEVICE_SERIAL_NUMBER_ADDR,
+                            static_cast<uint16_t>(value)
+                        );
+     392:	b4 01       	movw	r22, r8
+     394:	81 e0       	ldi	r24, 0x01	; 1
+     396:	90 e0       	ldi	r25, 0x00	; 0
+     398:	0e 94 20 01 	call	0x240	; 0x240 <_ZN12_GLOBAL__N_116eepromUpdateWordEjj>
+                    }
+
+                    regs[i] = static_cast<int16_t>(
+     39c:	58 01       	movw	r10, r16
+     39e:	aa 0c       	add	r10, r10
+     3a0:	bb 1c       	adc	r11, r11
+     3a2:	ac 0c       	add	r10, r12
+     3a4:	bd 1c       	adc	r11, r13
+                        eepromReadWord(EEPROM_DEVICE_SERIAL_NUMBER_ADDR)
+     3a6:	81 e0       	ldi	r24, 0x01	; 1
+     3a8:	90 e0       	ldi	r25, 0x00	; 0
+     3aa:	0e 94 23 01 	call	0x246	; 0x246 <_ZN12_GLOBAL__N_114eepromReadWordEj>
+                    );
+     3ae:	f5 01       	movw	r30, r10
+     3b0:	91 83       	std	Z+1, r25	; 0x01
+     3b2:	80 83       	st	Z, r24
+                    break;
+     3b4:	66 c0       	rjmp	.+204    	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                    /*
+                     * HR 594.
+                     * Write 1: программная перезагрузка через watchdog.
+                     * Read: состояние запроса перезагрузки.
+                     */
+                    if (writeReg && (value == 1))
+     3b6:	77 20       	and	r7, r7
+     3b8:	39 f0       	breq	.+14     	; 0x3c8 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x17c>
+     3ba:	f1 e0       	ldi	r31, 0x01	; 1
+     3bc:	8f 16       	cp	r8, r31
+     3be:	91 04       	cpc	r9, r1
+     3c0:	19 f4       	brne	.+6      	; 0x3c8 <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x17c>
+                    {
+                        rebootRequested = 0x01U;
+     3c2:	81 e0       	ldi	r24, 0x01	; 1
+     3c4:	80 93 1b 01 	sts	0x011B, r24	; 0x80011b <_ZN12_GLOBAL__N_115rebootRequestedE>
+                    }
+
+                    regs[i] = static_cast<int16_t>(rebootRequested);
+     3c8:	f8 01       	movw	r30, r16
+     3ca:	ee 0f       	add	r30, r30
+     3cc:	ff 1f       	adc	r31, r31
+     3ce:	ec 0d       	add	r30, r12
+     3d0:	fd 1d       	adc	r31, r13
+     3d2:	80 91 1b 01 	lds	r24, 0x011B	; 0x80011b <_ZN12_GLOBAL__N_115rebootRequestedE>
+     3d6:	90 e0       	ldi	r25, 0x00	; 0
+     3d8:	91 83       	std	Z+1, r25	; 0x01
+     3da:	80 83       	st	Z, r24
+                    break;
+     3dc:	52 c0       	rjmp	.+164    	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                    /*
+                     * HR 900.
+                     * Write: отложенный переход в bootloader.
+                     * Read: состояние запроса перехода.
+                     */
+                    if (writeReg)
+     3de:	77 20       	and	r7, r7
+     3e0:	81 f0       	breq	.+32     	; 0x402 <__EEPROM_REGION_LENGTH__+0x2>
+                    {
+                        bootloaderRequestTime = currentTime;
+     3e2:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <_ZN12_GLOBAL__N_111currentTimeE>
+     3e6:	90 91 18 01 	lds	r25, 0x0118	; 0x800118 <_ZN12_GLOBAL__N_111currentTimeE+0x1>
+     3ea:	a0 91 19 01 	lds	r26, 0x0119	; 0x800119 <_ZN12_GLOBAL__N_111currentTimeE+0x2>
+     3ee:	b0 91 1a 01 	lds	r27, 0x011A	; 0x80011a <_ZN12_GLOBAL__N_111currentTimeE+0x3>
+     3f2:	80 93 13 01 	sts	0x0113, r24	; 0x800113 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE>
+     3f6:	90 93 14 01 	sts	0x0114, r25	; 0x800114 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x1>
+     3fa:	a0 93 15 01 	sts	0x0115, r26	; 0x800115 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x2>
+     3fe:	b0 93 16 01 	sts	0x0116, r27	; 0x800116 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x3>
+                    }
+
+                    regs[i] = (bootloaderRequestTime != 0UL) ? 1 : 0;
+     402:	f8 01       	movw	r30, r16
+     404:	ee 0f       	add	r30, r30
+     406:	ff 1f       	adc	r31, r31
+     408:	ec 0d       	add	r30, r12
+     40a:	fd 1d       	adc	r31, r13
+     40c:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE>
+     410:	90 91 14 01 	lds	r25, 0x0114	; 0x800114 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x1>
+     414:	a0 91 15 01 	lds	r26, 0x0115	; 0x800115 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x2>
+     418:	b0 91 16 01 	lds	r27, 0x0116	; 0x800116 <_ZN12_GLOBAL__N_121bootloaderRequestTimeE+0x3>
+     41c:	89 2b       	or	r24, r25
+     41e:	8a 2b       	or	r24, r26
+     420:	8b 2b       	or	r24, r27
+     422:	19 f0       	breq	.+6      	; 0x42a <__EEPROM_REGION_LENGTH__+0x2a>
+     424:	81 e0       	ldi	r24, 0x01	; 1
+     426:	90 e0       	ldi	r25, 0x00	; 0
+     428:	02 c0       	rjmp	.+4      	; 0x42e <__EEPROM_REGION_LENGTH__+0x2e>
+     42a:	80 e0       	ldi	r24, 0x00	; 0
+     42c:	90 e0       	ldi	r25, 0x00	; 0
+     42e:	91 83       	std	Z+1, r25	; 0x01
+     430:	80 83       	st	Z, r24
+                    break;
+     432:	27 c0       	rjmp	.+78     	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                    /*
+                     * HR 1000.
+                     * Write: запись аппаратной версии устройства.
+                     * Read: текущая аппаратная версия устройства.
+                     */
+                    if (writeReg)
+     434:	77 20       	and	r7, r7
+     436:	29 f0       	breq	.+10     	; 0x442 <__EEPROM_REGION_LENGTH__+0x42>
+                    {
+                        eepromUpdateWord(
+                            EEPROM_DEVICE_HARDWARE_VERSION_ADDR,
+                            static_cast<uint16_t>(value)
+                        );
+     438:	b4 01       	movw	r22, r8
+     43a:	83 e0       	ldi	r24, 0x03	; 3
+     43c:	90 e0       	ldi	r25, 0x00	; 0
+     43e:	0e 94 20 01 	call	0x240	; 0x240 <_ZN12_GLOBAL__N_116eepromUpdateWordEjj>
+                    }
+
+                    regs[i] = static_cast<int16_t>(
+     442:	58 01       	movw	r10, r16
+     444:	aa 0c       	add	r10, r10
+     446:	bb 1c       	adc	r11, r11
+     448:	ac 0c       	add	r10, r12
+     44a:	bd 1c       	adc	r11, r13
+                        eepromReadWord(EEPROM_DEVICE_HARDWARE_VERSION_ADDR)
+     44c:	83 e0       	ldi	r24, 0x03	; 3
+     44e:	90 e0       	ldi	r25, 0x00	; 0
+     450:	0e 94 23 01 	call	0x246	; 0x246 <_ZN12_GLOBAL__N_114eepromReadWordEj>
+                    );
+     454:	f5 01       	movw	r30, r10
+     456:	91 83       	std	Z+1, r25	; 0x01
+     458:	80 83       	st	Z, r24
+                    break;
+     45a:	13 c0       	rjmp	.+38     	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+                case 1001:
+                    /*
+                     * HR 1001.
+                     * Read: идентификатор модуля.
+                     */
+                    regs[i] = static_cast<int16_t>(DEVICE_ID);
+     45c:	f8 01       	movw	r30, r16
+     45e:	ee 0f       	add	r30, r30
+     460:	ff 1f       	adc	r31, r31
+     462:	ec 0d       	add	r30, r12
+     464:	fd 1d       	adc	r31, r13
+     466:	8e e5       	ldi	r24, 0x5E	; 94
+     468:	94 e0       	ldi	r25, 0x04	; 4
+     46a:	91 83       	std	Z+1, r25	; 0x01
+     46c:	80 83       	st	Z, r24
+                    break;
+     46e:	09 c0       	rjmp	.+18     	; 0x482 <__EEPROM_REGION_LENGTH__+0x82>
+
+                default:
+                    /*
+                     * Неподдерживаемый регистр.
+                     */
+                    regs[i] = -1;
+     470:	f8 01       	movw	r30, r16
+     472:	ee 0f       	add	r30, r30
+     474:	ff 1f       	adc	r31, r31
+     476:	ec 0d       	add	r30, r12
+     478:	fd 1d       	adc	r31, r13
+     47a:	8f ef       	ldi	r24, 0xFF	; 255
+     47c:	9f ef       	ldi	r25, 0xFF	; 255
+     47e:	91 83       	std	Z+1, r25	; 0x01
+     480:	80 83       	st	Z, r24
+                    break;
+            }
+
+            ++registerAddr;
+     482:	21 96       	adiw	r28, 0x01	; 1
+        {
+            communicationState = 0x01U;
+            statusLedWrite(true);
+        }
+
+        for (int16_t i = 0; i < regCount; ++i)
+     484:	0f 5f       	subi	r16, 0xFF	; 255
+     486:	1f 4f       	sbci	r17, 0xFF	; 255
+     488:	1a cf       	rjmp	.-460    	; 0x2be <_ZN12_GLOBAL__N_113modbusProceedEPiiii+0x72>
+                    break;
+            }
+
+            ++registerAddr;
+        }
+    }
+     48a:	df 91       	pop	r29
+     48c:	cf 91       	pop	r28
+     48e:	1f 91       	pop	r17
+     490:	0f 91       	pop	r16
+     492:	ff 90       	pop	r15
+     494:	ef 90       	pop	r14
+     496:	df 90       	pop	r13
+     498:	cf 90       	pop	r12
+     49a:	bf 90       	pop	r11
+     49c:	af 90       	pop	r10
+     49e:	9f 90       	pop	r9
+     4a0:	8f 90       	pop	r8
+     4a2:	7f 90       	pop	r7
+     4a4:	08 95       	ret
+
+000004a6 <_ZN12_GLOBAL__N_115statusLedToggleEv>:
+    /**
+     * @brief Инвертирует состояние светодиода связи.
+     */
+    void statusLedToggle(void)
+    {
+        ldi_board::statusLedToggle();
+     4a6:	0e 94 99 03 	call	0x732	; 0x732 <_ZN9ldi_board15statusLedToggleEv>
+     4aa:	08 95       	ret
+
+000004ac <_ZN12_GLOBAL__N_111loop500TaskEv>:
+     * Выполняет:
+     * - контроль таймаута связи;
+     * - мигание светодиодом связи при отсутствии обмена.
+     */
+    void loop500Task(void)
+    {
+     4ac:	0f 93       	push	r16
+     4ae:	1f 93       	push	r17
+        if (static_cast<uint32_t>(currentTime - loop500StartTime) >= LOOP_500_MS)
+     4b0:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <_ZN12_GLOBAL__N_111currentTimeE>
+     4b4:	90 91 18 01 	lds	r25, 0x0118	; 0x800118 <_ZN12_GLOBAL__N_111currentTimeE+0x1>
+     4b8:	a0 91 19 01 	lds	r26, 0x0119	; 0x800119 <_ZN12_GLOBAL__N_111currentTimeE+0x2>
+     4bc:	b0 91 1a 01 	lds	r27, 0x011A	; 0x80011a <_ZN12_GLOBAL__N_111currentTimeE+0x3>
+     4c0:	40 91 07 01 	lds	r20, 0x0107	; 0x800107 <_ZN12_GLOBAL__N_116loop500StartTimeE>
+     4c4:	50 91 08 01 	lds	r21, 0x0108	; 0x800108 <_ZN12_GLOBAL__N_116loop500StartTimeE+0x1>
+     4c8:	60 91 09 01 	lds	r22, 0x0109	; 0x800109 <_ZN12_GLOBAL__N_116loop500StartTimeE+0x2>
+     4cc:	70 91 0a 01 	lds	r23, 0x010A	; 0x80010a <_ZN12_GLOBAL__N_116loop500StartTimeE+0x3>
+     4d0:	8c 01       	movw	r16, r24
+     4d2:	9d 01       	movw	r18, r26
+     4d4:	04 1b       	sub	r16, r20
+     4d6:	15 0b       	sbc	r17, r21
+     4d8:	26 0b       	sbc	r18, r22
+     4da:	37 0b       	sbc	r19, r23
+     4dc:	b9 01       	movw	r22, r18
+     4de:	a8 01       	movw	r20, r16
+     4e0:	44 3f       	cpi	r20, 0xF4	; 244
+     4e2:	51 40       	sbci	r21, 0x01	; 1
+     4e4:	61 05       	cpc	r22, r1
+     4e6:	71 05       	cpc	r23, r1
+     4e8:	08 f1       	brcs	.+66     	; 0x52c <_ZN12_GLOBAL__N_111loop500TaskEv+0x80>
+        {
+            loop500StartTime = currentTime;
+     4ea:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <_ZN12_GLOBAL__N_116loop500StartTimeE>
+     4ee:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <_ZN12_GLOBAL__N_116loop500StartTimeE+0x1>
+     4f2:	a0 93 09 01 	sts	0x0109, r26	; 0x800109 <_ZN12_GLOBAL__N_116loop500StartTimeE+0x2>
+     4f6:	b0 93 0a 01 	sts	0x010A, r27	; 0x80010a <_ZN12_GLOBAL__N_116loop500StartTimeE+0x3>
+
+            if (static_cast<uint32_t>(currentTime - lastModbusRequestTime) >= CONNECTION_TIMEOUT_MS)
+     4fa:	40 91 0f 01 	lds	r20, 0x010F	; 0x80010f <_ZN12_GLOBAL__N_121lastModbusRequestTimeE>
+     4fe:	50 91 10 01 	lds	r21, 0x0110	; 0x800110 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x1>
+     502:	60 91 11 01 	lds	r22, 0x0111	; 0x800111 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x2>
+     506:	70 91 12 01 	lds	r23, 0x0112	; 0x800112 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x3>
+     50a:	84 1b       	sub	r24, r20
+     50c:	95 0b       	sbc	r25, r21
+     50e:	a6 0b       	sbc	r26, r22
+     510:	b7 0b       	sbc	r27, r23
+     512:	80 31       	cpi	r24, 0x10	; 16
+     514:	97 42       	sbci	r25, 0x27	; 39
+     516:	a1 05       	cpc	r26, r1
+     518:	b1 05       	cpc	r27, r1
+     51a:	10 f0       	brcs	.+4      	; 0x520 <_ZN12_GLOBAL__N_111loop500TaskEv+0x74>
+            {
+                communicationState = 0x00U;
+     51c:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <__data_end>
+            }
+
+            if (communicationState == 0x00U)
+     520:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__data_end>
+     524:	81 11       	cpse	r24, r1
+     526:	02 c0       	rjmp	.+4      	; 0x52c <_ZN12_GLOBAL__N_111loop500TaskEv+0x80>
+            {
+                statusLedToggle();
+     528:	0e 94 53 02 	call	0x4a6	; 0x4a6 <_ZN12_GLOBAL__N_115statusLedToggleEv>
+            }
+        }
+    }
+     52c:	1f 91       	pop	r17
+     52e:	0f 91       	pop	r16
+     530:	08 95       	ret
+
+00000532 <_Z41__static_initialization_and_destruction_0ii>:
+    loop500Task();
+
+    IGAS_mb_X.update();
+
+    wdt_reset();
+     532:	01 97       	sbiw	r24, 0x01	; 1
+     534:	39 f4       	brne	.+14     	; 0x544 <_Z41__static_initialization_and_destruction_0ii+0x12>
+     536:	6f 3f       	cpi	r22, 0xFF	; 255
+     538:	7f 4f       	sbci	r23, 0xFF	; 255
+     53a:	21 f4       	brne	.+8      	; 0x544 <_Z41__static_initialization_and_destruction_0ii+0x12>
+    // -------------------------------------------------------------------------
+
+    /**
+     * @brief Экземпляр транспорта Modbus RTU по RS-485.
+     */
+    IGAS_X2X_485 IGAS_mb_X;
+     53c:	8e e1       	ldi	r24, 0x1E	; 30
+     53e:	91 e0       	ldi	r25, 0x01	; 1
+     540:	0e 94 f5 06 	call	0xdea	; 0xdea <_ZN11IGAS_mb_485C1Ev>
+     544:	08 95       	ret
+
+00000546 <_Z5setupv>:
+    /*
+     * После сброса по watchdog флаг WDRF может удерживать watchdog включённым.
+     * Поэтому сначала выполняется сброс watchdog, очистка WDRF, затем настройка
+     * требуемого таймаута.
+     */
+    wdt_reset();
+     546:	a8 95       	wdr
+    MCUSR &= static_cast<uint8_t>(~_BV(WDRF));
+     548:	84 b7       	in	r24, 0x34	; 52
+     54a:	87 7f       	andi	r24, 0xF7	; 247
+     54c:	84 bf       	out	0x34, r24	; 52
+				"out __SREG__,__tmp_reg__"   "\n\t"
+				: [TEMPREG] "=d" (temp_reg)
+				: [WDTREG]  "n"  (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+				[WDCE_WDE]  "n"  ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE)))
+				: "r0"
+		);
+     54e:	0f b6       	in	r0, 0x3f	; 63
+     550:	f8 94       	cli
+     552:	a8 95       	wdr
+     554:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     558:	88 61       	ori	r24, 0x18	; 24
+     55a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     55e:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     562:	0f be       	out	0x3f, r0	; 63
+				: "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
+				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
+						_BV(WDE) | (value & 0x07)) )
+				: "r0"
+		);
+     564:	9e e0       	ldi	r25, 0x0E	; 14
+     566:	88 e1       	ldi	r24, 0x18	; 24
+     568:	0f b6       	in	r0, 0x3f	; 63
+     56a:	f8 94       	cli
+     56c:	a8 95       	wdr
+     56e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+     572:	0f be       	out	0x3f, r0	; 63
+     574:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+
+    wdt_disable();
+    wdt_enable(WDTO_1S);
+
+    initBoardIo();
+     578:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <_ZN12_GLOBAL__N_111initBoardIoEv>
+
+    slaveAddr = readSlaveAddress();
+     57c:	0e 94 e3 00 	call	0x1c6	; 0x1c6 <_ZN12_GLOBAL__N_116readSlaveAddressEv>
+     580:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ *
+ * @see hal::millis
+ */
+static inline uint32_t millis(void)
+{
+    return hal::millis();
+     584:	0e 94 b1 06 	call	0xd62	; 0xd62 <_ZN3hal6millisEv>
+
+    currentTime = millis();
+     588:	60 93 17 01 	sts	0x0117, r22	; 0x800117 <_ZN12_GLOBAL__N_111currentTimeE>
+     58c:	70 93 18 01 	sts	0x0118, r23	; 0x800118 <_ZN12_GLOBAL__N_111currentTimeE+0x1>
+     590:	80 93 19 01 	sts	0x0119, r24	; 0x800119 <_ZN12_GLOBAL__N_111currentTimeE+0x2>
+     594:	90 93 1a 01 	sts	0x011A, r25	; 0x80011a <_ZN12_GLOBAL__N_111currentTimeE+0x3>
+    lastModbusRequestTime = currentTime;
+     598:	60 93 0f 01 	sts	0x010F, r22	; 0x80010f <_ZN12_GLOBAL__N_121lastModbusRequestTimeE>
+     59c:	70 93 10 01 	sts	0x0110, r23	; 0x800110 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x1>
+     5a0:	80 93 11 01 	sts	0x0111, r24	; 0x800111 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x2>
+     5a4:	90 93 12 01 	sts	0x0112, r25	; 0x800112 <_ZN12_GLOBAL__N_121lastModbusRequestTimeE+0x3>
+    loop100StartTime = currentTime;
+     5a8:	60 93 0b 01 	sts	0x010B, r22	; 0x80010b <_ZN12_GLOBAL__N_116loop100StartTimeE>
+     5ac:	70 93 0c 01 	sts	0x010C, r23	; 0x80010c <_ZN12_GLOBAL__N_116loop100StartTimeE+0x1>
+     5b0:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <_ZN12_GLOBAL__N_116loop100StartTimeE+0x2>
+     5b4:	90 93 0e 01 	sts	0x010E, r25	; 0x80010e <_ZN12_GLOBAL__N_116loop100StartTimeE+0x3>
+    loop500StartTime = currentTime;
+     5b8:	60 93 07 01 	sts	0x0107, r22	; 0x800107 <_ZN12_GLOBAL__N_116loop500StartTimeE>
+     5bc:	70 93 08 01 	sts	0x0108, r23	; 0x800108 <_ZN12_GLOBAL__N_116loop500StartTimeE+0x1>
+     5c0:	80 93 09 01 	sts	0x0109, r24	; 0x800109 <_ZN12_GLOBAL__N_116loop500StartTimeE+0x2>
+     5c4:	90 93 0a 01 	sts	0x010A, r25	; 0x80010a <_ZN12_GLOBAL__N_116loop500StartTimeE+0x3>
+
+    updateInputs();
+     5c8:	0e 94 e6 00 	call	0x1cc	; 0x1cc <_ZN12_GLOBAL__N_112updateInputsEv>
+    updateInputIndication();
+     5cc:	0e 94 ed 00 	call	0x1da	; 0x1da <_ZN12_GLOBAL__N_121updateInputIndicationEv>
+
+    initCommunication();
+     5d0:	0e 94 03 01 	call	0x206	; 0x206 <_ZN12_GLOBAL__N_117initCommunicationEv>
+
+    wdt_reset();
+     5d4:	a8 95       	wdr
+     5d6:	08 95       	ret
+
+000005d8 <_Z4loopv>:
+     5d8:	0e 94 b1 06 	call	0xd62	; 0xd62 <_ZN3hal6millisEv>
+/**
+ * @brief Выполняет один проход основного цикла приложения LDI.
+ */
+void loop(void)
+{
+    currentTime = millis();
+     5dc:	60 93 17 01 	sts	0x0117, r22	; 0x800117 <_ZN12_GLOBAL__N_111currentTimeE>
+     5e0:	70 93 18 01 	sts	0x0118, r23	; 0x800118 <_ZN12_GLOBAL__N_111currentTimeE+0x1>
+     5e4:	80 93 19 01 	sts	0x0119, r24	; 0x800119 <_ZN12_GLOBAL__N_111currentTimeE+0x2>
+     5e8:	90 93 1a 01 	sts	0x011A, r25	; 0x80011a <_ZN12_GLOBAL__N_111currentTimeE+0x3>
+
+    updateInputs();
+     5ec:	0e 94 e6 00 	call	0x1cc	; 0x1cc <_ZN12_GLOBAL__N_112updateInputsEv>
+    updateInputIndication();
+     5f0:	0e 94 ed 00 	call	0x1da	; 0x1da <_ZN12_GLOBAL__N_121updateInputIndicationEv>
+
+    loop100Task();
+     5f4:	0e 94 7d 00 	call	0xfa	; 0xfa <_ZN12_GLOBAL__N_111loop100TaskEv>
+    loop500Task();
+     5f8:	0e 94 56 02 	call	0x4ac	; 0x4ac <_ZN12_GLOBAL__N_111loop500TaskEv>
+
+    IGAS_mb_X.update();
+     5fc:	8e e1       	ldi	r24, 0x1E	; 30
+     5fe:	91 e0       	ldi	r25, 0x01	; 1
+     600:	0e 94 31 0a 	call	0x1462	; 0x1462 <_ZN11IGAS_mb_4856updateEv>
+
+    wdt_reset();
+     604:	a8 95       	wdr
+     606:	08 95       	ret
+
+00000608 <_GLOBAL__sub_I__Z5setupv>:
+     608:	6f ef       	ldi	r22, 0xFF	; 255
+     60a:	7f ef       	ldi	r23, 0xFF	; 255
+     60c:	81 e0       	ldi	r24, 0x01	; 1
+     60e:	90 e0       	ldi	r25, 0x00	; 0
+     610:	0e 94 99 02 	call	0x532	; 0x532 <_Z41__static_initialization_and_destruction_0ii>
+     614:	08 95       	ret
+
+00000616 <_ZN12_GLOBAL__N_113writePortMaskERVhhb>:
+     * @param mask Маска изменяемых битов.
+     * @param state true — установить биты; false — сбросить биты.
+     */
+    void writePortMask(volatile uint8_t& port, uint8_t mask, bool state)
+    {
+        if (state)
+     616:	44 23       	and	r20, r20
+     618:	29 f0       	breq	.+10     	; 0x624 <_ZN12_GLOBAL__N_113writePortMaskERVhhb+0xe>
+        {
+            port |= mask;
+     61a:	fc 01       	movw	r30, r24
+     61c:	20 81       	ld	r18, Z
+     61e:	62 2b       	or	r22, r18
+     620:	60 83       	st	Z, r22
+     622:	08 95       	ret
+        }
+        else
+        {
+            port &= static_cast<uint8_t>(~mask);
+     624:	fc 01       	movw	r30, r24
+     626:	20 81       	ld	r18, Z
+     628:	60 95       	com	r22
+     62a:	62 23       	and	r22, r18
+     62c:	60 83       	st	Z, r22
+     62e:	08 95       	ret
+
+00000630 <_ZN12_GLOBAL__N_117ledShiftDataWriteEb>:
+     *
+     * @param state true — логическая единица; false — логический ноль.
+     */
+    void ledShiftDataWrite(bool state)
+    {
+        writePortMask(PORTB, SR_LED_DATA_MASK, state);
+     630:	48 2f       	mov	r20, r24
+     632:	62 e0       	ldi	r22, 0x02	; 2
+     634:	85 e2       	ldi	r24, 0x25	; 37
+     636:	90 e0       	ldi	r25, 0x00	; 0
+     638:	0e 94 0b 03 	call	0x616	; 0x616 <_ZN12_GLOBAL__N_113writePortMaskERVhhb>
+     63c:	08 95       	ret
+
+0000063e <_ZN12_GLOBAL__N_115shiftClockPulseEv>:
+     * @details
+     * Последовательность импульса: низкий уровень -> высокий уровень -> низкий уровень.
+     */
+    void shiftClockPulse(void)
+    {
+        PORTD |= SR_CLOCK_MASK;
+     63e:	8b b1       	in	r24, 0x0b	; 11
+     640:	80 61       	ori	r24, 0x10	; 16
+     642:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     644:	00 00       	nop
+    void shiftClockPulse(void)
+    {
+        PORTD |= SR_CLOCK_MASK;
+        ioNop();
+
+        PORTD &= static_cast<uint8_t>(~SR_CLOCK_MASK);
+     646:	8b b1       	in	r24, 0x0b	; 11
+     648:	8f 7e       	andi	r24, 0xEF	; 239
+     64a:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     64c:	00 00       	nop
+     64e:	08 95       	ret
+
+00000650 <_ZN12_GLOBAL__N_113latch595PulseEv>:
+     * @details
+     * Последовательность импульса: низкий уровень -> высокий уровень -> низкий уровень.
+     */
+    void latch595Pulse(void)
+    {
+        PORTD |= SR_LATCH_MASK;
+     650:	8b b1       	in	r24, 0x0b	; 11
+     652:	88 60       	ori	r24, 0x08	; 8
+     654:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     656:	00 00       	nop
+    void latch595Pulse(void)
+    {
+        PORTD |= SR_LATCH_MASK;
+        ioNop();
+
+        PORTD &= static_cast<uint8_t>(~SR_LATCH_MASK);
+     658:	8b b1       	in	r24, 0x0b	; 11
+     65a:	87 7f       	andi	r24, 0xF7	; 247
+     65c:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     65e:	00 00       	nop
+     660:	08 95       	ret
+
+00000662 <_ZN12_GLOBAL__N_116capture165InputsEv>:
+     * - кратковременный низкий уровень для загрузки параллельных входов;
+     * - возврат в высокий уровень для последовательного сдвига.
+     */
+    void capture165Inputs(void)
+    {
+        PORTD |= SR_LATCH_MASK;
+     662:	8b b1       	in	r24, 0x0b	; 11
+     664:	88 60       	ori	r24, 0x08	; 8
+     666:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     668:	00 00       	nop
+    void capture165Inputs(void)
+    {
+        PORTD |= SR_LATCH_MASK;
+        ioNop();
+
+        PORTD &= static_cast<uint8_t>(~SR_LATCH_MASK);
+     66a:	8b b1       	in	r24, 0x0b	; 11
+     66c:	87 7f       	andi	r24, 0xF7	; 247
+     66e:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     670:	00 00       	nop
+        ioNop();
+
+        PORTD &= static_cast<uint8_t>(~SR_LATCH_MASK);
+        ioNop();
+
+        PORTD |= SR_LATCH_MASK;
+     672:	8b b1       	in	r24, 0x0b	; 11
+     674:	88 60       	ori	r24, 0x08	; 8
+     676:	8b b9       	out	0x0b, r24	; 11
+     * @details
+     * Используется при ручном тактировании сдвиговых регистров.
+     */
+    inline void ioNop(void)
+    {
+        asm volatile ("nop");
+     678:	00 00       	nop
+     67a:	08 95       	ret
+
+0000067c <_ZN12_GLOBAL__N_18latchLowEv>:
+     * @details
+     * Это исходное состояние линии между циклами обмена.
+     */
+    void latchLow(void)
+    {
+        PORTD &= static_cast<uint8_t>(~SR_LATCH_MASK);
+     67c:	8b b1       	in	r24, 0x0b	; 11
+     67e:	87 7f       	andi	r24, 0xF7	; 247
+     680:	8b b9       	out	0x0b, r24	; 11
+     682:	08 95       	ret
+
+00000684 <_ZN12_GLOBAL__N_114mirrorFiveBitsEh>:
+     *
+     * @details
+     * Используется для преобразования порядка битов адресного переключателя.
+     */
+    uint8_t mirrorFiveBits(uint8_t value)
+    {
+     684:	98 2f       	mov	r25, r24
+        uint8_t result = 0u;
+
+        if ((value & 0x01u) != 0u) { result |= 0x10u; } // PC0 -> bit 4
+     686:	80 fd       	sbrc	r24, 0
+     688:	02 c0       	rjmp	.+4      	; 0x68e <_ZN12_GLOBAL__N_114mirrorFiveBitsEh+0xa>
+     * @details
+     * Используется для преобразования порядка битов адресного переключателя.
+     */
+    uint8_t mirrorFiveBits(uint8_t value)
+    {
+        uint8_t result = 0u;
+     68a:	80 e0       	ldi	r24, 0x00	; 0
+     68c:	01 c0       	rjmp	.+2      	; 0x690 <_ZN12_GLOBAL__N_114mirrorFiveBitsEh+0xc>
+
+        if ((value & 0x01u) != 0u) { result |= 0x10u; } // PC0 -> bit 4
+     68e:	80 e1       	ldi	r24, 0x10	; 16
+        if ((value & 0x02u) != 0u) { result |= 0x08u; } // PC1 -> bit 3
+     690:	91 fd       	sbrc	r25, 1
+     692:	88 60       	ori	r24, 0x08	; 8
+        if ((value & 0x04u) != 0u) { result |= 0x04u; } // PC2 -> bit 2
+     694:	92 fd       	sbrc	r25, 2
+     696:	84 60       	ori	r24, 0x04	; 4
+        if ((value & 0x08u) != 0u) { result |= 0x02u; } // PC3 -> bit 1
+     698:	93 fd       	sbrc	r25, 3
+     69a:	82 60       	ori	r24, 0x02	; 2
+        if ((value & 0x10u) != 0u) { result |= 0x01u; } // PC4 -> bit 0
+     69c:	94 fd       	sbrc	r25, 4
+     69e:	81 60       	ori	r24, 0x01	; 1
+
+        return result;
+    }
+     6a0:	08 95       	ret
+
+000006a2 <_ZN12_GLOBAL__N_18isBitSetEjh>:
+     *
+     * @return true — бит установлен; false — бит сброшен.
+     */
+    bool isBitSet(uint16_t value, uint8_t bit)
+    {
+        return ((value & static_cast<uint16_t>(1u << bit)) != 0u);
+     6a2:	9c 01       	movw	r18, r24
+     6a4:	02 c0       	rjmp	.+4      	; 0x6aa <_ZN12_GLOBAL__N_18isBitSetEjh+0x8>
+     6a6:	36 95       	lsr	r19
+     6a8:	27 95       	ror	r18
+     6aa:	6a 95       	dec	r22
+     6ac:	e2 f7       	brpl	.-8      	; 0x6a6 <_ZN12_GLOBAL__N_18isBitSetEjh+0x4>
+     6ae:	81 e0       	ldi	r24, 0x01	; 1
+     6b0:	20 ff       	sbrs	r18, 0
+     6b2:	80 e0       	ldi	r24, 0x00	; 0
+    }
+     6b4:	08 95       	ret
+
+000006b6 <_ZN12_GLOBAL__N_117transferPanelMaskEj>:
+     * @details
+     * Сначала передаются исходные bit 7...bit 0, затем bit 15...bit 8.
+     * Такой порядок соответствует разводке LED-панели.
+     */
+    void transferPanelMask(uint16_t state)
+    {
+     6b6:	0f 93       	push	r16
+     6b8:	1f 93       	push	r17
+     6ba:	cf 93       	push	r28
+     6bc:	8c 01       	movw	r16, r24
+        for (int8_t bit = 7; bit >= 0; --bit)
+     6be:	c7 e0       	ldi	r28, 0x07	; 7
+     6c0:	cc 23       	and	r28, r28
+     6c2:	54 f0       	brlt	.+20     	; 0x6d8 <_ZN12_GLOBAL__N_117transferPanelMaskEj+0x22>
+        {
+            ledShiftDataWrite(isBitSet(state, static_cast<uint8_t>(bit)));
+     6c4:	6c 2f       	mov	r22, r28
+     6c6:	c8 01       	movw	r24, r16
+     6c8:	0e 94 51 03 	call	0x6a2	; 0x6a2 <_ZN12_GLOBAL__N_18isBitSetEjh>
+     6cc:	0e 94 18 03 	call	0x630	; 0x630 <_ZN12_GLOBAL__N_117ledShiftDataWriteEb>
+            shiftClockPulse();
+     6d0:	0e 94 1f 03 	call	0x63e	; 0x63e <_ZN12_GLOBAL__N_115shiftClockPulseEv>
+     * Сначала передаются исходные bit 7...bit 0, затем bit 15...bit 8.
+     * Такой порядок соответствует разводке LED-панели.
+     */
+    void transferPanelMask(uint16_t state)
+    {
+        for (int8_t bit = 7; bit >= 0; --bit)
+     6d4:	c1 50       	subi	r28, 0x01	; 1
+     6d6:	f4 cf       	rjmp	.-24     	; 0x6c0 <_ZN12_GLOBAL__N_117transferPanelMaskEj+0xa>
+     6d8:	cf e0       	ldi	r28, 0x0F	; 15
+        {
+            ledShiftDataWrite(isBitSet(state, static_cast<uint8_t>(bit)));
+            shiftClockPulse();
+        }
+
+        for (int8_t bit = 15; bit >= 8; --bit)
+     6da:	c8 30       	cpi	r28, 0x08	; 8
+     6dc:	54 f0       	brlt	.+20     	; 0x6f2 <_ZN12_GLOBAL__N_117transferPanelMaskEj+0x3c>
+        {
+            ledShiftDataWrite(isBitSet(state, static_cast<uint8_t>(bit)));
+     6de:	6c 2f       	mov	r22, r28
+     6e0:	c8 01       	movw	r24, r16
+     6e2:	0e 94 51 03 	call	0x6a2	; 0x6a2 <_ZN12_GLOBAL__N_18isBitSetEjh>
+     6e6:	0e 94 18 03 	call	0x630	; 0x630 <_ZN12_GLOBAL__N_117ledShiftDataWriteEb>
+            shiftClockPulse();
+     6ea:	0e 94 1f 03 	call	0x63e	; 0x63e <_ZN12_GLOBAL__N_115shiftClockPulseEv>
+        {
+            ledShiftDataWrite(isBitSet(state, static_cast<uint8_t>(bit)));
+            shiftClockPulse();
+        }
+
+        for (int8_t bit = 15; bit >= 8; --bit)
+     6ee:	c1 50       	subi	r28, 0x01	; 1
+     6f0:	f4 cf       	rjmp	.-24     	; 0x6da <_ZN12_GLOBAL__N_117transferPanelMaskEj+0x24>
+        {
+            ledShiftDataWrite(isBitSet(state, static_cast<uint8_t>(bit)));
+            shiftClockPulse();
+        }
+
+        ledShiftDataWrite(false);
+     6f2:	80 e0       	ldi	r24, 0x00	; 0
+     6f4:	0e 94 18 03 	call	0x630	; 0x630 <_ZN12_GLOBAL__N_117ledShiftDataWriteEb>
+        latch595Pulse();
+     6f8:	0e 94 28 03 	call	0x650	; 0x650 <_ZN12_GLOBAL__N_113latch595PulseEv>
+    }
+     6fc:	cf 91       	pop	r28
+     6fe:	1f 91       	pop	r17
+     700:	0f 91       	pop	r16
+     702:	08 95       	ret
+
+00000704 <_ZN12_GLOBAL__N_116restorePanelMaskEv>:
+     * При чтении 74HC165 линия clock также тактирует 74HC595. Поэтому после
+     * чтения входов необходимо повторно загрузить последнюю LED-маску.
+     */
+    void restorePanelMask(void)
+    {
+        transferPanelMask(s_lastPanelMask);
+     704:	80 91 2d 01 	lds	r24, 0x012D	; 0x80012d <_ZN12_GLOBAL__N_1L15s_lastPanelMaskE>
+     708:	90 91 2e 01 	lds	r25, 0x012E	; 0x80012e <_ZN12_GLOBAL__N_1L15s_lastPanelMaskE+0x1>
+     70c:	0e 94 5b 03 	call	0x6b6	; 0x6b6 <_ZN12_GLOBAL__N_117transferPanelMaskEj>
+     710:	08 95       	ret
+
+00000712 <_ZN9ldi_board16readSlaveAddressEv>:
+        /*
+         * Входы подтянуты к Vcc, активное положение переключателя даёт ноль.
+         * Поэтому состояние входов инвертируется.
+         */
+        const uint8_t raw =
+            static_cast<uint8_t>((~PINC) & ADDRESS_INPUTS_MASK);
+     712:	86 b1       	in	r24, 0x06	; 6
+     714:	80 95       	com	r24
+
+        uint8_t addr = mirrorFiveBits(raw);
+     716:	8f 71       	andi	r24, 0x1F	; 31
+     718:	0e 94 42 03 	call	0x684	; 0x684 <_ZN12_GLOBAL__N_114mirrorFiveBitsEh>
+
+        if (addr == 0u)
+     71c:	81 11       	cpse	r24, r1
+     71e:	01 c0       	rjmp	.+2      	; 0x722 <_ZN9ldi_board16readSlaveAddressEv+0x10>
+        {
+            addr = 1u;
+     720:	81 e0       	ldi	r24, 0x01	; 1
+        }
+
+        return addr;
+    }
+     722:	08 95       	ret
+
+00000724 <_ZN9ldi_board14statusLedWriteEb>:
+     *
+     * @param state true — включить светодиод; false — выключить светодиод.
+     */
+    void statusLedWrite(bool state)
+    {
+        writePortMask(PORTB, STATUS_LED_MASK, state);
+     724:	48 2f       	mov	r20, r24
+     726:	61 e0       	ldi	r22, 0x01	; 1
+     728:	85 e2       	ldi	r24, 0x25	; 37
+     72a:	90 e0       	ldi	r25, 0x00	; 0
+     72c:	0e 94 0b 03 	call	0x616	; 0x616 <_ZN12_GLOBAL__N_113writePortMaskERVhhb>
+     730:	08 95       	ret
+
+00000732 <_ZN9ldi_board15statusLedToggleEv>:
+    /**
+     * @brief Инвертирует состояние светодиода связи.
+     */
+    void statusLedToggle(void)
+    {
+        PORTB ^= STATUS_LED_MASK;
+     732:	95 b1       	in	r25, 0x05	; 5
+     734:	81 e0       	ldi	r24, 0x01	; 1
+     736:	89 27       	eor	r24, r25
+     738:	85 b9       	out	0x05, r24	; 5
+     73a:	08 95       	ret
+
+0000073c <_ZN9ldi_board17rs485TransmitModeEv>:
+    /**
+     * @brief Переводит RS-485-трансивер в режим передачи.
+     */
+    void rs485TransmitMode(void)
+    {
+        PORTD |= RS485_DE_MASK;
+     73c:	8b b1       	in	r24, 0x0b	; 11
+     73e:	84 60       	ori	r24, 0x04	; 4
+     740:	8b b9       	out	0x0b, r24	; 11
+     742:	08 95       	ret
+
+00000744 <_ZN9ldi_board16rs485ReceiveModeEv>:
+    /**
+     * @brief Переводит RS-485-трансивер в режим приёма.
+     */
+    void rs485ReceiveMode(void)
+    {
+        PORTD &= static_cast<uint8_t>(~RS485_DE_MASK);
+     744:	8b b1       	in	r24, 0x0b	; 11
+     746:	8b 7f       	andi	r24, 0xFB	; 251
+     748:	8b b9       	out	0x0b, r24	; 11
+     74a:	08 95       	ret
+
+0000074c <_ZN9ldi_board19rs485IsTransmitModeEv>:
+     * @return true — активен режим передачи.
+     * @return false — активен режим приёма.
+     */
+    bool rs485IsTransmitMode(void)
+    {
+        return ((PORTD & RS485_DE_MASK) != 0u);
+     74c:	8b b1       	in	r24, 0x0b	; 11
+    }
+     74e:	82 fb       	bst	r24, 2
+     750:	88 27       	eor	r24, r24
+     752:	80 f9       	bld	r24, 0
+     754:	08 95       	ret
+
+00000756 <_ZN9ldi_board10readInputsEv>:
+     * @brief Считывает состояние шестнадцати дискретных входов.
+     *
+     * @return Битовое состояние входов.
+     */
+    uint16_t readInputs(void)
+    {
+     756:	0f 93       	push	r16
+     758:	1f 93       	push	r17
+     75a:	cf 93       	push	r28
+        uint16_t state = 0u;
+
+        capture165Inputs();
+     75c:	0e 94 31 03 	call	0x662	; 0x662 <_ZN12_GLOBAL__N_116capture165InputsEv>
+
+        for (uint8_t i = 0u; i < INPUT_COUNT; ++i)
+     760:	c0 e0       	ldi	r28, 0x00	; 0
+     *
+     * @return Битовое состояние входов.
+     */
+    uint16_t readInputs(void)
+    {
+        uint16_t state = 0u;
+     762:	00 e0       	ldi	r16, 0x00	; 0
+     764:	10 e0       	ldi	r17, 0x00	; 0
+
+        capture165Inputs();
+
+        for (uint8_t i = 0u; i < INPUT_COUNT; ++i)
+     766:	c0 31       	cpi	r28, 0x10	; 16
+     768:	40 f4       	brcc	.+16     	; 0x77a <_ZN9ldi_board10readInputsEv+0x24>
+        {
+            state <<= 1;
+     76a:	00 0f       	add	r16, r16
+     76c:	11 1f       	adc	r17, r17
+
+            if ((PIND & SR_INPUT_DATA_MASK) != 0u)
+     76e:	4d 99       	sbic	0x09, 5	; 9
+            {
+                state |= 0x0001u;
+     770:	01 60       	ori	r16, 0x01	; 1
+            }
+
+            shiftClockPulse();
+     772:	0e 94 1f 03 	call	0x63e	; 0x63e <_ZN12_GLOBAL__N_115shiftClockPulseEv>
+    {
+        uint16_t state = 0u;
+
+        capture165Inputs();
+
+        for (uint8_t i = 0u; i < INPUT_COUNT; ++i)
+     776:	cf 5f       	subi	r28, 0xFF	; 255
+     778:	f6 cf       	rjmp	.-20     	; 0x766 <_ZN9ldi_board10readInputsEv+0x10>
+            }
+
+            shiftClockPulse();
+        }
+
+        latchLow();
+     77a:	0e 94 3e 03 	call	0x67c	; 0x67c <_ZN12_GLOBAL__N_18latchLowEv>
+        restorePanelMask();
+     77e:	0e 94 82 03 	call	0x704	; 0x704 <_ZN12_GLOBAL__N_116restorePanelMaskEv>
+
+        return state;
+    }
+     782:	c8 01       	movw	r24, r16
+     784:	cf 91       	pop	r28
+     786:	1f 91       	pop	r17
+     788:	0f 91       	pop	r16
+     78a:	08 95       	ret
+
+0000078c <_ZN9ldi_board14writePanelMaskEj>:
+     *
+     * @param state Битовая маска светодиодов.
+     */
+    void writePanelMask(uint16_t state)
+    {
+        s_lastPanelMask = state;
+     78c:	90 93 2e 01 	sts	0x012E, r25	; 0x80012e <_ZN12_GLOBAL__N_1L15s_lastPanelMaskE+0x1>
+     790:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <_ZN12_GLOBAL__N_1L15s_lastPanelMaskE>
+        transferPanelMask(state);
+     794:	0e 94 5b 03 	call	0x6b6	; 0x6b6 <_ZN12_GLOBAL__N_117transferPanelMaskEj>
+     798:	08 95       	ret
+
+0000079a <_ZN9ldi_board6initIoEv>:
+    {
+        /*
+         * Адресный переключатель: PC0...PC4, входы с внутренней подтяжкой.
+         * Переключатели активны низким уровнем.
+         */
+        DDRC &= static_cast<uint8_t>(~ADDRESS_INPUTS_MASK);
+     79a:	87 b1       	in	r24, 0x07	; 7
+     79c:	80 7e       	andi	r24, 0xE0	; 224
+     79e:	87 b9       	out	0x07, r24	; 7
+        PORTC |= ADDRESS_INPUTS_MASK;
+     7a0:	88 b1       	in	r24, 0x08	; 8
+     7a2:	8f 61       	ori	r24, 0x1F	; 31
+     7a4:	88 b9       	out	0x08, r24	; 8
+         * UART/RS-485:
+         * - PD0 RXD, вход без внутренней подтяжки;
+         * - PD1 TXD, выход;
+         * - PD2 DE/RE, выход, начально режим приёма.
+         */
+        DDRD &= static_cast<uint8_t>(~_BV(PD0));
+     7a6:	8a b1       	in	r24, 0x0a	; 10
+     7a8:	8e 7f       	andi	r24, 0xFE	; 254
+     7aa:	8a b9       	out	0x0a, r24	; 10
+        DDRD |= static_cast<uint8_t>(_BV(PD1) | RS485_DE_MASK);
+     7ac:	8a b1       	in	r24, 0x0a	; 10
+     7ae:	86 60       	ori	r24, 0x06	; 6
+     7b0:	8a b9       	out	0x0a, r24	; 10
+
+        PORTD &= static_cast<uint8_t>(~_BV(PD0));
+     7b2:	8b b1       	in	r24, 0x0b	; 11
+     7b4:	8e 7f       	andi	r24, 0xFE	; 254
+     7b6:	8b b9       	out	0x0b, r24	; 11
+        PORTD &= static_cast<uint8_t>(~_BV(PD1));
+     7b8:	8b b1       	in	r24, 0x0b	; 11
+     7ba:	8d 7f       	andi	r24, 0xFD	; 253
+     7bc:	8b b9       	out	0x0b, r24	; 11
+        rs485ReceiveMode();
+     7be:	0e 94 a2 03 	call	0x744	; 0x744 <_ZN9ldi_board16rs485ReceiveModeEv>
+         * - PD3 latch, выход;
+         * - PD4 clock, выход;
+         * - PD5 data from 74HC165, вход без внутренней подтяжки;
+         * - PB1 data to 74HC595, выход.
+         */
+        DDRD |= static_cast<uint8_t>(SR_LATCH_MASK | SR_CLOCK_MASK);
+     7c2:	8a b1       	in	r24, 0x0a	; 10
+     7c4:	88 61       	ori	r24, 0x18	; 24
+     7c6:	8a b9       	out	0x0a, r24	; 10
+        DDRD &= static_cast<uint8_t>(~SR_INPUT_DATA_MASK);
+     7c8:	8a b1       	in	r24, 0x0a	; 10
+     7ca:	8f 7d       	andi	r24, 0xDF	; 223
+     7cc:	8a b9       	out	0x0a, r24	; 10
+
+        PORTD &= static_cast<uint8_t>(~SR_LATCH_MASK);
+     7ce:	8b b1       	in	r24, 0x0b	; 11
+     7d0:	87 7f       	andi	r24, 0xF7	; 247
+     7d2:	8b b9       	out	0x0b, r24	; 11
+        PORTD &= static_cast<uint8_t>(~SR_CLOCK_MASK);
+     7d4:	8b b1       	in	r24, 0x0b	; 11
+     7d6:	8f 7e       	andi	r24, 0xEF	; 239
+     7d8:	8b b9       	out	0x0b, r24	; 11
+        PORTD &= static_cast<uint8_t>(~SR_INPUT_DATA_MASK);
+     7da:	8b b1       	in	r24, 0x0b	; 11
+     7dc:	8f 7d       	andi	r24, 0xDF	; 223
+     7de:	8b b9       	out	0x0b, r24	; 11
+
+        DDRB |= SR_LED_DATA_MASK;
+     7e0:	84 b1       	in	r24, 0x04	; 4
+     7e2:	82 60       	ori	r24, 0x02	; 2
+     7e4:	84 b9       	out	0x04, r24	; 4
+        PORTB &= static_cast<uint8_t>(~SR_LED_DATA_MASK);
+     7e6:	85 b1       	in	r24, 0x05	; 5
+     7e8:	8d 7f       	andi	r24, 0xFD	; 253
+     7ea:	85 b9       	out	0x05, r24	; 5
+
+        /*
+         * Светодиод состояния связи: PB0, выход, начально выключен.
+         */
+        DDRB |= STATUS_LED_MASK;
+     7ec:	84 b1       	in	r24, 0x04	; 4
+     7ee:	81 60       	ori	r24, 0x01	; 1
+     7f0:	84 b9       	out	0x04, r24	; 4
+        statusLedWrite(false);
+     7f2:	80 e0       	ldi	r24, 0x00	; 0
+     7f4:	0e 94 92 03 	call	0x724	; 0x724 <_ZN9ldi_board14statusLedWriteEb>
+
+        /*
+         * Начальное состояние панели индикации.
+         */
+        writePanelMask(0x0000u);
+     7f8:	80 e0       	ldi	r24, 0x00	; 0
+     7fa:	90 e0       	ldi	r25, 0x00	; 0
+     7fc:	0e 94 c6 03 	call	0x78c	; 0x78c <_ZN9ldi_board14writePanelMaskEj>
+     800:	08 95       	ret
+
+00000802 <_ZN9ldi_board14writeInputLedsEj>:
+     *
+     * @param state Битовое состояние входов.
+     */
+    void writeInputLeds(uint16_t state)
+    {
+        writePanelMask(state);
+     802:	0e 94 c6 03 	call	0x78c	; 0x78c <_ZN9ldi_board14writePanelMaskEj>
+     806:	08 95       	ret
+
+00000808 <_ZL15uart0_calc_ubrrmhPjPm>:
+    uint32_t baud,
+    uint8_t use_u2x,
+    uint16_t* ubrr,
+    uint32_t* actual_baud
+)
+{
+     808:	4f 92       	push	r4
+     80a:	5f 92       	push	r5
+     80c:	6f 92       	push	r6
+     80e:	7f 92       	push	r7
+     810:	8f 92       	push	r8
+     812:	9f 92       	push	r9
+     814:	af 92       	push	r10
+     816:	bf 92       	push	r11
+     818:	cf 92       	push	r12
+     81a:	df 92       	push	r13
+     81c:	ef 92       	push	r14
+     81e:	ff 92       	push	r15
+     820:	0f 93       	push	r16
+     822:	1f 93       	push	r17
+     824:	cf 93       	push	r28
+     826:	df 93       	push	r29
+     828:	00 d0       	rcall	.+0      	; 0x82a <_ZL15uart0_calc_ubrrmhPjPm+0x22>
+     82a:	00 d0       	rcall	.+0      	; 0x82c <_ZL15uart0_calc_ubrrmhPjPm+0x24>
+     82c:	00 d0       	rcall	.+0      	; 0x82e <_ZL15uart0_calc_ubrrmhPjPm+0x26>
+     82e:	cd b7       	in	r28, 0x3d	; 61
+     830:	de b7       	in	r29, 0x3e	; 62
+     832:	3e 83       	std	Y+6, r19	; 0x06
+     834:	2d 83       	std	Y+5, r18	; 0x05
+    if ((baud == 0u) || (ubrr == 0) || (actual_baud == 0))
+     836:	61 15       	cp	r22, r1
+     838:	71 05       	cpc	r23, r1
+     83a:	81 05       	cpc	r24, r1
+     83c:	91 05       	cpc	r25, r1
+     83e:	09 f4       	brne	.+2      	; 0x842 <_ZL15uart0_calc_ubrrmhPjPm+0x3a>
+     840:	71 c0       	rjmp	.+226    	; 0x924 <__stack+0x25>
+     842:	23 2b       	or	r18, r19
+     844:	09 f4       	brne	.+2      	; 0x848 <_ZL15uart0_calc_ubrrmhPjPm+0x40>
+     846:	70 c0       	rjmp	.+224    	; 0x928 <__stack+0x29>
+     848:	01 15       	cp	r16, r1
+     84a:	11 05       	cpc	r17, r1
+     84c:	09 f4       	brne	.+2      	; 0x850 <_ZL15uart0_calc_ubrrmhPjPm+0x48>
+     84e:	6e c0       	rjmp	.+220    	; 0x92c <__stack+0x2d>
+    {
+        return false;
+    }
+
+    const uint32_t denom = use_u2x ? 8u : 16u;
+     850:	44 23       	and	r20, r20
+     852:	31 f0       	breq	.+12     	; 0x860 <_ZL15uart0_calc_ubrrmhPjPm+0x58>
+     854:	c1 2c       	mov	r12, r1
+     856:	d1 2c       	mov	r13, r1
+     858:	76 01       	movw	r14, r12
+     85a:	68 94       	set
+     85c:	c3 f8       	bld	r12, 3
+     85e:	05 c0       	rjmp	.+10     	; 0x86a <_ZL15uart0_calc_ubrrmhPjPm+0x62>
+     860:	c1 2c       	mov	r12, r1
+     862:	d1 2c       	mov	r13, r1
+     864:	76 01       	movw	r14, r12
+     866:	68 94       	set
+     868:	c4 f8       	bld	r12, 4
+    const uint32_t div = denom * baud;
+     86a:	a7 01       	movw	r20, r14
+     86c:	96 01       	movw	r18, r12
+     86e:	0e 94 f4 0a 	call	0x15e8	; 0x15e8 <__mulsi3>
+     872:	4b 01       	movw	r8, r22
+     874:	5c 01       	movw	r10, r24
+
+    if (div == 0u)
+     876:	67 2b       	or	r22, r23
+     878:	68 2b       	or	r22, r24
+     87a:	69 2b       	or	r22, r25
+     87c:	09 f4       	brne	.+2      	; 0x880 <_ZL15uart0_calc_ubrrmhPjPm+0x78>
+     87e:	58 c0       	rjmp	.+176    	; 0x930 <__stack+0x31>
+    {
+        return false;
+    }
+
+    const uint32_t q = static_cast<uint32_t>(F_CPU / div);
+     880:	60 e0       	ldi	r22, 0x00	; 0
+     882:	74 e2       	ldi	r23, 0x24	; 36
+     884:	84 ef       	ldi	r24, 0xF4	; 244
+     886:	90 e0       	ldi	r25, 0x00	; 0
+     888:	a5 01       	movw	r20, r10
+     88a:	94 01       	movw	r18, r8
+     88c:	0e 94 04 0b 	call	0x1608	; 0x1608 <__udivmodsi4>
+     890:	29 83       	std	Y+1, r18	; 0x01
+     892:	3a 83       	std	Y+2, r19	; 0x02
+     894:	4b 83       	std	Y+3, r20	; 0x03
+     896:	5c 83       	std	Y+4, r21	; 0x04
+    const uint32_t r = static_cast<uint32_t>(F_CPU % div);
+
+    if (q == 0u)
+     898:	21 15       	cp	r18, r1
+     89a:	31 05       	cpc	r19, r1
+     89c:	41 05       	cpc	r20, r1
+     89e:	51 05       	cpc	r21, r1
+     8a0:	09 f4       	brne	.+2      	; 0x8a4 <_ZL15uart0_calc_ubrrmhPjPm+0x9c>
+     8a2:	48 c0       	rjmp	.+144    	; 0x934 <__stack+0x35>
+    {
+        return false;
+    }
+
+    uint32_t ubrr_u32 = q - 1u;
+     8a4:	21 50       	subi	r18, 0x01	; 1
+     8a6:	31 09       	sbc	r19, r1
+     8a8:	41 09       	sbc	r20, r1
+     8aa:	51 09       	sbc	r21, r1
+
+    if ((2u * r) >= div)
+     8ac:	2b 01       	movw	r4, r22
+     8ae:	3c 01       	movw	r6, r24
+     8b0:	44 0c       	add	r4, r4
+     8b2:	55 1c       	adc	r5, r5
+     8b4:	66 1c       	adc	r6, r6
+     8b6:	77 1c       	adc	r7, r7
+     8b8:	48 14       	cp	r4, r8
+     8ba:	59 04       	cpc	r5, r9
+     8bc:	6a 04       	cpc	r6, r10
+     8be:	7b 04       	cpc	r7, r11
+     8c0:	20 f4       	brcc	.+8      	; 0x8ca <_ZL15uart0_calc_ubrrmhPjPm+0xc2>
+    if (q == 0u)
+    {
+        return false;
+    }
+
+    uint32_t ubrr_u32 = q - 1u;
+     8c2:	29 83       	std	Y+1, r18	; 0x01
+     8c4:	3a 83       	std	Y+2, r19	; 0x02
+     8c6:	4b 83       	std	Y+3, r20	; 0x03
+     8c8:	5c 83       	std	Y+4, r21	; 0x04
+    if ((2u * r) >= div)
+    {
+        ubrr_u32 += 1u;
+    }
+
+    if (ubrr_u32 > 4095u)
+     8ca:	49 80       	ldd	r4, Y+1	; 0x01
+     8cc:	5a 80       	ldd	r5, Y+2	; 0x02
+     8ce:	6b 80       	ldd	r6, Y+3	; 0x03
+     8d0:	7c 80       	ldd	r7, Y+4	; 0x04
+     8d2:	41 14       	cp	r4, r1
+     8d4:	20 e1       	ldi	r18, 0x10	; 16
+     8d6:	52 06       	cpc	r5, r18
+     8d8:	61 04       	cpc	r6, r1
+     8da:	71 04       	cpc	r7, r1
+     8dc:	68 f5       	brcc	.+90     	; 0x938 <__stack+0x39>
+    {
+        return false;
+    }
+
+    *ubrr = static_cast<uint16_t>(ubrr_u32);
+     8de:	ad 81       	ldd	r26, Y+5	; 0x05
+     8e0:	be 81       	ldd	r27, Y+6	; 0x06
+     8e2:	4d 92       	st	X+, r4
+     8e4:	5c 92       	st	X, r5
+    *actual_baud = static_cast<uint32_t>(
+        F_CPU / (denom * (static_cast<uint32_t>(*ubrr) + 1u))
+     8e6:	e9 81       	ldd	r30, Y+1	; 0x01
+     8e8:	fa 81       	ldd	r31, Y+2	; 0x02
+     8ea:	cf 01       	movw	r24, r30
+     8ec:	a0 e0       	ldi	r26, 0x00	; 0
+     8ee:	b0 e0       	ldi	r27, 0x00	; 0
+     8f0:	bc 01       	movw	r22, r24
+     8f2:	cd 01       	movw	r24, r26
+     8f4:	6f 5f       	subi	r22, 0xFF	; 255
+     8f6:	7f 4f       	sbci	r23, 0xFF	; 255
+     8f8:	8f 4f       	sbci	r24, 0xFF	; 255
+     8fa:	9f 4f       	sbci	r25, 0xFF	; 255
+     8fc:	a7 01       	movw	r20, r14
+     8fe:	96 01       	movw	r18, r12
+     900:	0e 94 f4 0a 	call	0x15e8	; 0x15e8 <__mulsi3>
+     904:	9b 01       	movw	r18, r22
+     906:	ac 01       	movw	r20, r24
+     908:	60 e0       	ldi	r22, 0x00	; 0
+     90a:	74 e2       	ldi	r23, 0x24	; 36
+     90c:	84 ef       	ldi	r24, 0xF4	; 244
+     90e:	90 e0       	ldi	r25, 0x00	; 0
+     910:	0e 94 04 0b 	call	0x1608	; 0x1608 <__udivmodsi4>
+    );
+     914:	d8 01       	movw	r26, r16
+     916:	2d 93       	st	X+, r18
+     918:	3d 93       	st	X+, r19
+     91a:	4d 93       	st	X+, r20
+     91c:	5c 93       	st	X, r21
+     91e:	13 97       	sbiw	r26, 0x03	; 3
+
+    return true;
+     920:	81 e0       	ldi	r24, 0x01	; 1
+     922:	0b c0       	rjmp	.+22     	; 0x93a <__stack+0x3b>
+    uint32_t* actual_baud
+)
+{
+    if ((baud == 0u) || (ubrr == 0) || (actual_baud == 0))
+    {
+        return false;
+     924:	80 e0       	ldi	r24, 0x00	; 0
+     926:	09 c0       	rjmp	.+18     	; 0x93a <__stack+0x3b>
+     928:	80 e0       	ldi	r24, 0x00	; 0
+     92a:	07 c0       	rjmp	.+14     	; 0x93a <__stack+0x3b>
+     92c:	80 e0       	ldi	r24, 0x00	; 0
+     92e:	05 c0       	rjmp	.+10     	; 0x93a <__stack+0x3b>
+    const uint32_t denom = use_u2x ? 8u : 16u;
+    const uint32_t div = denom * baud;
+
+    if (div == 0u)
+    {
+        return false;
+     930:	80 e0       	ldi	r24, 0x00	; 0
+     932:	03 c0       	rjmp	.+6      	; 0x93a <__stack+0x3b>
+    const uint32_t q = static_cast<uint32_t>(F_CPU / div);
+    const uint32_t r = static_cast<uint32_t>(F_CPU % div);
+
+    if (q == 0u)
+    {
+        return false;
+     934:	80 e0       	ldi	r24, 0x00	; 0
+     936:	01 c0       	rjmp	.+2      	; 0x93a <__stack+0x3b>
+        ubrr_u32 += 1u;
+    }
+
+    if (ubrr_u32 > 4095u)
+    {
+        return false;
+     938:	80 e0       	ldi	r24, 0x00	; 0
+    *actual_baud = static_cast<uint32_t>(
+        F_CPU / (denom * (static_cast<uint32_t>(*ubrr) + 1u))
+    );
+
+    return true;
+}
+     93a:	26 96       	adiw	r28, 0x06	; 6
+     93c:	0f b6       	in	r0, 0x3f	; 63
+     93e:	f8 94       	cli
+     940:	de bf       	out	0x3e, r29	; 62
+     942:	0f be       	out	0x3f, r0	; 63
+     944:	cd bf       	out	0x3d, r28	; 61
+     946:	df 91       	pop	r29
+     948:	cf 91       	pop	r28
+     94a:	1f 91       	pop	r17
+     94c:	0f 91       	pop	r16
+     94e:	ff 90       	pop	r15
+     950:	ef 90       	pop	r14
+     952:	df 90       	pop	r13
+     954:	cf 90       	pop	r12
+     956:	bf 90       	pop	r11
+     958:	af 90       	pop	r10
+     95a:	9f 90       	pop	r9
+     95c:	8f 90       	pop	r8
+     95e:	7f 90       	pop	r7
+     960:	6f 90       	pop	r6
+     962:	5f 90       	pop	r5
+     964:	4f 90       	pop	r4
+     966:	08 95       	ret
+
+00000968 <_ZL14uart0_set_baudm>:
+ * @details
+ * Функция рассчитывает варианты для обычного режима и режима U2X,
+ * выбирает вариант с меньшей ошибкой и записывает UBRR0H/UBRR0L.
+ */
+static void uart0_set_baud(uint32_t baud)
+{
+     968:	bf 92       	push	r11
+     96a:	cf 92       	push	r12
+     96c:	df 92       	push	r13
+     96e:	ef 92       	push	r14
+     970:	ff 92       	push	r15
+     972:	0f 93       	push	r16
+     974:	1f 93       	push	r17
+     976:	cf 93       	push	r28
+     978:	df 93       	push	r29
+     97a:	cd b7       	in	r28, 0x3d	; 61
+     97c:	de b7       	in	r29, 0x3e	; 62
+     97e:	2c 97       	sbiw	r28, 0x0c	; 12
+     980:	0f b6       	in	r0, 0x3f	; 63
+     982:	f8 94       	cli
+     984:	de bf       	out	0x3e, r29	; 62
+     986:	0f be       	out	0x3f, r0	; 63
+     988:	cd bf       	out	0x3d, r28	; 61
+     98a:	6b 01       	movw	r12, r22
+     98c:	7c 01       	movw	r14, r24
+    uint16_t ubrr_norm = 0u;
+     98e:	1a 82       	std	Y+2, r1	; 0x02
+     990:	19 82       	std	Y+1, r1	; 0x01
+    uint16_t ubrr_u2x = 0u;
+     992:	1c 82       	std	Y+4, r1	; 0x04
+     994:	1b 82       	std	Y+3, r1	; 0x03
+
+    uint32_t act_norm = 0u;
+     996:	1d 82       	std	Y+5, r1	; 0x05
+     998:	1e 82       	std	Y+6, r1	; 0x06
+     99a:	1f 82       	std	Y+7, r1	; 0x07
+     99c:	18 86       	std	Y+8, r1	; 0x08
+    uint32_t act_u2x = 0u;
+     99e:	19 86       	std	Y+9, r1	; 0x09
+     9a0:	1a 86       	std	Y+10, r1	; 0x0a
+     9a2:	1b 86       	std	Y+11, r1	; 0x0b
+     9a4:	1c 86       	std	Y+12, r1	; 0x0c
+
+    const bool ok_norm = uart0_calc_ubrr(baud, 0u, &ubrr_norm, &act_norm);
+     9a6:	8e 01       	movw	r16, r28
+     9a8:	0b 5f       	subi	r16, 0xFB	; 251
+     9aa:	1f 4f       	sbci	r17, 0xFF	; 255
+     9ac:	9e 01       	movw	r18, r28
+     9ae:	2f 5f       	subi	r18, 0xFF	; 255
+     9b0:	3f 4f       	sbci	r19, 0xFF	; 255
+     9b2:	40 e0       	ldi	r20, 0x00	; 0
+     9b4:	0e 94 04 04 	call	0x808	; 0x808 <_ZL15uart0_calc_ubrrmhPjPm>
+     9b8:	b8 2e       	mov	r11, r24
+    const bool ok_u2x  = uart0_calc_ubrr(baud, 1u, &ubrr_u2x,  &act_u2x);
+     9ba:	0c 5f       	subi	r16, 0xFC	; 252
+     9bc:	1f 4f       	sbci	r17, 0xFF	; 255
+     9be:	9e 01       	movw	r18, r28
+     9c0:	2d 5f       	subi	r18, 0xFD	; 253
+     9c2:	3f 4f       	sbci	r19, 0xFF	; 255
+     9c4:	41 e0       	ldi	r20, 0x01	; 1
+     9c6:	c7 01       	movw	r24, r14
+     9c8:	b6 01       	movw	r22, r12
+     9ca:	0e 94 04 04 	call	0x808	; 0x808 <_ZL15uart0_calc_ubrrmhPjPm>
+
+    uint8_t use_u2x = 0u;
+    uint16_t ubrr = 0u;
+
+#if (F_CPU == 16000000UL)
+    if ((baud == 57600u) && ok_norm)
+     9ce:	c1 14       	cp	r12, r1
+     9d0:	01 ee       	ldi	r16, 0xE1	; 225
+     9d2:	d0 06       	cpc	r13, r16
+     9d4:	e1 04       	cpc	r14, r1
+     9d6:	f1 04       	cpc	r15, r1
+     9d8:	31 f4       	brne	.+12     	; 0x9e6 <_ZL14uart0_set_baudm+0x7e>
+     9da:	bb 20       	and	r11, r11
+     9dc:	21 f0       	breq	.+8      	; 0x9e6 <_ZL14uart0_set_baudm+0x7e>
+    {
+        use_u2x = 0u;
+        ubrr = ubrr_norm;
+     9de:	99 81       	ldd	r25, Y+1	; 0x01
+     9e0:	2a 81       	ldd	r18, Y+2	; 0x02
+    uint16_t ubrr = 0u;
+
+#if (F_CPU == 16000000UL)
+    if ((baud == 57600u) && ok_norm)
+    {
+        use_u2x = 0u;
+     9e2:	80 e0       	ldi	r24, 0x00	; 0
+        ubrr = ubrr_norm;
+     9e4:	4f c0       	rjmp	.+158    	; 0xa84 <_ZL14uart0_set_baudm+0x11c>
+    }
+    else
+#endif
+    {
+        if (ok_norm && ok_u2x)
+     9e6:	bb 20       	and	r11, r11
+     9e8:	f1 f1       	breq	.+124    	; 0xa66 <_ZL14uart0_set_baudm+0xfe>
+     9ea:	88 23       	and	r24, r24
+     9ec:	e1 f1       	breq	.+120    	; 0xa66 <_ZL14uart0_set_baudm+0xfe>
+        {
+            const uint32_t err_norm = u32_abs_diff(act_norm, baud);
+     9ee:	8d 81       	ldd	r24, Y+5	; 0x05
+     9f0:	9e 81       	ldd	r25, Y+6	; 0x06
+     9f2:	af 81       	ldd	r26, Y+7	; 0x07
+     9f4:	b8 85       	ldd	r27, Y+8	; 0x08
+ *
+ * @return |a - b|.
+ */
+static inline uint32_t u32_abs_diff(uint32_t a, uint32_t b)
+{
+    return (a > b) ? (a - b) : (b - a);
+     9f6:	c8 16       	cp	r12, r24
+     9f8:	d9 06       	cpc	r13, r25
+     9fa:	ea 06       	cpc	r14, r26
+     9fc:	fb 06       	cpc	r15, r27
+     9fe:	28 f4       	brcc	.+10     	; 0xa0a <_ZL14uart0_set_baudm+0xa2>
+     a00:	8c 19       	sub	r24, r12
+     a02:	9d 09       	sbc	r25, r13
+     a04:	ae 09       	sbc	r26, r14
+     a06:	bf 09       	sbc	r27, r15
+     a08:	08 c0       	rjmp	.+16     	; 0xa1a <_ZL14uart0_set_baudm+0xb2>
+     a0a:	a7 01       	movw	r20, r14
+     a0c:	96 01       	movw	r18, r12
+     a0e:	28 1b       	sub	r18, r24
+     a10:	39 0b       	sbc	r19, r25
+     a12:	4a 0b       	sbc	r20, r26
+     a14:	5b 0b       	sbc	r21, r27
+     a16:	da 01       	movw	r26, r20
+     a18:	c9 01       	movw	r24, r18
+#endif
+    {
+        if (ok_norm && ok_u2x)
+        {
+            const uint32_t err_norm = u32_abs_diff(act_norm, baud);
+            const uint32_t err_u2x  = u32_abs_diff(act_u2x,  baud);
+     a1a:	49 85       	ldd	r20, Y+9	; 0x09
+     a1c:	5a 85       	ldd	r21, Y+10	; 0x0a
+     a1e:	6b 85       	ldd	r22, Y+11	; 0x0b
+     a20:	7c 85       	ldd	r23, Y+12	; 0x0c
+ *
+ * @return |a - b|.
+ */
+static inline uint32_t u32_abs_diff(uint32_t a, uint32_t b)
+{
+    return (a > b) ? (a - b) : (b - a);
+     a22:	c4 16       	cp	r12, r20
+     a24:	d5 06       	cpc	r13, r21
+     a26:	e6 06       	cpc	r14, r22
+     a28:	f7 06       	cpc	r15, r23
+     a2a:	48 f4       	brcc	.+18     	; 0xa3e <_ZL14uart0_set_baudm+0xd6>
+     a2c:	8a 01       	movw	r16, r20
+     a2e:	9b 01       	movw	r18, r22
+     a30:	0c 19       	sub	r16, r12
+     a32:	1d 09       	sbc	r17, r13
+     a34:	2e 09       	sbc	r18, r14
+     a36:	3f 09       	sbc	r19, r15
+     a38:	68 01       	movw	r12, r16
+     a3a:	79 01       	movw	r14, r18
+     a3c:	04 c0       	rjmp	.+8      	; 0xa46 <_ZL14uart0_set_baudm+0xde>
+     a3e:	c4 1a       	sub	r12, r20
+     a40:	d5 0a       	sbc	r13, r21
+     a42:	e6 0a       	sbc	r14, r22
+     a44:	f7 0a       	sbc	r15, r23
+        if (ok_norm && ok_u2x)
+        {
+            const uint32_t err_norm = u32_abs_diff(act_norm, baud);
+            const uint32_t err_u2x  = u32_abs_diff(act_u2x,  baud);
+
+            use_u2x = (err_u2x < err_norm) ? 1u : 0u;
+     a46:	c8 16       	cp	r12, r24
+     a48:	d9 06       	cpc	r13, r25
+     a4a:	ea 06       	cpc	r14, r26
+     a4c:	fb 06       	cpc	r15, r27
+     a4e:	10 f4       	brcc	.+4      	; 0xa54 <_ZL14uart0_set_baudm+0xec>
+     a50:	81 e0       	ldi	r24, 0x01	; 1
+     a52:	01 c0       	rjmp	.+2      	; 0xa56 <_ZL14uart0_set_baudm+0xee>
+     a54:	80 e0       	ldi	r24, 0x00	; 0
+            ubrr = use_u2x ? ubrr_u2x : ubrr_norm;
+     a56:	88 23       	and	r24, r24
+     a58:	19 f0       	breq	.+6      	; 0xa60 <_ZL14uart0_set_baudm+0xf8>
+     a5a:	9b 81       	ldd	r25, Y+3	; 0x03
+     a5c:	2c 81       	ldd	r18, Y+4	; 0x04
+     a5e:	12 c0       	rjmp	.+36     	; 0xa84 <_ZL14uart0_set_baudm+0x11c>
+     a60:	99 81       	ldd	r25, Y+1	; 0x01
+     a62:	2a 81       	ldd	r18, Y+2	; 0x02
+     a64:	0f c0       	rjmp	.+30     	; 0xa84 <_ZL14uart0_set_baudm+0x11c>
+        }
+        else if (ok_u2x)
+     a66:	88 23       	and	r24, r24
+     a68:	21 f0       	breq	.+8      	; 0xa72 <_ZL14uart0_set_baudm+0x10a>
+        {
+            use_u2x = 1u;
+            ubrr = ubrr_u2x;
+     a6a:	9b 81       	ldd	r25, Y+3	; 0x03
+     a6c:	2c 81       	ldd	r18, Y+4	; 0x04
+            use_u2x = (err_u2x < err_norm) ? 1u : 0u;
+            ubrr = use_u2x ? ubrr_u2x : ubrr_norm;
+        }
+        else if (ok_u2x)
+        {
+            use_u2x = 1u;
+     a6e:	81 e0       	ldi	r24, 0x01	; 1
+     a70:	09 c0       	rjmp	.+18     	; 0xa84 <_ZL14uart0_set_baudm+0x11c>
+            ubrr = ubrr_u2x;
+        }
+        else if (ok_norm)
+     a72:	bb 20       	and	r11, r11
+     a74:	21 f0       	breq	.+8      	; 0xa7e <_ZL14uart0_set_baudm+0x116>
+        {
+            use_u2x = 0u;
+            ubrr = ubrr_norm;
+     a76:	99 81       	ldd	r25, Y+1	; 0x01
+     a78:	2a 81       	ldd	r18, Y+2	; 0x02
+            use_u2x = 1u;
+            ubrr = ubrr_u2x;
+        }
+        else if (ok_norm)
+        {
+            use_u2x = 0u;
+     a7a:	80 e0       	ldi	r24, 0x00	; 0
+     a7c:	03 c0       	rjmp	.+6      	; 0xa84 <_ZL14uart0_set_baudm+0x11c>
+            ubrr = ubrr_norm;
+        }
+        else
+        {
+            use_u2x = 0u;
+            ubrr = 0u;
+     a7e:	90 e0       	ldi	r25, 0x00	; 0
+     a80:	20 e0       	ldi	r18, 0x00	; 0
+            use_u2x = 0u;
+            ubrr = ubrr_norm;
+        }
+        else
+        {
+            use_u2x = 0u;
+     a82:	80 e0       	ldi	r24, 0x00	; 0
+            ubrr = 0u;
+        }
+    }
+
+    if (use_u2x)
+     a84:	88 23       	and	r24, r24
+     a86:	21 f0       	breq	.+8      	; 0xa90 <_ZL14uart0_set_baudm+0x128>
+    {
+        UCSR0A = _BV(U2X0);
+     a88:	82 e0       	ldi	r24, 0x02	; 2
+     a8a:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+     a8e:	02 c0       	rjmp	.+4      	; 0xa94 <_ZL14uart0_set_baudm+0x12c>
+    }
+    else
+    {
+        UCSR0A = 0u;
+     a90:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+    }
+
+    UBRR0H = static_cast<uint8_t>(ubrr >> 8);
+     a94:	20 93 c5 00 	sts	0x00C5, r18	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+    UBRR0L = static_cast<uint8_t>(ubrr & 0xFFu);
+     a98:	90 93 c4 00 	sts	0x00C4, r25	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+}
+     a9c:	2c 96       	adiw	r28, 0x0c	; 12
+     a9e:	0f b6       	in	r0, 0x3f	; 63
+     aa0:	f8 94       	cli
+     aa2:	de bf       	out	0x3e, r29	; 62
+     aa4:	0f be       	out	0x3f, r0	; 63
+     aa6:	cd bf       	out	0x3d, r28	; 61
+     aa8:	df 91       	pop	r29
+     aaa:	cf 91       	pop	r28
+     aac:	1f 91       	pop	r17
+     aae:	0f 91       	pop	r16
+     ab0:	ff 90       	pop	r15
+     ab2:	ef 90       	pop	r14
+     ab4:	df 90       	pop	r13
+     ab6:	cf 90       	pop	r12
+     ab8:	bf 90       	pop	r11
+     aba:	08 95       	ret
+
+00000abc <_ZL24uart0_set_frame_from_cfgh>:
+ */
+static void uart0_set_frame_from_cfg(uint8_t cfg)
+{
+    uint8_t ucsrc = 0u;
+
+    switch (cfg & 0x06u)
+     abc:	98 2f       	mov	r25, r24
+     abe:	96 70       	andi	r25, 0x06	; 6
+     ac0:	94 30       	cpi	r25, 0x04	; 4
+     ac2:	31 f0       	breq	.+12     	; 0xad0 <_ZL24uart0_set_frame_from_cfgh+0x14>
+     ac4:	96 30       	cpi	r25, 0x06	; 6
+     ac6:	31 f0       	breq	.+12     	; 0xad4 <_ZL24uart0_set_frame_from_cfgh+0x18>
+     ac8:	92 30       	cpi	r25, 0x02	; 2
+     aca:	31 f0       	breq	.+12     	; 0xad8 <_ZL24uart0_set_frame_from_cfgh+0x1c>
+ * - количество стоп-битов;
+ * - режим паритета.
+ */
+static void uart0_set_frame_from_cfg(uint8_t cfg)
+{
+    uint8_t ucsrc = 0u;
+     acc:	90 e0       	ldi	r25, 0x00	; 0
+     ace:	05 c0       	rjmp	.+10     	; 0xada <_ZL24uart0_set_frame_from_cfgh+0x1e>
+        case 0x02u:
+            ucsrc |= _BV(UCSZ00);
+            break;
+
+        case 0x04u:
+            ucsrc |= _BV(UCSZ01);
+     ad0:	94 e0       	ldi	r25, 0x04	; 4
+            break;
+     ad2:	03 c0       	rjmp	.+6      	; 0xada <_ZL24uart0_set_frame_from_cfgh+0x1e>
+
+        case 0x06u:
+            ucsrc |= static_cast<uint8_t>(_BV(UCSZ01) | _BV(UCSZ00));
+     ad4:	96 e0       	ldi	r25, 0x06	; 6
+            break;
+     ad6:	01 c0       	rjmp	.+2      	; 0xada <_ZL24uart0_set_frame_from_cfgh+0x1e>
+    {
+        case 0x00u:
+            break;
+
+        case 0x02u:
+            ucsrc |= _BV(UCSZ00);
+     ad8:	92 e0       	ldi	r25, 0x02	; 2
+
+        default:
+            break;
+    }
+
+    if ((cfg & 0x08u) != 0u)
+     ada:	83 fd       	sbrc	r24, 3
+    {
+        ucsrc |= _BV(USBS0);
+     adc:	98 60       	ori	r25, 0x08	; 8
+    }
+
+    const uint8_t parity = static_cast<uint8_t>(cfg & 0x30u);
+     ade:	80 73       	andi	r24, 0x30	; 48
+
+    if (parity == 0x20u)
+     ae0:	80 32       	cpi	r24, 0x20	; 32
+     ae2:	29 f4       	brne	.+10     	; 0xaee <_ZL24uart0_set_frame_from_cfgh+0x32>
+    {
+        ucsrc |= _BV(UPM01);
+     ae4:	90 62       	ori	r25, 0x20	; 32
+        s_parity_enabled = 1u;
+     ae6:	81 e0       	ldi	r24, 0x01	; 1
+     ae8:	80 93 31 01 	sts	0x0131, r24	; 0x800131 <_ZL16s_parity_enabled>
+     aec:	09 c0       	rjmp	.+18     	; 0xb00 <_ZL24uart0_set_frame_from_cfgh+0x44>
+    }
+    else if (parity == 0x30u)
+     aee:	80 33       	cpi	r24, 0x30	; 48
+     af0:	29 f4       	brne	.+10     	; 0xafc <_ZL24uart0_set_frame_from_cfgh+0x40>
+    {
+        ucsrc |= static_cast<uint8_t>(_BV(UPM01) | _BV(UPM00));
+     af2:	90 63       	ori	r25, 0x30	; 48
+        s_parity_enabled = 1u;
+     af4:	81 e0       	ldi	r24, 0x01	; 1
+     af6:	80 93 31 01 	sts	0x0131, r24	; 0x800131 <_ZL16s_parity_enabled>
+     afa:	02 c0       	rjmp	.+4      	; 0xb00 <_ZL24uart0_set_frame_from_cfgh+0x44>
+    }
+    else
+    {
+        s_parity_enabled = 0u;
+     afc:	10 92 31 01 	sts	0x0131, r1	; 0x800131 <_ZL16s_parity_enabled>
+    }
+
+    UCSR0C = ucsrc;
+     b00:	90 93 c2 00 	sts	0x00C2, r25	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+     b04:	08 95       	ret
+
+00000b06 <_ZN3hal10uart0_initEmh>:
+     * @details
+     * На время перенастройки UART0 прерывания кратковременно запрещаются.
+     * После инициализации очищаются программные RX/TX буферы.
+     */
+    void uart0_init(uint32_t baud, uint8_t cfg)
+    {
+     b06:	0f 93       	push	r16
+     b08:	1f 93       	push	r17
+     b0a:	cf 93       	push	r28
+     b0c:	df 93       	push	r29
+     b0e:	04 2f       	mov	r16, r20
+        const uint8_t old_sreg = SREG;
+     b10:	1f b7       	in	r17, 0x3f	; 63
+        cli();
+     b12:	f8 94       	cli
+/**
+ * @brief Полностью отключает UART0 и связанные прерывания.
+ */
+static inline void uart0_disable_rx_tx_irq(void)
+{
+    UCSR0B = 0u;
+     b14:	c1 ec       	ldi	r28, 0xC1	; 193
+     b16:	d0 e0       	ldi	r29, 0x00	; 0
+     b18:	18 82       	st	Y, r1
+        const uint8_t old_sreg = SREG;
+        cli();
+
+        uart0_disable_rx_tx_irq();
+
+        uart0_set_baud(baud);
+     b1a:	0e 94 b4 04 	call	0x968	; 0x968 <_ZL14uart0_set_baudm>
+        uart0_set_frame_from_cfg(cfg);
+     b1e:	80 2f       	mov	r24, r16
+     b20:	0e 94 5e 05 	call	0xabc	; 0xabc <_ZL24uart0_set_frame_from_cfgh>
+
+        rx_head = 0u;
+     b24:	10 92 35 01 	sts	0x0135, r1	; 0x800135 <_ZL7rx_head>
+        rx_tail = 0u;
+     b28:	10 92 34 01 	sts	0x0134, r1	; 0x800134 <_ZL7rx_tail>
+        tx_head = 0u;
+     b2c:	10 92 33 01 	sts	0x0133, r1	; 0x800133 <_ZL7tx_head>
+        tx_tail = 0u;
+     b30:	10 92 32 01 	sts	0x0132, r1	; 0x800132 <_ZL7tx_tail>
+
+        UCSR0A |= _BV(TXC0);
+     b34:	e0 ec       	ldi	r30, 0xC0	; 192
+     b36:	f0 e0       	ldi	r31, 0x00	; 0
+     b38:	80 81       	ld	r24, Z
+     b3a:	80 64       	ori	r24, 0x40	; 64
+     b3c:	80 83       	st	Z, r24
+/**
+ * @brief Включает UART0, приём, передачу и прерывание приёма.
+ */
+static inline void uart0_enable_rx_tx_irq(void)
+{
+    UCSR0B = static_cast<uint8_t>(_BV(RXEN0) | _BV(TXEN0) | _BV(RXCIE0));
+     b3e:	88 e9       	ldi	r24, 0x98	; 152
+     b40:	88 83       	st	Y, r24
+
+        UCSR0A |= _BV(TXC0);
+
+        uart0_enable_rx_tx_irq();
+
+        SREG = old_sreg;
+     b42:	1f bf       	out	0x3f, r17	; 63
+    }
+     b44:	df 91       	pop	r29
+     b46:	cf 91       	pop	r28
+     b48:	1f 91       	pop	r17
+     b4a:	0f 91       	pop	r16
+     b4c:	08 95       	ret
+
+00000b4e <_ZN3hal15uart0_availableEv>:
+ *
+ * @return Количество доступных байт.
+ */
+static inline uint8_t rx_count(void)
+{
+    return static_cast<uint8_t>((rx_head - rx_tail) & RX_MASK);
+     b4e:	80 91 35 01 	lds	r24, 0x0135	; 0x800135 <_ZL7rx_head>
+     b52:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <_ZL7rx_tail>
+     b56:	89 1b       	sub	r24, r25
+     * @return Количество байт, доступных для чтения.
+     */
+    uint8_t uart0_available(void)
+    {
+        return rx_count();
+    }
+     b58:	8f 73       	andi	r24, 0x3F	; 63
+     b5a:	08 95       	ret
+
+00000b5c <_ZN3hal10uart0_readEv>:
+     * @return Значение от 0 до 255, если байт прочитан.
+     * @return -1, если RX-буфер пуст.
+     */
+    int16_t uart0_read(void)
+    {
+        if (rx_head == rx_tail)
+     b5c:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <_ZL7rx_head>
+     b60:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <_ZL7rx_tail>
+     b64:	98 17       	cp	r25, r24
+     b66:	69 f0       	breq	.+26     	; 0xb82 <_ZN3hal10uart0_readEv+0x26>
+        {
+            return -1;
+        }
+
+        const uint8_t t = rx_tail;
+     b68:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <_ZL7rx_tail>
+        const uint8_t v = rx_buf[t];
+     b6c:	e9 2f       	mov	r30, r25
+     b6e:	f0 e0       	ldi	r31, 0x00	; 0
+     b70:	ea 58       	subi	r30, 0x8A	; 138
+     b72:	fe 4f       	sbci	r31, 0xFE	; 254
+     b74:	80 81       	ld	r24, Z
+
+        rx_tail = static_cast<uint8_t>((t + 1u) & RX_MASK);
+     b76:	9f 5f       	subi	r25, 0xFF	; 255
+     b78:	9f 73       	andi	r25, 0x3F	; 63
+     b7a:	90 93 34 01 	sts	0x0134, r25	; 0x800134 <_ZL7rx_tail>
+
+        return static_cast<int16_t>(v);
+     b7e:	90 e0       	ldi	r25, 0x00	; 0
+     b80:	08 95       	ret
+     */
+    int16_t uart0_read(void)
+    {
+        if (rx_head == rx_tail)
+        {
+            return -1;
+     b82:	8f ef       	ldi	r24, 0xFF	; 255
+     b84:	9f ef       	ldi	r25, 0xFF	; 255
+        const uint8_t v = rx_buf[t];
+
+        rx_tail = static_cast<uint8_t>((t + 1u) & RX_MASK);
+
+        return static_cast<int16_t>(v);
+    }
+     b86:	08 95       	ret
+
+00000b88 <_ZN3hal11uart0_writeEh>:
+ *
+ * @return Количество байт, ожидающих отправки.
+ */
+static inline uint8_t tx_count(void)
+{
+    return static_cast<uint8_t>((tx_head - tx_tail) & TX_MASK);
+     b88:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <_ZL7tx_head>
+     b8c:	20 91 32 01 	lds	r18, 0x0132	; 0x800132 <_ZL7tx_tail>
+     b90:	92 1b       	sub	r25, r18
+     b92:	9f 73       	andi	r25, 0x3F	; 63
+     * Если TX-буфер заполнен, функция ожидает освобождения места.
+     * Фактическая передача выполняется в ISR UDRE.
+     */
+    void uart0_write(uint8_t b)
+    {
+        while (tx_space() == 0u)
+     b94:	9f 33       	cpi	r25, 0x3F	; 63
+     b96:	c1 f3       	breq	.-16     	; 0xb88 <_ZN3hal11uart0_writeEh>
+            /*
+             * Ожидание освобождения места в TX-буфере.
+             */
+        }
+
+        const uint8_t was_empty = (tx_head == tx_tail);
+     b98:	30 91 33 01 	lds	r19, 0x0133	; 0x800133 <_ZL7tx_head>
+     b9c:	20 91 32 01 	lds	r18, 0x0132	; 0x800132 <_ZL7tx_tail>
+
+        const uint8_t h = tx_head;
+     ba0:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <_ZL7tx_head>
+        tx_buf[h] = b;
+     ba4:	e9 2f       	mov	r30, r25
+     ba6:	f0 e0       	ldi	r31, 0x00	; 0
+     ba8:	ea 5c       	subi	r30, 0xCA	; 202
+     baa:	fe 4f       	sbci	r31, 0xFE	; 254
+     bac:	80 83       	st	Z, r24
+        tx_head = static_cast<uint8_t>((h + 1u) & TX_MASK);
+     bae:	9f 5f       	subi	r25, 0xFF	; 255
+     bb0:	9f 73       	andi	r25, 0x3F	; 63
+     bb2:	90 93 33 01 	sts	0x0133, r25	; 0x800133 <_ZL7tx_head>
+
+        if (was_empty)
+     bb6:	32 13       	cpse	r19, r18
+     bb8:	05 c0       	rjmp	.+10     	; 0xbc4 <_ZN3hal11uart0_writeEh+0x3c>
+        {
+            /*
+             * TXC0 очищается перед запуском передачи нового блока данных.
+             * Флаг очищается записью логической единицы.
+             */
+            UCSR0A |= _BV(TXC0);
+     bba:	e0 ec       	ldi	r30, 0xC0	; 192
+     bbc:	f0 e0       	ldi	r31, 0x00	; 0
+     bbe:	80 81       	ld	r24, Z
+     bc0:	80 64       	ori	r24, 0x40	; 64
+     bc2:	80 83       	st	Z, r24
+        }
+
+        UCSR0B |= _BV(UDRIE0);
+     bc4:	e1 ec       	ldi	r30, 0xC1	; 193
+     bc6:	f0 e0       	ldi	r31, 0x00	; 0
+     bc8:	80 81       	ld	r24, Z
+     bca:	80 62       	ori	r24, 0x20	; 32
+     bcc:	80 83       	st	Z, r24
+     bce:	08 95       	ret
+
+00000bd0 <_ZN3hal30uart0_set_tx_complete_callbackEPFvvE>:
+     * @brief Назначает callback окончания физической передачи UART0.
+     *
+     * @param callback Указатель на callback-функцию или 0.
+     */
+    void uart0_set_tx_complete_callback(Uart0TxCompleteCallback callback)
+    {
+     bd0:	9c 01       	movw	r18, r24
+        const uint8_t old_sreg = SREG;
+     bd2:	9f b7       	in	r25, 0x3f	; 63
+        cli();
+     bd4:	f8 94       	cli
+
+        s_tx_complete_callback = callback;
+     bd6:	30 93 30 01 	sts	0x0130, r19	; 0x800130 <_ZL22s_tx_complete_callback+0x1>
+     bda:	20 93 2f 01 	sts	0x012F, r18	; 0x80012f <_ZL22s_tx_complete_callback>
+
+        SREG = old_sreg;
+     bde:	9f bf       	out	0x3f, r25	; 63
+     be0:	08 95       	ret
+
+00000be2 <_ZN3hal34uart0_enable_tx_complete_interruptEv>:
+     * После завершения физической передачи последнего байта UART установит TXC0,
+     * будет вызван ISR TX Complete, затем прерывание TX Complete отключится.
+     */
+    void uart0_enable_tx_complete_interrupt(void)
+    {
+        const uint8_t old_sreg = SREG;
+     be2:	9f b7       	in	r25, 0x3f	; 63
+        cli();
+     be4:	f8 94       	cli
+
+        UCSR0A |= static_cast<uint8_t>(_BV(TXC0));
+     be6:	e0 ec       	ldi	r30, 0xC0	; 192
+     be8:	f0 e0       	ldi	r31, 0x00	; 0
+     bea:	80 81       	ld	r24, Z
+     bec:	80 64       	ori	r24, 0x40	; 64
+     bee:	80 83       	st	Z, r24
+        UCSR0B |= static_cast<uint8_t>(_BV(TXCIE0));
+     bf0:	e1 ec       	ldi	r30, 0xC1	; 193
+     bf2:	f0 e0       	ldi	r31, 0x00	; 0
+     bf4:	80 81       	ld	r24, Z
+     bf6:	80 64       	ori	r24, 0x40	; 64
+     bf8:	80 83       	st	Z, r24
+
+        SREG = old_sreg;
+     bfa:	9f bf       	out	0x3f, r25	; 63
+     bfc:	08 95       	ret
+
+00000bfe <_ZN3hal35uart0_disable_tx_complete_interruptEv>:
+    /**
+     * @brief Запрещает прерывание UART0 TX Complete.
+     */
+    void uart0_disable_tx_complete_interrupt(void)
+    {
+        const uint8_t old_sreg = SREG;
+     bfe:	9f b7       	in	r25, 0x3f	; 63
+        cli();
+     c00:	f8 94       	cli
+
+        UCSR0B &= static_cast<uint8_t>(~_BV(TXCIE0));
+     c02:	e1 ec       	ldi	r30, 0xC1	; 193
+     c04:	f0 e0       	ldi	r31, 0x00	; 0
+     c06:	80 81       	ld	r24, Z
+     c08:	8f 7b       	andi	r24, 0xBF	; 191
+     c0a:	80 83       	st	Z, r24
+
+        SREG = old_sreg;
+     c0c:	9f bf       	out	0x3f, r25	; 63
+     c0e:	08 95       	ret
+
+00000c10 <__vector_18>:
+ * @details
+ * Считывает статус UART до чтения UDR0, проверяет ошибки кадра,
+ * переполнения и паритета, затем помещает байт в RX-буфер.
+ */
+ISR(UART0_RX_VECTOR)
+{
+     c10:	1f 92       	push	r1
+     c12:	0f 92       	push	r0
+     c14:	0f b6       	in	r0, 0x3f	; 63
+     c16:	0f 92       	push	r0
+     c18:	11 24       	eor	r1, r1
+     c1a:	2f 93       	push	r18
+     c1c:	8f 93       	push	r24
+     c1e:	9f 93       	push	r25
+     c20:	ef 93       	push	r30
+     c22:	ff 93       	push	r31
+    const uint8_t status = UCSR0A;
+     c24:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+    const uint8_t d = UDR0;
+     c28:	20 91 c6 00 	lds	r18, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+
+    if ((status & static_cast<uint8_t>(_BV(FE0) | _BV(DOR0))) != 0u)
+     c2c:	98 2f       	mov	r25, r24
+     c2e:	98 71       	andi	r25, 0x18	; 24
+     c30:	e9 f4       	brne	.+58     	; 0xc6c <__vector_18+0x5c>
+    {
+        return;
+    }
+
+    if ((s_parity_enabled != 0u) && ((status & _BV(UPE0)) != 0u))
+     c32:	90 91 31 01 	lds	r25, 0x0131	; 0x800131 <_ZL16s_parity_enabled>
+     c36:	99 23       	and	r25, r25
+     c38:	21 f0       	breq	.+8      	; 0xc42 <__vector_18+0x32>
+     c3a:	82 fd       	sbrc	r24, 2
+     c3c:	04 c0       	rjmp	.+8      	; 0xc46 <__vector_18+0x36>
+     c3e:	80 e0       	ldi	r24, 0x00	; 0
+     c40:	03 c0       	rjmp	.+6      	; 0xc48 <__vector_18+0x38>
+     c42:	80 e0       	ldi	r24, 0x00	; 0
+     c44:	01 c0       	rjmp	.+2      	; 0xc48 <__vector_18+0x38>
+     c46:	81 e0       	ldi	r24, 0x01	; 1
+     c48:	81 11       	cpse	r24, r1
+     c4a:	10 c0       	rjmp	.+32     	; 0xc6c <__vector_18+0x5c>
+    {
+        return;
+    }
+
+    const uint8_t next = static_cast<uint8_t>((rx_head + 1u) & RX_MASK);
+     c4c:	80 91 35 01 	lds	r24, 0x0135	; 0x800135 <_ZL7rx_head>
+     c50:	8f 5f       	subi	r24, 0xFF	; 255
+     c52:	8f 73       	andi	r24, 0x3F	; 63
+
+    if (next != rx_tail)
+     c54:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <_ZL7rx_tail>
+     c58:	89 17       	cp	r24, r25
+     c5a:	41 f0       	breq	.+16     	; 0xc6c <__vector_18+0x5c>
+    {
+        rx_buf[rx_head] = d;
+     c5c:	e0 91 35 01 	lds	r30, 0x0135	; 0x800135 <_ZL7rx_head>
+     c60:	f0 e0       	ldi	r31, 0x00	; 0
+     c62:	ea 58       	subi	r30, 0x8A	; 138
+     c64:	fe 4f       	sbci	r31, 0xFE	; 254
+     c66:	20 83       	st	Z, r18
+        rx_head = next;
+     c68:	80 93 35 01 	sts	0x0135, r24	; 0x800135 <_ZL7rx_head>
+    {
+        /*
+         * RX-буфер заполнен. Принятый байт отбрасывается.
+         */
+    }
+}
+     c6c:	ff 91       	pop	r31
+     c6e:	ef 91       	pop	r30
+     c70:	9f 91       	pop	r25
+     c72:	8f 91       	pop	r24
+     c74:	2f 91       	pop	r18
+     c76:	0f 90       	pop	r0
+     c78:	0f be       	out	0x3f, r0	; 63
+     c7a:	0f 90       	pop	r0
+     c7c:	1f 90       	pop	r1
+     c7e:	18 95       	reti
+
+00000c80 <__vector_19>:
+ * @details
+ * Выгружает следующий байт из TX-буфера в UDR0.
+ * Если буфер пуст, отключает прерывание UDRE.
+ */
+ISR(UART0_UDRE_VECTOR)
+{
+     c80:	1f 92       	push	r1
+     c82:	0f 92       	push	r0
+     c84:	0f b6       	in	r0, 0x3f	; 63
+     c86:	0f 92       	push	r0
+     c88:	11 24       	eor	r1, r1
+     c8a:	8f 93       	push	r24
+     c8c:	9f 93       	push	r25
+     c8e:	ef 93       	push	r30
+     c90:	ff 93       	push	r31
+    if (tx_head == tx_tail)
+     c92:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <_ZL7tx_head>
+     c96:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <_ZL7tx_tail>
+     c9a:	98 13       	cpse	r25, r24
+     c9c:	06 c0       	rjmp	.+12     	; 0xcaa <__vector_19+0x2a>
+    {
+        UCSR0B &= static_cast<uint8_t>(~_BV(UDRIE0));
+     c9e:	e1 ec       	ldi	r30, 0xC1	; 193
+     ca0:	f0 e0       	ldi	r31, 0x00	; 0
+     ca2:	80 81       	ld	r24, Z
+     ca4:	8f 7d       	andi	r24, 0xDF	; 223
+     ca6:	80 83       	st	Z, r24
+        return;
+     ca8:	0d c0       	rjmp	.+26     	; 0xcc4 <__vector_19+0x44>
+    }
+
+    const uint8_t t = tx_tail;
+     caa:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <_ZL7tx_tail>
+
+    UDR0 = tx_buf[t];
+     cae:	e8 2f       	mov	r30, r24
+     cb0:	f0 e0       	ldi	r31, 0x00	; 0
+     cb2:	ea 5c       	subi	r30, 0xCA	; 202
+     cb4:	fe 4f       	sbci	r31, 0xFE	; 254
+     cb6:	90 81       	ld	r25, Z
+     cb8:	90 93 c6 00 	sts	0x00C6, r25	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+    tx_tail = static_cast<uint8_t>((t + 1u) & TX_MASK);
+     cbc:	8f 5f       	subi	r24, 0xFF	; 255
+     cbe:	8f 73       	andi	r24, 0x3F	; 63
+     cc0:	80 93 32 01 	sts	0x0132, r24	; 0x800132 <_ZL7tx_tail>
+}
+     cc4:	ff 91       	pop	r31
+     cc6:	ef 91       	pop	r30
+     cc8:	9f 91       	pop	r25
+     cca:	8f 91       	pop	r24
+     ccc:	0f 90       	pop	r0
+     cce:	0f be       	out	0x3f, r0	; 63
+     cd0:	0f 90       	pop	r0
+     cd2:	1f 90       	pop	r1
+     cd4:	18 95       	reti
+
+00000cd6 <__vector_20>:
+ * Срабатывает после передачи последнего стоп-бита, когда регистр данных
+ * и сдвиговый регистр передатчика пусты. После срабатывания прерывание
+ * TX Complete отключается и вызывается назначенный callback.
+ */
+ISR(UART0_TX_VECTOR)
+{
+     cd6:	1f 92       	push	r1
+     cd8:	0f 92       	push	r0
+     cda:	0f b6       	in	r0, 0x3f	; 63
+     cdc:	0f 92       	push	r0
+     cde:	11 24       	eor	r1, r1
+     ce0:	2f 93       	push	r18
+     ce2:	3f 93       	push	r19
+     ce4:	4f 93       	push	r20
+     ce6:	5f 93       	push	r21
+     ce8:	6f 93       	push	r22
+     cea:	7f 93       	push	r23
+     cec:	8f 93       	push	r24
+     cee:	9f 93       	push	r25
+     cf0:	af 93       	push	r26
+     cf2:	bf 93       	push	r27
+     cf4:	ef 93       	push	r30
+     cf6:	ff 93       	push	r31
+    UCSR0B &= static_cast<uint8_t>(~_BV(TXCIE0));
+     cf8:	e1 ec       	ldi	r30, 0xC1	; 193
+     cfa:	f0 e0       	ldi	r31, 0x00	; 0
+     cfc:	80 81       	ld	r24, Z
+     cfe:	8f 7b       	andi	r24, 0xBF	; 191
+     d00:	80 83       	st	Z, r24
+
+    if (s_tx_complete_callback != 0)
+     d02:	e0 91 2f 01 	lds	r30, 0x012F	; 0x80012f <_ZL22s_tx_complete_callback>
+     d06:	f0 91 30 01 	lds	r31, 0x0130	; 0x800130 <_ZL22s_tx_complete_callback+0x1>
+     d0a:	30 97       	sbiw	r30, 0x00	; 0
+     d0c:	09 f0       	breq	.+2      	; 0xd10 <__vector_20+0x3a>
+    {
+        s_tx_complete_callback();
+     d0e:	09 95       	icall
+    }
+}
+     d10:	ff 91       	pop	r31
+     d12:	ef 91       	pop	r30
+     d14:	bf 91       	pop	r27
+     d16:	af 91       	pop	r26
+     d18:	9f 91       	pop	r25
+     d1a:	8f 91       	pop	r24
+     d1c:	7f 91       	pop	r23
+     d1e:	6f 91       	pop	r22
+     d20:	5f 91       	pop	r21
+     d22:	4f 91       	pop	r20
+     d24:	3f 91       	pop	r19
+     d26:	2f 91       	pop	r18
+     d28:	0f 90       	pop	r0
+     d2a:	0f be       	out	0x3f, r0	; 63
+     d2c:	0f 90       	pop	r0
+     d2e:	1f 90       	pop	r1
+     d30:	18 95       	reti
+
+00000d32 <_ZN3hal9tick_initEv>:
+        {
+            /*
+             * Ожидание истечения заданного интервала.
+             */
+        }
+    }
+     d32:	9f b7       	in	r25, 0x3f	; 63
+     d34:	f8 94       	cli
+     d36:	10 92 b6 01 	sts	0x01B6, r1	; 0x8001b6 <_ZL8s_millis>
+     d3a:	10 92 b7 01 	sts	0x01B7, r1	; 0x8001b7 <_ZL8s_millis+0x1>
+     d3e:	10 92 b8 01 	sts	0x01B8, r1	; 0x8001b8 <_ZL8s_millis+0x2>
+     d42:	10 92 b9 01 	sts	0x01B9, r1	; 0x8001b9 <_ZL8s_millis+0x3>
+     d46:	14 bc       	out	0x24, r1	; 36
+     d48:	15 bc       	out	0x25, r1	; 37
+     d4a:	16 bc       	out	0x26, r1	; 38
+     d4c:	82 e0       	ldi	r24, 0x02	; 2
+     d4e:	84 bd       	out	0x24, r24	; 36
+     d50:	29 ef       	ldi	r18, 0xF9	; 249
+     d52:	27 bd       	out	0x27, r18	; 39
+     d54:	85 bb       	out	0x15, r24	; 21
+     d56:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
+     d5a:	83 e0       	ldi	r24, 0x03	; 3
+     d5c:	85 bd       	out	0x25, r24	; 37
+     d5e:	9f bf       	out	0x3f, r25	; 63
+     d60:	08 95       	ret
+
+00000d62 <_ZN3hal6millisEv>:
+     d62:	2f b7       	in	r18, 0x3f	; 63
+     d64:	f8 94       	cli
+     d66:	60 91 b6 01 	lds	r22, 0x01B6	; 0x8001b6 <_ZL8s_millis>
+     d6a:	70 91 b7 01 	lds	r23, 0x01B7	; 0x8001b7 <_ZL8s_millis+0x1>
+     d6e:	80 91 b8 01 	lds	r24, 0x01B8	; 0x8001b8 <_ZL8s_millis+0x2>
+     d72:	90 91 b9 01 	lds	r25, 0x01B9	; 0x8001b9 <_ZL8s_millis+0x3>
+     d76:	2f bf       	out	0x3f, r18	; 63
+     d78:	08 95       	ret
+
+00000d7a <_ZN3hal17delayMicrosecondsEj>:
+        if (iters_per_us == 0u)
+        {
+            return;
+        }
+
+        while (us-- != 0u)
+     d7a:	9c 01       	movw	r18, r24
+     d7c:	21 50       	subi	r18, 0x01	; 1
+     d7e:	31 09       	sbc	r19, r1
+     d80:	89 2b       	or	r24, r25
+     d82:	31 f0       	breq	.+12     	; 0xd90 <_ZN3hal17delayMicrosecondsEj+0x16>
+	__asm__ volatile (
+		"1: sbiw %0,1" "\n\t"
+		"brne 1b"
+		: "=w" (__count)
+		: "0" (__count)
+	);
+     d84:	84 e0       	ldi	r24, 0x04	; 4
+     d86:	90 e0       	ldi	r25, 0x00	; 0
+     d88:	01 97       	sbiw	r24, 0x01	; 1
+     d8a:	f1 f7       	brne	.-4      	; 0xd88 <_ZN3hal17delayMicrosecondsEj+0xe>
+     d8c:	c9 01       	movw	r24, r18
+     d8e:	f5 cf       	rjmp	.-22     	; 0xd7a <_ZN3hal17delayMicrosecondsEj>
+     d90:	08 95       	ret
+
+00000d92 <__vector_14>:
+ * @details
+ * Вызывается Timer0 при совпадении TCNT0 с OCR0A.
+ * Увеличивает системный счётчик миллисекунд.
+ */
+ISR(TIMER0_COMPA_vect)
+{
+     d92:	1f 92       	push	r1
+     d94:	0f 92       	push	r0
+     d96:	0f b6       	in	r0, 0x3f	; 63
+     d98:	0f 92       	push	r0
+     d9a:	11 24       	eor	r1, r1
+     d9c:	8f 93       	push	r24
+     d9e:	9f 93       	push	r25
+     da0:	af 93       	push	r26
+     da2:	bf 93       	push	r27
+    ++s_millis;
+     da4:	80 91 b6 01 	lds	r24, 0x01B6	; 0x8001b6 <_ZL8s_millis>
+     da8:	90 91 b7 01 	lds	r25, 0x01B7	; 0x8001b7 <_ZL8s_millis+0x1>
+     dac:	a0 91 b8 01 	lds	r26, 0x01B8	; 0x8001b8 <_ZL8s_millis+0x2>
+     db0:	b0 91 b9 01 	lds	r27, 0x01B9	; 0x8001b9 <_ZL8s_millis+0x3>
+     db4:	01 96       	adiw	r24, 0x01	; 1
+     db6:	a1 1d       	adc	r26, r1
+     db8:	b1 1d       	adc	r27, r1
+     dba:	80 93 b6 01 	sts	0x01B6, r24	; 0x8001b6 <_ZL8s_millis>
+     dbe:	90 93 b7 01 	sts	0x01B7, r25	; 0x8001b7 <_ZL8s_millis+0x1>
+     dc2:	a0 93 b8 01 	sts	0x01B8, r26	; 0x8001b8 <_ZL8s_millis+0x2>
+     dc6:	b0 93 b9 01 	sts	0x01B9, r27	; 0x8001b9 <_ZL8s_millis+0x3>
+     dca:	bf 91       	pop	r27
+     dcc:	af 91       	pop	r26
+     dce:	9f 91       	pop	r25
+     dd0:	8f 91       	pop	r24
+     dd2:	0f 90       	pop	r0
+     dd4:	0f be       	out	0x3f, r0	; 63
+     dd6:	0f 90       	pop	r0
+     dd8:	1f 90       	pop	r1
+     dda:	18 95       	reti
+
+00000ddc <_ZN12_GLOBAL__N_123rs485TxCompleteCallbackEv>:
+ *
+ * @see hal::delayMicroseconds
+ */
+static inline void delayMicroseconds(uint16_t us)
+{
+    hal::delayMicroseconds(us);
+     ddc:	84 e1       	ldi	r24, 0x14	; 20
+     dde:	90 e0       	ldi	r25, 0x00	; 0
+     de0:	0e 94 bd 06 	call	0xd7a	; 0xd7a <_ZN3hal17delayMicrosecondsEj>
+     * Функция выполняется в ISR-контексте и должна оставаться короткой.
+     */
+    void rs485TxCompleteCallback(void)
+    {
+        delayMicroseconds(20);
+        ldi_board::rs485ReceiveMode();
+     de4:	0e 94 a2 03 	call	0x744	; 0x744 <_ZN9ldi_board16rs485ReceiveModeEv>
+     de8:	08 95       	ret
+
+00000dea <_ZN11IGAS_mb_485C1Ev>:
+ *---------------------------------------------------------------------------*/
+
+/**
+ * @brief Создаёт объект транспорта Modbus RTU.
+ */
+IGAS_mb_485::IGAS_mb_485(void)
+     dea:	fc 01       	movw	r30, r24
+      func(0),
+      interframe_delay(5),
+      fpAction(0),
+      regLimit(0),
+      Nowdt(0),
+      lastBytesReceived(0)
+     dec:	10 82       	st	Z, r1
+     dee:	11 82       	std	Z+1, r1	; 0x01
+     df0:	12 82       	std	Z+2, r1	; 0x02
+     df2:	85 e0       	ldi	r24, 0x05	; 5
+     df4:	90 e0       	ldi	r25, 0x00	; 0
+     df6:	94 83       	std	Z+4, r25	; 0x04
+     df8:	83 83       	std	Z+3, r24	; 0x03
+     dfa:	16 82       	std	Z+6, r1	; 0x06
+     dfc:	15 82       	std	Z+5, r1	; 0x05
+     dfe:	10 86       	std	Z+8, r1	; 0x08
+     e00:	17 82       	std	Z+7, r1	; 0x07
+     e02:	11 86       	std	Z+9, r1	; 0x09
+     e04:	12 86       	std	Z+10, r1	; 0x0a
+     e06:	13 86       	std	Z+11, r1	; 0x0b
+     e08:	14 86       	std	Z+12, r1	; 0x0c
+     e0a:	16 86       	std	Z+14, r1	; 0x0e
+     e0c:	15 86       	std	Z+13, r1	; 0x0d
+     e0e:	08 95       	ret
+
+00000e10 <_ZN11IGAS_mb_4856initMBEmhj>:
+void IGAS_mb_485::initMB(
+    uint32_t COMM_BPS,
+    uint8_t SERIAL_MODE,
+    uint16_t allRegs
+)
+{
+     e10:	cf 92       	push	r12
+     e12:	df 92       	push	r13
+     e14:	ef 92       	push	r14
+     e16:	ff 92       	push	r15
+     e18:	0f 93       	push	r16
+     e1a:	1f 93       	push	r17
+     e1c:	cf 93       	push	r28
+     e1e:	df 93       	push	r29
+     e20:	ec 01       	movw	r28, r24
+     e22:	6a 01       	movw	r12, r20
+     e24:	7b 01       	movw	r14, r22
+     * @param baud Скорость обмена, бод.
+     * @param cfg Формат кадра SERIAL_*.
+     */
+    void begin(uint32_t baud, uint8_t cfg)
+    {
+        hal::uart0_init(baud, cfg);
+     e26:	42 2f       	mov	r20, r18
+     e28:	c7 01       	movw	r24, r14
+     e2a:	b6 01       	movw	r22, r12
+     e2c:	0e 94 83 05 	call	0xb06	; 0xb06 <_ZN3hal10uart0_initEmh>
+    Serial.begin(COMM_BPS, SERIAL_MODE);
+
+    hal::uart0_set_tx_complete_callback(rs485TxCompleteCallback);
+     e30:	8e ee       	ldi	r24, 0xEE	; 238
+     e32:	96 e0       	ldi	r25, 0x06	; 6
+     e34:	0e 94 e8 05 	call	0xbd0	; 0xbd0 <_ZN3hal30uart0_set_tx_complete_callbackEPFvvE>
+    hal::uart0_disable_tx_complete_interrupt();
+     e38:	0e 94 ff 05 	call	0xbfe	; 0xbfe <_ZN3hal35uart0_disable_tx_complete_interruptEv>
+
+    if (COMM_BPS == 0UL)
+     e3c:	c1 14       	cp	r12, r1
+     e3e:	d1 04       	cpc	r13, r1
+     e40:	e1 04       	cpc	r14, r1
+     e42:	f1 04       	cpc	r15, r1
+     e44:	29 f4       	brne	.+10     	; 0xe50 <_ZN11IGAS_mb_4856initMBEmhj+0x40>
+    {
+        interframe_delay = 5u;
+     e46:	85 e0       	ldi	r24, 0x05	; 5
+     e48:	90 e0       	ldi	r25, 0x00	; 0
+     e4a:	9c 83       	std	Y+4, r25	; 0x04
+     e4c:	8b 83       	std	Y+3, r24	; 0x03
+     e4e:	1c c0       	rjmp	.+56     	; 0xe88 <_ZN11IGAS_mb_4856initMBEmhj+0x78>
+    }
+    else
+    {
+        interframe_delay = static_cast<uint16_t>(40000UL / COMM_BPS);
+     e50:	60 e4       	ldi	r22, 0x40	; 64
+     e52:	7c e9       	ldi	r23, 0x9C	; 156
+     e54:	80 e0       	ldi	r24, 0x00	; 0
+     e56:	90 e0       	ldi	r25, 0x00	; 0
+     e58:	a7 01       	movw	r20, r14
+     e5a:	96 01       	movw	r18, r12
+     e5c:	0e 94 04 0b 	call	0x1608	; 0x1608 <__udivmodsi4>
+     e60:	3c 83       	std	Y+4, r19	; 0x04
+     e62:	2b 83       	std	Y+3, r18	; 0x03
+
+        if (interframe_delay < 2u)
+     e64:	22 30       	cpi	r18, 0x02	; 2
+     e66:	31 05       	cpc	r19, r1
+     e68:	20 f4       	brcc	.+8      	; 0xe72 <_ZN11IGAS_mb_4856initMBEmhj+0x62>
+        {
+            interframe_delay = 2u;
+     e6a:	82 e0       	ldi	r24, 0x02	; 2
+     e6c:	90 e0       	ldi	r25, 0x00	; 0
+     e6e:	9c 83       	std	Y+4, r25	; 0x04
+     e70:	8b 83       	std	Y+3, r24	; 0x03
+        }
+
+        if (COMM_BPS <= 9600UL)
+     e72:	81 e8       	ldi	r24, 0x81	; 129
+     e74:	c8 16       	cp	r12, r24
+     e76:	85 e2       	ldi	r24, 0x25	; 37
+     e78:	d8 06       	cpc	r13, r24
+     e7a:	e1 04       	cpc	r14, r1
+     e7c:	f1 04       	cpc	r15, r1
+     e7e:	20 f4       	brcc	.+8      	; 0xe88 <_ZN11IGAS_mb_4856initMBEmhj+0x78>
+        {
+            interframe_delay = 5u;
+     e80:	85 e0       	ldi	r24, 0x05	; 5
+     e82:	90 e0       	ldi	r25, 0x00	; 0
+     e84:	9c 83       	std	Y+4, r25	; 0x04
+     e86:	8b 83       	std	Y+3, r24	; 0x03
+        }
+    }
+
+    regLimit = allRegs;
+     e88:	18 87       	std	Y+8, r17	; 0x08
+     e8a:	0f 83       	std	Y+7, r16	; 0x07
+}
+     e8c:	df 91       	pop	r29
+     e8e:	cf 91       	pop	r28
+     e90:	1f 91       	pop	r17
+     e92:	0f 91       	pop	r16
+     e94:	ff 90       	pop	r15
+     e96:	ef 90       	pop	r14
+     e98:	df 90       	pop	r13
+     e9a:	cf 90       	pop	r12
+     e9c:	08 95       	ret
+
+00000e9e <_ZN11IGAS_mb_4853crcEPhhh>:
+ *
+ * @return CRC16 в формате, используемом функциями формирования и проверки кадров.
+ */
+uint16_t IGAS_mb_485::crc(uint8_t* buf, uint8_t start, uint8_t cnt)
+{
+    uint16_t temp = 0xFFFFu;
+     e9e:	8f ef       	ldi	r24, 0xFF	; 255
+     ea0:	9f ef       	ldi	r25, 0xFF	; 255
+
+    for (uint8_t i = start; i < cnt; ++i)
+     ea2:	42 17       	cp	r20, r18
+     ea4:	b8 f4       	brcc	.+46     	; 0xed4 <_ZN11IGAS_mb_4853crcEPhhh+0x36>
+    {
+        temp ^= static_cast<uint16_t>(buf[i]);
+     ea6:	fb 01       	movw	r30, r22
+     ea8:	e4 0f       	add	r30, r20
+     eaa:	f1 1d       	adc	r31, r1
+     eac:	30 81       	ld	r19, Z
+     eae:	83 27       	eor	r24, r19
+
+        for (uint8_t j = 0; j < 8u; ++j)
+     eb0:	30 e0       	ldi	r19, 0x00	; 0
+     eb2:	38 30       	cpi	r19, 0x08	; 8
+     eb4:	68 f4       	brcc	.+26     	; 0xed0 <_ZN11IGAS_mb_4853crcEPhhh+0x32>
+        {
+            const uint16_t lsb =
+                static_cast<uint16_t>(temp & 0x0001u);
+     eb6:	fc 01       	movw	r30, r24
+     eb8:	e1 70       	andi	r30, 0x01	; 1
+     eba:	ff 27       	eor	r31, r31
+
+            temp >>= 1;
+     ebc:	96 95       	lsr	r25
+     ebe:	87 95       	ror	r24
+
+            if (lsb != 0u)
+     ec0:	ef 2b       	or	r30, r31
+     ec2:	21 f0       	breq	.+8      	; 0xecc <_ZN11IGAS_mb_4853crcEPhhh+0x2e>
+            {
+                temp ^= 0xA001u;
+     ec4:	51 e0       	ldi	r21, 0x01	; 1
+     ec6:	85 27       	eor	r24, r21
+     ec8:	50 ea       	ldi	r21, 0xA0	; 160
+     eca:	95 27       	eor	r25, r21
+
+    for (uint8_t i = start; i < cnt; ++i)
+    {
+        temp ^= static_cast<uint16_t>(buf[i]);
+
+        for (uint8_t j = 0; j < 8u; ++j)
+     ecc:	3f 5f       	subi	r19, 0xFF	; 255
+     ece:	f1 cf       	rjmp	.-30     	; 0xeb2 <_ZN11IGAS_mb_4853crcEPhhh+0x14>
+ */
+uint16_t IGAS_mb_485::crc(uint8_t* buf, uint8_t start, uint8_t cnt)
+{
+    uint16_t temp = 0xFFFFu;
+
+    for (uint8_t i = start; i < cnt; ++i)
+     ed0:	4f 5f       	subi	r20, 0xFF	; 255
+     ed2:	e7 cf       	rjmp	.-50     	; 0xea2 <_ZN11IGAS_mb_4853crcEPhhh+0x4>
+    }
+
+    temp = static_cast<uint16_t>((temp << 8) | (temp >> 8));
+
+    return temp;
+}
+     ed4:	98 27       	eor	r25, r24
+     ed6:	89 27       	eor	r24, r25
+     ed8:	98 27       	eor	r25, r24
+     eda:	08 95       	ret
+
+00000edc <_ZN11IGAS_mb_48517build_read_packetEhhhPh>:
+    uint8_t slave,
+    uint8_t function,
+    uint8_t count,
+    uint8_t* packet
+)
+{
+     edc:	0f 93       	push	r16
+     ede:	1f 93       	push	r17
+     ee0:	f8 01       	movw	r30, r16
+    packet[SLAVE] = slave;
+     ee2:	60 83       	st	Z, r22
+    packet[FUNC] = function;
+     ee4:	41 83       	std	Z+1, r20	; 0x01
+    packet[2] = static_cast<uint8_t>(count * 2u);
+     ee6:	22 0f       	add	r18, r18
+     ee8:	22 83       	std	Z+2, r18	; 0x02
+}
+     eea:	1f 91       	pop	r17
+     eec:	0f 91       	pop	r16
+     eee:	08 95       	ret
+
+00000ef0 <_ZN11IGAS_mb_48518build_write_packetEhhjhPh>:
+    uint8_t function,
+    uint16_t start_addr,
+    uint8_t count,
+    uint8_t* packet
+)
+{
+     ef0:	ef 92       	push	r14
+     ef2:	ff 92       	push	r15
+     ef4:	0f 93       	push	r16
+     ef6:	f7 01       	movw	r30, r14
+    packet[SLAVE] = slave;
+     ef8:	60 83       	st	Z, r22
+    packet[FUNC] = function;
+     efa:	41 83       	std	Z+1, r20	; 0x01
+    packet[START_H] = static_cast<uint8_t>(start_addr >> 8);
+     efc:	32 83       	std	Z+2, r19	; 0x02
+    packet[START_L] = static_cast<uint8_t>(start_addr & 0x00FFu);
+     efe:	23 83       	std	Z+3, r18	; 0x03
+    packet[REGS_H] = 0x00;
+     f00:	14 82       	std	Z+4, r1	; 0x04
+    packet[REGS_L] = count;
+     f02:	05 83       	std	Z+5, r16	; 0x05
+}
+     f04:	0f 91       	pop	r16
+     f06:	ff 90       	pop	r15
+     f08:	ef 90       	pop	r14
+     f0a:	08 95       	ret
+
+00000f0c <_ZN11IGAS_mb_48525build_write_single_packetEhhjjPh>:
+    uint8_t function,
+    uint16_t write_addr,
+    uint16_t reg_val,
+    uint8_t* packet
+)
+{
+     f0c:	ef 92       	push	r14
+     f0e:	ff 92       	push	r15
+     f10:	0f 93       	push	r16
+     f12:	1f 93       	push	r17
+     f14:	f7 01       	movw	r30, r14
+    packet[SLAVE] = slave;
+     f16:	60 83       	st	Z, r22
+    packet[FUNC] = function;
+     f18:	41 83       	std	Z+1, r20	; 0x01
+    packet[START_H] = static_cast<uint8_t>(write_addr >> 8);
+     f1a:	32 83       	std	Z+2, r19	; 0x02
+    packet[START_L] = static_cast<uint8_t>(write_addr & 0x00FFu);
+     f1c:	23 83       	std	Z+3, r18	; 0x03
+    packet[REGS_H] = static_cast<uint8_t>(reg_val >> 8);
+     f1e:	14 83       	std	Z+4, r17	; 0x04
+    packet[REGS_L] = static_cast<uint8_t>(reg_val & 0x00FFu);
+     f20:	05 83       	std	Z+5, r16	; 0x05
+}
+     f22:	1f 91       	pop	r17
+     f24:	0f 91       	pop	r16
+     f26:	ff 90       	pop	r15
+     f28:	ef 90       	pop	r14
+     f2a:	08 95       	ret
+
+00000f2c <_ZN11IGAS_mb_48518build_error_packetEhhhPh>:
+    uint8_t slave,
+    uint8_t function,
+    uint8_t exception,
+    uint8_t* packet
+)
+{
+     f2c:	0f 93       	push	r16
+     f2e:	1f 93       	push	r17
+     f30:	f8 01       	movw	r30, r16
+    packet[SLAVE] = slave;
+     f32:	60 83       	st	Z, r22
+    packet[FUNC] = static_cast<uint8_t>(function + 0x80u);
+     f34:	40 58       	subi	r20, 0x80	; 128
+     f36:	41 83       	std	Z+1, r20	; 0x01
+    packet[2] = exception;
+     f38:	22 83       	std	Z+2, r18	; 0x02
+}
+     f3a:	1f 91       	pop	r17
+     f3c:	0f 91       	pop	r16
+     f3e:	08 95       	ret
+
+00000f40 <_ZN11IGAS_mb_48512modbus_replyEPhh>:
+ *
+ * @param packet Буфер пакета.
+ * @param string_length Длина пакета без CRC.
+ */
+void IGAS_mb_485::modbus_reply(uint8_t* packet, uint8_t string_length)
+{
+     f40:	1f 93       	push	r17
+     f42:	cf 93       	push	r28
+     f44:	df 93       	push	r29
+     f46:	eb 01       	movw	r28, r22
+     f48:	14 2f       	mov	r17, r20
+    const uint16_t temp_crc = crc(packet, 0, string_length);
+     f4a:	24 2f       	mov	r18, r20
+     f4c:	40 e0       	ldi	r20, 0x00	; 0
+     f4e:	0e 94 4f 07 	call	0xe9e	; 0xe9e <_ZN11IGAS_mb_4853crcEPhhh>
+
+    packet[string_length++] = static_cast<uint8_t>(temp_crc >> 8);
+     f52:	21 e0       	ldi	r18, 0x01	; 1
+     f54:	21 0f       	add	r18, r17
+     f56:	fe 01       	movw	r30, r28
+     f58:	e1 0f       	add	r30, r17
+     f5a:	f1 1d       	adc	r31, r1
+     f5c:	90 83       	st	Z, r25
+    packet[string_length++] = static_cast<uint8_t>(temp_crc & 0x00FFu);
+     f5e:	c2 0f       	add	r28, r18
+     f60:	d1 1d       	adc	r29, r1
+     f62:	88 83       	st	Y, r24
+}
+     f64:	df 91       	pop	r29
+     f66:	cf 91       	pop	r28
+     f68:	1f 91       	pop	r17
+     f6a:	08 95       	ret
+
+00000f6c <_ZN11IGAS_mb_4854sendEPhh>:
+ * @details
+ * Перед отправкой RS-485-трансивер переводится в режим передачи.
+ * Возврат в режим приёма выполняется по событию UART TX Complete.
+ */
+int IGAS_mb_485::send(uint8_t* query, uint8_t string_length)
+{
+     f6c:	ef 92       	push	r14
+     f6e:	ff 92       	push	r15
+     f70:	0f 93       	push	r16
+     f72:	1f 93       	push	r17
+     f74:	cf 93       	push	r28
+     f76:	df 93       	push	r29
+    if ((query == 0) || (string_length == 0u))
+     f78:	61 15       	cp	r22, r1
+     f7a:	71 05       	cpc	r23, r1
+     f7c:	09 f1       	breq	.+66     	; 0xfc0 <_ZN11IGAS_mb_4854sendEPhh+0x54>
+     f7e:	44 23       	and	r20, r20
+     f80:	11 f1       	breq	.+68     	; 0xfc6 <_ZN11IGAS_mb_4854sendEPhh+0x5a>
+     f82:	d4 2f       	mov	r29, r20
+     f84:	8b 01       	movw	r16, r22
+     f86:	7c 01       	movw	r14, r24
+    {
+        return 0;
+    }
+
+    {
+        const uint8_t old_sreg = SREG;
+     f88:	cf b7       	in	r28, 0x3f	; 63
+        cli();
+     f8a:	f8 94       	cli
+
+        ldi_board::rs485TransmitMode();
+     f8c:	0e 94 9e 03 	call	0x73c	; 0x73c <_ZN9ldi_board17rs485TransmitModeEv>
+
+        SREG = old_sreg;
+     f90:	cf bf       	out	0x3f, r28	; 63
+    }
+
+    transmitLED = dotDisp;
+     f92:	88 e0       	ldi	r24, 0x08	; 8
+     f94:	f7 01       	movw	r30, r14
+     f96:	81 83       	std	Z+1, r24	; 0x01
+ *
+ * @see hal::delayMicroseconds
+ */
+static inline void delayMicroseconds(uint16_t us)
+{
+    hal::delayMicroseconds(us);
+     f98:	8a e0       	ldi	r24, 0x0A	; 10
+     f9a:	90 e0       	ldi	r25, 0x00	; 0
+     f9c:	0e 94 bd 06 	call	0xd7a	; 0xd7a <_ZN3hal17delayMicrosecondsEj>
+
+    delayMicroseconds(10);
+
+    hal::uart0_enable_tx_complete_interrupt();
+     fa0:	0e 94 f1 05 	call	0xbe2	; 0xbe2 <_ZN3hal34uart0_enable_tx_complete_interruptEv>
+
+    uint8_t i = 0u;
+
+    for (i = 0u; i < string_length; ++i)
+     fa4:	c0 e0       	ldi	r28, 0x00	; 0
+     fa6:	cd 17       	cp	r28, r29
+     fa8:	40 f4       	brcc	.+16     	; 0xfba <_ZN11IGAS_mb_4854sendEPhh+0x4e>
+    {
+        Serial.write(query[i]);
+     faa:	f8 01       	movw	r30, r16
+     fac:	ec 0f       	add	r30, r28
+     fae:	f1 1d       	adc	r31, r1
+     *
+     * @return Количество байт, поставленных в передачу.
+     */
+    size_t write(uint8_t b)
+    {
+        hal::uart0_write(b);
+     fb0:	80 81       	ld	r24, Z
+     fb2:	0e 94 c4 05 	call	0xb88	; 0xb88 <_ZN3hal11uart0_writeEh>
+
+    hal::uart0_enable_tx_complete_interrupt();
+
+    uint8_t i = 0u;
+
+    for (i = 0u; i < string_length; ++i)
+     fb6:	cf 5f       	subi	r28, 0xFF	; 255
+     fb8:	f6 cf       	rjmp	.-20     	; 0xfa6 <_ZN11IGAS_mb_4854sendEPhh+0x3a>
+    {
+        Serial.write(query[i]);
+    }
+
+    return static_cast<int>(i);
+     fba:	8c 2f       	mov	r24, r28
+     fbc:	90 e0       	ldi	r25, 0x00	; 0
+     fbe:	05 c0       	rjmp	.+10     	; 0xfca <_ZN11IGAS_mb_4854sendEPhh+0x5e>
+ */
+int IGAS_mb_485::send(uint8_t* query, uint8_t string_length)
+{
+    if ((query == 0) || (string_length == 0u))
+    {
+        return 0;
+     fc0:	80 e0       	ldi	r24, 0x00	; 0
+     fc2:	90 e0       	ldi	r25, 0x00	; 0
+     fc4:	02 c0       	rjmp	.+4      	; 0xfca <_ZN11IGAS_mb_4854sendEPhh+0x5e>
+     fc6:	80 e0       	ldi	r24, 0x00	; 0
+     fc8:	90 e0       	ldi	r25, 0x00	; 0
+    {
+        Serial.write(query[i]);
+    }
+
+    return static_cast<int>(i);
+}
+     fca:	df 91       	pop	r29
+     fcc:	cf 91       	pop	r28
+     fce:	1f 91       	pop	r17
+     fd0:	0f 91       	pop	r16
+     fd2:	ff 90       	pop	r15
+     fd4:	ef 90       	pop	r14
+     fd6:	08 95       	ret
+
+00000fd8 <_ZN11IGAS_mb_48510send_replyEPhh>:
+ * @param string_length Длина ответа без CRC.
+ *
+ * @return 0 после постановки ответа на передачу.
+ */
+int IGAS_mb_485::send_reply(uint8_t* query, uint8_t string_length)
+{
+     fd8:	ef 92       	push	r14
+     fda:	ff 92       	push	r15
+     fdc:	0f 93       	push	r16
+     fde:	1f 93       	push	r17
+     fe0:	cf 93       	push	r28
+     fe2:	8c 01       	movw	r16, r24
+     fe4:	7b 01       	movw	r14, r22
+     fe6:	c4 2f       	mov	r28, r20
+    modbus_reply(query, string_length);
+     fe8:	0e 94 a0 07 	call	0xf40	; 0xf40 <_ZN11IGAS_mb_48512modbus_replyEPhh>
+
+    string_length = static_cast<uint8_t>(string_length + CHECKSUM_SIZE);
+     fec:	42 e0       	ldi	r20, 0x02	; 2
+     fee:	4c 0f       	add	r20, r28
+
+    (void)send(query, string_length);
+     ff0:	b7 01       	movw	r22, r14
+     ff2:	c8 01       	movw	r24, r16
+     ff4:	0e 94 b6 07 	call	0xf6c	; 0xf6c <_ZN11IGAS_mb_4854sendEPhh>
+
+    return 0;
+}
+     ff8:	80 e0       	ldi	r24, 0x00	; 0
+     ffa:	90 e0       	ldi	r25, 0x00	; 0
+     ffc:	cf 91       	pop	r28
+     ffe:	1f 91       	pop	r17
+    1000:	0f 91       	pop	r16
+    1002:	ff 90       	pop	r15
+    1004:	ef 90       	pop	r14
+    1006:	08 95       	ret
+
+00001008 <_ZN11IGAS_mb_48515receive_requestEPh>:
+ *
+ * @return Количество принятых байт.
+ * @return NO_REPLY при переполнении буфера.
+ */
+int IGAS_mb_485::receive_request(uint8_t* received_string)
+{
+    1008:	0f 93       	push	r16
+    100a:	1f 93       	push	r17
+    100c:	cf 93       	push	r28
+    100e:	df 93       	push	r29
+    1010:	8b 01       	movw	r16, r22
+    int bytes_received = 0;
+    1012:	c0 e0       	ldi	r28, 0x00	; 0
+    1014:	d0 e0       	ldi	r29, 0x00	; 0
+     *
+     * @return Количество байт в приёмном буфере.
+     */
+    int available(void)
+    {
+        return static_cast<int>(hal::uart0_available());
+    1016:	0e 94 a7 05 	call	0xb4e	; 0xb4e <_ZN3hal15uart0_availableEv>
+
+    while (Serial.available() != 0)
+    101a:	88 23       	and	r24, r24
+    101c:	69 f0       	breq	.+26     	; 0x1038 <_ZN11IGAS_mb_48515receive_requestEPh+0x30>
+    {
+        if (bytes_received >= MAX_MESSAGE_LENGTH)
+    101e:	c8 32       	cpi	r28, 0x28	; 40
+    1020:	d1 05       	cpc	r29, r1
+    1022:	6c f4       	brge	.+26     	; 0x103e <_ZN11IGAS_mb_48515receive_requestEPh+0x36>
+     * @return Значение от 0 до 255.
+     * @return -1, если данных нет.
+     */
+    int read(void)
+    {
+        return static_cast<int>(hal::uart0_read());
+    1024:	0e 94 ae 05 	call	0xb5c	; 0xb5c <_ZN3hal10uart0_readEv>
+            return NO_REPLY;
+        }
+
+        const int byte_value = Serial.read();
+
+        if (byte_value < 0)
+    1028:	99 23       	and	r25, r25
+    102a:	64 f0       	brlt	.+24     	; 0x1044 <_ZN11IGAS_mb_48515receive_requestEPh+0x3c>
+        {
+            break;
+        }
+
+        received_string[bytes_received] =
+    102c:	f8 01       	movw	r30, r16
+    102e:	ec 0f       	add	r30, r28
+    1030:	fd 1f       	adc	r31, r29
+            static_cast<uint8_t>(byte_value);
+    1032:	80 83       	st	Z, r24
+
+        ++bytes_received;
+    1034:	21 96       	adiw	r28, 0x01	; 1
+ */
+int IGAS_mb_485::receive_request(uint8_t* received_string)
+{
+    int bytes_received = 0;
+
+    while (Serial.available() != 0)
+    1036:	ef cf       	rjmp	.-34     	; 0x1016 <_ZN11IGAS_mb_48515receive_requestEPh+0xe>
+            static_cast<uint8_t>(byte_value);
+
+        ++bytes_received;
+    }
+
+    return bytes_received;
+    1038:	8c 2f       	mov	r24, r28
+    103a:	9d 2f       	mov	r25, r29
+    103c:	05 c0       	rjmp	.+10     	; 0x1048 <_ZN11IGAS_mb_48515receive_requestEPh+0x40>
+
+    while (Serial.available() != 0)
+    {
+        if (bytes_received >= MAX_MESSAGE_LENGTH)
+        {
+            return NO_REPLY;
+    103e:	8f ef       	ldi	r24, 0xFF	; 255
+    1040:	9f ef       	ldi	r25, 0xFF	; 255
+    1042:	02 c0       	rjmp	.+4      	; 0x1048 <_ZN11IGAS_mb_48515receive_requestEPh+0x40>
+            static_cast<uint8_t>(byte_value);
+
+        ++bytes_received;
+    }
+
+    return bytes_received;
+    1044:	8c 2f       	mov	r24, r28
+    1046:	9d 2f       	mov	r25, r29
+}
+    1048:	df 91       	pop	r29
+    104a:	cf 91       	pop	r28
+    104c:	1f 91       	pop	r17
+    104e:	0f 91       	pop	r16
+    1050:	08 95       	ret
+
+00001052 <_ZN11IGAS_mb_48514modbus_requestEhPh>:
+ *
+ * @return Длина кадра при успешной проверке.
+ * @return NO_REPLY при ошибке CRC, неподходящем адресе или некорректной длине.
+ */
+int16_t IGAS_mb_485::modbus_request(uint8_t slave, uint8_t* data)
+{
+    1052:	df 92       	push	r13
+    1054:	ef 92       	push	r14
+    1056:	ff 92       	push	r15
+    1058:	0f 93       	push	r16
+    105a:	1f 93       	push	r17
+    105c:	cf 93       	push	r28
+    105e:	df 93       	push	r29
+    1060:	7c 01       	movw	r14, r24
+    1062:	d6 2e       	mov	r13, r22
+    1064:	8a 01       	movw	r16, r20
+    const int response_length = receive_request(data);
+    1066:	ba 01       	movw	r22, r20
+    1068:	0e 94 04 08 	call	0x1008	; 0x1008 <_ZN11IGAS_mb_48515receive_requestEPh>
+    106c:	ec 01       	movw	r28, r24
+
+    if (response_length <= 0)
+    106e:	18 16       	cp	r1, r24
+    1070:	19 06       	cpc	r1, r25
+    1072:	04 f5       	brge	.+64     	; 0x10b4 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x62>
+    {
+        return static_cast<int16_t>(response_length);
+    }
+
+    if (response_length < CHECKSUM_SIZE)
+    1074:	82 30       	cpi	r24, 0x02	; 2
+    1076:	91 05       	cpc	r25, r1
+    1078:	fc f0       	brlt	.+62     	; 0x10b8 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x66>
+    {
+        return NO_REPLY;
+    }
+
+    const uint16_t crc_calc =
+        crc(data, 0, static_cast<uint8_t>(response_length - CHECKSUM_SIZE));
+    107a:	28 2f       	mov	r18, r24
+    107c:	22 50       	subi	r18, 0x02	; 2
+    107e:	40 e0       	ldi	r20, 0x00	; 0
+    1080:	b8 01       	movw	r22, r16
+    1082:	c7 01       	movw	r24, r14
+    1084:	0e 94 4f 07 	call	0xe9e	; 0xe9e <_ZN11IGAS_mb_4853crcEPhhh>
+
+    uint16_t crc_received =
+        static_cast<uint16_t>(data[response_length - 2]);
+    1088:	a8 01       	movw	r20, r16
+    108a:	4c 0f       	add	r20, r28
+    108c:	5d 1f       	adc	r21, r29
+    108e:	fa 01       	movw	r30, r20
+    1090:	32 97       	sbiw	r30, 0x02	; 2
+    1092:	20 81       	ld	r18, Z
+    1094:	30 e0       	ldi	r19, 0x00	; 0
+
+    crc_received =
+        static_cast<uint16_t>(
+            (crc_received << 8) |
+    1096:	32 2f       	mov	r19, r18
+    1098:	22 27       	eor	r18, r18
+            static_cast<uint16_t>(data[response_length - 1])
+    109a:	31 96       	adiw	r30, 0x01	; 1
+    109c:	40 81       	ld	r20, Z
+        );
+    109e:	24 2b       	or	r18, r20
+
+    if (crc_calc != crc_received)
+    10a0:	82 17       	cp	r24, r18
+    10a2:	93 07       	cpc	r25, r19
+    10a4:	61 f4       	brne	.+24     	; 0x10be <_ZN11IGAS_mb_48514modbus_requestEhPh+0x6c>
+    {
+        return NO_REPLY;
+    }
+
+    if (slave != data[SLAVE])
+    10a6:	f8 01       	movw	r30, r16
+    10a8:	80 81       	ld	r24, Z
+    10aa:	8d 15       	cp	r24, r13
+    10ac:	59 f0       	breq	.+22     	; 0x10c4 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x72>
+    {
+        return NO_REPLY;
+    10ae:	8f ef       	ldi	r24, 0xFF	; 255
+    10b0:	9f ef       	ldi	r25, 0xFF	; 255
+    10b2:	0a c0       	rjmp	.+20     	; 0x10c8 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x76>
+{
+    const int response_length = receive_request(data);
+
+    if (response_length <= 0)
+    {
+        return static_cast<int16_t>(response_length);
+    10b4:	9d 2f       	mov	r25, r29
+    10b6:	08 c0       	rjmp	.+16     	; 0x10c8 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x76>
+    }
+
+    if (response_length < CHECKSUM_SIZE)
+    {
+        return NO_REPLY;
+    10b8:	8f ef       	ldi	r24, 0xFF	; 255
+    10ba:	9f ef       	ldi	r25, 0xFF	; 255
+    10bc:	05 c0       	rjmp	.+10     	; 0x10c8 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x76>
+            static_cast<uint16_t>(data[response_length - 1])
+        );
+
+    if (crc_calc != crc_received)
+    {
+        return NO_REPLY;
+    10be:	8f ef       	ldi	r24, 0xFF	; 255
+    10c0:	9f ef       	ldi	r25, 0xFF	; 255
+    10c2:	02 c0       	rjmp	.+4      	; 0x10c8 <_ZN11IGAS_mb_48514modbus_requestEhPh+0x76>
+    if (slave != data[SLAVE])
+    {
+        return NO_REPLY;
+    }
+
+    return static_cast<int16_t>(response_length);
+    10c4:	8c 2f       	mov	r24, r28
+    10c6:	9d 2f       	mov	r25, r29
+}
+    10c8:	df 91       	pop	r29
+    10ca:	cf 91       	pop	r28
+    10cc:	1f 91       	pop	r17
+    10ce:	0f 91       	pop	r16
+    10d0:	ff 90       	pop	r15
+    10d2:	ef 90       	pop	r14
+    10d4:	df 90       	pop	r13
+    10d6:	08 95       	ret
+
+000010d8 <_ZN11IGAS_mb_48516validate_requestEPhh>:
+ *
+ * @return 0 при успешной проверке.
+ * @return Код Modbus exception при ошибке.
+ */
+int IGAS_mb_485::validate_request(uint8_t* data, uint8_t length)
+{
+    10d8:	cf 93       	push	r28
+    10da:	df 93       	push	r29
+    10dc:	dc 01       	movw	r26, r24
+    10de:	fb 01       	movw	r30, r22
+    if (length < MIN_REQUEST_SIZE)
+    10e0:	48 30       	cpi	r20, 0x08	; 8
+    10e2:	08 f4       	brcc	.+2      	; 0x10e6 <_ZN11IGAS_mb_48516validate_requestEPhh+0xe>
+    10e4:	52 c0       	rjmp	.+164    	; 0x118a <_ZN11IGAS_mb_48516validate_requestEPhh+0xb2>
+    10e6:	90 e0       	ldi	r25, 0x00	; 0
+        return EXC_REGS_QUANT;
+    }
+
+    bool function_supported = false;
+
+    for (uint8_t i = 0; i < static_cast<uint8_t>(sizeof(fsupported)); ++i)
+    10e8:	29 2f       	mov	r18, r25
+    10ea:	30 e0       	ldi	r19, 0x00	; 0
+    10ec:	23 30       	cpi	r18, 0x03	; 3
+    10ee:	31 05       	cpc	r19, r1
+    10f0:	4c f4       	brge	.+18     	; 0x1104 <_ZN11IGAS_mb_48516validate_requestEPhh+0x2c>
+    {
+        if (fsupported[i] == data[FUNC])
+    10f2:	e9 01       	movw	r28, r18
+    10f4:	cd 5f       	subi	r28, 0xFD	; 253
+    10f6:	de 4f       	sbci	r29, 0xFE	; 254
+    10f8:	38 81       	ld	r19, Y
+    10fa:	21 81       	ldd	r18, Z+1	; 0x01
+    10fc:	32 17       	cp	r19, r18
+    10fe:	21 f0       	breq	.+8      	; 0x1108 <_ZN11IGAS_mb_48516validate_requestEPhh+0x30>
+        return EXC_REGS_QUANT;
+    }
+
+    bool function_supported = false;
+
+    for (uint8_t i = 0; i < static_cast<uint8_t>(sizeof(fsupported)); ++i)
+    1100:	9f 5f       	subi	r25, 0xFF	; 255
+    1102:	f2 cf       	rjmp	.-28     	; 0x10e8 <_ZN11IGAS_mb_48516validate_requestEPhh+0x10>
+    if (length < MIN_REQUEST_SIZE)
+    {
+        return EXC_REGS_QUANT;
+    }
+
+    bool function_supported = false;
+    1104:	80 e0       	ldi	r24, 0x00	; 0
+    1106:	01 c0       	rjmp	.+2      	; 0x110a <_ZN11IGAS_mb_48516validate_requestEPhh+0x32>
+
+    for (uint8_t i = 0; i < static_cast<uint8_t>(sizeof(fsupported)); ++i)
+    {
+        if (fsupported[i] == data[FUNC])
+        {
+            function_supported = true;
+    1108:	81 e0       	ldi	r24, 0x01	; 1
+            break;
+        }
+    }
+
+    if (!function_supported)
+    110a:	88 23       	and	r24, r24
+    110c:	09 f4       	brne	.+2      	; 0x1110 <_ZN11IGAS_mb_48516validate_requestEPhh+0x38>
+    110e:	40 c0       	rjmp	.+128    	; 0x1190 <_ZN11IGAS_mb_48516validate_requestEPhh+0xb8>
+        return EXC_FUNC_CODE;
+    }
+
+    const uint16_t start_addr =
+        static_cast<uint16_t>(
+            (static_cast<uint16_t>(data[START_H]) << 8) |
+    1110:	22 81       	ldd	r18, Z+2	; 0x02
+    1112:	30 e0       	ldi	r19, 0x00	; 0
+    1114:	32 2f       	mov	r19, r18
+    1116:	22 27       	eor	r18, r18
+            static_cast<uint16_t>(data[START_L])
+    1118:	83 81       	ldd	r24, Z+3	; 0x03
+        );
+    111a:	28 2b       	or	r18, r24
+
+    if (start_addr >= regLimit)
+    111c:	17 96       	adiw	r26, 0x07	; 7
+    111e:	6d 91       	ld	r22, X+
+    1120:	7c 91       	ld	r23, X
+    1122:	18 97       	sbiw	r26, 0x08	; 8
+    1124:	26 17       	cp	r18, r22
+    1126:	37 07       	cpc	r19, r23
+    1128:	b0 f5       	brcc	.+108    	; 0x1196 <_ZN11IGAS_mb_48516validate_requestEPhh+0xbe>
+    {
+        return EXC_ADDR_RANGE;
+    }
+
+    if (data[FUNC] == FC_WRITE_REG)
+    112a:	51 81       	ldd	r21, Z+1	; 0x01
+    112c:	56 30       	cpi	r21, 0x06	; 6
+    112e:	b1 f1       	breq	.+108    	; 0x119c <_ZN11IGAS_mb_48516validate_requestEPhh+0xc4>
+        return 0;
+    }
+
+    const uint16_t regs_num =
+        static_cast<uint16_t>(
+            (static_cast<uint16_t>(data[REGS_H]) << 8) |
+    1130:	84 81       	ldd	r24, Z+4	; 0x04
+    1132:	90 e0       	ldi	r25, 0x00	; 0
+    1134:	98 2f       	mov	r25, r24
+    1136:	88 27       	eor	r24, r24
+            static_cast<uint16_t>(data[REGS_L])
+    1138:	a5 81       	ldd	r26, Z+5	; 0x05
+        );
+    113a:	8a 2b       	or	r24, r26
+
+    uint8_t max_regs_num = 0;
+
+    if (data[FUNC] == FC_READ_REGS)
+    113c:	53 30       	cpi	r21, 0x03	; 3
+    113e:	21 f0       	breq	.+8      	; 0x1148 <_ZN11IGAS_mb_48516validate_requestEPhh+0x70>
+    {
+        max_regs_num = MAX_READ_REGS;
+    }
+    else if (data[FUNC] == FC_WRITE_REGS)
+    1140:	50 31       	cpi	r21, 0x10	; 16
+    1142:	21 f0       	breq	.+8      	; 0x114c <_ZN11IGAS_mb_48516validate_requestEPhh+0x74>
+        static_cast<uint16_t>(
+            (static_cast<uint16_t>(data[REGS_H]) << 8) |
+            static_cast<uint16_t>(data[REGS_L])
+        );
+
+    uint8_t max_regs_num = 0;
+    1144:	a0 e0       	ldi	r26, 0x00	; 0
+    1146:	03 c0       	rjmp	.+6      	; 0x114e <_ZN11IGAS_mb_48516validate_requestEPhh+0x76>
+
+    if (data[FUNC] == FC_READ_REGS)
+    {
+        max_regs_num = MAX_READ_REGS;
+    1148:	af e0       	ldi	r26, 0x0F	; 15
+    114a:	01 c0       	rjmp	.+2      	; 0x114e <_ZN11IGAS_mb_48516validate_requestEPhh+0x76>
+    }
+    else if (data[FUNC] == FC_WRITE_REGS)
+    {
+        max_regs_num = MAX_WRITE_REGS;
+    114c:	af e0       	ldi	r26, 0x0F	; 15
+    }
+
+    if ((regs_num < 1u) || (regs_num > static_cast<uint16_t>(max_regs_num)))
+    114e:	00 97       	sbiw	r24, 0x00	; 0
+    1150:	41 f1       	breq	.+80     	; 0x11a2 <_ZN11IGAS_mb_48516validate_requestEPhh+0xca>
+    1152:	b0 e0       	ldi	r27, 0x00	; 0
+    1154:	a8 17       	cp	r26, r24
+    1156:	b9 07       	cpc	r27, r25
+    1158:	38 f1       	brcs	.+78     	; 0x11a8 <_ZN11IGAS_mb_48516validate_requestEPhh+0xd0>
+    {
+        return EXC_REGS_QUANT;
+    }
+
+    if (regs_num > static_cast<uint16_t>(regLimit - start_addr))
+    115a:	62 1b       	sub	r22, r18
+    115c:	73 0b       	sbc	r23, r19
+    115e:	68 17       	cp	r22, r24
+    1160:	79 07       	cpc	r23, r25
+    1162:	28 f1       	brcs	.+74     	; 0x11ae <_ZN11IGAS_mb_48516validate_requestEPhh+0xd6>
+    {
+        return EXC_ADDR_RANGE;
+    }
+
+    if (data[FUNC] == FC_WRITE_REGS)
+    1164:	50 31       	cpi	r21, 0x10	; 16
+    1166:	31 f5       	brne	.+76     	; 0x11b4 <_ZN11IGAS_mb_48516validate_requestEPhh+0xdc>
+    {
+        if (length < MIN_WRITE_MULTIPLE_REQUEST_SIZE)
+    1168:	49 30       	cpi	r20, 0x09	; 9
+    116a:	38 f1       	brcs	.+78     	; 0x11ba <_ZN11IGAS_mb_48516validate_requestEPhh+0xe2>
+        {
+            return EXC_REGS_QUANT;
+        }
+
+        const uint8_t byte_count = data[BYTE_CNT];
+    116c:	26 81       	ldd	r18, Z+6	; 0x06
+
+        if (byte_count != static_cast<uint8_t>(regs_num * 2u))
+    116e:	88 0f       	add	r24, r24
+    1170:	28 13       	cpse	r18, r24
+    1172:	26 c0       	rjmp	.+76     	; 0x11c0 <_ZN11IGAS_mb_48516validate_requestEPhh+0xe8>
+        }
+
+        const uint16_t expected_length =
+            static_cast<uint16_t>(
+                static_cast<uint16_t>(BYTE_CNT + 1u) +
+                static_cast<uint16_t>(byte_count) +
+    1174:	30 e0       	ldi	r19, 0x00	; 0
+                CHECKSUM_SIZE
+            );
+    1176:	27 5f       	subi	r18, 0xF7	; 247
+    1178:	3f 4f       	sbci	r19, 0xFF	; 255
+
+        if (static_cast<uint16_t>(length) != expected_length)
+    117a:	84 2f       	mov	r24, r20
+    117c:	90 e0       	ldi	r25, 0x00	; 0
+    117e:	28 17       	cp	r18, r24
+    1180:	39 07       	cpc	r19, r25
+    1182:	09 f5       	brne	.+66     	; 0x11c6 <_ZN11IGAS_mb_48516validate_requestEPhh+0xee>
+        {
+            return EXC_REGS_QUANT;
+        }
+    }
+
+    return 0;
+    1184:	80 e0       	ldi	r24, 0x00	; 0
+    1186:	90 e0       	ldi	r25, 0x00	; 0
+    1188:	20 c0       	rjmp	.+64     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+ */
+int IGAS_mb_485::validate_request(uint8_t* data, uint8_t length)
+{
+    if (length < MIN_REQUEST_SIZE)
+    {
+        return EXC_REGS_QUANT;
+    118a:	83 e0       	ldi	r24, 0x03	; 3
+    118c:	90 e0       	ldi	r25, 0x00	; 0
+    118e:	1d c0       	rjmp	.+58     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+        }
+    }
+
+    if (!function_supported)
+    {
+        return EXC_FUNC_CODE;
+    1190:	81 e0       	ldi	r24, 0x01	; 1
+    1192:	90 e0       	ldi	r25, 0x00	; 0
+    1194:	1a c0       	rjmp	.+52     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+            static_cast<uint16_t>(data[START_L])
+        );
+
+    if (start_addr >= regLimit)
+    {
+        return EXC_ADDR_RANGE;
+    1196:	82 e0       	ldi	r24, 0x02	; 2
+    1198:	90 e0       	ldi	r25, 0x00	; 0
+    119a:	17 c0       	rjmp	.+46     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+    }
+
+    if (data[FUNC] == FC_WRITE_REG)
+    {
+        return 0;
+    119c:	80 e0       	ldi	r24, 0x00	; 0
+    119e:	90 e0       	ldi	r25, 0x00	; 0
+    11a0:	14 c0       	rjmp	.+40     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+        max_regs_num = MAX_WRITE_REGS;
+    }
+
+    if ((regs_num < 1u) || (regs_num > static_cast<uint16_t>(max_regs_num)))
+    {
+        return EXC_REGS_QUANT;
+    11a2:	83 e0       	ldi	r24, 0x03	; 3
+    11a4:	90 e0       	ldi	r25, 0x00	; 0
+    11a6:	11 c0       	rjmp	.+34     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+    11a8:	83 e0       	ldi	r24, 0x03	; 3
+    11aa:	90 e0       	ldi	r25, 0x00	; 0
+    11ac:	0e c0       	rjmp	.+28     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+    }
+
+    if (regs_num > static_cast<uint16_t>(regLimit - start_addr))
+    {
+        return EXC_ADDR_RANGE;
+    11ae:	82 e0       	ldi	r24, 0x02	; 2
+    11b0:	90 e0       	ldi	r25, 0x00	; 0
+    11b2:	0b c0       	rjmp	.+22     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+        {
+            return EXC_REGS_QUANT;
+        }
+    }
+
+    return 0;
+    11b4:	80 e0       	ldi	r24, 0x00	; 0
+    11b6:	90 e0       	ldi	r25, 0x00	; 0
+    11b8:	08 c0       	rjmp	.+16     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+
+    if (data[FUNC] == FC_WRITE_REGS)
+    {
+        if (length < MIN_WRITE_MULTIPLE_REQUEST_SIZE)
+        {
+            return EXC_REGS_QUANT;
+    11ba:	83 e0       	ldi	r24, 0x03	; 3
+    11bc:	90 e0       	ldi	r25, 0x00	; 0
+    11be:	05 c0       	rjmp	.+10     	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+
+        const uint8_t byte_count = data[BYTE_CNT];
+
+        if (byte_count != static_cast<uint8_t>(regs_num * 2u))
+        {
+            return EXC_REGS_QUANT;
+    11c0:	83 e0       	ldi	r24, 0x03	; 3
+    11c2:	90 e0       	ldi	r25, 0x00	; 0
+    11c4:	02 c0       	rjmp	.+4      	; 0x11ca <_ZN11IGAS_mb_48516validate_requestEPhh+0xf2>
+                CHECKSUM_SIZE
+            );
+
+        if (static_cast<uint16_t>(length) != expected_length)
+        {
+            return EXC_REGS_QUANT;
+    11c6:	83 e0       	ldi	r24, 0x03	; 3
+    11c8:	90 e0       	ldi	r25, 0x00	; 0
+        }
+    }
+
+    return 0;
+}
+    11ca:	df 91       	pop	r29
+    11cc:	cf 91       	pop	r28
+    11ce:	08 95       	ret
+
+000011d0 <_ZN11IGAS_mb_48511setDelegateEPFvPiiiiE>:
+ */
+void IGAS_mb_485::setDelegate(
+    void (*fp)(int16_t*, int16_t, int16_t, int16_t)
+)
+{
+    fpAction = fp;
+    11d0:	fc 01       	movw	r30, r24
+    11d2:	76 83       	std	Z+6, r23	; 0x06
+    11d4:	65 83       	std	Z+5, r22	; 0x05
+    11d6:	08 95       	ret
+
+000011d8 <_ZN11IGAS_mb_4858doActionEPiiii>:
+    int16_t* t1,
+    int16_t t2,
+    int16_t t3,
+    int16_t t4
+)
+{
+    11d8:	0f 93       	push	r16
+    11da:	1f 93       	push	r17
+    11dc:	cf 93       	push	r28
+    11de:	df 93       	push	r29
+    if (fpAction != 0)
+    11e0:	dc 01       	movw	r26, r24
+    11e2:	15 96       	adiw	r26, 0x05	; 5
+    11e4:	ed 91       	ld	r30, X+
+    11e6:	fc 91       	ld	r31, X
+    11e8:	16 97       	sbiw	r26, 0x06	; 6
+    11ea:	30 97       	sbiw	r30, 0x00	; 0
+    11ec:	39 f0       	breq	.+14     	; 0x11fc <_ZN11IGAS_mb_4858doActionEPiiii+0x24>
+    11ee:	e9 01       	movw	r28, r18
+    11f0:	da 01       	movw	r26, r20
+    11f2:	cb 01       	movw	r24, r22
+    {
+        (*fpAction)(t1, t2, t3, t4);
+    11f4:	98 01       	movw	r18, r16
+    11f6:	ae 01       	movw	r20, r28
+    11f8:	bd 01       	movw	r22, r26
+    11fa:	09 95       	icall
+    }
+    11fc:	df 91       	pop	r29
+    11fe:	cf 91       	pop	r28
+    1200:	1f 91       	pop	r17
+    1202:	0f 91       	pop	r16
+    1204:	08 95       	ret
+
+00001206 <_ZN11IGAS_mb_48510write_regsEjPhPi>:
+int IGAS_mb_485::write_regs(
+    uint16_t start_addr,
+    uint8_t* query,
+    int16_t* regs
+)
+{
+    1206:	8f 92       	push	r8
+    1208:	9f 92       	push	r9
+    120a:	af 92       	push	r10
+    120c:	bf 92       	push	r11
+    120e:	cf 92       	push	r12
+    1210:	df 92       	push	r13
+    1212:	ef 92       	push	r14
+    1214:	ff 92       	push	r15
+    1216:	0f 93       	push	r16
+    1218:	1f 93       	push	r17
+    121a:	cf 93       	push	r28
+    121c:	df 93       	push	r29
+    121e:	4c 01       	movw	r8, r24
+    1220:	5b 01       	movw	r10, r22
+    1222:	7a 01       	movw	r14, r20
+    1224:	69 01       	movw	r12, r18
+    uint16_t i = 0;
+
+    for (i = 0; i < static_cast<uint16_t>(query[REGS_L]); ++i)
+    1226:	c0 e0       	ldi	r28, 0x00	; 0
+    1228:	d0 e0       	ldi	r29, 0x00	; 0
+    122a:	f7 01       	movw	r30, r14
+    122c:	85 81       	ldd	r24, Z+5	; 0x05
+    122e:	90 e0       	ldi	r25, 0x00	; 0
+    1230:	c8 17       	cp	r28, r24
+    1232:	d9 07       	cpc	r29, r25
+    1234:	d0 f4       	brcc	.+52     	; 0x126a <_ZN11IGAS_mb_48510write_regsEjPhPi+0x64>
+    {
+        int16_t temp =
+            static_cast<int16_t>(
+                static_cast<uint16_t>(query[(BYTE_CNT + 1) + i * 2]) << 8
+    1236:	fe 01       	movw	r30, r28
+    1238:	ee 0f       	add	r30, r30
+    123a:	ff 1f       	adc	r31, r31
+    123c:	ee 0d       	add	r30, r14
+    123e:	ff 1d       	adc	r31, r15
+            );
+    1240:	00 e0       	ldi	r16, 0x00	; 0
+    1242:	17 81       	ldd	r17, Z+7	; 0x07
+
+        temp = static_cast<int16_t>(
+            temp |
+            static_cast<int16_t>(query[(BYTE_CNT + 2) + i * 2])
+    1244:	fe 01       	movw	r30, r28
+    1246:	34 96       	adiw	r30, 0x04	; 4
+    1248:	ee 0f       	add	r30, r30
+    124a:	ff 1f       	adc	r31, r31
+    124c:	ee 0d       	add	r30, r14
+    124e:	ff 1d       	adc	r31, r15
+    1250:	80 81       	ld	r24, Z
+        );
+    1252:	08 2b       	or	r16, r24
+
+        doAction(
+            regs,
+            static_cast<int16_t>(start_addr + i),
+    1254:	ae 01       	movw	r20, r28
+    1256:	4a 0d       	add	r20, r10
+    1258:	5b 1d       	adc	r21, r11
+            singleRegister,
+            temp
+        );
+    125a:	21 e0       	ldi	r18, 0x01	; 1
+    125c:	30 e0       	ldi	r19, 0x00	; 0
+    125e:	b6 01       	movw	r22, r12
+    1260:	c4 01       	movw	r24, r8
+    1262:	0e 94 ec 08 	call	0x11d8	; 0x11d8 <_ZN11IGAS_mb_4858doActionEPiiii>
+    int16_t* regs
+)
+{
+    uint16_t i = 0;
+
+    for (i = 0; i < static_cast<uint16_t>(query[REGS_L]); ++i)
+    1266:	21 96       	adiw	r28, 0x01	; 1
+    1268:	e0 cf       	rjmp	.-64     	; 0x122a <_ZN11IGAS_mb_48510write_regsEjPhPi+0x24>
+            temp
+        );
+    }
+
+    return static_cast<int>(i);
+}
+    126a:	ce 01       	movw	r24, r28
+    126c:	df 91       	pop	r29
+    126e:	cf 91       	pop	r28
+    1270:	1f 91       	pop	r17
+    1272:	0f 91       	pop	r16
+    1274:	ff 90       	pop	r15
+    1276:	ef 90       	pop	r14
+    1278:	df 90       	pop	r13
+    127a:	cf 90       	pop	r12
+    127c:	bf 90       	pop	r11
+    127e:	af 90       	pop	r10
+    1280:	9f 90       	pop	r9
+    1282:	8f 90       	pop	r8
+    1284:	08 95       	ret
+
+00001286 <_ZN11IGAS_mb_48525preset_multiple_registersEhjhPhPi>:
+    uint16_t start_addr,
+    uint8_t count,
+    uint8_t* query,
+    int16_t* regs
+)
+{
+    1286:	6f 92       	push	r6
+    1288:	7f 92       	push	r7
+    128a:	8f 92       	push	r8
+    128c:	9f 92       	push	r9
+    128e:	af 92       	push	r10
+    1290:	bf 92       	push	r11
+    1292:	cf 92       	push	r12
+    1294:	df 92       	push	r13
+    1296:	ef 92       	push	r14
+    1298:	ff 92       	push	r15
+    129a:	0f 93       	push	r16
+    129c:	1f 93       	push	r17
+    129e:	cf 93       	push	r28
+    12a0:	df 93       	push	r29
+    12a2:	cd b7       	in	r28, 0x3d	; 61
+    12a4:	de b7       	in	r29, 0x3e	; 62
+    12a6:	28 97       	sbiw	r28, 0x08	; 8
+    12a8:	0f b6       	in	r0, 0x3f	; 63
+    12aa:	f8 94       	cli
+    12ac:	de bf       	out	0x3e, r29	; 62
+    12ae:	0f be       	out	0x3f, r0	; 63
+    12b0:	cd bf       	out	0x3d, r28	; 61
+    12b2:	6c 01       	movw	r12, r24
+    12b4:	5a 01       	movw	r10, r20
+    12b6:	48 01       	movw	r8, r16
+    12b8:	37 01       	movw	r6, r14
+        slave,
+        FC_WRITE_REGS,
+        start_addr,
+        count,
+        packet
+    );
+    12ba:	ce 01       	movw	r24, r28
+    12bc:	01 96       	adiw	r24, 0x01	; 1
+    12be:	7c 01       	movw	r14, r24
+    12c0:	02 2f       	mov	r16, r18
+    12c2:	9a 01       	movw	r18, r20
+    12c4:	40 e1       	ldi	r20, 0x10	; 16
+    12c6:	c6 01       	movw	r24, r12
+    12c8:	0e 94 78 07 	call	0xef0	; 0xef0 <_ZN11IGAS_mb_48518build_write_packetEhhjhPh>
+
+    if (write_regs(start_addr, query, regs) != 0)
+    12cc:	93 01       	movw	r18, r6
+    12ce:	a4 01       	movw	r20, r8
+    12d0:	b5 01       	movw	r22, r10
+    12d2:	c6 01       	movw	r24, r12
+    12d4:	0e 94 03 09 	call	0x1206	; 0x1206 <_ZN11IGAS_mb_48510write_regsEjPhPi>
+    12d8:	00 97       	sbiw	r24, 0x00	; 0
+    12da:	29 f0       	breq	.+10     	; 0x12e6 <_ZN11IGAS_mb_48525preset_multiple_registersEhjhPhPi+0x60>
+    {
+        return send_reply(packet, RESPONSE_SIZE);
+    12dc:	46 e0       	ldi	r20, 0x06	; 6
+    12de:	b7 01       	movw	r22, r14
+    12e0:	c6 01       	movw	r24, r12
+    12e2:	0e 94 ec 07 	call	0xfd8	; 0xfd8 <_ZN11IGAS_mb_48510send_replyEPhh>
+    }
+
+    return 0;
+}
+    12e6:	28 96       	adiw	r28, 0x08	; 8
+    12e8:	0f b6       	in	r0, 0x3f	; 63
+    12ea:	f8 94       	cli
+    12ec:	de bf       	out	0x3e, r29	; 62
+    12ee:	0f be       	out	0x3f, r0	; 63
+    12f0:	cd bf       	out	0x3d, r28	; 61
+    12f2:	df 91       	pop	r29
+    12f4:	cf 91       	pop	r28
+    12f6:	1f 91       	pop	r17
+    12f8:	0f 91       	pop	r16
+    12fa:	ff 90       	pop	r15
+    12fc:	ef 90       	pop	r14
+    12fe:	df 90       	pop	r13
+    1300:	cf 90       	pop	r12
+    1302:	bf 90       	pop	r11
+    1304:	af 90       	pop	r10
+    1306:	9f 90       	pop	r9
+    1308:	8f 90       	pop	r8
+    130a:	7f 90       	pop	r7
+    130c:	6f 90       	pop	r6
+    130e:	08 95       	ret
+
+00001310 <_ZN11IGAS_mb_48521write_single_registerEhjPhPi>:
+    uint8_t slave,
+    uint16_t write_addr,
+    uint8_t* query,
+    int16_t* regs
+)
+{
+    1310:	6f 92       	push	r6
+    1312:	7f 92       	push	r7
+    1314:	8f 92       	push	r8
+    1316:	9f 92       	push	r9
+    1318:	af 92       	push	r10
+    131a:	bf 92       	push	r11
+    131c:	cf 92       	push	r12
+    131e:	df 92       	push	r13
+    1320:	ef 92       	push	r14
+    1322:	ff 92       	push	r15
+    1324:	0f 93       	push	r16
+    1326:	1f 93       	push	r17
+    1328:	cf 93       	push	r28
+    132a:	df 93       	push	r29
+    132c:	cd b7       	in	r28, 0x3d	; 61
+    132e:	de b7       	in	r29, 0x3e	; 62
+    1330:	28 97       	sbiw	r28, 0x08	; 8
+    1332:	0f b6       	in	r0, 0x3f	; 63
+    1334:	f8 94       	cli
+    1336:	de bf       	out	0x3e, r29	; 62
+    1338:	0f be       	out	0x3f, r0	; 63
+    133a:	cd bf       	out	0x3d, r28	; 61
+    133c:	5c 01       	movw	r10, r24
+    133e:	4a 01       	movw	r8, r20
+    1340:	38 01       	movw	r6, r16
+    const uint16_t reg_val =
+        static_cast<uint16_t>(
+            (static_cast<uint16_t>(query[REGS_H]) << 8) |
+    1342:	f9 01       	movw	r30, r18
+    1344:	c4 80       	ldd	r12, Z+4	; 0x04
+    1346:	d1 2c       	mov	r13, r1
+    1348:	dc 2c       	mov	r13, r12
+    134a:	cc 24       	eor	r12, r12
+            static_cast<uint16_t>(query[REGS_L])
+    134c:	85 81       	ldd	r24, Z+5	; 0x05
+        );
+    134e:	c8 2a       	or	r12, r24
+        slave,
+        FC_WRITE_REG,
+        write_addr,
+        reg_val,
+        packet
+    );
+    1350:	ce 01       	movw	r24, r28
+    1352:	01 96       	adiw	r24, 0x01	; 1
+    1354:	7c 01       	movw	r14, r24
+    1356:	86 01       	movw	r16, r12
+    1358:	9a 01       	movw	r18, r20
+    135a:	46 e0       	ldi	r20, 0x06	; 6
+    135c:	c5 01       	movw	r24, r10
+    135e:	0e 94 86 07 	call	0xf0c	; 0xf0c <_ZN11IGAS_mb_48525build_write_single_packetEhhjjPh>
+    doAction(
+        regs,
+        static_cast<int16_t>(write_addr),
+        singleRegister,
+        static_cast<int16_t>(reg_val)
+    );
+    1362:	21 e0       	ldi	r18, 0x01	; 1
+    1364:	30 e0       	ldi	r19, 0x00	; 0
+    1366:	a4 01       	movw	r20, r8
+    1368:	b3 01       	movw	r22, r6
+    136a:	c5 01       	movw	r24, r10
+    136c:	0e 94 ec 08 	call	0x11d8	; 0x11d8 <_ZN11IGAS_mb_4858doActionEPiiii>
+
+    return send_reply(packet, RESPONSE_SIZE);
+    1370:	46 e0       	ldi	r20, 0x06	; 6
+    1372:	b7 01       	movw	r22, r14
+    1374:	c5 01       	movw	r24, r10
+    1376:	0e 94 ec 07 	call	0xfd8	; 0xfd8 <_ZN11IGAS_mb_48510send_replyEPhh>
+}
+    137a:	28 96       	adiw	r28, 0x08	; 8
+    137c:	0f b6       	in	r0, 0x3f	; 63
+    137e:	f8 94       	cli
+    1380:	de bf       	out	0x3e, r29	; 62
+    1382:	0f be       	out	0x3f, r0	; 63
+    1384:	cd bf       	out	0x3d, r28	; 61
+    1386:	df 91       	pop	r29
+    1388:	cf 91       	pop	r28
+    138a:	1f 91       	pop	r17
+    138c:	0f 91       	pop	r16
+    138e:	ff 90       	pop	r15
+    1390:	ef 90       	pop	r14
+    1392:	df 90       	pop	r13
+    1394:	cf 90       	pop	r12
+    1396:	bf 90       	pop	r11
+    1398:	af 90       	pop	r10
+    139a:	9f 90       	pop	r9
+    139c:	8f 90       	pop	r8
+    139e:	7f 90       	pop	r7
+    13a0:	6f 90       	pop	r6
+    13a2:	08 95       	ret
+
+000013a4 <_ZN11IGAS_mb_48522read_holding_registersEhjhPi>:
+    uint8_t slave,
+    uint16_t start_addr,
+    uint8_t reg_count,
+    int16_t* regs
+)
+{
+    13a4:	8f 92       	push	r8
+    13a6:	9f 92       	push	r9
+    13a8:	bf 92       	push	r11
+    13aa:	cf 92       	push	r12
+    13ac:	df 92       	push	r13
+    13ae:	ef 92       	push	r14
+    13b0:	ff 92       	push	r15
+    13b2:	0f 93       	push	r16
+    13b4:	1f 93       	push	r17
+    13b6:	cf 93       	push	r28
+    13b8:	df 93       	push	r29
+    13ba:	cd b7       	in	r28, 0x3d	; 61
+    13bc:	de b7       	in	r29, 0x3e	; 62
+    13be:	a8 97       	sbiw	r28, 0x28	; 40
+    13c0:	0f b6       	in	r0, 0x3f	; 63
+    13c2:	f8 94       	cli
+    13c4:	de bf       	out	0x3e, r29	; 62
+    13c6:	0f be       	out	0x3f, r0	; 63
+    13c8:	cd bf       	out	0x3d, r28	; 61
+    13ca:	6c 01       	movw	r12, r24
+    13cc:	4a 01       	movw	r8, r20
+    13ce:	b2 2e       	mov	r11, r18
+    13d0:	78 01       	movw	r14, r16
+    build_read_packet(
+        slave,
+        FC_READ_REGS,
+        reg_count,
+        packet
+    );
+    13d2:	8e 01       	movw	r16, r28
+    13d4:	0f 5f       	subi	r16, 0xFF	; 255
+    13d6:	1f 4f       	sbci	r17, 0xFF	; 255
+    13d8:	43 e0       	ldi	r20, 0x03	; 3
+    13da:	0e 94 6e 07 	call	0xedc	; 0xedc <_ZN11IGAS_mb_48517build_read_packetEhhhPh>
+
+    doAction(
+    13de:	2b 2d       	mov	r18, r11
+    13e0:	30 e0       	ldi	r19, 0x00	; 0
+        regs,
+        static_cast<int16_t>(start_addr),
+        static_cast<int16_t>(reg_count),
+        0
+    );
+    13e2:	00 e0       	ldi	r16, 0x00	; 0
+    13e4:	10 e0       	ldi	r17, 0x00	; 0
+    13e6:	a4 01       	movw	r20, r8
+    13e8:	b7 01       	movw	r22, r14
+    13ea:	c6 01       	movw	r24, r12
+    13ec:	0e 94 ec 08 	call	0x11d8	; 0x11d8 <_ZN11IGAS_mb_4858doActionEPiiii>
+
+    for (uint8_t i = 0; i < reg_count; ++i)
+    13f0:	80 e0       	ldi	r24, 0x00	; 0
+    uint8_t reg_count,
+    int16_t* regs
+)
+{
+    uint8_t packet[MAX_MESSAGE_LENGTH];
+    int packet_size = 3;
+    13f2:	43 e0       	ldi	r20, 0x03	; 3
+    13f4:	50 e0       	ldi	r21, 0x00	; 0
+        static_cast<int16_t>(start_addr),
+        static_cast<int16_t>(reg_count),
+        0
+    );
+
+    for (uint8_t i = 0; i < reg_count; ++i)
+    13f6:	8b 15       	cp	r24, r11
+    13f8:	e0 f4       	brcc	.+56     	; 0x1432 <_ZN11IGAS_mb_48522read_holding_registersEhjhPi+0x8e>
+    {
+        const uint16_t reg_value = static_cast<uint16_t>(regs[i]);
+    13fa:	e8 2f       	mov	r30, r24
+    13fc:	f0 e0       	ldi	r31, 0x00	; 0
+    13fe:	ee 0f       	add	r30, r30
+    1400:	ff 1f       	adc	r31, r31
+    1402:	ee 0d       	add	r30, r14
+    1404:	ff 1d       	adc	r31, r15
+    1406:	90 81       	ld	r25, Z
+    1408:	21 81       	ldd	r18, Z+1	; 0x01
+
+        packet[packet_size++] =
+            static_cast<uint8_t>(reg_value >> 8);
+    140a:	e1 e0       	ldi	r30, 0x01	; 1
+    140c:	f0 e0       	ldi	r31, 0x00	; 0
+    140e:	ec 0f       	add	r30, r28
+    1410:	fd 1f       	adc	r31, r29
+    1412:	e4 0f       	add	r30, r20
+    1414:	f5 1f       	adc	r31, r21
+    1416:	20 83       	st	Z, r18
+
+        packet[packet_size++] =
+            static_cast<uint8_t>(reg_value & 0x00FFu);
+    1418:	fa 01       	movw	r30, r20
+    141a:	31 96       	adiw	r30, 0x01	; 1
+    141c:	21 e0       	ldi	r18, 0x01	; 1
+    141e:	30 e0       	ldi	r19, 0x00	; 0
+    1420:	2c 0f       	add	r18, r28
+    1422:	3d 1f       	adc	r19, r29
+    1424:	e2 0f       	add	r30, r18
+    1426:	f3 1f       	adc	r31, r19
+    1428:	4e 5f       	subi	r20, 0xFE	; 254
+    142a:	5f 4f       	sbci	r21, 0xFF	; 255
+    142c:	90 83       	st	Z, r25
+        static_cast<int16_t>(start_addr),
+        static_cast<int16_t>(reg_count),
+        0
+    );
+
+    for (uint8_t i = 0; i < reg_count; ++i)
+    142e:	8f 5f       	subi	r24, 0xFF	; 255
+    1430:	e2 cf       	rjmp	.-60     	; 0x13f6 <_ZN11IGAS_mb_48522read_holding_registersEhjhPi+0x52>
+
+        packet[packet_size++] =
+            static_cast<uint8_t>(reg_value & 0x00FFu);
+    }
+
+    return send_reply(packet, static_cast<uint8_t>(packet_size));
+    1432:	be 01       	movw	r22, r28
+    1434:	6f 5f       	subi	r22, 0xFF	; 255
+    1436:	7f 4f       	sbci	r23, 0xFF	; 255
+    1438:	c6 01       	movw	r24, r12
+    143a:	0e 94 ec 07 	call	0xfd8	; 0xfd8 <_ZN11IGAS_mb_48510send_replyEPhh>
+}
+    143e:	a8 96       	adiw	r28, 0x28	; 40
+    1440:	0f b6       	in	r0, 0x3f	; 63
+    1442:	f8 94       	cli
+    1444:	de bf       	out	0x3e, r29	; 62
+    1446:	0f be       	out	0x3f, r0	; 63
+    1448:	cd bf       	out	0x3d, r28	; 61
+    144a:	df 91       	pop	r29
+    144c:	cf 91       	pop	r28
+    144e:	1f 91       	pop	r17
+    1450:	0f 91       	pop	r16
+    1452:	ff 90       	pop	r15
+    1454:	ef 90       	pop	r14
+    1456:	df 90       	pop	r13
+    1458:	cf 90       	pop	r12
+    145a:	bf 90       	pop	r11
+    145c:	9f 90       	pop	r9
+    145e:	8f 90       	pop	r8
+    1460:	08 95       	ret
+
+00001462 <_ZN11IGAS_mb_4856updateEv>:
+ *
+ * @return 0, если запрос не обработан или ответ не требуется.
+ * @return Код исключения, если сформирован exception-ответ.
+ */
+uint8_t IGAS_mb_485::update(void)
+{
+    1462:	cf 92       	push	r12
+    1464:	df 92       	push	r13
+    1466:	ef 92       	push	r14
+    1468:	ff 92       	push	r15
+    146a:	0f 93       	push	r16
+    146c:	1f 93       	push	r17
+    146e:	cf 93       	push	r28
+    1470:	df 93       	push	r29
+    1472:	cd b7       	in	r28, 0x3d	; 61
+    1474:	de b7       	in	r29, 0x3e	; 62
+    1476:	cd 57       	subi	r28, 0x7D	; 125
+    1478:	d1 09       	sbc	r29, r1
+    147a:	0f b6       	in	r0, 0x3f	; 63
+    147c:	f8 94       	cli
+    147e:	de bf       	out	0x3e, r29	; 62
+    1480:	0f be       	out	0x3f, r0	; 63
+    1482:	cd bf       	out	0x3d, r28	; 61
+    1484:	6c 01       	movw	r12, r24
+     *
+     * @return Количество байт в приёмном буфере.
+     */
+    int available(void)
+    {
+        return static_cast<int>(hal::uart0_available());
+    1486:	0e 94 a7 05 	call	0xb4e	; 0xb4e <_ZN3hal15uart0_availableEv>
+    148a:	08 2f       	mov	r16, r24
+    148c:	10 e0       	ldi	r17, 0x00	; 0
+    const int16_t length_now =
+        static_cast<int16_t>(Serial.available());
+
+    if (length_now == 0)
+    148e:	01 15       	cp	r16, r1
+    1490:	11 05       	cpc	r17, r1
+    1492:	29 f4       	brne	.+10     	; 0x149e <_ZN11IGAS_mb_4856updateEv+0x3c>
+    {
+        lastBytesReceived = 0;
+    1494:	f6 01       	movw	r30, r12
+    1496:	16 86       	std	Z+14, r1	; 0x0e
+    1498:	15 86       	std	Z+13, r1	; 0x0d
+        return 0;
+    149a:	f1 2c       	mov	r15, r1
+    149c:	8b c0       	rjmp	.+278    	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+    }
+
+    if (ldi_board::rs485IsTransmitMode())
+    149e:	0e 94 a6 03 	call	0x74c	; 0x74c <_ZN9ldi_board19rs485IsTransmitModeEv>
+    14a2:	81 11       	cpse	r24, r1
+    14a4:	80 c0       	rjmp	.+256    	; 0x15a6 <_ZN11IGAS_mb_4856updateEv+0x144>
+ *
+ * @see hal::millis
+ */
+static inline uint32_t millis(void)
+{
+    return hal::millis();
+    14a6:	0e 94 b1 06 	call	0xd62	; 0xd62 <_ZN3hal6millisEv>
+    uint8_t query[MAX_MESSAGE_LENGTH];
+    uint8_t errpacket[EXCEPTION_SIZE + CHECKSUM_SIZE];
+
+    const uint32_t t_ms = millis();
+
+    if (lastBytesReceived != length_now)
+    14aa:	f6 01       	movw	r30, r12
+    14ac:	25 85       	ldd	r18, Z+13	; 0x0d
+    14ae:	36 85       	ldd	r19, Z+14	; 0x0e
+    14b0:	20 17       	cp	r18, r16
+    14b2:	31 07       	cpc	r19, r17
+    14b4:	41 f0       	breq	.+16     	; 0x14c6 <_ZN11IGAS_mb_4856updateEv+0x64>
+    {
+        lastBytesReceived = length_now;
+    14b6:	16 87       	std	Z+14, r17	; 0x0e
+    14b8:	05 87       	std	Z+13, r16	; 0x0d
+        Nowdt = t_ms;
+    14ba:	61 87       	std	Z+9, r22	; 0x09
+    14bc:	72 87       	std	Z+10, r23	; 0x0a
+    14be:	83 87       	std	Z+11, r24	; 0x0b
+    14c0:	94 87       	std	Z+12, r25	; 0x0c
+        return 0;
+    14c2:	f1 2c       	mov	r15, r1
+    14c4:	77 c0       	rjmp	.+238    	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+    }
+
+    if (static_cast<uint32_t>(t_ms - Nowdt) < interframe_delay)
+    14c6:	f6 01       	movw	r30, r12
+    14c8:	01 85       	ldd	r16, Z+9	; 0x09
+    14ca:	12 85       	ldd	r17, Z+10	; 0x0a
+    14cc:	23 85       	ldd	r18, Z+11	; 0x0b
+    14ce:	34 85       	ldd	r19, Z+12	; 0x0c
+    14d0:	dc 01       	movw	r26, r24
+    14d2:	cb 01       	movw	r24, r22
+    14d4:	80 1b       	sub	r24, r16
+    14d6:	91 0b       	sbc	r25, r17
+    14d8:	a2 0b       	sbc	r26, r18
+    14da:	b3 0b       	sbc	r27, r19
+    14dc:	03 81       	ldd	r16, Z+3	; 0x03
+    14de:	14 81       	ldd	r17, Z+4	; 0x04
+    14e0:	20 e0       	ldi	r18, 0x00	; 0
+    14e2:	30 e0       	ldi	r19, 0x00	; 0
+    14e4:	80 17       	cp	r24, r16
+    14e6:	91 07       	cpc	r25, r17
+    14e8:	a2 07       	cpc	r26, r18
+    14ea:	b3 07       	cpc	r27, r19
+    14ec:	08 f4       	brcc	.+2      	; 0x14f0 <_ZN11IGAS_mb_4856updateEv+0x8e>
+    14ee:	5d c0       	rjmp	.+186    	; 0x15aa <_ZN11IGAS_mb_4856updateEv+0x148>
+    {
+        return 0;
+    }
+
+    lastBytesReceived = 0;
+    14f0:	16 86       	std	Z+14, r1	; 0x0e
+    14f2:	15 86       	std	Z+13, r1	; 0x0d
+
+    const int16_t frame_len = modbus_request(slave, query);
+    14f4:	60 81       	ld	r22, Z
+    14f6:	ae 01       	movw	r20, r28
+    14f8:	4f 5f       	subi	r20, 0xFF	; 255
+    14fa:	5f 4f       	sbci	r21, 0xFF	; 255
+    14fc:	c6 01       	movw	r24, r12
+    14fe:	0e 94 29 08 	call	0x1052	; 0x1052 <_ZN11IGAS_mb_48514modbus_requestEhPh>
+
+    if (frame_len < MIN_REQUEST_SIZE)
+    1502:	88 30       	cpi	r24, 0x08	; 8
+    1504:	91 05       	cpc	r25, r1
+    1506:	0c f4       	brge	.+2      	; 0x150a <_ZN11IGAS_mb_4856updateEv+0xa8>
+    1508:	52 c0       	rjmp	.+164    	; 0x15ae <_ZN11IGAS_mb_4856updateEv+0x14c>
+    {
+        return 0;
+    }
+
+    const int exception =
+        validate_request(query, static_cast<uint8_t>(frame_len));
+    150a:	48 2f       	mov	r20, r24
+    150c:	be 01       	movw	r22, r28
+    150e:	6f 5f       	subi	r22, 0xFF	; 255
+    1510:	7f 4f       	sbci	r23, 0xFF	; 255
+    1512:	c6 01       	movw	r24, r12
+    1514:	0e 94 6c 08 	call	0x10d8	; 0x10d8 <_ZN11IGAS_mb_48516validate_requestEPhh>
+
+    if (exception != 0)
+    1518:	00 97       	sbiw	r24, 0x00	; 0
+    151a:	89 f0       	breq	.+34     	; 0x153e <_ZN11IGAS_mb_4856updateEv+0xdc>
+    {
+        build_error_packet(
+    151c:	f8 2e       	mov	r15, r24
+    151e:	4a 81       	ldd	r20, Y+2	; 0x02
+    1520:	f6 01       	movw	r30, r12
+    1522:	60 81       	ld	r22, Z
+            slave,
+            query[FUNC],
+            static_cast<uint8_t>(exception),
+            errpacket
+        );
+    1524:	8e 01       	movw	r16, r28
+    1526:	07 5d       	subi	r16, 0xD7	; 215
+    1528:	1f 4f       	sbci	r17, 0xFF	; 255
+    152a:	28 2f       	mov	r18, r24
+    152c:	c6 01       	movw	r24, r12
+    152e:	0e 94 96 07 	call	0xf2c	; 0xf2c <_ZN11IGAS_mb_48518build_error_packetEhhhPh>
+
+        (void)send_reply(errpacket, EXCEPTION_SIZE);
+    1532:	43 e0       	ldi	r20, 0x03	; 3
+    1534:	b8 01       	movw	r22, r16
+    1536:	c6 01       	movw	r24, r12
+    1538:	0e 94 ec 07 	call	0xfd8	; 0xfd8 <_ZN11IGAS_mb_48510send_replyEPhh>
+
+        return static_cast<uint8_t>(exception);
+    153c:	3b c0       	rjmp	.+118    	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+    }
+
+    const uint16_t start_addr =
+        static_cast<uint16_t>(
+            (static_cast<uint16_t>(query[START_H]) << 8) |
+    153e:	4b 81       	ldd	r20, Y+3	; 0x03
+    1540:	50 e0       	ldi	r21, 0x00	; 0
+    1542:	54 2f       	mov	r21, r20
+    1544:	44 27       	eor	r20, r20
+            static_cast<uint16_t>(query[START_L])
+    1546:	8c 81       	ldd	r24, Y+4	; 0x04
+        );
+    1548:	48 2b       	or	r20, r24
+
+    int16_t regs[MAX_MESSAGE_LENGTH];
+
+    func = query[FUNC];
+    154a:	8a 81       	ldd	r24, Y+2	; 0x02
+    154c:	f6 01       	movw	r30, r12
+    154e:	82 83       	std	Z+2, r24	; 0x02
+
+    switch (query[FUNC])
+    1550:	86 30       	cpi	r24, 0x06	; 6
+    1552:	e1 f0       	breq	.+56     	; 0x158c <_ZN11IGAS_mb_4856updateEv+0x12a>
+    1554:	80 31       	cpi	r24, 0x10	; 16
+    1556:	61 f0       	breq	.+24     	; 0x1570 <_ZN11IGAS_mb_4856updateEv+0x10e>
+    1558:	83 30       	cpi	r24, 0x03	; 3
+    155a:	59 f5       	brne	.+86     	; 0x15b2 <_ZN11IGAS_mb_4856updateEv+0x150>
+    {
+        case FC_READ_REGS:
+            return static_cast<uint8_t>(
+                read_holding_registers(
+    155c:	8e 01       	movw	r16, r28
+    155e:	02 5d       	subi	r16, 0xD2	; 210
+    1560:	1f 4f       	sbci	r17, 0xFF	; 255
+    1562:	2e 81       	ldd	r18, Y+6	; 0x06
+    1564:	60 81       	ld	r22, Z
+    1566:	c6 01       	movw	r24, r12
+    1568:	0e 94 d2 09 	call	0x13a4	; 0x13a4 <_ZN11IGAS_mb_48522read_holding_registersEhjhPi>
+    156c:	f8 2e       	mov	r15, r24
+                    slave,
+                    start_addr,
+                    query[REGS_L],
+                    regs
+                )
+            );
+    156e:	22 c0       	rjmp	.+68     	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+
+        case FC_WRITE_REGS:
+            return static_cast<uint8_t>(
+                preset_multiple_registers(
+    1570:	ce 01       	movw	r24, r28
+    1572:	8e 96       	adiw	r24, 0x2e	; 46
+    1574:	7c 01       	movw	r14, r24
+    1576:	8e 01       	movw	r16, r28
+    1578:	0f 5f       	subi	r16, 0xFF	; 255
+    157a:	1f 4f       	sbci	r17, 0xFF	; 255
+    157c:	2e 81       	ldd	r18, Y+6	; 0x06
+    157e:	f6 01       	movw	r30, r12
+    1580:	60 81       	ld	r22, Z
+    1582:	c6 01       	movw	r24, r12
+    1584:	0e 94 43 09 	call	0x1286	; 0x1286 <_ZN11IGAS_mb_48525preset_multiple_registersEhjhPhPi>
+    1588:	f8 2e       	mov	r15, r24
+                    start_addr,
+                    query[REGS_L],
+                    query,
+                    regs
+                )
+            );
+    158a:	14 c0       	rjmp	.+40     	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+
+        case FC_WRITE_REG:
+            (void)write_single_register(
+    158c:	f6 01       	movw	r30, r12
+    158e:	60 81       	ld	r22, Z
+                slave,
+                start_addr,
+                query,
+                regs
+            );
+    1590:	8e 01       	movw	r16, r28
+    1592:	02 5d       	subi	r16, 0xD2	; 210
+    1594:	1f 4f       	sbci	r17, 0xFF	; 255
+    1596:	9e 01       	movw	r18, r28
+    1598:	2f 5f       	subi	r18, 0xFF	; 255
+    159a:	3f 4f       	sbci	r19, 0xFF	; 255
+    159c:	c6 01       	movw	r24, r12
+    159e:	0e 94 88 09 	call	0x1310	; 0x1310 <_ZN11IGAS_mb_48521write_single_registerEhjPhPi>
+            return 0;
+    15a2:	f1 2c       	mov	r15, r1
+    15a4:	07 c0       	rjmp	.+14     	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+        return 0;
+    }
+
+    if (ldi_board::rs485IsTransmitMode())
+    {
+        return 0;
+    15a6:	f1 2c       	mov	r15, r1
+    15a8:	05 c0       	rjmp	.+10     	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+        return 0;
+    }
+
+    if (static_cast<uint32_t>(t_ms - Nowdt) < interframe_delay)
+    {
+        return 0;
+    15aa:	f1 2c       	mov	r15, r1
+    15ac:	03 c0       	rjmp	.+6      	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+
+    const int16_t frame_len = modbus_request(slave, query);
+
+    if (frame_len < MIN_REQUEST_SIZE)
+    {
+        return 0;
+    15ae:	f1 2c       	mov	r15, r1
+    15b0:	01 c0       	rjmp	.+2      	; 0x15b4 <_ZN11IGAS_mb_4856updateEv+0x152>
+                regs
+            );
+            return 0;
+
+        default:
+            return 0;
+    15b2:	f1 2c       	mov	r15, r1
+    }
+}
+    15b4:	8f 2d       	mov	r24, r15
+    15b6:	c3 58       	subi	r28, 0x83	; 131
+    15b8:	df 4f       	sbci	r29, 0xFF	; 255
+    15ba:	0f b6       	in	r0, 0x3f	; 63
+    15bc:	f8 94       	cli
+    15be:	de bf       	out	0x3e, r29	; 62
+    15c0:	0f be       	out	0x3f, r0	; 63
+    15c2:	cd bf       	out	0x3d, r28	; 61
+    15c4:	df 91       	pop	r29
+    15c6:	cf 91       	pop	r28
+    15c8:	1f 91       	pop	r17
+    15ca:	0f 91       	pop	r16
+    15cc:	ff 90       	pop	r15
+    15ce:	ef 90       	pop	r14
+    15d0:	df 90       	pop	r13
+    15d2:	cf 90       	pop	r12
+    15d4:	08 95       	ret
+
+000015d6 <main>:
+ * - ������� ���������� ����������� ������ setup()/loop().
+ */
+
+int main(void)
+{
+    cli();
+    15d6:	f8 94       	cli
+
+    hal::tick_init();
+    15d8:	0e 94 99 06 	call	0xd32	; 0xd32 <_ZN3hal9tick_initEv>
+
+    sei();
+    15dc:	78 94       	sei
+
+    setup();
+    15de:	0e 94 a3 02 	call	0x546	; 0x546 <_Z5setupv>
+
+    for (;;) {
+        loop();
+    15e2:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <_Z4loopv>
+    15e6:	fd cf       	rjmp	.-6      	; 0x15e2 <main+0xc>
+
+000015e8 <__mulsi3>:
+    15e8:	db 01       	movw	r26, r22
+    15ea:	8f 93       	push	r24
+    15ec:	9f 93       	push	r25
+    15ee:	0e 94 26 0b 	call	0x164c	; 0x164c <__muluhisi3>
+    15f2:	bf 91       	pop	r27
+    15f4:	af 91       	pop	r26
+    15f6:	a2 9f       	mul	r26, r18
+    15f8:	80 0d       	add	r24, r0
+    15fa:	91 1d       	adc	r25, r1
+    15fc:	a3 9f       	mul	r26, r19
+    15fe:	90 0d       	add	r25, r0
+    1600:	b2 9f       	mul	r27, r18
+    1602:	90 0d       	add	r25, r0
+    1604:	11 24       	eor	r1, r1
+    1606:	08 95       	ret
+
+00001608 <__udivmodsi4>:
+    1608:	a1 e2       	ldi	r26, 0x21	; 33
+    160a:	1a 2e       	mov	r1, r26
+    160c:	aa 1b       	sub	r26, r26
+    160e:	bb 1b       	sub	r27, r27
+    1610:	fd 01       	movw	r30, r26
+    1612:	0d c0       	rjmp	.+26     	; 0x162e <__udivmodsi4_ep>
+
+00001614 <__udivmodsi4_loop>:
+    1614:	aa 1f       	adc	r26, r26
+    1616:	bb 1f       	adc	r27, r27
+    1618:	ee 1f       	adc	r30, r30
+    161a:	ff 1f       	adc	r31, r31
+    161c:	a2 17       	cp	r26, r18
+    161e:	b3 07       	cpc	r27, r19
+    1620:	e4 07       	cpc	r30, r20
+    1622:	f5 07       	cpc	r31, r21
+    1624:	20 f0       	brcs	.+8      	; 0x162e <__udivmodsi4_ep>
+    1626:	a2 1b       	sub	r26, r18
+    1628:	b3 0b       	sbc	r27, r19
+    162a:	e4 0b       	sbc	r30, r20
+    162c:	f5 0b       	sbc	r31, r21
+
+0000162e <__udivmodsi4_ep>:
+    162e:	66 1f       	adc	r22, r22
+    1630:	77 1f       	adc	r23, r23
+    1632:	88 1f       	adc	r24, r24
+    1634:	99 1f       	adc	r25, r25
+    1636:	1a 94       	dec	r1
+    1638:	69 f7       	brne	.-38     	; 0x1614 <__udivmodsi4_loop>
+    163a:	60 95       	com	r22
+    163c:	70 95       	com	r23
+    163e:	80 95       	com	r24
+    1640:	90 95       	com	r25
+    1642:	9b 01       	movw	r18, r22
+    1644:	ac 01       	movw	r20, r24
+    1646:	bd 01       	movw	r22, r26
+    1648:	cf 01       	movw	r24, r30
+    164a:	08 95       	ret
+
+0000164c <__muluhisi3>:
+    164c:	0e 94 37 0b 	call	0x166e	; 0x166e <__umulhisi3>
+    1650:	a5 9f       	mul	r26, r21
+    1652:	90 0d       	add	r25, r0
+    1654:	b4 9f       	mul	r27, r20
+    1656:	90 0d       	add	r25, r0
+    1658:	a4 9f       	mul	r26, r20
+    165a:	80 0d       	add	r24, r0
+    165c:	91 1d       	adc	r25, r1
+    165e:	11 24       	eor	r1, r1
+    1660:	08 95       	ret
+
+00001662 <__tablejump2__>:
+    1662:	ee 0f       	add	r30, r30
+    1664:	ff 1f       	adc	r31, r31
+    1666:	05 90       	lpm	r0, Z+
+    1668:	f4 91       	lpm	r31, Z
+    166a:	e0 2d       	mov	r30, r0
+    166c:	09 94       	ijmp
+
+0000166e <__umulhisi3>:
+    166e:	a2 9f       	mul	r26, r18
+    1670:	b0 01       	movw	r22, r0
+    1672:	b3 9f       	mul	r27, r19
+    1674:	c0 01       	movw	r24, r0
+    1676:	a3 9f       	mul	r26, r19
+    1678:	70 0d       	add	r23, r0
+    167a:	81 1d       	adc	r24, r1
+    167c:	11 24       	eor	r1, r1
+    167e:	91 1d       	adc	r25, r1
+    1680:	b2 9f       	mul	r27, r18
+    1682:	70 0d       	add	r23, r0
+    1684:	81 1d       	adc	r24, r1
+    1686:	11 24       	eor	r1, r1
+    1688:	91 1d       	adc	r25, r1
+    168a:	08 95       	ret
+
+0000168c <eeprom_read_word>:
+    168c:	a8 e1       	ldi	r26, 0x18	; 24
+    168e:	b0 e0       	ldi	r27, 0x00	; 0
+    1690:	42 e0       	ldi	r20, 0x02	; 2
+    1692:	50 e0       	ldi	r21, 0x00	; 0
+    1694:	0c 94 54 0b 	jmp	0x16a8	; 0x16a8 <eeprom_read_blraw>
+
+00001698 <eeprom_update_word>:
+    1698:	01 96       	adiw	r24, 0x01	; 1
+    169a:	27 2f       	mov	r18, r23
+    169c:	0e 94 63 0b 	call	0x16c6	; 0x16c6 <eeprom_update_r18>
+    16a0:	0c 94 62 0b 	jmp	0x16c4	; 0x16c4 <eeprom_update_byte>
+
+000016a4 <eeprom_read_block>:
+    16a4:	dc 01       	movw	r26, r24
+    16a6:	cb 01       	movw	r24, r22
+
+000016a8 <eeprom_read_blraw>:
+    16a8:	fc 01       	movw	r30, r24
+    16aa:	f9 99       	sbic	0x1f, 1	; 31
+    16ac:	fe cf       	rjmp	.-4      	; 0x16aa <eeprom_read_blraw+0x2>
+    16ae:	06 c0       	rjmp	.+12     	; 0x16bc <eeprom_read_blraw+0x14>
+    16b0:	f2 bd       	out	0x22, r31	; 34
+    16b2:	e1 bd       	out	0x21, r30	; 33
+    16b4:	f8 9a       	sbi	0x1f, 0	; 31
+    16b6:	31 96       	adiw	r30, 0x01	; 1
+    16b8:	00 b4       	in	r0, 0x20	; 32
+    16ba:	0d 92       	st	X+, r0
+    16bc:	41 50       	subi	r20, 0x01	; 1
+    16be:	50 40       	sbci	r21, 0x00	; 0
+    16c0:	b8 f7       	brcc	.-18     	; 0x16b0 <eeprom_read_blraw+0x8>
+    16c2:	08 95       	ret
+
+000016c4 <eeprom_update_byte>:
+    16c4:	26 2f       	mov	r18, r22
+
+000016c6 <eeprom_update_r18>:
+    16c6:	f9 99       	sbic	0x1f, 1	; 31
+    16c8:	fe cf       	rjmp	.-4      	; 0x16c6 <eeprom_update_r18>
+    16ca:	92 bd       	out	0x22, r25	; 34
+    16cc:	81 bd       	out	0x21, r24	; 33
+    16ce:	f8 9a       	sbi	0x1f, 0	; 31
+    16d0:	01 97       	sbiw	r24, 0x01	; 1
+    16d2:	00 b4       	in	r0, 0x20	; 32
+    16d4:	02 16       	cp	r0, r18
+    16d6:	39 f0       	breq	.+14     	; 0x16e6 <eeprom_update_r18+0x20>
+    16d8:	1f ba       	out	0x1f, r1	; 31
+    16da:	20 bd       	out	0x20, r18	; 32
+    16dc:	0f b6       	in	r0, 0x3f	; 63
+    16de:	f8 94       	cli
+    16e0:	fa 9a       	sbi	0x1f, 2	; 31
+    16e2:	f9 9a       	sbi	0x1f, 1	; 31
+    16e4:	0f be       	out	0x3f, r0	; 63
+    16e6:	08 95       	ret
+
+000016e8 <_exit>:
+    16e8:	f8 94       	cli
+
+000016ea <__stop_program>:
+    16ea:	ff cf       	rjmp	.-2      	; 0x16ea <__stop_program>
