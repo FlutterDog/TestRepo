@@ -1,0 +1,114 @@
+
+#ifndef IGAS_mbServ
+#define IGAS_mbServ
+
+#include <Arduino.h>
+#include <pins_arduino.h>
+
+
+
+
+/* enum of supported modbus function codes. If you implement a new one, put its function code here ! */
+enum {
+	FC_READ_COILS  = 0x01,   //Read contiguous block of holding register
+	FC_READ_DISCRETE  = 0x02,   //Read contiguous block of holding register
+	FC_READ_REGS  = 0x03,   //Read contiguous block of holding register
+	FC_WRITE_REG  = 0x06,   //Write single holding register
+	FC_WRITE_REGS = 0x10    //Write block of contiguous registers
+};
+
+/* supported functions. If you implement a new one, put its function code into this array! */
+const unsigned char fsupported[] = {FC_READ_COILS, FC_READ_REGS, FC_WRITE_REG, FC_WRITE_REGS };
+
+/* constants */
+enum {
+	MAX_READ_REGS = 0x0F,
+	MAX_WRITE_REGS = 0x0F,
+	MAX_MESSAGE_LENGTH = 40
+};
+
+
+enum {
+	RESPONSE_SIZE = 6,
+	EXCEPTION_SIZE = 3,
+	CHECKSUM_SIZE = 2
+};
+
+/* exceptions code */
+enum {
+	NO_REPLY = -1,
+	EXC_FUNC_CODE = 1,
+	EXC_ADDR_RANGE = 2,
+	EXC_REGS_QUANT = 3,
+	EXC_EXECUTE = 4
+};
+
+/* positions inside the query/response array */
+enum {
+	SLAVE = 0,
+	FUNC,
+	START_H,
+	START_L,
+	REGS_H,
+	REGS_L,
+	BYTE_CNT
+};
+
+
+const byte receiveMode = B11111011;
+const byte transmitMode = B00000100;
+const byte dotDisp = 0x08;
+const byte singleRegister = 1;
+
+
+
+
+
+class MB_LCP_Serv
+{
+
+	public:
+	
+	void initMB(unsigned long COMM_BPS = 9600, int16_t SERIAL_MODE = SERIAL_8N1, int16_t allRegs = 1000);
+	byte update();
+	void setDelegate(void (*fp)(int16_t*,  int16_t ,  int16_t , int16_t ) );
+	int16_t send(unsigned char * query, unsigned char string_length);
+	
+	byte slave;
+	byte transmitLED;
+	byte func;
+	
+	private:
+	
+	uint16_t crc(unsigned char * buf, unsigned char start, unsigned char cnt);
+	void build_read_packet(unsigned char slave, unsigned char function,
+	unsigned char count, unsigned char * packet);
+	void build_write_packet(unsigned char slave, unsigned char function,
+	uint16_t start_addr,  unsigned char count, unsigned char * packet);
+	void build_write_single_packet(unsigned char slave, unsigned char function,
+	uint16_t write_addr, uint16_t reg_val, unsigned char * packet);
+	void build_error_packet(unsigned char slave, unsigned char function,
+	unsigned char exception, unsigned char * packet);
+	void modbus_reply(unsigned char * packet, unsigned char string_length);
+	int16_t send_reply(unsigned char * query, unsigned char string_length);
+	int16_t receive_request(unsigned char *received_string);
+	int16_t modbus_request(unsigned char slave, unsigned char * data);
+	int16_t validate_request(unsigned char * data, unsigned char length);
+	int16_t write_regs(uint16_t start_addr, unsigned char * query, int16_t * regs);
+	int16_t preset_multiple_registers(unsigned char slave,  uint16_t start_addr,  unsigned char count,
+	unsigned char * query,  int16_t * regs);
+	int16_t write_single_register(unsigned char slave,
+	uint16_t write_addr, unsigned char * query, int16_t * regs);
+	int16_t read_holding_registers(unsigned char slave, uint16_t start_addr,
+	unsigned char reg_count, int16_t * regs);
+	void (*fpAction)(int16_t*,  int16_t ,  int16_t , int16_t );
+	void doAction(int16_t *t1, int16_t t2,int16_t t3, int16_t t4) ;
+	unsigned int regLimit;
+	unsigned long Nowdt;
+	int16_t lastBytesReceived;
+
+
+};
+
+#endif
+
