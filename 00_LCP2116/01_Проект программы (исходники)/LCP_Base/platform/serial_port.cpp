@@ -1,6 +1,7 @@
-﻿/**
+﻿
+/**
  * @file serial_port.cpp
- * @brief Реализация платформенных последовательных портов.
+ * @brief Реализация платформенных аппаратных последовательных портов.
  */
 
 #include "serial_port.hpp"
@@ -73,53 +74,4 @@ HalUartFrame SerialPort::convert_frame(uint32_t frame) const
     }
 
     return HAL_UART_FRAME_8N1;
-}
-
-void UsbSerialPort::begin(uint32_t baudrate)
-{
-    (void)baudrate;
-    enabled_ = 1U;
-}
-
-void UsbSerialPort::begin(uint32_t baudrate, uint32_t frame)
-{
-    (void)baudrate;
-    (void)frame;
-    enabled_ = 1U;
-}
-
-void UsbSerialPort::end(void)
-{
-    enabled_ = 0U;
-}
-
-int UsbSerialPort::available(void)
-{
-    return 0;
-}
-
-int UsbSerialPort::read(void)
-{
-    return -1;
-}
-
-void UsbSerialPort::flush(void)
-{
-}
-
-size_t UsbSerialPort::write(uint8_t value)
-{
-    (void)value;
-
-    if (enabled_ == 0U)
-    {
-        return 0U;
-    }
-
-    return 1U;
-}
-
-UsbSerialPort::operator bool() const
-{
-    return (enabled_ != 0U);
 }

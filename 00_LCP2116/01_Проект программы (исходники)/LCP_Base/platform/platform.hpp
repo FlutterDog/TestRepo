@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * @file platform.hpp
  * @brief Верхний платформенный интерфейс проекта.
  *
@@ -113,6 +114,7 @@ void digitalWrite(uint32_t pin, uint32_t value);
 uint32_t digitalRead(uint32_t pin);
 
 #include "serial_port.hpp"
+#include "usb_serial.hpp"
 #include "spi.hpp"
 
 extern SerialPort Serial;

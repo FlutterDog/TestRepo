@@ -51,9 +51,11 @@ C_SRCS +=  \
 ../Device_Startup/startup_sam3xa.c \
 ../Device_Startup/system_sam3xa.c \
 ../hal/sam3x_gpio.cpp \
+../hal/sam3x_reset.cpp \
 ../hal/sam3x_spi.cpp \
 ../hal/sam3x_tick.cpp \
 ../hal/sam3x_uart.cpp \
+../hal/sam3x_usb_device.cpp \
 ../libs/IGAS_Eth/EthernetClient.cpp \
 ../libs/IGAS_Eth/EthernetServer.cpp \
 ../libs/IGAS_Eth/EthernetUdp2.cpp \
@@ -67,10 +69,12 @@ C_SRCS +=  \
 ../platform/platform_serial.cpp \
 ../platform/platform_spi.cpp \
 ../platform/platform_time.cpp \
+../platform/platform_usb.cpp \
 ../platform/print.cpp \
 ../platform/serial_port.cpp \
 ../platform/spi.cpp \
-../platform/syscalls.c
+../platform/syscalls.c \
+../platform/usb_serial.cpp
 
 
 PREPROCESSING_SRCS += 
@@ -85,9 +89,11 @@ board/lcp_board.o \
 Device_Startup/startup_sam3xa.o \
 Device_Startup/system_sam3xa.o \
 hal/sam3x_gpio.o \
+hal/sam3x_reset.o \
 hal/sam3x_spi.o \
 hal/sam3x_tick.o \
 hal/sam3x_uart.o \
+hal/sam3x_usb_device.o \
 libs/IGAS_Eth/EthernetClient.o \
 libs/IGAS_Eth/EthernetServer.o \
 libs/IGAS_Eth/EthernetUdp2.o \
@@ -101,10 +107,12 @@ platform/platform_gpio.o \
 platform/platform_serial.o \
 platform/platform_spi.o \
 platform/platform_time.o \
+platform/platform_usb.o \
 platform/print.o \
 platform/serial_port.o \
 platform/spi.o \
-platform/syscalls.o
+platform/syscalls.o \
+platform/usb_serial.o
 
 OBJS_AS_ARGS +=  \
 app/app.o \
@@ -112,9 +120,11 @@ board/lcp_board.o \
 Device_Startup/startup_sam3xa.o \
 Device_Startup/system_sam3xa.o \
 hal/sam3x_gpio.o \
+hal/sam3x_reset.o \
 hal/sam3x_spi.o \
 hal/sam3x_tick.o \
 hal/sam3x_uart.o \
+hal/sam3x_usb_device.o \
 libs/IGAS_Eth/EthernetClient.o \
 libs/IGAS_Eth/EthernetServer.o \
 libs/IGAS_Eth/EthernetUdp2.o \
@@ -128,10 +138,12 @@ platform/platform_gpio.o \
 platform/platform_serial.o \
 platform/platform_spi.o \
 platform/platform_time.o \
+platform/platform_usb.o \
 platform/print.o \
 platform/serial_port.o \
 platform/spi.o \
-platform/syscalls.o
+platform/syscalls.o \
+platform/usb_serial.o
 
 C_DEPS +=  \
 app/app.d \
@@ -139,9 +151,11 @@ board/lcp_board.d \
 Device_Startup/startup_sam3xa.d \
 Device_Startup/system_sam3xa.d \
 hal/sam3x_gpio.d \
+hal/sam3x_reset.d \
 hal/sam3x_spi.d \
 hal/sam3x_tick.d \
 hal/sam3x_uart.d \
+hal/sam3x_usb_device.d \
 libs/IGAS_Eth/EthernetClient.d \
 libs/IGAS_Eth/EthernetServer.d \
 libs/IGAS_Eth/EthernetUdp2.d \
@@ -155,10 +169,12 @@ platform/platform_gpio.d \
 platform/platform_serial.d \
 platform/platform_spi.d \
 platform/platform_time.d \
+platform/platform_usb.d \
 platform/print.d \
 platform/serial_port.d \
 platform/spi.d \
-platform/syscalls.d
+platform/syscalls.d \
+platform/usb_serial.d
 
 C_DEPS_AS_ARGS +=  \
 app/app.d \
@@ -166,9 +182,11 @@ board/lcp_board.d \
 Device_Startup/startup_sam3xa.d \
 Device_Startup/system_sam3xa.d \
 hal/sam3x_gpio.d \
+hal/sam3x_reset.d \
 hal/sam3x_spi.d \
 hal/sam3x_tick.d \
 hal/sam3x_uart.d \
+hal/sam3x_usb_device.d \
 libs/IGAS_Eth/EthernetClient.d \
 libs/IGAS_Eth/EthernetServer.d \
 libs/IGAS_Eth/EthernetUdp2.d \
@@ -182,10 +200,12 @@ platform/platform_gpio.d \
 platform/platform_serial.d \
 platform/platform_spi.d \
 platform/platform_time.d \
+platform/platform_usb.d \
 platform/print.d \
 platform/serial_port.d \
 platform/spi.d \
-platform/syscalls.d
+platform/syscalls.d \
+platform/usb_serial.d
 
 OUTPUT_FILE_PATH +=LCP_Basic.elf
 
@@ -240,6 +260,13 @@ hal/sam3x_gpio.o: ../hal/sam3x_gpio.cpp
 	@echo Finished building: $<
 	
 
+hal/sam3x_reset.o: ../hal/sam3x_reset.cpp
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-g++.exe$(QUOTE) -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -fno-rtti -fno-exceptions -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 hal/sam3x_spi.o: ../hal/sam3x_spi.cpp
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
@@ -255,6 +282,13 @@ hal/sam3x_tick.o: ../hal/sam3x_tick.cpp
 	
 
 hal/sam3x_uart.o: ../hal/sam3x_uart.cpp
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-g++.exe$(QUOTE) -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -fno-rtti -fno-exceptions -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hal/sam3x_usb_device.o: ../hal/sam3x_usb_device.cpp
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-g++.exe$(QUOTE) -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -fno-rtti -fno-exceptions -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -352,6 +386,13 @@ platform/platform_time.o: ../platform/platform_time.cpp
 	@echo Finished building: $<
 	
 
+platform/platform_usb.o: ../platform/platform_usb.cpp
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-g++.exe$(QUOTE) -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -fno-rtti -fno-exceptions -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 platform/print.o: ../platform/print.cpp
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
@@ -377,6 +418,13 @@ platform/syscalls.o: ../platform/syscalls.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+platform/usb_serial.o: ../platform/usb_serial.cpp
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-g++.exe$(QUOTE) -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -fno-rtti -fno-exceptions -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

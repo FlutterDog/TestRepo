@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * @file serial_port.hpp
  * @brief Платформенный интерфейс аппаратного последовательного порта.
  */
@@ -37,30 +38,4 @@ private:
 
     HalUartId port_id_;
     uint8_t initialized_;
-};
-
-/**
- * @brief Служебный USB-порт без доступа к USB-контроллеру.
- *
- * Класс сохраняет интерфейс последовательного порта и не выполняет операций
- * с USB-периферией. Все операции неблокирующие.
- */
-class UsbSerialPort : public Print
-{
-public:
-    void begin(uint32_t baudrate);
-    void begin(uint32_t baudrate, uint32_t frame);
-    void end(void);
-
-    int available(void);
-    int read(void);
-    void flush(void);
-
-    size_t write(uint8_t value) override;
-    using Print::write;
-
-    operator bool() const;
-
-private:
-    uint8_t enabled_ = 0U;
 };

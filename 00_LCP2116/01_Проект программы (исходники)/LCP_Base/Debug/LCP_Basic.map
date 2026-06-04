@@ -32,6 +32,8 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../l
                               c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o) (_malloc_r)
 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcmp.o)
                               libs/IGAS_Eth/IPAddress.o (memcmp)
+c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcpy.o)
+                              hal/sam3x_usb_device.o (memcpy)
 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memset.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o (memset)
 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
@@ -100,6 +102,7 @@ Discarded input sections
  .group         0x00000000        0x8 app/app.o
  .text          0x00000000        0x0 app/app.o
  .data          0x00000000        0x0 app/app.o
+ .bss           0x00000000        0x0 app/app.o
  .group         0x00000000        0x8 board/lcp_board.o
  .group         0x00000000        0x8 board/lcp_board.o
  .group         0x00000000        0x8 board/lcp_board.o
@@ -556,6 +559,174 @@ Discarded input sections
  .debug_macro   0x00000000      0x27a hal/sam3x_gpio.o
  .debug_macro   0x00000000      0xd34 hal/sam3x_gpio.o
  .debug_macro   0x00000000      0x170 hal/sam3x_gpio.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .group         0x00000000        0x8 hal/sam3x_reset.o
+ .text          0x00000000        0x0 hal/sam3x_reset.o
+ .bss           0x00000000        0x0 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x982 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x87 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x51 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xef hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x6a hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x1df hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x26 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xc3 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0xe49 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x11f hal/sam3x_reset.o
+ .debug_macro   0x00000000      0xa7d hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x55a hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x1a8 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x30b hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x709 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xd6 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x56c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x678 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x51e hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_reset.o
+ .debug_macro   0x00000000     0x2333 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x7d1 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0xdbb hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x9a hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x29c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x58 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x999 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x22d hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x4b4 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x64a hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x590 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x46 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x33f hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x27e hal/sam3x_reset.o
+ .debug_macro   0x00000000     0x14dc hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x7cf hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x76 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x82 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x76 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x4c hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x100 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x100 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x100 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x88 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x88 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x3b4 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x2b8 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x118 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x216 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x216 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x2e hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xac hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x13e hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x7c hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x1f6 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x64 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0xa6 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x7c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x16 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x2e hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x58 hal/sam3x_reset.o
+ .debug_macro   0x00000000       0x10 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x27a hal/sam3x_reset.o
+ .debug_macro   0x00000000      0xd34 hal/sam3x_reset.o
+ .debug_macro   0x00000000      0x170 hal/sam3x_reset.o
  .group         0x00000000        0x8 hal/sam3x_spi.o
  .group         0x00000000        0x8 hal/sam3x_spi.o
  .group         0x00000000        0x8 hal/sam3x_spi.o
@@ -644,6 +815,8 @@ Discarded input sections
  .bss           0x00000000        0x0 hal/sam3x_spi.o
  .text._Z11hal_spi_endv
                 0x00000000        0xc hal/sam3x_spi.o
+ .text._Z16hal_spi_transferh
+                0x00000000       0x30 hal/sam3x_spi.o
  .debug_macro   0x00000000      0x982 hal/sam3x_spi.o
  .debug_macro   0x00000000       0x1c hal/sam3x_spi.o
  .debug_macro   0x00000000       0x22 hal/sam3x_spi.o
@@ -1076,6 +1249,218 @@ Discarded input sections
  .debug_macro   0x00000000      0x27a hal/sam3x_uart.o
  .debug_macro   0x00000000      0xd34 hal/sam3x_uart.o
  .debug_macro   0x00000000      0x170 hal/sam3x_uart.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .group         0x00000000        0x8 hal/sam3x_usb_device.o
+ .text          0x00000000        0x0 hal/sam3x_usb_device.o
+ .text._ZL16usb_freeze_clockv
+                0x00000000       0x14 hal/sam3x_usb_device.o
+ .text._Z15hal_usb_cdc_endv
+                0x00000000       0x30 hal/sam3x_usb_device.o
+ .text._Z22hal_usb_cdc_configuredv
+                0x00000000       0x14 hal/sam3x_usb_device.o
+ .text._Z21hal_usb_cdc_availablev
+                0x00000000       0x14 hal/sam3x_usb_device.o
+ .text._Z31hal_usb_cdc_available_for_writev
+                0x00000000        0x6 hal/sam3x_usb_device.o
+ .text._Z16hal_usb_cdc_readv
+                0x00000000       0x44 hal/sam3x_usb_device.o
+ .text._Z16hal_usb_cdc_peekv
+                0x00000000       0x20 hal/sam3x_usb_device.o
+ .text._Z17hal_usb_cdc_flushv
+                0x00000000       0x1c hal/sam3x_usb_device.o
+ .text._Z16hal_usb_cdc_baudv
+                0x00000000        0xc hal/sam3x_usb_device.o
+ .text._Z20hal_usb_cdc_stopbitsv
+                0x00000000        0xc hal/sam3x_usb_device.o
+ .text._Z22hal_usb_cdc_paritytypev
+                0x00000000        0xc hal/sam3x_usb_device.o
+ .text._Z19hal_usb_cdc_numbitsv
+                0x00000000        0xc hal/sam3x_usb_device.o
+ .text._Z15hal_usb_cdc_dtrv
+                0x00000000       0x10 hal/sam3x_usb_device.o
+ .text._Z15hal_usb_cdc_rtsv
+                0x00000000       0x18 hal/sam3x_usb_device.o
+ .text._Z17hal_usb_cdc_errorv
+                0x00000000       0x14 hal/sam3x_usb_device.o
+ .text._Z23hal_usb_cdc_clear_errorv
+                0x00000000        0xc hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x982 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x17b hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x87 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x51 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xef hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x6a hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x1df hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x26 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xc3 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0xe49 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x11f hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0xa7d hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x55a hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x1a8 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x30b hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x709 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xd6 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x56c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x678 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x51e hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_usb_device.o
+ .debug_macro   0x00000000     0x2333 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x7d1 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0xdbb hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x9a hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x29c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x58 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x999 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x22d hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x4b4 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x64a hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x590 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x46 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x33f hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x27e hal/sam3x_usb_device.o
+ .debug_macro   0x00000000     0x14dc hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x7cf hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x76 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x82 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x76 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x4c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x100 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x100 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x100 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x88 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x88 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x3b4 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xbe hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x2b8 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x118 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x216 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x216 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x2e hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xac hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x13e hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x7c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x1f6 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x64 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0xa6 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x7c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x16 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x10c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x2e hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x22 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x1c hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x58 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000       0x10 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x27a hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0xd34 hal/sam3x_usb_device.o
+ .debug_macro   0x00000000      0x170 hal/sam3x_usb_device.o
  .group         0x00000000        0xc libs/IGAS_Eth/EthernetClient.o
  .group         0x00000000        0x8 libs/IGAS_Eth/EthernetClient.o
  .group         0x00000000        0x8 libs/IGAS_Eth/EthernetClient.o
@@ -1142,7 +1527,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0xc8 libs/IGAS_Eth/EthernetClient.o
  .debug_ranges  0x00000000       0xd0 libs/IGAS_Eth/EthernetClient.o
- .debug_macro   0x00000000       0xcd libs/IGAS_Eth/EthernetClient.o
+ .debug_macro   0x00000000       0xd5 libs/IGAS_Eth/EthernetClient.o
  .debug_macro   0x00000000      0x982 libs/IGAS_Eth/EthernetClient.o
  .debug_macro   0x00000000      0x17b libs/IGAS_Eth/EthernetClient.o
  .debug_macro   0x00000000       0x1c libs/IGAS_Eth/EthernetClient.o
@@ -1154,7 +1539,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x1df libs/IGAS_Eth/EthernetClient.o
  .debug_macro   0x00000000      0x1e4 libs/IGAS_Eth/EthernetClient.o
  .debug_macro   0x00000000       0x76 libs/IGAS_Eth/EthernetClient.o
- .debug_line    0x00000000      0x5c7 libs/IGAS_Eth/EthernetClient.o
+ .debug_line    0x00000000      0x5d9 libs/IGAS_Eth/EthernetClient.o
  .debug_str     0x00000000     0x5ef7 libs/IGAS_Eth/EthernetClient.o
  .comment       0x00000000       0x5a libs/IGAS_Eth/EthernetClient.o
  .debug_frame   0x00000000      0x220 libs/IGAS_Eth/EthernetClient.o
@@ -1198,7 +1583,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x58 libs/IGAS_Eth/EthernetServer.o
  .debug_ranges  0x00000000       0xa8 libs/IGAS_Eth/EthernetServer.o
- .debug_macro   0x00000000       0xd9 libs/IGAS_Eth/EthernetServer.o
+ .debug_macro   0x00000000       0xe1 libs/IGAS_Eth/EthernetServer.o
  .debug_macro   0x00000000      0x982 libs/IGAS_Eth/EthernetServer.o
  .debug_macro   0x00000000       0x1c libs/IGAS_Eth/EthernetServer.o
  .debug_macro   0x00000000       0x22 libs/IGAS_Eth/EthernetServer.o
@@ -1210,7 +1595,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x17b libs/IGAS_Eth/EthernetServer.o
  .debug_macro   0x00000000      0x1e4 libs/IGAS_Eth/EthernetServer.o
  .debug_macro   0x00000000       0x76 libs/IGAS_Eth/EthernetServer.o
- .debug_line    0x00000000      0x4b8 libs/IGAS_Eth/EthernetServer.o
+ .debug_line    0x00000000      0x4ca libs/IGAS_Eth/EthernetServer.o
  .debug_str     0x00000000     0x5d95 libs/IGAS_Eth/EthernetServer.o
  .comment       0x00000000       0x5a libs/IGAS_Eth/EthernetServer.o
  .debug_frame   0x00000000       0xf8 libs/IGAS_Eth/EthernetServer.o
@@ -1285,7 +1670,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0xa8 libs/IGAS_Eth/EthernetUdp2.o
  .debug_ranges  0x00000000       0xb0 libs/IGAS_Eth/EthernetUdp2.o
- .debug_macro   0x00000000      0x17c libs/IGAS_Eth/EthernetUdp2.o
+ .debug_macro   0x00000000      0x184 libs/IGAS_Eth/EthernetUdp2.o
  .debug_macro   0x00000000      0x982 libs/IGAS_Eth/EthernetUdp2.o
  .debug_macro   0x00000000      0x17b libs/IGAS_Eth/EthernetUdp2.o
  .debug_macro   0x00000000       0x1c libs/IGAS_Eth/EthernetUdp2.o
@@ -1308,7 +1693,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x353 libs/IGAS_Eth/EthernetUdp2.o
  .debug_macro   0x00000000       0x10 libs/IGAS_Eth/EthernetUdp2.o
  .debug_macro   0x00000000       0x35 libs/IGAS_Eth/EthernetUdp2.o
- .debug_line    0x00000000      0x600 libs/IGAS_Eth/EthernetUdp2.o
+ .debug_line    0x00000000      0x612 libs/IGAS_Eth/EthernetUdp2.o
  .debug_str     0x00000000     0x8866 libs/IGAS_Eth/EthernetUdp2.o
  .comment       0x00000000       0x5a libs/IGAS_Eth/EthernetUdp2.o
  .debug_frame   0x00000000      0x210 libs/IGAS_Eth/EthernetUdp2.o
@@ -1486,7 +1871,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x90 libs/IGAS_Eth/utility/socket.o
  .debug_ranges  0x00000000       0x80 libs/IGAS_Eth/utility/socket.o
- .debug_macro   0x00000000       0xb1 libs/IGAS_Eth/utility/socket.o
+ .debug_macro   0x00000000       0xb9 libs/IGAS_Eth/utility/socket.o
  .debug_macro   0x00000000      0x982 libs/IGAS_Eth/utility/socket.o
  .debug_macro   0x00000000       0x1c libs/IGAS_Eth/utility/socket.o
  .debug_macro   0x00000000       0x22 libs/IGAS_Eth/utility/socket.o
@@ -1498,7 +1883,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x17b libs/IGAS_Eth/utility/socket.o
  .debug_macro   0x00000000      0x1e4 libs/IGAS_Eth/utility/socket.o
  .debug_macro   0x00000000       0x76 libs/IGAS_Eth/utility/socket.o
- .debug_line    0x00000000      0x57d libs/IGAS_Eth/utility/socket.o
+ .debug_line    0x00000000      0x58f libs/IGAS_Eth/utility/socket.o
  .debug_str     0x00000000     0x5636 libs/IGAS_Eth/utility/socket.o
  .comment       0x00000000       0x5a libs/IGAS_Eth/utility/socket.o
  .debug_frame   0x00000000      0x20c libs/IGAS_Eth/utility/socket.o
@@ -1666,6 +2051,32 @@ Discarded input sections
  .text          0x00000000        0x0 libs/SC16IS7xx/SC16IS7xx.o
  .data          0x00000000        0x0 libs/SC16IS7xx/SC16IS7xx.o
  .bss           0x00000000        0x0 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZL13sc16_low_bytem
+                0x00000000        0x4 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZL14sc16_high_bytem
+                0x00000000        0x6 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZL17sc16_baud_divisorm
+                0x00000000       0x14 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZL12sc16_addresshh
+                0x00000000        0x8 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice8deselectEh
+                0x00000000       0x10 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice6selectEh
+                0x00000000       0x10 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice13writeRegisterEhhhh
+                0x00000000       0x7c libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice11setBaudRateEmhh
+                0x00000000       0x5c libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice13configureUartEmhhh
+                0x00000000       0x84 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice12readRegisterEhhh
+                0x00000000       0x84 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice13uartConnectedEhh
+                0x00000000       0x38 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice8initUartEmhhh
+                0x00000000       0x28 libs/SC16IS7xx/SC16IS7xx.o
+ .text._ZN13SpiUartDevice5beginEmhhh
+                0x00000000       0x18 libs/SC16IS7xx/SC16IS7xx.o
  .text._ZN13SpiUartDevice9availableEhh
                 0x00000000       0x14 libs/SC16IS7xx/SC16IS7xx.o
  .text._ZN13SpiUartDevice4readEhh
@@ -1678,6 +2089,13 @@ Discarded input sections
                 0x00000000       0x18 libs/SC16IS7xx/SC16IS7xx.o
  .text._ZN13SpiUartDevice10ioSetStateEhhh
                 0x00000000       0x18 libs/SC16IS7xx/SC16IS7xx.o
+ .debug_info    0x00000000     0x19d0 libs/SC16IS7xx/SC16IS7xx.o
+ .debug_abbrev  0x00000000      0x30d libs/SC16IS7xx/SC16IS7xx.o
+ .debug_loc     0x00000000      0xb7a libs/SC16IS7xx/SC16IS7xx.o
+ .debug_aranges
+                0x00000000       0xb0 libs/SC16IS7xx/SC16IS7xx.o
+ .debug_ranges  0x00000000       0xa0 libs/SC16IS7xx/SC16IS7xx.o
+ .debug_macro   0x00000000       0xaf libs/SC16IS7xx/SC16IS7xx.o
  .debug_macro   0x00000000      0x982 libs/SC16IS7xx/SC16IS7xx.o
  .debug_macro   0x00000000       0x1c libs/SC16IS7xx/SC16IS7xx.o
  .debug_macro   0x00000000       0x22 libs/SC16IS7xx/SC16IS7xx.o
@@ -1689,6 +2107,12 @@ Discarded input sections
  .debug_macro   0x00000000      0x17b libs/SC16IS7xx/SC16IS7xx.o
  .debug_macro   0x00000000      0x1e4 libs/SC16IS7xx/SC16IS7xx.o
  .debug_macro   0x00000000       0x76 libs/SC16IS7xx/SC16IS7xx.o
+ .debug_line    0x00000000      0x4a1 libs/SC16IS7xx/SC16IS7xx.o
+ .debug_str     0x00000000     0x4ebf libs/SC16IS7xx/SC16IS7xx.o
+ .comment       0x00000000       0x5a libs/SC16IS7xx/SC16IS7xx.o
+ .debug_frame   0x00000000      0x240 libs/SC16IS7xx/SC16IS7xx.o
+ .ARM.attributes
+                0x00000000       0x33 libs/SC16IS7xx/SC16IS7xx.o
  .group         0x00000000        0x8 main.o
  .group         0x00000000        0x8 main.o
  .group         0x00000000        0x8 main.o
@@ -1736,7 +2160,6 @@ Discarded input sections
  .debug_macro   0x00000000      0x1e4 platform/platform_gpio.o
  .debug_macro   0x00000000       0x76 platform/platform_gpio.o
  .group         0x00000000        0xc platform/platform_serial.o
- .group         0x00000000        0xc platform/platform_serial.o
  .group         0x00000000        0x8 platform/platform_serial.o
  .group         0x00000000        0x8 platform/platform_serial.o
  .group         0x00000000        0x8 platform/platform_serial.o
@@ -1749,6 +2172,7 @@ Discarded input sections
  .group         0x00000000        0x8 platform/platform_serial.o
  .group         0x00000000        0x8 platform/platform_serial.o
  .text          0x00000000        0x0 platform/platform_serial.o
+ .data          0x00000000        0x0 platform/platform_serial.o
  .debug_macro   0x00000000      0x982 platform/platform_serial.o
  .debug_macro   0x00000000       0x1c platform/platform_serial.o
  .debug_macro   0x00000000       0x22 platform/platform_serial.o
@@ -1815,6 +2239,31 @@ Discarded input sections
  .debug_macro   0x00000000      0x17b platform/platform_time.o
  .debug_macro   0x00000000      0x1e4 platform/platform_time.o
  .debug_macro   0x00000000       0x76 platform/platform_time.o
+ .group         0x00000000        0xc platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .group         0x00000000        0x8 platform/platform_usb.o
+ .text          0x00000000        0x0 platform/platform_usb.o
+ .bss           0x00000000        0x0 platform/platform_usb.o
+ .debug_macro   0x00000000      0x982 platform/platform_usb.o
+ .debug_macro   0x00000000       0x1c platform/platform_usb.o
+ .debug_macro   0x00000000       0x22 platform/platform_usb.o
+ .debug_macro   0x00000000       0x87 platform/platform_usb.o
+ .debug_macro   0x00000000       0x51 platform/platform_usb.o
+ .debug_macro   0x00000000       0xef platform/platform_usb.o
+ .debug_macro   0x00000000       0x6a platform/platform_usb.o
+ .debug_macro   0x00000000      0x1df platform/platform_usb.o
+ .debug_macro   0x00000000      0x17b platform/platform_usb.o
+ .debug_macro   0x00000000      0x1e4 platform/platform_usb.o
+ .debug_macro   0x00000000       0x76 platform/platform_usb.o
  .group         0x00000000        0x8 platform/print.o
  .group         0x00000000        0x8 platform/print.o
  .group         0x00000000        0x8 platform/print.o
@@ -1894,7 +2343,6 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x33 platform/print.o
  .group         0x00000000        0xc platform/serial_port.o
- .group         0x00000000        0xc platform/serial_port.o
  .group         0x00000000        0x8 platform/serial_port.o
  .group         0x00000000        0x8 platform/serial_port.o
  .group         0x00000000        0x8 platform/serial_port.o
@@ -1909,12 +2357,8 @@ Discarded input sections
  .text          0x00000000        0x0 platform/serial_port.o
  .data          0x00000000        0x0 platform/serial_port.o
  .bss           0x00000000        0x0 platform/serial_port.o
- .text._ZN13UsbSerialPortD2Ev
-                0x00000000        0x2 platform/serial_port.o
  .text._ZN10SerialPortD2Ev
                 0x00000000        0x2 platform/serial_port.o
- .text._ZN13UsbSerialPortD0Ev
-                0x00000000       0x14 platform/serial_port.o
  .text._ZN10SerialPortD0Ev
                 0x00000000       0x14 platform/serial_port.o
  .text._ZN10SerialPort3endEv
@@ -1929,18 +2373,6 @@ Discarded input sections
                 0x00000000        0xa platform/serial_port.o
  .text._ZN10SerialPort5beginEm
                 0x00000000       0x10 platform/serial_port.o
- .text._ZN13UsbSerialPort5beginEm
-                0x00000000        0x6 platform/serial_port.o
- .text._ZN13UsbSerialPort3endEv
-                0x00000000        0x6 platform/serial_port.o
- .text._ZN13UsbSerialPort9availableEv
-                0x00000000        0x4 platform/serial_port.o
- .text._ZN13UsbSerialPort4readEv
-                0x00000000        0x6 platform/serial_port.o
- .text._ZN13UsbSerialPort5flushEv
-                0x00000000        0x2 platform/serial_port.o
- .text._ZNK13UsbSerialPortcvbEv
-                0x00000000        0xa platform/serial_port.o
  .debug_macro   0x00000000      0x982 platform/serial_port.o
  .debug_macro   0x00000000      0x17b platform/serial_port.o
  .debug_macro   0x00000000       0x1c platform/serial_port.o
@@ -1964,14 +2396,26 @@ Discarded input sections
  .text          0x00000000        0x0 platform/spi.o
  .data          0x00000000        0x0 platform/spi.o
  .bss           0x00000000        0x0 platform/spi.o
+ .text._ZL21platform_reverse_bitsh
+                0x00000000       0x26 platform/spi.o
+ .text._ZN11SPISettingsC2Emhh
+                0x00000000        0xc platform/spi.o
+ .text._ZNK11SPISettings9bit_orderEv
+                0x00000000        0x4 platform/spi.o
  .text._ZN8SPIClass3endEv
                 0x00000000       0x14 platform/spi.o
+ .text._ZN8SPIClass14endTransactionEv
+                0x00000000        0x2 platform/spi.o
+ .text._ZN8SPIClass8transferEh
+                0x00000000       0x38 platform/spi.o
  .text._ZN8SPIClass10transfer16Et
                 0x00000000       0x48 platform/spi.o
  .text._ZN8SPIClass8transferEPvj
                 0x00000000       0x28 platform/spi.o
  .text._ZNK8SPIClass17convert_bit_orderEh
                 0x00000000        0xc platform/spi.o
+ .text._ZN8SPIClass16beginTransactionERK11SPISettings
+                0x00000000       0x1c platform/spi.o
  .text._ZN8SPIClass15setClockDividerEh
                 0x00000000       0x58 platform/spi.o
  .text._ZN8SPIClass11setBitOrderEh
@@ -2037,6 +2481,68 @@ Discarded input sections
  .debug_macro   0x00000000       0xef platform/syscalls.o
  .debug_macro   0x00000000       0x6a platform/syscalls.o
  .debug_macro   0x00000000      0x1df platform/syscalls.o
+ .group         0x00000000        0xc platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .group         0x00000000        0x8 platform/usb_serial.o
+ .text          0x00000000        0x0 platform/usb_serial.o
+ .data          0x00000000        0x0 platform/usb_serial.o
+ .bss           0x00000000        0x0 platform/usb_serial.o
+ .text._ZN13UsbSerialPortD2Ev
+                0x00000000        0x2 platform/usb_serial.o
+ .text._ZN13UsbSerialPortD0Ev
+                0x00000000       0x14 platform/usb_serial.o
+ .text._ZN13UsbSerialPort5beginEm
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort3endEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort9availableEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort17availableForWriteEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort4readEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort4peekEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort5flushEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort4baudEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort8stopbitsEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort10paritytypeEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort7numbitsEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZN13UsbSerialPort3dtrEv
+                0x00000000       0x14 platform/usb_serial.o
+ .text._ZN13UsbSerialPort3rtsEv
+                0x00000000       0x14 platform/usb_serial.o
+ .text._ZN13UsbSerialPort5errorEv
+                0x00000000       0x14 platform/usb_serial.o
+ .text._ZN13UsbSerialPort10clearErrorEv
+                0x00000000        0xc platform/usb_serial.o
+ .text._ZNK13UsbSerialPortcvbEv
+                0x00000000       0x24 platform/usb_serial.o
+ .debug_macro   0x00000000      0x982 platform/usb_serial.o
+ .debug_macro   0x00000000      0x17b platform/usb_serial.o
+ .debug_macro   0x00000000       0x1c platform/usb_serial.o
+ .debug_macro   0x00000000       0x22 platform/usb_serial.o
+ .debug_macro   0x00000000       0x87 platform/usb_serial.o
+ .debug_macro   0x00000000       0x51 platform/usb_serial.o
+ .debug_macro   0x00000000       0xef platform/usb_serial.o
+ .debug_macro   0x00000000       0x6a platform/usb_serial.o
+ .debug_macro   0x00000000      0x1df platform/usb_serial.o
+ .debug_macro   0x00000000      0x1e4 platform/usb_serial.o
+ .debug_macro   0x00000000       0x76 platform/usb_serial.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
@@ -2114,6 +2620,8 @@ Discarded input sections
  .debug_frame   0x00000000       0x3c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcmp.o)
  .ARM.attributes
                 0x00000000       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcmp.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcpy.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcpy.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memset.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memset.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memset.o)
@@ -2198,9 +2706,11 @@ LOAD board/lcp_board.o
 LOAD Device_Startup/startup_sam3xa.o
 LOAD Device_Startup/system_sam3xa.o
 LOAD hal/sam3x_gpio.o
+LOAD hal/sam3x_reset.o
 LOAD hal/sam3x_spi.o
 LOAD hal/sam3x_tick.o
 LOAD hal/sam3x_uart.o
+LOAD hal/sam3x_usb_device.o
 LOAD libs/IGAS_Eth/EthernetClient.o
 LOAD libs/IGAS_Eth/EthernetServer.o
 LOAD libs/IGAS_Eth/EthernetUdp2.o
@@ -2214,10 +2724,12 @@ LOAD platform/platform_gpio.o
 LOAD platform/platform_serial.o
 LOAD platform/platform_spi.o
 LOAD platform/platform_time.o
+LOAD platform/platform_usb.o
 LOAD platform/print.o
 LOAD platform/serial_port.o
 LOAD platform/spi.o
 LOAD platform/syscalls.o
+LOAD platform/usb_serial.o
 START GROUP
 END GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a
@@ -2231,7 +2743,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x00000400                STACK_SIZE = DEFINED (STACK_SIZE)?STACK_SIZE:0x400
                 0x00000200                HEAP_SIZE = DEFINED (HEAP_SIZE)?HEAP_SIZE:0x200
 
-.text           0x00080000     0x1bc8
+.text           0x00080000     0x2488
                 0x00080000                . = ALIGN (0x4)
                 0x00080000                _sfixed = .
  *(.vectors .vectors.*)
@@ -2240,545 +2752,600 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x000800f4       0x6c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
  .text._Z5setupv
-                0x00080160       0x9c app/app.o
+                0x00080160       0x6c app/app.o
                 0x00080160                setup()
  .text._Z4loopv
-                0x000801fc       0x10 app/app.o
-                0x000801fc                loop()
+                0x000801cc       0x10 app/app.o
+                0x000801cc                loop()
  .text._Z19lcp_board_init_gpiov
-                0x0008020c      0x114 board/lcp_board.o
-                0x0008020c                lcp_board_init_gpio()
+                0x000801dc      0x114 board/lcp_board.o
+                0x000801dc                lcp_board_init_gpio()
  .text.Dummy_Handler
-                0x00080320        0x2 Device_Startup/startup_sam3xa.o
-                0x00080320                DACC_Handler
-                0x00080320                DebugMon_Handler
-                0x00080320                DMAC_Handler
-                0x00080320                TRNG_Handler
-                0x00080320                HardFault_Handler
-                0x00080320                TC2_Handler
-                0x00080320                USART3_Handler
-                0x00080320                TWI1_Handler
-                0x00080320                PendSV_Handler
-                0x00080320                NMI_Handler
-                0x00080320                TC7_Handler
-                0x00080320                ADC_Handler
-                0x00080320                SMC_Handler
-                0x00080320                USART0_Handler
-                0x00080320                RTT_Handler
-                0x00080320                EFC1_Handler
-                0x00080320                PIOB_Handler
-                0x00080320                RTC_Handler
-                0x00080320                UsageFault_Handler
-                0x00080320                TC6_Handler
-                0x00080320                WDT_Handler
-                0x00080320                CAN0_Handler
-                0x00080320                TC4_Handler
-                0x00080320                TC1_Handler
-                0x00080320                HSMCI_Handler
-                0x00080320                TC3_Handler
-                0x00080320                Dummy_Handler
-                0x00080320                TWI0_Handler
-                0x00080320                USART1_Handler
-                0x00080320                PIOA_Handler
-                0x00080320                SSC_Handler
-                0x00080320                EFC0_Handler
-                0x00080320                PMC_Handler
-                0x00080320                PWM_Handler
-                0x00080320                CAN1_Handler
-                0x00080320                MemManage_Handler
-                0x00080320                SUPC_Handler
-                0x00080320                SVC_Handler
-                0x00080320                TC8_Handler
-                0x00080320                USART2_Handler
-                0x00080320                PIOD_Handler
-                0x00080320                EMAC_Handler
-                0x00080320                UART_Handler
-                0x00080320                PIOC_Handler
-                0x00080320                BusFault_Handler
-                0x00080320                RSTC_Handler
-                0x00080320                TC0_Handler
-                0x00080320                TC5_Handler
-                0x00080320                UOTGHS_Handler
-                0x00080320                SPI0_Handler
- *fill*         0x00080322        0x2 
+                0x000802f0        0x2 Device_Startup/startup_sam3xa.o
+                0x000802f0                DACC_Handler
+                0x000802f0                DebugMon_Handler
+                0x000802f0                DMAC_Handler
+                0x000802f0                TRNG_Handler
+                0x000802f0                HardFault_Handler
+                0x000802f0                TC2_Handler
+                0x000802f0                USART3_Handler
+                0x000802f0                TWI1_Handler
+                0x000802f0                PendSV_Handler
+                0x000802f0                NMI_Handler
+                0x000802f0                TC7_Handler
+                0x000802f0                ADC_Handler
+                0x000802f0                SMC_Handler
+                0x000802f0                USART0_Handler
+                0x000802f0                RTT_Handler
+                0x000802f0                EFC1_Handler
+                0x000802f0                PIOB_Handler
+                0x000802f0                RTC_Handler
+                0x000802f0                UsageFault_Handler
+                0x000802f0                TC6_Handler
+                0x000802f0                WDT_Handler
+                0x000802f0                CAN0_Handler
+                0x000802f0                TC4_Handler
+                0x000802f0                TC1_Handler
+                0x000802f0                HSMCI_Handler
+                0x000802f0                TC3_Handler
+                0x000802f0                Dummy_Handler
+                0x000802f0                TWI0_Handler
+                0x000802f0                USART1_Handler
+                0x000802f0                PIOA_Handler
+                0x000802f0                SSC_Handler
+                0x000802f0                EFC0_Handler
+                0x000802f0                PMC_Handler
+                0x000802f0                PWM_Handler
+                0x000802f0                CAN1_Handler
+                0x000802f0                MemManage_Handler
+                0x000802f0                SUPC_Handler
+                0x000802f0                SVC_Handler
+                0x000802f0                TC8_Handler
+                0x000802f0                USART2_Handler
+                0x000802f0                PIOD_Handler
+                0x000802f0                EMAC_Handler
+                0x000802f0                UART_Handler
+                0x000802f0                PIOC_Handler
+                0x000802f0                BusFault_Handler
+                0x000802f0                RSTC_Handler
+                0x000802f0                TC0_Handler
+                0x000802f0                TC5_Handler
+                0x000802f0                SPI0_Handler
+ *fill*         0x000802f2        0x2 
  .text.Reset_Handler
-                0x00080324       0x6c Device_Startup/startup_sam3xa.o
-                0x00080324                Reset_Handler
+                0x000802f4       0x6c Device_Startup/startup_sam3xa.o
+                0x000802f4                Reset_Handler
  .text.SystemCoreClockUpdate
-                0x00080390      0x11c Device_Startup/system_sam3xa.o
-                0x00080390                SystemCoreClockUpdate
+                0x00080360      0x11c Device_Startup/system_sam3xa.o
+                0x00080360                SystemCoreClockUpdate
  .text._ZL17hal_gpio_find_pinm
-                0x000804ac       0x24 hal/sam3x_gpio.o
+                0x0008047c       0x24 hal/sam3x_gpio.o
  .text._ZL21hal_gpio_enable_clockm
-                0x000804d0       0x24 hal/sam3x_gpio.o
+                0x000804a0       0x24 hal/sam3x_gpio.o
  .text._Z18hal_gpio_configurem11HalGpioMode
-                0x000804f4       0x54 hal/sam3x_gpio.o
-                0x000804f4                hal_gpio_configure(unsigned long, HalGpioMode)
+                0x000804c4       0x54 hal/sam3x_gpio.o
+                0x000804c4                hal_gpio_configure(unsigned long, HalGpioMode)
  .text._Z14hal_gpio_writemm
-                0x00080548       0x2c hal/sam3x_gpio.o
-                0x00080548                hal_gpio_write(unsigned long, unsigned long)
+                0x00080518       0x2c hal/sam3x_gpio.o
+                0x00080518                hal_gpio_write(unsigned long, unsigned long)
+ .text._Z24sam3x_bootloader_requestm
+                0x00080544       0x10 hal/sam3x_reset.o
+                0x00080544                sam3x_bootloader_request(unsigned long)
+ .text._Z23sam3x_bootloader_cancelv
+                0x00080554       0x10 hal/sam3x_reset.o
+                0x00080554                sam3x_bootloader_cancel()
+ .text._Z21sam3x_bootloader_tickv
+                0x00080564       0x30 hal/sam3x_reset.o
+                0x00080564                sam3x_bootloader_tick()
  .text._ZL27hal_enable_peripheral_clockm
-                0x00080574       0x24 hal/sam3x_spi.o
+                0x00080594       0x24 hal/sam3x_spi.o
  .text._ZL21hal_spi_configure_pinP3Piommh
-                0x00080598       0x2c hal/sam3x_spi.o
+                0x000805b8       0x2c hal/sam3x_spi.o
  .text._ZL19hal_spi_get_divisorm
-                0x000805c4       0x28 hal/sam3x_spi.o
+                0x000805e4       0x28 hal/sam3x_spi.o
  .text._ZL21hal_spi_get_mode_bits10HalSpiMode
-                0x000805ec       0x1c hal/sam3x_spi.o
+                0x0008060c       0x1c hal/sam3x_spi.o
  .text._ZL16hal_spi_flush_rxv
-                0x00080608       0x28 hal/sam3x_spi.o
+                0x00080628       0x28 hal/sam3x_spi.o
  .text._Z17hal_spi_configureRK12HalSpiConfig
-                0x00080630       0x28 hal/sam3x_spi.o
-                0x00080630                hal_spi_configure(HalSpiConfig const&)
+                0x00080650       0x28 hal/sam3x_spi.o
+                0x00080650                hal_spi_configure(HalSpiConfig const&)
  .text._Z13hal_spi_beginv
-                0x00080658       0x88 hal/sam3x_spi.o
-                0x00080658                hal_spi_begin()
- .text._Z16hal_spi_transferh
-                0x000806e0       0x30 hal/sam3x_spi.o
-                0x000806e0                hal_spi_transfer(unsigned char)
+                0x00080678       0x88 hal/sam3x_spi.o
+                0x00080678                hal_spi_begin()
  .text.SysTick_Handler
-                0x00080710       0x10 hal/sam3x_tick.o
-                0x00080710                SysTick_Handler
+                0x00080700       0x18 hal/sam3x_tick.o
+                0x00080700                SysTick_Handler
  .text._Z13hal_tick_initv
-                0x00080720       0x5c hal/sam3x_tick.o
-                0x00080720                hal_tick_init()
+                0x00080718       0x5c hal/sam3x_tick.o
+                0x00080718                hal_tick_init()
  .text._Z10hal_millisv
-                0x0008077c        0xc hal/sam3x_tick.o
-                0x0008077c                hal_millis()
+                0x00080774        0xc hal/sam3x_tick.o
+                0x00080774                hal_millis()
  .text._Z12hal_delay_msm
-                0x00080788       0x20 hal/sam3x_tick.o
-                0x00080788                hal_delay_ms(unsigned long)
+                0x00080780       0x20 hal/sam3x_tick.o
+                0x00080780                hal_delay_ms(unsigned long)
  .text._ZL23hal_uart_get_descriptor9HalUartId
-                0x000807a8       0x18 hal/sam3x_uart.o
+                0x000807a0       0x18 hal/sam3x_uart.o
  .text._ZL27hal_enable_peripheral_clockm
-                0x000807c0       0x24 hal/sam3x_uart.o
+                0x000807b8       0x24 hal/sam3x_uart.o
  .text._ZL22hal_uart_configure_pinRK10HalUartPin
-                0x000807e4       0x40 hal/sam3x_uart.o
+                0x000807dc       0x40 hal/sam3x_uart.o
  .text._ZL24hal_uart_get_uart_parity12HalUartFrame
-                0x00080824       0x18 hal/sam3x_uart.o
+                0x0008081c       0x18 hal/sam3x_uart.o
  .text._ZL25hal_uart_get_usart_parity12HalUartFrame
-                0x0008083c       0x18 hal/sam3x_uart.o
+                0x00080834       0x18 hal/sam3x_uart.o
  .text._ZL25hal_uart_get_baud_divisorm
-                0x00080854       0x20 hal/sam3x_uart.o
+                0x0008084c       0x20 hal/sam3x_uart.o
  .text._Z14hal_uart_begin9HalUartIdm12HalUartFrame
-                0x00080874       0x84 hal/sam3x_uart.o
-                0x00080874                hal_uart_begin(HalUartId, unsigned long, HalUartFrame)
+                0x0008086c       0x84 hal/sam3x_uart.o
+                0x0008086c                hal_uart_begin(HalUartId, unsigned long, HalUartFrame)
  .text._Z14hal_uart_write9HalUartIdh
-                0x000808f8       0x38 hal/sam3x_uart.o
-                0x000808f8                hal_uart_write(HalUartId, unsigned char)
+                0x000808f0       0x38 hal/sam3x_uart.o
+                0x000808f0                hal_uart_write(HalUartId, unsigned char)
+ .text._ZL17usb_ep_max_packetm
+                0x00080928        0xc hal/sam3x_usb_device.o
+ .text._ZL17usb_wait_for_flagPVmm
+                0x00080934       0x2c hal/sam3x_usb_device.o
+ .text._ZL27usb_enable_peripheral_clockm
+                0x00080960       0x24 hal/sam3x_usb_device.o
+ .text._ZL17usb_enable_clocksv
+                0x00080984       0x2c hal/sam3x_usb_device.o
+ .text._ZL21usb_force_device_modev
+                0x000809b0       0x20 hal/sam3x_usb_device.o
+ .text._ZL24usb_enable_pad_and_clockv
+                0x000809d0       0x40 hal/sam3x_usb_device.o
+ .text._ZL28usb_endpoint_fifo_byte_countm
+                0x00080a10       0x14 hal/sam3x_usb_device.o
+ .text._ZL14usb_release_rxm
+                0x00080a24       0x2c hal/sam3x_usb_device.o
+ .text._ZL14usb_release_txm
+                0x00080a50       0x2c hal/sam3x_usb_device.o
+ .text._ZL17usb_endpoint_fifom
+                0x00080a7c        0xa hal/sam3x_usb_device.o
+ *fill*         0x00080a86        0x2 
+ .text._ZL9usb_recv8m
+                0x00080a88       0x24 hal/sam3x_usb_device.o
+ .text._ZL8usb_recvmPhm
+                0x00080aac       0x3c hal/sam3x_usb_device.o
+ .text._ZL9usb_send8mh
+                0x00080ae8       0x24 hal/sam3x_usb_device.o
+ .text._ZL8usb_sendmPKvm
+                0x00080b0c       0xc4 hal/sam3x_usb_device.o
+ .text._ZL12usb_clear_inv
+                0x00080bd0       0x10 hal/sam3x_usb_device.o
+ .text._ZL13usb_clear_outv
+                0x00080be0       0x18 hal/sam3x_usb_device.o
+ .text._ZL15usb_clear_setupv
+                0x00080bf8       0x18 hal/sam3x_usb_device.o
+ .text._ZL9usb_stallv
+                0x00080c10       0x10 hal/sam3x_usb_device.o
+ .text._ZL18usb_received_setupv
+                0x00080c20       0x10 hal/sam3x_usb_device.o
+ .text._ZL16usb_recv_controlPvm
+                0x00080c30       0x38 hal/sam3x_usb_device.o
+ .text._ZL16usb_send_controlPKvm
+                0x00080c68       0x14 hal/sam3x_usb_device.o
+ .text._ZL26usb_send_string_descriptorPKct
+                0x00080c7c       0x58 hal/sam3x_usb_device.o
+ .text._ZL28usb_send_language_descriptorv
+                0x00080cd4       0x14 hal/sam3x_usb_device.o
+ .text._ZL22usb_send_configurationth
+                0x00080ce8       0x88 hal/sam3x_usb_device.o
+ .text._ZL19usb_send_descriptorRK8UsbSetup
+                0x00080d70       0xd4 hal/sam3x_usb_device.o
+ .text._ZL15usb_ring_acceptv
+                0x00080e44       0x50 hal/sam3x_usb_device.o
+ .text._ZL22usb_configure_endpointmm
+                0x00080e94       0x40 hal/sam3x_usb_device.o
+ .text._ZL27usb_endpoint_config_controlv
+                0x00080ed4        0x4 hal/sam3x_usb_device.o
+ .text._ZL32usb_endpoint_config_interrupt_inv
+                0x00080ed8        0x6 hal/sam3x_usb_device.o
+ .text._ZL28usb_endpoint_config_bulk_outm
+                0x00080ede        0xe hal/sam3x_usb_device.o
+ .text._ZL27usb_endpoint_config_bulk_inm
+                0x00080eec        0xe hal/sam3x_usb_device.o
+ *fill*         0x00080efa        0x2 
+ .text._ZL18usb_init_endpointsv
+                0x00080efc       0x58 hal/sam3x_usb_device.o
+ .text._ZL17usb_reset_handlerv
+                0x00080f54       0x34 hal/sam3x_usb_device.o
+ .text._ZL9cdc_setupRK8UsbSetup
+                0x00080f88       0xe0 hal/sam3x_usb_device.o
+ .text._ZL17usb_setup_handlerv
+                0x00081068      0x158 hal/sam3x_usb_device.o
+ .text._ZL21usb_interrupt_handlerv
+                0x000811c0       0x48 hal/sam3x_usb_device.o
+ .text.UOTGHS_Handler
+                0x00081208        0xc hal/sam3x_usb_device.o
+                0x00081208                UOTGHS_Handler
+ .text._Z17hal_usb_cdc_beginv
+                0x00081214       0x84 hal/sam3x_usb_device.o
+                0x00081214                hal_usb_cdc_begin()
+ .text._Z18hal_usb_cdc_openedv
+                0x00081298       0x18 hal/sam3x_usb_device.o
+                0x00081298                hal_usb_cdc_opened()
+ .text._Z17hal_usb_cdc_writePKhj
+                0x000812b0       0x48 hal/sam3x_usb_device.o
+                0x000812b0                hal_usb_cdc_write(unsigned char const*, unsigned int)
  .text._Z41__static_initialization_and_destruction_0ii
-                0x00080930       0x24 libs/IGAS_Eth/IGAS_Eth.o
+                0x000812f8       0x24 libs/IGAS_Eth/IGAS_Eth.o
  .text._GLOBAL__sub_I__ZN13EthernetClass6_stateE
-                0x00080954       0x14 libs/IGAS_Eth/IGAS_Eth.o
+                0x0008131c       0x14 libs/IGAS_Eth/IGAS_Eth.o
  .text._ZN9IPAddressC2Ev
-                0x00080968        0x6 libs/IGAS_Eth/IPAddress.o
-                0x00080968                IPAddress::IPAddress()
-                0x00080968                IPAddress::IPAddress()
+                0x00081330        0x6 libs/IGAS_Eth/IPAddress.o
+                0x00081330                IPAddress::IPAddress()
+                0x00081330                IPAddress::IPAddress()
  .text._ZN9IPAddressC2Ehhhh
-                0x0008096e       0x12 libs/IGAS_Eth/IPAddress.o
-                0x0008096e                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
-                0x0008096e                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
+                0x00081336       0x12 libs/IGAS_Eth/IPAddress.o
+                0x00081336                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
+                0x00081336                IPAddress::IPAddress(unsigned char, unsigned char, unsigned char, unsigned char)
  .text._Z41__static_initialization_and_destruction_0ii
-                0x00080980       0x2c libs/IGAS_Eth/IPAddress.o
+                0x00081348       0x2c libs/IGAS_Eth/IPAddress.o
  .text._GLOBAL__sub_I_INADDR_NONE
-                0x000809ac       0x14 libs/IGAS_Eth/IPAddress.o
+                0x00081374       0x14 libs/IGAS_Eth/IPAddress.o
  .text._ZN10W5500ClassC2Ev
-                0x000809c0        0x6 libs/IGAS_Eth/utility/w5500.o
-                0x000809c0                W5500Class::W5500Class()
-                0x000809c0                W5500Class::W5500Class()
- *fill*         0x000809c6        0x2 
+                0x00081388        0x6 libs/IGAS_Eth/utility/w5500.o
+                0x00081388                W5500Class::W5500Class()
+                0x00081388                W5500Class::W5500Class()
+ *fill*         0x0008138e        0x2 
  .text._Z41__static_initialization_and_destruction_0ii
-                0x000809c8       0x24 libs/IGAS_Eth/utility/w5500.o
+                0x00081390       0x24 libs/IGAS_Eth/utility/w5500.o
  .text._GLOBAL__sub_I_w5500
-                0x000809ec       0x14 libs/IGAS_Eth/utility/w5500.o
- .text._ZL13sc16_low_bytem
-                0x00080a00        0x4 libs/SC16IS7xx/SC16IS7xx.o
- .text._ZL14sc16_high_bytem
-                0x00080a04        0x6 libs/SC16IS7xx/SC16IS7xx.o
- .text._ZL17sc16_baud_divisorm
-                0x00080a0a       0x14 libs/SC16IS7xx/SC16IS7xx.o
- .text._ZL12sc16_addresshh
-                0x00080a1e        0x8 libs/SC16IS7xx/SC16IS7xx.o
- *fill*         0x00080a26        0x2 
- .text._ZN13SpiUartDevice8deselectEh
-                0x00080a28       0x10 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080a28                SpiUartDevice::deselect(unsigned char)
- .text._ZN13SpiUartDevice6selectEh
-                0x00080a38       0x10 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080a38                SpiUartDevice::select(unsigned char)
- .text._ZN13SpiUartDevice13writeRegisterEhhhh
-                0x00080a48       0x7c libs/SC16IS7xx/SC16IS7xx.o
-                0x00080a48                SpiUartDevice::writeRegister(unsigned char, unsigned char, unsigned char, unsigned char)
- .text._ZN13SpiUartDevice11setBaudRateEmhh
-                0x00080ac4       0x5c libs/SC16IS7xx/SC16IS7xx.o
-                0x00080ac4                SpiUartDevice::setBaudRate(unsigned long, unsigned char, unsigned char)
- .text._ZN13SpiUartDevice13configureUartEmhhh
-                0x00080b20       0x84 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080b20                SpiUartDevice::configureUart(unsigned long, unsigned char, unsigned char, unsigned char)
- .text._ZN13SpiUartDevice12readRegisterEhhh
-                0x00080ba4       0x84 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080ba4                SpiUartDevice::readRegister(unsigned char, unsigned char, unsigned char)
- .text._ZN13SpiUartDevice13uartConnectedEhh
-                0x00080c28       0x38 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080c28                SpiUartDevice::uartConnected(unsigned char, unsigned char)
- .text._ZN13SpiUartDevice8initUartEmhhh
-                0x00080c60       0x28 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080c60                SpiUartDevice::initUart(unsigned long, unsigned char, unsigned char, unsigned char)
- .text._ZN13SpiUartDevice5beginEmhhh
-                0x00080c88       0x18 libs/SC16IS7xx/SC16IS7xx.o
-                0x00080c88                SpiUartDevice::begin(unsigned long, unsigned char, unsigned char, unsigned char)
- .text.main     0x00080ca0       0x1c main.o
-                0x00080ca0                main
+                0x000813b4       0x14 libs/IGAS_Eth/utility/w5500.o
+ .text.main     0x000813c8       0x1c main.o
+                0x000813c8                main
  .text._Z7pinModemm
-                0x00080cbc       0x1c platform/platform_gpio.o
-                0x00080cbc                pinMode(unsigned long, unsigned long)
+                0x000813e4       0x1c platform/platform_gpio.o
+                0x000813e4                pinMode(unsigned long, unsigned long)
  .text._Z12digitalWritemm
-                0x00080cd8        0xc platform/platform_gpio.o
-                0x00080cd8                digitalWrite(unsigned long, unsigned long)
+                0x00081400        0xc platform/platform_gpio.o
+                0x00081400                digitalWrite(unsigned long, unsigned long)
  .text._ZN10SerialPortD2Ev
-                0x00080ce4        0x2 platform/platform_serial.o
-                0x00080ce4                SerialPort::~SerialPort()
-                0x00080ce4                SerialPort::~SerialPort()
- .text._ZN13UsbSerialPortD2Ev
-                0x00080ce6        0x2 platform/platform_serial.o
-                0x00080ce6                UsbSerialPort::~UsbSerialPort()
-                0x00080ce6                UsbSerialPort::~UsbSerialPort()
+                0x0008140c        0x2 platform/platform_serial.o
+                0x0008140c                SerialPort::~SerialPort()
+                0x0008140c                SerialPort::~SerialPort()
+ *fill*         0x0008140e        0x2 
  .text._Z41__static_initialization_and_destruction_0ii
-                0x00080ce8       0x8c platform/platform_serial.o
+                0x00081410       0x7c platform/platform_serial.o
  .text._ZN10SerialPortD0Ev
-                0x00080d74       0x14 platform/platform_serial.o
-                0x00080d74                SerialPort::~SerialPort()
- .text._ZN13UsbSerialPortD0Ev
-                0x00080d88       0x14 platform/platform_serial.o
-                0x00080d88                UsbSerialPort::~UsbSerialPort()
+                0x0008148c       0x14 platform/platform_serial.o
+                0x0008148c                SerialPort::~SerialPort()
  .text._GLOBAL__sub_I_Serial
-                0x00080d9c       0x14 platform/platform_serial.o
+                0x000814a0       0x14 platform/platform_serial.o
  .text._Z41__static_initialization_and_destruction_0ii
-                0x00080db0       0x24 platform/platform_spi.o
+                0x000814b4       0x24 platform/platform_spi.o
  .text._GLOBAL__sub_I_SPI
-                0x00080dd4       0x14 platform/platform_spi.o
+                0x000814d8       0x14 platform/platform_spi.o
  .text._Z5delaym
-                0x00080de8        0xc platform/platform_time.o
-                0x00080de8                delay(unsigned long)
- .text._ZN13UsbSerialPort5writeEh
-                0x00080df4        0xc platform/serial_port.o
-                0x00080df4                UsbSerialPort::write(unsigned char)
+                0x000814ec        0xc platform/platform_time.o
+                0x000814ec                delay(unsigned long)
+ .text._ZN13UsbSerialPortD2Ev
+                0x000814f8        0x2 platform/platform_usb.o
+                0x000814f8                UsbSerialPort::~UsbSerialPort()
+                0x000814f8                UsbSerialPort::~UsbSerialPort()
+ *fill*         0x000814fa        0x2 
+ .text._Z41__static_initialization_and_destruction_0ii
+                0x000814fc       0x30 platform/platform_usb.o
+ .text._ZN13UsbSerialPortD0Ev
+                0x0008152c       0x14 platform/platform_usb.o
+                0x0008152c                UsbSerialPort::~UsbSerialPort()
+ .text._GLOBAL__sub_I_SerialUSB
+                0x00081540       0x14 platform/platform_usb.o
  .text._ZN10SerialPort5writeEh
-                0x00080e00       0x18 platform/serial_port.o
-                0x00080e00                SerialPort::write(unsigned char)
+                0x00081554       0x18 platform/serial_port.o
+                0x00081554                SerialPort::write(unsigned char)
  .text._ZN10SerialPortC2E9HalUartId
-                0x00080e18       0x10 platform/serial_port.o
-                0x00080e18                SerialPort::SerialPort(HalUartId)
-                0x00080e18                SerialPort::SerialPort(HalUartId)
+                0x0008156c       0x10 platform/serial_port.o
+                0x0008156c                SerialPort::SerialPort(HalUartId)
+                0x0008156c                SerialPort::SerialPort(HalUartId)
  .text._ZNK10SerialPort13convert_frameEm
-                0x00080e28       0x14 platform/serial_port.o
-                0x00080e28                SerialPort::convert_frame(unsigned long) const
+                0x0008157c       0x14 platform/serial_port.o
+                0x0008157c                SerialPort::convert_frame(unsigned long) const
  .text._ZN10SerialPort5beginEmm
-                0x00080e3c       0x28 platform/serial_port.o
-                0x00080e3c                SerialPort::begin(unsigned long, unsigned long)
- .text._ZN13UsbSerialPort5beginEmm
-                0x00080e64        0x6 platform/serial_port.o
-                0x00080e64                UsbSerialPort::begin(unsigned long, unsigned long)
- .text._ZL21platform_reverse_bitsh
-                0x00080e6a       0x26 platform/spi.o
+                0x00081590       0x28 platform/serial_port.o
+                0x00081590                SerialPort::begin(unsigned long, unsigned long)
  .text._ZN11SPISettingsC2Ev
-                0x00080e90       0x10 platform/spi.o
-                0x00080e90                SPISettings::SPISettings()
-                0x00080e90                SPISettings::SPISettings()
- .text._ZN11SPISettingsC2Emhh
-                0x00080ea0        0xc platform/spi.o
-                0x00080ea0                SPISettings::SPISettings(unsigned long, unsigned char, unsigned char)
-                0x00080ea0                SPISettings::SPISettings(unsigned long, unsigned char, unsigned char)
+                0x000815b8       0x10 platform/spi.o
+                0x000815b8                SPISettings::SPISettings()
+                0x000815b8                SPISettings::SPISettings()
  .text._ZNK11SPISettings8clock_hzEv
-                0x00080eac        0x4 platform/spi.o
-                0x00080eac                SPISettings::clock_hz() const
- .text._ZNK11SPISettings9bit_orderEv
-                0x00080eb0        0x4 platform/spi.o
-                0x00080eb0                SPISettings::bit_order() const
+                0x000815c8        0x4 platform/spi.o
+                0x000815c8                SPISettings::clock_hz() const
  .text._ZNK11SPISettings9data_modeEv
-                0x00080eb4        0x4 platform/spi.o
-                0x00080eb4                SPISettings::data_mode() const
+                0x000815cc        0x4 platform/spi.o
+                0x000815cc                SPISettings::data_mode() const
  .text._ZN8SPIClassC2Ev
-                0x00080eb8       0x14 platform/spi.o
-                0x00080eb8                SPIClass::SPIClass()
-                0x00080eb8                SPIClass::SPIClass()
- .text._ZN8SPIClass14endTransactionEv
-                0x00080ecc        0x2 platform/spi.o
-                0x00080ecc                SPIClass::endTransaction()
- *fill*         0x00080ece        0x2 
- .text._ZN8SPIClass8transferEh
-                0x00080ed0       0x38 platform/spi.o
-                0x00080ed0                SPIClass::transfer(unsigned char)
+                0x000815d0       0x14 platform/spi.o
+                0x000815d0                SPIClass::SPIClass()
+                0x000815d0                SPIClass::SPIClass()
  .text._ZNK8SPIClass17convert_data_modeEh
-                0x00080f08       0x1c platform/spi.o
-                0x00080f08                SPIClass::convert_data_mode(unsigned char) const
+                0x000815e4       0x1c platform/spi.o
+                0x000815e4                SPIClass::convert_data_mode(unsigned char) const
  .text._ZNK8SPIClass15make_hal_configERK11SPISettings
-                0x00080f24       0x34 platform/spi.o
-                0x00080f24                SPIClass::make_hal_config(SPISettings const&) const
+                0x00081600       0x34 platform/spi.o
+                0x00081600                SPIClass::make_hal_config(SPISettings const&) const
  .text._ZN8SPIClass22apply_current_settingsEv
-                0x00080f58       0x24 platform/spi.o
-                0x00080f58                SPIClass::apply_current_settings()
+                0x00081634       0x24 platform/spi.o
+                0x00081634                SPIClass::apply_current_settings()
  .text._ZN8SPIClass5beginEv
-                0x00080f7c       0x1c platform/spi.o
-                0x00080f7c                SPIClass::begin()
- .text._ZN8SPIClass16beginTransactionERK11SPISettings
-                0x00080f98       0x1c platform/spi.o
-                0x00080f98                SPIClass::beginTransaction(SPISettings const&)
+                0x00081658       0x1c platform/spi.o
+                0x00081658                SPIClass::begin()
  .text.platform_get_stack_pointer
-                0x00080fb4        0x4 platform/syscalls.o
- .text._sbrk    0x00080fb8       0x44 platform/syscalls.o
-                0x00080fb8                _sbrk
+                0x00081674        0x4 platform/syscalls.o
+ .text._sbrk    0x00081678       0x44 platform/syscalls.o
+                0x00081678                _sbrk
+ .text._ZN13UsbSerialPort5beginEmm
+                0x000816bc        0xc platform/usb_serial.o
+                0x000816bc                UsbSerialPort::begin(unsigned long, unsigned long)
+ .text._ZN13UsbSerialPort5writeEPKhj
+                0x000816c8       0x10 platform/usb_serial.o
+                0x000816c8                UsbSerialPort::write(unsigned char const*, unsigned int)
+ .text._ZN13UsbSerialPort5writeEh
+                0x000816d8       0x1c platform/usb_serial.o
+                0x000816d8                UsbSerialPort::write(unsigned char)
  .text.__aeabi_atexit
-                0x00080ffc        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
-                0x00080ffc                __aeabi_atexit
- .text._ZdlPvj  0x00081008        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
-                0x00081008                operator delete(void*, unsigned int)
- .text._ZdlPv   0x0008100c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
-                0x0008100c                operator delete(void*)
+                0x000816f4        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
+                0x000816f4                __aeabi_atexit
+ .text._ZdlPvj  0x00081700        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
+                0x00081700                operator delete(void*, unsigned int)
+ .text._ZdlPv   0x00081704        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
+                0x00081704                operator delete(void*)
  .text.__cxa_atexit
-                0x00081010        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-cxa_atexit.o)
-                0x00081010                __cxa_atexit
- .text.__errno  0x0008101c        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-errno.o)
-                0x0008101c                __errno
+                0x00081708        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-cxa_atexit.o)
+                0x00081708                __cxa_atexit
+ .text.__errno  0x00081714        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-errno.o)
+                0x00081714                __errno
  .text.__libc_init_array
-                0x00081028       0x50 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-init.o)
-                0x00081028                __libc_init_array
- .text.malloc   0x00081078       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
-                0x00081078                malloc
- .text.free     0x00081088       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
-                0x00081088                free
+                0x00081720       0x50 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-init.o)
+                0x00081720                __libc_init_array
+ .text.malloc   0x00081770       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
+                0x00081770                malloc
+ .text.free     0x00081780       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
+                0x00081780                free
  .text._malloc_r
-                0x00081098      0x544 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x00081098                _malloc_r
+                0x00081790      0x544 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x00081790                _malloc_r
+ .text          0x00081cd4       0xec c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcpy.o)
+                0x00081cd4                memcpy
  .text.__malloc_lock
-                0x000815dc        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
-                0x000815dc                __malloc_lock
+                0x00081dc0        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
+                0x00081dc0                __malloc_lock
  .text.__malloc_unlock
-                0x000815e8        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
-                0x000815e8                __malloc_unlock
- .text._sbrk_r  0x000815f4       0x24 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-sbrkr.o)
-                0x000815f4                _sbrk_r
+                0x00081dcc        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
+                0x00081dcc                __malloc_unlock
+ .text._sbrk_r  0x00081dd8       0x24 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-sbrkr.o)
+                0x00081dd8                _sbrk_r
  .text.__register_exitproc
-                0x00081618       0xc4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__atexit.o)
-                0x00081618                __register_exitproc
+                0x00081dfc       0xc4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__atexit.o)
+                0x00081dfc                __register_exitproc
  .text.startup.register_fini
-                0x000816dc       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x000816f0        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-atexit.o)
-                0x000816f0                atexit
+                0x00081ec0       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x00081ed4        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-atexit.o)
+                0x00081ed4                atexit
  .text.__libc_fini_array
-                0x000816fc       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-fini.o)
-                0x000816fc                __libc_fini_array
+                0x00081ee0       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-fini.o)
+                0x00081ee0                __libc_fini_array
  .text._malloc_trim_r
-                0x00081730       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
-                0x00081730                _malloc_trim_r
- .text._free_r  0x000817d0      0x1cc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
-                0x000817d0                _free_r
+                0x00081f14       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
+                0x00081f14                _malloc_trim_r
+ .text._free_r  0x00081fb4      0x1cc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
+                0x00081fb4                _free_r
  .text.__retarget_lock_acquire_recursive
-                0x0008199c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
-                0x0008199c                __retarget_lock_acquire_recursive
+                0x00082180        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
+                0x00082180                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x000819a0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
-                0x000819a0                __retarget_lock_release_recursive
+                0x00082184        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
+                0x00082184                __retarget_lock_release_recursive
  *(.glue_7t)
- .glue_7t       0x000819a4        0x0 linker stubs
+ .glue_7t       0x00082188        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x000819a4        0x0 linker stubs
+ .glue_7        0x00082188        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x000819a4      0x100 hal/sam3x_gpio.o
- .rodata        0x00081aa4       0xc0 hal/sam3x_uart.o
- .rodata        0x00081b64       0x28 platform/serial_port.o
-                0x00081b64                vtable for SerialPort
-                0x00081b78                vtable for UsbSerialPort
+ .rodata        0x00082188      0x100 hal/sam3x_gpio.o
+ .rodata        0x00082288       0xc0 hal/sam3x_uart.o
+ .rodata        0x00082348       0xbd hal/sam3x_usb_device.o
+ *fill*         0x00082405        0x3 
+ .rodata.str1.4
+                0x00082408       0x18 hal/sam3x_usb_device.o
+ .rodata        0x00082420       0x14 platform/serial_port.o
+                0x00082420                vtable for SerialPort
+ .rodata        0x00082434       0x14 platform/usb_serial.o
+                0x00082434                vtable for UsbSerialPort
  .rodata._global_impure_ptr
-                0x00081b8c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
-                0x00081b8c                _global_impure_ptr
+                0x00082448        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                0x00082448                _global_impure_ptr
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00081b90                . = ALIGN (0x4)
+                0x0008244c                . = ALIGN (0x4)
  *(.init)
- .init          0x00081b90        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crti.o
-                0x00081b90                _init
- .init          0x00081b94        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtn.o
-                0x00081b9c                . = ALIGN (0x4)
-                0x00081b9c                __preinit_array_start = .
+ .init          0x0008244c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crti.o
+                0x0008244c                _init
+ .init          0x00082450        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtn.o
+                0x00082458                . = ALIGN (0x4)
+                0x00082458                __preinit_array_start = .
  *(.preinit_array)
-                0x00081b9c                __preinit_array_end = .
-                0x00081b9c                . = ALIGN (0x4)
-                0x00081b9c                __init_array_start = .
+                0x00082458                __preinit_array_end = .
+                0x00082458                . = ALIGN (0x4)
+                0x00082458                __init_array_start = .
  *(SORT(.init_array.*))
  .init_array.00000
-                0x00081b9c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
+                0x00082458        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
  *(.init_array)
- .init_array    0x00081ba0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
- .init_array    0x00081ba4        0x4 libs/IGAS_Eth/IGAS_Eth.o
- .init_array    0x00081ba8        0x4 libs/IGAS_Eth/IPAddress.o
- .init_array    0x00081bac        0x4 libs/IGAS_Eth/utility/w5500.o
- .init_array    0x00081bb0        0x4 platform/platform_serial.o
- .init_array    0x00081bb4        0x4 platform/platform_spi.o
-                0x00081bb8                __init_array_end = .
-                0x00081bb8                . = ALIGN (0x4)
+ .init_array    0x0008245c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+ .init_array    0x00082460        0x4 libs/IGAS_Eth/IGAS_Eth.o
+ .init_array    0x00082464        0x4 libs/IGAS_Eth/IPAddress.o
+ .init_array    0x00082468        0x4 libs/IGAS_Eth/utility/w5500.o
+ .init_array    0x0008246c        0x4 platform/platform_serial.o
+ .init_array    0x00082470        0x4 platform/platform_spi.o
+ .init_array    0x00082474        0x4 platform/platform_usb.o
+                0x00082478                __init_array_end = .
+                0x00082478                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00081bb8                . = ALIGN (0x4)
+                0x00082478                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00081bb8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crti.o
-                0x00081bb8                _fini
- .fini          0x00081bbc        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtn.o
-                0x00081bc4                . = ALIGN (0x4)
-                0x00081bc4                __fini_array_start = .
+ .fini          0x00082478        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crti.o
+                0x00082478                _fini
+ .fini          0x0008247c        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtn.o
+                0x00082484                . = ALIGN (0x4)
+                0x00082484                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00081bc4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+ .fini_array    0x00082484        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00081bc8                __fini_array_end = .
+                0x00082488                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00081bc8                . = ALIGN (0x4)
-                0x00081bc8                _efixed = .
+                0x00082488                . = ALIGN (0x4)
+                0x00082488                _efixed = .
                 [!provide]                PROVIDE (__exidx_start, .)
 
-.vfp11_veneer   0x00081bc8        0x0
- .vfp11_veneer  0x00081bc8        0x0 linker stubs
+.vfp11_veneer   0x00082488        0x0
+ .vfp11_veneer  0x00082488        0x0 linker stubs
 
-.v4_bx          0x00081bc8        0x0
- .v4_bx         0x00081bc8        0x0 linker stubs
+.v4_bx          0x00082488        0x0
+ .v4_bx         0x00082488        0x0 linker stubs
 
-.iplt           0x00081bc8        0x0
- .iplt          0x00081bc8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+.iplt           0x00082488        0x0
+ .iplt          0x00082488        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
 
-.ARM.exidx      0x00081bc8        0x8
+.ARM.exidx      0x00082488        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx.text.__aeabi_atexit
-                0x00081bc8        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
+                0x00082488        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
  .ARM.exidx.text._ZdlPvj
-                0x00081bd0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
+                0x00082490        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZdlPv
-                0x00081bd0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
+                0x00082490        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
                                   0x8 (size before relaxing)
                 [!provide]                PROVIDE (__exidx_end, .)
 
-.eh_frame       0x00081bd0        0x0
- .eh_frame      0x00081bd0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+.eh_frame       0x00082490        0x0
+ .eh_frame      0x00082490        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
 
-.rel.dyn        0x00081bd0        0x0
- .rel.iplt      0x00081bd0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+.rel.dyn        0x00082490        0x0
+ .rel.iplt      0x00082490        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
 
-.jcr            0x00081bd0        0x0
- .jcr           0x00081bd0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+.jcr            0x00082490        0x0
+ .jcr           0x00082490        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
 
-.igot.plt       0x00081bd0        0x0
- .igot.plt      0x00081bd0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
-                0x00081bd0                . = ALIGN (0x4)
-                0x00081bd0                _etext = .
+.igot.plt       0x00082490        0x0
+ .igot.plt      0x00082490        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+                0x00082490                . = ALIGN (0x4)
+                0x00082490                _etext = .
 
-.relocate       0x20000000      0x854 load address 0x00081bd0
+.relocate       0x20000000      0x894 load address 0x00082490
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _srelocate = .
  *(.ramfunc .ramfunc.*)
+ .ramfunc       0x20000000       0x34 hal/sam3x_reset.o
  *(.data .data.*)
- .data          0x20000000        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
-                0x20000000                __dso_handle
- .data          0x20000004        0x4 Device_Startup/system_sam3xa.o
-                0x20000004                SystemCoreClock
- .data          0x20000008        0x8 platform/platform_serial.o
-                0x20000008                SerialUSB
+ .data          0x20000034        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+                0x20000034                __dso_handle
+ .data          0x20000038        0x4 Device_Startup/system_sam3xa.o
+                0x20000038                SystemCoreClock
+ .data          0x2000003c        0x4 hal/sam3x_reset.o
+ .data          0x20000040        0xc hal/sam3x_usb_device.o
+ .data          0x2000004c        0x4 platform/platform_usb.o
+                0x2000004c                SerialUSB
  .data._impure_ptr
-                0x20000010        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
-                0x20000010                _impure_ptr
- *fill*         0x20000014        0x4 
+                0x20000050        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                0x20000050                _impure_ptr
+ *fill*         0x20000054        0x4 
  .data.impure_data
-                0x20000018      0x428 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                0x20000058      0x428 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
  .data.__malloc_av_
-                0x20000440      0x408 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x20000440                __malloc_av_
+                0x20000480      0x408 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x20000480                __malloc_av_
  .data.__malloc_sbrk_base
-                0x20000848        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x20000848                __malloc_sbrk_base
+                0x20000888        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x20000888                __malloc_sbrk_base
  .data.__malloc_trim_threshold
-                0x2000084c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x2000084c                __malloc_trim_threshold
+                0x2000088c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x2000088c                __malloc_trim_threshold
  .data.__atexit_recursive_mutex
-                0x20000850        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
-                0x20000850                __atexit_recursive_mutex
-                0x20000854                . = ALIGN (0x4)
-                0x20000854                _erelocate = .
+                0x20000890        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
+                0x20000890                __atexit_recursive_mutex
+                0x20000894                . = ALIGN (0x4)
+                0x20000894                _erelocate = .
 
-.bss            0x20000854       0xd4 load address 0x00082424
-                0x20000854                . = ALIGN (0x4)
-                0x20000854                _sbss = .
-                0x20000854                _szero = .
+.bss            0x20000894      0x30c load address 0x00082d24
+                0x20000894                . = ALIGN (0x4)
+                0x20000894                _sbss = .
+                0x20000894                _szero = .
  *(.bss .bss.*)
- .bss           0x20000854       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
- .bss           0x20000870        0x1 app/app.o
- *fill*         0x20000871        0x3 
- .bss           0x20000874        0x4 hal/sam3x_tick.o
- .bss           0x20000878       0x1c libs/IGAS_Eth/IGAS_Eth.o
-                0x20000878                Ethernet
-                0x2000087c                EthernetClass::_state
-                0x20000884                EthernetClass::_server_port
- .bss           0x20000894        0x4 libs/IGAS_Eth/IPAddress.o
-                0x20000894                INADDR_NONE
- .bss           0x20000898        0x1 libs/IGAS_Eth/utility/w5500.o
-                0x20000898                w5500
- *fill*         0x20000899        0x3 
- .bss           0x2000089c       0x20 platform/platform_serial.o
-                0x2000089c                Serial
-                0x200008a4                Serial1
-                0x200008ac                Serial2
-                0x200008b4                Serial3
- .bss           0x200008bc        0xc platform/platform_spi.o
-                0x200008bc                SPI
- .bss           0x200008c8        0x4 platform/syscalls.o
+ .bss           0x20000894       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtbegin.o
+ .bss           0x200008b0        0x4 hal/sam3x_tick.o
+ .bss           0x200008b4      0x23c hal/sam3x_usb_device.o
+ .bss           0x20000af0       0x1c libs/IGAS_Eth/IGAS_Eth.o
+                0x20000af0                Ethernet
+                0x20000af4                EthernetClass::_state
+                0x20000afc                EthernetClass::_server_port
+ .bss           0x20000b0c        0x4 libs/IGAS_Eth/IPAddress.o
+                0x20000b0c                INADDR_NONE
+ .bss           0x20000b10        0x1 libs/IGAS_Eth/utility/w5500.o
+                0x20000b10                w5500
+ *fill*         0x20000b11        0x3 
+ .bss           0x20000b14       0x20 platform/platform_serial.o
+                0x20000b14                Serial
+                0x20000b1c                Serial1
+                0x20000b24                Serial2
+                0x20000b2c                Serial3
+ .bss           0x20000b34        0xc platform/platform_spi.o
+                0x20000b34                SPI
+ .bss           0x20000b40        0x4 platform/syscalls.o
  .bss.__malloc_current_mallinfo
-                0x200008cc       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x200008cc                __malloc_current_mallinfo
+                0x20000b44       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x20000b44                __malloc_current_mallinfo
  .bss.__malloc_max_sbrked_mem
-                0x200008f4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x200008f4                __malloc_max_sbrked_mem
+                0x20000b6c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x20000b6c                __malloc_max_sbrked_mem
  .bss.__malloc_max_total_mem
-                0x200008f8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x200008f8                __malloc_max_total_mem
+                0x20000b70        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x20000b70                __malloc_max_total_mem
  .bss.__malloc_top_pad
-                0x200008fc        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
-                0x200008fc                __malloc_top_pad
+                0x20000b74        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x20000b74                __malloc_top_pad
  *(COMMON)
- COMMON         0x20000900       0x21 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
-                0x20000900                __lock___atexit_recursive_mutex
-                0x20000904                __lock___arc4random_mutex
-                0x20000908                __lock___env_recursive_mutex
-                0x2000090c                __lock___sinit_recursive_mutex
-                0x20000910                __lock___malloc_recursive_mutex
-                0x20000914                __lock___at_quick_exit_mutex
-                0x20000918                __lock___dd_hash_mutex
-                0x2000091c                __lock___tz_mutex
-                0x20000920                __lock___sfp_recursive_mutex
- *fill*         0x20000921        0x3 
- COMMON         0x20000924        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)
-                0x20000924                errno
-                0x20000928                . = ALIGN (0x4)
-                0x20000928                _ebss = .
-                0x20000928                _ezero = .
+ COMMON         0x20000b78       0x21 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
+                0x20000b78                __lock___atexit_recursive_mutex
+                0x20000b7c                __lock___arc4random_mutex
+                0x20000b80                __lock___env_recursive_mutex
+                0x20000b84                __lock___sinit_recursive_mutex
+                0x20000b88                __lock___malloc_recursive_mutex
+                0x20000b8c                __lock___at_quick_exit_mutex
+                0x20000b90                __lock___dd_hash_mutex
+                0x20000b94                __lock___tz_mutex
+                0x20000b98                __lock___sfp_recursive_mutex
+ *fill*         0x20000b99        0x3 
+ COMMON         0x20000b9c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)
+                0x20000b9c                errno
+                0x20000ba0                . = ALIGN (0x4)
+                0x20000ba0                _ebss = .
+                0x20000ba0                _ezero = .
 
-.stack          0x20000928      0x400 load address 0x000824f8
-                0x20000928                . = ALIGN (0x8)
-                0x20000928                _sstack = .
-                0x20000d28                . = (. + STACK_SIZE)
- *fill*         0x20000928      0x400 
-                0x20000d28                . = ALIGN (0x8)
-                0x20000d28                _estack = .
+.stack          0x20000ba0      0x400 load address 0x00083030
+                0x20000ba0                . = ALIGN (0x8)
+                0x20000ba0                _sstack = .
+                0x20000fa0                . = (. + STACK_SIZE)
+ *fill*         0x20000ba0      0x400 
+                0x20000fa0                . = ALIGN (0x8)
+                0x20000fa0                _estack = .
 
-.heap           0x20000d28      0x200 load address 0x000828f8
-                0x20000d28                . = ALIGN (0x8)
-                0x20000d28                _sheap = .
-                0x20000f28                . = (. + HEAP_SIZE)
- *fill*         0x20000d28      0x200 
-                0x20000f28                . = ALIGN (0x8)
-                0x20000f28                _eheap = .
-                0x20000f28                . = ALIGN (0x4)
-                0x20000f28                _end = .
+.heap           0x20000fa0      0x200 load address 0x00083430
+                0x20000fa0                . = ALIGN (0x8)
+                0x20000fa0                _sheap = .
+                0x200011a0                . = (. + HEAP_SIZE)
+ *fill*         0x20000fa0      0x200 
+                0x200011a0                . = ALIGN (0x8)
+                0x200011a0                _eheap = .
+                0x200011a0                . = ALIGN (0x4)
+                0x200011a0                _end = .
                 0x20017fff                _ram_end_ = ((ORIGIN (ram) + LENGTH (ram)) - 0x1)
 OUTPUT(LCP_Basic.elf elf32-littlearm)
 
@@ -2799,73 +3366,81 @@ OUTPUT(LCP_Basic.elf elf32-littlearm)
  .ARM.attributes
                 0x00000116       0x33 hal/sam3x_gpio.o
  .ARM.attributes
-                0x00000149       0x33 hal/sam3x_spi.o
+                0x00000149       0x33 hal/sam3x_reset.o
  .ARM.attributes
-                0x0000017c       0x33 hal/sam3x_tick.o
+                0x0000017c       0x33 hal/sam3x_spi.o
  .ARM.attributes
-                0x000001af       0x33 hal/sam3x_uart.o
+                0x000001af       0x33 hal/sam3x_tick.o
  .ARM.attributes
-                0x000001e2       0x33 libs/IGAS_Eth/IGAS_Eth.o
+                0x000001e2       0x33 hal/sam3x_uart.o
  .ARM.attributes
-                0x00000215       0x33 libs/IGAS_Eth/IPAddress.o
+                0x00000215       0x33 hal/sam3x_usb_device.o
  .ARM.attributes
-                0x00000248       0x33 libs/IGAS_Eth/utility/w5500.o
+                0x00000248       0x33 libs/IGAS_Eth/IGAS_Eth.o
  .ARM.attributes
-                0x0000027b       0x33 libs/SC16IS7xx/SC16IS7xx.o
+                0x0000027b       0x33 libs/IGAS_Eth/IPAddress.o
  .ARM.attributes
-                0x000002ae       0x33 main.o
+                0x000002ae       0x33 libs/IGAS_Eth/utility/w5500.o
  .ARM.attributes
-                0x000002e1       0x33 platform/platform_gpio.o
+                0x000002e1       0x33 main.o
  .ARM.attributes
-                0x00000314       0x33 platform/platform_serial.o
+                0x00000314       0x33 platform/platform_gpio.o
  .ARM.attributes
-                0x00000347       0x33 platform/platform_spi.o
+                0x00000347       0x33 platform/platform_serial.o
  .ARM.attributes
-                0x0000037a       0x33 platform/platform_time.o
+                0x0000037a       0x33 platform/platform_spi.o
  .ARM.attributes
-                0x000003ad       0x33 platform/serial_port.o
+                0x000003ad       0x33 platform/platform_time.o
  .ARM.attributes
-                0x000003e0       0x33 platform/spi.o
+                0x000003e0       0x33 platform/platform_usb.o
  .ARM.attributes
-                0x00000413       0x33 platform/syscalls.o
+                0x00000413       0x33 platform/serial_port.o
  .ARM.attributes
-                0x00000446       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
+                0x00000446       0x33 platform/spi.o
  .ARM.attributes
-                0x00000473       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
+                0x00000479       0x33 platform/syscalls.o
  .ARM.attributes
-                0x000004a0       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
+                0x000004ac       0x33 platform/usb_serial.o
  .ARM.attributes
-                0x000004cd       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-cxa_atexit.o)
+                0x000004df       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
  .ARM.attributes
-                0x000004fa       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-errno.o)
+                0x0000050c       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
  .ARM.attributes
-                0x00000527       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                0x00000539       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
  .ARM.attributes
-                0x00000554       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-init.o)
+                0x00000566       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-cxa_atexit.o)
  .ARM.attributes
-                0x00000581       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
+                0x00000593       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-errno.o)
  .ARM.attributes
-                0x000005ae       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+                0x000005c0       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x000005db       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
+                0x000005ed       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-init.o)
  .ARM.attributes
-                0x00000608       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-sbrkr.o)
+                0x0000061a       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
  .ARM.attributes
-                0x00000635       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__atexit.o)
+                0x00000647       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x00000662       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
+                0x00000674       0x1b c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x0000068f       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-atexit.o)
+                0x0000068f       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
  .ARM.attributes
-                0x000006bc       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-fini.o)
+                0x000006bc       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x000006e9       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
+                0x000006e9       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x00000716       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
+                0x00000716       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x00000743       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)
+                0x00000743       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-atexit.o)
  .ARM.attributes
-                0x00000770       0x1d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtn.o
+                0x00000770       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x0000079d       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
+ .ARM.attributes
+                0x000007ca       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
+ .ARM.attributes
+                0x000007f7       0x2d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)
+ .ARM.attributes
+                0x00000824       0x1d c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7-m/crtn.o
 
 .comment        0x00000000       0x59
  .comment       0x00000000       0x59 app/app.o
@@ -2874,88 +3449,100 @@ OUTPUT(LCP_Basic.elf elf32-littlearm)
  .comment       0x00000059       0x5a Device_Startup/startup_sam3xa.o
  .comment       0x00000059       0x5a Device_Startup/system_sam3xa.o
  .comment       0x00000059       0x5a hal/sam3x_gpio.o
+ .comment       0x00000059       0x5a hal/sam3x_reset.o
  .comment       0x00000059       0x5a hal/sam3x_spi.o
  .comment       0x00000059       0x5a hal/sam3x_tick.o
  .comment       0x00000059       0x5a hal/sam3x_uart.o
+ .comment       0x00000059       0x5a hal/sam3x_usb_device.o
  .comment       0x00000059       0x5a libs/IGAS_Eth/IGAS_Eth.o
  .comment       0x00000059       0x5a libs/IGAS_Eth/IPAddress.o
  .comment       0x00000059       0x5a libs/IGAS_Eth/utility/w5500.o
- .comment       0x00000059       0x5a libs/SC16IS7xx/SC16IS7xx.o
  .comment       0x00000059       0x5a main.o
  .comment       0x00000059       0x5a platform/platform_gpio.o
  .comment       0x00000059       0x5a platform/platform_serial.o
  .comment       0x00000059       0x5a platform/platform_spi.o
  .comment       0x00000059       0x5a platform/platform_time.o
+ .comment       0x00000059       0x5a platform/platform_usb.o
  .comment       0x00000059       0x5a platform/serial_port.o
  .comment       0x00000059       0x5a platform/spi.o
  .comment       0x00000059       0x5a platform/syscalls.o
+ .comment       0x00000059       0x5a platform/usb_serial.o
 
-.debug_info     0x00000000    0x13b8b
- .debug_info    0x00000000      0xf3a app/app.o
- .debug_info    0x00000f3a      0xf3d board/lcp_board.o
- .debug_info    0x00001e77      0x74e Device_Startup/startup_sam3xa.o
- .debug_info    0x000025c5      0x444 Device_Startup/system_sam3xa.o
- .debug_info    0x00002a09      0x8e6 hal/sam3x_gpio.o
- .debug_info    0x000032ef      0xa9c hal/sam3x_spi.o
- .debug_info    0x00003d8b      0x7de hal/sam3x_tick.o
- .debug_info    0x00004569      0xed1 hal/sam3x_uart.o
- .debug_info    0x0000543a     0x1ea2 libs/IGAS_Eth/IGAS_Eth.o
- .debug_info    0x000072dc     0x1bb4 libs/IGAS_Eth/IPAddress.o
- .debug_info    0x00008e90     0x3385 libs/IGAS_Eth/utility/w5500.o
- .debug_info    0x0000c215     0x19d0 libs/SC16IS7xx/SC16IS7xx.o
- .debug_info    0x0000dbe5       0xe0 main.o
- .debug_info    0x0000dcc5      0xb32 platform/platform_gpio.o
- .debug_info    0x0000e7f7      0xe05 platform/platform_serial.o
- .debug_info    0x0000f5fc      0xa6e platform/platform_spi.o
- .debug_info    0x0001006a      0xb06 platform/platform_time.o
- .debug_info    0x00010b70     0x1468 platform/serial_port.o
- .debug_info    0x00011fd8      0xd6d platform/spi.o
- .debug_info    0x00012d45      0xe46 platform/syscalls.o
+.debug_info     0x00000000    0x16bf0
+ .debug_info    0x00000000      0xbfa app/app.o
+ .debug_info    0x00000bfa      0xf3d board/lcp_board.o
+ .debug_info    0x00001b37      0x74e Device_Startup/startup_sam3xa.o
+ .debug_info    0x00002285      0x444 Device_Startup/system_sam3xa.o
+ .debug_info    0x000026c9      0x8e6 hal/sam3x_gpio.o
+ .debug_info    0x00002faf      0x232 hal/sam3x_reset.o
+ .debug_info    0x000031e1      0xa9c hal/sam3x_spi.o
+ .debug_info    0x00003c7d      0x7fe hal/sam3x_tick.o
+ .debug_info    0x0000447b      0xed1 hal/sam3x_uart.o
+ .debug_info    0x0000534c     0x3025 hal/sam3x_usb_device.o
+ .debug_info    0x00008371     0x1ea2 libs/IGAS_Eth/IGAS_Eth.o
+ .debug_info    0x0000a213     0x1bb4 libs/IGAS_Eth/IPAddress.o
+ .debug_info    0x0000bdc7     0x3385 libs/IGAS_Eth/utility/w5500.o
+ .debug_info    0x0000f14c       0xe0 main.o
+ .debug_info    0x0000f22c      0xb32 platform/platform_gpio.o
+ .debug_info    0x0000fd5e      0xd12 platform/platform_serial.o
+ .debug_info    0x00010a70      0xa6e platform/platform_spi.o
+ .debug_info    0x000114de      0xb06 platform/platform_time.o
+ .debug_info    0x00011fe4      0xc11 platform/platform_usb.o
+ .debug_info    0x00012bf5     0x10e2 platform/serial_port.o
+ .debug_info    0x00013cd7      0xd6d platform/spi.o
+ .debug_info    0x00014a44      0xe46 platform/syscalls.o
+ .debug_info    0x0001588a     0x1366 platform/usb_serial.o
 
-.debug_abbrev   0x00000000     0x3549
- .debug_abbrev  0x00000000      0x2cd app/app.o
- .debug_abbrev  0x000002cd      0x297 board/lcp_board.o
- .debug_abbrev  0x00000564      0x153 Device_Startup/startup_sam3xa.o
- .debug_abbrev  0x000006b7      0x102 Device_Startup/system_sam3xa.o
- .debug_abbrev  0x000007b9      0x1d3 hal/sam3x_gpio.o
- .debug_abbrev  0x0000098c      0x22e hal/sam3x_spi.o
- .debug_abbrev  0x00000bba      0x229 hal/sam3x_tick.o
- .debug_abbrev  0x00000de3      0x254 hal/sam3x_uart.o
- .debug_abbrev  0x00001037      0x41e libs/IGAS_Eth/IGAS_Eth.o
- .debug_abbrev  0x00001455      0x49b libs/IGAS_Eth/IPAddress.o
- .debug_abbrev  0x000018f0      0x419 libs/IGAS_Eth/utility/w5500.o
- .debug_abbrev  0x00001d09      0x30d libs/SC16IS7xx/SC16IS7xx.o
- .debug_abbrev  0x00002016       0x69 main.o
- .debug_abbrev  0x0000207f      0x2df platform/platform_gpio.o
- .debug_abbrev  0x0000235e      0x380 platform/platform_serial.o
- .debug_abbrev  0x000026de      0x2a5 platform/platform_spi.o
- .debug_abbrev  0x00002983      0x2c1 platform/platform_time.o
- .debug_abbrev  0x00002c44      0x3d3 platform/serial_port.o
- .debug_abbrev  0x00003017      0x31b platform/spi.o
- .debug_abbrev  0x00003332      0x217 platform/syscalls.o
+.debug_abbrev   0x00000000     0x3ef3
+ .debug_abbrev  0x00000000      0x2a2 app/app.o
+ .debug_abbrev  0x000002a2      0x297 board/lcp_board.o
+ .debug_abbrev  0x00000539      0x153 Device_Startup/startup_sam3xa.o
+ .debug_abbrev  0x0000068c      0x102 Device_Startup/system_sam3xa.o
+ .debug_abbrev  0x0000078e      0x1d3 hal/sam3x_gpio.o
+ .debug_abbrev  0x00000961      0x151 hal/sam3x_reset.o
+ .debug_abbrev  0x00000ab2      0x22e hal/sam3x_spi.o
+ .debug_abbrev  0x00000ce0      0x240 hal/sam3x_tick.o
+ .debug_abbrev  0x00000f20      0x254 hal/sam3x_uart.o
+ .debug_abbrev  0x00001174      0x491 hal/sam3x_usb_device.o
+ .debug_abbrev  0x00001605      0x41e libs/IGAS_Eth/IGAS_Eth.o
+ .debug_abbrev  0x00001a23      0x49b libs/IGAS_Eth/IPAddress.o
+ .debug_abbrev  0x00001ebe      0x419 libs/IGAS_Eth/utility/w5500.o
+ .debug_abbrev  0x000022d7       0x69 main.o
+ .debug_abbrev  0x00002340      0x2df platform/platform_gpio.o
+ .debug_abbrev  0x0000261f      0x380 platform/platform_serial.o
+ .debug_abbrev  0x0000299f      0x2a5 platform/platform_spi.o
+ .debug_abbrev  0x00002c44      0x2c1 platform/platform_time.o
+ .debug_abbrev  0x00002f05      0x371 platform/platform_usb.o
+ .debug_abbrev  0x00003276      0x3d1 platform/serial_port.o
+ .debug_abbrev  0x00003647      0x31b platform/spi.o
+ .debug_abbrev  0x00003962      0x217 platform/syscalls.o
+ .debug_abbrev  0x00003b79      0x37a platform/usb_serial.o
 
-.debug_loc      0x00000000     0x577a
- .debug_loc     0x00000000       0x58 app/app.o
- .debug_loc     0x00000058       0x20 board/lcp_board.o
- .debug_loc     0x00000078       0x78 Device_Startup/startup_sam3xa.o
- .debug_loc     0x000000f0      0x26c hal/sam3x_gpio.o
- .debug_loc     0x0000035c      0x266 hal/sam3x_spi.o
- .debug_loc     0x000005c2      0x27a hal/sam3x_tick.o
- .debug_loc     0x0000083c      0x4d9 hal/sam3x_uart.o
- .debug_loc     0x00000d15      0x5ed libs/IGAS_Eth/IGAS_Eth.o
- .debug_loc     0x00001302      0x534 libs/IGAS_Eth/IPAddress.o
- .debug_loc     0x00001836     0x20a1 libs/IGAS_Eth/utility/w5500.o
- .debug_loc     0x000038d7      0xb7a libs/SC16IS7xx/SC16IS7xx.o
- .debug_loc     0x00004451       0x20 main.o
- .debug_loc     0x00004471      0x154 platform/platform_gpio.o
- .debug_loc     0x000045c5      0x146 platform/platform_serial.o
- .debug_loc     0x0000470b       0xb4 platform/platform_spi.o
- .debug_loc     0x000047bf       0xc2 platform/platform_time.o
- .debug_loc     0x00004881      0x428 platform/serial_port.o
- .debug_loc     0x00004ca9      0x7b7 platform/spi.o
- .debug_loc     0x00005460      0x31a platform/syscalls.o
+.debug_loc      0x00000000     0x6321
+ .debug_loc     0x00000000       0x40 app/app.o
+ .debug_loc     0x00000040       0x20 board/lcp_board.o
+ .debug_loc     0x00000060       0x78 Device_Startup/startup_sam3xa.o
+ .debug_loc     0x000000d8      0x26c hal/sam3x_gpio.o
+ .debug_loc     0x00000344       0x3e hal/sam3x_reset.o
+ .debug_loc     0x00000382      0x266 hal/sam3x_spi.o
+ .debug_loc     0x000005e8      0x29a hal/sam3x_tick.o
+ .debug_loc     0x00000882      0x4d9 hal/sam3x_uart.o
+ .debug_loc     0x00000d5b     0x110a hal/sam3x_usb_device.o
+ .debug_loc     0x00001e65      0x5ed libs/IGAS_Eth/IGAS_Eth.o
+ .debug_loc     0x00002452      0x534 libs/IGAS_Eth/IPAddress.o
+ .debug_loc     0x00002986     0x20a1 libs/IGAS_Eth/utility/w5500.o
+ .debug_loc     0x00004a27       0x20 main.o
+ .debug_loc     0x00004a47      0x154 platform/platform_gpio.o
+ .debug_loc     0x00004b9b       0xfd platform/platform_serial.o
+ .debug_loc     0x00004c98       0xb4 platform/platform_spi.o
+ .debug_loc     0x00004d4c       0xc2 platform/platform_time.o
+ .debug_loc     0x00004e0e       0xfd platform/platform_usb.o
+ .debug_loc     0x00004f0b      0x342 platform/serial_port.o
+ .debug_loc     0x0000524d      0x7b7 platform/spi.o
+ .debug_loc     0x00005a04      0x31a platform/syscalls.o
+ .debug_loc     0x00005d1e      0x603 platform/usb_serial.o
 
-.debug_aranges  0x00000000      0x8e0
+.debug_aranges  0x00000000      0xad8
  .debug_aranges
                 0x00000000       0x28 app/app.o
  .debug_aranges
@@ -2967,291 +3554,326 @@ OUTPUT(LCP_Basic.elf elf32-littlearm)
  .debug_aranges
                 0x000000a0       0x48 hal/sam3x_gpio.o
  .debug_aranges
-                0x000000e8       0x60 hal/sam3x_spi.o
+                0x000000e8       0x38 hal/sam3x_reset.o
  .debug_aranges
-                0x00000148       0x48 hal/sam3x_tick.o
+                0x00000120       0x60 hal/sam3x_spi.o
  .debug_aranges
-                0x00000190       0x78 hal/sam3x_uart.o
+                0x00000180       0x48 hal/sam3x_tick.o
  .debug_aranges
-                0x00000208       0x88 libs/IGAS_Eth/IGAS_Eth.o
+                0x000001c8       0x78 hal/sam3x_uart.o
  .debug_aranges
-                0x00000290       0xa8 libs/IGAS_Eth/IPAddress.o
+                0x00000240      0x1d8 hal/sam3x_usb_device.o
  .debug_aranges
-                0x00000338      0x220 libs/IGAS_Eth/utility/w5500.o
+                0x00000418       0x88 libs/IGAS_Eth/IGAS_Eth.o
  .debug_aranges
-                0x00000558       0xb0 libs/SC16IS7xx/SC16IS7xx.o
+                0x000004a0       0xa8 libs/IGAS_Eth/IPAddress.o
  .debug_aranges
-                0x00000608       0x20 main.o
+                0x00000548      0x220 libs/IGAS_Eth/utility/w5500.o
  .debug_aranges
-                0x00000628       0x30 platform/platform_gpio.o
+                0x00000768       0x20 main.o
  .debug_aranges
-                0x00000658       0x48 platform/platform_serial.o
+                0x00000788       0x30 platform/platform_gpio.o
  .debug_aranges
-                0x000006a0       0x28 platform/platform_spi.o
+                0x000007b8       0x38 platform/platform_serial.o
  .debug_aranges
-                0x000006c8       0x38 platform/platform_time.o
+                0x000007f0       0x28 platform/platform_spi.o
  .debug_aranges
-                0x00000700       0xc8 platform/serial_port.o
+                0x00000818       0x38 platform/platform_time.o
  .debug_aranges
-                0x000007c8       0xc0 platform/spi.o
+                0x00000850       0x38 platform/platform_usb.o
  .debug_aranges
-                0x00000888       0x58 platform/syscalls.o
+                0x00000888       0x78 platform/serial_port.o
+ .debug_aranges
+                0x00000900       0xc0 platform/spi.o
+ .debug_aranges
+                0x000009c0       0x58 platform/syscalls.o
+ .debug_aranges
+                0x00000a18       0xc0 platform/usb_serial.o
 
-.debug_ranges   0x00000000      0x7c0
+.debug_ranges   0x00000000      0xa28
  .debug_ranges  0x00000000       0x18 app/app.o
  .debug_ranges  0x00000018       0x10 board/lcp_board.o
  .debug_ranges  0x00000028       0x18 Device_Startup/startup_sam3xa.o
  .debug_ranges  0x00000040       0x20 Device_Startup/system_sam3xa.o
  .debug_ranges  0x00000060       0x38 hal/sam3x_gpio.o
- .debug_ranges  0x00000098       0x50 hal/sam3x_spi.o
- .debug_ranges  0x000000e8       0x38 hal/sam3x_tick.o
- .debug_ranges  0x00000120       0x68 hal/sam3x_uart.o
- .debug_ranges  0x00000188       0x78 libs/IGAS_Eth/IGAS_Eth.o
- .debug_ranges  0x00000200       0xb8 libs/IGAS_Eth/IPAddress.o
- .debug_ranges  0x000002b8      0x210 libs/IGAS_Eth/utility/w5500.o
- .debug_ranges  0x000004c8       0xa0 libs/SC16IS7xx/SC16IS7xx.o
- .debug_ranges  0x00000568       0x10 main.o
- .debug_ranges  0x00000578       0x20 platform/platform_gpio.o
- .debug_ranges  0x00000598       0x38 platform/platform_serial.o
- .debug_ranges  0x000005d0       0x18 platform/platform_spi.o
- .debug_ranges  0x000005e8       0x28 platform/platform_time.o
- .debug_ranges  0x00000610       0xb8 platform/serial_port.o
- .debug_ranges  0x000006c8       0xb0 platform/spi.o
- .debug_ranges  0x00000778       0x48 platform/syscalls.o
+ .debug_ranges  0x00000098       0x28 hal/sam3x_reset.o
+ .debug_ranges  0x000000c0       0x50 hal/sam3x_spi.o
+ .debug_ranges  0x00000110       0x38 hal/sam3x_tick.o
+ .debug_ranges  0x00000148       0x68 hal/sam3x_uart.o
+ .debug_ranges  0x000001b0      0x268 hal/sam3x_usb_device.o
+ .debug_ranges  0x00000418       0x78 libs/IGAS_Eth/IGAS_Eth.o
+ .debug_ranges  0x00000490       0xb8 libs/IGAS_Eth/IPAddress.o
+ .debug_ranges  0x00000548      0x210 libs/IGAS_Eth/utility/w5500.o
+ .debug_ranges  0x00000758       0x10 main.o
+ .debug_ranges  0x00000768       0x20 platform/platform_gpio.o
+ .debug_ranges  0x00000788       0x28 platform/platform_serial.o
+ .debug_ranges  0x000007b0       0x18 platform/platform_spi.o
+ .debug_ranges  0x000007c8       0x28 platform/platform_time.o
+ .debug_ranges  0x000007f0       0x28 platform/platform_usb.o
+ .debug_ranges  0x00000818       0x68 platform/serial_port.o
+ .debug_ranges  0x00000880       0xb0 platform/spi.o
+ .debug_ranges  0x00000930       0x48 platform/syscalls.o
+ .debug_ranges  0x00000978       0xb0 platform/usb_serial.o
 
-.debug_macro    0x00000000    0x140c2
- .debug_macro   0x00000000       0xaf app/app.o
- .debug_macro   0x000000af      0x982 app/app.o
- .debug_macro   0x00000a31       0x1c app/app.o
- .debug_macro   0x00000a4d       0x22 app/app.o
- .debug_macro   0x00000a6f       0x87 app/app.o
- .debug_macro   0x00000af6       0x51 app/app.o
- .debug_macro   0x00000b47       0xef app/app.o
- .debug_macro   0x00000c36       0x6a app/app.o
- .debug_macro   0x00000ca0      0x1df app/app.o
- .debug_macro   0x00000e7f      0x17b app/app.o
- .debug_macro   0x00000ffa      0x1e4 app/app.o
- .debug_macro   0x000011de       0x76 app/app.o
- .debug_macro   0x00001254       0xa7 board/lcp_board.o
- .debug_macro   0x000012fb      0x371 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000166c      0x8b0 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00001f1c       0x87 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00001fa3       0x20 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00001fc3       0x1c Device_Startup/startup_sam3xa.o
- .debug_macro   0x00001fdf       0x22 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00002001       0xc3 Device_Startup/startup_sam3xa.o
- .debug_macro   0x000020c4      0xe49 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00002f0d      0x11f Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000302c      0xa7d Device_Startup/startup_sam3xa.o
- .debug_macro   0x00003aa9      0x55a Device_Startup/startup_sam3xa.o
- .debug_macro   0x00004003      0x1a8 Device_Startup/startup_sam3xa.o
- .debug_macro   0x000041ab      0x30b Device_Startup/startup_sam3xa.o
- .debug_macro   0x000044b6      0x709 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00004bbf       0xd6 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00004c95      0x56c Device_Startup/startup_sam3xa.o
- .debug_macro   0x00005201       0x1c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000521d      0x678 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00005895      0x51e Device_Startup/startup_sam3xa.o
- .debug_macro   0x00005db3       0xbe Device_Startup/startup_sam3xa.o
- .debug_macro   0x00005e71     0x2333 Device_Startup/startup_sam3xa.o
- .debug_macro   0x000081a4      0x7d1 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00008975      0xdbb Device_Startup/startup_sam3xa.o
- .debug_macro   0x00009730       0x9a Device_Startup/startup_sam3xa.o
- .debug_macro   0x000097ca      0x29c Device_Startup/startup_sam3xa.o
- .debug_macro   0x00009a66       0x58 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00009abe      0x999 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000a457      0x22d Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000a684      0x4b4 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ab38      0x64a Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000b182      0x590 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000b712       0x46 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000b758      0x33f Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ba97      0x27e Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000bd15     0x14dc Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000d1f1      0x7cf Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000d9c0       0x76 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000da36       0x82 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000dab8       0x76 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000db2e       0x4c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000db7a      0x100 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000dc7a      0x100 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000dd7a      0x100 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000de7a       0x88 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000df02       0x88 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000df8a      0x3b4 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000e33e       0xbe Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000e3fc       0xbe Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000e4ba       0xbe Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000e578       0xbe Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000e636      0x2b8 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000e8ee      0x118 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ea06      0x216 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ec1c      0x216 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ee32       0x2e Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ee60       0xac Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000ef0c      0x13e Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f04a       0x7c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f0c6      0x1f6 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f2bc       0x64 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f320       0xa6 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f3c6       0x7c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f442       0x16 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f458       0x22 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f47a       0x22 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f49c      0x10c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f5a8      0x10c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f6b4      0x10c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f7c0      0x10c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f8cc       0x1c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f8e8       0x2e Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f916       0x22 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f938       0x1c Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f954       0x58 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f9ac       0x10 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000f9bc      0x27a Device_Startup/startup_sam3xa.o
- .debug_macro   0x0000fc36      0xd34 Device_Startup/startup_sam3xa.o
- .debug_macro   0x0001096a      0x170 Device_Startup/startup_sam3xa.o
- .debug_macro   0x00010ada      0x383 Device_Startup/system_sam3xa.o
- .debug_macro   0x00010e5d      0x378 hal/sam3x_gpio.o
- .debug_macro   0x000111d5       0x26 hal/sam3x_gpio.o
- .debug_macro   0x000111fb      0xe49 hal/sam3x_gpio.o
- .debug_macro   0x00012044      0x378 hal/sam3x_spi.o
- .debug_macro   0x000123bc      0x378 hal/sam3x_tick.o
- .debug_macro   0x00012734      0x378 hal/sam3x_uart.o
- .debug_macro   0x00012aac       0xb9 libs/IGAS_Eth/IGAS_Eth.o
- .debug_macro   0x00012b65      0x15e libs/IGAS_Eth/IPAddress.o
- .debug_macro   0x00012cc3       0xad libs/IGAS_Eth/utility/w5500.o
- .debug_macro   0x00012d70       0xa7 libs/SC16IS7xx/SC16IS7xx.o
- .debug_macro   0x00012e17       0x70 main.o
- .debug_macro   0x00012e87       0xa7 platform/platform_gpio.o
- .debug_macro   0x00012f2e       0xa3 platform/platform_serial.o
- .debug_macro   0x00012fd1       0xa3 platform/platform_spi.o
- .debug_macro   0x00013074       0xa7 platform/platform_time.o
- .debug_macro   0x0001311b       0xa3 platform/serial_port.o
- .debug_macro   0x000131be       0x79 platform/spi.o
- .debug_macro   0x00013237      0x1ca platform/syscalls.o
- .debug_macro   0x00013401       0x10 platform/syscalls.o
- .debug_macro   0x00013411       0x52 platform/syscalls.o
- .debug_macro   0x00013463       0x8d platform/syscalls.o
- .debug_macro   0x000134f0       0x9c platform/syscalls.o
- .debug_macro   0x0001358c      0x16d platform/syscalls.o
- .debug_macro   0x000136f9       0x57 platform/syscalls.o
- .debug_macro   0x00013750       0x43 platform/syscalls.o
- .debug_macro   0x00013793      0x23b platform/syscalls.o
- .debug_macro   0x000139ce      0x353 platform/syscalls.o
- .debug_macro   0x00013d21       0x10 platform/syscalls.o
- .debug_macro   0x00013d31       0x35 platform/syscalls.o
- .debug_macro   0x00013d66       0x10 platform/syscalls.o
- .debug_macro   0x00013d76       0x10 platform/syscalls.o
- .debug_macro   0x00013d86       0x10 platform/syscalls.o
- .debug_macro   0x00013d96       0x1c platform/syscalls.o
- .debug_macro   0x00013db2       0x52 platform/syscalls.o
- .debug_macro   0x00013e04       0x40 platform/syscalls.o
- .debug_macro   0x00013e44       0x10 platform/syscalls.o
- .debug_macro   0x00013e54       0x40 platform/syscalls.o
- .debug_macro   0x00013e94       0xd7 platform/syscalls.o
- .debug_macro   0x00013f6b       0x35 platform/syscalls.o
- .debug_macro   0x00013fa0      0x122 platform/syscalls.o
+.debug_macro    0x00000000    0x150a7
+ .debug_macro   0x00000000       0xb3 app/app.o
+ .debug_macro   0x000000b3      0x982 app/app.o
+ .debug_macro   0x00000a35       0x1c app/app.o
+ .debug_macro   0x00000a51       0x22 app/app.o
+ .debug_macro   0x00000a73       0x87 app/app.o
+ .debug_macro   0x00000afa       0x51 app/app.o
+ .debug_macro   0x00000b4b       0xef app/app.o
+ .debug_macro   0x00000c3a       0x6a app/app.o
+ .debug_macro   0x00000ca4      0x1df app/app.o
+ .debug_macro   0x00000e83      0x17b app/app.o
+ .debug_macro   0x00000ffe      0x1e4 app/app.o
+ .debug_macro   0x000011e2       0x76 app/app.o
+ .debug_macro   0x00001258       0xaf board/lcp_board.o
+ .debug_macro   0x00001307      0x371 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00001678      0x8b0 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00001f28       0x87 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00001faf       0x20 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00001fcf       0x1c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00001feb       0x22 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000200d       0xc3 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x000020d0      0xe49 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00002f19      0x11f Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00003038      0xa7d Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00003ab5      0x55a Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000400f      0x1a8 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x000041b7      0x30b Device_Startup/startup_sam3xa.o
+ .debug_macro   0x000044c2      0x709 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00004bcb       0xd6 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00004ca1      0x56c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000520d       0x1c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00005229      0x678 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x000058a1      0x51e Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00005dbf       0xbe Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00005e7d     0x2333 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x000081b0      0x7d1 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00008981      0xdbb Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000973c       0x9a Device_Startup/startup_sam3xa.o
+ .debug_macro   0x000097d6      0x29c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00009a72       0x58 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00009aca      0x999 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000a463      0x22d Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000a690      0x4b4 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000ab44      0x64a Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000b18e      0x590 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000b71e       0x46 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000b764      0x33f Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000baa3      0x27e Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000bd21     0x14dc Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000d1fd      0x7cf Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000d9cc       0x76 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000da42       0x82 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000dac4       0x76 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000db3a       0x4c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000db86      0x100 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000dc86      0x100 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000dd86      0x100 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000de86       0x88 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000df0e       0x88 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000df96      0x3b4 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000e34a       0xbe Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000e408       0xbe Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000e4c6       0xbe Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000e584       0xbe Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000e642      0x2b8 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000e8fa      0x118 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000ea12      0x216 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000ec28      0x216 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000ee3e       0x2e Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000ee6c       0xac Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000ef18      0x13e Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f056       0x7c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f0d2      0x1f6 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f2c8       0x64 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f32c       0xa6 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f3d2       0x7c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f44e       0x16 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f464       0x22 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f486       0x22 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f4a8      0x10c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f5b4      0x10c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f6c0      0x10c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f7cc      0x10c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f8d8       0x1c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f8f4       0x2e Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f922       0x22 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f944       0x1c Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f960       0x58 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f9b8       0x10 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000f9c8      0x27a Device_Startup/startup_sam3xa.o
+ .debug_macro   0x0000fc42      0xd34 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00010976      0x170 Device_Startup/startup_sam3xa.o
+ .debug_macro   0x00010ae6      0x383 Device_Startup/system_sam3xa.o
+ .debug_macro   0x00010e69      0x378 hal/sam3x_gpio.o
+ .debug_macro   0x000111e1       0x26 hal/sam3x_gpio.o
+ .debug_macro   0x00011207      0xe49 hal/sam3x_gpio.o
+ .debug_macro   0x00012050      0x378 hal/sam3x_reset.o
+ .debug_macro   0x000123c8      0x378 hal/sam3x_spi.o
+ .debug_macro   0x00012740      0x37c hal/sam3x_tick.o
+ .debug_macro   0x00012abc      0x378 hal/sam3x_uart.o
+ .debug_macro   0x00012e34      0x44a hal/sam3x_usb_device.o
+ .debug_macro   0x0001327e       0x58 hal/sam3x_usb_device.o
+ .debug_macro   0x000132d6       0x35 hal/sam3x_usb_device.o
+ .debug_macro   0x0001330b       0x9c hal/sam3x_usb_device.o
+ .debug_macro   0x000133a7       0x58 hal/sam3x_usb_device.o
+ .debug_macro   0x000133ff       0x1f hal/sam3x_usb_device.o
+ .debug_macro   0x0001341e       0x43 hal/sam3x_usb_device.o
+ .debug_macro   0x00013461       0x20 hal/sam3x_usb_device.o
+ .debug_macro   0x00013481      0x187 hal/sam3x_usb_device.o
+ .debug_macro   0x00013608      0x34d hal/sam3x_usb_device.o
+ .debug_macro   0x00013955       0x10 hal/sam3x_usb_device.o
+ .debug_macro   0x00013965       0x35 hal/sam3x_usb_device.o
+ .debug_macro   0x0001399a       0xc1 libs/IGAS_Eth/IGAS_Eth.o
+ .debug_macro   0x00013a5b      0x166 libs/IGAS_Eth/IPAddress.o
+ .debug_macro   0x00013bc1       0xb5 libs/IGAS_Eth/utility/w5500.o
+ .debug_macro   0x00013c76       0x70 main.o
+ .debug_macro   0x00013ce6       0xaf platform/platform_gpio.o
+ .debug_macro   0x00013d95       0xab platform/platform_serial.o
+ .debug_macro   0x00013e40       0xab platform/platform_spi.o
+ .debug_macro   0x00013eeb       0xaf platform/platform_time.o
+ .debug_macro   0x00013f9a       0xab platform/platform_usb.o
+ .debug_macro   0x00014045       0xab platform/serial_port.o
+ .debug_macro   0x000140f0       0x79 platform/spi.o
+ .debug_macro   0x00014169      0x1ca platform/syscalls.o
+ .debug_macro   0x00014333       0x10 platform/syscalls.o
+ .debug_macro   0x00014343       0x52 platform/syscalls.o
+ .debug_macro   0x00014395       0x8d platform/syscalls.o
+ .debug_macro   0x00014422       0x9c platform/syscalls.o
+ .debug_macro   0x000144be      0x16d platform/syscalls.o
+ .debug_macro   0x0001462b       0x57 platform/syscalls.o
+ .debug_macro   0x00014682       0x43 platform/syscalls.o
+ .debug_macro   0x000146c5      0x23b platform/syscalls.o
+ .debug_macro   0x00014900      0x353 platform/syscalls.o
+ .debug_macro   0x00014c53       0x10 platform/syscalls.o
+ .debug_macro   0x00014c63       0x35 platform/syscalls.o
+ .debug_macro   0x00014c98       0x10 platform/syscalls.o
+ .debug_macro   0x00014ca8       0x10 platform/syscalls.o
+ .debug_macro   0x00014cb8       0x10 platform/syscalls.o
+ .debug_macro   0x00014cc8       0x1c platform/syscalls.o
+ .debug_macro   0x00014ce4       0x52 platform/syscalls.o
+ .debug_macro   0x00014d36       0x40 platform/syscalls.o
+ .debug_macro   0x00014d76       0x10 platform/syscalls.o
+ .debug_macro   0x00014d86       0x40 platform/syscalls.o
+ .debug_macro   0x00014dc6       0xd7 platform/syscalls.o
+ .debug_macro   0x00014e9d       0x35 platform/syscalls.o
+ .debug_macro   0x00014ed2      0x122 platform/syscalls.o
+ .debug_macro   0x00014ff4       0xb3 platform/usb_serial.o
 
-.debug_line     0x00000000     0x6667
- .debug_line    0x00000000      0x366 app/app.o
- .debug_line    0x00000366      0x32f board/lcp_board.o
- .debug_line    0x00000695      0x728 Device_Startup/startup_sam3xa.o
- .debug_line    0x00000dbd      0x785 Device_Startup/system_sam3xa.o
- .debug_line    0x00001542      0x79b hal/sam3x_gpio.o
- .debug_line    0x00001cdd      0x7db hal/sam3x_spi.o
- .debug_line    0x000024b8      0x7b2 hal/sam3x_tick.o
- .debug_line    0x00002c6a      0x83d hal/sam3x_uart.o
- .debug_line    0x000034a7      0x485 libs/IGAS_Eth/IGAS_Eth.o
- .debug_line    0x0000392c      0x513 libs/IGAS_Eth/IPAddress.o
- .debug_line    0x00003e3f      0x82f libs/IGAS_Eth/utility/w5500.o
- .debug_line    0x0000466e      0x48f libs/SC16IS7xx/SC16IS7xx.o
- .debug_line    0x00004afd      0x26e main.o
- .debug_line    0x00004d6b      0x317 platform/platform_gpio.o
- .debug_line    0x00005082      0x358 platform/platform_serial.o
- .debug_line    0x000053da      0x2fa platform/platform_spi.o
- .debug_line    0x000056d4      0x322 platform/platform_time.o
- .debug_line    0x000059f6      0x44c platform/serial_port.o
- .debug_line    0x00005e42      0x416 platform/spi.o
- .debug_line    0x00006258      0x40f platform/syscalls.o
+.debug_line     0x00000000     0x7e92
+ .debug_line    0x00000000      0x34f app/app.o
+ .debug_line    0x0000034f      0x341 board/lcp_board.o
+ .debug_line    0x00000690      0x728 Device_Startup/startup_sam3xa.o
+ .debug_line    0x00000db8      0x785 Device_Startup/system_sam3xa.o
+ .debug_line    0x0000153d      0x79b hal/sam3x_gpio.o
+ .debug_line    0x00001cd8      0x762 hal/sam3x_reset.o
+ .debug_line    0x0000243a      0x7db hal/sam3x_spi.o
+ .debug_line    0x00002c15      0x7c7 hal/sam3x_tick.o
+ .debug_line    0x000033dc      0x83d hal/sam3x_uart.o
+ .debug_line    0x00003c19      0xdc5 hal/sam3x_usb_device.o
+ .debug_line    0x000049de      0x497 libs/IGAS_Eth/IGAS_Eth.o
+ .debug_line    0x00004e75      0x525 libs/IGAS_Eth/IPAddress.o
+ .debug_line    0x0000539a      0x841 libs/IGAS_Eth/utility/w5500.o
+ .debug_line    0x00005bdb      0x26e main.o
+ .debug_line    0x00005e49      0x329 platform/platform_gpio.o
+ .debug_line    0x00006172      0x345 platform/platform_serial.o
+ .debug_line    0x000064b7      0x30c platform/platform_spi.o
+ .debug_line    0x000067c3      0x334 platform/platform_time.o
+ .debug_line    0x00006af7      0x330 platform/platform_usb.o
+ .debug_line    0x00006e27      0x3c2 platform/serial_port.o
+ .debug_line    0x000071e9      0x416 platform/spi.o
+ .debug_line    0x000075ff      0x40f platform/syscalls.o
+ .debug_line    0x00007a0e      0x484 platform/usb_serial.o
 
-.debug_str      0x00000000    0x58a6b
- .debug_str     0x00000000     0x4b56 app/app.o
-                               0x4dec (size before relaxing)
- .debug_str     0x00004b56       0x4c board/lcp_board.o
-                               0x4af5 (size before relaxing)
- .debug_str     0x00004ba2    0x4d1bb Device_Startup/startup_sam3xa.o
-                              0x504c2 (size before relaxing)
- .debug_str     0x00051d5d      0x2c7 Device_Startup/system_sam3xa.o
-                              0x50255 (size before relaxing)
- .debug_str     0x00052024      0x31f hal/sam3x_gpio.o
-                              0x50817 (size before relaxing)
- .debug_str     0x00052343      0x1c9 hal/sam3x_spi.o
-                              0x50945 (size before relaxing)
- .debug_str     0x0005250c      0x3ca hal/sam3x_tick.o
-                              0x50841 (size before relaxing)
- .debug_str     0x000528d6      0x452 hal/sam3x_uart.o
-                              0x50b93 (size before relaxing)
- .debug_str     0x00052d28      0xfbd libs/IGAS_Eth/IGAS_Eth.o
-                               0x5961 (size before relaxing)
- .debug_str     0x00053ce5     0x2cdc libs/IGAS_Eth/IPAddress.o
-                               0x78f3 (size before relaxing)
- .debug_str     0x000569c1      0x26d libs/IGAS_Eth/utility/w5500.o
-                               0x572a (size before relaxing)
- .debug_str     0x00056c2e      0x25e libs/SC16IS7xx/SC16IS7xx.o
-                               0x4ebf (size before relaxing)
- .debug_str     0x00056e8c        0xe main.o
-                               0x3878 (size before relaxing)
- .debug_str     0x00056e9a       0x45 platform/platform_gpio.o
-                               0x4a6b (size before relaxing)
- .debug_str     0x00056edf      0x14b platform/platform_serial.o
+.debug_str      0x00000000    0x59b53
+ .debug_str     0x00000000     0x4886 app/app.o
                                0x4b0b (size before relaxing)
- .debug_str     0x0005702a       0x30 platform/platform_spi.o
+ .debug_str     0x00004886       0x4c board/lcp_board.o
+                               0x4af5 (size before relaxing)
+ .debug_str     0x000048d2    0x4d1bb Device_Startup/startup_sam3xa.o
+                              0x504c2 (size before relaxing)
+ .debug_str     0x00051a8d      0x2c7 Device_Startup/system_sam3xa.o
+                              0x50255 (size before relaxing)
+ .debug_str     0x00051d54      0x31f hal/sam3x_gpio.o
+                              0x50817 (size before relaxing)
+ .debug_str     0x00052073      0x13c hal/sam3x_reset.o
+                              0x50509 (size before relaxing)
+ .debug_str     0x000521af      0x1c9 hal/sam3x_spi.o
+                              0x50945 (size before relaxing)
+ .debug_str     0x00052378      0x3c5 hal/sam3x_tick.o
+                              0x50872 (size before relaxing)
+ .debug_str     0x0005273d      0x452 hal/sam3x_uart.o
+                              0x50b93 (size before relaxing)
+ .debug_str     0x00052b8f     0x3f39 hal/sam3x_usb_device.o
+                              0x54cad (size before relaxing)
+ .debug_str     0x00056ac8      0xfbd libs/IGAS_Eth/IGAS_Eth.o
+                               0x5961 (size before relaxing)
+ .debug_str     0x00057a85       0xe8 libs/IGAS_Eth/IPAddress.o
+                               0x78f3 (size before relaxing)
+ .debug_str     0x00057b6d      0x25a libs/IGAS_Eth/utility/w5500.o
+                               0x572a (size before relaxing)
+ .debug_str     0x00057dc7        0xe main.o
+                               0x3878 (size before relaxing)
+ .debug_str     0x00057dd5       0x45 platform/platform_gpio.o
+                               0x4a6b (size before relaxing)
+ .debug_str     0x00057e1a       0xf7 platform/platform_serial.o
+                               0x4ab7 (size before relaxing)
+ .debug_str     0x00057f11       0x30 platform/platform_spi.o
                                0x49a1 (size before relaxing)
- .debug_str     0x0005705a       0x47 platform/platform_time.o
+ .debug_str     0x00057f41       0x52 platform/platform_time.o
                                0x4a1c (size before relaxing)
- .debug_str     0x000570a1      0x244 platform/serial_port.o
-                               0x4e80 (size before relaxing)
- .debug_str     0x000572e5       0xba platform/spi.o
+ .debug_str     0x00057f93       0x8a platform/platform_usb.o
+                               0x4a79 (size before relaxing)
+ .debug_str     0x0005801d      0x17f platform/serial_port.o
+                               0x4d4b (size before relaxing)
+ .debug_str     0x0005819c       0xba platform/spi.o
                                0x41c3 (size before relaxing)
- .debug_str     0x0005739f     0x16cc platform/syscalls.o
+ .debug_str     0x00058256     0x16c5 platform/syscalls.o
                                0x79c8 (size before relaxing)
+ .debug_str     0x0005991b      0x238 platform/usb_serial.o
+                               0x4f8a (size before relaxing)
 
-.debug_frame    0x00000000     0x1ab8
- .debug_frame   0x00000000       0x4c app/app.o
- .debug_frame   0x0000004c       0x2c board/lcp_board.o
- .debug_frame   0x00000078       0x38 Device_Startup/startup_sam3xa.o
- .debug_frame   0x000000b0       0x40 Device_Startup/system_sam3xa.o
- .debug_frame   0x000000f0       0x98 hal/sam3x_gpio.o
- .debug_frame   0x00000188       0xd0 hal/sam3x_spi.o
- .debug_frame   0x00000258       0x9c hal/sam3x_tick.o
- .debug_frame   0x000002f4      0x110 hal/sam3x_uart.o
- .debug_frame   0x00000404      0x190 libs/IGAS_Eth/IGAS_Eth.o
- .debug_frame   0x00000594      0x194 libs/IGAS_Eth/IPAddress.o
- .debug_frame   0x00000728      0x6e4 libs/IGAS_Eth/utility/w5500.o
- .debug_frame   0x00000e0c      0x240 libs/SC16IS7xx/SC16IS7xx.o
- .debug_frame   0x0000104c       0x28 main.o
- .debug_frame   0x00001074       0x58 platform/platform_gpio.o
- .debug_frame   0x000010cc       0x9c platform/platform_serial.o
- .debug_frame   0x00001168       0x40 platform/platform_spi.o
- .debug_frame   0x000011a8       0x70 platform/platform_time.o
- .debug_frame   0x00001218      0x1bc platform/serial_port.o
- .debug_frame   0x000013d4      0x214 platform/spi.o
- .debug_frame   0x000015e8       0xc4 platform/syscalls.o
- .debug_frame   0x000016ac       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
- .debug_frame   0x000016cc       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
- .debug_frame   0x000016ec       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
- .debug_frame   0x0000170c       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-cxa_atexit.o)
- .debug_frame   0x0000172c       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-errno.o)
- .debug_frame   0x0000174c       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-init.o)
- .debug_frame   0x00001778       0x30 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
- .debug_frame   0x000017a8       0x54 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
- .debug_frame   0x000017fc       0x30 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
- .debug_frame   0x0000182c       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-sbrkr.o)
- .debug_frame   0x00001858       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__atexit.o)
- .debug_frame   0x0000188c       0x5c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
- .debug_frame   0x000018e8       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-atexit.o)
- .debug_frame   0x00001908       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-fini.o)
- .debug_frame   0x0000193c       0x74 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
- .debug_frame   0x000019b0       0xb0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
- .debug_frame   0x00001a60       0x58 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)
+.debug_frame    0x00000000     0x1f40
+ .debug_frame   0x00000000       0x40 app/app.o
+ .debug_frame   0x00000040       0x2c board/lcp_board.o
+ .debug_frame   0x0000006c       0x38 Device_Startup/startup_sam3xa.o
+ .debug_frame   0x000000a4       0x40 Device_Startup/system_sam3xa.o
+ .debug_frame   0x000000e4       0x98 hal/sam3x_gpio.o
+ .debug_frame   0x0000017c       0x58 hal/sam3x_reset.o
+ .debug_frame   0x000001d4       0xd0 hal/sam3x_spi.o
+ .debug_frame   0x000002a4       0xa4 hal/sam3x_tick.o
+ .debug_frame   0x00000348      0x110 hal/sam3x_uart.o
+ .debug_frame   0x00000458      0x4d8 hal/sam3x_usb_device.o
+ .debug_frame   0x00000930      0x190 libs/IGAS_Eth/IGAS_Eth.o
+ .debug_frame   0x00000ac0      0x194 libs/IGAS_Eth/IPAddress.o
+ .debug_frame   0x00000c54      0x6e4 libs/IGAS_Eth/utility/w5500.o
+ .debug_frame   0x00001338       0x28 main.o
+ .debug_frame   0x00001360       0x58 platform/platform_gpio.o
+ .debug_frame   0x000013b8       0x74 platform/platform_serial.o
+ .debug_frame   0x0000142c       0x40 platform/platform_spi.o
+ .debug_frame   0x0000146c       0x70 platform/platform_time.o
+ .debug_frame   0x000014dc       0x68 platform/platform_usb.o
+ .debug_frame   0x00001544      0x114 platform/serial_port.o
+ .debug_frame   0x00001658      0x214 platform/spi.o
+ .debug_frame   0x0000186c       0xc4 platform/syscalls.o
+ .debug_frame   0x00001930      0x204 platform/usb_serial.o
+ .debug_frame   0x00001b34       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(atexit_arm.o)
+ .debug_frame   0x00001b54       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_ops.o)
+ .debug_frame   0x00001b74       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++.a(del_op.o)
+ .debug_frame   0x00001b94       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-cxa_atexit.o)
+ .debug_frame   0x00001bb4       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-errno.o)
+ .debug_frame   0x00001bd4       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-init.o)
+ .debug_frame   0x00001c00       0x30 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-malloc.o)
+ .debug_frame   0x00001c30       0x54 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00001c84       0x30 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mlock.o)
+ .debug_frame   0x00001cb4       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00001ce0       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00001d14       0x5c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00001d70       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00001d90       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-fini.o)
+ .debug_frame   0x00001dc4       0x74 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-freer.o)
+ .debug_frame   0x00001e38       0xb0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
+ .debug_frame   0x00001ee8       0x58 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)

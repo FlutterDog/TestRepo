@@ -199,6 +199,12 @@
     <Compile Include="hal\sam3x_gpio.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="hal\sam3x_reset.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sam3x_reset.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="hal\sam3x_spi.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -215,6 +221,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\sam3x_uart.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sam3x_usb_device.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sam3x_usb_device.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="libs\IGAS_Eth\Client.h">
@@ -295,6 +307,9 @@
     <Compile Include="platform\platform_time.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="platform\platform_usb.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="platform\print.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -314,6 +329,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="platform\syscalls.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="platform\usb_serial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="platform\usb_serial.hpp">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
