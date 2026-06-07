@@ -26,10 +26,14 @@ public:
 
     int available(void);
     int read(void);
+    int peek(void);
     void flush(void);
 
     size_t write(uint8_t value) override;
+    size_t write(const uint8_t* buffer, size_t size);
     using Print::write;
+
+    uint32_t errorCount(void) const;
 
     operator bool() const;
 

@@ -178,10 +178,34 @@
     <Compile Include="app\app.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\rs485_echo_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\rs485_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sc16is_echo_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sc16is_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="board\lcp_board.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_board.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_rs485.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_rs485.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sc16is.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sc16is.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_usb_identity.hpp">
@@ -224,6 +248,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\sam3x_watchdog.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sc16is7xx.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sc16is7xx.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="libs\IGAS_Eth\Client.h">
@@ -370,6 +400,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\diagnostics\" />
     <Folder Include="board\" />
     <Folder Include="Device_Startup\" />
     <Folder Include="hal\" />
