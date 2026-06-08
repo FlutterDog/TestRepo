@@ -1,19 +1,18 @@
 ﻿
 /**
  * @file main.cpp
- * @brief Точка входа встроенного программного обеспечения.
+ * @brief Точка входа диагностической прошивки LCP.
  */
 
-#include "hal/sam3x_device.hpp"
+#include "sam.h"
 #include "app/app.hpp"
 #include "hal/sam3x_tick.hpp"
-#include "hal/sam3x_watchdog.hpp"
+
+extern "C" void SystemInit(void);
 
 int main(void)
 {
     SystemInit();
-
-    hal_watchdog_disable();
     hal_tick_init();
 
     setup();

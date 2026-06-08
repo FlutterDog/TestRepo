@@ -17,6 +17,7 @@
 #include "sd_card_test.hpp"
 #include "battery_status.hpp"
 #include "rtc_status.hpp"
+#include "watchdog_status.hpp"
 
 static const uint16_t DIAGNOSTIC_COMMAND_BUFFER_SIZE = 64U;
 static const uint32_t DIAGNOSTIC_PERIODIC_REPORT_MS = 10000U;
@@ -119,6 +120,9 @@ static void print_help(void)
     SerialUSB.print("battery      - print CR2032 backup battery status\r\n");
     SerialUSB.print("rtc          - print local RTC status\r\n");
     SerialUSB.print("rtc set YYYY-MM-DD HH:MM:SS - set local RTC date/time\r\n");
+    SerialUSB.print("watchdog     - print watchdog status\r\n");
+    SerialUSB.print("watchdog feed - restart watchdog counter manually\r\n");
+    SerialUSB.print("watchdog test reset - stop feed and check watchdog reset\r\n");
     SerialUSB.print("uptime       - print uptime_ms\r\n");
     SerialUSB.print("periodic on  - enable full status every 10000 ms\r\n");
     SerialUSB.print("periodic off - disable periodic status\r\n");
@@ -166,6 +170,7 @@ static void print_status(void)
     sd_card_test_print_report();
     battery_status_print_report();
     rtc_status_print_report();
+    watchdog_status_print_report();
     SerialUSB.print("=== end ===\r\n");
     SerialUSB.print("\r\n");
 }
@@ -217,6 +222,9 @@ static void execute_command(char* command)
         battery_status_print_report();
     }
     else if (rtc_status_handle_command(command) != 0U)
+    {
+    }
+    else if (watchdog_status_handle_command(command) != 0U)
     {
     }
     else if (command_equals(command, "uptime") != 0U)

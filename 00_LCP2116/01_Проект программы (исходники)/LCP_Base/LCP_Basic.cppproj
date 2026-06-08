@@ -226,6 +226,12 @@
     <Compile Include="app\diagnostics\sd_config.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\watchdog_status.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\watchdog_status.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="board\lcp_battery.cpp">
       <SubType>compile</SubType>
     </Compile>

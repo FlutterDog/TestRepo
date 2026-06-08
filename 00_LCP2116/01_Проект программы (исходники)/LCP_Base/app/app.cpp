@@ -6,13 +6,15 @@
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
  * service console, обслуживает echo-test встроенных RS-485 портов,
  * echo-test внешних UART SC16IS7xx, TCP echo-test W5500, microSD,
- * цифровой контроль резервной батареи CR2032 и локальный RTC.
+ * цифровой контроль резервной батареи CR2032, локальный RTC
+ * и watchdog.
  */
 
 #include "app.hpp"
 #include "../board/lcp_board.hpp"
 #include "../board/lcp_rs485.hpp"
 #include "../platform/platform.hpp"
+#include "../hal/sam3x_watchdog.hpp"
 #include "diagnostics/rs485_echo_test.hpp"
 #include "diagnostics/sc16is_echo_test.hpp"
 #include "diagnostics/ethernet_echo_test.hpp"
@@ -20,6 +22,7 @@
 #include "diagnostics/sd_card_test.hpp"
 #include "diagnostics/battery_status.hpp"
 #include "diagnostics/rtc_status.hpp"
+#include "diagnostics/watchdog_status.hpp"
 
 static const byte PLC_ok = 40U;
 
@@ -27,6 +30,8 @@ static const uint32_t OK_LED_PERIOD_MS = 500U;
 
 void setup(void)
 {
+    sam3x_watchdog_boot_recovery_from_watchdog_reset();
+
     lcp_board_init_gpio();
     lcp_rs485_init_builtin_ports();
 
@@ -44,6 +49,7 @@ void setup(void)
     battery_status_init();
     rtc_status_init();
     diagnostic_console_init();
+    watchdog_status_init();
 }
 
 void loop(void)
@@ -67,4 +73,5 @@ void loop(void)
     battery_status_poll();
     rtc_status_poll();
     diagnostic_console_poll();
+    watchdog_status_poll();
 }
