@@ -178,6 +178,12 @@
     <Compile Include="app\app.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\battery_status.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\battery_status.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\diagnostics\diagnostic_console.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -212,6 +218,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\diagnostics\sd_config.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_battery.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_battery.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_board.cpp">

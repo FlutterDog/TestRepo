@@ -14,6 +14,7 @@
 #include "../../board/lcp_sc16is.hpp"
 #include "ethernet_echo_test.hpp"
 #include "sd_card_test.hpp"
+#include "battery_status.hpp"
 
 static const uint16_t DIAGNOSTIC_COMMAND_BUFFER_SIZE = 64U;
 static const uint32_t DIAGNOSTIC_PERIODIC_REPORT_MS = 10000U;
@@ -95,6 +96,7 @@ static void print_help(void)
     SerialUSB.print("rs485        - print built-in RS-485 status\r\n");
     SerialUSB.print("sd           - print microSD status\r\n");
     SerialUSB.print("sd test      - write and read SDTEST.TXT\r\n");
+    SerialUSB.print("battery      - print CR2032 backup battery status\r\n");
     SerialUSB.print("uptime       - print uptime_ms\r\n");
     SerialUSB.print("periodic on  - enable full status every 10000 ms\r\n");
     SerialUSB.print("periodic off - disable periodic status\r\n");
@@ -139,6 +141,7 @@ static void print_status(void)
     lcp_sc16is_print_probe_report();
     ethernet_echo_test_print_report();
     sd_card_test_print_report();
+    battery_status_print_report();
     SerialUSB.print("=== end ===\r\n");
     SerialUSB.print("\r\n");
 }
@@ -180,6 +183,10 @@ static void execute_command(char* command)
     else if (command_equals(command, "sd test") != 0U)
     {
         sd_card_test_run_file_test();
+    }
+    else if (command_equals(command, "battery") != 0U)
+    {
+        battery_status_print_report();
     }
     else if (command_equals(command, "uptime") != 0U)
     {

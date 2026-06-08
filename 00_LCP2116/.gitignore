@@ -1,0 +1,125 @@
+# LCP / Microchip Studio / Atmel Studio
+# Keep source files, project files, solution files, documentation and configuration templates.
+# Exclude generated build output, IDE cache, logs, temporary files and uploaded firmware binaries.
+
+# --- IDE cache / user-local settings ---
+.vs/
+.vscode/.browse.VC.db*
+.vscode/ipch/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+*.atsuo
+
+# --- Build output directories ---
+[Dd]ebug/
+[Rr]elease/
+build/
+[Bb]uild/
+dist/
+[Dd]ocs/doxygen/html/
+[Dd]ocs/doxygen/latex/
+[Dd]ocs/doxygen/xml/
+
+# --- Firmware / linker / compiler outputs ---
+*.elf
+*.hex
+*.bin
+*.eep
+*.map
+*.lss
+*.lst
+*.sym
+*.srec
+*.mot
+*.ihex
+*.uf2
+
+# --- Object / dependency / archive outputs ---
+*.o
+*.obj
+*.d
+*.dep
+*.su
+*.gcno
+*.gcda
+*.gcov
+
+# Static libraries are not ignored globally.
+# If a project intentionally uses a supplied prebuilt library, keep it tracked.
+# Ignore only build-output archives under generated directories if needed:
+[Dd]ebug/**/*.a
+[Rr]elease/**/*.a
+build/**/*.a
+[Bb]uild/**/*.a
+
+# --- Listing, preprocessor, temporary compiler files ---
+*.ii
+*.i
+*.s
+*.S.tmp
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+
+# --- Logs / generated reports ---
+*.log
+*.err
+*.out
+*.trace
+*.stackdump
+SAMLog.txt
+SAMerror.txt
+bossac*.txt
+upload*.txt
+
+# --- Generated documentation / reports ---
+doxygen_warnings.log
+[Dd]ocs/doxygen/
+!docs/doxygen/.gitkeep
+!Docs/doxygen/.gitkeep
+
+# --- Local test / transfer artifacts ---
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+
+# --- OS metadata ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- Python helper cache, if scripts are used ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Keep important project and source files ---
+!*.atsln
+!*.cppproj
+!*.cproj
+!*.vcxproj
+!*.vcxproj.filters
+!*.props
+!*.targets
+!README*.md
+!Doxyfile
+!*.c
+!*.cpp
+!*.h
+!*.hpp
+!*.S
+!*.ld
+!*.txt
+!*.json
+!*.xml
+!*.md
