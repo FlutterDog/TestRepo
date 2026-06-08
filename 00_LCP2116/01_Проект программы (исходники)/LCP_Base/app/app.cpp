@@ -4,8 +4,8 @@
  * @brief Диагностическая прошивка базовой проверки LCP.
  *
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
- * service port, обслуживает echo-test встроенных RS-485 портов,
- * echo-test внешних UART SC16IS7xx и TCP echo-test W5500.
+ * service console, обслуживает echo-test встроенных RS-485 портов,
+ * echo-test внешних UART SC16IS7xx, TCP echo-test W5500 и microSD.
  */
 
 #include "app.hpp"
@@ -15,11 +15,12 @@
 #include "diagnostics/rs485_echo_test.hpp"
 #include "diagnostics/sc16is_echo_test.hpp"
 #include "diagnostics/ethernet_echo_test.hpp"
+#include "diagnostics/diagnostic_console.hpp"
+#include "diagnostics/sd_card_test.hpp"
 
 static const byte PLC_ok = 40U;
 
 static const uint32_t OK_LED_PERIOD_MS = 500U;
-static const uint32_t USB_STATUS_PERIOD_MS = 2000U;
 
 void setup(void)
 {
@@ -36,12 +37,13 @@ void setup(void)
     rs485_echo_test_init();
     sc16is_echo_test_init();
     ethernet_echo_test_init();
+    sd_card_test_init();
+    diagnostic_console_init();
 }
 
 void loop(void)
 {
     static uint32_t last_toggle_ms = 0U;
-    static uint32_t last_usb_status_ms = 0U;
     static uint8_t led_state = LOW;
 
     const uint32_t now_ms = millis();
@@ -56,17 +58,6 @@ void loop(void)
     rs485_echo_test_poll();
     sc16is_echo_test_poll();
     ethernet_echo_test_poll();
-
-    sc16is_echo_test_print_report_once();
-    ethernet_echo_test_print_report_once();
-
-    if ((uint32_t)(now_ms - last_usb_status_ms) >= USB_STATUS_PERIOD_MS)
-    {
-        last_usb_status_ms = now_ms;
-
-        if (SerialUSB)
-        {
-            SerialUSB.write((const uint8_t*)"LCP RS485/SC16IS/W5500 echo test OK\r\n", 38U);
-        }
-    }
+    sd_card_test_poll();
+    diagnostic_console_poll();
 }

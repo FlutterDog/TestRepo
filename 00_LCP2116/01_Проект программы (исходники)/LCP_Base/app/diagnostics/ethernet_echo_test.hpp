@@ -1,7 +1,7 @@
 ﻿
 /**
  * @file ethernet_echo_test.hpp
- * @brief Диагностический TCP echo-test двух W5500.
+ * @brief Диагностический TCP echo-test 2 W5500.
  */
 
 #pragma once
@@ -17,6 +17,11 @@ void ethernet_echo_test_init(void);
 void ethernet_echo_test_poll(void);
 
 /**
- * @brief Печатает отчёт Ethernet-инициализации один раз после открытия USB-порта.
+ * @brief Печатает отчёт Ethernet-инициализации.
+ */
+void ethernet_echo_test_print_report(void);
+
+/**
+ * @brief Печатает отчёт Ethernet-инициализации 1 раз после открытия USB-порта.
  */
 void ethernet_echo_test_print_report_once(void);

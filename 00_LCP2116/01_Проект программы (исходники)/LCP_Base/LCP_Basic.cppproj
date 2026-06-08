@@ -178,6 +178,12 @@
     <Compile Include="app\app.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\diagnostic_console.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\diagnostic_console.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\diagnostics\ethernet_echo_test.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -194,6 +200,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\diagnostics\sc16is_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_card_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_card_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_config.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_config.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_board.cpp">
@@ -218,6 +236,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_sc16is.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sd.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sd.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_usb_identity.hpp">
@@ -325,6 +349,12 @@
     <Compile Include="libs\IGAS_Eth\utility\w5500.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="libs\SAM_USB\CDC.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -425,6 +455,7 @@
     <Folder Include="libs\" />
     <Folder Include="libs\IGAS_Eth\" />
     <Folder Include="libs\IGAS_Eth\utility\" />
+    <Folder Include="libs\lcp_sd_storage\" />
     <Folder Include="libs\SAM_USB\" />
     <Folder Include="libs\SC16IS7xx\" />
     <Folder Include="platform\" />

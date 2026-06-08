@@ -1,7 +1,7 @@
 ﻿
 /**
  * @file ethernet_echo_test.cpp
- * @brief Реализация TCP echo-test двух W5500.
+ * @brief Реализация TCP echo-test 2 W5500.
  */
 
 #include "ethernet_echo_test.hpp"
@@ -102,6 +102,18 @@ void ethernet_echo_test_poll(void)
     }
 }
 
+void ethernet_echo_test_print_report(void)
+{
+    if (!SerialUSB)
+    {
+        return;
+    }
+
+    SerialUSB.print("W5500 status\r\n");
+    print_interface_report(LCP_ETHERNET_1, ETH1_CONFIG, ETH1_TCP_ECHO_PORT, g_eth1_ok);
+    print_interface_report(LCP_ETHERNET_2, ETH2_CONFIG, ETH2_TCP_ECHO_PORT, g_eth2_ok);
+}
+
 void ethernet_echo_test_print_report_once(void)
 {
     if (g_ethernet_report_printed != 0U)
@@ -114,10 +126,6 @@ void ethernet_echo_test_print_report_once(void)
         return;
     }
 
-    SerialUSB.print("W5500 probe started\r\n");
-    print_interface_report(LCP_ETHERNET_1, ETH1_CONFIG, ETH1_TCP_ECHO_PORT, g_eth1_ok);
-    print_interface_report(LCP_ETHERNET_2, ETH2_CONFIG, ETH2_TCP_ECHO_PORT, g_eth2_ok);
-    SerialUSB.print("W5500 probe done\r\n");
-
+    ethernet_echo_test_print_report();
     g_ethernet_report_printed = 1U;
 }
