@@ -178,6 +178,12 @@
     <Compile Include="app\app.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\ethernet_echo_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\ethernet_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\diagnostics\rs485_echo_test.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -194,6 +200,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_board.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_ethernet.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_ethernet.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_rs485.cpp">
@@ -254,6 +266,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\sc16is7xx.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\w5500_lite.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\w5500_lite.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="libs\IGAS_Eth\Client.h">

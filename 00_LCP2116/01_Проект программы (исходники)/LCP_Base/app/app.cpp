@@ -1,10 +1,11 @@
-﻿/**
+﻿
+/**
  * @file app.cpp
  * @brief Диагностическая прошивка базовой проверки LCP.
  *
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
- * service port, обслуживает echo-test встроенных RS-485 портов
- * и echo-test внешних UART SC16IS7xx.
+ * service port, обслуживает echo-test встроенных RS-485 портов,
+ * echo-test внешних UART SC16IS7xx и TCP echo-test W5500.
  */
 
 #include "app.hpp"
@@ -13,6 +14,7 @@
 #include "../platform/platform.hpp"
 #include "diagnostics/rs485_echo_test.hpp"
 #include "diagnostics/sc16is_echo_test.hpp"
+#include "diagnostics/ethernet_echo_test.hpp"
 
 static const byte PLC_ok = 40U;
 
@@ -33,6 +35,7 @@ void setup(void)
 
     rs485_echo_test_init();
     sc16is_echo_test_init();
+    ethernet_echo_test_init();
 }
 
 void loop(void)
@@ -52,7 +55,10 @@ void loop(void)
 
     rs485_echo_test_poll();
     sc16is_echo_test_poll();
+    ethernet_echo_test_poll();
+
     sc16is_echo_test_print_report_once();
+    ethernet_echo_test_print_report_once();
 
     if ((uint32_t)(now_ms - last_usb_status_ms) >= USB_STATUS_PERIOD_MS)
     {
@@ -60,7 +66,7 @@ void loop(void)
 
         if (SerialUSB)
         {
-            SerialUSB.write((const uint8_t*)"LCP RS485/SC16IS echo test OK\r\n", 31U);
+            SerialUSB.write((const uint8_t*)"LCP RS485/SC16IS/W5500 echo test OK\r\n", 38U);
         }
     }
 }
