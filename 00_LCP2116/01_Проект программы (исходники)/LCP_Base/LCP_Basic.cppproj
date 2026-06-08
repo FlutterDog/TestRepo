@@ -202,6 +202,12 @@
     <Compile Include="app\diagnostics\rs485_echo_test.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\rtc_status.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\rtc_status.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\diagnostics\sc16is_echo_test.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -272,6 +278,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\sam3x_gpio.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sam3x_rtc.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\sam3x_rtc.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\sam3x_spi.cpp">

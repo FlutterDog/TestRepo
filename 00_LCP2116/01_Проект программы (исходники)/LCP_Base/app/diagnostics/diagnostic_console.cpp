@@ -11,10 +11,12 @@
 #include <string.h>
 
 #include "../../platform/platform.hpp"
+#include "../version.hpp"
 #include "../../board/lcp_sc16is.hpp"
 #include "ethernet_echo_test.hpp"
 #include "sd_card_test.hpp"
 #include "battery_status.hpp"
+#include "rtc_status.hpp"
 
 static const uint16_t DIAGNOSTIC_COMMAND_BUFFER_SIZE = 64U;
 static const uint32_t DIAGNOSTIC_PERIODIC_REPORT_MS = 10000U;
@@ -85,11 +87,29 @@ static uint8_t command_equals(const char* command, const char* expected)
     return (strcmp(command, expected) == 0) ? 1U : 0U;
 }
 
+static void print_version(void)
+{
+    SerialUSB.print(LCP_DIAGNOSTIC_SOFTWARE_NAME);
+    SerialUSB.print("\r\n");
+    SerialUSB.print("version=");
+    SerialUSB.print(LCP_DIAGNOSTIC_SOFTWARE_VERSION);
+    SerialUSB.print("\r\n");
+    SerialUSB.print("stage=");
+    SerialUSB.print(LCP_DIAGNOSTIC_SOFTWARE_STAGE);
+    SerialUSB.print("\r\n");
+    SerialUSB.print("target=");
+    SerialUSB.print(LCP_DIAGNOSTIC_SOFTWARE_TARGET);
+    SerialUSB.print("\r\n");
+}
+
 static void print_help(void)
 {
     SerialUSB.print("\r\n");
+    print_version();
+    SerialUSB.print("\r\n");
     SerialUSB.print("LCP diagnostic console commands:\r\n");
-    SerialUSB.print("help         - print command list\r\n");
+    SerialUSB.print("help         - print software version and command list\r\n");
+    SerialUSB.print("version      - print software version only\r\n");
     SerialUSB.print("status       - print full diagnostic status\r\n");
     SerialUSB.print("eth          - print W5500 status\r\n");
     SerialUSB.print("sc16is       - print SC16IS probe report\r\n");
@@ -97,6 +117,8 @@ static void print_help(void)
     SerialUSB.print("sd           - print microSD status\r\n");
     SerialUSB.print("sd test      - write and read SDTEST.TXT\r\n");
     SerialUSB.print("battery      - print CR2032 backup battery status\r\n");
+    SerialUSB.print("rtc          - print local RTC status\r\n");
+    SerialUSB.print("rtc set YYYY-MM-DD HH:MM:SS - set local RTC date/time\r\n");
     SerialUSB.print("uptime       - print uptime_ms\r\n");
     SerialUSB.print("periodic on  - enable full status every 10000 ms\r\n");
     SerialUSB.print("periodic off - disable periodic status\r\n");
@@ -135,6 +157,7 @@ static void print_status(void)
 {
     SerialUSB.print("\r\n");
     SerialUSB.print("=== LCP diagnostic status ===\r\n");
+    print_version();
     print_uptime();
     SerialUSB.print("USB service CDC: open\r\n");
     print_rs485_status();
@@ -142,6 +165,7 @@ static void print_status(void)
     ethernet_echo_test_print_report();
     sd_card_test_print_report();
     battery_status_print_report();
+    rtc_status_print_report();
     SerialUSB.print("=== end ===\r\n");
     SerialUSB.print("\r\n");
 }
@@ -159,6 +183,10 @@ static void execute_command(char* command)
     if (command_equals(command, "help") != 0U)
     {
         print_help();
+    }
+    else if (command_equals(command, "version") != 0U)
+    {
+        print_version();
     }
     else if (command_equals(command, "status") != 0U)
     {
@@ -187,6 +215,9 @@ static void execute_command(char* command)
     else if (command_equals(command, "battery") != 0U)
     {
         battery_status_print_report();
+    }
+    else if (rtc_status_handle_command(command) != 0U)
+    {
     }
     else if (command_equals(command, "uptime") != 0U)
     {

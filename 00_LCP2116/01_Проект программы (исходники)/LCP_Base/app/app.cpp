@@ -5,8 +5,8 @@
  *
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
  * service console, обслуживает echo-test встроенных RS-485 портов,
- * echo-test внешних UART SC16IS7xx, TCP echo-test W5500, microSD
- * и цифровой контроль резервной батареи CR2032.
+ * echo-test внешних UART SC16IS7xx, TCP echo-test W5500, microSD,
+ * цифровой контроль резервной батареи CR2032 и локальный RTC.
  */
 
 #include "app.hpp"
@@ -19,6 +19,7 @@
 #include "diagnostics/diagnostic_console.hpp"
 #include "diagnostics/sd_card_test.hpp"
 #include "diagnostics/battery_status.hpp"
+#include "diagnostics/rtc_status.hpp"
 
 static const byte PLC_ok = 40U;
 
@@ -41,6 +42,7 @@ void setup(void)
     ethernet_echo_test_init();
     sd_card_test_init();
     battery_status_init();
+    rtc_status_init();
     diagnostic_console_init();
 }
 
@@ -63,5 +65,6 @@ void loop(void)
     ethernet_echo_test_poll();
     sd_card_test_poll();
     battery_status_poll();
+    rtc_status_poll();
     diagnostic_console_poll();
 }
