@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>GccApplication1</AssemblyName>
+    <AssemblyName>LCP_Basic</AssemblyName>
     <Name>LCP_Basic</Name>
-    <RootNamespace>GccApplication1</RootNamespace>
+    <RootNamespace>LCP_Basic</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -232,6 +232,9 @@
     <Compile Include="app\diagnostics\watchdog_status.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\version.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="board\lcp_battery.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -328,57 +331,6 @@
     <Compile Include="hal\w5500_lite.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\Client.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetClient.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetClient.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetServer.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetServer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetUdp2.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetUdp2.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\IGAS_Eth.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\IGAS_Eth.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\IPAddress.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\IPAddress.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\Server.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\Udp.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\socket.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\socket.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\w5500.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\w5500.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -422,12 +374,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="libs\SAM_USB\USBDesc.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SC16IS7xx\SC16IS7xx.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SC16IS7xx\SC16IS7xx.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
@@ -483,11 +429,8 @@
     <Folder Include="Device_Startup\" />
     <Folder Include="hal\" />
     <Folder Include="libs\" />
-    <Folder Include="libs\IGAS_Eth\" />
-    <Folder Include="libs\IGAS_Eth\utility\" />
     <Folder Include="libs\lcp_sd_storage\" />
     <Folder Include="libs\SAM_USB\" />
-    <Folder Include="libs\SC16IS7xx\" />
     <Folder Include="platform\" />
   </ItemGroup>
   <ItemGroup>
@@ -505,4 +448,11 @@
     </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+  <ItemGroup>
+    <None Include="Doxyfile" />
+    <None Include="docs\DoxygenMainPage.md" />
+    <None Include="docs\DoxygenBuild.md" />
+    <None Include="docs\DoxygenCommentReview.md" />
+    <None Include="docs\third_party\THIRD_PARTY_USB_NOTICE.md" />
+  </ItemGroup>
 </Project>

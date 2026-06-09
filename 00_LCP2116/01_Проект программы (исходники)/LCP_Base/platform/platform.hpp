@@ -103,21 +103,87 @@ static const uint32_t A5 = 59U;
 static const uint32_t A6 = 60U;
 static const uint32_t A7 = 61U;
 
+/**
+ * @brief Возвращает время работы прошивки в миллисекундах.
+ *
+ * Значение формируется системным тикером `hal/sam3x_tick`.
+ *
+ * @return Количество миллисекунд с момента запуска.
+ */
 uint32_t millis(void);
+
+/**
+ * @brief Возвращает время работы прошивки в микросекундах.
+ *
+ * Значение формируется системным тикером `hal/sam3x_tick`.
+ *
+ * @return Количество микросекунд с момента запуска.
+ */
 uint32_t micros(void);
 
+/**
+ * @brief Выполняет задержку в миллисекундах.
+ *
+ * Функция блокирует вызывающий поток выполнения до истечения заданного времени.
+ *
+ * @param ms Длительность задержки в миллисекундах.
+ */
 void delay(uint32_t ms);
+
+/**
+ * @brief Выполняет задержку в микросекундах.
+ *
+ * Функция блокирует вызывающий поток выполнения до истечения заданного времени.
+ *
+ * @param us Длительность задержки в микросекундах.
+ */
 void delayMicroseconds(uint32_t us);
 
+/**
+ * @brief Настраивает режим цифровой линии.
+ *
+ * @param pin Номер платформенного вывода.
+ * @param mode Режим линии: `INPUT`, `OUTPUT` или `INPUT_PULLUP`.
+ */
 void pinMode(uint32_t pin, uint32_t mode);
+
+/**
+ * @brief Устанавливает выходной уровень цифровой линии.
+ *
+ * @param pin Номер платформенного вывода.
+ * @param value Уровень `LOW` или `HIGH`.
+ */
 void digitalWrite(uint32_t pin, uint32_t value);
+
+/**
+ * @brief Считывает входной уровень цифровой линии.
+ *
+ * @param pin Номер платформенного вывода.
+ *
+ * @return `LOW` или `HIGH`.
+ */
 uint32_t digitalRead(uint32_t pin);
 
 #include "serial_port.hpp"
 #include "spi.hpp"
 #include "../libs/SAM_USB/USBAPI.h"
 
+/**
+ * @brief Встроенный последовательный порт X2X.
+ */
 extern SerialPort Serial;
+
+/**
+ * @brief Встроенный последовательный порт S2.
+ */
 extern SerialPort Serial1;
+
+/**
+ * @brief Встроенный последовательный порт S4.
+ */
 extern SerialPort Serial2;
+
+/**
+ * @brief Встроенный последовательный порт S3.
+ */
 extern SerialPort Serial3;
