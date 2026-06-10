@@ -6,7 +6,8 @@
 
 #include "sam3x_tick.hpp"
 #include "sam3x_device.hpp"
-#include "sam3x_reset.hpp"
+
+extern "C" void tickReset(void);
 
 static volatile uint32_t g_ms_ticks = 0U;
 
@@ -19,12 +20,12 @@ static inline void hal_cpu_relax(void)
  * @brief Обработчик прерывания SysTick.
  *
  * Обработчик увеличивает миллисекундный счётчик системного времени
- * и обслуживает отложенный переход в ROM-загрузчик.
+ * и обслуживает отложенный переход в ROM-загрузчик SAM-BA.
  */
 extern "C" void SysTick_Handler(void)
 {
     ++g_ms_ticks;
-    sam3x_bootloader_tick();
+    tickReset();
 }
 
 void hal_tick_init(void)

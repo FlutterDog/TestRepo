@@ -1,17 +1,18 @@
-﻿/**
+﻿
+/**
  * @file main.cpp
- * @brief Точка входа прикладной программы LCP Basic.
- *
- * Инициализация ядра и тактирования выполняется startup-кодом проекта.
- * main() запускает системный таймер, выполняет setup() и далее непрерывно
- * вызывает loop().
+ * @brief Точка входа диагностической прошивки LCP.
  */
 
+#include "sam.h"
 #include "app/app.hpp"
 #include "hal/sam3x_tick.hpp"
 
+extern "C" void SystemInit(void);
+
 int main(void)
 {
+    SystemInit();
     hal_tick_init();
 
     setup();

@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * @file print.hpp
  * @brief Базовый потоковый вывод для платформенных портов.
  */
@@ -11,17 +12,34 @@
 /**
  * @brief Базовый класс потокового вывода.
  *
- * Класс задаёт единый интерфейс write(), print() и println()
+ * Класс задаёт единый интерфейс `write()`, `print()` и `println()`
  * для последовательных портов и служебных потоков проекта.
  */
 class Print
 {
 public:
+    /**
+     * @brief Разрушает объект потокового вывода.
+     */
     virtual ~Print() {}
 
+    /**
+     * @brief Передаёт один байт в поток.
+     *
+     * @param value Передаваемый байт.
+     *
+     * @return Количество переданных байтов.
+     */
     virtual size_t write(uint8_t value) = 0;
 
+    /**
+     * @brief Передаёт строку в поток.
+     */
     size_t write(const char* text);
+
+    /**
+     * @brief Передаёт массив байтов в поток.
+     */
     size_t write(const uint8_t* buffer, size_t size);
 
     size_t print(const char* text);

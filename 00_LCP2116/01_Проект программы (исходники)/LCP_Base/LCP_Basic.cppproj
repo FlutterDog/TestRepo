@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>GccApplication1</AssemblyName>
+    <AssemblyName>LCP_Basic</AssemblyName>
     <Name>LCP_Basic</Name>
-    <RootNamespace>GccApplication1</RootNamespace>
+    <RootNamespace>LCP_Basic</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -178,10 +178,100 @@
     <Compile Include="app\app.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\diagnostics\battery_status.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\battery_status.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\diagnostic_console.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\diagnostic_console.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\ethernet_echo_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\ethernet_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\rs485_echo_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\rs485_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\rtc_status.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\rtc_status.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sc16is_echo_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sc16is_echo_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_card_test.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_card_test.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_config.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\sd_config.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\watchdog_status.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\diagnostics\watchdog_status.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\version.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_battery.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_battery.hpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="board\lcp_board.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board\lcp_board.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_ethernet.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_ethernet.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_rs485.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_rs485.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sc16is.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sc16is.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sd.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_sd.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="board\lcp_usb_identity.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Device_Startup\startup_sam3xa.c">
@@ -199,10 +289,10 @@
     <Compile Include="hal\sam3x_gpio.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\sam3x_reset.cpp">
+    <Compile Include="hal\sam3x_rtc.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\sam3x_reset.hpp">
+    <Compile Include="hal\sam3x_rtc.hpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\sam3x_spi.cpp">
@@ -223,73 +313,76 @@
     <Compile Include="hal\sam3x_uart.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\sam3x_usb_device.cpp">
+    <Compile Include="hal\sam3x_watchdog.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hal\sam3x_usb_device.hpp">
+    <Compile Include="hal\sam3x_watchdog.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\Client.h">
+    <Compile Include="hal\sc16is7xx.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetClient.cpp">
+    <Compile Include="hal\sc16is7xx.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetClient.h">
+    <Compile Include="hal\w5500_lite.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetServer.cpp">
+    <Compile Include="hal\w5500_lite.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetServer.h">
+    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetUdp2.cpp">
+    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\EthernetUdp2.h">
+    <Compile Include="libs\SAM_USB\CDC.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\IGAS_Eth.cpp">
+    <Compile Include="libs\SAM_USB\PluggableUSB.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\IGAS_Eth.h">
+    <Compile Include="libs\SAM_USB\PluggableUSB.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\IPAddress.cpp">
+    <Compile Include="libs\SAM_USB\Reset.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\IPAddress.h">
+    <Compile Include="libs\SAM_USB\Reset.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\Server.h">
+    <Compile Include="libs\SAM_USB\sam_usb_chip.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\Udp.h">
+    <Compile Include="libs\SAM_USB\sam_usb_platform.hpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\socket.cpp">
+    <Compile Include="libs\SAM_USB\uotghs.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\socket.h">
+    <Compile Include="libs\SAM_USB\uotghs_device.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\w5500.cpp">
+    <Compile Include="libs\SAM_USB\USBAPI.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\IGAS_Eth\utility\w5500.h">
+    <Compile Include="libs\SAM_USB\USBCore.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\SC16IS7xx\SC16IS7xx.cpp">
+    <Compile Include="libs\SAM_USB\USBCore.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="libs\SC16IS7xx\SC16IS7xx.h">
+    <Compile Include="libs\SAM_USB\USBDesc.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="platform\binary_constants.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="platform\newlib_stubs.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="platform\platform.hpp">
@@ -305,9 +398,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="platform\platform_time.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\platform_usb.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="platform\print.cpp">
@@ -331,22 +421,16 @@
     <Compile Include="platform\syscalls.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="platform\usb_serial.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\usb_serial.hpp">
-      <SubType>compile</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\diagnostics\" />
     <Folder Include="board\" />
     <Folder Include="Device_Startup\" />
     <Folder Include="hal\" />
     <Folder Include="libs\" />
-    <Folder Include="libs\IGAS_Eth\" />
-    <Folder Include="libs\IGAS_Eth\utility\" />
-    <Folder Include="libs\SC16IS7xx\" />
+    <Folder Include="libs\lcp_sd_storage\" />
+    <Folder Include="libs\SAM_USB\" />
     <Folder Include="platform\" />
   </ItemGroup>
   <ItemGroup>
@@ -364,4 +448,11 @@
     </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+  <ItemGroup>
+    <None Include="Doxyfile" />
+    <None Include="docs\DoxygenMainPage.md" />
+    <None Include="docs\DoxygenBuild.md" />
+    <None Include="docs\DoxygenCommentReview.md" />
+    <None Include="docs\third_party\THIRD_PARTY_USB_NOTICE.md" />
+  </ItemGroup>
 </Project>
