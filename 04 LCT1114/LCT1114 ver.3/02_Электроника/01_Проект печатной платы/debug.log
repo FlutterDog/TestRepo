@@ -59,3 +59,31 @@
 [0207/181654:INFO:CONSOLE(175)] "Timeout reached waiting for MktoForms2", source: https://www.altium.com/ (175)
 [0208/101033:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [0208/101033:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0627/065453:ERROR:backend_impl.cc(2020)] Corrupt Index file
+[0627/065453:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0627/065453:ERROR:cache_util.cc(134)] Unable to move cache folder C:\ProgramData\Altium\Altium Designer {38ED491E-C6A5-456C-ACF3-D5C6F2B4D80F}\BrowserCache to C:\ProgramData\Altium\Altium Designer {38ED491E-C6A5-456C-ACF3-D5C6F2B4D80F}\old_BrowserCache_000
+[0627/065453:ERROR:cache_creator.cc(129)] Unable to create cache
+[0627/110720:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0627/110722:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0628/121120:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0628/121121:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0630/093405:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0630/093405:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0630/093406:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0701/094430:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081810:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081815:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081820:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081825:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081830:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081835:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081840:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081845:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081850:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081855:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081900:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081905:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0702/081910:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0710/213025:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0712/123315:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0712/123315:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
