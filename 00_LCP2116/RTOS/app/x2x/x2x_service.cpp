@@ -77,6 +77,11 @@ X2XConfigResult apply_config_now(void)
 
     if (g_last_registry_result != X2X_REGISTRY_OK)
     {
+        g_last_config_result = X2X_CONFIG_REGISTRY_BUILD_FAILED;
+        g_last_config_error.result = X2X_CONFIG_REGISTRY_BUILD_FAILED;
+        g_last_config_error.physical_line = 0U;
+        g_last_config_error.value =
+            static_cast<int32_t>(g_last_registry_result);
         g_config_loaded = 0U;
         reset_runtime_state();
         return g_last_config_result;
