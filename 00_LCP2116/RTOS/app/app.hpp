@@ -1,27 +1,47 @@
-﻿
-/**
+﻿/**
  * @file app.hpp
- * @brief Прикладной интерфейс жизненного цикла диагностической прошивки.
- *
- * Файл объявляет две функции верхнего уровня, вызываемые из main.cpp.
- * Функции сохраняют привычную семантику и оформлены как собственный
- * прикладной интерфейс проекта.
+ * @brief Прикладной и RTOS-интерфейс базовой прошивки LCP.
  */
 
 #pragma once
 
+#include <stdint.h>
+
 /**
  * @brief Выполняет однократную инициализацию baseline-прошивки LCP.
  *
- * Функция инициализирует board-слой, платформенные интерфейсы, SPI,
- * USB service console, диагностические модули, RTC и watchdog.
+ * Функция вызывается из основной задачи после запуска планировщика FreeRTOS.
  */
 void setup(void);
 
 /**
- * @brief Выполняет основной циклический алгоритм baseline-прошивки LCP.
- *
- * Функция обслуживает heartbeat, RS-485 echo, SC16IS echo, W5500 echo,
- * microSD, контроль батареи, RTC, USB service console и watchdog feed.
+ * @brief Выполняет один цикл обслуживания baseline-прошивки LCP.
  */
 void loop(void);
+
+/**
+ * @brief Создаёт базовую задачу LCP и запускает планировщик FreeRTOS.
+ *
+ * При штатном запуске функция не возвращается.
+ */
+void app_rtos_start(void);
+
+/** @brief Возвращает 1, если планировщик FreeRTOS работает. */
+uint8_t app_rtos_scheduler_running(void);
+
+/** @brief Возвращает текущее количество тиков FreeRTOS. */
+uint32_t app_rtos_tick_count(void);
+
+/** @brief Возвращает текущий свободный объём heap FreeRTOS в байтах. */
+uint32_t app_rtos_free_heap_bytes(void);
+
+/** @brief Возвращает минимальный за всё время свободный heap в байтах. */
+uint32_t app_rtos_minimum_ever_free_heap_bytes(void);
+
+/**
+ * @brief Возвращает минимальный остаток стека базовой задачи LCP.
+ *
+ * Значение указано в словах StackType_t, для Cortex-M3 одно слово равно
+ * четырём байтам.
+ */
+uint32_t app_rtos_lcp_stack_free_words(void);
