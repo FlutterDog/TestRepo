@@ -3,10 +3,8 @@
  * @brief Диагностическая baseline-прошивка LCP под управлением FreeRTOS.
  *
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
- * service console, обслуживает echo-test встроенных RS-485 портов,
- * echo-test внешних UART SC16IS7xx, TCP echo-test W5500, microSD,
- * цифровой контроль резервной батареи CR2032, локальный RTC
- * и watchdog.
+ * service console, обслуживает встроенные интерфейсы контроллера и запускает
+ * конфигурируемый master внутренней шины X2X.
  */
 
 #include "app.hpp"
@@ -22,6 +20,7 @@
 #include "diagnostics/battery_status.hpp"
 #include "diagnostics/rtc_status.hpp"
 #include "diagnostics/watchdog_status.hpp"
+#include "x2x/x2x_service.hpp"
 
 extern "C"
 {
@@ -49,9 +48,9 @@ void lcp_task(void *argument)
         loop();
 
         /*
-         * Все baseline-модули пока обслуживаются неблокирующими poll-функциями
+         * Все baseline-модули обслуживаются неблокирующими poll-функциями
          * внутри одной задачи. Один тик освобождает процессор для idle-задачи
-         * и будущих задач контроллера.
+         * и будущих специализированных задач контроллера.
          */
         vTaskDelay(pdMS_TO_TICKS(1U));
     }
@@ -69,13 +68,13 @@ void setup(void)
     digitalWrite(PLC_OK_PIN, LOW);
 
     SerialUSB.begin(115200U, SERIAL_8N1);
-
     SPI.begin();
 
     rs485_echo_test_init();
     sc16is_echo_test_init();
     ethernet_echo_test_init();
     sd_card_test_init();
+    x2x_service_init();
     battery_status_init();
     rtc_status_init();
     diagnostic_console_init();
@@ -96,10 +95,20 @@ void loop(void)
         digitalWrite(PLC_OK_PIN, led_state);
     }
 
+    /*
+     * microSD обслуживается раньше X2X, чтобы сервис мог автоматически
+     * загрузить X2X.TXT сразу после успешного монтирования файловой системы.
+     */
+    sd_card_test_poll();
+    x2x_service_poll();
+
+    /* UART0 может принадлежать либо X2X master, либо диагностическому echo. */
+    rs485_echo_test_set_x2x_enabled(
+        (x2x_service_owns_port() == 0U) ? 1U : 0U);
     rs485_echo_test_poll();
+
     sc16is_echo_test_poll();
     ethernet_echo_test_poll();
-    sd_card_test_poll();
     battery_status_poll();
     rtc_status_poll();
     diagnostic_console_poll();
