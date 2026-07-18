@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * @file diagnostic_console.cpp
  * @brief Реализация USB service console базовой диагностической прошивки LCP.
  */
@@ -11,6 +10,7 @@
 #include <string.h>
 
 #include "../../platform/platform.hpp"
+#include "../app.hpp"
 #include "../version.hpp"
 #include "../../board/lcp_sc16is.hpp"
 #include "ethernet_echo_test.hpp"
@@ -112,6 +112,7 @@ static void print_help(void)
     SerialUSB.print("help         - print software version and command list\r\n");
     SerialUSB.print("version      - print software version only\r\n");
     SerialUSB.print("status       - print full diagnostic status\r\n");
+    SerialUSB.print("rtos         - print FreeRTOS scheduler, heap and stack status\r\n");
     SerialUSB.print("eth          - print W5500 status\r\n");
     SerialUSB.print("sc16is       - print SC16IS probe report\r\n");
     SerialUSB.print("rs485        - print built-in RS-485 status\r\n");
@@ -153,7 +154,32 @@ static void print_rs485_status(void)
 static void print_uptime(void)
 {
     SerialUSB.print("uptime_ms=");
-    SerialUSB.print(static_cast<int>(millis()));
+    SerialUSB.print(static_cast<unsigned long>(millis()));
+    SerialUSB.print("\r\n");
+}
+
+static void print_rtos_status(void)
+{
+    const uint32_t stack_free_words = app_rtos_lcp_stack_free_words();
+
+    SerialUSB.print("FreeRTOS:\r\n");
+    SerialUSB.print("scheduler=");
+    SerialUSB.print((app_rtos_scheduler_running() != 0U) ? "running" : "not_running");
+    SerialUSB.print("\r\n");
+    SerialUSB.print("tick_count=");
+    SerialUSB.print(static_cast<unsigned long>(app_rtos_tick_count()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("free_heap_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_rtos_free_heap_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("minimum_ever_free_heap_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_rtos_minimum_ever_free_heap_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("lcp_stack_free_words=");
+    SerialUSB.print(static_cast<unsigned long>(stack_free_words));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("lcp_stack_free_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(stack_free_words * 4U));
     SerialUSB.print("\r\n");
 }
 
@@ -163,6 +189,7 @@ static void print_status(void)
     SerialUSB.print("=== LCP diagnostic status ===\r\n");
     print_version();
     print_uptime();
+    print_rtos_status();
     SerialUSB.print("USB service CDC: open\r\n");
     print_rs485_status();
     lcp_sc16is_print_probe_report();
@@ -196,6 +223,10 @@ static void execute_command(char* command)
     else if (command_equals(command, "status") != 0U)
     {
         print_status();
+    }
+    else if (command_equals(command, "rtos") != 0U)
+    {
+        print_rtos_status();
     }
     else if (command_equals(command, "eth") != 0U)
     {
