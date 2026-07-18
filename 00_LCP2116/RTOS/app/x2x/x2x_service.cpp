@@ -19,6 +19,7 @@ namespace
 {
 static const uint32_t X2X_CONFIG_RETRY_PERIOD_MS = 1000U;
 static const uint32_t X2X_MODULE_CYCLE_GAP_MS = 50U;
+static const uint32_t X2X_MODBUS_INTERFRAME_GAP_MS = 5U;
 
 X2XConfig g_active_config;
 X2XConfigError g_last_config_error;
@@ -172,7 +173,8 @@ void x2x_service_init(void)
     x2x_registry_reset();
     lcp_x2x_port_init();
     modbus_rtu_master_init(g_modbus_master,
-                           lcp_x2x_port_transport());
+                           lcp_x2x_port_transport(),
+                           X2X_MODBUS_INTERFRAME_GAP_MS);
 
     g_config_loaded = 0U;
     g_paused = 0U;
