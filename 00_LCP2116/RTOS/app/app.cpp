@@ -1,7 +1,6 @@
-﻿
-/**
+﻿/**
  * @file app.cpp
- * @brief Диагностическая прошивка базовой проверки LCP.
+ * @brief Диагностическая baseline-прошивка LCP под управлением FreeRTOS.
  *
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
  * service console, обслуживает echo-test встроенных RS-485 портов,
@@ -24,9 +23,40 @@
 #include "diagnostics/rtc_status.hpp"
 #include "diagnostics/watchdog_status.hpp"
 
-static const byte PLC_ok = 40U;
+extern "C"
+{
+#include "FreeRTOS.h"
+#include "task.h"
+}
 
-static const uint32_t OK_LED_PERIOD_MS = 500U;
+namespace
+{
+constexpr byte PLC_OK_PIN = 40U;
+constexpr uint32_t OK_LED_PERIOD_MS = 500U;
+constexpr uint16_t LCP_TASK_STACK_WORDS = 2048U;
+constexpr UBaseType_t LCP_TASK_PRIORITY = 2U;
+
+TaskHandle_t g_lcp_task_handle = nullptr;
+
+void lcp_task(void *argument)
+{
+    (void)argument;
+
+    setup();
+
+    for (;;)
+    {
+        loop();
+
+        /*
+         * Все baseline-модули пока обслуживаются неблокирующими poll-функциями
+         * внутри одной задачи. Один тик освобождает процессор для idle-задачи
+         * и будущих задач контроллера.
+         */
+        vTaskDelay(pdMS_TO_TICKS(1U));
+    }
+}
+}
 
 void setup(void)
 {
@@ -35,8 +65,8 @@ void setup(void)
     lcp_board_init_gpio();
     lcp_rs485_init_builtin_ports();
 
-    pinMode(PLC_ok, OUTPUT);
-    digitalWrite(PLC_ok, LOW);
+    pinMode(PLC_OK_PIN, OUTPUT);
+    digitalWrite(PLC_OK_PIN, LOW);
 
     SerialUSB.begin(115200U, SERIAL_8N1);
 
@@ -63,7 +93,7 @@ void loop(void)
     {
         last_toggle_ms = now_ms;
         led_state = (led_state == LOW) ? HIGH : LOW;
-        digitalWrite(PLC_ok, led_state);
+        digitalWrite(PLC_OK_PIN, led_state);
     }
 
     rs485_echo_test_poll();
@@ -74,4 +104,77 @@ void loop(void)
     rtc_status_poll();
     diagnostic_console_poll();
     watchdog_status_poll();
+}
+
+void app_rtos_start(void)
+{
+    const BaseType_t task_result = xTaskCreate(lcp_task,
+                                               "LCP",
+                                               LCP_TASK_STACK_WORDS,
+                                               nullptr,
+                                               LCP_TASK_PRIORITY,
+                                               &g_lcp_task_handle);
+
+    configASSERT(task_result == pdPASS);
+
+    vTaskStartScheduler();
+
+    /* Планировщик возвращается только при ошибке запуска. */
+    taskDISABLE_INTERRUPTS();
+
+    for (;;)
+    {
+    }
+}
+
+uint8_t app_rtos_scheduler_running(void)
+{
+    return (xTaskGetSchedulerState() == taskSCHEDULER_RUNNING) ? 1U : 0U;
+}
+
+uint32_t app_rtos_tick_count(void)
+{
+    return static_cast<uint32_t>(xTaskGetTickCount());
+}
+
+uint32_t app_rtos_free_heap_bytes(void)
+{
+    return static_cast<uint32_t>(xPortGetFreeHeapSize());
+}
+
+uint32_t app_rtos_minimum_ever_free_heap_bytes(void)
+{
+    return static_cast<uint32_t>(xPortGetMinimumEverFreeHeapSize());
+}
+
+uint32_t app_rtos_lcp_stack_free_words(void)
+{
+    if (g_lcp_task_handle == nullptr)
+    {
+        return 0U;
+    }
+
+    return static_cast<uint32_t>(uxTaskGetStackHighWaterMark(g_lcp_task_handle));
+}
+
+extern "C" void vApplicationMallocFailedHook(void)
+{
+    taskDISABLE_INTERRUPTS();
+
+    for (;;)
+    {
+    }
+}
+
+extern "C" void vApplicationStackOverflowHook(TaskHandle_t task,
+                                                char *task_name)
+{
+    (void)task;
+    (void)task_name;
+
+    taskDISABLE_INTERRUPTS();
+
+    for (;;)
+    {
+    }
 }
