@@ -36,6 +36,11 @@ X2XModulePollResult x2x_module_poll_lai1118(X2XDeviceHeader* device,
     switch (context.runtime->state)
     {
         case LAI_POLL_START_READ:
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
             if (modbus_rtu_master_start_read_holding(*context.master,
                                                      device->slave_address,
                                                      0U,
