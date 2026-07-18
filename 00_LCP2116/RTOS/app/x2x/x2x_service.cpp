@@ -30,6 +30,8 @@ uint16_t g_register_buffer[MODBUS_RTU_MASTER_MAX_READ_REGISTERS];
 X2XWaveformBuffer g_waveform;
 uint8_t g_config_loaded = 0U;
 uint8_t g_paused = 0U;
+uint8_t g_pause_requested = 0U;
+uint8_t g_reload_requested = 0U;
 uint8_t g_current_slave = 0U;
 uint8_t g_cycle_in_progress = 0U;
 uint32_t g_next_cycle_ms = 0U;
@@ -50,6 +52,53 @@ void reset_runtime_state(void)
     g_current_slave =
         (x2x_registry_module_count() > 0U) ? 1U : 0U;
     g_next_cycle_ms = millis();
+}
+
+X2XConfigResult apply_config_now(void)
+{
+    X2XConfig candidate_config;
+    X2XConfigError candidate_error;
+
+    g_last_reload_attempt_ms = millis();
+    g_last_config_result = x2x_config_load(X2X_CONFIG_FILE_NAME,
+                                           candidate_config,
+                                           candidate_error);
+    g_last_config_error = candidate_error;
+    g_reload_requested = 0U;
+
+    if (g_last_config_result != X2X_CONFIG_OK)
+    {
+        return g_last_config_result;
+    }
+
+    g_last_registry_result =
+        x2x_registry_build(candidate_config, X2X_DEFAULT_ASDU);
+
+    if (g_last_registry_result != X2X_REGISTRY_OK)
+    {
+        g_config_loaded = 0U;
+        reset_runtime_state();
+        return g_last_config_result;
+    }
+
+    g_active_config = candidate_config;
+    g_config_loaded = 1U;
+    reset_runtime_state();
+    return X2X_CONFIG_OK;
+}
+
+void complete_pause_if_safe(void)
+{
+    if ((g_pause_requested == 0U) ||
+        (g_cycle_in_progress != 0U) ||
+        (modbus_rtu_master_busy(g_modbus_master) != 0U))
+    {
+        return;
+    }
+
+    g_pause_requested = 0U;
+    g_paused = 1U;
+    modbus_rtu_master_reset(g_modbus_master);
 }
 
 void advance_slave(uint32_t now_ms)
@@ -127,6 +176,8 @@ void x2x_service_init(void)
 
     g_config_loaded = 0U;
     g_paused = 0U;
+    g_pause_requested = 0U;
+    g_reload_requested = 0U;
     g_current_slave = 0U;
     g_cycle_in_progress = 0U;
     g_next_cycle_ms = 0U;
@@ -137,7 +188,7 @@ void x2x_service_init(void)
 
     if (lcp_sd_storage_ready() != 0U)
     {
-        (void)x2x_service_reload_config();
+        (void)apply_config_now();
     }
 }
 
@@ -145,25 +196,39 @@ void x2x_service_poll(void)
 {
     const uint32_t now_ms = millis();
 
-    if (g_config_loaded == 0U)
+    if ((g_config_loaded == 0U) &&
+        (g_reload_requested == 0U) &&
+        (lcp_sd_storage_ready() != 0U) &&
+        ((uint32_t)(now_ms - g_last_reload_attempt_ms) >=
+         X2X_CONFIG_RETRY_PERIOD_MS))
     {
-        if ((lcp_sd_storage_ready() != 0U) &&
-            ((uint32_t)(now_ms - g_last_reload_attempt_ms) >=
-             X2X_CONFIG_RETRY_PERIOD_MS))
-        {
-            (void)x2x_service_reload_config();
-        }
+        (void)apply_config_now();
+    }
 
+    if (g_cycle_in_progress != 0U)
+    {
+        modbus_rtu_master_poll(g_modbus_master);
+        poll_active_module(now_ms);
+    }
+
+    if ((g_reload_requested != 0U) &&
+        (g_cycle_in_progress == 0U) &&
+        (modbus_rtu_master_busy(g_modbus_master) == 0U))
+    {
+        (void)apply_config_now();
+        complete_pause_if_safe();
         return;
     }
 
-    if ((g_paused != 0U) ||
+    complete_pause_if_safe();
+
+    if ((g_config_loaded == 0U) ||
+        (g_paused != 0U) ||
+        (g_pause_requested != 0U) ||
         (x2x_registry_module_count() == 0U))
     {
         return;
     }
-
-    modbus_rtu_master_poll(g_modbus_master);
 
     if (g_cycle_in_progress == 0U)
     {
@@ -173,58 +238,53 @@ void x2x_service_poll(void)
         }
 
         g_cycle_in_progress = 1U;
+        poll_active_module(now_ms);
     }
-
-    poll_active_module(now_ms);
 }
 
 X2XConfigResult x2x_service_reload_config(void)
 {
-    X2XConfig candidate_config;
-    X2XConfigError candidate_error;
-
-    g_last_reload_attempt_ms = millis();
-    g_last_config_result = x2x_config_load(X2X_CONFIG_FILE_NAME,
-                                           candidate_config,
-                                           candidate_error);
-    g_last_config_error = candidate_error;
-
-    if (g_last_config_result != X2X_CONFIG_OK)
+    if ((g_cycle_in_progress != 0U) ||
+        (modbus_rtu_master_busy(g_modbus_master) != 0U))
     {
-        return g_last_config_result;
+        g_reload_requested = 1U;
+        return X2X_CONFIG_APPLY_PENDING;
     }
 
-    g_last_registry_result =
-        x2x_registry_build(candidate_config, X2X_DEFAULT_ASDU);
-
-    if (g_last_registry_result != X2X_REGISTRY_OK)
-    {
-        g_config_loaded = 0U;
-        reset_runtime_state();
-        return g_last_config_result;
-    }
-
-    g_active_config = candidate_config;
-    g_config_loaded = 1U;
-    reset_runtime_state();
-    return X2X_CONFIG_OK;
+    return apply_config_now();
 }
 
 void x2x_service_pause(void)
 {
-    g_paused = 1U;
-    reset_runtime_state();
+    if (g_paused != 0U)
+    {
+        return;
+    }
+
+    g_pause_requested = 1U;
+    complete_pause_if_safe();
 }
 
 void x2x_service_resume(void)
 {
+    g_pause_requested = 0U;
     g_paused = 0U;
-    reset_runtime_state();
+    g_next_cycle_ms = millis();
 }
 
 uint8_t x2x_service_paused(void)
 {
     return g_paused;
+}
+
+uint8_t x2x_service_pause_pending(void)
+{
+    return g_pause_requested;
+}
+
+uint8_t x2x_service_reload_pending(void)
+{
+    return g_reload_requested;
 }
 
 uint8_t x2x_service_config_loaded(void)
