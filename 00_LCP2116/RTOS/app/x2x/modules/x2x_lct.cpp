@@ -136,6 +136,11 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
     switch (context.runtime->state)
     {
         case LCT_POLL_START_MAIN:
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
             if (modbus_rtu_master_start_read_holding(*context.master,
                                                      device->slave_address,
                                                      LCT_MAIN_START_REGISTER,
@@ -183,6 +188,11 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
         }
 
         case LCT_POLL_START_WAVEFORM_FLAG:
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
             if (modbus_rtu_master_start_read_holding(*context.master,
                                                      device->slave_address,
                                                      LCT_WAVEFORM_FLAG_REGISTER,
@@ -239,6 +249,11 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
                 context.waveform->valid = 1U;
                 ++context.waveform->sequence;
                 context.runtime->state = LCT_POLL_START_WAVEFORM_RESET;
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
                 return X2X_MODULE_POLL_IN_PROGRESS;
             }
 
@@ -313,6 +328,11 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
 
         case LCT_POLL_START_WAVEFORM_RESET:
         {
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
             const uint16_t reset_value = LCT_WAVEFORM_FLAG_RESET_VALUE;
 
             if (modbus_rtu_master_start_write_multiple(*context.master,
