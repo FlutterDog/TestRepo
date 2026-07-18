@@ -29,9 +29,6 @@ static_assert(MODBUS_RTU_MASTER_TX_CAPACITY >=
 
 /**
  * @brief Абстрактный байтовый транспорт Modbus RTU.
- *
- * Реализация транспорта отвечает за управление DE/RE, UART RX/TX и очистку
- * устаревших принятых данных перед новой транзакцией.
  */
 struct ModbusRtuTransport
 {
@@ -74,9 +71,6 @@ enum ModbusRtuTransactionType : uint8_t
 
 /**
  * @brief Runtime-состояние одного Modbus RTU master.
- *
- * Структура открыта для статического размещения, но её поля должны изменяться
- * только функциями этого модуля.
  */
 struct ModbusRtuMaster
 {
@@ -92,6 +86,8 @@ struct ModbusRtuMaster
     uint16_t* read_output;
     uint32_t deadline_ms;
     uint32_t timeout_ms;
+    uint32_t next_request_ms;
+    uint32_t interframe_gap_ms;
     uint16_t expected_response_length;
     uint16_t rx_length;
     uint16_t tx_length;
@@ -99,12 +95,22 @@ struct ModbusRtuMaster
     uint8_t tx_buffer[MODBUS_RTU_MASTER_TX_CAPACITY];
 };
 
-/** @brief Инициализирует объект Modbus RTU master. */
+/**
+ * @brief Инициализирует объект Modbus RTU master.
+ *
+ * @param master Объект master.
+ * @param transport Байтовый транспорт.
+ * @param interframe_gap_ms Минимальная пауза между RTU-кадрами.
+ */
 void modbus_rtu_master_init(ModbusRtuMaster& master,
-                            const ModbusRtuTransport& transport);
+                            const ModbusRtuTransport& transport,
+                            uint32_t interframe_gap_ms);
 
-/** @brief Полностью сбрасывает текущую и последнюю транзакцию. */
+/** @brief Сбрасывает транзакцию, сохраняя транспорт и межкадровый таймер. */
 void modbus_rtu_master_reset(ModbusRtuMaster& master);
+
+/** @brief Возвращает 1, когда разрешено начать новый RTU-запрос. */
+uint8_t modbus_rtu_master_ready(const ModbusRtuMaster& master);
 
 /**
  * @brief Запускает чтение holding-регистров функцией 0x03.
