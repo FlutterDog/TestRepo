@@ -15,6 +15,8 @@ extern "C"
 
 namespace
 {
+constexpr uint32_t MAX_DWT_WAIT_CYCLES = 0x7FFFFFFFUL;
+
 void enable_cycle_counter(void)
 {
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
@@ -45,14 +47,25 @@ void busy_wait_cycles(uint32_t cycles)
 
 void busy_wait_us(uint32_t us)
 {
+    if (us == 0U)
+    {
+        return;
+    }
+
     SystemCoreClockUpdate();
 
     const uint32_t cycles_per_us = SystemCoreClock / 1000000U;
+    uint64_t cycles_remaining = static_cast<uint64_t>(cycles_per_us) * us;
 
-    while (us > 0U)
+    while (cycles_remaining > 0U)
     {
-        busy_wait_cycles(cycles_per_us);
-        --us;
+        const uint32_t chunk =
+            (cycles_remaining > MAX_DWT_WAIT_CYCLES)
+                ? MAX_DWT_WAIT_CYCLES
+                : static_cast<uint32_t>(cycles_remaining);
+
+        busy_wait_cycles(chunk);
+        cycles_remaining -= chunk;
     }
 }
 }
@@ -94,11 +107,9 @@ void delay(uint32_t ms)
      * До запуска планировщика SysTick ещё принадлежит не HAL, а будущему
      * порту FreeRTOS. Поэтому ранняя задержка выполняется по DWT CYCCNT.
      */
-    while (ms > 0U)
-    {
-        busy_wait_us(1000U);
-        --ms;
-    }
+    busy_wait_us(static_cast<uint64_t>(ms) * 1000U > 0xFFFFFFFFULL
+                     ? 0xFFFFFFFFUL
+                     : ms * 1000U);
 }
 
 void delayMicroseconds(uint32_t us)
