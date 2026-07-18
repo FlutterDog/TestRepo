@@ -9,7 +9,7 @@
 
 #include "x2x_types.hpp"
 
-/** @brief Результат загрузки конфигурации X2X. */
+/** @brief Результат загрузки или применения конфигурации X2X. */
 enum X2XConfigResult : uint8_t
 {
     X2X_CONFIG_OK = 0U,
@@ -22,7 +22,8 @@ enum X2XConfigResult : uint8_t
     X2X_CONFIG_INVALID_VALUE = 7U,
     X2X_CONFIG_INVALID_DEVICE_ID = 8U,
     X2X_CONFIG_INCOMPLETE_FILE = 9U,
-    X2X_CONFIG_EXTRA_DATA = 10U
+    X2X_CONFIG_EXTRA_DATA = 10U,
+    X2X_CONFIG_APPLY_PENDING = 11U
 };
 
 /** @brief Проверенная конфигурация экземпляров модулей X2X. */
