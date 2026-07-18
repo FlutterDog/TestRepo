@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * @file sam3x_uart.hpp
  * @brief HAL встроенных UART/USART ATSAM3X8E.
  */
@@ -38,7 +37,9 @@ enum HalUartFrame
  * @param direction_pin Номер дискретной линии управления DE/RE.
  * @param transmit_level Уровень, включающий передачу.
  */
-void hal_uart_set_rs485_direction_pin(HalUartId port_id, uint32_t direction_pin, uint8_t transmit_level);
+void hal_uart_set_rs485_direction_pin(HalUartId port_id,
+                                      uint32_t direction_pin,
+                                      uint8_t transmit_level);
 
 /**
  * @brief Инициализирует встроенный UART/USART.
@@ -99,6 +100,24 @@ size_t hal_uart_write(HalUartId port_id, uint8_t value);
  * @param port_id Идентификатор порта.
  */
 void hal_uart_flush(HalUartId port_id);
+
+/**
+ * @brief Проверяет, полностью ли завершена передача.
+ *
+ * Функция не блокирует задачу и учитывает программный TX-буфер и аппаратный
+ * флаг TXEMPTY.
+ *
+ * @return 1, если передача завершена или порт неактивен, иначе 0.
+ */
+uint8_t hal_uart_tx_idle(HalUartId port_id);
+
+/**
+ * @brief Очищает программный и аппаратный RX-буфер порта.
+ *
+ * Используется перед началом новой master-транзакции для удаления остатка
+ * предыдущего или повреждённого кадра.
+ */
+void hal_uart_clear_rx(HalUartId port_id);
 
 /**
  * @brief Возвращает количество ошибок приёма.
