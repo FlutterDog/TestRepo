@@ -16,6 +16,33 @@
 
 namespace
 {
+const char* communication_error_text(X2XCommunicationError error)
+{
+    switch (error)
+    {
+        case X2X_COMMUNICATION_OK:
+            return "ok";
+
+        case X2X_COMMUNICATION_TIMEOUT:
+            return "timeout";
+
+        case X2X_COMMUNICATION_CRC_ERROR:
+            return "crc error";
+
+        case X2X_COMMUNICATION_PROTOCOL_ERROR:
+            return "protocol error";
+
+        case X2X_COMMUNICATION_EXCEPTION:
+            return "exception";
+
+        case X2X_COMMUNICATION_TRANSPORT_ERROR:
+            return "transport error";
+
+        default:
+            return "unknown";
+    }
+}
+
 void print_common_device_status(const X2XDeviceHeader& device,
                                 const X2XModuleDescriptor& descriptor)
 {
@@ -42,7 +69,7 @@ void print_common_device_status(const X2XDeviceHeader& device,
     SerialUSB.print("\r\n");
 
     SerialUSB.print("  communication_error=");
-    SerialUSB.print(static_cast<int>(device.last_communication_error));
+    SerialUSB.print(communication_error_text(device.last_communication_error));
     SerialUSB.print(", exception_code=");
     SerialUSB.print(static_cast<int>(device.last_exception_code));
     SerialUSB.print(", SP/ME/TF=");
@@ -290,6 +317,8 @@ void x2x_status_print_report(void)
     SerialUSB.print(", registry=");
     SerialUSB.print(x2x_registry_result_text(
         x2x_service_last_registry_result()));
+    SerialUSB.print(", reload_pending=");
+    SerialUSB.print((x2x_service_reload_pending() != 0U) ? "yes" : "no");
     SerialUSB.print("\r\n");
 
     SerialUSB.print("modules=");
@@ -298,8 +327,11 @@ void x2x_status_print_report(void)
     SerialUSB.print(static_cast<int>(x2x_service_current_slave()));
     SerialUSB.print(", paused=");
     SerialUSB.print((x2x_service_paused() != 0U) ? "yes" : "no");
+    SerialUSB.print(", pause_pending=");
+    SerialUSB.print((x2x_service_pause_pending() != 0U) ? "yes" : "no");
     SerialUSB.print(", port_owner=");
-    SerialUSB.print((x2x_service_owns_port() != 0U) ? "x2x_master" : "echo_test");
+    SerialUSB.print((x2x_service_owns_port() != 0U) ?
+                    "x2x_master" : "echo_test");
     SerialUSB.print("\r\n");
 
     SerialUSB.print("modbus_state=");
@@ -370,7 +402,16 @@ uint8_t x2x_status_handle_command(const char* command)
     if (strcmp(command, "x2x pause") == 0)
     {
         x2x_service_pause();
-        SerialUSB.print("x2x polling: paused\r\n");
+
+        if (x2x_service_paused() != 0U)
+        {
+            SerialUSB.print("x2x polling: paused\r\n");
+        }
+        else
+        {
+            SerialUSB.print("x2x polling: pause pending\r\n");
+        }
+
         return 1U;
     }
 
