@@ -10,6 +10,7 @@
 #include "../x2x/x2x_service.hpp"
 #include "../../board/lcp_x2x_port.hpp"
 #include "../../platform/platform.hpp"
+#include "../../protocol/modbus_rtu/modbus_rtu_crc.hpp"
 
 #include <stdint.h>
 #include <string.h>
@@ -336,6 +337,8 @@ void x2x_status_print_report(void)
 
     SerialUSB.print("modbus_state=");
     SerialUSB.print(modbus_rtu_result_text(x2x_service_modbus_result()));
+    SerialUSB.print(", crc_self_test=");
+    SerialUSB.print((modbus_rtu_crc_self_test() != 0U) ? "ok" : "failed");
     SerialUSB.print(", uart_error_count=");
     SerialUSB.print(static_cast<unsigned long>(lcp_x2x_port_error_count()));
     SerialUSB.print("\r\n");
