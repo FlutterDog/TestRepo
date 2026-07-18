@@ -22,8 +22,8 @@ X2XDeviceHeader* construct_device(void* storage,
         return 0;
     }
 
+    memset(storage, 0, sizeof(DeviceType));
     DeviceType* device = new (storage) DeviceType;
-    memset(device, 0, sizeof(DeviceType));
 
     device->type = TypeId;
     device->asdu = asdu;
