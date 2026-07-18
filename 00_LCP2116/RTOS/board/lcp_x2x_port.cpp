@@ -6,9 +6,14 @@
 #include "lcp_x2x_port.hpp"
 #include "lcp_rs485.hpp"
 #include "../hal/sam3x_uart.hpp"
+#include "../platform/platform.hpp"
 
 namespace
 {
+/* 8N1 содержит 10 бит на символ; один дополнительный бит даёт запас. */
+static const uint32_t X2X_BITS_PER_CHARACTER_WITH_MARGIN = 11U;
+static uint32_t g_tx_not_before_ms = 0U;
+
 size_t x2x_write(const uint8_t* data, size_t length)
 {
     if (data == 0)
@@ -28,6 +33,12 @@ size_t x2x_write(const uint8_t* data, size_t length)
         ++written;
     }
 
+    const uint32_t duration_ms = static_cast<uint32_t>(
+        ((written * X2X_BITS_PER_CHARACTER_WITH_MARGIN * 1000U) +
+         (LCP_X2X_BAUDRATE - 1U)) /
+        LCP_X2X_BAUDRATE);
+    g_tx_not_before_ms = millis() + duration_ms + 1U;
+
     return written;
 }
 
@@ -43,6 +54,11 @@ int x2x_read(void)
 
 uint8_t x2x_tx_idle(void)
 {
+    if (static_cast<int32_t>(millis() - g_tx_not_before_ms) < 0)
+    {
+        return 0U;
+    }
+
     return hal_uart_tx_idle(HAL_UART_PORT_0);
 }
 
@@ -70,6 +86,7 @@ void lcp_x2x_port_init(void)
                    LCP_X2X_BAUDRATE,
                    HAL_UART_FRAME_8N1);
     hal_uart_clear_rx(HAL_UART_PORT_0);
+    g_tx_not_before_ms = millis();
 }
 
 const ModbusRtuTransport& lcp_x2x_port_transport(void)
