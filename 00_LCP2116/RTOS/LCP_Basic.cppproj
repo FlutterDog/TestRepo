@@ -281,6 +281,9 @@
     <Compile Include="board\lcp_usb_identity.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Config\FreeRTOSConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Device_Startup\startup_sam3xa.c">
       <SubType>compile</SubType>
     </Compile>
@@ -386,6 +389,96 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\event_groups.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\atomic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\croutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\deprecated_definitions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\event_groups.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\FreeRTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\message_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\mpu_prototypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\mpu_syscall_numbers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\mpu_wrappers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\newlib-freertos.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\picolibc-freertos.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\portable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\projdefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\semphr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\StackMacros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\stack_macros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\stream_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\include\timers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\list.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3\port.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3\portmacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\portable\MemMang\heap_4.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\stream_buffer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\tasks.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\timers.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="platform\binary_constants.hpp">
       <SubType>compile</SubType>
     </Compile>
@@ -433,6 +526,7 @@
     <Folder Include="app\" />
     <Folder Include="app\diagnostics\" />
     <Folder Include="board\" />
+    <Folder Include="Config\" />
     <Folder Include="Device_Startup\" />
     <Folder Include="docs\" />
     <Folder Include="docs\third_party\" />
@@ -440,6 +534,13 @@
     <Folder Include="libs\" />
     <Folder Include="libs\lcp_sd_storage\" />
     <Folder Include="libs\SAM_USB\" />
+    <Folder Include="middleware\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\include\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\GCC\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\MemMang\" />
     <Folder Include="platform\" />
   </ItemGroup>
   <ItemGroup>
@@ -453,6 +554,18 @@
       <SubType>compile</SubType>
     </None>
     <None Include="Device_Startup\sam3xa_sram.ld">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="middleware\FreeRTOS-Kernel\include\CMakeLists.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="middleware\FreeRTOS-Kernel\include\stdint.readme">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="middleware\FreeRTOS-Kernel\LICENSE.md">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="middleware\FreeRTOS-Kernel\README.md">
       <SubType>compile</SubType>
     </None>
   </ItemGroup>
