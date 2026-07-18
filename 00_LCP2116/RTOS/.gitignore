@@ -1,0 +1,46 @@
+# Microchip Studio / Atmel Studio user files
+.vs/
+*.atsuo
+*.user
+*.suo
+
+# Build output
+Debug/
+Release/
+build/
+_build/
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.srec
+*.eep
+*.map
+*.lss
+*.lst
+*.obj
+*.dep
+Makefile
+makedep.mk
+
+# Doxygen output and generated logs
+docs/doxygen/
+doxygen_build.log
+
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Archives generated for transfer
+*.zip
+*.7z
+*.rar
+
+# Keep intentional source libraries in libs/.
+# Do not globally ignore *.a here: prebuilt embedded libraries may be part of a delivered project.
