@@ -237,7 +237,8 @@ X2XConfigResult x2x_config_load(const char* file_name,
         return error.result;
     }
 
-    const LcpSdStorageResult open_result = lcp_sd_storage_open_read(file_name, &file);
+    const LcpSdStorageResult open_result =
+        lcp_sd_storage_open_read(file_name, &file);
 
     if (open_result == LCP_SD_STORAGE_FILE_NOT_FOUND)
     {
@@ -274,9 +275,19 @@ X2XConfigResult x2x_config_load(const char* file_name,
             continue;
         }
 
+        if (fin_seen != 0U)
+        {
+            return fail_and_close(file,
+                                  error,
+                                  X2X_CONFIG_EXTRA_DATA,
+                                  physical_line,
+                                  0L);
+        }
+
         if (text_equals_ignore_case(line, "Fin") != 0U)
         {
-            if ((count_read == 0U) || (module_index != config.module_count))
+            if ((count_read == 0U) ||
+                (module_index != config.module_count))
             {
                 return fail_and_close(file,
                                       error,
@@ -287,15 +298,6 @@ X2XConfigResult x2x_config_load(const char* file_name,
 
             fin_seen = 1U;
             continue;
-        }
-
-        if (fin_seen != 0U)
-        {
-            return fail_and_close(file,
-                                  error,
-                                  X2X_CONFIG_EXTRA_DATA,
-                                  physical_line,
-                                  0L);
         }
 
         int32_t parsed_value = 0L;
@@ -340,7 +342,8 @@ X2XConfigResult x2x_config_load(const char* file_name,
                 ? x2x_catalog_find_by_id(static_cast<uint16_t>(parsed_value))
                 : 0;
 
-        if ((descriptor == 0) || (descriptor->allowed_in_x2x_config == 0U))
+        if ((descriptor == 0) ||
+            (descriptor->allowed_in_x2x_config == 0U))
         {
             return fail_and_close(file,
                                   error,
@@ -409,6 +412,9 @@ const char* x2x_config_result_text(X2XConfigResult result)
 
         case X2X_CONFIG_EXTRA_DATA:
             return "extra data";
+
+        case X2X_CONFIG_APPLY_PENDING:
+            return "apply pending";
 
         default:
             return "unknown";
