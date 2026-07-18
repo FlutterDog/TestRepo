@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * @file rs485_echo_test.cpp
  * @brief Реализация echo-test встроенных RS-485 портов.
  */
@@ -20,7 +19,6 @@ static const uint32_t RS485_INTERFRAME_GAP_MS = 5U;
  * завершить передачу и вернуть свой драйвер в режим приёма.
  */
 static const uint32_t RS485_RESPONSE_DELAY_MS = 10U;
-
 static const uint8_t RS485_ECHO_MAX_BYTES_PER_POLL = 16U;
 static const uint16_t RS485_ECHO_BUFFER_SIZE = 128U;
 
@@ -43,6 +41,8 @@ static Rs485EchoPort g_echo_ports[] =
     { &Serial3, "S3",  {0U}, 0U, 0U, 0U, 0U }
 };
 
+static uint8_t g_x2x_echo_enabled = 1U;
+
 static void rs485_echo_drop_frame(Rs485EchoPort& port, uint32_t now_ms)
 {
     port.length = 0U;
@@ -55,7 +55,8 @@ static void rs485_echo_accept_rx(Rs485EchoPort& port, uint32_t now_ms)
 {
     uint8_t processed = 0U;
 
-    while ((port.serial->available() > 0) && (processed < RS485_ECHO_MAX_BYTES_PER_POLL))
+    while ((port.serial->available() > 0) &&
+           (processed < RS485_ECHO_MAX_BYTES_PER_POLL))
     {
         const int value = port.serial->read();
 
@@ -78,14 +79,10 @@ static void rs485_echo_accept_rx(Rs485EchoPort& port, uint32_t now_ms)
     }
 }
 
-static void rs485_echo_arm_response_if_frame_complete(Rs485EchoPort& port, uint32_t now_ms)
+static void rs485_echo_arm_response_if_frame_complete(Rs485EchoPort& port,
+                                                        uint32_t now_ms)
 {
-    if (port.length == 0U)
-    {
-        return;
-    }
-
-    if (port.response_pending != 0U)
+    if ((port.length == 0U) || (port.response_pending != 0U))
     {
         return;
     }
@@ -99,7 +96,8 @@ static void rs485_echo_arm_response_if_frame_complete(Rs485EchoPort& port, uint3
     port.response_pending = 1U;
 }
 
-static void rs485_echo_send_if_response_due(Rs485EchoPort& port, uint32_t now_ms)
+static void rs485_echo_send_if_response_due(Rs485EchoPort& port,
+                                              uint32_t now_ms)
 {
     if (port.response_pending == 0U)
     {
@@ -112,10 +110,7 @@ static void rs485_echo_send_if_response_due(Rs485EchoPort& port, uint32_t now_ms
     }
 
     (void)port.serial->write(port.buffer, port.length);
-
-    port.length = 0U;
-    port.response_due_ms = 0U;
-    port.response_pending = 0U;
+    rs485_echo_drop_frame(port, now_ms);
 }
 
 void rs485_echo_test_init(void)
@@ -124,16 +119,51 @@ void rs485_echo_test_init(void)
     Serial1.begin(RS485_ECHO_BAUDRATE, SERIAL_8N1);
     Serial2.begin(RS485_ECHO_BAUDRATE, SERIAL_8N1);
     Serial3.begin(RS485_ECHO_BAUDRATE, SERIAL_8N1);
+
+    g_x2x_echo_enabled = 1U;
+
+    for (size_t port_index = 0U;
+         port_index < (sizeof(g_echo_ports) / sizeof(g_echo_ports[0]));
+         ++port_index)
+    {
+        rs485_echo_drop_frame(g_echo_ports[port_index], millis());
+    }
 }
 
 void rs485_echo_test_poll(void)
 {
     const uint32_t now_ms = millis();
 
-    for (size_t port_index = 0U; port_index < (sizeof(g_echo_ports) / sizeof(g_echo_ports[0])); ++port_index)
+    for (size_t port_index = 0U;
+         port_index < (sizeof(g_echo_ports) / sizeof(g_echo_ports[0]));
+         ++port_index)
     {
+        if ((port_index == 0U) && (g_x2x_echo_enabled == 0U))
+        {
+            continue;
+        }
+
         rs485_echo_accept_rx(g_echo_ports[port_index], now_ms);
-        rs485_echo_arm_response_if_frame_complete(g_echo_ports[port_index], now_ms);
+        rs485_echo_arm_response_if_frame_complete(g_echo_ports[port_index],
+                                                   now_ms);
         rs485_echo_send_if_response_due(g_echo_ports[port_index], now_ms);
     }
+}
+
+void rs485_echo_test_set_x2x_enabled(uint8_t enabled)
+{
+    const uint8_t normalized = (enabled != 0U) ? 1U : 0U;
+
+    if (normalized == g_x2x_echo_enabled)
+    {
+        return;
+    }
+
+    g_x2x_echo_enabled = normalized;
+    rs485_echo_drop_frame(g_echo_ports[0], millis());
+}
+
+uint8_t rs485_echo_test_x2x_enabled(void)
+{
+    return g_x2x_echo_enabled;
 }
