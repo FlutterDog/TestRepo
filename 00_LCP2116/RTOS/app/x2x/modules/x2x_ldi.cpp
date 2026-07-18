@@ -33,6 +33,11 @@ X2XModulePollResult poll_ldi(X2XDeviceHeader* device,
     switch (context.runtime->state)
     {
         case LDI_POLL_START_READ:
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
             if (modbus_rtu_master_start_read_holding(*context.master,
                                                      device->slave_address,
                                                      0U,
