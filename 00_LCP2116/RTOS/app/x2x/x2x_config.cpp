@@ -416,6 +416,9 @@ const char* x2x_config_result_text(X2XConfigResult result)
         case X2X_CONFIG_APPLY_PENDING:
             return "apply pending";
 
+        case X2X_CONFIG_REGISTRY_BUILD_FAILED:
+            return "registry build failed";
+
         default:
             return "unknown";
     }
