@@ -32,6 +32,11 @@ X2XModulePollResult x2x_module_poll_ldo1118(X2XDeviceHeader* device,
     {
         case LDO_POLL_START_WRITE:
         {
+            if (modbus_rtu_master_ready(*context.master) == 0U)
+            {
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
             const uint16_t output_value =
                 static_cast<uint16_t>(ldo->output_value);
 
