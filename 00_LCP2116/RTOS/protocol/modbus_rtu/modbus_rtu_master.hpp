@@ -20,6 +20,13 @@ static const uint16_t MODBUS_RTU_MASTER_RX_CAPACITY = 256U;
 /** Максимальный размер передаваемого RTU-кадра. */
 static const uint16_t MODBUS_RTU_MASTER_TX_CAPACITY = 64U;
 
+static_assert(MODBUS_RTU_MASTER_RX_CAPACITY >=
+              (5U + (2U * MODBUS_RTU_MASTER_MAX_READ_REGISTERS)),
+              "Modbus RTU RX buffer is too small for configured read limit");
+static_assert(MODBUS_RTU_MASTER_TX_CAPACITY >=
+              (9U + (2U * MODBUS_RTU_MASTER_MAX_WRITE_REGISTERS)),
+              "Modbus RTU TX buffer is too small for configured write limit");
+
 /**
  * @brief Абстрактный байтовый транспорт Modbus RTU.
  *
