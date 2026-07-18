@@ -16,6 +16,7 @@ extern "C"
 namespace
 {
 constexpr uint32_t MAX_DWT_WAIT_CYCLES = 0x7FFFFFFFUL;
+constexpr uint32_t MAX_BUSY_WAIT_MS_CHUNK = 1000U;
 
 void enable_cycle_counter(void)
 {
@@ -107,9 +108,14 @@ void delay(uint32_t ms)
      * До запуска планировщика SysTick ещё принадлежит не HAL, а будущему
      * порту FreeRTOS. Поэтому ранняя задержка выполняется по DWT CYCCNT.
      */
-    busy_wait_us(static_cast<uint64_t>(ms) * 1000U > 0xFFFFFFFFULL
-                     ? 0xFFFFFFFFUL
-                     : ms * 1000U);
+    while (ms > 0U)
+    {
+        const uint32_t chunk_ms =
+            (ms > MAX_BUSY_WAIT_MS_CHUNK) ? MAX_BUSY_WAIT_MS_CHUNK : ms;
+
+        busy_wait_us(chunk_ms * 1000U);
+        ms -= chunk_ms;
+    }
 }
 
 void delayMicroseconds(uint32_t us)
