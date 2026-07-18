@@ -12,12 +12,15 @@
 #include "../../platform/platform.hpp"
 #include "../app.hpp"
 #include "../version.hpp"
+#include "../x2x/x2x_service.hpp"
 #include "../../board/lcp_sc16is.hpp"
 #include "ethernet_echo_test.hpp"
+#include "rs485_echo_test.hpp"
 #include "sd_card_test.hpp"
 #include "battery_status.hpp"
 #include "rtc_status.hpp"
 #include "watchdog_status.hpp"
+#include "x2x_status.hpp"
 
 static const uint16_t DIAGNOSTIC_COMMAND_BUFFER_SIZE = 64U;
 static const uint32_t DIAGNOSTIC_PERIODIC_REPORT_MS = 10000U;
@@ -57,16 +60,16 @@ static void trim_command(char* command)
 
     if (start != 0U)
     {
-        uint16_t dst = 0U;
+        uint16_t destination = 0U;
 
         while (command[start] != '\0')
         {
-            command[dst] = command[start];
-            ++dst;
+            command[destination] = command[start];
+            ++destination;
             ++start;
         }
 
-        command[dst] = '\0';
+        command[destination] = '\0';
     }
 
     uint16_t length = 0U;
@@ -76,7 +79,9 @@ static void trim_command(char* command)
         ++length;
     }
 
-    while ((length > 0U) && ((command[length - 1U] == ' ') || (command[length - 1U] == '\t')))
+    while ((length > 0U) &&
+           ((command[length - 1U] == ' ') ||
+            (command[length - 1U] == '\t')))
     {
         command[length - 1U] = '\0';
         --length;
@@ -113,6 +118,11 @@ static void print_help(void)
     SerialUSB.print("version      - print software version only\r\n");
     SerialUSB.print("status       - print full diagnostic status\r\n");
     SerialUSB.print("rtos         - print FreeRTOS scheduler, heap and stack status\r\n");
+    SerialUSB.print("x2x          - print X2X configuration and module status\r\n");
+    SerialUSB.print("x2x reload   - validate and apply X2X.TXT\r\n");
+    SerialUSB.print("x2x pause    - stop X2X polling\r\n");
+    SerialUSB.print("x2x resume   - resume X2X polling\r\n");
+    SerialUSB.print("x2x ldo S V  - set LDO slave S output register to V\r\n");
     SerialUSB.print("eth          - print W5500 status\r\n");
     SerialUSB.print("sc16is       - print SC16IS probe report\r\n");
     SerialUSB.print("rs485        - print built-in RS-485 status\r\n");
@@ -132,21 +142,27 @@ static void print_help(void)
 
 static void print_rs485_status(void)
 {
-    SerialUSB.print("RS-485 built-in echo:\r\n");
+    SerialUSB.print("RS-485 built-in ports:\r\n");
 
-    SerialUSB.print("X2X: Serial, 9600 8N1, error_count=");
+    SerialUSB.print("X2X: Serial, 9600 8N1, mode=");
+    SerialUSB.print((x2x_service_owns_port() != 0U) ?
+                    "Modbus RTU master" : "echo test");
+    SerialUSB.print(", echo=");
+    SerialUSB.print((rs485_echo_test_x2x_enabled() != 0U) ?
+                    "enabled" : "disabled");
+    SerialUSB.print(", error_count=");
     SerialUSB.print(static_cast<int>(Serial.errorCount()));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("S2:  Serial1, 9600 8N1, error_count=");
+    SerialUSB.print("S2:  Serial1, 9600 8N1, echo, error_count=");
     SerialUSB.print(static_cast<int>(Serial1.errorCount()));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("S4:  Serial2, 9600 8N1, error_count=");
+    SerialUSB.print("S4:  Serial2, 9600 8N1, echo, error_count=");
     SerialUSB.print(static_cast<int>(Serial2.errorCount()));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("S3:  Serial3, 9600 8N1, error_count=");
+    SerialUSB.print("S3:  Serial3, 9600 8N1, echo, error_count=");
     SerialUSB.print(static_cast<int>(Serial3.errorCount()));
     SerialUSB.print("\r\n");
 }
@@ -164,7 +180,8 @@ static void print_rtos_status(void)
 
     SerialUSB.print("FreeRTOS:\r\n");
     SerialUSB.print("scheduler=");
-    SerialUSB.print((app_rtos_scheduler_running() != 0U) ? "running" : "not_running");
+    SerialUSB.print((app_rtos_scheduler_running() != 0U) ?
+                    "running" : "not_running");
     SerialUSB.print("\r\n");
     SerialUSB.print("tick_count=");
     SerialUSB.print(static_cast<unsigned long>(app_rtos_tick_count()));
@@ -173,7 +190,8 @@ static void print_rtos_status(void)
     SerialUSB.print(static_cast<unsigned long>(app_rtos_free_heap_bytes()));
     SerialUSB.print("\r\n");
     SerialUSB.print("minimum_ever_free_heap_bytes=");
-    SerialUSB.print(static_cast<unsigned long>(app_rtos_minimum_ever_free_heap_bytes()));
+    SerialUSB.print(static_cast<unsigned long>(
+        app_rtos_minimum_ever_free_heap_bytes()));
     SerialUSB.print("\r\n");
     SerialUSB.print("lcp_stack_free_words=");
     SerialUSB.print(static_cast<unsigned long>(stack_free_words));
@@ -192,6 +210,7 @@ static void print_status(void)
     print_rtos_status();
     SerialUSB.print("USB service CDC: open\r\n");
     print_rs485_status();
+    x2x_status_print_report();
     lcp_sc16is_print_probe_report();
     ethernet_echo_test_print_report();
     sd_card_test_print_report();
@@ -227,6 +246,9 @@ static void execute_command(char* command)
     else if (command_equals(command, "rtos") != 0U)
     {
         print_rtos_status();
+    }
+    else if (x2x_status_handle_command(command) != 0U)
+    {
     }
     else if (command_equals(command, "eth") != 0U)
     {
@@ -336,7 +358,8 @@ static void poll_periodic_report(void)
 
     const uint32_t now_ms = millis();
 
-    if ((uint32_t)(now_ms - g_last_periodic_report_ms) >= DIAGNOSTIC_PERIODIC_REPORT_MS)
+    if ((uint32_t)(now_ms - g_last_periodic_report_ms) >=
+        DIAGNOSTIC_PERIODIC_REPORT_MS)
     {
         g_last_periodic_report_ms = now_ms;
         print_status();
