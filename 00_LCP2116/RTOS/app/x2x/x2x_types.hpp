@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file x2x_types.hpp
  * @brief Типы данных модулей внутренней шины X2X контроллера LCP.
  *
@@ -25,7 +25,7 @@ static const uint16_t X2X_DEFAULT_ASDU = 1U;
 static const uint8_t X2X_CONNECTION_LOSS_THRESHOLD = 5U;
 
 /** Максимальное количество отсчётов осциллограммы на одну фазу LCT. */
-static const uint16_t X2X_MAX_WAVEFORM_SAMPLES = 200U;
+static const uint16_t X2X_MAX_WAVEFORM_SAMPLES = 400U;
 
 /**
  * @brief Стабильные идентификаторы типов устройств X2X.
@@ -147,7 +147,7 @@ struct X2XLai1118 : X2XDeviceHeader
     };
 };
 
-/** @brief Runtime-данные модуля коммутационного ресурса LCT1114. */
+/** @brief Runtime-данные первой версии модуля коммутационного ресурса LCT1114. */
 struct X2XLct1114 : X2XDeviceHeader
 {
     static const uint8_t SP_COUNT = 20U;
@@ -212,7 +212,7 @@ struct X2XLct1114_2 : X2XDeviceHeader
 {
     static const uint8_t SP_COUNT = 20U;
     static const uint8_t ME_COUNT = 0U;
-    static const uint8_t TF_COUNT = 46U;
+    static const uint8_t TF_COUNT = 45U;
 
     uint32_t digital_inputs;
 
@@ -265,10 +265,15 @@ struct X2XLct1114_2 : X2XDeviceHeader
             float solenoid_current_on;
             float solenoid_current_off_1;
             float solenoid_current_off_2;
-            float re_arc;
         };
         float tf_values[TF_COUNT];
     };
+
+    /** Регистр 92 LCT2: текущее сырое состояние контактов. */
+    uint16_t contacts_state_raw;
+
+    /** Регистр 93 LCT2: предыдущее состояние контактов. */
+    uint16_t previous_contacts_state;
 };
 
 /**
