@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file x2x_lct.cpp
  * @brief Драйверы модулей коммутационного ресурса LCT1114 по X2X.
  */
@@ -35,25 +35,40 @@ struct LctProfile
 
 static const uint16_t LCT_MAIN_START_REGISTER = 0U;
 static const uint16_t LCT_FLOAT_START_REGISTER = 2U;
+static const uint16_t LCT2_CONTACTS_STATE_RAW_REGISTER = 92U;
+static const uint16_t LCT2_PREVIOUS_CONTACTS_STATE_REGISTER = 93U;
 static const uint16_t LCT_WAVEFORM_FLAG_REGISTER = 850U;
 static const uint16_t LCT_WAVEFORM_FLAG_NEW_DATA = 1U;
 static const uint16_t LCT_WAVEFORM_FLAG_RESET_VALUE = 0U;
 
+/*
+ * LCT1_r1_b/modbusProceed:
+ *   0..1   - contact/status words;
+ *   2..85  - 42 float values;
+ *   200..395, 400..595, 600..795 - 196 waveform samples per phase.
+ */
 const LctProfile LCT1114_PROFILE =
 {
     X2X_DEVICE_LCT1114,
-    78U,
-    200U,
+    86U,
+    196U,
     { 200U, 400U, 600U },
     0U
 };
 
+/*
+ * LCT2_r8_p330/modbusProceed:
+ *   0..1   - contact/status words;
+ *   2..91  - 45 float values;
+ *   92..93 - raw and previous contact-state words;
+ *   3000..3399, 3400..3799, 3800..4199 - 400 samples per phase.
+ */
 const LctProfile LCT1114_2_PROFILE =
 {
     X2X_DEVICE_LCT1114_2,
     94U,
-    195U,
-    { 201U, 401U, 601U },
+    400U,
+    { 3000U, 3400U, 3800U },
     1000U
 };
 
@@ -93,13 +108,6 @@ void decode_lct_main(X2XDeviceHeader& device,
     {
         X2XLct1114& lct = static_cast<X2XLct1114&>(device);
         lct.digital_inputs = digital_inputs;
-
-        /*
-         * В старой карте LCT1114 запрашивалось 78 регистров: два DI и
-         * 76 регистров, то есть 38 float. Структура содержит 42 канала.
-         * Декодер намеренно обнуляет четыре отсутствующих канала, сохраняя
-         * совместимость с фактическим запросом до уточнения карты модуля.
-         */
         x2x_module_decode_float_array(lct.tf_values,
                                       X2XLct1114::TF_COUNT,
                                       registers,
@@ -110,17 +118,27 @@ void decode_lct_main(X2XDeviceHeader& device,
     {
         X2XLct1114_2& lct = static_cast<X2XLct1114_2&>(device);
         lct.digital_inputs = digital_inputs;
+
+        /*
+         * Registers 2..91 contain exactly 45 floats. Registers 92 and 93
+         * are independent uint16_t contact-state words and must not be
+         * interpreted as a synthetic 46th float.
+         */
         x2x_module_decode_float_array(lct.tf_values,
                                       X2XLct1114_2::TF_COUNT,
                                       registers,
                                       LCT_FLOAT_START_REGISTER,
-                                      profile.main_register_count);
+                                      LCT2_CONTACTS_STATE_RAW_REGISTER);
+        lct.contacts_state_raw =
+            registers[LCT2_CONTACTS_STATE_RAW_REGISTER];
+        lct.previous_contacts_state =
+            registers[LCT2_PREVIOUS_CONTACTS_STATE_REGISTER];
     }
 }
 
 X2XModulePollResult poll_lct(X2XDeviceHeader* device,
-                            X2XModuleContext& context,
-                            const LctProfile& profile)
+                             X2XModuleContext& context,
+                             const LctProfile& profile)
 {
     if ((device == 0) ||
         (device->type != profile.type) ||
