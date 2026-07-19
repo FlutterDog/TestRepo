@@ -614,8 +614,6 @@
     <Folder Include="board\" />
     <Folder Include="Config\" />
     <Folder Include="Device_Startup\" />
-    <Folder Include="docs\" />
-    <Folder Include="docs\third_party\" />
     <Folder Include="hal\" />
     <Folder Include="libs\" />
     <Folder Include="libs\lcp_sd_storage\" />
@@ -658,18 +656,4 @@
     </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
-  <ItemGroup>
-    <None Include="docs\DoxygenMainPage.md">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="docs\DoxygenBuild.md">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="docs\DoxygenCommentReview.md">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="docs\third_party\THIRD_PARTY_USB_NOTICE.md">
-      <SubType>compile</SubType>
-    </None>
-  </ItemGroup>
 </Project>
