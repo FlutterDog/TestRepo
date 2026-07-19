@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file x2x_lct.cpp
  * @brief Драйверы модулей коммутационного ресурса LCT1114 по X2X.
  */
@@ -42,6 +42,19 @@ static const uint16_t LCT_WAVEFORM_FLAG_NEW_DATA = 1U;
 static const uint16_t LCT_WAVEFORM_FLAG_RESET_VALUE = 0U;
 
 /*
+ * Both LCT firmware projects use IGAS_485 with MAX_READ_REGS = 16 and
+ * MAX_MESSAGE_LENGTH = 40. A 16-register response occupies 37 bytes
+ * including CRC and is the largest response that safely fits the slave
+ * packet buffer. Main data and waveforms must therefore be read in chunks
+ * of no more than 16 registers even though the LCP master supports 100.
+ */
+static const uint16_t LCT_SLAVE_MAX_READ_REGISTERS = 16U;
+
+static_assert(LCT_SLAVE_MAX_READ_REGISTERS <=
+              MODBUS_RTU_MASTER_MAX_READ_REGISTERS,
+              "LCT chunk size exceeds Modbus master read capacity");
+
+/*
  * LCT1_r1_b/modbusProceed:
  *   0..1   - contact/status words;
  *   2..85  - 42 float values;
@@ -75,6 +88,11 @@ const LctProfile LCT1114_2_PROFILE =
 uint16_t minimum_u16(uint16_t left, uint16_t right)
 {
     return (left < right) ? left : right;
+}
+
+uint16_t lct_chunk_count(uint16_t remaining)
+{
+    return minimum_u16(remaining, LCT_SLAVE_MAX_READ_REGISTERS);
 }
 
 void reset_cycle(ModbusRtuMaster& master, X2XModuleRuntime& runtime)
@@ -146,7 +164,8 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
         (context.runtime == 0) ||
         (context.waveform == 0) ||
         (context.register_buffer == 0) ||
-        (context.register_capacity < MODBUS_RTU_MASTER_MAX_READ_REGISTERS))
+        (context.register_capacity < profile.main_register_count) ||
+        (profile.waveform_register_count > X2X_MAX_WAVEFORM_SAMPLES))
     {
         return X2X_MODULE_POLL_CYCLE_COMPLETE;
     }
@@ -154,17 +173,34 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
     switch (context.runtime->state)
     {
         case LCT_POLL_START_MAIN:
+        {
             if (modbus_rtu_master_ready(*context.master) == 0U)
             {
                 return X2X_MODULE_POLL_IN_PROGRESS;
             }
 
-            if (modbus_rtu_master_start_read_holding(*context.master,
-                                                     device->slave_address,
-                                                     LCT_MAIN_START_REGISTER,
-                                                     profile.main_register_count,
-                                                     context.register_buffer,
-                                                     X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U)
+            if (context.runtime->transfer_offset >=
+                profile.main_register_count)
+            {
+                context.runtime->transfer_offset = 0U;
+            }
+
+            const uint16_t remaining =
+                profile.main_register_count -
+                context.runtime->transfer_offset;
+            const uint16_t chunk_count = lct_chunk_count(remaining);
+            const uint16_t start_address =
+                static_cast<uint16_t>(LCT_MAIN_START_REGISTER +
+                                      context.runtime->transfer_offset);
+
+            if ((chunk_count == 0U) ||
+                (modbus_rtu_master_start_read_holding(
+                    *context.master,
+                    device->slave_address,
+                    start_address,
+                    chunk_count,
+                    &context.register_buffer[context.runtime->transfer_offset],
+                    X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U))
             {
                 return fail_cycle(*device,
                                   context,
@@ -173,6 +209,7 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
 
             context.runtime->state = LCT_POLL_WAIT_MAIN;
             return X2X_MODULE_POLL_IN_PROGRESS;
+        }
 
         case LCT_POLL_WAIT_MAIN:
         {
@@ -189,9 +226,26 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
                 return fail_cycle(*device, context, result);
             }
 
+            const uint16_t remaining =
+                profile.main_register_count -
+                context.runtime->transfer_offset;
+            const uint16_t chunk_count = lct_chunk_count(remaining);
+
+            context.runtime->transfer_offset =
+                static_cast<uint16_t>(context.runtime->transfer_offset +
+                                      chunk_count);
+            modbus_rtu_master_reset(*context.master);
+
+            if (context.runtime->transfer_offset <
+                profile.main_register_count)
+            {
+                context.runtime->state = LCT_POLL_START_MAIN;
+                return X2X_MODULE_POLL_IN_PROGRESS;
+            }
+
+            context.runtime->transfer_offset = 0U;
             decode_lct_main(*device, profile, context.register_buffer);
             x2x_module_mark_success(*device, context.now_ms);
-            modbus_rtu_master_reset(*context.master);
 
             if ((profile.post_capture_delay_ms != 0U) &&
                 (static_cast<int32_t>(context.now_ms -
@@ -253,7 +307,8 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
             memset(context.waveform->phase, 0, sizeof(context.waveform->phase));
             context.waveform->valid = 0U;
             context.waveform->owner_slave_address = device->slave_address;
-            context.waveform->samples_per_phase = profile.waveform_register_count;
+            context.waveform->samples_per_phase =
+                profile.waveform_register_count;
             context.runtime->waveform_phase = 0U;
             context.runtime->transfer_offset = 0U;
             context.runtime->state = LCT_POLL_START_WAVEFORM_CHUNK;
@@ -276,21 +331,23 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
             }
 
             const uint16_t remaining =
-                profile.waveform_register_count - context.runtime->transfer_offset;
-            const uint16_t chunk_count =
-                minimum_u16(remaining,
-                            MODBUS_RTU_MASTER_MAX_READ_REGISTERS);
-            const uint16_t start_address =
-                profile.waveform_start_register[context.runtime->waveform_phase] +
+                profile.waveform_register_count -
                 context.runtime->transfer_offset;
+            const uint16_t chunk_count = lct_chunk_count(remaining);
+            const uint16_t start_address =
+                static_cast<uint16_t>(
+                    profile.waveform_start_register[
+                        context.runtime->waveform_phase] +
+                    context.runtime->transfer_offset);
 
             if ((chunk_count == 0U) ||
-                (modbus_rtu_master_start_read_holding(*context.master,
-                                                      device->slave_address,
-                                                      start_address,
-                                                      chunk_count,
-                                                      context.register_buffer,
-                                                      X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U))
+                (modbus_rtu_master_start_read_holding(
+                    *context.master,
+                    device->slave_address,
+                    start_address,
+                    chunk_count,
+                    context.register_buffer,
+                    X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U))
             {
                 return fail_cycle(*device,
                                   context,
@@ -318,13 +375,13 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
             }
 
             const uint16_t remaining =
-                profile.waveform_register_count - context.runtime->transfer_offset;
-            const uint16_t chunk_count =
-                minimum_u16(remaining,
-                            MODBUS_RTU_MASTER_MAX_READ_REGISTERS);
+                profile.waveform_register_count -
+                context.runtime->transfer_offset;
+            const uint16_t chunk_count = lct_chunk_count(remaining);
 
-            memcpy(&context.waveform->phase[context.runtime->waveform_phase]
-                                            [context.runtime->transfer_offset],
+            memcpy(&context.waveform->phase[
+                        context.runtime->waveform_phase]
+                    [context.runtime->transfer_offset],
                    context.register_buffer,
                    static_cast<size_t>(chunk_count) * sizeof(uint16_t));
 
@@ -353,12 +410,13 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
 
             const uint16_t reset_value = LCT_WAVEFORM_FLAG_RESET_VALUE;
 
-            if (modbus_rtu_master_start_write_multiple(*context.master,
-                                                       device->slave_address,
-                                                       LCT_WAVEFORM_FLAG_REGISTER,
-                                                       &reset_value,
-                                                       1U,
-                                                       X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U)
+            if (modbus_rtu_master_start_write_multiple(
+                    *context.master,
+                    device->slave_address,
+                    LCT_WAVEFORM_FLAG_REGISTER,
+                    &reset_value,
+                    1U,
+                    X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U)
             {
                 return fail_cycle(*device,
                                   context,
@@ -404,13 +462,13 @@ X2XModulePollResult poll_lct(X2XDeviceHeader* device,
 }
 
 X2XModulePollResult x2x_module_poll_lct1114(X2XDeviceHeader* device,
-                                            X2XModuleContext& context)
+                                             X2XModuleContext& context)
 {
     return poll_lct(device, context, LCT1114_PROFILE);
 }
 
 X2XModulePollResult x2x_module_poll_lct1114_2(X2XDeviceHeader* device,
-                                              X2XModuleContext& context)
+                                               X2XModuleContext& context)
 {
     return poll_lct(device, context, LCT1114_2_PROFILE);
 }
