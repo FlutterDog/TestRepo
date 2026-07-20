@@ -26,6 +26,17 @@ extern "C"
 {
 #include "FreeRTOS.h"
 #include "task.h"
+
+extern uint8_t _srelocate;
+extern uint8_t _erelocate;
+extern uint8_t _sbss;
+extern uint8_t _ebss;
+extern uint8_t _sstack;
+extern uint8_t _estack;
+extern uint8_t _sheap;
+extern uint8_t _eheap;
+extern uint8_t _end;
+extern uint8_t _ram_end_;
 }
 
 namespace
@@ -34,8 +45,18 @@ constexpr byte PLC_OK_PIN = 40U;
 constexpr uint32_t OK_LED_PERIOD_MS = 500U;
 constexpr uint16_t LCP_TASK_STACK_WORDS = 2048U;
 constexpr UBaseType_t LCP_TASK_PRIORITY = 2U;
+constexpr uintptr_t ATSAM3X8E_RAM_ORIGIN = 0x20000000UL;
 
 TaskHandle_t g_lcp_task_handle = nullptr;
+
+uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
+{
+    const uintptr_t begin_address = reinterpret_cast<uintptr_t>(begin);
+    const uintptr_t end_address = reinterpret_cast<uintptr_t>(end);
+
+    return (end_address >= begin_address) ?
+        static_cast<uint32_t>(end_address - begin_address) : 0U;
+}
 
 void lcp_task(void *argument)
 {
@@ -146,6 +167,11 @@ uint32_t app_rtos_tick_count(void)
     return static_cast<uint32_t>(xTaskGetTickCount());
 }
 
+uint32_t app_rtos_heap_total_bytes(void)
+{
+    return static_cast<uint32_t>(configTOTAL_HEAP_SIZE);
+}
+
 uint32_t app_rtos_free_heap_bytes(void)
 {
     return static_cast<uint32_t>(xPortGetFreeHeapSize());
@@ -156,6 +182,16 @@ uint32_t app_rtos_minimum_ever_free_heap_bytes(void)
     return static_cast<uint32_t>(xPortGetMinimumEverFreeHeapSize());
 }
 
+uint32_t app_rtos_lcp_stack_total_words(void)
+{
+    return static_cast<uint32_t>(LCP_TASK_STACK_WORDS);
+}
+
+uint32_t app_rtos_lcp_stack_total_bytes(void)
+{
+    return static_cast<uint32_t>(LCP_TASK_STACK_WORDS * sizeof(StackType_t));
+}
+
 uint32_t app_rtos_lcp_stack_free_words(void)
 {
     if (g_lcp_task_handle == nullptr)
@@ -164,6 +200,45 @@ uint32_t app_rtos_lcp_stack_free_words(void)
     }
 
     return static_cast<uint32_t>(uxTaskGetStackHighWaterMark(g_lcp_task_handle));
+}
+
+uint32_t app_ram_total_bytes(void)
+{
+    const uintptr_t ram_end_exclusive =
+        reinterpret_cast<uintptr_t>(&_ram_end_) + 1U;
+
+    return (ram_end_exclusive > ATSAM3X8E_RAM_ORIGIN) ?
+        static_cast<uint32_t>(ram_end_exclusive - ATSAM3X8E_RAM_ORIGIN) : 0U;
+}
+
+uint32_t app_ram_static_data_bytes(void)
+{
+    return linker_span_bytes(&_srelocate, &_erelocate);
+}
+
+uint32_t app_ram_static_bss_bytes(void)
+{
+    return linker_span_bytes(&_sbss, &_ebss);
+}
+
+uint32_t app_ram_startup_stack_bytes(void)
+{
+    return linker_span_bytes(&_sstack, &_estack);
+}
+
+uint32_t app_ram_c_heap_reserved_bytes(void)
+{
+    return linker_span_bytes(&_sheap, &_eheap);
+}
+
+uint32_t app_ram_linker_unassigned_bytes(void)
+{
+    const uintptr_t linker_end = reinterpret_cast<uintptr_t>(&_end);
+    const uintptr_t ram_end_exclusive =
+        reinterpret_cast<uintptr_t>(&_ram_end_) + 1U;
+
+    return (ram_end_exclusive > linker_end) ?
+        static_cast<uint32_t>(ram_end_exclusive - linker_end) : 0U;
 }
 
 extern "C" void vApplicationMallocFailedHook(void)
