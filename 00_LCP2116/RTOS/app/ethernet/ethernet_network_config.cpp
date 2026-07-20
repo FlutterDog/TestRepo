@@ -9,125 +9,117 @@
 
 namespace
 {
-struct FileAliases
+struct EthernetFileSet
 {
-    const char* names[4];
-    uint8_t count;
+    const char* mac;
+    const char* ip;
+    const char* subnet;
+    const char* gateway;
 };
 
-const FileAliases ETH1_IP = { { "IP.TXT", "IP1.TXT", 0, 0 }, 2U };
-const FileAliases ETH2_IP = { { "IP2.TXT", 0, 0, 0 }, 1U };
-const FileAliases ETH1_SUBNET =
-    { { "SUBNET.TXT", "SUBNET1.TXT", 0, 0 }, 2U };
-const FileAliases ETH2_SUBNET =
-    { { "SUBNET2.TXT", 0, 0, 0 }, 1U };
-const FileAliases ETH1_GATE =
-    { { "GATE.TXT", "GATE1.TXT", "GW.TXT", "GW1.TXT" }, 4U };
-const FileAliases ETH2_GATE =
-    { { "GATE2.TXT", "GW2.TXT", 0, 0 }, 2U };
-
-SdConfigResult load_ipv4(const FileAliases& aliases,
-                         W5500IpAddress* address,
-                         const char** used_file)
+static const EthernetFileSet FILES[LCP_ETHERNET_COUNT] =
 {
-    int16_t values[5];
-    uint8_t loaded_count = 0U;
-    SdConfigResult last_result = SD_CONFIG_FILE_NOT_FOUND;
+    { "MAC.txt",  "IP.txt",  "SUBNET.txt",  "GATE.txt"  },
+    { "MAC2.txt", "IP2.txt", "SUBNET2.txt", "GATE2.txt" }
+};
 
-    if ((address == 0) || (used_file == 0))
+SdConfigResult load_bytes(const char* file_name,
+                          uint8_t expected_count,
+                          uint8_t* output)
+{
+    int16_t values[7];
+    uint8_t loaded_count = 0U;
+
+    if ((file_name == 0) || (output == 0) ||
+        (expected_count == 0U) || (expected_count > 6U))
     {
         return SD_CONFIG_INVALID_VALUE;
     }
 
-    *used_file = aliases.names[0];
+    const SdConfigResult result = sd_config_load_int16(
+        file_name,
+        values,
+        sizeof(values) / sizeof(values[0]),
+        &loaded_count);
 
-    for (uint8_t alias_index = 0U;
-         alias_index < aliases.count;
-         ++alias_index)
+    if (result != SD_CONFIG_OK)
     {
-        const char* file_name = aliases.names[alias_index];
-        last_result = sd_config_load_int16(file_name,
-                                           values,
-                                           sizeof(values) / sizeof(values[0]),
-                                           &loaded_count);
-
-        if (last_result == SD_CONFIG_FILE_NOT_FOUND)
-        {
-            continue;
-        }
-
-        *used_file = file_name;
-
-        if ((last_result != SD_CONFIG_OK) || (loaded_count != 4U))
-        {
-            return (last_result == SD_CONFIG_OK) ?
-                SD_CONFIG_INVALID_COUNT : last_result;
-        }
-
-        for (uint8_t octet = 0U; octet < 4U; ++octet)
-        {
-            const int16_t value = values[octet + 1U];
-
-            if ((value < 0) || (value > 255))
-            {
-                return SD_CONFIG_INVALID_VALUE;
-            }
-        }
-
-        for (uint8_t octet = 0U; octet < 4U; ++octet)
-        {
-            address->octet[octet] =
-                static_cast<uint8_t>(values[octet + 1U]);
-        }
-
-        return SD_CONFIG_OK;
+        return result;
     }
 
-    return last_result;
+    if (loaded_count != expected_count)
+    {
+        return SD_CONFIG_INVALID_COUNT;
+    }
+
+    for (uint8_t index = 0U; index < expected_count; ++index)
+    {
+        const int16_t value = values[index + 1U];
+
+        if ((value < 0) || (value > 255))
+        {
+            return SD_CONFIG_INVALID_VALUE;
+        }
+    }
+
+    for (uint8_t index = 0U; index < expected_count; ++index)
+    {
+        output[index] = static_cast<uint8_t>(values[index + 1U]);
+    }
+
+    return SD_CONFIG_OK;
 }
 
-void initialize_report(EthernetNetworkConfigReport& report)
+void initialize_report(EthernetNetworkConfigReport& report,
+                       const EthernetFileSet& files)
 {
+    report.mac_result = SD_CONFIG_FILE_NOT_FOUND;
     report.ip_result = SD_CONFIG_FILE_NOT_FOUND;
     report.subnet_result = SD_CONFIG_FILE_NOT_FOUND;
     report.gateway_result = SD_CONFIG_FILE_NOT_FOUND;
-    report.ip_file = "";
-    report.subnet_file = "";
-    report.gateway_file = "";
+    report.mac_file = files.mac;
+    report.ip_file = files.ip;
+    report.subnet_file = files.subnet;
+    report.gateway_file = files.gateway;
     report.any_loaded_from_sd = 0U;
 }
 
 void load_interface(W5500NetworkConfig& config,
                     EthernetNetworkConfigReport& report,
-                    const FileAliases& ip_aliases,
-                    const FileAliases& subnet_aliases,
-                    const FileAliases& gate_aliases)
+                    const EthernetFileSet& files)
 {
-    W5500IpAddress staged;
+    W5500MacAddress staged_mac;
+    W5500IpAddress staged_ip;
 
-    report.ip_result = load_ipv4(ip_aliases, &staged, &report.ip_file);
+    report.mac_result = load_bytes(files.mac, 6U, staged_mac.octet);
+
+    if (report.mac_result == SD_CONFIG_OK)
+    {
+        config.mac = staged_mac;
+        report.any_loaded_from_sd = 1U;
+    }
+
+    report.ip_result = load_bytes(files.ip, 4U, staged_ip.octet);
 
     if (report.ip_result == SD_CONFIG_OK)
     {
-        config.ip = staged;
+        config.ip = staged_ip;
         report.any_loaded_from_sd = 1U;
     }
 
-    report.subnet_result =
-        load_ipv4(subnet_aliases, &staged, &report.subnet_file);
+    report.subnet_result = load_bytes(files.subnet, 4U, staged_ip.octet);
 
     if (report.subnet_result == SD_CONFIG_OK)
     {
-        config.subnet = staged;
+        config.subnet = staged_ip;
         report.any_loaded_from_sd = 1U;
     }
 
-    report.gateway_result =
-        load_ipv4(gate_aliases, &staged, &report.gateway_file);
+    report.gateway_result = load_bytes(files.gateway, 4U, staged_ip.octet);
 
     if (report.gateway_result == SD_CONFIG_OK)
     {
-        config.gateway = staged;
+        config.gateway = staged_ip;
         report.any_loaded_from_sd = 1U;
     }
 }
@@ -145,7 +137,7 @@ void ethernet_network_config_set_defaults(
     {
         { { 0x02U, 0x4CU, 0x43U, 0x50U, 0x00U, 0x01U } },
         { { 192U, 168U, 1U, 1U } },
-        { { 192U, 168U, 1U, 254U } },
+        { { 0U, 0U, 0U, 0U } },
         { { 255U, 255U, 255U, 0U } }
     };
 
@@ -153,7 +145,7 @@ void ethernet_network_config_set_defaults(
     {
         { { 0x02U, 0x4CU, 0x43U, 0x50U, 0x00U, 0x02U } },
         { { 192U, 168U, 1U, 2U } },
-        { { 192U, 168U, 1U, 254U } },
+        { { 0U, 0U, 0U, 0U } },
         { { 255U, 255U, 255U, 0U } }
     };
 }
@@ -167,17 +159,9 @@ void ethernet_network_config_load(
         return;
     }
 
-    initialize_report(reports[LCP_ETHERNET_1]);
-    initialize_report(reports[LCP_ETHERNET_2]);
-
-    load_interface(configs[LCP_ETHERNET_1],
-                   reports[LCP_ETHERNET_1],
-                   ETH1_IP,
-                   ETH1_SUBNET,
-                   ETH1_GATE);
-    load_interface(configs[LCP_ETHERNET_2],
-                   reports[LCP_ETHERNET_2],
-                   ETH2_IP,
-                   ETH2_SUBNET,
-                   ETH2_GATE);
+    for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
+    {
+        initialize_report(reports[index], FILES[index]);
+        load_interface(configs[index], reports[index], FILES[index]);
+    }
 }
