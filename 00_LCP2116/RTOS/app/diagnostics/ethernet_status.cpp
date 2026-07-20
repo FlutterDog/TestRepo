@@ -53,18 +53,22 @@ void print_interface(LcpEthernetId ethernet_id)
 {
     const EthernetModbusInterfaceState& state =
         ethernet_modbus_service_interface(ethernet_id);
+    const uint8_t initialized = state.initialized;
+    const uint8_t version = (initialized != 0U) ?
+        w5500_lite_version(ethernet_id) : 0U;
+    const uint8_t link_up = ((initialized != 0U) &&
+                             (state.init_ok != 0U)) ?
+        w5500_lite_link_up(ethernet_id) : 0U;
 
     SerialUSB.print(lcp_ethernet_name(ethernet_id));
     SerialUSB.print(": initialized=");
-    SerialUSB.print((state.initialized != 0U) ? "yes" : "no");
+    SerialUSB.print((initialized != 0U) ? "yes" : "no");
     SerialUSB.print(", init=");
     SerialUSB.print((state.init_ok != 0U) ? "ok" : "failed");
     SerialUSB.print(", link=");
-    SerialUSB.print((state.init_ok != 0U) &&
-                    (w5500_lite_link_up(ethernet_id) != 0U) ?
-                    "up" : "down");
+    SerialUSB.print((link_up != 0U) ? "up" : "down");
     SerialUSB.print(", VERSIONR=");
-    print_hex8(w5500_lite_version(ethernet_id));
+    print_hex8(version);
     SerialUSB.print(", socket_status=");
     print_hex8(state.last_socket_status);
     SerialUSB.print(", port=");
