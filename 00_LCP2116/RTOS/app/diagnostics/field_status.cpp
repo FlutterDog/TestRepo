@@ -97,9 +97,9 @@ void field_status_print_report(void)
                     "pending" : "idle");
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("serial_config: BAUD.TXT=");
+    SerialUSB.print("serial_config: baud.TXT=");
     SerialUSB.print(field_serial_config_result_text(config_report.baud_result));
-    SerialUSB.print(", PARITY.TXT=");
+    SerialUSB.print(", Parity.TXT=");
     SerialUSB.print(field_serial_config_result_text(config_report.parity_result));
     SerialUSB.print(", any_loaded_from_sd=");
     SerialUSB.print((config_report.loaded_from_sd != 0U) ? "yes" : "no");
