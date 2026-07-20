@@ -38,32 +38,6 @@ LcpEthernetId normalize_ethernet_id(LcpEthernetId ethernet_id)
         ethernet_id : LCP_ETHERNET_1;
 }
 
-void reset_config_report(EthernetNetworkConfigReport& report,
-                         LcpEthernetId ethernet_id)
-{
-    report.mac_result = SD_CONFIG_NOT_ATTEMPTED;
-    report.ip_result = SD_CONFIG_NOT_ATTEMPTED;
-    report.subnet_result = SD_CONFIG_NOT_ATTEMPTED;
-    report.gateway_result = SD_CONFIG_NOT_ATTEMPTED;
-
-    if (ethernet_id == LCP_ETHERNET_2)
-    {
-        report.mac_file = "MAC2.txt";
-        report.ip_file = "IP2.txt";
-        report.subnet_file = "SUBNET2.txt";
-        report.gateway_file = "GATE2.txt";
-    }
-    else
-    {
-        report.mac_file = "MAC.txt";
-        report.ip_file = "IP.txt";
-        report.subnet_file = "SUBNET.txt";
-        report.gateway_file = "GATE.txt";
-    }
-
-    report.any_loaded_from_sd = 0U;
-}
-
 void update_holding_map(void)
 {
     memset(g_holding, 0, sizeof(g_holding));
@@ -267,16 +241,17 @@ void poll_interface(LcpEthernetId ethernet_id)
 void ethernet_modbus_service_init(void)
 {
     W5500NetworkConfig defaults[LCP_ETHERNET_COUNT];
+    EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT];
 
     memset(g_interfaces, 0, sizeof(g_interfaces));
     memset(g_holding, 0, sizeof(g_holding));
     ethernet_network_config_set_defaults(defaults);
+    ethernet_network_config_prepare_reports(reports, SD_CONFIG_NOT_ATTEMPTED);
 
     for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
     {
         g_interfaces[index].config = defaults[index];
-        reset_config_report(g_interfaces[index].config_report,
-                            static_cast<LcpEthernetId>(index));
+        g_interfaces[index].config_report = reports[index];
         modbus_tcp_server_init(g_interfaces[index].server);
     }
 
