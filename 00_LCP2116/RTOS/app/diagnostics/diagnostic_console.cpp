@@ -2,16 +2,15 @@
  * @file diagnostic_console.cpp
  * @brief USB service console базовой прошивки Lorentz.
  *
- * Командная строка намеренно остаётся простой и статической: команды не
- * выделяют память, не создают задачи и выполняются в контексте основной LCP
- * task. Длительные аппаратные операции должны запускаться неблокирующе, а их
- * завершение обслуживается соответствующей `*_poll()` функцией.
+ * Команды выполняются в контексте единственной прикладной LCP task. Обработчик
+ * команды не должен ожидать аппаратное событие в цикле: длительная операция
+ * запускается здесь, а завершается в соответствующей `*_poll()` функции.
  *
  * При добавлении команды:
- * 1. добавьте обработчик в execute_local_command() либо в профильный
- *    `*_status_handle_command()`;
- * 2. добавьте строку в соответствующую группу g_*_help;
- * 3. не размещайте в обработчике бесконечные ожидания или busy-wait циклы.
+ * 1. добавьте обработчик в execute_local_command() либо профильный handler;
+ * 2. добавьте запись в соответствующую группу `g_*_help`;
+ * 3. удерживайте каждую строку отчёта короче примерно 80 символов;
+ * 4. не используйте busy-wait, delay или бесконечное ожидание.
  */
 
 #include "diagnostic_console.hpp"
@@ -21,9 +20,9 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "../../platform/platform.hpp"
 #include "../../board/lcp_field_ports.hpp"
 #include "../../board/lcp_sc16is.hpp"
+#include "../../platform/platform.hpp"
 #include "../app.hpp"
 #include "../version.hpp"
 #include "../x2x/x2x_service.hpp"
@@ -40,7 +39,6 @@ namespace
 {
 constexpr uint16_t DIAGNOSTIC_COMMAND_BUFFER_SIZE = 64U;
 constexpr uint32_t DIAGNOSTIC_PERIODIC_REPORT_MS = 10000U;
-constexpr uint8_t DIAGNOSTIC_HELP_COMMAND_WIDTH = 34U;
 
 struct DiagnosticHelpEntry
 {
@@ -50,54 +48,55 @@ struct DiagnosticHelpEntry
 
 const DiagnosticHelpEntry g_core_help[] =
 {
-    { "help | ?", "show this grouped command list" },
-    { "version | ver", "show firmware version and target" },
-    { "status", "show the complete diagnostic report" },
-    { "uptime", "show raw milliseconds and human-readable uptime" },
-    { "rtos", "show RAM, heap and task stack usage with percentages" }
+    { "help | ?", "Show the grouped command list." },
+    { "version | ver", "Show firmware version and target." },
+    { "status", "Show the complete diagnostic report." },
+    { "uptime", "Show raw and human-readable uptime." },
+    { "rtos", "Show SRAM, heap and task-stack usage." }
 };
 
 const DiagnosticHelpEntry g_x2x_help[] =
 {
-    { "x2x", "show X2X configuration and module status" },
-    { "x2x reload", "validate and apply X2X.TXT" },
-    { "x2x pause", "finish the active cycle and pause polling" },
-    { "x2x resume", "resume X2X polling" },
-    { "x2x ldo SLAVE VALUE", "set the LDO1118 output register" }
+    { "x2x", "Show X2X configuration and module status." },
+    { "x2x reload", "Validate and apply X2X.TXT." },
+    { "x2x pause", "Finish the active cycle and pause polling." },
+    { "x2x resume", "Resume X2X polling." },
+    { "x2x ldo SLAVE VALUE", "Set the LDO1118 output register." }
 };
 
 const DiagnosticHelpEntry g_field_help[] =
 {
-    { "field", "show FieldSensor status for S1..S4" },
-    { "field reload", "reload baud.TXT and Parity.TXT" },
-    { "field pause", "stop starting new FieldSensor requests" },
-    { "field resume", "resume FieldSensor polling" }
+    { "field", "Show FieldSensor status for S1..S4." },
+    { "field reload", "Reload baud.TXT and Parity.TXT." },
+    { "field pause", "Stop starting new FieldSensor requests." },
+    { "field resume", "Resume FieldSensor polling." }
 };
 
 const DiagnosticHelpEntry g_ethernet_help[] =
 {
-    { "eth", "show ETH1/ETH2 Modbus TCP status and register map" },
-    { "eth reload", "reload network TXT files and reset both W5500" }
+    { "eth", "Show ETH1/ETH2 Modbus TCP status and registers." },
+    { "eth reload", "Reload network files and reset both W5500." }
 };
 
 const DiagnosticHelpEntry g_hardware_help[] =
 {
-    { "rs485", "show built-in RS-485 port ownership and errors" },
-    { "sc16is", "show external UART detection and assignment" },
-    { "sd", "show microSD and filesystem status" },
-    { "sd test", "write and read SDTEST.TXT" },
-    { "battery", "show CR2032 backup battery status" },
-    { "rtc", "show local RTC state and registers" },
-    { "rtc set YYYY-MM-DD HH:MM:SS", "start a nonblocking RTC update" },
-    { "watchdog", "show watchdog configuration and reset cause" },
-    { "watchdog feed", "restart the watchdog counter manually" },
-    { "watchdog test reset", "stop automatic feed and test reset" }
+    { "rs485", "Show built-in RS-485 ownership and errors." },
+    { "sc16is", "Show external UART detection and assignment." },
+    { "sd", "Show microSD and filesystem status." },
+    { "sd test", "Write and read SDTEST.TXT." },
+    { "battery", "Show CR2032 backup-battery status." },
+    { "time | rtc time", "Show only the current RTC date and time." },
+    { "rtc", "Show the complete local RTC report." },
+    { "rtc set YYYY-MM-DD HH:MM:SS", "Start a nonblocking RTC update." },
+    { "watchdog", "Show watchdog configuration and reset cause." },
+    { "watchdog feed", "Restart the watchdog counter manually." },
+    { "watchdog test reset", "Stop feed and test hardware reset." }
 };
 
 const DiagnosticHelpEntry g_periodic_help[] =
 {
-    { "periodic on", "print full status every 10 seconds" },
-    { "periodic off", "disable periodic full status" }
+    { "periodic on", "Print full status every 10 seconds." },
+    { "periodic off", "Disable periodic full status." }
 };
 
 char g_command_buffer[DIAGNOSTIC_COMMAND_BUFFER_SIZE];
@@ -203,20 +202,9 @@ void print_help_group(const char* title,
 
     for (size_t index = 0U; index < entry_count; ++index)
     {
-        const char* command = entries[index].command;
-        const size_t command_length = strlen(command);
-
         SerialUSB.print("  ");
-        SerialUSB.print(command);
-
-        for (size_t padding = command_length;
-             padding < DIAGNOSTIC_HELP_COMMAND_WIDTH;
-             ++padding)
-        {
-            SerialUSB.print(" ");
-        }
-
-        SerialUSB.print(" - ");
+        SerialUSB.print(entries[index].command);
+        SerialUSB.print("\r\n    ");
         SerialUSB.print(entries[index].description);
         SerialUSB.print("\r\n");
     }
@@ -270,15 +258,14 @@ void print_rs485_field_port(LcpFieldPortId port_id,
 {
     const LcpFieldPortConfig& config = lcp_field_port_config(port_id);
 
-    SerialUSB.print("  ");
     SerialUSB.print(lcp_field_port_name(port_id));
-    SerialUSB.print("  hardware=");
+    SerialUSB.print(": hardware=");
     SerialUSB.print(hardware_name);
-    SerialUSB.print(", format=");
+    SerialUSB.print(", serial=");
     SerialUSB.print(static_cast<unsigned long>(config.baudrate));
     SerialUSB.print(" ");
     SerialUSB.print(diagnostic_uart_frame_text(config.frame));
-    SerialUSB.print(", role=FieldSensor master, errors=");
+    SerialUSB.print("\r\n  owner=FieldSensor master, uart_errors=");
     SerialUSB.print(static_cast<unsigned long>(error_count));
     SerialUSB.print("\r\n");
 }
@@ -287,16 +274,18 @@ void print_rs485_status(void)
 {
     diagnostic_print_section("RS-485 PORTS");
 
-    SerialUSB.print("  X2X hardware=Serial, format=9600 8N1, owner=");
+    diagnostic_print_group("X2X physical port");
+    SerialUSB.print("hardware=Serial, serial=9600 8N1\r\nowner=");
     SerialUSB.print((x2x_service_owns_port() != 0U) ?
                     "X2X master" : "echo test");
     SerialUSB.print(", echo=");
     SerialUSB.print((rs485_echo_test_x2x_enabled() != 0U) ?
                     "enabled" : "disabled");
-    SerialUSB.print(", errors=");
+    SerialUSB.print(", uart_errors=");
     SerialUSB.print(static_cast<unsigned long>(Serial.errorCount()));
     SerialUSB.print("\r\n");
 
+    diagnostic_print_group("FieldSensor physical ports");
     print_rs485_field_port(LCP_FIELD_PORT_S2,
                            "Serial1",
                            static_cast<uint32_t>(Serial1.errorCount()));
@@ -324,18 +313,18 @@ void print_rtos_summary(void)
         (stack_total - stack_free) : 0U;
 
     diagnostic_print_section("RTOS SUMMARY");
-    SerialUSB.print("  scheduler=");
+    SerialUSB.print("scheduler=");
     SerialUSB.print((app_rtos_scheduler_running() != 0U) ?
                     "running" : "not running");
     SerialUSB.print(", tick_count=");
     SerialUSB.print(static_cast<unsigned long>(app_rtos_tick_count()));
-    SerialUSB.print("\r\n  heap_used=");
+    SerialUSB.print("\r\nheap_used=");
     SerialUSB.print(static_cast<unsigned long>(heap_used));
     SerialUSB.print("/");
     SerialUSB.print(static_cast<unsigned long>(heap_total));
     SerialUSB.print(" bytes (");
     diagnostic_print_percent(heap_used, heap_total);
-    SerialUSB.print(")\r\n  task_stack_peak_used=");
+    SerialUSB.print(")\r\ntask_stack_peak_used=");
     SerialUSB.print(static_cast<unsigned long>(stack_peak_used));
     SerialUSB.print("/");
     SerialUSB.print(static_cast<unsigned long>(stack_total));
@@ -381,7 +370,7 @@ void print_rtos_status(void)
                     "running" : "not running");
     SerialUSB.print("\r\ntick_count=");
     SerialUSB.print(static_cast<unsigned long>(app_rtos_tick_count()));
-    SerialUSB.print("\r\nallocation_model=dynamic, allocator=heap_4, task_create=xTaskCreate\r\n");
+    SerialUSB.print("\r\nallocator=heap_4, task_create=xTaskCreate\r\n");
     print_uptime_lines();
 
     diagnostic_print_group("ATSAM3X8E SRAM");
@@ -403,7 +392,7 @@ void print_rtos_status(void)
     SerialUSB.print(static_cast<unsigned long>(app_ram_startup_stack_bytes()));
     SerialUSB.print("\r\nc_heap_reserved_bytes=");
     SerialUSB.print(static_cast<unsigned long>(app_ram_c_heap_reserved_bytes()));
-    SerialUSB.print("\r\nnote=FreeRTOS heap is a static array inside .bss; do not add it to RAM twice\r\n");
+    SerialUSB.print("\r\nnote=FreeRTOS heap is already included in .bss\r\n");
 
     diagnostic_print_group("FreeRTOS heap_4");
     SerialUSB.print("total_bytes=");
@@ -453,9 +442,9 @@ void print_status(void)
     diagnostic_print_section("SYSTEM");
     print_version_lines();
     print_uptime_lines();
-    SerialUSB.print("usb_service_cdc=open\r\n");
-    SerialUSB.print("periodic_report=");
-    SerialUSB.print((g_periodic_report_enabled != 0U) ? "enabled" : "disabled");
+    SerialUSB.print("usb_service_cdc=open\r\nperiodic_report=");
+    SerialUSB.print((g_periodic_report_enabled != 0U) ?
+                    "enabled" : "disabled");
     SerialUSB.print("\r\n");
 
     print_rtos_summary();
@@ -540,8 +529,9 @@ uint8_t execute_local_command(const char* command)
     {
         g_periodic_report_enabled = 1U;
         g_last_periodic_report_ms = millis();
-        SerialUSB.print("periodic status: enabled, interval_ms=");
-        SerialUSB.print(static_cast<unsigned long>(DIAGNOSTIC_PERIODIC_REPORT_MS));
+        SerialUSB.print("periodic status: enabled\r\ninterval_ms=");
+        SerialUSB.print(static_cast<unsigned long>(
+            DIAGNOSTIC_PERIODIC_REPORT_MS));
         SerialUSB.print("\r\n");
         return 1U;
     }
@@ -566,11 +556,6 @@ void execute_command(char* command)
         return;
     }
 
-    /*
-     * Порядок важен: сначала точные локальные команды, затем профильные
-     * обработчики с аргументами. Новый subsystem-handler добавляется в этот
-     * список и должен возвращать 1 только для распознанной команды.
-     */
     if ((execute_local_command(command) != 0U) ||
         (field_status_handle_command(command) != 0U) ||
         (x2x_status_handle_command(command) != 0U) ||
@@ -617,7 +602,7 @@ void poll_usb_open_state(void)
 
     if ((usb_open != 0U) && (g_usb_was_open == 0U))
     {
-        SerialUSB.print("\r\nLCP diagnostic firmware ready. Type 'help' or '?'.\r\n");
+        SerialUSB.print("\r\nLCP firmware ready. Type 'help' or '?'.\r\n");
         g_command_length = 0U;
     }
 
@@ -664,10 +649,6 @@ void diagnostic_console_poll(void)
         return;
     }
 
-    /*
-     * Цикл ограничен фактическим количеством байтов, уже находящихся в USB RX
-     * buffer. Он не ожидает новые данные и поэтому не блокирует другие poll().
-     */
     while (SerialUSB.available() > 0)
     {
         const int value = SerialUSB.read();
