@@ -33,16 +33,29 @@ LcpEthernetId normalize_ethernet_id(LcpEthernetId ethernet_id)
         ethernet_id : LCP_ETHERNET_1;
 }
 
-void reset_config_report(EthernetNetworkConfigReport& report)
+void reset_config_report(EthernetNetworkConfigReport& report,
+                         LcpEthernetId ethernet_id)
 {
     report.mac_result = SD_CONFIG_CARD_NOT_READY;
     report.ip_result = SD_CONFIG_CARD_NOT_READY;
     report.subnet_result = SD_CONFIG_CARD_NOT_READY;
     report.gateway_result = SD_CONFIG_CARD_NOT_READY;
-    report.mac_file = "MAC.txt";
-    report.ip_file = "IP.txt";
-    report.subnet_file = "SUBNET.txt";
-    report.gateway_file = "GATE.txt";
+
+    if (ethernet_id == LCP_ETHERNET_2)
+    {
+        report.mac_file = "MAC2.txt";
+        report.ip_file = "IP2.txt";
+        report.subnet_file = "SUBNET2.txt";
+        report.gateway_file = "GATE2.txt";
+    }
+    else
+    {
+        report.mac_file = "MAC.txt";
+        report.ip_file = "IP.txt";
+        report.subnet_file = "SUBNET.txt";
+        report.gateway_file = "GATE.txt";
+    }
+
     report.any_loaded_from_sd = 0U;
 }
 
@@ -123,7 +136,8 @@ void apply_configuration(void)
 
     for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
     {
-        reset_config_report(reports[index]);
+        reset_config_report(reports[index],
+                            static_cast<LcpEthernetId>(index));
     }
 
     if (lcp_sd_storage_ready() != 0U)
@@ -231,7 +245,8 @@ void ethernet_modbus_service_init(void)
     for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
     {
         g_interfaces[index].config = defaults[index];
-        reset_config_report(g_interfaces[index].config_report);
+        reset_config_report(g_interfaces[index].config_report,
+                            static_cast<LcpEthernetId>(index));
         modbus_tcp_server_init(g_interfaces[index].server);
     }
 
