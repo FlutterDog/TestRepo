@@ -23,6 +23,8 @@ static const uint8_t SC16IS_REG_DLL = 0x00U;
 static const uint8_t SC16IS_REG_DLH = 0x01U;
 
 static const uint8_t SC16IS_LCR_8N1 = 0x03U;
+static const uint8_t SC16IS_LCR_8O1 = 0x0BU;
+static const uint8_t SC16IS_LCR_8E1 = 0x1BU;
 static const uint8_t SC16IS_LCR_ENABLE_DIVISOR = 0x80U;
 
 static const uint8_t SC16IS_FCR_ENABLE_FIFO = 0x01U;
@@ -44,9 +46,13 @@ static uint8_t sc16is_channel_bits(Sc16isChannel channel)
     return (channel == SC16IS_CHANNEL_B) ? 0x02U : 0x00U;
 }
 
-static uint8_t sc16is_address(uint8_t reg, Sc16isChannel channel, uint8_t read_flag)
+static uint8_t sc16is_address(uint8_t reg,
+                               Sc16isChannel channel,
+                               uint8_t read_flag)
 {
-    return static_cast<uint8_t>((reg << 3U) | sc16is_channel_bits(channel) | read_flag);
+    return static_cast<uint8_t>((reg << 3U) |
+                                sc16is_channel_bits(channel) |
+                                read_flag);
 }
 
 static uint8_t sc16is_transfer(uint8_t value)
@@ -64,7 +70,10 @@ static void sc16is_deselect(uint32_t chip_select)
     digitalWrite(chip_select, HIGH);
 }
 
-static void sc16is_write_register(uint32_t chip_select, Sc16isChannel channel, uint8_t reg, uint8_t value)
+static void sc16is_write_register(uint32_t chip_select,
+                                   Sc16isChannel channel,
+                                   uint8_t reg,
+                                   uint8_t value)
 {
     sc16is_select(chip_select);
     (void)sc16is_transfer(sc16is_address(reg, channel, SC16IS_SPI_WRITE));
@@ -72,14 +81,31 @@ static void sc16is_write_register(uint32_t chip_select, Sc16isChannel channel, u
     sc16is_deselect(chip_select);
 }
 
-static uint8_t sc16is_read_register(uint32_t chip_select, Sc16isChannel channel, uint8_t reg)
+static uint8_t sc16is_read_register(uint32_t chip_select,
+                                     Sc16isChannel channel,
+                                     uint8_t reg)
 {
     sc16is_select(chip_select);
     (void)sc16is_transfer(sc16is_address(reg, channel, SC16IS_SPI_READ));
     const uint8_t value = sc16is_transfer(0xFFU);
     sc16is_deselect(chip_select);
-
     return value;
+}
+
+static uint8_t sc16is_lcr_for_frame(HalUartFrame frame)
+{
+    switch (frame)
+    {
+        case HAL_UART_FRAME_8O1:
+            return SC16IS_LCR_8O1;
+
+        case HAL_UART_FRAME_8E1:
+            return SC16IS_LCR_8E1;
+
+        case HAL_UART_FRAME_8N1:
+        default:
+            return SC16IS_LCR_8N1;
+    }
 }
 
 void sc16is_init_bus(void)
@@ -87,18 +113,22 @@ void sc16is_init_bus(void)
     SPI.begin();
 }
 
-Sc16isProbeResult sc16is_probe_channel(uint32_t chip_select, Sc16isChannel channel)
+Sc16isProbeResult sc16is_probe_channel(uint32_t chip_select,
+                                       Sc16isChannel channel)
 {
     static const uint8_t first = 0x55U;
     static const uint8_t second = 0xAAU;
 
     sc16is_write_register(chip_select, channel, SC16IS_REG_SPR, first);
-    const uint8_t first_read = sc16is_read_register(chip_select, channel, SC16IS_REG_SPR);
+    const uint8_t first_read =
+        sc16is_read_register(chip_select, channel, SC16IS_REG_SPR);
 
     sc16is_write_register(chip_select, channel, SC16IS_REG_SPR, second);
-    const uint8_t second_read = sc16is_read_register(chip_select, channel, SC16IS_REG_SPR);
+    const uint8_t second_read =
+        sc16is_read_register(chip_select, channel, SC16IS_REG_SPR);
 
-    return ((first_read == first) && (second_read == second)) ? SC16IS_PROBE_PRESENT : SC16IS_PROBE_ABSENT;
+    return ((first_read == first) && (second_read == second)) ?
+        SC16IS_PROBE_PRESENT : SC16IS_PROBE_ABSENT;
 }
 
 uint8_t sc16is_probe_dual_channel(uint32_t chip_select)
@@ -106,21 +136,35 @@ uint8_t sc16is_probe_dual_channel(uint32_t chip_select)
     static const uint8_t value_a = 0x11U;
     static const uint8_t value_b = 0x22U;
 
-    if (sc16is_probe_channel(chip_select, SC16IS_CHANNEL_A) != SC16IS_PROBE_PRESENT)
+    if (sc16is_probe_channel(chip_select, SC16IS_CHANNEL_A) !=
+        SC16IS_PROBE_PRESENT)
     {
         return 0U;
     }
 
-    sc16is_write_register(chip_select, SC16IS_CHANNEL_A, SC16IS_REG_SPR, value_a);
-    sc16is_write_register(chip_select, SC16IS_CHANNEL_B, SC16IS_REG_SPR, value_b);
+    sc16is_write_register(chip_select,
+                           SC16IS_CHANNEL_A,
+                           SC16IS_REG_SPR,
+                           value_a);
+    sc16is_write_register(chip_select,
+                           SC16IS_CHANNEL_B,
+                           SC16IS_REG_SPR,
+                           value_b);
 
-    const uint8_t read_a = sc16is_read_register(chip_select, SC16IS_CHANNEL_A, SC16IS_REG_SPR);
-    const uint8_t read_b = sc16is_read_register(chip_select, SC16IS_CHANNEL_B, SC16IS_REG_SPR);
+    const uint8_t read_a = sc16is_read_register(chip_select,
+                                                 SC16IS_CHANNEL_A,
+                                                 SC16IS_REG_SPR);
+    const uint8_t read_b = sc16is_read_register(chip_select,
+                                                 SC16IS_CHANNEL_B,
+                                                 SC16IS_REG_SPR);
 
     return ((read_a == value_a) && (read_b == value_b)) ? 1U : 0U;
 }
 
-void sc16is_begin(uint32_t chip_select, Sc16isChannel channel, uint32_t baudrate)
+void sc16is_begin(uint32_t chip_select,
+                  Sc16isChannel channel,
+                  uint32_t baudrate,
+                  HalUartFrame frame)
 {
     if (baudrate == 0U)
     {
@@ -130,15 +174,35 @@ void sc16is_begin(uint32_t chip_select, Sc16isChannel channel, uint32_t baudrate
     const uint32_t divisor = SC16IS_XTAL_HZ / (baudrate * 16UL);
 
     sc16is_write_register(chip_select, channel, SC16IS_REG_IER, 0x00U);
-    sc16is_write_register(chip_select, channel, SC16IS_REG_LCR, SC16IS_LCR_ENABLE_DIVISOR);
-    sc16is_write_register(chip_select, channel, SC16IS_REG_DLL, static_cast<uint8_t>(divisor & 0xFFU));
-    sc16is_write_register(chip_select, channel, SC16IS_REG_DLH, static_cast<uint8_t>((divisor >> 8U) & 0xFFU));
-    sc16is_write_register(chip_select, channel, SC16IS_REG_LCR, SC16IS_LCR_8N1);
-    sc16is_write_register(chip_select, channel, SC16IS_REG_FCR,
-                          SC16IS_FCR_ENABLE_FIFO | SC16IS_FCR_RX_FIFO_RESET | SC16IS_FCR_TX_FIFO_RESET);
+    sc16is_write_register(chip_select,
+                           channel,
+                           SC16IS_REG_LCR,
+                           SC16IS_LCR_ENABLE_DIVISOR);
+    sc16is_write_register(chip_select,
+                           channel,
+                           SC16IS_REG_DLL,
+                           static_cast<uint8_t>(divisor & 0xFFU));
+    sc16is_write_register(chip_select,
+                           channel,
+                           SC16IS_REG_DLH,
+                           static_cast<uint8_t>((divisor >> 8U) & 0xFFU));
+    sc16is_write_register(chip_select,
+                           channel,
+                           SC16IS_REG_LCR,
+                           sc16is_lcr_for_frame(frame));
+    sc16is_write_register(chip_select,
+                           channel,
+                           SC16IS_REG_FCR,
+                           SC16IS_FCR_ENABLE_FIFO |
+                           SC16IS_FCR_RX_FIFO_RESET |
+                           SC16IS_FCR_TX_FIFO_RESET);
     sc16is_write_register(chip_select, channel, SC16IS_REG_MCR, 0x00U);
-    sc16is_write_register(chip_select, channel, SC16IS_REG_EFCR,
-                          SC16IS_EFCR_RS485_ENABLE_RTS | SC16IS_EFCR_RTS_INVERT | SC16IS_EFCR_RS485_MODE);
+    sc16is_write_register(chip_select,
+                           channel,
+                           SC16IS_REG_EFCR,
+                           SC16IS_EFCR_RS485_ENABLE_RTS |
+                           SC16IS_EFCR_RTS_INVERT |
+                           SC16IS_EFCR_RS485_MODE);
 }
 
 uint8_t sc16is_available(uint32_t chip_select, Sc16isChannel channel)
@@ -148,7 +212,8 @@ uint8_t sc16is_available(uint32_t chip_select, Sc16isChannel channel)
 
 int sc16is_read(uint32_t chip_select, Sc16isChannel channel)
 {
-    if ((sc16is_read_register(chip_select, channel, SC16IS_REG_LSR) & SC16IS_LSR_DATA_READY) == 0U)
+    if ((sc16is_read_register(chip_select, channel, SC16IS_REG_LSR) &
+         SC16IS_LSR_DATA_READY) == 0U)
     {
         return -1;
     }
@@ -161,9 +226,12 @@ uint8_t sc16is_tx_available(uint32_t chip_select, Sc16isChannel channel)
     return sc16is_read_register(chip_select, channel, SC16IS_REG_TXLVL);
 }
 
-size_t sc16is_write(uint32_t chip_select, Sc16isChannel channel, uint8_t value)
+size_t sc16is_write(uint32_t chip_select,
+                    Sc16isChannel channel,
+                    uint8_t value)
 {
-    if ((sc16is_read_register(chip_select, channel, SC16IS_REG_LSR) & SC16IS_LSR_THR_EMPTY) == 0U)
+    if ((sc16is_read_register(chip_select, channel, SC16IS_REG_LSR) &
+         SC16IS_LSR_THR_EMPTY) == 0U)
     {
         return 0U;
     }
@@ -172,7 +240,10 @@ size_t sc16is_write(uint32_t chip_select, Sc16isChannel channel, uint8_t value)
     return 1U;
 }
 
-size_t sc16is_write_buffer(uint32_t chip_select, Sc16isChannel channel, const uint8_t* buffer, size_t length)
+size_t sc16is_write_buffer(uint32_t chip_select,
+                           Sc16isChannel channel,
+                           const uint8_t* buffer,
+                           size_t length)
 {
     if (buffer == 0)
     {
@@ -192,7 +263,10 @@ size_t sc16is_write_buffer(uint32_t chip_select, Sc16isChannel channel, const ui
 
         while ((available > 0U) && (written < length))
         {
-            sc16is_write_register(chip_select, channel, SC16IS_REG_THR, buffer[written]);
+            sc16is_write_register(chip_select,
+                                   channel,
+                                   SC16IS_REG_THR,
+                                   buffer[written]);
             ++written;
             --available;
         }
