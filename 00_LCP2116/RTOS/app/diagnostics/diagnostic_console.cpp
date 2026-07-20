@@ -176,20 +176,6 @@ uint8_t command_equals(const char* command, const char* expected)
             (strcmp(command, expected) == 0)) ? 1U : 0U;
 }
 
-const char* frame_text(HalUartFrame frame)
-{
-    switch (frame)
-    {
-        case HAL_UART_FRAME_8O1:
-            return "8O1";
-        case HAL_UART_FRAME_8E1:
-            return "8E1";
-        case HAL_UART_FRAME_8N1:
-        default:
-            return "8N1";
-    }
-}
-
 void print_version_lines(void)
 {
     SerialUSB.print("name=");
@@ -291,7 +277,7 @@ void print_rs485_field_port(LcpFieldPortId port_id,
     SerialUSB.print(", format=");
     SerialUSB.print(static_cast<unsigned long>(config.baudrate));
     SerialUSB.print(" ");
-    SerialUSB.print(frame_text(config.frame));
+    SerialUSB.print(diagnostic_uart_frame_text(config.frame));
     SerialUSB.print(", role=FieldSensor master, errors=");
     SerialUSB.print(static_cast<unsigned long>(error_count));
     SerialUSB.print("\r\n");
