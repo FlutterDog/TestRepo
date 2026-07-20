@@ -10,6 +10,6 @@
 #pragma once
 
 #define LCP_DIAGNOSTIC_SOFTWARE_NAME "LCP Basic Diagnostic Firmware"
-#define LCP_DIAGNOSTIC_SOFTWARE_VERSION "0.18.4"
-#define LCP_DIAGNOSTIC_SOFTWARE_STAGE "Stage 18E: Final console polish"
+#define LCP_DIAGNOSTIC_SOFTWARE_VERSION "0.18.5"
+#define LCP_DIAGNOSTIC_SOFTWARE_STAGE "Stage 18F: Console spacing review"
 #define LCP_DIAGNOSTIC_SOFTWARE_TARGET "ATSAM3X8E"
