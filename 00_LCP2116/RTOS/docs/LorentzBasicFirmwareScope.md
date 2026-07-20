@@ -144,7 +144,7 @@ PNX Studio
 
 ## Оставшиеся действия перед релизом
 
-1. Собрать Debug и Release Stage 18A.
+1. Собрать Debug и Release для `0.18.0 / Stage 18A: Serial config and Modbus TCP`.
 2. Проверить загрузку BAUD/PARITY и фактические параметры S1–S4.
 3. Проверить каждый FieldSensor-порт отдельно и совместно.
 4. Проверить timeout, потерю и автоматическое восстановление.
