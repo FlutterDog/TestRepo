@@ -18,6 +18,9 @@ static const uint8_t MODBUS_EXCEPTION_ILLEGAL_ADDRESS = 0x02U;
 static const uint8_t MODBUS_EXCEPTION_ILLEGAL_VALUE = 0x03U;
 static const uint16_t MODBUS_READ_REQUEST_LENGTH = 8U;
 static const uint16_t MODBUS_CRC_LENGTH = 2U;
+static const uint16_t MODBUS_READ_RESPONSE_FIXED_LENGTH = 5U;
+static const uint16_t MODBUS_MAX_RESPONSE_REGISTERS =
+    (MODBUS_RTU_SLAVE_TX_CAPACITY - MODBUS_READ_RESPONSE_FIXED_LENGTH) / 2U;
 
 uint8_t transport_valid(const ModbusRtuTransport* transport)
 {
@@ -136,9 +139,7 @@ void process_request(ModbusRtuSlave& slave)
         return;
     }
 
-    const uint16_t response_length = 5U + (register_count * 2U);
-
-    if (response_length > MODBUS_RTU_SLAVE_TX_CAPACITY)
+    if (register_count > MODBUS_MAX_RESPONSE_REGISTERS)
     {
         ++slave.error_count;
         send_exception(slave,
