@@ -4,7 +4,6 @@
  */
 
 #include "field_sensor_service.hpp"
-
 #include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
 #include "../../platform/platform.hpp"
 
@@ -12,19 +11,18 @@
 
 namespace
 {
-static const uint8_t FIELD_SENSOR_REGISTER_COUNT = 2U;
-static const uint8_t FIELD_SENSOR_CONNECTION_LOSS_THRESHOLD = 5U;
-static const uint32_t FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS = 300U;
-static const uint32_t FIELD_SENSOR_DEFAULT_TIMEOUT_MS = 500U;
-static const uint32_t FIELD_SENSOR_MODBUS_INTERFRAME_GAP_MS = 5U;
-static const uint32_t FIELD_SENSOR_CONFIG_WAIT_MS = 2000U;
+constexpr uint8_t FIELD_SENSOR_CONNECTION_LOSS_THRESHOLD = 5U;
+constexpr uint32_t FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS = 300U;
+constexpr uint32_t FIELD_SENSOR_DEFAULT_TIMEOUT_MS = 500U;
+constexpr uint32_t FIELD_SENSOR_MODBUS_INTERFRAME_GAP_MS = 5U;
+constexpr uint32_t FIELD_SENSOR_CONFIG_WAIT_MS = 2000U;
 
 FieldSensorConfig g_configs[LCP_FIELD_PORT_COUNT];
 FieldSensorPortState g_ports[LCP_FIELD_PORT_COUNT];
 FieldSerialConfigReport g_serial_config_report =
 {
-    FIELD_SERIAL_CONFIG_NOT_ATTEMPTED,
-    FIELD_SERIAL_CONFIG_NOT_ATTEMPTED,
+    SD_CONFIG_NOT_ATTEMPTED,
+    SD_CONFIG_NOT_ATTEMPTED,
     0U
 };
 uint8_t g_paused = 0U;
@@ -125,8 +123,8 @@ void apply_sd_serial_config(void)
 
 void finish_config_wait_with_defaults(void)
 {
-    g_serial_config_report.baud_result = FIELD_SERIAL_CONFIG_CARD_NOT_READY;
-    g_serial_config_report.parity_result = FIELD_SERIAL_CONFIG_CARD_NOT_READY;
+    g_serial_config_report.baud_result = SD_CONFIG_CARD_NOT_READY;
+    g_serial_config_report.parity_result = SD_CONFIG_CARD_NOT_READY;
     g_serial_config_report.loaded_from_sd = 0U;
     g_config_reload_pending = 0U;
 }
