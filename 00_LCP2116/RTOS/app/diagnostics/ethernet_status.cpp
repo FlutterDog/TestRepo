@@ -13,6 +13,7 @@
 
 #include "../ethernet/ethernet_modbus_service.hpp"
 #include "../../board/lcp_ethernet.hpp"
+#include "../../board/lcp_field_ports.hpp"
 #include "../../hal/w5500_lite.hpp"
 #include "../../platform/platform.hpp"
 
