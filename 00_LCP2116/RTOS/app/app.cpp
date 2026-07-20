@@ -2,8 +2,8 @@
  * @file app.cpp
  * @brief Базовая прошивка Lorentz под управлением FreeRTOS.
  *
- * Приложение обслуживает X2X, четыре демонстрационных FieldSensor master,
- * два Modbus TCP server, microSD, RTC, watchdog и USB service console.
+ * Приложение обслуживает X2X, четыре FieldSensor master, два Modbus TCP server,
+ * microSD, RTC, watchdog и USB service console в одной прикладной задаче.
  */
 
 #include "app.hpp"
@@ -58,19 +58,35 @@ uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
         static_cast<uint32_t>(end_address - begin_address) : 0U;
 }
 
+/**
+ * @brief Останавливает выполнение после невосстановимой RTOS-ошибки.
+ *
+ * Это единственный намеренный fail-stop в приложении. Interrupts запрещаются,
+ * task scheduling прекращается. После штатного setup активный watchdog должен
+ * перезапустить MCU; до запуска watchdog контроллер останется остановленным для
+ * отладки. Функция не используется для обычных timeout периферии.
+ */
+__attribute__((noreturn)) void fatal_stop(void)
+{
+    taskDISABLE_INTERRUPTS();
+
+    for (;;)
+    {
+    }
+}
+
 void lcp_task(void *argument)
 {
     (void)argument;
     setup();
 
+    /*
+     * Это штатный бесконечный lifecycle FreeRTOS-задачи. Каждый проход вызывает
+     * только неблокирующие poll-функции, после чего отдаёт CPU минимум на 1 tick.
+     */
     for (;;)
     {
         loop();
-
-        /*
-         * Все baseline-сервисы используют неблокирующие poll-функции внутри
-         * одной задачи. Один тик освобождает процессор для idle-задачи.
-         */
         vTaskDelay(pdMS_TO_TICKS(1U));
     }
 }
@@ -90,23 +106,19 @@ void setup(void)
     SPI.begin();
 
     /*
-     * Диагностические echo-сервисы выполняют обнаружение внешних UART.
-     * После запуска FieldSensor линии S1..S4 передаются Modbus RTU master.
+     * Echo остаётся только на реально свободных линиях: UART0/X2X до появления
+     * модулей и внешние PC/HMI. S1–S4 сразу принадлежат FieldSensor service.
      */
     rs485_echo_test_init();
     sc16is_echo_test_init();
 
     /*
      * microSD монтируется асинхронно. FieldSensor и Ethernet сначала получают
-     * безопасные значения по умолчанию, затем применяют TXT-файлы, когда FAT
-     * становится доступной.
+     * безопасные defaults, затем применяют TXT-файлы после готовности FAT.
      */
     sd_card_test_init();
     field_sensor_service_init();
     ethernet_modbus_service_init();
-
-    rs485_echo_test_set_field_ports_enabled(0U);
-    sc16is_echo_test_set_s1_enabled(0U);
 
     x2x_service_init();
     battery_status_init();
@@ -129,21 +141,18 @@ void loop(void)
         digitalWrite(PLC_OK_PIN, led_state);
     }
 
-    /*
-     * Сначала обслуживается microSD, затем сервисы, которые могут применить
-     * конфигурационные файлы после успешного монтирования.
-     */
+    /* Сначала FAT, затем services, которые могут применить SD-конфигурацию. */
     sd_card_test_poll();
     x2x_service_poll();
     field_sensor_service_poll();
     ethernet_modbus_service_poll();
 
-    /* UART0 может принадлежать либо X2X master, либо диагностическому echo. */
+    /* UART0 принадлежит либо X2X master, либо fallback echo, но не обоим. */
     rs485_echo_test_set_x2x_enabled(
         (x2x_service_owns_port() == 0U) ? 1U : 0U);
     rs485_echo_test_poll();
 
-    /* PC/HMI SC16IS echo остаётся; S1 отключён в пользу FieldSensor. */
+    /* SC16IS echo обслуживает только постоянно диагностические PC/HMI. */
     sc16is_echo_test_poll();
 
     battery_status_poll();
@@ -162,14 +171,16 @@ void app_rtos_start(void)
                                                &g_lcp_task_handle);
 
     configASSERT(task_result == pdPASS);
+
+    if (task_result != pdPASS)
+    {
+        fatal_stop();
+    }
+
     vTaskStartScheduler();
 
-    /* Планировщик возвращается только при ошибке запуска. */
-    taskDISABLE_INTERRUPTS();
-
-    for (;;)
-    {
-    }
+    /* Scheduler возвращается только при ошибке запуска, например нехватке heap. */
+    fatal_stop();
 }
 
 uint8_t app_rtos_scheduler_running(void)
@@ -258,11 +269,7 @@ uint32_t app_ram_linker_unassigned_bytes(void)
 
 extern "C" void vApplicationMallocFailedHook(void)
 {
-    taskDISABLE_INTERRUPTS();
-
-    for (;;)
-    {
-    }
+    fatal_stop();
 }
 
 extern "C" void vApplicationStackOverflowHook(TaskHandle_t task,
@@ -270,9 +277,5 @@ extern "C" void vApplicationStackOverflowHook(TaskHandle_t task,
 {
     (void)task;
     (void)task_name;
-    taskDISABLE_INTERRUPTS();
-
-    for (;;)
-    {
-    }
+    fatal_stop();
 }
