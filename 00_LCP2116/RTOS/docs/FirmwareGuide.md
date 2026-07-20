@@ -1,70 +1,74 @@
 # LCP Basic Firmware — руководство пользователя и разработчика
 
-## 1. Назначение документа
+## Содержание
 
-Этот документ описывает практическую работу с базовой прошивкой контроллера LCP2116:
-
-- сборку и запуск проекта;
-- подготовку microSD;
-- работу с USB service console;
-- диагностику RTOS, microSD, RTC, watchdog, RS-485, X2X и Ethernet;
-- подключение внешних Modbus RTU-приборов к S1–S4;
-- чтение данных через Modbus TCP;
-- добавление нового X2X-модуля;
-- разработку неблокирующего драйвера;
-- расширение FieldSensor и Ethernet-карты.
-
-Документ рассчитан на инженера, который получил исходный проект и должен:
-
-1. собрать и проверить базовую прошивку;
-2. понять, где находится каждая подсистема;
-3. добавить новый модуль или прибор без переработки всей архитектуры.
-
-Doxygen-комментарии описывают отдельные функции и структуры. Этот файл объясняет общий порядок действий и связи между файлами.
+1. [Назначение прошивки](#1-назначение-прошивки)
+2. [Архитектура проекта](#2-архитектура-проекта)
+3. [Сборка и запуск](#3-сборка-и-запуск)
+4. [Подготовка microSD](#4-подготовка-microsd)
+5. [USB service console](#5-usb-service-console)
+6. [Команды и диагностика](#6-команды-и-диагностика)
+7. [FieldSensor S1–S4](#7-fieldsensor-s1s4)
+8. [Подключение другого Modbus RTU-прибора](#8-подключение-другого-modbus-rtu-прибора)
+9. [X2X](#9-x2x)
+10. [Добавление нового X2X-модуля](#10-добавление-нового-x2x-модуля)
+11. [Ethernet и Modbus TCP](#11-ethernet-и-modbus-tcp)
+12. [Добавление console-команды](#12-добавление-console-команды)
+13. [Типовые неисправности](#13-типовые-неисправности)
+14. [Правила разработки](#14-правила-разработки)
+15. [Release checklist](#15-release-checklist)
 
 ---
 
-## 2. Область действия базовой прошивки
+## 1. Назначение прошивки
 
-Текущая базовая прошивка содержит:
+`LCP Basic Diagnostic Firmware` — базовая прошивка контроллера LCP2116. Она предназначена для:
+
+- проверки аппаратной части контроллера;
+- работы с внутренней шиной X2X;
+- опроса внешних Modbus RTU-приборов через S1–S4;
+- публикации данных через два Ethernet-интерфейса;
+- диагностики microSD, RTC, watchdog, UART и памяти;
+- использования как основы для прикладного проекта.
+
+В baseline входят:
 
 - FreeRTOS;
-- одну основную прикладную задачу LCP;
-- внутреннюю шину X2X на UART0;
+- одна основная прикладная задача LCP;
+- X2X master на UART0;
 - четыре независимых Modbus RTU master на S1–S4;
-- два независимых W5500;
-- два Modbus TCP server на порту 502;
-- microSD/FAT;
+- два W5500 и два Modbus TCP server;
 - USB CDC service console;
-- локальный RTC;
+- microSD/FAT;
+- RTC;
 - hardware watchdog;
-- аппаратную и программную диагностику.
+- диагностические команды.
 
 В baseline не входят:
 
-- прикладная PLC-логика конкретной установки;
 - PNX Studio;
+- прикладная PLC-логика установки;
 - IEC 60870-5-104;
-- база произвольных внешних приборов;
-- логика операторской панели;
-- автоматическая маршрутизация каналов из `EIA.TXT`.
+- операторская панель;
+- универсальная база внешних приборов;
+- автоматическое применение `EIA.TXT`.
 
-Baseline — это рабочая основа и набор примеров. Прикладные функции добавляются поверх существующих service, protocol, board и HAL-слоёв.
+Doxygen-комментарии объясняют отдельные функции и структуры. Этот документ описывает общий рабочий процесс и точки расширения.
 
 ---
 
-## 3. Архитектура проекта
+## 2. Архитектура проекта
 
-Основная структура:
+### 2.1 Поток выполнения
 
 ```text
 main.cpp
   -> app_rtos_start()
-      -> LCP FreeRTOS task
+      -> одна FreeRTOS task LCP
           -> setup
           -> постоянный loop
-              -> microSD
-              -> X2X
+              -> microSD service
+              -> X2X service
               -> FieldSensor S1..S4
               -> Ethernet ETH1/ETH2
               -> RTC
@@ -72,53 +76,57 @@ main.cpp
               -> USB console
 ```
 
-Каталоги:
+Все прикладные service работают неблокирующе внутри одной задачи. Поэтому любая функция, которая долго ждёт аппаратное событие, задерживает остальные подсистемы.
+
+### 2.2 Каталоги
 
 ```text
 app/
     прикладные service, runtime-состояния и диагностика
 
 board/
-    привязка логических интерфейсов к конкретной плате LCP2116
+    привязка логических интерфейсов к плате LCP2116
 
 hal/
-    низкоуровневая работа ATSAM3X8E, SC16IS7xx и W5500
+    ATSAM3X8E, SC16IS7xx, W5500 и другая низкоуровневая периферия
 
 protocol/
-    независимые protocol engine Modbus RTU и Modbus TCP
+    универсальные Modbus RTU и Modbus TCP engine
 
 platform/
-    совместимые Serial, SPI, GPIO, millis и другие базовые функции
+    Serial, SPI, GPIO, millis и совместимые platform-функции
 
 libs/
-    отдельные reusable-библиотеки, например microSD storage
+    отдельные reusable-библиотеки
 
 sd_card/
-    штатный комплект конфигурационных файлов для копирования на microSD
+    штатные конфигурационные файлы для microSD
 
 docs/
-    руководства, отчёты проверки и описания подсистем
+    эксплуатационные и разработческие документы
 ```
 
-### Главное архитектурное правило
+### 2.3 Владение интерфейсами
 
 Один физический интерфейс должен иметь одного владельца.
 
-Примеры:
-
 ```text
-UART0       -> X2X master либо fallback echo при пустой X2X-конфигурации
+UART0       -> X2X master
+                либо fallback echo при пустой X2X-конфигурации
+
 S1..S4      -> FieldSensor Modbus RTU master
+
 ETH1        -> отдельный Modbus TCP server
 ETH2        -> отдельный Modbus TCP server
-PC/HMI UART -> diagnostic echo до появления реального протокола
+
+PC/HMI UART -> diagnostic echo до добавления реального протокола
 ```
 
 Нельзя одновременно запускать два protocol engine на одном half-duplex UART.
 
 ---
 
-## 4. Сборка проекта
+## 3. Сборка и запуск
 
 Проект Microchip Studio:
 
@@ -126,28 +134,25 @@ PC/HMI UART -> diagnostic echo до появления реального про
 00_LCP2116/RTOS/LCP_Basic.cppproj
 ```
 
-Целевая микросхема:
+Target:
 
 ```text
 ATSAM3X8E
-Cortex-M3
+ARM Cortex-M3
 ```
 
 Рекомендуемый порядок:
 
-1. открыть `LCP_Basic.cppproj` в Microchip Studio;
-2. выбрать `Debug` и выполнить Build;
-3. выбрать `Release` и выполнить Build;
-4. проверить отсутствие ошибок компиляции и линковки;
-5. проверить итоговый размер Flash и SRAM;
+1. открыть `LCP_Basic.cppproj`;
+2. собрать `Debug`;
+3. собрать `Release`;
+4. проверить Build Output;
+5. проверить Flash и SRAM;
 6. прошить Release-бинарник;
-7. выполнить базовый console-test.
+7. открыть USB CDC console;
+8. выполнить минимальный тест.
 
-Для поставки используется Release-конфигурация.
-
-После изменения состава исходников новый `.cpp` необходимо добавить в `LCP_Basic.cppproj`. Заголовки, подключённые через `#include`, компилируются автоматически, но их желательно также добавить в дерево проекта для удобства навигации.
-
-### Что проверить в Build Output
+Проверить в Build Output:
 
 ```text
 Build succeeded
@@ -157,19 +162,21 @@ Build succeeded
 Также зафиксировать:
 
 ```text
+warnings
 text / Flash
 .data
 .bss / SRAM
-warnings
 ```
 
-Стандартное сообщение Atmel Studio о приблизительной оценке memory usage не является warning исходного кода.
+Стандартное предупреждение Atmel Studio о приблизительной оценке memory usage не является warning исходного кода.
+
+После добавления нового `.cpp` его необходимо включить в `LCP_Basic.cppproj` через Microchip Studio либо вручную.
 
 ---
 
-## 5. Подготовка microSD
+## 4. Подготовка microSD
 
-Поддерживается FAT16/FAT32. Штатные образцы находятся в:
+Поддерживается FAT16/FAT32. Примеры находятся в:
 
 ```text
 00_LCP2116/RTOS/sd_card/
@@ -177,14 +184,14 @@ warnings
 
 Файлы копируются в корень карты.
 
-### 5.1 FieldSensor
+### 4.1 FieldSensor
 
 ```text
 baud.TXT
 Parity.TXT
 ```
 
-### 5.2 Ethernet
+### 4.2 Ethernet
 
 ETH1:
 
@@ -204,25 +211,25 @@ SUBNET2.txt
 GATE2.txt
 ```
 
-### 5.3 X2X
+### 4.3 X2X
 
 ```text
 X2X.TXT
 ```
 
-`X2X.TXT` создаётся в соответствии с фактической цепочкой модулей.
-
-### 5.4 Зарезервированный файл
+### 4.4 Зарезервированный файл
 
 ```text
 EIA.TXT
 ```
 
-Файл сохраняется для совместимости с прикладными проектами, но базовая прошивка его не применяет.
+Baseline сохраняет его в комплекте, но runtime его не применяет.
 
-### 5.5 Строгое соблюдение регистра имени
+### 4.5 Точные имена
 
-Имена файлов канонические. Например:
+Имена файлов являются частью внешнего формата. Регистр символов важен.
+
+Правильно:
 
 ```text
 baud.TXT
@@ -230,7 +237,7 @@ Parity.TXT
 IP.txt
 ```
 
-Не следует создавать варианты:
+Неправильно:
 
 ```text
 BAUD.TXT
@@ -242,18 +249,11 @@ IP.TXT
 
 ---
 
-## 6. Подключение к USB service console
+## 5. USB service console
 
-Прошивка создаёт USB CDC-порт.
+Прошивка создаёт USB CDC-порт. Можно использовать PuTTY, Tera Term, RealTerm или другой serial terminal.
 
-Подойдут:
-
-- PuTTY;
-- Tera Term;
-- RealTerm;
-- любой serial terminal.
-
-Рекомендуемая настройка терминала:
+Рекомендуемые настройки:
 
 ```text
 115200
@@ -263,19 +263,47 @@ no parity
 no flow control
 ```
 
-Для USB CDC номинальный baudrate не влияет на физическую скорость обмена, но значение 115200 удобно использовать как стандартное.
+Для USB CDC выбранный baudrate не определяет физическую скорость, но 115200 удобно использовать как стандарт.
 
-После открытия порта должно появиться сообщение:
+После подключения:
 
 ```text
 LCP firmware ready. Type 'help' or '?'.
 ```
 
-Команды не чувствительны к регистру. Выполнение — клавишей Enter.
+Команды не чувствительны к регистру. Выполнение — Enter.
+
+### 5.1 Формат вывода
+
+Именованные параметры:
+
+```text
+name = value
+name = value, next = value
+```
+
+Индексированные массивы:
+
+```text
+0: value, 1: value
+```
+
+Двоеточия внутри значения сохраняются:
+
+```text
+mac = DE:AD:BE:EF:FE:EE
+datetime = 2026-07-20 21:30:00
+```
+
+Общие helpers находятся в:
+
+```text
+app/diagnostics/diagnostic_output.hpp
+```
 
 ---
 
-## 7. Начало работы с console
+## 6. Команды и диагностика
 
 Первая команда:
 
@@ -283,135 +311,50 @@ LCP firmware ready. Type 'help' or '?'.
 help
 ```
 
-Короткий alias:
+Alias:
 
 ```text
 ?
 ```
 
-Проверка версии:
+### 6.1 Основные команды
 
-```text
-version
-```
+| Команда | Назначение |
+|---|---|
+| `help`, `?` | Список команд по группам |
+| `version`, `ver` | Версия, stage и target |
+| `status` | Полный отчёт всех подсистем |
+| `uptime` | Время работы в ms и привычном формате |
+| `rtos` | SRAM, heap и stack в байтах и процентах |
 
-или:
+`status` удобен для полного снимка. Для ежедневной диагностики лучше использовать отдельные команды `field`, `x2x`, `eth`, `rtc` и другие.
 
-```text
-ver
-```
-
-Общий диагностический отчёт:
-
-```text
-status
-```
-
-`status` выводит все подсистемы. Для обычной работы удобнее использовать отдельные короткие команды, поскольку полный отчёт получается большим.
-
----
-
-## 8. Справочник команд
-
-## 8.1 Основные команды
-
-### `help` / `?`
-
-Показывает сгруппированный список команд.
-
-### `version` / `ver`
-
-Показывает:
-
-- имя прошивки;
-- версию;
-- stage;
-- target MCU.
-
-### `status`
-
-Показывает полный отчёт:
-
-- system;
-- RTOS;
-- RS-485;
-- X2X;
-- FieldSensor;
-- SC16IS;
-- Ethernet;
-- microSD;
-- battery;
-- RTC;
-- watchdog.
-
-### `uptime`
-
-Показывает:
-
-```text
-uptime_ms = 12345678
-uptime_human = 0 d 03:25:45
-```
-
-`uptime_ms` нужен для отладки, `uptime_human` — для человека.
-
-### `rtos`
-
-Показывает:
-
-- полный SRAM;
-- assigned/unassigned linker memory;
-- `.data` и `.bss`;
-- FreeRTOS heap;
-- текущий и минимальный свободный heap;
-- размер и peak usage основной task stack;
-- значения в байтах и процентах.
-
-Признаки нормальной работы:
-
-- heap не уменьшается при повторении одинаковых команд;
-- minimum-ever-free после начального прогона стабилизируется;
-- task stack имеет достаточный запас;
-- uptime не сбрасывается самопроизвольно.
-
-## 8.2 Periodic report
+### 6.2 Периодический отчёт
 
 ```text
 periodic on
 periodic off
 ```
 
-`periodic on` печатает полный `status` каждые 10 секунд.
+`periodic on` печатает полный `status` каждые 10 секунд. Использовать только при целенаправленной диагностике.
 
-Использовать только при целенаправленной диагностике. Постоянная печать большого отчёта создаёт дополнительную нагрузку на USB console.
-
-## 8.3 microSD
+### 6.3 microSD
 
 ```text
 sd
 sd test
 ```
 
-`sd` показывает:
+`sd` показывает наличие карты, FAT и состояние filesystem.
 
-- наличие карты;
-- тип FAT;
-- готовность filesystem;
-- состояние тестового файла.
+`sd test` создаёт и читает `SDTEST.TXT`. Команда изменяет содержимое карты.
 
-`sd test` создаёт и читает `SDTEST.TXT`. Команда изменяет содержимое карты и предназначена для сервисной проверки записи.
+### 6.4 RTC
 
-## 8.4 RTC
-
-Короткий вывод времени:
+Короткий вывод:
 
 ```text
 time
-```
-
-Alias:
-
-```text
 rtc time
 ```
 
@@ -427,9 +370,9 @@ rtc
 rtc set 2026-07-20 21:30:00
 ```
 
-Операция неблокирующая. После команды можно сразу выполнять `field`, `x2x` или `eth`.
+Операция неблокирующая. После неё другие service продолжают работу.
 
-## 8.5 Watchdog
+### 6.5 Watchdog
 
 ```text
 watchdog
@@ -437,99 +380,41 @@ watchdog feed
 watchdog test reset
 ```
 
-`watchdog test reset` намеренно прекращает автоматический feed. Контроллер должен аппаратно перезагрузиться. На следующем старте возможен дополнительный USB-recovery reset.
+`watchdog test reset` намеренно прекращает автоматический feed. Контроллер должен перезагрузиться.
 
-Команду выполнять только тогда, когда контролируемый reset допустим.
-
-## 8.6 Аппаратные UART
+### 6.6 UART и SC16IS
 
 ```text
 rs485
 sc16is
 ```
 
-`rs485` показывает владельцев встроенных UART, format и hardware errors.
+`rs485` показывает владельца, format и hardware errors каждого UART.
 
-`sc16is` показывает фактически обнаруженную аппаратную комплектацию внешних UART:
+`sc16is` показывает обнаруженную аппаратную конфигурацию внешних UART и назначение PC, HMI и S1.
 
-- два SC16IS740;
-- либо SC16IS752 и каналы A/B;
-- назначение PC, HMI и S1.
+`SC16.txt` не используется: микросхемы определяются автоматически.
 
-Файл `SC16.txt` не применяется: аппаратная схема определяется автоматически.
+### 6.7 Проверка памяти
+
+```text
+rtos
+```
+
+Нормальное поведение:
+
+- current free heap не уменьшается при повторении одинаковых действий;
+- minimum-ever-free после начального прогона стабилизируется;
+- stack имеет запас;
+- uptime не сбрасывается без причины.
 
 ---
 
-## 9. Диагностика FieldSensor S1–S4
+## 7. FieldSensor S1–S4
 
-Команды:
+FieldSensor — демонстрационный Modbus RTU master внешнего прибора.
 
-```text
-field
-field reload
-field pause
-field resume
-```
-
-### `field`
-
-Показывает для каждого порта:
-
-- роль;
-- наличие transport;
-- фактический baudrate и frame;
-- slave address;
-- функцию и диапазон регистров;
-- period и timeout;
-- connection/valid/request state;
-- последние два регистра;
-- success/failed counters;
-- consecutive failures;
-- UART errors;
-- время последнего обновления.
-
-### Нормальное состояние подключённого прибора
-
-```text
-connection = online
-valid = yes
-last_result = ok
-success растёт
-consecutive_failures = 0
-uart_errors = 0
-```
-
-### Отключённый прибор
-
-После пяти последовательных ошибок:
-
-```text
-connection = lost
-valid = no
-```
-
-Последние корректные значения сохраняются. Использовать их можно только при `valid = yes`.
-
-### `field reload`
-
-Повторно читает:
-
-```text
-baud.TXT
-Parity.TXT
-```
-
-Активные транзакции сначала завершаются, затем S1–S4 безопасно переинициализируются.
-
-### `field pause` / `field resume`
-
-Pause запрещает запуск новых запросов, но не обрывает уже начатую транзакцию.
-
----
-
-## 10. Подключение внешнего Modbus RTU-прибора
-
-Текущий baseline использует один демонстрационный прибор на каждом S1–S4:
+Все четыре порта по умолчанию опрашивают:
 
 ```text
 slave address = 1
@@ -540,7 +425,16 @@ poll period = 300 ms
 timeout = 500 ms
 ```
 
-### 10.1 Физические порты
+Команды:
+
+```text
+field
+field reload
+field pause
+field resume
+```
+
+### 7.1 Физическое соответствие
 
 ```text
 S1 -> SC16IS7xx
@@ -549,9 +443,7 @@ S3 -> ATSAM3X8E UART3 / Serial3
 S4 -> ATSAM3X8E UART2 / Serial2
 ```
 
-### 10.2 Настройка baudrate
-
-`baud.TXT`:
+### 7.2 baud.TXT
 
 ```text
 4
@@ -562,7 +454,7 @@ S4 -> ATSAM3X8E UART2 / Serial2
 fin
 ```
 
-Порядок:
+Порядок значений:
 
 ```text
 S1
@@ -571,11 +463,9 @@ S3
 S4
 ```
 
-Значения являются реальными baudrate, а не индексами таблицы.
+Это фактические baudrate, а не индексы таблицы.
 
-### 10.3 Настройка parity
-
-`Parity.TXT`:
+### 7.3 Parity.TXT
 
 ```text
 4
@@ -594,7 +484,62 @@ fin
 2 = 8E1
 ```
 
-### 10.4 Где изменить параметры прибора
+### 7.4 Команда field
+
+Для каждого порта выводятся:
+
+- роль;
+- наличие transport;
+- фактический baudrate и frame;
+- slave address;
+- start/count;
+- period/timeout;
+- connection/valid/request;
+- последние регистры;
+- success/failed;
+- consecutive failures;
+- UART errors;
+- время последнего обновления.
+
+Нормальный подключённый прибор:
+
+```text
+connection = online
+valid = yes
+last_result = ok
+consecutive_failures = 0
+uart_errors = 0
+```
+
+После пяти последовательных ошибок:
+
+```text
+connection = lost
+valid = no
+```
+
+Последние корректные значения сохраняются. Их можно использовать только при `valid = yes`.
+
+### 7.5 Reload и pause
+
+```text
+field reload
+```
+
+Повторно читает `baud.TXT` и `Parity.TXT`. Активные транзакции сначала завершаются, затем UART переинициализируются.
+
+```text
+field pause
+field resume
+```
+
+Pause запрещает новые запросы, но не обрывает уже активный кадр.
+
+---
+
+## 8. Подключение другого Modbus RTU-прибора
+
+### 8.1 Где задаётся прибор
 
 Файл:
 
@@ -608,7 +553,7 @@ app/field/field_sensor_service.cpp
 set_default_configs()
 ```
 
-Основные поля:
+Параметры:
 
 ```cpp
 g_configs[index].slave_address
@@ -618,7 +563,7 @@ g_configs[index].poll_period_ms
 g_configs[index].timeout_ms
 ```
 
-Пример другого прибора:
+Пример:
 
 ```cpp
 g_configs[index].role = FIELD_PORT_MASTER;
@@ -629,7 +574,7 @@ g_configs[index].poll_period_ms = 1000U;
 g_configs[index].timeout_ms = 700U;
 ```
 
-### 10.5 Если прибор возвращает больше двух регистров
+### 8.2 Размер буфера
 
 Текущий размер:
 
@@ -637,63 +582,62 @@ g_configs[index].timeout_ms = 700U;
 FIELD_SENSOR_REGISTER_COUNT = 2U
 ```
 
-Находится в:
+Файл:
 
 ```text
 app/field/field_sensor_service.hpp
 ```
 
-При увеличении необходимо одновременно проверить:
+Если прибор возвращает больше регистров, одновременно проверить:
 
 1. `FIELD_SENSOR_REGISTER_COUNT`;
 2. `FieldSensorPortState::registers`;
 3. `set_default_configs()`;
-4. обработку и декодирование данных;
+4. декодирование данных;
 5. `field_status.cpp`;
-6. карту `ethernet_modbus_service.cpp`;
+6. `ethernet_modbus_service.*`;
 7. `ethernet_status.cpp`;
-8. документацию Modbus TCP.
+8. Modbus TCP-документацию.
 
-Нельзя увеличить только `register_count`, не увеличив runtime buffer.
+Нельзя увеличить только `register_count`, оставив прежний runtime buffer.
 
-### 10.6 Добавление нового типа прибора
+### 8.3 Когда нужен отдельный service
 
-Для одного простого прибора допустимо изменить baseline-конфигурацию.
+Изменить baseline достаточно для простого прибора с одним FC03-запросом.
 
-Если прибор имеет:
+Создать отдельный service рекомендуется, если прибор требует:
 
-- отдельную state machine;
-- несколько последовательных запросов;
-- команды записи;
-- собственные диагностические поля;
-- особое преобразование регистров;
+- нескольких запросов;
+- FC10 или других операций записи;
+- собственной state machine;
+- особого декодирования;
+- отдельных quality-флагов;
+- собственной диагностики.
 
-лучше создать отдельный service по образцу `field_sensor_service.*`, а не усложнять общий Modbus RTU master.
+`ModbusRtuMaster` должен оставаться универсальным protocol engine и не знать модель устройства.
 
-`ModbusRtuMaster` должен оставаться универсальным protocol engine и не знать конкретную модель устройства.
-
-### 10.7 Пример неблокирующего опроса
-
-Один цикл должен выглядеть логически так:
+### 8.4 Неблокирующий шаблон
 
 ```text
 1. вызвать modbus_rtu_master_poll()
-2. если активная транзакция завершилась — обработать результат
-3. если наступил срок и master ready — запустить следующий запрос
-4. сразу вернуть управление основной task
+2. проверить завершение активного запроса
+3. обработать result
+4. при наступлении срока запустить новый запрос
+5. сразу вернуть управление task
 ```
 
 Запрещено:
 
 ```text
-while (ожидание ответа)
 delay(...)
+while (ожидание ответа)
 busy-wait аппаратного флага
+ожидание без timeout
 ```
 
 ---
 
-## 11. X2X: настройка и использование
+## 9. X2X
 
 Команды:
 
@@ -705,11 +649,9 @@ x2x resume
 x2x ldo SLAVE VALUE
 ```
 
-### 11.1 Формат X2X.TXT
+### 9.1 X2X.TXT
 
-Первая строка — количество модулей. Далее — числовые ID в физическом порядке цепочки.
-
-Пример:
+Первая строка — количество модулей. Далее — ID в физическом порядке цепочки.
 
 ```text
 4
@@ -738,9 +680,9 @@ slave 4 -> ID 6
 fin
 ```
 
-В этом случае UART0 используется fallback echo-test.
+Тогда UART0 передаётся fallback echo-test.
 
-### 11.2 Текущие стабильные ID
+### 9.2 Стабильные ID
 
 ```text
 0 -> LCP2116, запрещён в X2X.TXT
@@ -754,13 +696,13 @@ fin
 
 После публикации ID нельзя менять или повторно использовать для другого типа.
 
-### 11.3 Диагностика X2X
+### 9.3 Диагностика
 
 ```text
 x2x
 ```
 
-Для каждого модуля проверять:
+Проверять:
 
 ```text
 connection = online
@@ -770,61 +712,54 @@ consecutive_failures = 0
 uart_errors = 0
 ```
 
-После отключения ожидается рост `failed`. После порога ошибок:
+После отключения растёт `failed`, затем появляется `connection = lost`. Первый корректный цикл должен восстановить `connection = online`.
 
-```text
-connection = lost
-```
-
-После восстановления первый корректный цикл должен вернуть:
-
-```text
-connection = online
-communication_error = ok
-```
-
-### 11.4 Reload
+### 9.4 Reload и pause
 
 ```text
 x2x reload
 ```
 
-Если текущий цикл ещё выполняется, применение откладывается до безопасной границы. Невалидный новый файл не должен разрушать последнюю рабочую конфигурацию.
-
-### 11.5 Pause/resume
+Если цикл активен, новая конфигурация применяется после безопасного завершения. Невалидный новый файл не должен уничтожать последнюю рабочую конфигурацию.
 
 ```text
 x2x pause
 x2x resume
 ```
 
-Pause завершает активный цикл и только затем останавливает новые опросы.
+Pause завершает активный цикл и только затем останавливает опрос.
 
-### 11.6 Проверка LDO
+### 9.5 LDO
 
 ```text
 x2x ldo 1 255
 ```
 
-Команда записывает локальный output value модуля LDO1118. Передача выполняется драйвером при следующем цикле.
-
-Это сервисная команда, а не прикладная PLC-логика.
+Команда задаёт output value LDO1118. Драйвер передаст значение в следующем цикле. Это сервисная проверка, а не PLC-логика.
 
 ---
 
-## 12. Добавление нового X2X-модуля
+## 10. Добавление нового X2X-модуля
 
-Новый обычный модуль требует изменений в четырёх местах:
+Для обычного нового типа изменяются пять мест:
 
-1. стабильный ID и runtime-структура;
-2. driver entry point;
+1. ID и runtime-структура;
+2. объявление driver entry point;
 3. реализация драйвера;
 4. запись в каталоге;
-5. добавление `.cpp` в Microchip Studio.
+5. проект Microchip Studio.
 
-Служебные уровни `x2x_config`, `x2x_registry`, `x2x_service` и `x2x_status` обычно не изменяются.
+Обычно не изменяются:
 
-### 12.1 Шаг 1 — стабильный ID
+```text
+x2x_config.cpp
+x2x_registry.cpp
+x2x_service.cpp
+x2x_status.cpp
+modbus_rtu_master.cpp
+```
+
+### 10.1 ID и структура
 
 Файл:
 
@@ -832,21 +767,13 @@ x2x ldo 1 255
 app/x2x/x2x_types.hpp
 ```
 
-Пример:
+Добавить стабильный ID:
 
 ```cpp
-enum X2XDeviceType : uint16_t
-{
-    // существующие ID
-    X2X_DEVICE_LTM1114 = 7U
-};
+X2X_DEVICE_LTM1114 = 7U
 ```
 
-ID 7 после публикации становится частью внешнего формата `X2X.TXT`.
-
-### 12.2 Шаг 2 — runtime-структура
-
-Пример:
+Добавить runtime-структуру:
 
 ```cpp
 struct X2XLtm1114 : X2XDeviceHeader
@@ -872,31 +799,19 @@ struct X2XLtm1114 : X2XDeviceHeader
 };
 ```
 
-Общий `X2XDeviceHeader` уже содержит:
+Не дублировать поля `X2XDeviceHeader`: connection state, counters, exception и last update уже находятся в общем заголовке.
 
-- slave address;
-- ASDU;
-- connection state;
-- communication result;
-- exception code;
-- success/failed counters;
-- last update time.
-
-Не нужно дублировать эти поля в структуре нового типа.
-
-### 12.3 Ограничение размера
-
-Каждый модуль создаётся в статическом слоте:
+### 10.2 Размер статического слота
 
 ```cpp
 X2X_DEVICE_SLOT_BYTES = 256U
 ```
 
-`construct_device()` содержит compile-time проверку размера. Если структура больше слота, проект не соберётся.
+`construct_device()` содержит `static_assert`. Слишком большая структура остановит сборку вместо скрытого переполнения.
 
-Большие массивы, например осциллограммы, не следует помещать в каждый экземпляр. Для LCT используется отдельный общий waveform buffer.
+Большие массивы не следует хранить в каждом экземпляре. Для LCT waveform используется отдельный общий буфер.
 
-### 12.4 Шаг 3 — объявление драйвера
+### 10.3 Объявление драйвера
 
 Файл:
 
@@ -904,15 +819,13 @@ X2X_DEVICE_SLOT_BYTES = 256U
 app/x2x/modules/x2x_module_drivers.hpp
 ```
 
-Добавить:
-
 ```cpp
 X2XModulePollResult x2x_module_poll_ltm1114(
     X2XDeviceHeader* device,
     X2XModuleContext& context);
 ```
 
-### 12.5 Шаг 4 — реализация драйвера
+### 10.4 Выбор образца
 
 Создать:
 
@@ -920,18 +833,18 @@ X2XModulePollResult x2x_module_poll_ltm1114(
 app/x2x/modules/x2x_ltm.cpp
 ```
 
-В качестве образца использовать ближайший по типу файл:
+Выбрать ближайший существующий драйвер:
 
 ```text
-x2x_ldi.cpp  -> дискретные входы
-x2x_lai.cpp  -> DI + float values
-x2x_ldo.cpp  -> запись выходов
-x2x_lct.cpp  -> многошаговый драйвер и waveform
+x2x_ldi.cpp -> дискретные входы
+x2x_lai.cpp -> DI + float
+x2x_ldo.cpp -> запись выходов
+x2x_lct.cpp -> многошаговый цикл и waveform
 ```
 
-### 12.6 Контекст драйвера
+### 10.5 Контекст драйвера
 
-`X2XModuleContext` предоставляет:
+`X2XModuleContext` содержит:
 
 ```text
 master
@@ -942,29 +855,29 @@ register_capacity
 now_ms
 ```
 
-Драйвер не создаёт собственный Modbus master. Вся цепочка использует общий master, а сервис вызывает драйверы последовательно.
+Драйвер не создаёт собственный Modbus master.
 
-### 12.7 Требование неблокирующей работы
+Важно: `x2x_service_poll()` уже вызывает `modbus_rtu_master_poll()` перед callback активного драйвера. Драйвер не должен вызывать `modbus_rtu_master_poll()` повторно.
 
-Один вызов драйвера выполняет один шаг:
+### 10.6 Неблокирующая state machine
+
+Один вызов драйвера выполняет только один шаг:
 
 ```text
-IDLE
+START_READ
   -> проверить master ready
   -> запустить запрос
   -> вернуть IN_PROGRESS
 
 WAIT_READ
-  -> вызвать/проверить master
-  -> если busy, вернуть IN_PROGRESS
-  -> если завершено, декодировать данные
-  -> mark success/failure
+  -> проверить result
+  -> если BUSY, вернуть IN_PROGRESS
+  -> декодировать либо зарегистрировать ошибку
+  -> reset master/runtime
   -> вернуть CYCLE_COMPLETE
 ```
 
-Драйвер не должен ждать ответ внутри одного вызова.
-
-### 12.8 Упрощённый skeleton
+### 10.7 Рабочий skeleton
 
 ```cpp
 #include "x2x_module_drivers.hpp"
@@ -972,118 +885,127 @@ WAIT_READ
 
 namespace
 {
-enum LtmState : uint8_t
+enum LtmPollState : uint8_t
 {
-    LTM_STATE_IDLE = 0U,
-    LTM_STATE_WAIT_VALUES = 1U
+    LTM_POLL_START_READ = 0U,
+    LTM_POLL_WAIT_READ = 1U
 };
+
+static const uint16_t LTM_REGISTER_COUNT = 9U;
+static const uint16_t LTM_FLOAT_START_REGISTER = 1U;
 }
 
 X2XModulePollResult x2x_module_poll_ltm1114(
-    X2XDeviceHeader* header,
+    X2XDeviceHeader* device,
     X2XModuleContext& context)
 {
-    X2XLtm1114& device = static_cast<X2XLtm1114&>(*header);
+    if ((device == 0) ||
+        (device->type != X2X_DEVICE_LTM1114) ||
+        (context.master == 0) ||
+        (context.runtime == 0) ||
+        (context.register_buffer == 0) ||
+        (context.register_capacity < LTM_REGISTER_COUNT))
+    {
+        return X2X_MODULE_POLL_CYCLE_COMPLETE;
+    }
 
-    modbus_rtu_master_poll(*context.master);
+    X2XLtm1114* ltm = static_cast<X2XLtm1114*>(device);
 
     switch (context.runtime->state)
     {
-        case LTM_STATE_IDLE:
-        {
+        case LTM_POLL_START_READ:
             if (modbus_rtu_master_ready(*context.master) == 0U)
             {
                 return X2X_MODULE_POLL_IN_PROGRESS;
             }
 
-            const uint8_t started = modbus_rtu_master_start_read_holding(
-                *context.master,
-                device.slave_address,
-                0U,
-                9U,
-                context.register_buffer,
-                X2X_MODBUS_TRANSACTION_TIMEOUT_MS);
-
-            if (started == 0U)
+            if (modbus_rtu_master_start_read_holding(
+                    *context.master,
+                    device->slave_address,
+                    0U,
+                    LTM_REGISTER_COUNT,
+                    context.register_buffer,
+                    X2X_MODBUS_TRANSACTION_TIMEOUT_MS) == 0U)
             {
                 x2x_module_mark_failure(
-                    device,
+                    *device,
                     modbus_rtu_master_result(*context.master),
                     modbus_rtu_master_exception_code(*context.master));
                 modbus_rtu_master_reset(*context.master);
+                context.runtime->state = LTM_POLL_START_READ;
                 return X2X_MODULE_POLL_CYCLE_COMPLETE;
             }
 
-            context.runtime->state = LTM_STATE_WAIT_VALUES;
+            context.runtime->state = LTM_POLL_WAIT_READ;
             return X2X_MODULE_POLL_IN_PROGRESS;
-        }
 
-        case LTM_STATE_WAIT_VALUES:
-        default:
+        case LTM_POLL_WAIT_READ:
         {
-            if (modbus_rtu_master_busy(*context.master) != 0U)
+            const ModbusRtuResult result =
+                modbus_rtu_master_result(*context.master);
+
+            if (result == MODBUS_RTU_RESULT_BUSY)
             {
                 return X2X_MODULE_POLL_IN_PROGRESS;
             }
 
-            if (modbus_rtu_master_result(*context.master) ==
-                MODBUS_RTU_RESULT_OK)
+            if (result == MODBUS_RTU_RESULT_OK)
             {
-                device.digital_inputs = context.register_buffer[0];
+                ltm->digital_inputs = context.register_buffer[0];
                 x2x_module_decode_float_array(
-                    device.tf_values,
+                    ltm->tf_values,
                     X2XLtm1114::TF_COUNT,
                     context.register_buffer,
-                    1U,
-                    9U);
-
-                x2x_module_mark_success(device, context.now_ms);
+                    LTM_FLOAT_START_REGISTER,
+                    LTM_REGISTER_COUNT);
+                x2x_module_mark_success(*device, context.now_ms);
             }
             else
             {
                 x2x_module_mark_failure(
-                    device,
-                    modbus_rtu_master_result(*context.master),
+                    *device,
+                    result,
                     modbus_rtu_master_exception_code(*context.master));
             }
 
             modbus_rtu_master_reset(*context.master);
-            x2x_module_runtime_reset(*context.runtime);
+            context.runtime->state = LTM_POLL_START_READ;
             return X2X_MODULE_POLL_CYCLE_COMPLETE;
         }
+
+        default:
+            modbus_rtu_master_reset(*context.master);
+            context.runtime->state = LTM_POLL_START_READ;
+            return X2X_MODULE_POLL_CYCLE_COMPLETE;
     }
 }
 ```
 
-Skeleton является примером структуры. Адреса и количество регистров должны соответствовать фактической карте нового модуля.
+Адреса и размер запроса заменить согласно реальной register map.
 
-### 12.9 Float word order
+### 10.8 Float word order
 
-Штатные helpers ожидают:
+Штатные helpers используют:
 
 ```text
-первый Modbus-регистр  -> младшее 16-битное слово
-второй Modbus-регистр -> старшее 16-битное слово
+первый регистр  -> младшее 16-битное слово
+второй регистр -> старшее 16-битное слово
 ```
-
-Использовать:
 
 ```cpp
 x2x_module_registers_to_float(...)
 x2x_module_decode_float_array(...)
 ```
 
-Если новый модуль использует другой word order, это должно быть явно реализовано и описано в драйвере конкретного типа. Нельзя глобально менять helper и ломать совместимость существующих модулей.
+Если новый модуль имеет другой word order, реализовать это только в его драйвере. Нельзя глобально менять helper и ломать существующие типы.
 
-### 12.10 Шаг 5 — регистрация в каталоге
+### 10.9 Каталог
 
 Файл:
 
 ```text
 app/x2x/x2x_catalog.cpp
 ```
-
-Пример записи:
 
 ```cpp
 {
@@ -1100,46 +1022,11 @@ app/x2x/x2x_catalog.cpp
 }
 ```
 
-Каталог автоматически подключает новый тип к:
+Одна запись подключает тип к config validation, registry, service и console.
 
-- проверке `X2X.TXT`;
-- статическому registry;
-- циклическому service;
-- общему status;
-- специфическому print callback.
+Для особого diagnostic output создать отдельный print callback в `x2x_catalog.cpp`.
 
-### 12.11 Нестандартная диагностика
-
-Для обычного DI-модуля:
-
-```cpp
-print_digital_inputs<X2XLtm1114>
-```
-
-Для DI + float:
-
-```cpp
-print_digital_inputs_and_floats<X2XLtm1114>
-```
-
-Для особой структуры создать отдельную print-функцию в `x2x_catalog.cpp`.
-
-Параметры console оформлять так:
-
-```text
-name = value
-0: value
-```
-
-Для единообразия использовать helpers из:
-
-```text
-app/diagnostics/diagnostic_output.hpp
-```
-
-### 12.12 Добавление файла в проект
-
-В `LCP_Basic.cppproj`:
+### 10.10 Добавление в проект
 
 ```xml
 <Compile Include="app\x2x\modules\x2x_ltm.cpp">
@@ -1149,22 +1036,26 @@ app/diagnostics/diagnostic_output.hpp
 
 Либо добавить файл через Microchip Studio.
 
-### 12.13 Проверка нового модуля
+### 10.11 Проверка нового модуля
 
 1. собрать Debug и Release;
 2. создать `X2X.TXT` с новым ID;
 3. выполнить `x2x reload`;
-4. проверить правильное имя и SP/ME/TF;
+4. проверить имя, SP/ME/TF;
 5. проверить рост `success`;
-6. изменить физические входы и сравнить данные;
-7. отключить линию и проверить loss state;
-8. восстановить линию и проверить automatic recovery;
-9. выполнить `rtos` до и после длительного прогона;
-10. зафиксировать register map и word order в Markdown-документации.
+6. изменить реальные входы/выходы;
+7. отключить линию;
+8. проверить `connection = lost`;
+9. восстановить линию;
+10. проверить automatic recovery;
+11. выполнить `rtos` до и после длительного теста;
+12. описать register map и word order в Markdown.
+
+Подробная отдельная инструкция: [AddingX2XModule.md](AddingX2XModule.md).
 
 ---
 
-## 13. Ethernet и Modbus TCP
+## 11. Ethernet и Modbus TCP
 
 Оба W5500 запускают независимые server instance.
 
@@ -1172,13 +1063,13 @@ app/diagnostics/diagnostic_output.hpp
 protocol = Modbus TCP
 port = 502
 function = FC03 Read Holding Registers
-map = 0..11
+holding = 0..11
 write functions = not supported
 ```
 
-ETH1 и ETH2 публикуют одну и ту же карту FieldSensor.
+Оба интерфейса публикуют одну и ту же карту FieldSensor.
 
-### 13.1 Сетевые файлы
+### 11.1 Файлы
 
 ETH1:
 
@@ -1198,7 +1089,7 @@ SUBNET2.txt
 GATE2.txt
 ```
 
-### 13.2 Формат IP-файла
+IP-файл:
 
 ```text
 4
@@ -1209,7 +1100,7 @@ GATE2.txt
 fin
 ```
 
-### 13.3 Формат MAC-файла
+MAC-файл:
 
 ```text
 6
@@ -1224,27 +1115,16 @@ fin
 
 MAC задаётся десятичными байтами.
 
-### 13.4 Два одинаковых IP
+Одинаковый IP на ETH1 и ETH2 допустим только в физически раздельных сетях. В одной LAN адреса должны различаться.
 
-Одинаковый IP допустим только при подключении ETH1 и ETH2 к физически раздельным сетям.
-
-Если оба интерфейса подключены к одной LAN, назначить разные IP.
-
-### 13.5 Применение настроек
-
-```text
-eth reload
-```
-
-Команда повторно читает все восемь файлов и переинициализирует оба W5500.
-
-Проверка:
+### 11.2 Команды
 
 ```text
 eth
+eth reload
 ```
 
-Ожидается:
+Ожидаемое состояние подключённого интерфейса:
 
 ```text
 initialized = yes
@@ -1253,7 +1133,7 @@ VERSIONR = 0x04
 link = up
 ```
 
-### 13.6 Holding register map
+### 11.3 Holding map
 
 ```text
 0   S1 value0
@@ -1273,7 +1153,7 @@ link = up
 11  S4 quality
 ```
 
-Чтение всех данных:
+Чтение всей карты:
 
 ```text
 FC03
@@ -1281,7 +1161,7 @@ start address = 0
 quantity = 12
 ```
 
-### 13.7 Quality register
+### 11.4 Quality
 
 ```text
 bit 0      valid
@@ -1292,7 +1172,7 @@ bit 4      FieldSensor service paused
 bits 8..15 ModbusRtuResult
 ```
 
-Значения `ModbusRtuResult`:
+`ModbusRtuResult`:
 
 ```text
 0 idle
@@ -1306,15 +1186,9 @@ bits 8..15 ModbusRtuResult
 8 invalid argument
 ```
 
-Клиент должен проверять quality. Два value-регистра могут содержать last-good data после потери связи.
+Клиент обязан учитывать quality. `value0` и `value1` могут содержать last-good data после потери связи.
 
-### 13.8 Диагностика Ethernet
-
-```text
-eth
-```
-
-Проверять:
+### 11.5 Диагностика
 
 ```text
 requests = responses
@@ -1322,11 +1196,11 @@ malformed = 0
 transport_errors = 0
 ```
 
-`exceptions` может увеличиваться при запросе неверного адреса, количества регистров или неподдерживаемой функции.
+`exceptions` увеличивается при неверном адресе, количестве регистров или неподдерживаемой функции.
 
-### 13.9 Расширение holding map
+### 11.6 Расширение карты
 
-При расширении текущей карты изменять:
+Изменять:
 
 ```text
 app/ethernet/ethernet_modbus_service.hpp
@@ -1338,121 +1212,22 @@ docs/FirmwareGuide.md
 
 Порядок:
 
-1. определить новый размер map;
-2. увеличить статический holding buffer;
-3. заполнить новые адреса в `update_holding_map()`;
-4. проверить диапазоны в `read_holding()`;
-5. обновить compile-time `static_assert`;
-6. обновить console-output;
-7. описать карту в документации;
-8. протестировать минимальный и максимальный адрес.
+1. определить новый размер;
+2. увеличить holding buffer;
+3. заполнить значения в `update_holding_map()`;
+4. проверить диапазоны `read_holding()`;
+5. обновить `static_assert`;
+6. обновить console;
+7. обновить документацию;
+8. проверить минимальный и максимальный адрес.
 
-### 13.10 Добавление новой Modbus TCP function
+MBAP и общие function code находятся в `protocol/modbus_tcp/`. Прикладная карта находится в `app/ethernet/`. W5500 HAL не должен знать структуру FieldSensor.
 
-Сначала определить, является ли функция общей protocol-возможностью или прикладной операцией.
-
-- MBAP parsing и общая реализация function code находятся в `protocol/modbus_tcp/`;
-- прикладная карта и callback находятся в `app/ethernet/`;
-- W5500 HAL не должен знать Modbus-регистры.
-
-Не следует добавлять прикладную логику непосредственно в `w5500_lite.cpp`.
+Подробности: [ModbusTcpExample.md](ModbusTcpExample.md).
 
 ---
 
-## 14. Как читать диагностические результаты
-
-## 14.1 Modbus RTU result
-
-```text
-idle             запрос отсутствует
-busy             транзакция выполняется
-ok               корректный ответ
- timeout          ответ не получен в срок
-CRC error         неверный CRC
-invalid response  неверный адрес, функция, длина или данные
-exception         slave вернул exception
-transport error   ошибка UART/TX
-invalid argument  неверные параметры запуска
-```
-
-## 14.2 `request = busy` вместе с `last_result = ok`
-
-Это нормальное состояние:
-
-- предыдущий запрос завершился успешно;
-- следующий запрос уже выполняется.
-
-## 14.3 `consecutive_failures = 255`
-
-Счётчик насыщается на 255 и не переполняется. Это означает длительное отсутствие корректных ответов.
-
-## 14.4 Сохранённые значения при `valid = no`
-
-Прошивка сохраняет last-good values. Это позволяет видеть последнее принятое значение, но прикладная логика обязана учитывать `valid` и `connection_lost`.
-
-## 14.5 X2X exception code 2
-
-Обычно означает `Illegal Data Address`: карта регистров в драйвере не соответствует версии firmware модуля либо выбран неверный тип модуля.
-
-Проверить:
-
-1. ID в `X2X.TXT`;
-2. версию платы/firmware модуля;
-3. start address и register count драйвера;
-4. документацию register map.
-
-## 14.6 Ethernet `link = down`
-
-Проверить:
-
-- кабель;
-- коммутатор;
-- питание W5500;
-- правильный разъём ETH1/ETH2;
-- `VERSIONR = 0x04`;
-- socket state после подключения.
-
-## 14.7 microSD file not found
-
-Проверить:
-
-- файл находится в корне;
-- точный регистр имени;
-- расширение `.TXT` или `.txt`;
-- FAT16/FAT32;
-- отсутствие дополнительного расширения, например `.txt.txt`.
-
-## 14.8 Неожиданный reset
-
-Выполнить:
-
-```text
-watchdog
-uptime
-```
-
-Проверить reset cause и boot count.
-
-## 14.9 Подозрение на утечку памяти
-
-Выполнить несколько раз одинаковую последовательность:
-
-```text
-status
-rtos
-```
-
-Сравнить:
-
-- current free heap;
-- minimum-ever-free heap;
-- stack high-water mark.
-
-Current free heap не должен уменьшаться после каждого одинакового цикла.
-
----
-
-## 15. Добавление новой console-команды
+## 12. Добавление console-команды
 
 Основной файл:
 
@@ -1460,7 +1235,7 @@ Current free heap не должен уменьшаться после каждо
 app/diagnostics/diagnostic_console.cpp
 ```
 
-Профильные команды лучше добавлять в handler соответствующей подсистемы:
+Профильные команды лучше добавлять в handler подсистемы:
 
 ```text
 field_status_handle_command()
@@ -1475,19 +1250,11 @@ watchdog_status_handle_command()
 1. реализовать действие в профильном service;
 2. добавить handler;
 3. добавить запись в `help`;
-4. добавить краткий diagnostic output;
-5. проверить неизвестную и некорректную форму команды;
-6. проверить, что команда не блокирует основную task.
+4. добавить diagnostic output;
+5. проверить неправильный синтаксис;
+6. убедиться, что команда не блокирует task.
 
-### Правила console-output
-
-```text
-name = value
-name = value, next = value
-0: value, 1: value
-```
-
-Использовать:
+Использовать formatter:
 
 ```cpp
 diagnostic_print_assignment(...)
@@ -1497,17 +1264,91 @@ diagnostic_print_section(...)
 diagnostic_print_group(...)
 ```
 
-Не создавать вручную новый стиль вывода в каждом файле.
-
-Каждая строка должна по возможности помещаться в терминал шириной около 80 символов.
+Не создавать новый стиль вывода вручную в каждом модуле.
 
 ---
 
-## 16. Правила разработки
+## 13. Типовые неисправности
 
-### 16.1 Неблокирующая работа
+### 13.1 `file not found`
 
-Основная task обслуживает все подсистемы. Поэтому запрещены длительные блокировки.
+Проверить:
+
+- файл в корне microSD;
+- точный регистр имени;
+- правильное расширение;
+- отсутствие `.txt.txt`;
+- FAT16/FAT32.
+
+### 13.2 FieldSensor timeout
+
+Проверить:
+
+- физический порт;
+- slave address;
+- baudrate/parity;
+- A/B RS-485;
+- питание прибора;
+- start register/count;
+- `uart_errors`.
+
+### 13.3 `request = busy`, `last_result = ok`
+
+Это нормально: предыдущий запрос завершился успешно, следующий уже запущен.
+
+### 13.4 `consecutive_failures = 255`
+
+Счётчик насыщается и не переполняется. Это длительное отсутствие корректных ответов.
+
+### 13.5 Значения есть, но `valid = no`
+
+Это last-good data. Использовать значения нельзя без проверки quality.
+
+### 13.6 X2X exception code 2
+
+Обычно `Illegal Data Address`. Проверить:
+
+1. ID в `X2X.TXT`;
+2. версию module firmware;
+3. register map драйвера;
+4. start/count.
+
+### 13.7 Ethernet link down
+
+Проверить:
+
+- кабель и switch;
+- правильный разъём;
+- питание W5500;
+- `VERSIONR = 0x04`;
+- IP/subnet;
+- повторный `eth reload`.
+
+### 13.8 Неожиданный reset
+
+```text
+watchdog
+uptime
+```
+
+Проверить reset cause и boot count.
+
+### 13.9 Подозрение на утечку памяти
+
+Несколько раз выполнить:
+
+```text
+status
+rtos
+```
+
+Сравнить current free heap, minimum-ever-free и stack high-water mark.
+
+---
+
+## 14. Правила разработки
+
+### 14.1 Неблокирующие service
 
 Не использовать:
 
@@ -1515,48 +1356,46 @@ diagnostic_print_group(...)
 delay
 busy-wait
 while до аппаратного события
-ожидание ответа без timeout
-неограниченный цикл обработки входного буфера
+ожидание без timeout
+неограниченную обработку входного буфера
 ```
 
 Длительная операция должна иметь:
 
 - state;
-- start function;
-- poll function;
+- start;
+- poll;
 - timeout;
-- явный result.
+- result.
 
-### 16.2 Память
+### 14.2 Память
 
 Предпочтительно:
 
-- статические буферы фиксированного размера;
-- compile-time `static_assert`;
-- отсутствие динамического выделения в runtime;
-- проверка границ до записи;
-- сохранение last-good data отдельно от quality.
+- статические буферы;
+- `static_assert`;
+- проверка границ;
+- отсутствие runtime allocation;
+- last-good data отдельно от quality.
 
-### 16.3 Разделение уровней
+### 14.3 Разделение уровней
 
 ```text
-HAL       -> регистры и аппаратные операции
-board     -> разводка конкретной платы
+HAL       -> аппаратные регистры и операции
+board     -> разводка LCP2116
 protocol  -> универсальный протокол
-service   -> конкретное назначение протокола
-status    -> только диагностика и команды
+service   -> конкретное применение протокола
+status    -> диагностика и команды
 ```
 
-Примеры неправильного смешения:
+Неправильно:
 
-- W5500 HAL знает структуру FieldSensor;
-- Modbus RTU master знает модель прибора;
-- console напрямую меняет внутреннее состояние protocol engine;
-- X2X-драйвер читает microSD самостоятельно.
+- W5500 HAL знает карту FieldSensor;
+- Modbus master знает модель прибора;
+- X2X-драйвер читает microSD;
+- console обходит service и напрямую меняет protocol state.
 
-### 16.4 Стиль C/C++
-
-Настройки находятся в:
+### 14.4 Стиль
 
 ```text
 .clang-format
@@ -1566,17 +1405,37 @@ status    -> только диагностика и команды
 Основные правила:
 
 - 4 пробела;
-- tab запрещён;
+- без tab;
 - Allman braces;
 - пробелы вокруг бинарных операторов;
-- короткие функции и условия не сворачиваются в одну строку;
-- строка исходника до 100 символов, когда это возможно.
+- строка исходника до 100 символов, когда возможно.
+
+### 14.5 Документация
+
+При изменении внешнего формата, команды или register map обновить Markdown в том же commit.
 
 ---
 
-## 17. Минимальный тест после изменения прошивки
+## 15. Release checklist
 
-После любого функционального изменения:
+Перед release:
+
+1. Debug build успешен;
+2. Release build успешен;
+3. warnings отсутствуют либо объяснены;
+4. Flash/SRAM в пределах ATSAM3X8E;
+5. версия корректна;
+6. microSD-файлы проверены;
+7. S1–S4 проверены;
+8. ETH1 и ETH2 проверены;
+9. X2X проверен на реальных модулях;
+10. RTC и watchdog проверены;
+11. heap/stack имеют запас;
+12. документация обновлена;
+13. release commit/tag создан;
+14. ветка объединена с `main`.
+
+Минимальные команды после функционального изменения:
 
 ```text
 version
@@ -1591,82 +1450,14 @@ time
 watchdog
 ```
 
-Для FieldSensor:
-
-1. подключить прибор;
-2. проверить online/valid;
-3. проверить значения;
-4. отключить;
-5. проверить lost/invalid;
-6. восстановить и проверить recovery.
-
-Для X2X:
-
-1. проверить каждый добавленный тип;
-2. проверить физическое изменение входов/выходов;
-3. проверить exception и timeout path;
-4. проверить recovery.
-
-Для Ethernet:
-
-1. FC03 `0..11` на ETH1;
-2. FC03 `0..11` на ETH2;
-3. сравнить с `field`;
-4. отключить и вернуть link;
-5. убедиться, что transport errors не растут.
-
-После нагрузки повторить:
-
-```text
-rtos
-```
-
 ---
 
-## 18. Release checklist
+## Связанные документы
 
-Перед release:
-
-1. Debug build успешен;
-2. Release build успешен;
-3. compiler warnings отсутствуют либо объяснены;
-4. Flash и SRAM не превышают лимиты;
-5. версия и stage корректны;
-6. microSD canonical files проверены;
-7. S1–S4 проверены;
-8. ETH1/ETH2 проверены;
-9. X2X проверен на фактических модулях;
-10. RTC и watchdog проверены;
-11. heap и stack имеют запас;
-12. документация обновлена;
-13. release commit/tag создан;
-14. рабочая ветка объединена с `main`.
-
----
-
-## 19. Связанные документы
-
-```text
-docs/AddingX2XModule.md
-    отдельная пошаговая инструкция добавления X2X-типа
-
-docs/FieldSensorExample.md
-    подробности текущего S1–S4 baseline
-
-docs/ModbusTcpExample.md
-    текущая Ethernet-карта и файлы microSD
-
-docs/X2XRuntimeControl.md
-    управление X2X через console
-
-docs/X2XBaselineTest.md
-    аппаратная проверка X2X
-
-docs/ReleaseVerification.md
-    зафиксированные результаты release-кандидата
-
-docs/CodeQualityReview.md
-    архитектурные решения и результаты code review
-```
-
-При расхождении документации и кода сначала проверить текущую версию ветки и историю изменений. После изменения внешнего формата, register map или команды соответствующий Markdown-файл должен обновляться в том же commit.
+- [AddingX2XModule.md](AddingX2XModule.md) — отдельная инструкция добавления X2X-типа;
+- [FieldSensorExample.md](FieldSensorExample.md) — текущий пример S1–S4;
+- [ModbusTcpExample.md](ModbusTcpExample.md) — Ethernet-файлы и карта;
+- [X2XRuntimeControl.md](X2XRuntimeControl.md) — команды управления X2X;
+- [X2XBaselineTest.md](X2XBaselineTest.md) — аппаратный тест X2X;
+- [ReleaseVerification.md](ReleaseVerification.md) — зафиксированные результаты проверки;
+- [CodeQualityReview.md](CodeQualityReview.md) — архитектурные решения code review.
