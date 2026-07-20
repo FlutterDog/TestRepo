@@ -3,8 +3,8 @@
  * @brief Неблокирующий echo-test внешних UART PC и HMI.
  *
  * S1 сразу принадлежит FieldSensor и здесь не инициализируется. Приём каждого
- * PC/HMI ограничен 16 байтами за poll, а частичная передача продолжается с
- * `tx_offset` на следующих вызовах без ожидания FIFO.
+ * PC/HMI ограничен 16 байтами за poll, частичная передача продолжается с
+ * `tx_offset`, а зависший TX сбрасывается по ограниченному timeout.
  */
 
 #include "sc16is_echo_test.hpp"
@@ -18,6 +18,7 @@ namespace
 constexpr uint32_t SC16IS_ECHO_BAUDRATE = 9600U;
 constexpr uint32_t SC16IS_INTERFRAME_GAP_MS = 5U;
 constexpr uint32_t SC16IS_RESPONSE_DELAY_MS = 10U;
+constexpr uint32_t SC16IS_TX_TIMEOUT_MS = 1000U;
 constexpr uint8_t SC16IS_MAX_RX_BYTES_PER_POLL = 16U;
 constexpr uint16_t SC16IS_ECHO_BUFFER_SIZE = 128U;
 constexpr uint8_t SC16IS_ECHO_PORT_CAPACITY = 2U;
@@ -31,12 +32,18 @@ struct Sc16isEchoPort
     uint16_t tx_offset;                         /**< Первый ещё не переданный байт. */
     uint32_t last_rx_ms;                        /**< Время последнего принятого байта. */
     uint32_t response_due_ms;                   /**< Момент разрешения ответа. */
+    uint32_t tx_deadline_ms;                     /**< Крайний срок постановки всего ответа. */
     uint8_t response_pending;                   /**< Кадр завершён и ожидает/выполняет TX. */
 };
 
 Sc16isEchoPort g_ports[SC16IS_ECHO_PORT_CAPACITY];
 uint8_t g_port_count = 0U;
 uint8_t g_probe_report_printed = 0U;
+
+uint8_t deadline_reached(uint32_t now_ms, uint32_t deadline_ms)
+{
+    return (static_cast<int32_t>(now_ms - deadline_ms) >= 0) ? 1U : 0U;
+}
 
 void add_port(const LcpSc16isPort& port, const char* name)
 {
@@ -52,6 +59,7 @@ void add_port(const LcpSc16isPort& port, const char* name)
     echo_port.tx_offset = 0U;
     echo_port.last_rx_ms = 0U;
     echo_port.response_due_ms = 0U;
+    echo_port.tx_deadline_ms = 0U;
     echo_port.response_pending = 0U;
     ++g_port_count;
 }
@@ -62,6 +70,7 @@ void drop_frame(Sc16isEchoPort& port, uint32_t now_ms)
     port.tx_offset = 0U;
     port.last_rx_ms = now_ms;
     port.response_due_ms = 0U;
+    port.tx_deadline_ms = 0U;
     port.response_pending = 0U;
 }
 
@@ -96,6 +105,7 @@ void accept_rx(Sc16isEchoPort& port, uint32_t now_ms)
         port.last_rx_ms = now_ms;
         port.response_pending = 0U;
         port.response_due_ms = 0U;
+        port.tx_deadline_ms = 0U;
         ++processed;
     }
 }
@@ -114,14 +124,25 @@ void arm_response_if_frame_complete(Sc16isEchoPort& port,
     }
 
     port.response_due_ms = now_ms + SC16IS_RESPONSE_DELAY_MS;
+    port.tx_deadline_ms = now_ms + SC16IS_TX_TIMEOUT_MS;
     port.response_pending = 1U;
     port.tx_offset = 0U;
 }
 
 void send_if_response_due(Sc16isEchoPort& port, uint32_t now_ms)
 {
-    if ((port.response_pending == 0U) ||
-        (static_cast<int32_t>(now_ms - port.response_due_ms) < 0))
+    if (port.response_pending == 0U)
+    {
+        return;
+    }
+
+    if (deadline_reached(now_ms, port.tx_deadline_ms) != 0U)
+    {
+        drop_frame(port, now_ms);
+        return;
+    }
+
+    if (static_cast<int32_t>(now_ms - port.response_due_ms) < 0)
     {
         return;
     }
