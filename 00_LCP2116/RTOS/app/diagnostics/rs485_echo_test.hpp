@@ -23,3 +23,14 @@ void rs485_echo_test_set_x2x_enabled(uint8_t enabled);
 
 /** @brief Возвращает 1, если echo-test линии X2X разрешён. */
 uint8_t rs485_echo_test_x2x_enabled(void);
+
+/**
+ * @brief Разрешает или запрещает echo-test встроенных пользовательских портов.
+ *
+ * FieldSensor запрещает echo на S2, S3 и S4, поскольку эти линии принадлежат
+ * четырём независимым Modbus RTU master-примерам.
+ */
+void rs485_echo_test_set_field_ports_enabled(uint8_t enabled);
+
+/** @brief Возвращает 1, если echo-test S2, S3 и S4 разрешён. */
+uint8_t rs485_echo_test_field_ports_enabled(void);
