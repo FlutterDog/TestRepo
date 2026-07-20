@@ -1,6 +1,10 @@
 ﻿/**
  * @file modbus_rtu_master.cpp
  * @brief Реализация неблокирующего Modbus RTU master.
+ *
+ * State machine имеет три состояния: IDLE, WAIT_TX и WAIT_RESPONSE. Ни одна
+ * функция не ожидает байты или окончание UART в busy-wait цикле. Service должен
+ * регулярно вызывать modbus_rtu_master_poll().
  */
 
 #include "modbus_rtu_master.hpp"
@@ -13,16 +17,22 @@
 
 namespace
 {
-static const uint8_t MODBUS_FUNCTION_READ_HOLDING = 0x03U;
-static const uint8_t MODBUS_FUNCTION_WRITE_MULTIPLE = 0x10U;
-static const uint16_t MODBUS_REQUEST_BASE_LENGTH = 6U;
-static const uint16_t MODBUS_CRC_LENGTH = 2U;
-static const uint16_t MODBUS_WRITE_RESPONSE_LENGTH = 8U;
-static const uint16_t MODBUS_EXCEPTION_RESPONSE_LENGTH = 5U;
+constexpr uint8_t MODBUS_FUNCTION_READ_HOLDING = 0x03U;
+constexpr uint8_t MODBUS_FUNCTION_WRITE_MULTIPLE = 0x10U;
+constexpr uint16_t MODBUS_REQUEST_BASE_LENGTH = 6U;
+constexpr uint16_t MODBUS_CRC_LENGTH = 2U;
+constexpr uint16_t MODBUS_WRITE_RESPONSE_LENGTH = 8U;
+constexpr uint16_t MODBUS_EXCEPTION_RESPONSE_LENGTH = 5U;
 
 uint8_t deadline_reached(uint32_t now_ms, uint32_t deadline_ms)
 {
     return (static_cast<int32_t>(now_ms - deadline_ms) >= 0) ? 1U : 0U;
+}
+
+uint8_t slave_address_valid(uint8_t slave_address)
+{
+    return ((slave_address >= 1U) &&
+            (slave_address <= MODBUS_RTU_MAX_SLAVE_ADDRESS)) ? 1U : 0U;
 }
 
 void finish_transaction(ModbusRtuMaster& master, ModbusRtuResult result)
@@ -80,9 +90,9 @@ uint8_t response_crc_valid(const ModbusRtuMaster& master,
         return 0U;
     }
 
-    const uint16_t calculated =
-        modbus_rtu_crc16(master.rx_buffer,
-                         response_length - MODBUS_CRC_LENGTH);
+    const uint16_t calculated = modbus_rtu_crc16(
+        master.rx_buffer,
+        response_length - MODBUS_CRC_LENGTH);
     const uint16_t received =
         static_cast<uint16_t>(master.rx_buffer[response_length - 2U]) |
         static_cast<uint16_t>(master.rx_buffer[response_length - 1U] << 8U);
@@ -182,6 +192,10 @@ void validate_response(ModbusRtuMaster& master)
 
 void receive_available_bytes(ModbusRtuMaster& master)
 {
+    /*
+     * Цикл ограничен фактическим RX count и статической ёмкостью 256 байт.
+     * Он не ожидает появления новых данных.
+     */
     while (master.transport->available() > 0U)
     {
         if (master.rx_length >= MODBUS_RTU_MASTER_RX_CAPACITY)
@@ -267,7 +281,7 @@ uint8_t modbus_rtu_master_start_read_holding(ModbusRtuMaster& master,
                                              uint32_t timeout_ms)
 {
     if ((transport_valid(master.transport) == 0U) ||
-        (slave_address == 0U) ||
+        (slave_address_valid(slave_address) == 0U) ||
         (register_count == 0U) ||
         (register_count > MODBUS_RTU_MASTER_MAX_READ_REGISTERS) ||
         (output == 0) ||
@@ -311,7 +325,7 @@ uint8_t modbus_rtu_master_start_write_multiple(ModbusRtuMaster& master,
     const uint16_t payload_length = 7U + (register_count * 2U);
 
     if ((transport_valid(master.transport) == 0U) ||
-        (slave_address == 0U) ||
+        (slave_address_valid(slave_address) == 0U) ||
         (values == 0) ||
         (register_count == 0U) ||
         (register_count > MODBUS_RTU_MASTER_MAX_WRITE_REGISTERS) ||
