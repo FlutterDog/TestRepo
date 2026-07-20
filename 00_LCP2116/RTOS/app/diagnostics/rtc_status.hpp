@@ -6,8 +6,8 @@
  * общей LCP task. ACKUPD, запись TIMR/CALR, проверка и timeout выполняются через
  * rtc_status_poll(). Поэтому удалять этот poll из app loop нельзя.
  *
- * Синтаксис пользовательской строки разбирается в rtc_status.cpp, а работа с
- * аппаратными регистрами изолирована в `hal/sam3x_rtc.*`.
+ * `time` и `rtc time` выводят только текущую дату и время. Полная команда `rtc`
+ * дополнительно показывает состояние update, источник slow clock и регистры.
  */
 
 #pragma once
@@ -25,15 +25,18 @@ void rtc_status_init(void);
  */
 void rtc_status_poll(void);
 
+/** @brief Печатает только текущие дату, время и результат чтения RTC. */
+void rtc_status_print_time(void);
+
 /** @brief Печатает источник slow clock, дату, update state и raw-регистры. */
 void rtc_status_print_report(void);
 
 /**
- * @brief Обрабатывает `rtc`, `rtc status` и `rtc set ...`.
+ * @brief Обрабатывает `time`, `rtc`, `rtc time` и `rtc set ...`.
  *
  * Формат установки: `YYYY-MM-DD HH:MM:SS`; также принимаются двухзначный год,
- * разделитель точки и буква T. Фактическое завершение проверяется командой
- * `rtc` после последующих poll-вызовов.
+ * разделитель точки и буква T. Фактическое завершение проверяется командами
+ * `time` либо `rtc` после последующих poll-вызовов.
  *
  * @param[in] command Нормализованная строка нижнего регистра без CR/LF.
  * @return 1 для распознанной RTC-команды, иначе 0.
