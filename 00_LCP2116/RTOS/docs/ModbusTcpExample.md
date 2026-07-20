@@ -160,11 +160,11 @@ bits 8..15 ModbusRtuResult
 8 invalid argument
 ```
 
-Пример:
+Примеры:
 
 ```text
-0x0005 = valid + physical port present
-0x0306 = timeout + connection_lost + physical port present
+0x0205 = last result OK + valid + physical port present
+0x0306 = last result timeout + connection_lost + physical port present
 ```
 
 ## Protocol engine
