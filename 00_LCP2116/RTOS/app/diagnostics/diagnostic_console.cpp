@@ -4,7 +4,6 @@
  */
 
 #include "diagnostic_console.hpp"
-
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
@@ -135,7 +134,7 @@ void print_help(void)
     SerialUSB.print("x2x resume    - resume X2X polling\r\n");
     SerialUSB.print("x2x ldo S V   - set LDO slave S output register to V\r\n");
     SerialUSB.print("field         - print FieldSensor status for S1..S4\r\n");
-    SerialUSB.print("field reload  - reload BAUD.TXT and PARITY.TXT\r\n");
+    SerialUSB.print("field reload  - reload baud.TXT and Parity.TXT\r\n");
     SerialUSB.print("field pause   - stop starting new FieldSensor requests\r\n");
     SerialUSB.print("field resume  - resume FieldSensor polling\r\n");
     SerialUSB.print("eth           - print dual Modbus TCP server status\r\n");
