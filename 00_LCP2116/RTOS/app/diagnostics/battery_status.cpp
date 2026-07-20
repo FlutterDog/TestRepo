@@ -2,10 +2,10 @@
  * @file battery_status.cpp
  * @brief Диагностика резервной батареи CR2032.
  *
- * Вход контроллера получает уже дискретный результат внешнего компаратора,
- * поэтому прошивка не измеряет напряжение батареи в вольтах. Поле `2.2 V`
- * описывает аппаратный порог схемы. Если в следующей ревизии платы появится
- * ADC-измерение, его следует добавить отдельным полем, не подменяя raw/state.
+ * Вход контроллера получает дискретный результат внешнего компаратора, поэтому
+ * прошивка не измеряет напряжение батареи. Значение 2.2 V — аппаратный порог.
+ * Если в новой плате появится ADC, добавляйте его отдельным полем и не заменяйте
+ * существующие raw/debounced состояния.
  */
 
 #include "battery_status.hpp"
@@ -73,8 +73,9 @@ void battery_status_print_report(void)
 
     diagnostic_print_section("RTC BACKUP BATTERY");
 
-    SerialUSB.print("hardware: battery=CR2032, input_pin=50, comparator_threshold=2.2 V\r\n");
-    SerialUSB.print("purpose=RTC backup power; voltage is not measured by firmware\r\n");
+    SerialUSB.print("battery=CR2032, input_pin=50\r\n");
+    SerialUSB.print("comparator_threshold=2.2 V\r\n");
+    SerialUSB.print("voltage_measurement=not available\r\n");
     SerialUSB.print("debounce_ms=");
     SerialUSB.print(static_cast<unsigned long>(BATTERY_DEBOUNCE_MS));
     SerialUSB.print(", input_active_high=");
