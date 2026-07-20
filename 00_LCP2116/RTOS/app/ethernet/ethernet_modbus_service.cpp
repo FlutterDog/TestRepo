@@ -220,8 +220,19 @@ void poll_interface(LcpEthernetId ethernet_id)
 
 void ethernet_modbus_service_init(void)
 {
+    W5500NetworkConfig defaults[LCP_ETHERNET_COUNT];
+
     memset(g_interfaces, 0, sizeof(g_interfaces));
     memset(g_holding, 0, sizeof(g_holding));
+    ethernet_network_config_set_defaults(defaults);
+
+    for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
+    {
+        g_interfaces[index].config = defaults[index];
+        reset_config_report(g_interfaces[index].config_report);
+        modbus_tcp_server_init(g_interfaces[index].server);
+    }
+
     g_reload_pending = 1U;
     g_start_ms = millis();
 }
