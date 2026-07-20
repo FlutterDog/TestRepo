@@ -242,6 +242,13 @@ void lcp_field_ports_init(const LcpFieldPortConfig configs[LCP_FIELD_PORT_COUNT]
         }
     }
 
+    /*
+     * S1 не должен зависеть от предварительного запуска диагностического
+     * echo-test. Board-слой самостоятельно обнаруживает физическую схему
+     * SC16IS740/752 и затем выбирает фактический канал S1.
+     */
+    lcp_sc16is_init_pins();
+    lcp_sc16is_probe();
     g_s1_port = lcp_sc16is_get_map().s1;
 
     if (g_s1_port.present != 0U)
