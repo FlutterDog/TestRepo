@@ -1,6 +1,6 @@
 ﻿/**
  * @file ethernet_network_config.hpp
- * @brief Чтение IP, subnet и gateway обоих W5500 из microSD.
+ * @brief Чтение MAC, IP, subnet и gateway обоих W5500 из microSD.
  */
 
 #pragma once
@@ -10,12 +10,14 @@
 #include "../../hal/w5500_lite.hpp"
 #include "../diagnostics/sd_config.hpp"
 
-/** @brief Результаты чтения трёх файлов одного Ethernet-интерфейса. */
+/** @brief Результаты чтения четырёх файлов одного Ethernet-интерфейса. */
 struct EthernetNetworkConfigReport
 {
+    SdConfigResult mac_result;
     SdConfigResult ip_result;
     SdConfigResult subnet_result;
     SdConfigResult gateway_result;
+    const char* mac_file;
     const char* ip_file;
     const char* subnet_file;
     const char* gateway_file;
@@ -27,11 +29,12 @@ void ethernet_network_config_set_defaults(
     W5500NetworkConfig configs[LCP_ETHERNET_COUNT]);
 
 /**
- * @brief Загружает настройки из файлов старого формата.
+ * @brief Загружает только канонические файлы старого формата.
  *
- * ETH1 aliases: IP.TXT/IP1.TXT, SUBNET.TXT/SUBNET1.TXT,
- * GATE.TXT/GATE1.TXT/GW.TXT/GW1.TXT.
- * ETH2: IP2.TXT, SUBNET2.TXT, GATE2.TXT/GW2.TXT.
+ * ETH1: MAC.txt, IP.txt, SUBNET.txt, GATE.txt.
+ * ETH2: MAC2.txt, IP2.txt, SUBNET2.txt, GATE2.txt.
+ *
+ * Псевдонимы и альтернативные имена намеренно не поддерживаются.
  */
 void ethernet_network_config_load(
     W5500NetworkConfig configs[LCP_ETHERNET_COUNT],
