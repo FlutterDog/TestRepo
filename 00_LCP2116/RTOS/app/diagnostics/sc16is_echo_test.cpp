@@ -1,12 +1,10 @@
 ﻿/**
  * @file sc16is_echo_test.cpp
- * @brief Неблокирующий echo-test внешних UART SC16IS7xx.
+ * @brief Неблокирующий echo-test внешних UART PC и HMI.
  *
- * Echo предназначен только для аппаратной диагностики PC/HMI и свободного S1.
- * После передачи S1 сервису FieldSensor echo этого канала отключается. Приём
- * ограничен SC16IS_MAX_RX_BYTES_PER_POLL, а частичная передача продолжается с
- * `tx_offset` на следующих poll-вызовах. Поэтому ни RX, ни TX не удерживают
- * общую LCP task в ожидании FIFO.
+ * S1 сразу принадлежит FieldSensor и здесь не инициализируется. Приём каждого
+ * PC/HMI ограничен 16 байтами за poll, а частичная передача продолжается с
+ * `tx_offset` на следующих вызовах без ожидания FIFO.
  */
 
 #include "sc16is_echo_test.hpp"
@@ -22,13 +20,12 @@ constexpr uint32_t SC16IS_INTERFRAME_GAP_MS = 5U;
 constexpr uint32_t SC16IS_RESPONSE_DELAY_MS = 10U;
 constexpr uint8_t SC16IS_MAX_RX_BYTES_PER_POLL = 16U;
 constexpr uint16_t SC16IS_ECHO_BUFFER_SIZE = 128U;
-constexpr uint8_t SC16IS_ECHO_PORT_CAPACITY = 3U;
+constexpr uint8_t SC16IS_ECHO_PORT_CAPACITY = 2U;
 
 struct Sc16isEchoPort
 {
     LcpSc16isPort port;                         /**< Физический chip-select и канал. */
-    const char* name;                           /**< Диагностическое имя PC/HMI/S1. */
-    uint8_t is_s1;                              /**< 1 для канала, передаваемого FieldSensor. */
+    const char* name;                           /**< Диагностическое имя PC/HMI. */
     uint8_t buffer[SC16IS_ECHO_BUFFER_SIZE];    /**< Полный принятый кадр. */
     uint16_t length;                            /**< Количество байтов кадра. */
     uint16_t tx_offset;                         /**< Первый ещё не переданный байт. */
@@ -37,34 +34,26 @@ struct Sc16isEchoPort
     uint8_t response_pending;                   /**< Кадр завершён и ожидает/выполняет TX. */
 };
 
-Sc16isEchoPort g_sc16is_echo_ports[SC16IS_ECHO_PORT_CAPACITY];
-uint8_t g_sc16is_echo_port_count = 0U;
+Sc16isEchoPort g_ports[SC16IS_ECHO_PORT_CAPACITY];
+uint8_t g_port_count = 0U;
 uint8_t g_probe_report_printed = 0U;
-uint8_t g_s1_echo_enabled = 1U;
 
-void add_port(const LcpSc16isPort& port,
-              const char* name,
-              uint8_t is_s1)
+void add_port(const LcpSc16isPort& port, const char* name)
 {
-    if ((port.present == 0U) ||
-        (g_sc16is_echo_port_count >= SC16IS_ECHO_PORT_CAPACITY))
+    if ((port.present == 0U) || (g_port_count >= SC16IS_ECHO_PORT_CAPACITY))
     {
         return;
     }
 
-    Sc16isEchoPort& echo_port =
-        g_sc16is_echo_ports[g_sc16is_echo_port_count];
-
+    Sc16isEchoPort& echo_port = g_ports[g_port_count];
     echo_port.port = port;
     echo_port.name = name;
-    echo_port.is_s1 = (is_s1 != 0U) ? 1U : 0U;
     echo_port.length = 0U;
     echo_port.tx_offset = 0U;
     echo_port.last_rx_ms = 0U;
     echo_port.response_due_ms = 0U;
     echo_port.response_pending = 0U;
-
-    ++g_sc16is_echo_port_count;
+    ++g_port_count;
 }
 
 void drop_frame(Sc16isEchoPort& port, uint32_t now_ms)
@@ -78,7 +67,6 @@ void drop_frame(Sc16isEchoPort& port, uint32_t now_ms)
 
 void accept_rx(Sc16isEchoPort& port, uint32_t now_ms)
 {
-    /* После начала ответа half-duplex кадр должен быть передан целиком. */
     if (port.tx_offset != 0U)
     {
         return;
@@ -138,12 +126,6 @@ void send_if_response_due(Sc16isEchoPort& port, uint32_t now_ms)
         return;
     }
 
-    if (port.tx_offset >= port.length)
-    {
-        drop_frame(port, now_ms);
-        return;
-    }
-
     const size_t remaining =
         static_cast<size_t>(port.length - port.tx_offset);
     const size_t written = sc16is_write_buffer(
@@ -159,67 +141,45 @@ void send_if_response_due(Sc16isEchoPort& port, uint32_t now_ms)
         drop_frame(port, now_ms);
     }
 }
+
+void begin_port(const LcpSc16isPort& port)
+{
+    if (port.present == 0U)
+    {
+        return;
+    }
+
+    sc16is_begin(port.chip_select,
+                 port.channel,
+                 SC16IS_ECHO_BAUDRATE,
+                 HAL_UART_FRAME_8N1);
+}
 }
 
 void sc16is_echo_test_init(void)
 {
-    lcp_sc16is_init_pins();
     lcp_sc16is_probe();
-    lcp_sc16is_begin_detected_ports(SC16IS_ECHO_BAUDRATE);
-
     const LcpSc16isMap& map = lcp_sc16is_get_map();
 
-    g_sc16is_echo_port_count = 0U;
+    g_port_count = 0U;
     g_probe_report_printed = 0U;
-    g_s1_echo_enabled = 1U;
 
-    add_port(map.pc, "PC", 0U);
-    add_port(map.hmi, "HMI", 0U);
-    add_port(map.s1, "S1", 1U);
+    begin_port(map.pc);
+    begin_port(map.hmi);
+    add_port(map.pc, "PC");
+    add_port(map.hmi, "HMI");
 }
 
 void sc16is_echo_test_poll(void)
 {
     const uint32_t now_ms = millis();
 
-    for (uint8_t index = 0U; index < g_sc16is_echo_port_count; ++index)
+    for (uint8_t index = 0U; index < g_port_count; ++index)
     {
-        Sc16isEchoPort& port = g_sc16is_echo_ports[index];
-
-        if ((port.is_s1 != 0U) && (g_s1_echo_enabled == 0U))
-        {
-            continue;
-        }
-
-        accept_rx(port, now_ms);
-        arm_response_if_frame_complete(port, now_ms);
-        send_if_response_due(port, now_ms);
+        accept_rx(g_ports[index], now_ms);
+        arm_response_if_frame_complete(g_ports[index], now_ms);
+        send_if_response_due(g_ports[index], now_ms);
     }
-}
-
-void sc16is_echo_test_set_s1_enabled(uint8_t enabled)
-{
-    const uint8_t normalized = (enabled != 0U) ? 1U : 0U;
-
-    if (normalized == g_s1_echo_enabled)
-    {
-        return;
-    }
-
-    g_s1_echo_enabled = normalized;
-
-    for (uint8_t index = 0U; index < g_sc16is_echo_port_count; ++index)
-    {
-        if (g_sc16is_echo_ports[index].is_s1 != 0U)
-        {
-            drop_frame(g_sc16is_echo_ports[index], millis());
-        }
-    }
-}
-
-uint8_t sc16is_echo_test_s1_enabled(void)
-{
-    return g_s1_echo_enabled;
 }
 
 void sc16is_echo_test_print_report_once(void)
