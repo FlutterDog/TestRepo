@@ -2,7 +2,7 @@
 
 ## Назначение
 
-Базовая прошивка Lorentz запускает два независимых Modbus TCP server на двух W5500 контроллера LCP2116. Оба интерфейса публикуют одну и ту же демонстрационную карту данных `FieldSensor`; подключение к ETH1 или ETH2 меняет только IP-интерфейс, но не адреса holding registers.
+Базовая прошивка Lorentz запускает два независимых Modbus TCP server на двух W5500 контроллера LCP2116. Оба интерфейса публикуют одну и ту же демонстрационную карту данных `FieldSensor`.
 
 ```text
 protocol: Modbus TCP
@@ -12,104 +12,79 @@ holding registers: 0..11
 write functions: not supported
 ```
 
-Готовые примеры файлов находятся в:
+Готовые примеры штатных файлов находятся в:
 
 ```text
 00_LCP2116/RTOS/sd_card/
 ```
 
-## Сетевые файлы microSD
+## Канонические сетевые файлы microSD
 
-Каждый файл использует старый числовой формат: первая строка содержит количество значений `4`, затем четыре октета.
+Имена файлов являются частью существующего формата проектов. Альтернативные имена и псевдонимы не поддерживаются.
 
 ### ETH1
 
-Основные имена:
-
 ```text
-IP.TXT
-SUBNET.TXT
-GATE.TXT
-```
-
-Также принимаются:
-
-```text
-IP1.TXT
-SUBNET1.TXT
-GATE1.TXT
-GW.TXT
-GW1.TXT
-```
-
-Пример `IP.TXT`:
-
-```text
-4
-192
-168
-1
-1
+MAC.txt
+IP.txt
+SUBNET.txt
+GATE.txt
 ```
 
 ### ETH2
 
 ```text
-IP2.TXT
-SUBNET2.TXT
-GATE2.TXT
+MAC2.txt
+IP2.txt
+SUBNET2.txt
+GATE2.txt
 ```
 
-Для gateway также принимается `GW2.TXT`.
-
-Пример `IP2.TXT`:
+IP, SUBNET и GATE содержат четыре октета:
 
 ```text
 4
 192
 168
 1
-2
-```
-
-### Subnet и gateway
-
-```text
-SUBNET.TXT / SUBNET2.TXT
-4
-255
-255
-255
-0
-```
-
-```text
-GATE.TXT / GATE2.TXT
-4
-192
-168
 1
-254
+fin
 ```
 
-Если файл отсутствует или содержит ошибку, соответствующий параметр сохраняет значение по умолчанию. IP, subnet и gateway загружаются независимо.
-
-## Значения по умолчанию
+MAC содержит шесть байтов в десятичном виде:
 
 ```text
-ETH1 IP:      192.168.1.1
-ETH2 IP:      192.168.1.2
-Subnet:       255.255.255.0
-Gateway:      192.168.1.254
-TCP port:     502
+6
+100
+200
+249
+154
+182
+220
+fin
 ```
 
-MAC-адреса различаются последним байтом:
+Комментарии после `//` допускаются. После чтения указанного количества значений завершающая строка `fin` игнорируется.
+
+Каждый из четырёх параметров интерфейса загружается независимо. При ошибке конкретного файла только соответствующий параметр сохраняет внутреннее значение по умолчанию.
+
+## Значения присланного комплекта
 
 ```text
-ETH1: 02:4C:43:50:00:01
-ETH2: 02:4C:43:50:00:02
+ETH1
+MAC:     100.200.249.154.182.220
+IP:      192.168.1.1
+Subnet:  255.255.255.0
+Gateway: 0.0.0.0
+
+ETH2
+MAC:     222.173.190.239.254.238
+IP:      192.168.1.1
+Subnet:  255.255.255.0
+Gateway: 0.0.0.0
 ```
+
+Одинаковый IP на ETH1 и ETH2 допустим, когда интерфейсы подключены к раздельным физическим сетям. При подключении обоих портов к одной сети IP-адреса должны различаться.
 
 ## Карта holding registers
 
@@ -160,16 +135,7 @@ bits 8..15 ModbusRtuResult
 8 invalid argument
 ```
 
-Примеры:
-
-```text
-0x0205 = last result OK + valid + physical port present
-0x0306 = last result timeout + connection_lost + physical port present
-```
-
-## Protocol engine
-
-Разделение слоёв:
+## Архитектура
 
 ```text
 hal/w5500_lite.*
@@ -179,7 +145,7 @@ protocol/modbus_tcp/modbus_tcp_server.*
     MBAP framing, stream buffering, FC03 and exception responses
 
 app/ethernet/ethernet_network_config.*
-    чтение IP/subnet/gateway с microSD
+    чтение канонических MAC/IP/SUBNET/GATE файлов microSD
 
 app/ethernet/ethernet_modbus_service.*
     два server instance и карта FieldSensor
@@ -196,8 +162,8 @@ eth reload
 
 `eth` показывает:
 
-- фактически применённые IP/subnet/gateway;
-- имя и результат каждого TXT-файла;
+- фактически применённые MAC, IP, subnet и gateway;
+- каноническое имя и результат чтения каждого TXT-файла;
 - VERSIONR W5500;
 - link up/down;
 - socket status;
@@ -208,22 +174,14 @@ eth reload
 
 ## Проверка
 
-1. Скопировать нужные файлы из `RTOS/sd_card` в корень microSD либо оставить существующие совместимые файлы.
+1. Скопировать канонические файлы в корень microSD.
 2. Подключить ETH1 или ETH2 к компьютеру или коммутатору.
 3. Настроить компьютер в соответствующей подсети.
-4. Выполнить `eth` и проверить `VERSIONR=0x04`, `init=ok`, `link=up` и фактический IP.
+4. Выполнить `eth` и проверить `VERSIONR=0x04`, `init=ok`, `link=up`, MAC и IP.
 5. Подключиться Modbus TCP client к порту 502.
 6. Выполнить FC03, start address 0, quantity 12.
 7. Проверить рост `requests` и `responses` в команде `eth`.
 8. Сравнить регистры 0..11 с командой `field`.
 9. Повторить тест на втором Ethernet-интерфейсе.
 
-Для первичной проверки можно читать только два регистра:
-
-```text
-FC03
-start address: 0
-quantity: 2
-```
-
-При запросе за пределами 0..11 server возвращает Modbus exception `0x02 Illegal Data Address`. Неподдерживаемая функция возвращает `0x01 Illegal Function`.
+При запросе за пределами 0..11 server возвращает exception `0x02 Illegal Data Address`. Неподдерживаемая функция возвращает `0x01 Illegal Function`.
