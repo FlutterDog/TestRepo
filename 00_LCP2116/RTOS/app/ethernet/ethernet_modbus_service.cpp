@@ -35,12 +35,14 @@ LcpEthernetId normalize_ethernet_id(LcpEthernetId ethernet_id)
 
 void reset_config_report(EthernetNetworkConfigReport& report)
 {
+    report.mac_result = SD_CONFIG_CARD_NOT_READY;
     report.ip_result = SD_CONFIG_CARD_NOT_READY;
     report.subnet_result = SD_CONFIG_CARD_NOT_READY;
     report.gateway_result = SD_CONFIG_CARD_NOT_READY;
-    report.ip_file = "";
-    report.subnet_file = "";
-    report.gateway_file = "";
+    report.mac_file = "MAC.txt";
+    report.ip_file = "IP.txt";
+    report.subnet_file = "SUBNET.txt";
+    report.gateway_file = "GATE.txt";
     report.any_loaded_from_sd = 0U;
 }
 
