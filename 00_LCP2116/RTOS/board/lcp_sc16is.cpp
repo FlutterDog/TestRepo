@@ -6,6 +6,7 @@
  * hot-plug устройства. Инициализация SPI/CS и probe поэтому идемпотентны:
  * echo-test, FieldSensor и повторная загрузка serial-конфигурации используют
  * одну сохранённую карту и не повторяют scratchpad-тесты без необходимости.
+ * Настройку baud/frame выполняет владелец каждого логического порта.
  */
 
 #include "lcp_sc16is.hpp"
@@ -171,33 +172,4 @@ void lcp_sc16is_print_probe_report(void)
     print_assignment("PC", g_sc16is_map.pc);
     print_assignment("HMI", g_sc16is_map.hmi);
     print_assignment("S1", g_sc16is_map.s1);
-}
-
-void lcp_sc16is_begin_detected_ports(uint32_t baudrate)
-{
-    lcp_sc16is_probe();
-
-    if (g_sc16is_map.pc.present != 0U)
-    {
-        sc16is_begin(g_sc16is_map.pc.chip_select,
-                     g_sc16is_map.pc.channel,
-                     baudrate,
-                     HAL_UART_FRAME_8N1);
-    }
-
-    if (g_sc16is_map.hmi.present != 0U)
-    {
-        sc16is_begin(g_sc16is_map.hmi.chip_select,
-                     g_sc16is_map.hmi.channel,
-                     baudrate,
-                     HAL_UART_FRAME_8N1);
-    }
-
-    if (g_sc16is_map.s1.present != 0U)
-    {
-        sc16is_begin(g_sc16is_map.s1.chip_select,
-                     g_sc16is_map.s1.channel,
-                     baudrate,
-                     HAL_UART_FRAME_8N1);
-    }
 }
