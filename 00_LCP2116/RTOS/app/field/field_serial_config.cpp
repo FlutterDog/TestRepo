@@ -1,6 +1,6 @@
 ﻿/**
  * @file field_serial_config.cpp
- * @brief Реализация чтения BAUD.TXT и PARITY.TXT.
+ * @brief Реализация чтения baud.TXT и Parity.TXT.
  */
 
 #include "field_serial_config.hpp"
@@ -12,8 +12,8 @@
 
 namespace
 {
-static const char* const BAUD_FILE_NAME = "BAUD.TXT";
-static const char* const PARITY_FILE_NAME = "PARITY.TXT";
+static const char* const BAUD_FILE_NAME = "baud.TXT";
+static const char* const PARITY_FILE_NAME = "Parity.TXT";
 static const uint16_t LINE_CAPACITY = 32U;
 static const uint8_t EXPECTED_VALUE_COUNT = LCP_FIELD_PORT_COUNT;
 
@@ -23,16 +23,6 @@ uint8_t is_space(char value)
 {
     return ((value == ' ') || (value == '\t') ||
             (value == '\r') || (value == '\n')) ? 1U : 0U;
-}
-
-char ascii_upper(char value)
-{
-    if ((value >= 'a') && (value <= 'z'))
-    {
-        return static_cast<char>(value - ('a' - 'A'));
-    }
-
-    return value;
 }
 
 void strip_comment_and_trim(char* line)
@@ -164,77 +154,30 @@ uint8_t parse_uint32(const char* text, uint32_t* output)
     return 1U;
 }
 
-uint8_t text_equals_ignore_case(const char* text, const char* expected)
-{
-    uint16_t index = 0U;
-
-    while ((text[index] != '\0') && (expected[index] != '\0'))
-    {
-        if (ascii_upper(text[index]) != ascii_upper(expected[index]))
-        {
-            return 0U;
-        }
-
-        ++index;
-    }
-
-    return ((text[index] == '\0') && (expected[index] == '\0')) ? 1U : 0U;
-}
-
 uint8_t parse_parity(const char* text, HalUartFrame* frame)
 {
     uint32_t numeric = 0U;
 
-    if ((text == 0) || (frame == 0))
+    if ((text == 0) || (frame == 0) ||
+        (parse_uint32(text, &numeric) == 0U))
     {
         return 0U;
     }
 
-    if ((text_equals_ignore_case(text, "N") != 0U) ||
-        (text_equals_ignore_case(text, "NONE") != 0U))
+    switch (numeric)
     {
-        *frame = HAL_UART_FRAME_8N1;
-        return 1U;
+        case 0U:
+            *frame = HAL_UART_FRAME_8N1;
+            return 1U;
+        case 1U:
+            *frame = HAL_UART_FRAME_8O1;
+            return 1U;
+        case 2U:
+            *frame = HAL_UART_FRAME_8E1;
+            return 1U;
+        default:
+            return 0U;
     }
-
-    if ((text_equals_ignore_case(text, "O") != 0U) ||
-        (text_equals_ignore_case(text, "ODD") != 0U))
-    {
-        *frame = HAL_UART_FRAME_8O1;
-        return 1U;
-    }
-
-    if ((text_equals_ignore_case(text, "E") != 0U) ||
-        (text_equals_ignore_case(text, "EVEN") != 0U))
-    {
-        *frame = HAL_UART_FRAME_8E1;
-        return 1U;
-    }
-
-    if (parse_uint32(text, &numeric) == 0U)
-    {
-        return 0U;
-    }
-
-    if ((numeric == 0U) || (numeric == 78U))
-    {
-        *frame = HAL_UART_FRAME_8N1;
-        return 1U;
-    }
-
-    if ((numeric == 1U) || (numeric == 79U))
-    {
-        *frame = HAL_UART_FRAME_8O1;
-        return 1U;
-    }
-
-    if ((numeric == 2U) || (numeric == 69U))
-    {
-        *frame = HAL_UART_FRAME_8E1;
-        return 1U;
-    }
-
-    return 0U;
 }
 
 FieldSerialConfigResult storage_open_result(LcpSdStorageResult result)
@@ -280,6 +223,14 @@ FieldSerialConfigResult load_baud(
             continue;
         }
 
+        /* Старый формат завершается строкой fin. После четырёх значений
+         * оставшаяся часть файла намеренно не разбирается. */
+        if ((significant_line != 0U) &&
+            (value_index >= EXPECTED_VALUE_COUNT))
+        {
+            break;
+        }
+
         uint32_t parsed = 0U;
 
         if (parse_uint32(g_line, &parsed) == 0U)
@@ -298,8 +249,8 @@ FieldSerialConfigResult load_baud(
         }
         else
         {
-            if ((parsed < 300U) || (parsed > 1000000U) ||
-                (value_index >= EXPECTED_VALUE_COUNT))
+            /* В файле хранится фактическая скорость, а не индекс таблицы. */
+            if ((parsed < 300U) || (parsed > 1000000U))
             {
                 lcp_sd_storage_close_read(&file);
                 return FIELD_SERIAL_CONFIG_INVALID_VALUE;
@@ -355,6 +306,12 @@ FieldSerialConfigResult load_parity(
             continue;
         }
 
+        if ((significant_line != 0U) &&
+            (value_index >= EXPECTED_VALUE_COUNT))
+        {
+            break;
+        }
+
         if (significant_line == 0U)
         {
             uint32_t count = 0U;
@@ -370,8 +327,7 @@ FieldSerialConfigResult load_parity(
         {
             HalUartFrame frame = HAL_UART_FRAME_8N1;
 
-            if ((value_index >= EXPECTED_VALUE_COUNT) ||
-                (parse_parity(g_line, &frame) == 0U))
+            if (parse_parity(g_line, &frame) == 0U)
             {
                 lcp_sd_storage_close_read(&file);
                 return FIELD_SERIAL_CONFIG_INVALID_VALUE;
