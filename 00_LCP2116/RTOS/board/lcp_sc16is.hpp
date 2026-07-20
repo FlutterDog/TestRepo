@@ -10,6 +10,8 @@
  * SC16IS являются распаянными компонентами и не поддерживают hot-plug. Probe
  * выполняется не более одного раза после старта; повторные вызовы безопасно
  * возвращают сохранённую карту. Файл SC16.txt для выбора варианта не нужен.
+ * Настройка baud/frame выполняется владельцем каждого логического порта:
+ * echo-test для PC/HMI и FieldSensor service для S1.
  */
 
 #pragma once
@@ -89,13 +91,3 @@ const LcpSc16isMap& lcp_sc16is_get_map(void);
 
 /** @brief Печатает физические каналы и логическое назначение PC/HMI/S1. */
 void lcp_sc16is_print_probe_report(void);
-
-/**
- * @brief Инициализирует все обнаруженные каналы для временного echo-теста.
- *
- * FieldSensor позднее перенастраивает только логический S1 согласно baud.TXT и
- * Parity.TXT. PC/HMI остаются в диагностическом режиме.
- *
- * @param[in] baudrate Общая скорость временного echo-теста; 0 игнорируется HAL.
- */
-void lcp_sc16is_begin_detected_ports(uint32_t baudrate);
