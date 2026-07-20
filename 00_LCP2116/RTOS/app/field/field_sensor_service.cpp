@@ -5,6 +5,7 @@
 
 #include "field_sensor_service.hpp"
 
+#include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
 #include "../../platform/platform.hpp"
 
 #include <string.h>
@@ -13,40 +14,20 @@ namespace
 {
 static const uint8_t FIELD_SENSOR_REGISTER_COUNT = 2U;
 static const uint8_t FIELD_SENSOR_CONNECTION_LOSS_THRESHOLD = 5U;
-static const uint32_t FIELD_SENSOR_DEFAULT_BAUDRATE = 9600U;
 static const uint32_t FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS = 300U;
 static const uint32_t FIELD_SENSOR_DEFAULT_TIMEOUT_MS = 500U;
 static const uint32_t FIELD_SENSOR_MODBUS_INTERFRAME_GAP_MS = 5U;
 
-static_assert(FIELD_SENSOR_REGISTER_COUNT == 2U,
-              "FieldSensor baseline publishes exactly two registers");
-
-const FieldSensorConfig g_default_configs[LCP_FIELD_PORT_COUNT] =
-{
-    {
-        FIELD_PORT_MASTER, 1U, 0U, FIELD_SENSOR_REGISTER_COUNT,
-        FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS, FIELD_SENSOR_DEFAULT_TIMEOUT_MS,
-        { FIELD_SENSOR_DEFAULT_BAUDRATE, HAL_UART_FRAME_8N1 }
-    },
-    {
-        FIELD_PORT_MASTER, 1U, 0U, FIELD_SENSOR_REGISTER_COUNT,
-        FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS, FIELD_SENSOR_DEFAULT_TIMEOUT_MS,
-        { FIELD_SENSOR_DEFAULT_BAUDRATE, HAL_UART_FRAME_8N1 }
-    },
-    {
-        FIELD_PORT_MASTER, 1U, 0U, FIELD_SENSOR_REGISTER_COUNT,
-        FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS, FIELD_SENSOR_DEFAULT_TIMEOUT_MS,
-        { FIELD_SENSOR_DEFAULT_BAUDRATE, HAL_UART_FRAME_8N1 }
-    },
-    {
-        FIELD_PORT_MASTER, 1U, 0U, FIELD_SENSOR_REGISTER_COUNT,
-        FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS, FIELD_SENSOR_DEFAULT_TIMEOUT_MS,
-        { FIELD_SENSOR_DEFAULT_BAUDRATE, HAL_UART_FRAME_8N1 }
-    }
-};
-
+FieldSensorConfig g_configs[LCP_FIELD_PORT_COUNT];
 FieldSensorPortState g_ports[LCP_FIELD_PORT_COUNT];
+FieldSerialConfigReport g_serial_config_report =
+{
+    FIELD_SERIAL_CONFIG_NOT_ATTEMPTED,
+    FIELD_SERIAL_CONFIG_NOT_ATTEMPTED,
+    0U
+};
 uint8_t g_paused = 0U;
+uint8_t g_config_reload_pending = 0U;
 
 LcpFieldPortId normalize_port_id(LcpFieldPortId port_id)
 {
@@ -56,6 +37,88 @@ LcpFieldPortId normalize_port_id(LcpFieldPortId port_id)
 uint8_t deadline_reached(uint32_t now_ms, uint32_t deadline_ms)
 {
     return (static_cast<int32_t>(now_ms - deadline_ms) >= 0) ? 1U : 0U;
+}
+
+void set_default_configs(void)
+{
+    LcpFieldPortConfig serial[LCP_FIELD_PORT_COUNT];
+    field_serial_config_set_defaults(serial);
+
+    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
+    {
+        g_configs[index].role = FIELD_PORT_MASTER;
+        g_configs[index].slave_address = 1U;
+        g_configs[index].start_register = 0U;
+        g_configs[index].register_count = FIELD_SENSOR_REGISTER_COUNT;
+        g_configs[index].poll_period_ms = FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS;
+        g_configs[index].timeout_ms = FIELD_SENSOR_DEFAULT_TIMEOUT_MS;
+        g_configs[index].serial = serial[index];
+    }
+}
+
+uint8_t all_requests_idle(void)
+{
+    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
+    {
+        if (g_ports[index].request_active != 0U)
+        {
+            return 0U;
+        }
+    }
+
+    return 1U;
+}
+
+void initialize_runtime(void)
+{
+    LcpFieldPortConfig serial[LCP_FIELD_PORT_COUNT];
+
+    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
+    {
+        serial[index] = g_configs[index].serial;
+    }
+
+    lcp_field_ports_init(serial);
+    const uint32_t now_ms = millis();
+
+    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
+    {
+        FieldSensorPortState& port = g_ports[index];
+        memset(&port, 0, sizeof(port));
+        port.config = g_configs[index];
+        port.port_present = lcp_field_port_present(
+            static_cast<LcpFieldPortId>(index));
+        port.connection_lost = 1U;
+        port.valid = 0U;
+        port.last_result = (port.port_present != 0U) ?
+            MODBUS_RTU_RESULT_IDLE : MODBUS_RTU_RESULT_TRANSPORT_ERROR;
+        port.next_poll_ms = now_ms;
+
+        modbus_rtu_master_init(
+            port.master,
+            lcp_field_port_transport(static_cast<LcpFieldPortId>(index)),
+            FIELD_SENSOR_MODBUS_INTERFRAME_GAP_MS);
+    }
+}
+
+void apply_sd_serial_config(void)
+{
+    LcpFieldPortConfig serial[LCP_FIELD_PORT_COUNT];
+
+    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
+    {
+        serial[index] = g_configs[index].serial;
+    }
+
+    field_serial_config_load(serial, &g_serial_config_report);
+
+    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
+    {
+        g_configs[index].serial = serial[index];
+    }
+
+    initialize_runtime();
+    g_config_reload_pending = 0U;
 }
 
 void schedule_next_request(FieldSensorPortState& port, uint32_t now_ms)
@@ -141,6 +204,7 @@ void poll_port(LcpFieldPortId port_id, uint32_t now_ms)
     }
 
     if ((g_paused != 0U) ||
+        (g_config_reload_pending != 0U) ||
         (deadline_reached(now_ms, port.next_poll_ms) == 0U) ||
         (modbus_rtu_master_ready(port.master) == 0U))
     {
@@ -170,37 +234,10 @@ void poll_port(LcpFieldPortId port_id, uint32_t now_ms)
 
 void field_sensor_service_init(void)
 {
-    LcpFieldPortConfig serial_configs[LCP_FIELD_PORT_COUNT];
-
-    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
-    {
-        serial_configs[index] = g_default_configs[index].serial;
-    }
-
-    lcp_field_ports_init(serial_configs);
-
-    const uint32_t now_ms = millis();
-
-    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
-    {
-        FieldSensorPortState& port = g_ports[index];
-        memset(&port, 0, sizeof(port));
-        port.config = g_default_configs[index];
-        port.port_present = lcp_field_port_present(
-            static_cast<LcpFieldPortId>(index));
-        port.connection_lost = 1U;
-        port.valid = 0U;
-        port.last_result = (port.port_present != 0U) ?
-            MODBUS_RTU_RESULT_IDLE : MODBUS_RTU_RESULT_TRANSPORT_ERROR;
-        port.next_poll_ms = now_ms;
-
-        modbus_rtu_master_init(
-            port.master,
-            lcp_field_port_transport(static_cast<LcpFieldPortId>(index)),
-            FIELD_SENSOR_MODBUS_INTERFRAME_GAP_MS);
-    }
-
+    set_default_configs();
+    initialize_runtime();
     g_paused = 0U;
+    g_config_reload_pending = 1U;
 }
 
 void field_sensor_service_poll(void)
@@ -210,6 +247,13 @@ void field_sensor_service_poll(void)
     for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
     {
         poll_port(static_cast<LcpFieldPortId>(index), now_ms);
+    }
+
+    if ((g_config_reload_pending != 0U) &&
+        (lcp_sd_storage_ready() != 0U) &&
+        (all_requests_idle() != 0U))
+    {
+        apply_sd_serial_config();
     }
 }
 
@@ -237,6 +281,21 @@ uint8_t field_sensor_service_paused(void)
     return g_paused;
 }
 
+void field_sensor_service_request_config_reload(void)
+{
+    g_config_reload_pending = 1U;
+}
+
+uint8_t field_sensor_service_config_reload_pending(void)
+{
+    return g_config_reload_pending;
+}
+
+const FieldSerialConfigReport& field_sensor_service_serial_config_report(void)
+{
+    return g_serial_config_report;
+}
+
 const FieldSensorPortState& field_sensor_service_port(LcpFieldPortId port_id)
 {
     return g_ports[normalize_port_id(port_id)];
@@ -253,10 +312,8 @@ const char* field_sensor_role_text(FieldPortRole role)
     {
         case FIELD_PORT_MASTER:
             return "master";
-
         case FIELD_PORT_SLAVE:
             return "slave";
-
         case FIELD_PORT_DISABLED:
         default:
             return "disabled";
