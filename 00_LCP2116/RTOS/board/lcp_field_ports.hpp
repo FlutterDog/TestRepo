@@ -31,8 +31,7 @@ struct LcpFieldPortConfig
  * @brief Инициализирует S1..S4 для прикладного Modbus RTU.
  *
  * S1 использует обнаруженный SC16IS7xx. S2, S3 и S4 используют встроенные
- * UART/USART ATSAM3X8E. Текущая SC16IS7xx HAL поддерживает формат 8N1;
- * baseline-конфигурация поэтому задаёт 8N1 для всех четырёх портов.
+ * UART/USART ATSAM3X8E. Все четыре порта поддерживают 8N1, 8O1 и 8E1.
  */
 void lcp_field_ports_init(const LcpFieldPortConfig configs[LCP_FIELD_PORT_COUNT]);
 
