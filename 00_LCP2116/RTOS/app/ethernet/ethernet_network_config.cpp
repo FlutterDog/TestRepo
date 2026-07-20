@@ -26,7 +26,7 @@ static const EthernetFileSet FILES[LCP_ETHERNET_COUNT] =
     { "MAC2.txt", "IP2.txt", "SUBNET2.txt", "GATE2.txt" }
 };
 
-static const uint16_t LINE_CAPACITY = 64U;
+static const uint16_t LINE_CAPACITY = 192U;
 char g_line[LINE_CAPACITY];
 
 uint8_t is_space(char value)
@@ -213,7 +213,6 @@ SdConfigResult load_bytes(const char* file_name,
             continue;
         }
 
-        /* Штатная завершающая строка fin находится после всех значений. */
         if ((significant_line != 0U) && (value_index >= expected_count))
         {
             break;
