@@ -37,7 +37,7 @@ enum FieldSensorTcpQuality : uint16_t
 struct EthernetModbusInterfaceState
 {
     W5500NetworkConfig config;                 /**< Фактически применённые сетевые параметры. */
-    EthernetNetworkConfigReport config_report; /**< Результаты чтения восьмиканального набора файлов. */
+    EthernetNetworkConfigReport config_report; /**< Результаты чтения четырёх канонических файлов. */
     ModbusTcpServer server;                    /**< Независимый потоковый protocol engine. */
     uint8_t initialized;                       /**< Сервис выполнил попытку аппаратного запуска. */
     uint8_t init_ok;                           /**< VERSIONR W5500 подтверждён. */
