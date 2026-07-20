@@ -15,6 +15,7 @@
 #include "../x2x/x2x_service.hpp"
 #include "../../board/lcp_sc16is.hpp"
 #include "ethernet_echo_test.hpp"
+#include "field_status.hpp"
 #include "rs485_echo_test.hpp"
 #include "sd_card_test.hpp"
 #include "battery_status.hpp"
@@ -123,6 +124,9 @@ static void print_help(void)
     SerialUSB.print("x2x pause    - stop X2X polling\r\n");
     SerialUSB.print("x2x resume   - resume X2X polling\r\n");
     SerialUSB.print("x2x ldo S V  - set LDO slave S output register to V\r\n");
+    SerialUSB.print("field        - print FieldSensor status for S1..S4\r\n");
+    SerialUSB.print("field pause  - stop starting new FieldSensor requests\r\n");
+    SerialUSB.print("field resume - resume FieldSensor polling\r\n");
     SerialUSB.print("eth          - print W5500 status\r\n");
     SerialUSB.print("sc16is       - print SC16IS probe report\r\n");
     SerialUSB.print("rs485        - print built-in RS-485 status\r\n");
@@ -154,15 +158,15 @@ static void print_rs485_status(void)
     SerialUSB.print(static_cast<int>(Serial.errorCount()));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("S2:  Serial1, 9600 8N1, echo, error_count=");
+    SerialUSB.print("S2:  Serial1, 9600 8N1, FieldSensor Modbus RTU master, error_count=");
     SerialUSB.print(static_cast<int>(Serial1.errorCount()));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("S4:  Serial2, 9600 8N1, echo, error_count=");
+    SerialUSB.print("S4:  Serial2, 9600 8N1, FieldSensor Modbus RTU master, error_count=");
     SerialUSB.print(static_cast<int>(Serial2.errorCount()));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("S3:  Serial3, 9600 8N1, echo, error_count=");
+    SerialUSB.print("S3:  Serial3, 9600 8N1, FieldSensor Modbus RTU master, error_count=");
     SerialUSB.print(static_cast<int>(Serial3.errorCount()));
     SerialUSB.print("\r\n");
 }
@@ -298,6 +302,7 @@ static void print_status(void)
     SerialUSB.print("USB service CDC: open\r\n");
     print_rs485_status();
     x2x_status_print_report();
+    field_status_print_report();
     lcp_sc16is_print_probe_report();
     ethernet_echo_test_print_report();
     sd_card_test_print_report();
@@ -333,6 +338,9 @@ static void execute_command(char* command)
     else if (command_equals(command, "rtos") != 0U)
     {
         print_rtos_status();
+    }
+    else if (field_status_handle_command(command) != 0U)
+    {
     }
     else if (x2x_status_handle_command(command) != 0U)
     {
