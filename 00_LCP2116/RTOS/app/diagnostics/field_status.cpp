@@ -19,10 +19,8 @@ const char* frame_text(HalUartFrame frame)
     {
         case HAL_UART_FRAME_8O1:
             return "8O1";
-
         case HAL_UART_FRAME_8E1:
             return "8E1";
-
         case HAL_UART_FRAME_8N1:
         default:
             return "8N1";
@@ -86,10 +84,26 @@ void print_port(LcpFieldPortId port_id)
 
 void field_status_print_report(void)
 {
+    const FieldSerialConfigReport& config_report =
+        field_sensor_service_serial_config_report();
+
     SerialUSB.print("FieldSensor status\r\n");
     SerialUSB.print("service=");
-    SerialUSB.print((field_sensor_service_paused() != 0U) ? "paused" : "running");
-    SerialUSB.print(", implementation=hardcoded example\r\n");
+    SerialUSB.print((field_sensor_service_paused() != 0U) ?
+                    "paused" : "running");
+    SerialUSB.print(", implementation=hardcoded device example");
+    SerialUSB.print(", config_reload=");
+    SerialUSB.print((field_sensor_service_config_reload_pending() != 0U) ?
+                    "pending" : "idle");
+    SerialUSB.print("\r\n");
+
+    SerialUSB.print("serial_config: BAUD.TXT=");
+    SerialUSB.print(field_serial_config_result_text(config_report.baud_result));
+    SerialUSB.print(", PARITY.TXT=");
+    SerialUSB.print(field_serial_config_result_text(config_report.parity_result));
+    SerialUSB.print(", any_loaded_from_sd=");
+    SerialUSB.print((config_report.loaded_from_sd != 0U) ? "yes" : "no");
+    SerialUSB.print("\r\n");
 
     for (uint8_t index = 0U;
          index < field_sensor_service_port_count();
@@ -124,6 +138,13 @@ uint8_t field_status_handle_command(const char* command)
     {
         field_sensor_service_resume();
         SerialUSB.print("FieldSensor polling: running\r\n");
+        return 1U;
+    }
+
+    if (strcmp(command, "field reload") == 0)
+    {
+        field_sensor_service_request_config_reload();
+        SerialUSB.print("FieldSensor serial configuration reload: pending\r\n");
         return 1U;
     }
 
