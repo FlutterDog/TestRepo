@@ -3,8 +3,8 @@
  * @brief Диагностическая baseline-прошивка LCP под управлением FreeRTOS.
  *
  * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
- * service console, обслуживает встроенные интерфейсы контроллера и запускает
- * конфигурируемый master внутренней шины X2X.
+ * service console, обслуживает встроенные интерфейсы контроллера, запускает
+ * master внутренней шины X2X и четыре демонстрационных FieldSensor master.
  */
 
 #include "app.hpp"
@@ -20,6 +20,7 @@
 #include "diagnostics/battery_status.hpp"
 #include "diagnostics/rtc_status.hpp"
 #include "diagnostics/watchdog_status.hpp"
+#include "field/field_sensor_service.hpp"
 #include "x2x/x2x_service.hpp"
 
 extern "C"
@@ -93,6 +94,15 @@ void setup(void)
 
     rs485_echo_test_init();
     sc16is_echo_test_init();
+
+    /*
+     * FieldSensor становится владельцем S1..S4. Echo остаётся доступным для
+     * PC/HMI внешних UART и для X2X только когда X2X.TXT не захватывает UART0.
+     */
+    field_sensor_service_init();
+    rs485_echo_test_set_field_ports_enabled(0U);
+    sc16is_echo_test_set_s1_enabled(0U);
+
     ethernet_echo_test_init();
     sd_card_test_init();
     x2x_service_init();
@@ -122,6 +132,7 @@ void loop(void)
      */
     sd_card_test_poll();
     x2x_service_poll();
+    field_sensor_service_poll();
 
     /* UART0 может принадлежать либо X2X master, либо диагностическому echo. */
     rs485_echo_test_set_x2x_enabled(
