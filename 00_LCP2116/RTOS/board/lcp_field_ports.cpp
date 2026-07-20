@@ -138,78 +138,42 @@ size_t s2_write(const uint8_t* data, size_t length)
     return embedded_write(HAL_UART_PORT_1, LCP_FIELD_PORT_S2, data, length);
 }
 
-size_t s2_available(void)
-{
-    return hal_uart_available(HAL_UART_PORT_1);
-}
-
-int s2_read(void)
-{
-    return hal_uart_read(HAL_UART_PORT_1);
-}
-
+size_t s2_available(void) { return hal_uart_available(HAL_UART_PORT_1); }
+int s2_read(void) { return hal_uart_read(HAL_UART_PORT_1); }
 uint8_t s2_tx_idle(void)
 {
     return ((transmission_time_elapsed(LCP_FIELD_PORT_S2) != 0U) &&
             (hal_uart_tx_idle(HAL_UART_PORT_1) != 0U)) ? 1U : 0U;
 }
-
-void s2_clear_rx(void)
-{
-    hal_uart_clear_rx(HAL_UART_PORT_1);
-}
+void s2_clear_rx(void) { hal_uart_clear_rx(HAL_UART_PORT_1); }
 
 size_t s3_write(const uint8_t* data, size_t length)
 {
     return embedded_write(HAL_UART_PORT_3, LCP_FIELD_PORT_S3, data, length);
 }
 
-size_t s3_available(void)
-{
-    return hal_uart_available(HAL_UART_PORT_3);
-}
-
-int s3_read(void)
-{
-    return hal_uart_read(HAL_UART_PORT_3);
-}
-
+size_t s3_available(void) { return hal_uart_available(HAL_UART_PORT_3); }
+int s3_read(void) { return hal_uart_read(HAL_UART_PORT_3); }
 uint8_t s3_tx_idle(void)
 {
     return ((transmission_time_elapsed(LCP_FIELD_PORT_S3) != 0U) &&
             (hal_uart_tx_idle(HAL_UART_PORT_3) != 0U)) ? 1U : 0U;
 }
-
-void s3_clear_rx(void)
-{
-    hal_uart_clear_rx(HAL_UART_PORT_3);
-}
+void s3_clear_rx(void) { hal_uart_clear_rx(HAL_UART_PORT_3); }
 
 size_t s4_write(const uint8_t* data, size_t length)
 {
     return embedded_write(HAL_UART_PORT_2, LCP_FIELD_PORT_S4, data, length);
 }
 
-size_t s4_available(void)
-{
-    return hal_uart_available(HAL_UART_PORT_2);
-}
-
-int s4_read(void)
-{
-    return hal_uart_read(HAL_UART_PORT_2);
-}
-
+size_t s4_available(void) { return hal_uart_available(HAL_UART_PORT_2); }
+int s4_read(void) { return hal_uart_read(HAL_UART_PORT_2); }
 uint8_t s4_tx_idle(void)
 {
     return ((transmission_time_elapsed(LCP_FIELD_PORT_S4) != 0U) &&
             (hal_uart_tx_idle(HAL_UART_PORT_2) != 0U)) ? 1U : 0U;
 }
-
-void s4_clear_rx(void)
-{
-    hal_uart_clear_rx(HAL_UART_PORT_2);
-}
+void s4_clear_rx(void) { hal_uart_clear_rx(HAL_UART_PORT_2); }
 
 const ModbusRtuTransport g_transports[LCP_FIELD_PORT_COUNT] =
 {
@@ -242,11 +206,6 @@ void lcp_field_ports_init(const LcpFieldPortConfig configs[LCP_FIELD_PORT_COUNT]
         }
     }
 
-    /*
-     * S1 не должен зависеть от предварительного запуска диагностического
-     * echo-test. Board-слой самостоятельно обнаруживает физическую схему
-     * SC16IS740/752 и затем выбирает фактический канал S1.
-     */
     lcp_sc16is_init_pins();
     lcp_sc16is_probe();
     g_s1_port = lcp_sc16is_get_map().s1;
@@ -255,7 +214,8 @@ void lcp_field_ports_init(const LcpFieldPortConfig configs[LCP_FIELD_PORT_COUNT]
     {
         sc16is_begin(g_s1_port.chip_select,
                      g_s1_port.channel,
-                     g_configs[LCP_FIELD_PORT_S1].baudrate);
+                     g_configs[LCP_FIELD_PORT_S1].baudrate,
+                     g_configs[LCP_FIELD_PORT_S1].frame);
         s1_clear_rx();
     }
 
@@ -312,16 +272,12 @@ uint32_t lcp_field_port_error_count(LcpFieldPortId port_id)
     {
         case LCP_FIELD_PORT_S2:
             return hal_uart_error_count(HAL_UART_PORT_1);
-
         case LCP_FIELD_PORT_S3:
             return hal_uart_error_count(HAL_UART_PORT_3);
-
         case LCP_FIELD_PORT_S4:
             return hal_uart_error_count(HAL_UART_PORT_2);
-
         case LCP_FIELD_PORT_S1:
         default:
-            /* SC16IS7xx HAL пока не ведёт накопительный счётчик LSR-ошибок. */
             return 0U;
     }
 }
