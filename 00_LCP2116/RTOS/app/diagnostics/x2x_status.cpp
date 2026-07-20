@@ -103,13 +103,15 @@ void print_common_device_status(const X2XDeviceHeader& device,
 }
 
 /**
- * @brief Читает беззнаковый аргумент команды и оставляет cursor после числа.
+ * @brief Читает беззнаковый аргумент 0..65535 и сдвигает cursor.
  *
- * Ограничение 65535 выбрано потому, что функция используется для Modbus/X2X
- * аргументов. Полная проверка конца строки выполняется parse_signed().
+ * Переполнение проверяется до умножения. Это важно, даже несмотря на короткий
+ * console buffer: parser не должен принимать число, которое обернулось в
+ * uint32_t. Проверку остатка строки выполняет parse_signed().
  */
 uint8_t parse_unsigned(const char*& cursor, uint32_t* value)
 {
+    constexpr uint32_t MAX_VALUE = 65535U;
     uint32_t result = 0U;
     uint8_t digit_found = 0U;
 
@@ -125,14 +127,15 @@ uint8_t parse_unsigned(const char*& cursor, uint32_t* value)
 
     while ((*cursor >= '0') && (*cursor <= '9'))
     {
-        digit_found = 1U;
-        result = (result * 10U) + static_cast<uint32_t>(*cursor - '0');
+        const uint32_t digit = static_cast<uint32_t>(*cursor - '0');
 
-        if (result > 65535U)
+        if (result > ((MAX_VALUE - digit) / 10U))
         {
             return 0U;
         }
 
+        result = (result * 10U) + digit;
+        digit_found = 1U;
         ++cursor;
     }
 
