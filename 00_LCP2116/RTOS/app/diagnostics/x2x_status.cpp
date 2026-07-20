@@ -82,111 +82,6 @@ void print_common_device_status(const X2XDeviceHeader& device,
     SerialUSB.print("\r\n");
 }
 
-void print_float_values(const float* values,
-                        uint8_t value_count,
-                        uint8_t maximum_to_print)
-{
-    const uint8_t print_count =
-        (value_count < maximum_to_print) ? value_count : maximum_to_print;
-
-    SerialUSB.print("  float_values=");
-
-    for (uint8_t index = 0U; index < print_count; ++index)
-    {
-        if (index != 0U)
-        {
-            SerialUSB.print(", ");
-        }
-
-        SerialUSB.print(static_cast<int>(index));
-        SerialUSB.print(":");
-        SerialUSB.print(values[index]);
-    }
-
-    if (print_count < value_count)
-    {
-        SerialUSB.print(", ... total=");
-        SerialUSB.print(static_cast<int>(value_count));
-    }
-
-    SerialUSB.print("\r\n");
-}
-
-void print_device_data(const X2XDeviceHeader& device)
-{
-    switch (device.type)
-    {
-        case X2X_DEVICE_LDO1118:
-        {
-            const X2XLdo1118& ldo =
-                static_cast<const X2XLdo1118&>(device);
-            SerialUSB.print("  output_value=");
-            SerialUSB.print(static_cast<int>(ldo.output_value));
-            SerialUSB.print(", digital_inputs=");
-            SerialUSB.print(static_cast<unsigned long>(ldo.digital_inputs));
-            SerialUSB.print("\r\n");
-            break;
-        }
-
-        case X2X_DEVICE_LAI1118:
-        {
-            const X2XLai1118& lai =
-                static_cast<const X2XLai1118&>(device);
-            SerialUSB.print("  digital_inputs=");
-            SerialUSB.print(static_cast<unsigned long>(lai.digital_inputs));
-            SerialUSB.print("\r\n");
-            print_float_values(lai.tf_values, X2XLai1118::TF_COUNT, 8U);
-            break;
-        }
-
-        case X2X_DEVICE_LDI1118:
-        {
-            const X2XLdi1118& ldi =
-                static_cast<const X2XLdi1118&>(device);
-            SerialUSB.print("  digital_inputs=");
-            SerialUSB.print(static_cast<unsigned long>(ldi.digital_inputs));
-            SerialUSB.print("\r\n");
-            break;
-        }
-
-        case X2X_DEVICE_LDI1116:
-        {
-            const X2XLdi1116& ldi =
-                static_cast<const X2XLdi1116&>(device);
-            SerialUSB.print("  digital_inputs=");
-            SerialUSB.print(static_cast<unsigned long>(ldi.digital_inputs));
-            SerialUSB.print("\r\n");
-            break;
-        }
-
-        case X2X_DEVICE_LCT1114:
-        {
-            const X2XLct1114& lct =
-                static_cast<const X2XLct1114&>(device);
-            SerialUSB.print("  digital_inputs=");
-            SerialUSB.print(static_cast<unsigned long>(lct.digital_inputs));
-            SerialUSB.print("\r\n");
-            print_float_values(lct.tf_values, X2XLct1114::TF_COUNT, 8U);
-            break;
-        }
-
-        case X2X_DEVICE_LCT1114_2:
-        {
-            const X2XLct1114_2& lct =
-                static_cast<const X2XLct1114_2&>(device);
-            SerialUSB.print("  digital_inputs=");
-            SerialUSB.print(static_cast<unsigned long>(lct.digital_inputs));
-            SerialUSB.print("\r\n");
-            print_float_values(lct.tf_values, X2XLct1114_2::TF_COUNT, 8U);
-            break;
-        }
-
-        case X2X_DEVICE_LCP:
-        default:
-            break;
-    }
-}
-
 uint8_t parse_unsigned(const char*& cursor, uint32_t* value)
 {
     uint32_t result = 0U;
@@ -364,7 +259,11 @@ void x2x_status_print_report(void)
         }
 
         print_common_device_status(*device, *descriptor);
-        print_device_data(*device);
+
+        if (descriptor->print != 0)
+        {
+            descriptor->print(*device);
+        }
     }
 
     SerialUSB.print("waveform_valid=");
