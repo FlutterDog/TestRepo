@@ -5,6 +5,7 @@
 
 #include "x2x_catalog.hpp"
 #include "modules/x2x_module_drivers.hpp"
+#include "../../platform/platform.hpp"
 
 #include <new>
 #include <string.h>
@@ -17,6 +18,9 @@ X2XDeviceHeader* construct_device(void* storage,
                                   uint8_t slave_address,
                                   uint16_t asdu)
 {
+    static_assert(sizeof(DeviceType) <= X2X_DEVICE_SLOT_BYTES,
+                  "X2X device type does not fit static registry slot");
+
     if ((storage == 0) || (storage_size < sizeof(DeviceType)))
     {
         return 0;
@@ -35,6 +39,65 @@ X2XDeviceHeader* construct_device(void* storage,
     return device;
 }
 
+void print_float_values(const float* values,
+                        uint8_t value_count,
+                        uint8_t maximum_to_print)
+{
+    const uint8_t print_count =
+        (value_count < maximum_to_print) ? value_count : maximum_to_print;
+
+    SerialUSB.print("  float_values=");
+
+    for (uint8_t index = 0U; index < print_count; ++index)
+    {
+        if (index != 0U)
+        {
+            SerialUSB.print(", ");
+        }
+
+        SerialUSB.print(static_cast<int>(index));
+        SerialUSB.print(":");
+        SerialUSB.print(values[index]);
+    }
+
+    if (print_count < value_count)
+    {
+        SerialUSB.print(", ... total=");
+        SerialUSB.print(static_cast<int>(value_count));
+    }
+
+    SerialUSB.print("\r\n");
+}
+
+template<typename DeviceType>
+void print_digital_inputs(const X2XDeviceHeader& header)
+{
+    const DeviceType& device = static_cast<const DeviceType&>(header);
+    SerialUSB.print("  digital_inputs=");
+    SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
+    SerialUSB.print("\r\n");
+}
+
+template<typename DeviceType>
+void print_digital_inputs_and_floats(const X2XDeviceHeader& header)
+{
+    const DeviceType& device = static_cast<const DeviceType&>(header);
+    SerialUSB.print("  digital_inputs=");
+    SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
+    SerialUSB.print("\r\n");
+    print_float_values(device.tf_values, DeviceType::TF_COUNT, 8U);
+}
+
+void print_ldo1118(const X2XDeviceHeader& header)
+{
+    const X2XLdo1118& device = static_cast<const X2XLdo1118&>(header);
+    SerialUSB.print("  output_value=");
+    SerialUSB.print(static_cast<int>(device.output_value));
+    SerialUSB.print(", digital_inputs=");
+    SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
+    SerialUSB.print("\r\n");
+}
+
 const X2XModuleDescriptor g_x2x_catalog[] =
 {
     {
@@ -46,6 +109,7 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLcp2116::TF_COUNT,
         0U,
         construct_device<X2XLcp2116, X2X_DEVICE_LCP>,
+        0,
         0
     },
     {
@@ -57,7 +121,8 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLdo1118::TF_COUNT,
         1U,
         construct_device<X2XLdo1118, X2X_DEVICE_LDO1118>,
-        x2x_module_poll_ldo1118
+        x2x_module_poll_ldo1118,
+        print_ldo1118
     },
     {
         X2X_DEVICE_LAI1118,
@@ -68,7 +133,8 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLai1118::TF_COUNT,
         1U,
         construct_device<X2XLai1118, X2X_DEVICE_LAI1118>,
-        x2x_module_poll_lai1118
+        x2x_module_poll_lai1118,
+        print_digital_inputs_and_floats<X2XLai1118>
     },
     {
         X2X_DEVICE_LDI1118,
@@ -79,7 +145,8 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLdi1118::TF_COUNT,
         1U,
         construct_device<X2XLdi1118, X2X_DEVICE_LDI1118>,
-        x2x_module_poll_ldi1118
+        x2x_module_poll_ldi1118,
+        print_digital_inputs<X2XLdi1118>
     },
     {
         X2X_DEVICE_LCT1114,
@@ -90,7 +157,8 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLct1114::TF_COUNT,
         1U,
         construct_device<X2XLct1114, X2X_DEVICE_LCT1114>,
-        x2x_module_poll_lct1114
+        x2x_module_poll_lct1114,
+        print_digital_inputs_and_floats<X2XLct1114>
     },
     {
         X2X_DEVICE_LDI1116,
@@ -101,7 +169,8 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLdi1116::TF_COUNT,
         1U,
         construct_device<X2XLdi1116, X2X_DEVICE_LDI1116>,
-        x2x_module_poll_ldi1116
+        x2x_module_poll_ldi1116,
+        print_digital_inputs<X2XLdi1116>
     },
     {
         X2X_DEVICE_LCT1114_2,
@@ -112,7 +181,8 @@ const X2XModuleDescriptor g_x2x_catalog[] =
         X2XLct1114_2::TF_COUNT,
         1U,
         construct_device<X2XLct1114_2, X2X_DEVICE_LCT1114_2>,
-        x2x_module_poll_lct1114_2
+        x2x_module_poll_lct1114_2,
+        print_digital_inputs_and_floats<X2XLct1114_2>
     }
 };
 }
