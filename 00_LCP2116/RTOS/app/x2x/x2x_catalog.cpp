@@ -46,11 +46,15 @@ void print_float_values(const float* values,
     const uint8_t print_count =
         (value_count < maximum_to_print) ? value_count : maximum_to_print;
 
-    SerialUSB.print("  float_values=");
+    SerialUSB.print("  float_values:");
 
     for (uint8_t index = 0U; index < print_count; ++index)
     {
-        if (index != 0U)
+        if ((index % 4U) == 0U)
+        {
+            SerialUSB.print("\r\n    ");
+        }
+        else
         {
             SerialUSB.print(", ");
         }
@@ -60,13 +64,16 @@ void print_float_values(const float* values,
         SerialUSB.print(values[index]);
     }
 
+    SerialUSB.print("\r\n");
+
     if (print_count < value_count)
     {
-        SerialUSB.print(", ... total=");
+        SerialUSB.print("  float_values_shown=");
+        SerialUSB.print(static_cast<int>(print_count));
+        SerialUSB.print(", total=");
         SerialUSB.print(static_cast<int>(value_count));
+        SerialUSB.print("\r\n");
     }
-
-    SerialUSB.print("\r\n");
 }
 
 template<typename DeviceType>
@@ -93,7 +100,7 @@ void print_ldo1118(const X2XDeviceHeader& header)
     const X2XLdo1118& device = static_cast<const X2XLdo1118&>(header);
     SerialUSB.print("  output_value=");
     SerialUSB.print(static_cast<int>(device.output_value));
-    SerialUSB.print(", digital_inputs=");
+    SerialUSB.print("\r\n  digital_inputs=");
     SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
     SerialUSB.print("\r\n");
 }
