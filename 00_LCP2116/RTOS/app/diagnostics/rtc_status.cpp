@@ -3,12 +3,11 @@
  * @brief Неблокирующая диагностика и настройка локального RTC ATSAM3X8E.
  *
  * Команда `rtc set` только запускает аппаратную последовательность обновления.
- * ACKUPD, запись регистров, проверка результата и таймаут обслуживаются из
- * rtc_status_poll(). Это принципиально важно: service console работает внутри
- * общей LCP task и не должна останавливать X2X, FieldSensor или Ethernet.
+ * ACKUPD, запись регистров, проверка результата и timeout обслуживаются из
+ * rtc_status_poll(), не останавливая X2X, FieldSensor или Ethernet.
  *
- * При добавлении нового формата даты изменяйте только parse_datetime_value().
- * Аппаратную state machine следует оставлять в `sam3x_rtc.*`.
+ * При добавлении формата даты изменяйте только parse_datetime_value().
+ * Аппаратную state machine следует оставлять в `hal/sam3x_rtc.*`.
  */
 
 #include "rtc_status.hpp"
@@ -263,6 +262,32 @@ void rtc_status_poll(void)
     service_rtc_update_timeout();
 }
 
+void rtc_status_print_time(void)
+{
+    Sam3xRtcDateTime now = {};
+
+    rtc_status_poll();
+    const Sam3xRtcResult result = sam3x_rtc_get_datetime(&now);
+
+    diagnostic_print_section("RTC TIME");
+    SerialUSB.print("read_result=");
+    SerialUSB.print(sam3x_rtc_result_text(result));
+    SerialUSB.print("\r\ndatetime=");
+
+    if (result == SAM3X_RTC_OK)
+    {
+        print_datetime(now);
+        SerialUSB.print("\r\nday_of_week=");
+        SerialUSB.print(static_cast<int>(now.day_of_week));
+    }
+    else
+    {
+        SerialUSB.print("unavailable");
+    }
+
+    SerialUSB.print("\r\n");
+}
+
 void rtc_status_print_report(void)
 {
     Sam3xRtcDateTime now = {};
@@ -285,7 +310,7 @@ void rtc_status_print_report(void)
     SerialUSB.print(sam3x_rtc_update_state_text(sam3x_rtc_update_state()));
     SerialUSB.print(", update_result=");
     SerialUSB.print(sam3x_rtc_result_text(sam3x_rtc_update_result()));
-    SerialUSB.print(", timeout_ms=");
+    SerialUSB.print("\r\nupdate_timeout_ms=");
     SerialUSB.print(static_cast<unsigned long>(RTC_UPDATE_TIMEOUT_MS));
     SerialUSB.print("\r\n");
 
@@ -317,13 +342,17 @@ void rtc_status_print_report(void)
 
     diagnostic_print_group("Raw registers");
     SerialUSB.print("RTC_SR=0x");
-    SerialUSB.print(static_cast<unsigned long>(sam3x_rtc_status_register()), HEX);
+    SerialUSB.print(
+        static_cast<unsigned long>(sam3x_rtc_status_register()), HEX);
     SerialUSB.print(", RTC_VER=0x");
-    SerialUSB.print(static_cast<unsigned long>(sam3x_rtc_valid_entry_register()), HEX);
+    SerialUSB.print(
+        static_cast<unsigned long>(sam3x_rtc_valid_entry_register()), HEX);
     SerialUSB.print("\r\nRTC_TIMR=0x");
-    SerialUSB.print(static_cast<unsigned long>(sam3x_rtc_time_register()), HEX);
+    SerialUSB.print(
+        static_cast<unsigned long>(sam3x_rtc_time_register()), HEX);
     SerialUSB.print(", RTC_CALR=0x");
-    SerialUSB.print(static_cast<unsigned long>(sam3x_rtc_calendar_register()), HEX);
+    SerialUSB.print(
+        static_cast<unsigned long>(sam3x_rtc_calendar_register()), HEX);
     SerialUSB.print("\r\n");
 }
 
@@ -332,6 +361,13 @@ uint8_t rtc_status_handle_command(const char* command)
     if (command == 0)
     {
         return 0U;
+    }
+
+    if ((strcmp(command, "time") == 0) ||
+        (strcmp(command, "rtc time") == 0))
+    {
+        rtc_status_print_time();
+        return 1U;
     }
 
     if ((strcmp(command, "rtc") == 0) ||
@@ -354,7 +390,9 @@ uint8_t rtc_status_handle_command(const char* command)
         {
             SerialUSB.print("rtc set failed: invalid date/time\r\n");
             SerialUSB.print("usage: rtc set YYYY-MM-DD HH:MM:SS\r\n");
-            SerialUSB.print("accepted: four-digit or two-digit year; '-' or '.' date separators; space or T\r\n");
+            SerialUSB.print("accepted year: YYYY or YY\r\n");
+            SerialUSB.print("accepted date separator: '-' or '.'\r\n");
+            SerialUSB.print("accepted date/time separator: space or T\r\n");
             return 1U;
         }
 
@@ -370,7 +408,8 @@ uint8_t rtc_status_handle_command(const char* command)
         if (start_result == SAM3X_RTC_OK)
         {
             g_update_start_ms = millis();
-            SerialUSB.print("rtc update is nonblocking; use 'rtc' to inspect completion\r\n");
+            SerialUSB.print("rtc update is nonblocking\r\n");
+            SerialUSB.print("use 'time' or 'rtc' to inspect completion\r\n");
         }
 
         return 1U;
