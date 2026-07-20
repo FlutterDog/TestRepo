@@ -65,37 +65,51 @@ void watchdog_status_print_report(void)
     diagnostic_print_section("WATCHDOG");
 
     diagnostic_print_group("Runtime");
-    SerialUSB.print("enabled=");
+    diagnostic_print_assignment("enabled");
     SerialUSB.print(sam3x_watchdog_enabled() ? "yes" : "no");
-    SerialUSB.print(", timeout_ms=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("timeout_ms");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_timeout_ms(WATCHDOG_TIMEOUT_TICKS)));
-    SerialUSB.print("\r\nfeed_period_ms=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("feed_period_ms");
     SerialUSB.print(static_cast<unsigned long>(WATCHDOG_FEED_PERIOD_MS));
-    SerialUSB.print(", test_reset_armed=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("test_reset_armed");
     SerialUSB.print((g_test_reset_armed != 0U) ? "yes" : "no");
-    SerialUSB.print("\r\nmode=legacy WDRPROC|WDRSTEN\r\n");
-    SerialUSB.print("usb_recovery_after_watchdog=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("mode");
+    SerialUSB.print("legacy WDRPROC|WDRSTEN\r\n");
+    diagnostic_print_assignment("usb_recovery_after_watchdog");
     SerialUSB.print(sam3x_watchdog_recovery_performed() ?
                     "performed" : "not performed");
     SerialUSB.print("\r\n");
 
     diagnostic_print_group("Last reset");
-    SerialUSB.print("reset_type=");
+    diagnostic_print_assignment("reset_type");
     SerialUSB.print(sam3x_watchdog_reset_type_text(
         sam3x_watchdog_last_reset_type()));
-    SerialUSB.print(", boot_count=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("boot_count");
     SerialUSB.print(static_cast<unsigned long>(sam3x_watchdog_boot_count()));
     SerialUSB.print("\r\n");
 
     diagnostic_print_group("Raw registers");
-    SerialUSB.print("RSTC_SR=0x");
+    diagnostic_print_assignment("RSTC_SR");
+    SerialUSB.print("0x");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_reset_status_register()), HEX);
-    SerialUSB.print(", WDT_MR=0x");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("WDT_MR");
+    SerialUSB.print("0x");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_mode_register()), HEX);
-    SerialUSB.print("\r\nWDT_SR=0x");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("WDT_SR");
+    SerialUSB.print("0x");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_status_register()), HEX);
     SerialUSB.print("\r\n");
