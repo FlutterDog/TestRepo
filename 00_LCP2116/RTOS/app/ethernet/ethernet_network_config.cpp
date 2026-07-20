@@ -5,7 +5,10 @@
 
 #include "ethernet_network_config.hpp"
 
+#include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
+
 #include <stddef.h>
+#include <stdint.h>
 
 namespace
 {
@@ -23,51 +26,232 @@ static const EthernetFileSet FILES[LCP_ETHERNET_COUNT] =
     { "MAC2.txt", "IP2.txt", "SUBNET2.txt", "GATE2.txt" }
 };
 
+static const uint16_t LINE_CAPACITY = 64U;
+char g_line[LINE_CAPACITY];
+
+uint8_t is_space(char value)
+{
+    return ((value == ' ') || (value == '\t') ||
+            (value == '\r') || (value == '\n')) ? 1U : 0U;
+}
+
+void strip_comment_and_trim(char* line)
+{
+    uint16_t index = 0U;
+
+    while (line[index] != '\0')
+    {
+        if (((line[index] == '/') && (line[index + 1U] == '/')) ||
+            (line[index] == '#'))
+        {
+            line[index] = '\0';
+            break;
+        }
+
+        ++index;
+    }
+
+    uint16_t start = 0U;
+
+    while ((line[start] != '\0') && (is_space(line[start]) != 0U))
+    {
+        ++start;
+    }
+
+    if (start != 0U)
+    {
+        uint16_t destination = 0U;
+
+        while (line[start] != '\0')
+        {
+            line[destination++] = line[start++];
+        }
+
+        line[destination] = '\0';
+    }
+
+    uint16_t length = 0U;
+
+    while (line[length] != '\0')
+    {
+        ++length;
+    }
+
+    while ((length > 0U) && (is_space(line[length - 1U]) != 0U))
+    {
+        line[--length] = '\0';
+    }
+}
+
+uint8_t read_line(LcpSdReadFile* file,
+                  char* line,
+                  uint16_t capacity,
+                  uint8_t* line_too_long)
+{
+    uint16_t length = 0U;
+    int value = -1;
+    *line_too_long = 0U;
+
+    while ((value = lcp_sd_storage_read_byte(file)) >= 0)
+    {
+        const char character = static_cast<char>(value);
+
+        if (character == '\n')
+        {
+            break;
+        }
+
+        if (length < (capacity - 1U))
+        {
+            line[length++] = character;
+        }
+        else
+        {
+            *line_too_long = 1U;
+        }
+    }
+
+    if ((value < 0) && (length == 0U) && (*line_too_long == 0U))
+    {
+        return 0U;
+    }
+
+    line[length] = '\0';
+    return 1U;
+}
+
+uint8_t parse_uint8(const char* text, uint8_t* output)
+{
+    uint16_t value = 0U;
+    uint16_t index = 0U;
+    uint8_t digit_found = 0U;
+
+    if ((text == 0) || (output == 0))
+    {
+        return 0U;
+    }
+
+    while (text[index] != '\0')
+    {
+        if ((text[index] < '0') || (text[index] > '9'))
+        {
+            return 0U;
+        }
+
+        value = static_cast<uint16_t>(
+            (value * 10U) + static_cast<uint16_t>(text[index] - '0'));
+        digit_found = 1U;
+
+        if (value > 255U)
+        {
+            return 0U;
+        }
+
+        ++index;
+    }
+
+    if (digit_found == 0U)
+    {
+        return 0U;
+    }
+
+    *output = static_cast<uint8_t>(value);
+    return 1U;
+}
+
+SdConfigResult translate_open_result(LcpSdStorageResult result)
+{
+    if (result == LCP_SD_STORAGE_FILE_NOT_FOUND)
+    {
+        return SD_CONFIG_FILE_NOT_FOUND;
+    }
+
+    return (result == LCP_SD_STORAGE_OK) ?
+        SD_CONFIG_OK : SD_CONFIG_FILE_OPEN_FAILED;
+}
+
 SdConfigResult load_bytes(const char* file_name,
                           uint8_t expected_count,
                           uint8_t* output)
 {
-    int16_t values[7];
-    uint8_t loaded_count = 0U;
-
     if ((file_name == 0) || (output == 0) ||
         (expected_count == 0U) || (expected_count > 6U))
     {
         return SD_CONFIG_INVALID_VALUE;
     }
 
-    const SdConfigResult result = sd_config_load_int16(
-        file_name,
-        values,
-        sizeof(values) / sizeof(values[0]),
-        &loaded_count);
-
-    if (result != SD_CONFIG_OK)
+    if (lcp_sd_storage_ready() == 0U)
     {
-        return result;
+        return SD_CONFIG_CARD_NOT_READY;
     }
 
-    if (loaded_count != expected_count)
+    LcpSdReadFile file;
+    const SdConfigResult open_result = translate_open_result(
+        lcp_sd_storage_open_read(file_name, &file));
+
+    if (open_result != SD_CONFIG_OK)
     {
-        return SD_CONFIG_INVALID_COUNT;
+        return open_result;
     }
 
-    for (uint8_t index = 0U; index < expected_count; ++index)
-    {
-        const int16_t value = values[index + 1U];
+    uint8_t significant_line = 0U;
+    uint8_t value_index = 0U;
+    uint8_t line_too_long = 0U;
 
-        if ((value < 0) || (value > 255))
+    while (read_line(&file, g_line, LINE_CAPACITY, &line_too_long) != 0U)
+    {
+        if (line_too_long != 0U)
         {
+            lcp_sd_storage_close_read(&file);
+            return SD_CONFIG_LINE_TOO_LONG;
+        }
+
+        strip_comment_and_trim(g_line);
+
+        if (g_line[0] == '\0')
+        {
+            continue;
+        }
+
+        /* Штатная завершающая строка fin находится после всех значений. */
+        if ((significant_line != 0U) && (value_index >= expected_count))
+        {
+            break;
+        }
+
+        uint8_t parsed = 0U;
+
+        if (parse_uint8(g_line, &parsed) == 0U)
+        {
+            lcp_sd_storage_close_read(&file);
             return SD_CONFIG_INVALID_VALUE;
         }
+
+        if (significant_line == 0U)
+        {
+            if (parsed != expected_count)
+            {
+                lcp_sd_storage_close_read(&file);
+                return SD_CONFIG_INVALID_COUNT;
+            }
+        }
+        else
+        {
+            output[value_index++] = parsed;
+        }
+
+        ++significant_line;
     }
 
-    for (uint8_t index = 0U; index < expected_count; ++index)
+    lcp_sd_storage_close_read(&file);
+
+    if (significant_line == 0U)
     {
-        output[index] = static_cast<uint8_t>(values[index + 1U]);
+        return SD_CONFIG_EMPTY_FILE;
     }
 
-    return SD_CONFIG_OK;
+    return (value_index == expected_count) ?
+        SD_CONFIG_OK : SD_CONFIG_INCOMPLETE_FILE;
 }
 
 void initialize_report(EthernetNetworkConfigReport& report,
