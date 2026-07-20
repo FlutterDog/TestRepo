@@ -32,6 +32,15 @@ void ethernet_network_config_set_defaults(
     W5500NetworkConfig configs[LCP_ETHERNET_COUNT]);
 
 /**
+ * @brief Инициализирует отчёты каноническими именами и единым состоянием.
+ * @param[out] reports Отчёты ETH1 и ETH2.
+ * @param[in] initial_result Начальное состояние каждого из восьми файлов.
+ */
+void ethernet_network_config_prepare_reports(
+    EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT],
+    SdConfigResult initial_result);
+
+/**
  * @brief Загружает только канонические файлы установленного проекта.
  *
  * @code
