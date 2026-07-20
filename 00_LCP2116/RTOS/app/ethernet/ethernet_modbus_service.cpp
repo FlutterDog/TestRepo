@@ -15,11 +15,16 @@
 
 namespace
 {
-static const uint32_t ETHERNET_CONFIG_WAIT_MS = 2000U;
-static const uint8_t W5500_SOCKET_ESTABLISHED = 0x17U;
-static const uint8_t MODBUS_EXCEPTION_ILLEGAL_ADDRESS = 0x02U;
-static const uint16_t RX_CHUNK_CAPACITY = 128U;
-static const uint8_t MAX_RESPONSES_PER_POLL = 2U;
+constexpr uint32_t ETHERNET_CONFIG_WAIT_MS = 2000U;
+constexpr uint8_t W5500_SOCKET_ESTABLISHED = 0x17U;
+constexpr uint8_t MODBUS_EXCEPTION_ILLEGAL_ADDRESS = 0x02U;
+constexpr uint16_t RX_CHUNK_CAPACITY = 128U;
+constexpr uint8_t MAX_RESPONSES_PER_POLL = 2U;
+
+static_assert(LCP_MODBUS_TCP_HOLDING_COUNT ==
+              (LCP_FIELD_PORT_COUNT *
+               LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT),
+              "Modbus TCP map must cover every FieldSensor port");
 
 EthernetModbusInterfaceState g_interfaces[LCP_ETHERNET_COUNT];
 uint16_t g_holding[LCP_MODBUS_TCP_HOLDING_COUNT];
@@ -36,10 +41,10 @@ LcpEthernetId normalize_ethernet_id(LcpEthernetId ethernet_id)
 void reset_config_report(EthernetNetworkConfigReport& report,
                          LcpEthernetId ethernet_id)
 {
-    report.mac_result = SD_CONFIG_CARD_NOT_READY;
-    report.ip_result = SD_CONFIG_CARD_NOT_READY;
-    report.subnet_result = SD_CONFIG_CARD_NOT_READY;
-    report.gateway_result = SD_CONFIG_CARD_NOT_READY;
+    report.mac_result = SD_CONFIG_NOT_ATTEMPTED;
+    report.ip_result = SD_CONFIG_NOT_ATTEMPTED;
+    report.subnet_result = SD_CONFIG_NOT_ATTEMPTED;
+    report.gateway_result = SD_CONFIG_NOT_ATTEMPTED;
 
     if (ethernet_id == LCP_ETHERNET_2)
     {
@@ -62,6 +67,7 @@ void reset_config_report(EthernetNetworkConfigReport& report,
 void update_holding_map(void)
 {
     memset(g_holding, 0, sizeof(g_holding));
+    const uint8_t service_paused = field_sensor_service_paused();
 
     for (uint8_t port_index = 0U;
          port_index < field_sensor_service_port_count();
@@ -69,7 +75,8 @@ void update_holding_map(void)
     {
         const FieldSensorPortState& port = field_sensor_service_port(
             static_cast<LcpFieldPortId>(port_index));
-        const uint16_t base = static_cast<uint16_t>(port_index * 3U);
+        const uint16_t base = static_cast<uint16_t>(
+            port_index * LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT);
         uint16_t quality = 0U;
 
         g_holding[base] = port.registers[0];
@@ -77,27 +84,27 @@ void update_holding_map(void)
 
         if (port.valid != 0U)
         {
-            quality |= 0x0001U;
+            quality |= FIELD_SENSOR_TCP_QUALITY_VALID;
         }
 
         if (port.connection_lost != 0U)
         {
-            quality |= 0x0002U;
+            quality |= FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST;
         }
 
         if (port.port_present != 0U)
         {
-            quality |= 0x0004U;
+            quality |= FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT;
         }
 
         if (port.request_active != 0U)
         {
-            quality |= 0x0008U;
+            quality |= FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE;
         }
 
-        if (field_sensor_service_paused() != 0U)
+        if (service_paused != 0U)
         {
-            quality |= 0x0010U;
+            quality |= FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED;
         }
 
         quality |= static_cast<uint16_t>(
@@ -113,8 +120,8 @@ uint8_t read_holding(void*,
 {
     if ((output == 0) ||
         (start_address >= LCP_MODBUS_TCP_HOLDING_COUNT) ||
-        (register_count >
-         static_cast<uint16_t>(LCP_MODBUS_TCP_HOLDING_COUNT - start_address)))
+        (register_count > static_cast<uint16_t>(
+            LCP_MODBUS_TCP_HOLDING_COUNT - start_address)))
     {
         return MODBUS_EXCEPTION_ILLEGAL_ADDRESS;
     }
@@ -133,18 +140,7 @@ void apply_configuration(void)
     EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT];
 
     ethernet_network_config_set_defaults(configs);
-
-    for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
-    {
-        reset_config_report(reports[index],
-                            static_cast<LcpEthernetId>(index));
-    }
-
-    if (lcp_sd_storage_ready() != 0U)
-    {
-        ethernet_network_config_load(configs, reports);
-    }
-
+    ethernet_network_config_load(configs, reports);
     lcp_ethernet_init_pins();
 
     for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
@@ -163,11 +159,43 @@ void apply_configuration(void)
         if (interface_state.init_ok != 0U)
         {
             w5500_lite_tcp_server_begin(static_cast<LcpEthernetId>(index),
-                                        LCP_MODBUS_TCP_PORT);
+                                         LCP_MODBUS_TCP_PORT);
         }
     }
 
     g_reload_pending = 0U;
+}
+
+uint8_t flush_pending_response(LcpEthernetId ethernet_id,
+                               EthernetModbusInterfaceState& interface_state)
+{
+    const uint16_t response_length =
+        modbus_tcp_server_response_length(interface_state.server);
+
+    if (response_length == 0U)
+    {
+        return 1U;
+    }
+
+    const uint16_t sent = w5500_lite_tcp_server_send(
+        ethernet_id,
+        modbus_tcp_server_response(interface_state.server),
+        response_length);
+
+    if (sent != response_length)
+    {
+        /* TX_FSR может быть временно мал; ответ сохраняется до следующего poll. */
+        return 0U;
+    }
+
+    modbus_tcp_server_response_sent(interface_state.server);
+    return 1U;
+}
+
+void reset_stream_if_disconnected(EthernetModbusInterfaceState& state)
+{
+    state.server.rx_length = 0U;
+    state.server.tx_length = 0U;
 }
 
 void poll_interface(LcpEthernetId ethernet_id)
@@ -181,6 +209,17 @@ void poll_interface(LcpEthernetId ethernet_id)
         return;
     }
 
+    interface_state.last_socket_status =
+        w5500_lite_tcp_server_status(ethernet_id);
+
+    if (interface_state.last_socket_status == W5500_SOCKET_ESTABLISHED)
+    {
+        if (flush_pending_response(ethernet_id, interface_state) == 0U)
+        {
+            return;
+        }
+    }
+
     const uint16_t received = w5500_lite_tcp_server_receive(
         ethernet_id,
         LCP_MODBUS_TCP_PORT,
@@ -192,8 +231,8 @@ void poll_interface(LcpEthernetId ethernet_id)
 
     if (interface_state.last_socket_status != W5500_SOCKET_ESTABLISHED)
     {
-        interface_state.server.rx_length = 0U;
-        interface_state.server.tx_length = 0U;
+        reset_stream_if_disconnected(interface_state);
+        return;
     }
 
     if (received != 0U)
@@ -217,19 +256,10 @@ void poll_interface(LcpEthernetId ethernet_id)
             break;
         }
 
-        const uint16_t response_length =
-            modbus_tcp_server_response_length(interface_state.server);
-        const uint16_t sent = w5500_lite_tcp_server_send(
-            ethernet_id,
-            modbus_tcp_server_response(interface_state.server),
-            response_length);
-
-        if (sent != response_length)
+        if (flush_pending_response(ethernet_id, interface_state) == 0U)
         {
-            ++interface_state.transport_error_count;
+            break;
         }
-
-        modbus_tcp_server_response_sent(interface_state.server);
     }
 }
 }
