@@ -11,6 +11,15 @@
 #include "x2x_types.hpp"
 #include "../../protocol/modbus_rtu/modbus_rtu_master.hpp"
 
+/**
+ * @brief Размер одного статического слота реестра устройств X2X.
+ *
+ * Каждый тип, зарегистрированный в каталоге, проверяется static_assert в
+ * construct_device(). Если структура нового модуля больше этого значения,
+ * сборка завершится ошибкой вместо скрытого переполнения реестра.
+ */
+static const size_t X2X_DEVICE_SLOT_BYTES = 256U;
+
 /** @brief Результат одного вызова неблокирующего драйвера модуля. */
 enum X2XModulePollResult : uint8_t
 {
@@ -48,3 +57,11 @@ struct X2XModuleContext
 /** Тип функции неблокирующего опроса конкретного типа модуля. */
 typedef X2XModulePollResult (*X2XModulePollFunction)(X2XDeviceHeader* device,
                                                      X2XModuleContext& context);
+
+/**
+ * @brief Тип функции вывода специфических данных модуля в service console.
+ *
+ * Общий статус связи печатается диагностикой X2X. Callback выводит только
+ * данные конкретного типа: дискретные входы, float-поля или выходное значение.
+ */
+typedef void (*X2XModulePrintFunction)(const X2XDeviceHeader& device);
