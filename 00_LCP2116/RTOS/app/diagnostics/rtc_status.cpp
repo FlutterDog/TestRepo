@@ -112,6 +112,17 @@ uint8_t parse_year(const char*& cursor, uint16_t* year)
     return 0U;
 }
 
+uint8_t parse_colon_value(const char*& cursor, uint16_t* output)
+{
+    if ((cursor == 0) || (output == 0) || (*cursor != ':'))
+    {
+        return 0U;
+    }
+
+    ++cursor;
+    return parse_digits(cursor, 2U, output);
+}
+
 uint8_t parse_datetime_value(const char* text,
                              Sam3xRtcDateTime* date_time)
 {
@@ -142,6 +153,7 @@ uint8_t parse_datetime_value(const char* text,
     {
         return 0U;
     }
+
     ++cursor;
     cursor = skip_spaces(cursor);
 
@@ -151,15 +163,13 @@ uint8_t parse_datetime_value(const char* text,
     }
     date_time->hour = static_cast<uint8_t>(value);
 
-    if ((*cursor != ':') ||
-        (++cursor, parse_digits(cursor, 2U, &value) == 0U))
+    if (parse_colon_value(cursor, &value) == 0U)
     {
         return 0U;
     }
     date_time->minute = static_cast<uint8_t>(value);
 
-    if ((*cursor != ':') ||
-        (++cursor, parse_digits(cursor, 2U, &value) == 0U))
+    if (parse_colon_value(cursor, &value) == 0U)
     {
         return 0U;
     }
