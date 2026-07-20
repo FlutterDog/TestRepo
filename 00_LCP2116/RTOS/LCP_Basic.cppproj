@@ -139,6 +139,7 @@
     <Compile Include="app\diagnostics\battery_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_console.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_console.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\diagnostic_output.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\ethernet_status.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\ethernet_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\field_status.cpp"><SubType>compile</SubType></Compile>
