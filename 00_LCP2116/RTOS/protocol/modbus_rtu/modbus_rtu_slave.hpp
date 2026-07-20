@@ -19,6 +19,9 @@ static const uint16_t MODBUS_RTU_SLAVE_RX_CAPACITY = 64U;
 /** Максимальный размер выходного RTU-кадра минимального slave. */
 static const uint16_t MODBUS_RTU_SLAVE_TX_CAPACITY = 64U;
 
+/** Максимальное ожидание физического окончания ответа. */
+static const uint32_t MODBUS_RTU_SLAVE_TX_TIMEOUT_MS = 1000U;
+
 /** @brief Внутреннее состояние неблокирующего slave. */
 enum ModbusRtuSlaveState : uint8_t
 {
@@ -43,6 +46,7 @@ struct ModbusRtuSlave
     uint16_t rx_length;                 /**< Накопленная длина запроса. */
     uint16_t tx_length;                 /**< Длина сформированного ответа. */
     uint32_t last_rx_ms;                /**< Время последнего принятого байта. */
+    uint32_t tx_deadline_ms;            /**< Крайний срок физического TX idle. */
     uint32_t interframe_gap_ms;          /**< Пауза завершения RTU-кадра. */
     uint32_t request_count;              /**< Полные кадры, переданные parser. */
     uint32_t response_count;             /**< Ответы, принятые transport. */
@@ -78,5 +82,7 @@ void modbus_rtu_slave_reset(ModbusRtuSlave& slave);
  *
  * Цикл RX ограничен доступными байтами и статической ёмкостью. Функция не ждёт
  * новый байт и должна вызываться регулярно из прикладного service poll.
+ * Состояние WAIT_TX автоматически завершается ошибкой через
+ * MODBUS_RTU_SLAVE_TX_TIMEOUT_MS, если transport не сообщает tx_idle.
  */
 void modbus_rtu_slave_poll(ModbusRtuSlave& slave);
