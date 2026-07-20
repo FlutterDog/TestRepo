@@ -6,6 +6,14 @@
  * При добавлении нового раздела не следует вручную копировать длинные строки
  * из символов `=` или собственный расчёт процентов/uptime. Используйте функции
  * ниже, чтобы отдельная команда и общий `status` выглядели одинаково.
+ *
+ * Формат полей service console:
+ * - именованный параметр: `name = value`;
+ * - индексированный элемент: `0 : value`;
+ * - соседние параметры: `name = value, next = value`.
+ *
+ * Двоеточия внутри самих данных не изменяются: MAC-адрес, время и другие
+ * составные значения сохраняют штатный вид `DE:AD:BE:EF:FE:EE` и `12:30:45`.
  */
 
 #pragma once
@@ -59,6 +67,33 @@ inline void diagnostic_print_group(const char* title)
     SerialUSB.print("\r\n-- ");
     SerialUSB.print((title != 0) ? title : "");
     SerialUSB.print(" --\r\n");
+}
+
+/**
+ * @brief Печатает имя параметра и разделитель ` = `.
+ *
+ * Используйте функцию перед значением во всех человекочитаемых отчётах. Это
+ * исключает смешение вариантов `name=value` и `name = value` между модулями.
+ *
+ * @param name Имя параметра без пробелов и знака равенства.
+ */
+inline void diagnostic_print_assignment(const char* name)
+{
+    SerialUSB.print((name != 0) ? name : "");
+    SerialUSB.print(" = ");
+}
+
+/**
+ * @brief Печатает индекс элемента и разделитель ` : `.
+ *
+ * Предназначено для массивов измерений и регистров: `0 : 12.34`.
+ *
+ * @param index Номер элемента.
+ */
+inline void diagnostic_print_index(uint32_t index)
+{
+    SerialUSB.print(static_cast<unsigned long>(index));
+    SerialUSB.print(" : ");
 }
 
 /**
