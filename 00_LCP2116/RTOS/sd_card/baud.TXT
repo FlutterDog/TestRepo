@@ -1,0 +1,6 @@
+4
+9600 // baudrate порта S1
+9600 // baudrate порта S2	
+1200 // baudrate порта S3
+9600 // baudrate порта S4
+fin
