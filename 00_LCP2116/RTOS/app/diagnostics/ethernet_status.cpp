@@ -26,6 +26,16 @@ void print_hex8(uint8_t value)
     SerialUSB.print(text);
 }
 
+void print_hex_byte(uint8_t value)
+{
+    static const char hex[] = "0123456789ABCDEF";
+    char text[3];
+    text[0] = hex[(value >> 4U) & 0x0FU];
+    text[1] = hex[value & 0x0FU];
+    text[2] = '\0';
+    SerialUSB.print(text);
+}
+
 void print_ip(const W5500IpAddress& ip)
 {
     SerialUSB.print(static_cast<int>(ip.octet[0]));
@@ -35,6 +45,19 @@ void print_ip(const W5500IpAddress& ip)
     SerialUSB.print(static_cast<int>(ip.octet[2]));
     SerialUSB.print(".");
     SerialUSB.print(static_cast<int>(ip.octet[3]));
+}
+
+void print_mac(const W5500MacAddress& mac)
+{
+    for (uint8_t index = 0U; index < 6U; ++index)
+    {
+        if (index != 0U)
+        {
+            SerialUSB.print(":");
+        }
+
+        print_hex_byte(mac.octet[index]);
+    }
 }
 
 void print_config_item(const char* label,
@@ -75,7 +98,9 @@ void print_interface(LcpEthernetId ethernet_id)
     SerialUSB.print(static_cast<int>(LCP_MODBUS_TCP_PORT));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("  ip=");
+    SerialUSB.print("  mac=");
+    print_mac(state.config.mac);
+    SerialUSB.print(", ip=");
     print_ip(state.config.ip);
     SerialUSB.print(", subnet=");
     print_ip(state.config.subnet);
@@ -84,6 +109,10 @@ void print_interface(LcpEthernetId ethernet_id)
     SerialUSB.print("\r\n");
 
     SerialUSB.print("  config: ");
+    print_config_item("mac",
+                      state.config_report.mac_file,
+                      state.config_report.mac_result);
+    SerialUSB.print(", ");
     print_config_item("ip",
                       state.config_report.ip_file,
                       state.config_report.ip_result);
