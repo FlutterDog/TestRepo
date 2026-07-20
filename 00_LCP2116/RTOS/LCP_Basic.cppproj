@@ -49,11 +49,7 @@
         <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
         <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
         <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
-        <armgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>NDEBUG</Value>
-          </ListValues>
-        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.symbols.DefSymbols><ListValues><Value>NDEBUG</Value></ListValues></armgcc.compiler.symbols.DefSymbols>
         <armgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
@@ -66,11 +62,7 @@
         <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
         <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
-        <armgcccpp.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>NDEBUG</Value>
-          </ListValues>
-        </armgcccpp.compiler.symbols.DefSymbols>
+        <armgcccpp.compiler.symbols.DefSymbols><ListValues><Value>NDEBUG</Value></ListValues></armgcccpp.compiler.symbols.DefSymbols>
         <armgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
@@ -83,31 +75,13 @@
         <armgcccpp.compiler.optimization.level>Optimize for size (-Os)</armgcccpp.compiler.optimization.level>
         <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
-        <armgcccpp.linker.libraries.Libraries>
-          <ListValues>
-            <Value>libm</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.Libraries>
-        <armgcccpp.linker.libraries.LibrarySearchPaths>
-          <ListValues>
-            <Value>%24(ProjectDir)\Device_Startup</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.LibrarySearchPaths>
+        <armgcccpp.linker.libraries.Libraries><ListValues><Value>libm</Value></ListValues></armgcccpp.linker.libraries.Libraries>
+        <armgcccpp.linker.libraries.LibrarySearchPaths><ListValues><Value>%24(ProjectDir)\Device_Startup</Value></ListValues></armgcccpp.linker.libraries.LibrarySearchPaths>
         <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
         <armgcccpp.linker.memorysettings.ExternalRAM />
         <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsam3x8e_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
-        <armgcccpp.assembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.assembler.general.IncludePaths>
-        <armgcccpp.preprocessingassembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.preprocessingassembler.general.IncludePaths>
+        <armgcccpp.assembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.assembler.general.IncludePaths>
+        <armgcccpp.preprocessingassembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.preprocessingassembler.general.IncludePaths>
       </ArmGccCpp>
     </ToolchainSettings>
   </PropertyGroup>
@@ -119,11 +93,7 @@
         <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
         <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
         <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
-        <armgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>DEBUG</Value>
-          </ListValues>
-        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.symbols.DefSymbols><ListValues><Value>DEBUG</Value></ListValues></armgcc.compiler.symbols.DefSymbols>
         <armgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
@@ -137,11 +107,7 @@
         <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
         <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
-        <armgcccpp.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>DEBUG</Value>
-          </ListValues>
-        </armgcccpp.compiler.symbols.DefSymbols>
+        <armgcccpp.compiler.symbols.DefSymbols><ListValues><Value>DEBUG</Value></ListValues></armgcccpp.compiler.symbols.DefSymbols>
         <armgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
@@ -155,31 +121,13 @@
         <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcccpp.compiler.optimization.DebugLevel>Maximum (-g3)</armgcccpp.compiler.optimization.DebugLevel>
         <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
-        <armgcccpp.linker.libraries.Libraries>
-          <ListValues>
-            <Value>libm</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.Libraries>
-        <armgcccpp.linker.libraries.LibrarySearchPaths>
-          <ListValues>
-            <Value>%24(ProjectDir)\Device_Startup</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.LibrarySearchPaths>
+        <armgcccpp.linker.libraries.Libraries><ListValues><Value>libm</Value></ListValues></armgcccpp.linker.libraries.Libraries>
+        <armgcccpp.linker.libraries.LibrarySearchPaths><ListValues><Value>%24(ProjectDir)\Device_Startup</Value></ListValues></armgcccpp.linker.libraries.LibrarySearchPaths>
         <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
         <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsam3x8e_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
-        <armgcccpp.assembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.assembler.general.IncludePaths>
+        <armgcccpp.assembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.assembler.general.IncludePaths>
         <armgcccpp.assembler.debugging.DebugLevel>Default (-g)</armgcccpp.assembler.debugging.DebugLevel>
-        <armgcccpp.preprocessingassembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.preprocessingassembler.general.IncludePaths>
+        <armgcccpp.preprocessingassembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.preprocessingassembler.general.IncludePaths>
         <armgcccpp.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcccpp.preprocessingassembler.debugging.DebugLevel>
       </ArmGccCpp>
     </ToolchainSettings>
@@ -191,8 +139,8 @@
     <Compile Include="app\diagnostics\battery_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_console.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_console.hpp"><SubType>compile</SubType></Compile>
-    <Compile Include="app\diagnostics\ethernet_echo_test.cpp"><SubType>compile</SubType></Compile>
-    <Compile Include="app\diagnostics\ethernet_echo_test.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\ethernet_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\ethernet_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\field_status.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\field_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\rs485_echo_test.cpp"><SubType>compile</SubType></Compile>
@@ -209,9 +157,15 @@
     <Compile Include="app\diagnostics\watchdog_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\x2x_status.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\x2x_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_modbus_service.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_modbus_service.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_network_config.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_network_config.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\field\field_sensor_service.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\field\field_sensor_service.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\field\field_sensor_slave_example.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_serial_config.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_serial_config.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\version.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\x2x\modules\x2x_lai.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\x2x\modules\x2x_lct.cpp"><SubType>compile</SubType></Compile>
@@ -307,10 +261,13 @@
     <Compile Include="protocol\modbus_rtu\modbus_rtu_master.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="protocol\modbus_rtu\modbus_rtu_slave.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="protocol\modbus_rtu\modbus_rtu_slave.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_tcp\modbus_tcp_server.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_tcp\modbus_tcp_server.hpp"><SubType>compile</SubType></Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\diagnostics\" />
+    <Folder Include="app\ethernet\" />
     <Folder Include="app\field\" />
     <Folder Include="app\x2x\" />
     <Folder Include="app\x2x\modules\" />
@@ -331,6 +288,7 @@
     <Folder Include="platform\" />
     <Folder Include="protocol\" />
     <Folder Include="protocol\modbus_rtu\" />
+    <Folder Include="protocol\modbus_tcp\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Device_Startup\sam3x8e_flash.ld"><SubType>compile</SubType></None>
