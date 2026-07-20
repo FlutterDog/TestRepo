@@ -73,26 +73,41 @@ void battery_status_print_report(void)
 
     diagnostic_print_section("RTC BACKUP BATTERY");
 
-    SerialUSB.print("battery=CR2032, input_pin=50\r\n");
-    SerialUSB.print("comparator_threshold=2.2 V\r\n");
-    SerialUSB.print("voltage_measurement=not available\r\n");
-    SerialUSB.print("debounce_ms=");
+    diagnostic_print_assignment("battery");
+    SerialUSB.print("CR2032, ");
+    diagnostic_print_assignment("input_pin");
+    SerialUSB.print("50\r\n");
+
+    diagnostic_print_assignment("comparator_threshold");
+    SerialUSB.print("2.2 V\r\n");
+    diagnostic_print_assignment("voltage_measurement");
+    SerialUSB.print("not available\r\n");
+
+    diagnostic_print_assignment("debounce_ms");
     SerialUSB.print(static_cast<unsigned long>(BATTERY_DEBOUNCE_MS));
-    SerialUSB.print(", input_active_high=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("input_active_high");
     SerialUSB.print((LCP_BACKUP_BATTERY_OK_ACTIVE_HIGH != 0U) ? "yes" : "no");
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("raw=");
+    diagnostic_print_assignment("raw");
     SerialUSB.print(static_cast<int>(raw));
-    SerialUSB.print(", debounced_raw=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("debounced_raw");
     SerialUSB.print(static_cast<int>(g_debounced_raw));
-    SerialUSB.print(", stable=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("stable");
     SerialUSB.print((g_stable != 0U) ? "yes" : "no");
-    SerialUSB.print("\r\ninstant_state=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("instant_state");
     SerialUSB.print((instant_ok != 0U) ? "ok" : "low");
-    SerialUSB.print(", debounced_state=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("debounced_state");
     SerialUSB.print((debounced_ok != 0U) ? "ok" : "low");
-    SerialUSB.print("\r\naction=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("action");
     SerialUSB.print((debounced_ok != 0U) ?
                     "none" :
                     "replace CR2032 battery");
