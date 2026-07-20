@@ -1,10 +1,9 @@
 ﻿/**
  * @file app.cpp
- * @brief Диагностическая baseline-прошивка LCP под управлением FreeRTOS.
+ * @brief Базовая прошивка Lorentz под управлением FreeRTOS.
  *
- * Приложение выполняет heartbeat через PLC_ok, поддерживает USB CDC
- * service console, обслуживает встроенные интерфейсы контроллера, запускает
- * master внутренней шины X2X и четыре демонстрационных FieldSensor master.
+ * Приложение обслуживает X2X, четыре демонстрационных FieldSensor master,
+ * два Modbus TCP server, microSD, RTC, watchdog и USB service console.
  */
 
 #include "app.hpp"
@@ -14,12 +13,12 @@
 #include "../hal/sam3x_watchdog.hpp"
 #include "diagnostics/rs485_echo_test.hpp"
 #include "diagnostics/sc16is_echo_test.hpp"
-#include "diagnostics/ethernet_echo_test.hpp"
 #include "diagnostics/diagnostic_console.hpp"
 #include "diagnostics/sd_card_test.hpp"
 #include "diagnostics/battery_status.hpp"
 #include "diagnostics/rtc_status.hpp"
 #include "diagnostics/watchdog_status.hpp"
+#include "ethernet/ethernet_modbus_service.hpp"
 #include "field/field_sensor_service.hpp"
 #include "x2x/x2x_service.hpp"
 
@@ -62,7 +61,6 @@ uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
 void lcp_task(void *argument)
 {
     (void)argument;
-
     setup();
 
     for (;;)
@@ -70,9 +68,8 @@ void lcp_task(void *argument)
         loop();
 
         /*
-         * Все baseline-модули обслуживаются неблокирующими poll-функциями
-         * внутри одной задачи. Один тик освобождает процессор для idle-задачи
-         * и будущих специализированных задач контроллера.
+         * Все baseline-сервисы используют неблокирующие poll-функции внутри
+         * одной задачи. Один тик освобождает процессор для idle-задачи.
          */
         vTaskDelay(pdMS_TO_TICKS(1U));
     }
@@ -92,19 +89,25 @@ void setup(void)
     SerialUSB.begin(115200U, SERIAL_8N1);
     SPI.begin();
 
+    /*
+     * Диагностические echo-сервисы выполняют обнаружение внешних UART.
+     * После запуска FieldSensor линии S1..S4 передаются Modbus RTU master.
+     */
     rs485_echo_test_init();
     sc16is_echo_test_init();
 
     /*
-     * FieldSensor становится владельцем S1..S4. Echo остаётся доступным для
-     * PC/HMI внешних UART и для X2X только когда X2X.TXT не захватывает UART0.
+     * microSD монтируется асинхронно. FieldSensor и Ethernet сначала получают
+     * безопасные значения по умолчанию, затем применяют TXT-файлы, когда FAT
+     * становится доступной.
      */
+    sd_card_test_init();
     field_sensor_service_init();
+    ethernet_modbus_service_init();
+
     rs485_echo_test_set_field_ports_enabled(0U);
     sc16is_echo_test_set_s1_enabled(0U);
 
-    ethernet_echo_test_init();
-    sd_card_test_init();
     x2x_service_init();
     battery_status_init();
     rtc_status_init();
@@ -127,20 +130,22 @@ void loop(void)
     }
 
     /*
-     * microSD обслуживается раньше X2X, чтобы сервис мог автоматически
-     * загрузить X2X.TXT сразу после успешного монтирования файловой системы.
+     * Сначала обслуживается microSD, затем сервисы, которые могут применить
+     * конфигурационные файлы после успешного монтирования.
      */
     sd_card_test_poll();
     x2x_service_poll();
     field_sensor_service_poll();
+    ethernet_modbus_service_poll();
 
     /* UART0 может принадлежать либо X2X master, либо диагностическому echo. */
     rs485_echo_test_set_x2x_enabled(
         (x2x_service_owns_port() == 0U) ? 1U : 0U);
     rs485_echo_test_poll();
 
+    /* PC/HMI SC16IS echo остаётся; S1 отключён в пользу FieldSensor. */
     sc16is_echo_test_poll();
-    ethernet_echo_test_poll();
+
     battery_status_poll();
     rtc_status_poll();
     diagnostic_console_poll();
@@ -157,7 +162,6 @@ void app_rtos_start(void)
                                                &g_lcp_task_handle);
 
     configASSERT(task_result == pdPASS);
-
     vTaskStartScheduler();
 
     /* Планировщик возвращается только при ошибке запуска. */
@@ -266,7 +270,6 @@ extern "C" void vApplicationStackOverflowHook(TaskHandle_t task,
 {
     (void)task;
     (void)task_name;
-
     taskDISABLE_INTERRUPTS();
 
     for (;;)
