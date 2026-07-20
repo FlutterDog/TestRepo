@@ -12,6 +12,7 @@
 
 #include <stdint.h>
 
+#include "../../hal/sam3x_uart.hpp"
 #include "../../platform/platform.hpp"
 
 /**
@@ -58,6 +59,30 @@ inline void diagnostic_print_group(const char* title)
     SerialUSB.print("\r\n-- ");
     SerialUSB.print((title != 0) ? title : "");
     SerialUSB.print(" --\r\n");
+}
+
+/**
+ * @brief Возвращает человекочитаемое имя формата UART.
+ *
+ * Используйте эту функцию во всех диагностических отчётах S1..S4 и встроенных
+ * UART. При добавлении нового HalUartFrame сначала реализуйте его в HAL, затем
+ * добавьте соответствующую строку в этот switch.
+ *
+ * @param frame Формат кадра HAL.
+ * @return Статическая строка `8N1`, `8O1` или `8E1`.
+ */
+inline const char* diagnostic_uart_frame_text(HalUartFrame frame)
+{
+    switch (frame)
+    {
+        case HAL_UART_FRAME_8O1:
+            return "8O1";
+        case HAL_UART_FRAME_8E1:
+            return "8E1";
+        case HAL_UART_FRAME_8N1:
+        default:
+            return "8N1";
+    }
 }
 
 /**
