@@ -20,20 +20,6 @@
 
 namespace
 {
-const char* frame_text(HalUartFrame frame)
-{
-    switch (frame)
-    {
-        case HAL_UART_FRAME_8O1:
-            return "8O1";
-        case HAL_UART_FRAME_8E1:
-            return "8E1";
-        case HAL_UART_FRAME_8N1:
-        default:
-            return "8N1";
-    }
-}
-
 void print_port(LcpFieldPortId port_id)
 {
     const FieldSensorPortState& port = field_sensor_service_port(port_id);
@@ -49,7 +35,7 @@ void print_port(LcpFieldPortId port_id)
     SerialUSB.print(", serial=");
     SerialUSB.print(static_cast<unsigned long>(serial.baudrate));
     SerialUSB.print(" ");
-    SerialUSB.print(frame_text(serial.frame));
+    SerialUSB.print(diagnostic_uart_frame_text(serial.frame));
     SerialUSB.print("\r\n");
 
     SerialUSB.print("request: slave=");
