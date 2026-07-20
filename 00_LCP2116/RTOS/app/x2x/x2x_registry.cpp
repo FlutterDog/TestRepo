@@ -12,30 +12,16 @@
 
 namespace
 {
-static const size_t X2X_DEVICE_STORAGE_SIZE = sizeof(X2XLct1114_2);
 static const uint8_t X2X_REGISTRY_CAPACITY = X2X_MAX_MODULES + 1U;
 
 struct X2XRegistryStorage
 {
-    alignas(8) uint8_t bytes[X2X_DEVICE_STORAGE_SIZE];
+    alignas(8) uint8_t bytes[X2X_DEVICE_SLOT_BYTES];
 };
 
 X2XRegistryStorage g_device_storage[X2X_REGISTRY_CAPACITY];
 X2XDeviceHeader* g_devices[X2X_REGISTRY_CAPACITY];
 uint8_t g_module_count = 0U;
-
-static_assert(sizeof(X2XLcp2116) <= X2X_DEVICE_STORAGE_SIZE,
-              "LCP storage size mismatch");
-static_assert(sizeof(X2XLdo1118) <= X2X_DEVICE_STORAGE_SIZE,
-              "LDO storage size mismatch");
-static_assert(sizeof(X2XLai1118) <= X2X_DEVICE_STORAGE_SIZE,
-              "LAI storage size mismatch");
-static_assert(sizeof(X2XLdi1118) <= X2X_DEVICE_STORAGE_SIZE,
-              "LDI8 storage size mismatch");
-static_assert(sizeof(X2XLdi1116) <= X2X_DEVICE_STORAGE_SIZE,
-              "LDI16 storage size mismatch");
-static_assert(sizeof(X2XLct1114) <= X2X_DEVICE_STORAGE_SIZE,
-              "LCT storage size mismatch");
 
 X2XRegistryResult construct_slot(uint8_t index,
                                  X2XDeviceType type,
@@ -49,7 +35,7 @@ X2XRegistryResult construct_slot(uint8_t index,
         return X2X_REGISTRY_UNKNOWN_TYPE;
     }
 
-    if (descriptor->object_size > X2X_DEVICE_STORAGE_SIZE)
+    if (descriptor->object_size > X2X_DEVICE_SLOT_BYTES)
     {
         return X2X_REGISTRY_STORAGE_TOO_SMALL;
     }
