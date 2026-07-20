@@ -2,10 +2,9 @@
  * @file ethernet_status.cpp
  * @brief Реализация диагностики Modbus TCP на ETH1 и ETH2.
  *
- * Аппаратное состояние каждого W5500 и публикуемая holding map выводятся
- * раздельно. При расширении Modbus TCP map необходимо обновить прикладную карту
- * в `ethernet_modbus_service.cpp`, её Doxygen-описание и print_register_map().
- * Низкоуровневый W5500 HAL при этом менять не требуется.
+ * Аппаратное состояние W5500 и прикладная holding map выводятся раздельно.
+ * При расширении карты меняйте `ethernet_modbus_service.cpp`, её Doxygen и
+ * print_register_map(). W5500 HAL от состава прикладных регистров не зависит.
  */
 
 #include "ethernet_status.hpp"
@@ -107,13 +106,13 @@ void print_interface(LcpEthernetId ethernet_id)
 
     diagnostic_print_group(lcp_ethernet_name(ethernet_id));
 
-    SerialUSB.print("hardware: initialized=");
+    SerialUSB.print("initialized=");
     SerialUSB.print((initialized != 0U) ? "yes" : "no");
     SerialUSB.print(", init=");
     SerialUSB.print((state.init_ok != 0U) ? "ok" : "failed");
     SerialUSB.print(", link=");
     SerialUSB.print((link_up != 0U) ? "up" : "down");
-    SerialUSB.print(", VERSIONR=");
+    SerialUSB.print("\r\nVERSIONR=");
     print_hex8(version);
     SerialUSB.print(", socket_status=");
     print_hex8(state.last_socket_status);
@@ -121,17 +120,17 @@ void print_interface(LcpEthernetId ethernet_id)
     SerialUSB.print(static_cast<int>(LCP_MODBUS_TCP_PORT));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("network: mac=");
+    SerialUSB.print("mac=");
     print_mac(state.config.mac);
     SerialUSB.print(", ip=");
     print_ip(state.config.ip);
-    SerialUSB.print(", subnet=");
+    SerialUSB.print("\r\nsubnet=");
     print_ip(state.config.subnet);
     SerialUSB.print(", gateway=");
     print_ip(state.config.gateway);
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("configuration files:\r\n");
+    SerialUSB.print("configuration_files:\r\n");
     print_config_item("MAC",
                       state.config_report.mac_file,
                       state.config_report.mac_result);
@@ -149,11 +148,11 @@ void print_interface(LcpEthernetId ethernet_id)
                     "yes" : "no");
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("traffic: requests=");
+    SerialUSB.print("requests=");
     SerialUSB.print(static_cast<unsigned long>(state.server.request_count));
     SerialUSB.print(", responses=");
     SerialUSB.print(static_cast<unsigned long>(state.server.response_count));
-    SerialUSB.print(", exceptions=");
+    SerialUSB.print("\r\nexceptions=");
     SerialUSB.print(static_cast<unsigned long>(state.server.exception_count));
     SerialUSB.print(", malformed=");
     SerialUSB.print(static_cast<unsigned long>(state.server.malformed_count));
@@ -172,7 +171,7 @@ void print_quality_flags(uint16_t quality)
     SerialUSB.print(", present=");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT) ?
                     "yes" : "no");
-    SerialUSB.print(", request_active=");
+    SerialUSB.print("\r\n  request_active=");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE) ?
                     "yes" : "no");
     SerialUSB.print(", paused=");
@@ -185,7 +184,8 @@ void print_quality_flags(uint16_t quality)
 void print_register_map(void)
 {
     diagnostic_print_group("Published holding registers");
-    SerialUSB.print("layout=three registers per FieldSensor port: value0, value1, quality\r\n");
+    SerialUSB.print("layout=value0, value1, quality\r\n");
+    SerialUSB.print("registers_per_FieldSensor_port=3\r\n");
 
     for (uint8_t port_index = 0U;
          port_index < LCP_FIELD_PORT_COUNT;
@@ -203,12 +203,12 @@ void print_register_map(void)
         SerialUSB.print(static_cast<unsigned long>(base));
         SerialUSB.print("..");
         SerialUSB.print(static_cast<unsigned long>(base + 2U));
-        SerialUSB.print(", value0=");
+        SerialUSB.print(", quality=");
+        print_hex16(quality);
+        SerialUSB.print("\r\n  value0=");
         SerialUSB.print(static_cast<unsigned long>(value0));
         SerialUSB.print(", value1=");
         SerialUSB.print(static_cast<unsigned long>(value1));
-        SerialUSB.print(", quality=");
-        print_hex16(quality);
         SerialUSB.print("\r\n  ");
         print_quality_flags(quality);
         SerialUSB.print("\r\n");
@@ -222,7 +222,7 @@ void ethernet_status_print_report(void)
     SerialUSB.print("service_reload=");
     SerialUSB.print((ethernet_modbus_service_reload_pending() != 0U) ?
                     "pending" : "idle");
-    SerialUSB.print(", function=0x03 read-only, holding_address=0..11\r\n");
+    SerialUSB.print("\r\nfunction=0x03 read-only\r\nholding_address=0..11\r\n");
 
     print_interface(LCP_ETHERNET_1);
     print_interface(LCP_ETHERNET_2);
@@ -246,7 +246,8 @@ uint8_t ethernet_status_handle_command(const char* command)
     if (strcmp(command, "eth reload") == 0)
     {
         ethernet_modbus_service_request_reload();
-        SerialUSB.print("Ethernet configuration reload: pending; both W5500 will be reset\r\n");
+        SerialUSB.print("Ethernet configuration reload: pending\r\n");
+        SerialUSB.print("both W5500 interfaces will be reset\r\n");
         return 1U;
     }
 
