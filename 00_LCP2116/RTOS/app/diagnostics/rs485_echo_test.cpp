@@ -42,6 +42,7 @@ static Rs485EchoPort g_echo_ports[] =
 };
 
 static uint8_t g_x2x_echo_enabled = 1U;
+static uint8_t g_field_echo_enabled = 1U;
 
 static void rs485_echo_drop_frame(Rs485EchoPort& port, uint32_t now_ms)
 {
@@ -121,6 +122,7 @@ void rs485_echo_test_init(void)
     Serial3.begin(RS485_ECHO_BAUDRATE, SERIAL_8N1);
 
     g_x2x_echo_enabled = 1U;
+    g_field_echo_enabled = 1U;
 
     for (size_t port_index = 0U;
          port_index < (sizeof(g_echo_ports) / sizeof(g_echo_ports[0]));
@@ -139,6 +141,11 @@ void rs485_echo_test_poll(void)
          ++port_index)
     {
         if ((port_index == 0U) && (g_x2x_echo_enabled == 0U))
+        {
+            continue;
+        }
+
+        if ((port_index != 0U) && (g_field_echo_enabled == 0U))
         {
             continue;
         }
@@ -166,4 +173,28 @@ void rs485_echo_test_set_x2x_enabled(uint8_t enabled)
 uint8_t rs485_echo_test_x2x_enabled(void)
 {
     return g_x2x_echo_enabled;
+}
+
+void rs485_echo_test_set_field_ports_enabled(uint8_t enabled)
+{
+    const uint8_t normalized = (enabled != 0U) ? 1U : 0U;
+
+    if (normalized == g_field_echo_enabled)
+    {
+        return;
+    }
+
+    g_field_echo_enabled = normalized;
+
+    for (size_t port_index = 1U;
+         port_index < (sizeof(g_echo_ports) / sizeof(g_echo_ports[0]));
+         ++port_index)
+    {
+        rs485_echo_drop_frame(g_echo_ports[port_index], millis());
+    }
+}
+
+uint8_t rs485_echo_test_field_ports_enabled(void)
+{
+    return g_field_echo_enabled;
 }
