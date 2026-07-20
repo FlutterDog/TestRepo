@@ -14,7 +14,7 @@ namespace
 {
 static const char* const BAUD_FILE_NAME = "baud.TXT";
 static const char* const PARITY_FILE_NAME = "Parity.TXT";
-static const uint16_t LINE_CAPACITY = 32U;
+static const uint16_t LINE_CAPACITY = 192U;
 static const uint8_t EXPECTED_VALUE_COUNT = LCP_FIELD_PORT_COUNT;
 
 char g_line[LINE_CAPACITY];
@@ -223,8 +223,6 @@ FieldSerialConfigResult load_baud(
             continue;
         }
 
-        /* Старый формат завершается строкой fin. После четырёх значений
-         * оставшаяся часть файла намеренно не разбирается. */
         if ((significant_line != 0U) &&
             (value_index >= EXPECTED_VALUE_COUNT))
         {
@@ -249,7 +247,6 @@ FieldSerialConfigResult load_baud(
         }
         else
         {
-            /* В файле хранится фактическая скорость, а не индекс таблицы. */
             if ((parsed < 300U) || (parsed > 1000000U))
             {
                 lcp_sd_storage_close_read(&file);
