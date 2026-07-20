@@ -117,7 +117,7 @@ static void print_help(void)
     SerialUSB.print("help         - print software version and command list\r\n");
     SerialUSB.print("version      - print software version only\r\n");
     SerialUSB.print("status       - print full diagnostic status\r\n");
-    SerialUSB.print("rtos         - print FreeRTOS scheduler, heap and stack status\r\n");
+    SerialUSB.print("rtos         - print RAM, FreeRTOS heap and LCP task stack\r\n");
     SerialUSB.print("x2x          - print X2X configuration and module status\r\n");
     SerialUSB.print("x2x reload   - validate and apply X2X.TXT\r\n");
     SerialUSB.print("x2x pause    - stop X2X polling\r\n");
@@ -174,7 +174,7 @@ static void print_uptime(void)
     SerialUSB.print("\r\n");
 }
 
-static void print_rtos_status(void)
+static void print_rtos_summary(void)
 {
     const uint32_t stack_free_words = app_rtos_lcp_stack_free_words();
 
@@ -201,13 +201,100 @@ static void print_rtos_status(void)
     SerialUSB.print("\r\n");
 }
 
+static void print_rtos_status(void)
+{
+    const uint32_t heap_total_bytes = app_rtos_heap_total_bytes();
+    const uint32_t heap_free_bytes = app_rtos_free_heap_bytes();
+    const uint32_t heap_minimum_free_bytes =
+        app_rtos_minimum_ever_free_heap_bytes();
+    const uint32_t heap_used_bytes =
+        (heap_total_bytes >= heap_free_bytes) ?
+        (heap_total_bytes - heap_free_bytes) : 0U;
+
+    const uint32_t stack_total_words = app_rtos_lcp_stack_total_words();
+    const uint32_t stack_total_bytes = app_rtos_lcp_stack_total_bytes();
+    const uint32_t stack_free_words = app_rtos_lcp_stack_free_words();
+    const uint32_t stack_free_bytes = stack_free_words * 4U;
+    const uint32_t stack_peak_used_words =
+        (stack_total_words >= stack_free_words) ?
+        (stack_total_words - stack_free_words) : 0U;
+    const uint32_t stack_peak_used_bytes =
+        (stack_total_bytes >= stack_free_bytes) ?
+        (stack_total_bytes - stack_free_bytes) : 0U;
+
+    SerialUSB.print("\r\n=== RTOS memory status ===\r\n");
+    SerialUSB.print("scheduler=");
+    SerialUSB.print((app_rtos_scheduler_running() != 0U) ?
+                    "running" : "not_running");
+    SerialUSB.print("\r\n");
+    SerialUSB.print("tick_count=");
+    SerialUSB.print(static_cast<unsigned long>(app_rtos_tick_count()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("allocation_model=dynamic, allocator=heap_4, task_create=xTaskCreate\r\n");
+
+    SerialUSB.print("\r\nRAM:\r\n");
+    SerialUSB.print("total_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_ram_total_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("static_data_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_ram_static_data_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("static_bss_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_ram_static_bss_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("startup_stack_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_ram_startup_stack_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("c_heap_reserved_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(app_ram_c_heap_reserved_bytes()));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("linker_unassigned_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(
+        app_ram_linker_unassigned_bytes()));
+    SerialUSB.print("\r\n");
+
+    SerialUSB.print("\r\nFreeRTOS heap:\r\n");
+    SerialUSB.print("total_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(heap_total_bytes));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("free_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(heap_free_bytes));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("minimum_ever_free_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(heap_minimum_free_bytes));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("used_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(heap_used_bytes));
+    SerialUSB.print("\r\n");
+
+    SerialUSB.print("\r\nLCP task stack:\r\n");
+    SerialUSB.print("total_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(stack_total_bytes));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("peak_used_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(stack_peak_used_bytes));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("minimum_free_bytes=");
+    SerialUSB.print(static_cast<unsigned long>(stack_free_bytes));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("total_words=");
+    SerialUSB.print(static_cast<unsigned long>(stack_total_words));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("peak_used_words=");
+    SerialUSB.print(static_cast<unsigned long>(stack_peak_used_words));
+    SerialUSB.print("\r\n");
+    SerialUSB.print("minimum_free_words=");
+    SerialUSB.print(static_cast<unsigned long>(stack_free_words));
+    SerialUSB.print("\r\n=== end ===\r\n\r\n");
+}
+
 static void print_status(void)
 {
     SerialUSB.print("\r\n");
     SerialUSB.print("=== LCP diagnostic status ===\r\n");
     print_version();
     print_uptime();
-    print_rtos_status();
+    print_rtos_summary();
     SerialUSB.print("USB service CDC: open\r\n");
     print_rs485_status();
     x2x_status_print_report();
