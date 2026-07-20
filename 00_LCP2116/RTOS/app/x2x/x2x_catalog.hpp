@@ -21,8 +21,9 @@ typedef X2XDeviceHeader* (*X2XModuleConstructFunction)(void* storage,
  * @brief Полное описание поддерживаемого типа X2X.
  *
  * Каталог является единой точкой регистрации типа: валидатор конфигурации,
- * реестр, диспетчер опроса и будущие протокольные адаптеры получают свойства
- * модуля из одной записи.
+ * реестр, диспетчер опроса и диагностика получают свойства модуля из одной
+ * записи. При добавлении типа не требуется менять switch в X2X service или
+ * service console.
  */
 struct X2XModuleDescriptor
 {
@@ -35,6 +36,7 @@ struct X2XModuleDescriptor
     uint8_t allowed_in_x2x_config;
     X2XModuleConstructFunction construct;
     X2XModulePollFunction poll;
+    X2XModulePrintFunction print;
 };
 
 /** @brief Возвращает описание типа либо null, если ID неизвестен. */
