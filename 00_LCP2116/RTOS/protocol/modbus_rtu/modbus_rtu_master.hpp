@@ -1,6 +1,11 @@
 ﻿/**
  * @file modbus_rtu_master.hpp
  * @brief Неблокирующий Modbus RTU master для одного half-duplex порта.
+ *
+ * Один объект обслуживает только одну транзакцию одновременно. Для нескольких
+ * физических UART создаётся отдельный ModbusRtuMaster на каждый transport.
+ * Объект не владеет transport и пользовательским FC03-буфером: оба должны жить
+ * до завершения транзакции.
  */
 
 #pragma once
@@ -8,10 +13,13 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/** Максимальное количество регистров FC03 в одной транзакции. */
+/** Максимальный обычный адрес Modbus RTU slave. Адрес 0 зарезервирован broadcast. */
+static const uint8_t MODBUS_RTU_MAX_SLAVE_ADDRESS = 247U;
+
+/** Максимальное количество регистров FC03 в одной транзакции baseline-master. */
 static const uint16_t MODBUS_RTU_MASTER_MAX_READ_REGISTERS = 100U;
 
-/** Максимальное количество регистров FC10 в одной транзакции. */
+/** Максимальное количество регистров FC10 в одной транзакции baseline-master. */
 static const uint16_t MODBUS_RTU_MASTER_MAX_WRITE_REGISTERS = 16U;
 
 /** Максимальный размер принятого RTU-кадра. */
@@ -31,6 +39,9 @@ static_assert(MODBUS_RTU_MASTER_TX_CAPACITY >=
  * @brief Абстрактный байтовый transport одного Modbus RTU-порта.
  *
  * Все callback обязаны относиться к одному физическому half-duplex UART.
+ * `write` должен принять весь запрос за один вызов либо вернуть меньше длины;
+ * частичный запрос считается transport error. `tx_idle` означает физическое
+ * окончание передачи последнего stop-bit, а не только пустой software buffer.
  */
 struct ModbusRtuTransport
 {
@@ -71,14 +82,20 @@ enum ModbusRtuTransactionType : uint8_t
     MODBUS_RTU_TRANSACTION_WRITE_MULTIPLE = 2U  /**< FC10 Write Multiple Registers. */
 };
 
-/** @brief Полное состояние одного независимого Modbus RTU master. */
+/**
+ * @brief Полное состояние одного независимого Modbus RTU master.
+ *
+ * Структура содержит state machine и собственные RX/TX-кадры, но не выделяет
+ * динамическую память. `read_output` устанавливается только на время FC03 и
+ * должен указывать на массив не меньше `register_count` элементов.
+ */
 struct ModbusRtuMaster
 {
     const ModbusRtuTransport* transport; /**< Transport, живущий не меньше master. */
     ModbusRtuMasterState state;          /**< Текущее состояние автомата. */
     ModbusRtuTransactionType transaction_type; /**< Тип текущей транзакции. */
     ModbusRtuResult result;              /**< Текущий или итоговый результат. */
-    uint8_t slave_address;               /**< Адрес текущего slave. */
+    uint8_t slave_address;               /**< Адрес текущего slave, 1..247. */
     uint8_t function_code;               /**< FC03 или FC10. */
     uint8_t exception_code;              /**< Последний exception code. */
     uint16_t start_address;              /**< Начальный адрес регистров. */
@@ -87,7 +104,7 @@ struct ModbusRtuMaster
     uint32_t deadline_ms;                /**< Абсолютный deadline текущей стадии. */
     uint32_t timeout_ms;                 /**< Timeout ответа после окончания TX. */
     uint32_t next_request_ms;            /**< Конец обязательной межкадровой паузы. */
-    uint32_t interframe_gap_ms;          /**< Минимальная пауза между транзакциями. */
+    uint32_t interframe_gap_ms;           /**< Минимальная пауза между транзакциями. */
     uint16_t expected_response_length;   /**< Ожидаемая длина обычного ответа. */
     uint16_t rx_length;                  /**< Число принятых байтов. */
     uint16_t tx_length;                  /**< Длина сформированного запроса. */
@@ -97,8 +114,12 @@ struct ModbusRtuMaster
 
 /**
  * @brief Инициализирует объект Modbus RTU master.
+ *
+ * После инициализации новый запрос разрешён сразу. Значение
+ * `interframe_gap_ms` применяется после каждой завершённой транзакции.
+ *
  * @param[out] master Объект master.
- * @param[in] transport Байтовый transport.
+ * @param[in] transport Байтовый transport со сроком жизни не меньше master.
  * @param[in] interframe_gap_ms Минимальная пауза между RTU-кадрами.
  */
 void modbus_rtu_master_init(ModbusRtuMaster& master,
@@ -106,26 +127,34 @@ void modbus_rtu_master_init(ModbusRtuMaster& master,
                             uint32_t interframe_gap_ms);
 
 /**
- * @brief Сбрасывает транзакцию, сохраняя transport и межкадровый таймер.
+ * @brief Сбрасывает текущую транзакцию, сохраняя transport и межкадровый срок.
+ *
+ * Последний пользовательский FC03-буфер после вызова больше не используется.
+ *
  * @param[in,out] master Объект master.
  */
 void modbus_rtu_master_reset(ModbusRtuMaster& master);
 
 /**
  * @brief Проверяет состояние автомата и межкадровую паузу.
+ * @param[in] master Объект master.
  * @return 1, когда разрешено начать новый запрос, иначе 0.
  */
 uint8_t modbus_rtu_master_ready(const ModbusRtuMaster& master);
 
 /**
  * @brief Запускает FC03 Read Holding Registers.
+ *
+ * Функция только формирует и передаёт запрос. Ответ принимается последующими
+ * вызовами modbus_rtu_master_poll().
+ *
  * @param[in,out] master Объект master.
- * @param[in] slave_address Адрес 1..247.
+ * @param[in] slave_address Обычный адрес 1..247; broadcast 0 не поддерживается.
  * @param[in] start_address Начальный holding register.
- * @param[in] register_count Количество регистров.
- * @param[out] output Буфер минимум `register_count` элементов.
- * @param[in] timeout_ms Timeout ответа.
- * @return 1, если запрос принят и передан transport, иначе 0.
+ * @param[in] register_count Количество 1..MODBUS_RTU_MASTER_MAX_READ_REGISTERS.
+ * @param[out] output Буфер минимум `register_count` элементов, живущий до конца транзакции.
+ * @param[in] timeout_ms Timeout физического TX и последующего ответа.
+ * @return 1, если запрос принят и полностью передан transport, иначе 0.
  */
 uint8_t modbus_rtu_master_start_read_holding(ModbusRtuMaster& master,
                                              uint8_t slave_address,
@@ -136,13 +165,17 @@ uint8_t modbus_rtu_master_start_read_holding(ModbusRtuMaster& master,
 
 /**
  * @brief Запускает FC10 Write Multiple Registers.
+ *
+ * Значения копируются во внутренний TX-кадр до возврата, поэтому массив
+ * `values` после вызова больше не используется.
+ *
  * @param[in,out] master Объект master.
- * @param[in] slave_address Адрес 1..247.
+ * @param[in] slave_address Обычный адрес 1..247; broadcast 0 не поддерживается.
  * @param[in] start_address Начальный holding register.
  * @param[in] values Массив записываемых значений.
- * @param[in] register_count Количество регистров.
- * @param[in] timeout_ms Timeout ответа.
- * @return 1, если запрос принят и передан transport, иначе 0.
+ * @param[in] register_count Количество 1..MODBUS_RTU_MASTER_MAX_WRITE_REGISTERS.
+ * @param[in] timeout_ms Timeout физического TX и последующего ответа.
+ * @return 1, если запрос принят и полностью передан transport, иначе 0.
  */
 uint8_t modbus_rtu_master_start_write_multiple(ModbusRtuMaster& master,
                                                uint8_t slave_address,
@@ -151,7 +184,12 @@ uint8_t modbus_rtu_master_start_write_multiple(ModbusRtuMaster& master,
                                                uint16_t register_count,
                                                uint32_t timeout_ms);
 
-/** @brief Выполняет один неблокирующий шаг автомата master. */
+/**
+ * @brief Выполняет один неблокирующий шаг автомата master.
+ *
+ * Функцию следует вызывать часто из service poll. Все внутренние циклы
+ * ограничены доступным RX и размером статического буфера.
+ */
 void modbus_rtu_master_poll(ModbusRtuMaster& master);
 
 /** @return 1, пока транзакция не завершена, иначе 0. */
@@ -163,5 +201,5 @@ ModbusRtuResult modbus_rtu_master_result(const ModbusRtuMaster& master);
 /** @return Exception code последнего ответа либо 0. */
 uint8_t modbus_rtu_master_exception_code(const ModbusRtuMaster& master);
 
-/** @return Указатель на строковое описание результата. */
+/** @return Указатель на строковый литерал с описанием результата. */
 const char* modbus_rtu_result_text(ModbusRtuResult result);
