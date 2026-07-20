@@ -86,9 +86,11 @@ void print_config_item(const char* label,
 {
     SerialUSB.print("  ");
     SerialUSB.print(label);
-    SerialUSB.print(": file=");
+    SerialUSB.print(": ");
+    diagnostic_print_assignment("file");
     SerialUSB.print((file_name != 0) ? file_name : "");
-    SerialUSB.print(", result=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("result");
     SerialUSB.print(sd_config_result_text(result));
     SerialUSB.print("\r\n");
 }
@@ -106,27 +108,37 @@ void print_interface(LcpEthernetId ethernet_id)
 
     diagnostic_print_group(lcp_ethernet_name(ethernet_id));
 
-    SerialUSB.print("initialized=");
+    diagnostic_print_assignment("initialized");
     SerialUSB.print((initialized != 0U) ? "yes" : "no");
-    SerialUSB.print(", init=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("init");
     SerialUSB.print((state.init_ok != 0U) ? "ok" : "failed");
-    SerialUSB.print(", link=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("link");
     SerialUSB.print((link_up != 0U) ? "up" : "down");
-    SerialUSB.print("\r\nVERSIONR=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("VERSIONR");
     print_hex8(version);
-    SerialUSB.print(", socket_status=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("socket_status");
     print_hex8(state.last_socket_status);
-    SerialUSB.print(", tcp_port=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("tcp_port");
     SerialUSB.print(static_cast<int>(LCP_MODBUS_TCP_PORT));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("mac=");
+    diagnostic_print_assignment("mac");
     print_mac(state.config.mac);
-    SerialUSB.print(", ip=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("ip");
     print_ip(state.config.ip);
-    SerialUSB.print("\r\nsubnet=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("subnet");
     print_ip(state.config.subnet);
-    SerialUSB.print(", gateway=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("gateway");
     print_ip(state.config.gateway);
     SerialUSB.print("\r\n");
 
@@ -143,49 +155,62 @@ void print_interface(LcpEthernetId ethernet_id)
     print_config_item("GATEWAY",
                       state.config_report.gateway_file,
                       state.config_report.gateway_result);
-    SerialUSB.print("  any_loaded_from_sd=");
+    SerialUSB.print("  ");
+    diagnostic_print_assignment("any_loaded_from_sd");
     SerialUSB.print((state.config_report.any_loaded_from_sd != 0U) ?
                     "yes" : "no");
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("requests=");
+    diagnostic_print_assignment("requests");
     SerialUSB.print(static_cast<unsigned long>(state.server.request_count));
-    SerialUSB.print(", responses=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("responses");
     SerialUSB.print(static_cast<unsigned long>(state.server.response_count));
-    SerialUSB.print("\r\nexceptions=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("exceptions");
     SerialUSB.print(static_cast<unsigned long>(state.server.exception_count));
-    SerialUSB.print(", malformed=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("malformed");
     SerialUSB.print(static_cast<unsigned long>(state.server.malformed_count));
-    SerialUSB.print(", transport_errors=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("transport_errors");
     SerialUSB.print(static_cast<unsigned long>(state.transport_error_count));
     SerialUSB.print("\r\n");
 }
 
 void print_quality_flags(uint16_t quality)
 {
-    SerialUSB.print("valid=");
+    diagnostic_print_assignment("valid");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_VALID) ? "yes" : "no");
-    SerialUSB.print(", lost=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("lost");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST) ?
                     "yes" : "no");
-    SerialUSB.print(", present=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("present");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT) ?
                     "yes" : "no");
-    SerialUSB.print("\r\n  request_active=");
+    SerialUSB.print("\r\n  ");
+    diagnostic_print_assignment("request_active");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE) ?
                     "yes" : "no");
-    SerialUSB.print(", paused=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("paused");
     SerialUSB.print((quality & FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED) ?
                     "yes" : "no");
-    SerialUSB.print(", last_rtu_result=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("last_rtu_result");
     SerialUSB.print(static_cast<unsigned long>((quality >> 8U) & 0x00FFU));
 }
 
 void print_register_map(void)
 {
     diagnostic_print_group("Published holding registers");
-    SerialUSB.print("layout=value0, value1, quality\r\n");
-    SerialUSB.print("registers_per_FieldSensor_port=3\r\n");
+    diagnostic_print_assignment("layout");
+    SerialUSB.print("value0, value1, quality\r\n");
+    diagnostic_print_assignment("registers_per_FieldSensor_port");
+    SerialUSB.print("3\r\n");
 
     for (uint8_t port_index = 0U;
          port_index < LCP_FIELD_PORT_COUNT;
@@ -199,15 +224,19 @@ void print_register_map(void)
 
         SerialUSB.print("S");
         SerialUSB.print(static_cast<int>(port_index + 1U));
-        SerialUSB.print(": address=");
+        SerialUSB.print(": ");
+        diagnostic_print_assignment("address");
         SerialUSB.print(static_cast<unsigned long>(base));
         SerialUSB.print("..");
         SerialUSB.print(static_cast<unsigned long>(base + 2U));
-        SerialUSB.print(", quality=");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("quality");
         print_hex16(quality);
-        SerialUSB.print("\r\n  value0=");
+        SerialUSB.print("\r\n  ");
+        diagnostic_print_assignment("value0");
         SerialUSB.print(static_cast<unsigned long>(value0));
-        SerialUSB.print(", value1=");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("value1");
         SerialUSB.print(static_cast<unsigned long>(value1));
         SerialUSB.print("\r\n  ");
         print_quality_flags(quality);
@@ -219,10 +248,14 @@ void print_register_map(void)
 void ethernet_status_print_report(void)
 {
     diagnostic_print_section("ETHERNET MODBUS TCP");
-    SerialUSB.print("service_reload=");
+    diagnostic_print_assignment("service_reload");
     SerialUSB.print((ethernet_modbus_service_reload_pending() != 0U) ?
                     "pending" : "idle");
-    SerialUSB.print("\r\nfunction=0x03 read-only\r\nholding_address=0..11\r\n");
+    SerialUSB.print("\r\n");
+    diagnostic_print_assignment("function");
+    SerialUSB.print("0x03 read-only\r\n");
+    diagnostic_print_assignment("holding_address");
+    SerialUSB.print("0..11\r\n");
 
     print_interface(LCP_ETHERNET_1);
     print_interface(LCP_ETHERNET_2);
