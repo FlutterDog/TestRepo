@@ -564,6 +564,8 @@ const char* sd_config_result_text(SdConfigResult result)
             return "line too long";
         case SD_CONFIG_STORAGE_ERROR:
             return "storage error";
+        case SD_CONFIG_NOT_ATTEMPTED:
+            return "not attempted";
         default:
             return "unknown";
     }
