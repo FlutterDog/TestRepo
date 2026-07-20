@@ -6,6 +6,7 @@
 #include "x2x_catalog.hpp"
 #include "modules/x2x_module_drivers.hpp"
 #include "../../platform/platform.hpp"
+#include "../diagnostics/diagnostic_output.hpp"
 
 #include <new>
 #include <string.h>
@@ -59,8 +60,7 @@ void print_float_values(const float* values,
             SerialUSB.print(", ");
         }
 
-        SerialUSB.print(static_cast<int>(index));
-        SerialUSB.print(":");
+        diagnostic_print_index(index);
         SerialUSB.print(values[index]);
     }
 
@@ -68,9 +68,11 @@ void print_float_values(const float* values,
 
     if (print_count < value_count)
     {
-        SerialUSB.print("  float_values_shown=");
+        SerialUSB.print("  ");
+        diagnostic_print_assignment("float_values_shown");
         SerialUSB.print(static_cast<int>(print_count));
-        SerialUSB.print(", total=");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("total");
         SerialUSB.print(static_cast<int>(value_count));
         SerialUSB.print("\r\n");
     }
@@ -80,7 +82,8 @@ template<typename DeviceType>
 void print_digital_inputs(const X2XDeviceHeader& header)
 {
     const DeviceType& device = static_cast<const DeviceType&>(header);
-    SerialUSB.print("  digital_inputs=");
+    SerialUSB.print("  ");
+    diagnostic_print_assignment("digital_inputs");
     SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
     SerialUSB.print("\r\n");
 }
@@ -89,7 +92,8 @@ template<typename DeviceType>
 void print_digital_inputs_and_floats(const X2XDeviceHeader& header)
 {
     const DeviceType& device = static_cast<const DeviceType&>(header);
-    SerialUSB.print("  digital_inputs=");
+    SerialUSB.print("  ");
+    diagnostic_print_assignment("digital_inputs");
     SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
     SerialUSB.print("\r\n");
     print_float_values(device.tf_values, DeviceType::TF_COUNT, 8U);
@@ -98,9 +102,11 @@ void print_digital_inputs_and_floats(const X2XDeviceHeader& header)
 void print_ldo1118(const X2XDeviceHeader& header)
 {
     const X2XLdo1118& device = static_cast<const X2XLdo1118&>(header);
-    SerialUSB.print("  output_value=");
+    SerialUSB.print("  ");
+    diagnostic_print_assignment("output_value");
     SerialUSB.print(static_cast<int>(device.output_value));
-    SerialUSB.print("\r\n  digital_inputs=");
+    SerialUSB.print("\r\n  ");
+    diagnostic_print_assignment("digital_inputs");
     SerialUSB.print(static_cast<unsigned long>(device.digital_inputs));
     SerialUSB.print("\r\n");
 }
