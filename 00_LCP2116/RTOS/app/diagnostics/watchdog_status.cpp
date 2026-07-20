@@ -70,11 +70,12 @@ void watchdog_status_print_report(void)
     SerialUSB.print(", timeout_ms=");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_timeout_ms(WATCHDOG_TIMEOUT_TICKS)));
-    SerialUSB.print(", feed_period_ms=");
+    SerialUSB.print("\r\nfeed_period_ms=");
     SerialUSB.print(static_cast<unsigned long>(WATCHDOG_FEED_PERIOD_MS));
-    SerialUSB.print("\r\nmode=legacy WDRPROC|WDRSTEN, test_reset_armed=");
+    SerialUSB.print(", test_reset_armed=");
     SerialUSB.print((g_test_reset_armed != 0U) ? "yes" : "no");
-    SerialUSB.print("\r\nusb_recovery_after_watchdog=");
+    SerialUSB.print("\r\nmode=legacy WDRPROC|WDRSTEN\r\n");
+    SerialUSB.print("usb_recovery_after_watchdog=");
     SerialUSB.print(sam3x_watchdog_recovery_performed() ?
                     "performed" : "not performed");
     SerialUSB.print("\r\n");
@@ -94,7 +95,7 @@ void watchdog_status_print_report(void)
     SerialUSB.print(", WDT_MR=0x");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_mode_register()), HEX);
-    SerialUSB.print(", WDT_SR=0x");
+    SerialUSB.print("\r\nWDT_SR=0x");
     SerialUSB.print(static_cast<unsigned long>(
         sam3x_watchdog_status_register()), HEX);
     SerialUSB.print("\r\n");
@@ -126,8 +127,9 @@ uint8_t watchdog_status_handle_command(const char* command)
     {
         g_test_reset_armed = 1U;
         SerialUSB.print("watchdog reset test armed\r\n");
-        SerialUSB.print("automatic feed stopped; hardware reset is expected after timeout\r\n");
-        SerialUSB.print("the next boot may perform one software reset for USB recovery\r\n");
+        SerialUSB.print("automatic feed stopped\r\n");
+        SerialUSB.print("hardware reset is expected after timeout\r\n");
+        SerialUSB.print("next boot may perform USB-recovery reset\r\n");
         return 1U;
     }
 
