@@ -24,7 +24,7 @@ enum FieldSerialConfigResult : uint8_t
     FIELD_SERIAL_CONFIG_LINE_TOO_LONG = 9U
 };
 
-/** @brief Отчёт о применении BAUD.TXT и PARITY.TXT. */
+/** @brief Отчёт о применении baud.TXT и Parity.TXT. */
 struct FieldSerialConfigReport
 {
     FieldSerialConfigResult baud_result;
@@ -32,20 +32,19 @@ struct FieldSerialConfigReport
     uint8_t loaded_from_sd;
 };
 
-/**
- * @brief Заполняет четыре конфигурации значениями 9600 8N1.
- */
+/** @brief Заполняет четыре конфигурации значениями 9600 8N1. */
 void field_serial_config_set_defaults(
     LcpFieldPortConfig configs[LCP_FIELD_PORT_COUNT]);
 
 /**
- * @brief Загружает BAUD.TXT и PARITY.TXT поверх текущих значений.
+ * @brief Загружает baud.TXT и Parity.TXT поверх текущих значений.
  *
- * Формат обоих файлов совместим с числовыми конфигурационными файлами старой
- * прошивки: первая значимая строка содержит количество значений (4), далее
- * идут значения для S1, S2, S3 и S4.
+ * Первая значимая строка каждого файла содержит количество значений 4. Далее
+ * идут значения для S1, S2, S3 и S4. Завершающая строка fin допускается и
+ * игнорируется после чтения четырёх значений.
  *
- * PARITY.TXT принимает N/O/E, NONE/ODD/EVEN, 0/1/2 и ASCII-коды 78/79/69.
+ * baud.TXT содержит фактические значения скорости, например 1200 или 9600.
+ * Parity.TXT принимает только штатные коды: 0=None, 1=Odd, 2=Even.
  */
 void field_serial_config_load(
     LcpFieldPortConfig configs[LCP_FIELD_PORT_COUNT],
