@@ -14,12 +14,12 @@
 /**
  * @brief Версия диагностической прошивки.
  */
-#define LCP_DIAGNOSTIC_SOFTWARE_VERSION "0.16.3"
+#define LCP_DIAGNOSTIC_SOFTWARE_VERSION "0.16.4"
 
 /**
  * @brief Идентификатор текущего этапа диагностической прошивки.
  */
-#define LCP_DIAGNOSTIC_SOFTWARE_STAGE "Stage 16D"
+#define LCP_DIAGNOSTIC_SOFTWARE_STAGE "Stage 16E"
 
 /**
  * @brief Целевая аппаратная платформа.
