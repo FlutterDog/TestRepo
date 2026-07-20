@@ -27,71 +27,94 @@ void print_port(LcpFieldPortId port_id)
 
     diagnostic_print_group(lcp_field_port_name(port_id));
 
-    SerialUSB.print("role=");
+    diagnostic_print_assignment("role");
     SerialUSB.print(field_sensor_role_text(port.config.role));
-    SerialUSB.print(", present=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("present");
     SerialUSB.print((port.port_present != 0U) ? "yes" : "no");
-    SerialUSB.print(", serial=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("serial");
     SerialUSB.print(static_cast<unsigned long>(serial.baudrate));
     SerialUSB.print(" ");
     SerialUSB.print(diagnostic_uart_frame_text(serial.frame));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("request_slave=");
+    diagnostic_print_assignment("request_slave");
     SerialUSB.print(static_cast<int>(port.config.slave_address));
-    SerialUSB.print(", function=0x03, start_register=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("function");
+    SerialUSB.print("0x03, ");
+    diagnostic_print_assignment("start_register");
     SerialUSB.print(static_cast<unsigned long>(port.config.start_register));
-    SerialUSB.print(", register_count=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("register_count");
     SerialUSB.print(static_cast<unsigned long>(port.config.register_count));
-    SerialUSB.print("\r\npoll_period_ms=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("poll_period_ms");
     SerialUSB.print(static_cast<unsigned long>(port.config.poll_period_ms));
-    SerialUSB.print(", timeout_ms=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("timeout_ms");
     SerialUSB.print(static_cast<unsigned long>(port.config.timeout_ms));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("connection=");
+    diagnostic_print_assignment("connection");
     SerialUSB.print((port.connection_lost != 0U) ? "lost" : "online");
-    SerialUSB.print(", valid=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("valid");
     SerialUSB.print((port.valid != 0U) ? "yes" : "no");
-    SerialUSB.print(", request=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("request");
     SerialUSB.print((port.request_active != 0U) ? "busy" : "idle");
-    SerialUSB.print("\r\nlast_result=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("last_result");
     SerialUSB.print(modbus_rtu_result_text(port.last_result));
-    SerialUSB.print(", exception_code=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("exception_code");
     SerialUSB.print(static_cast<int>(port.last_exception_code));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("register[0]=");
+    diagnostic_print_assignment("register[0]");
     SerialUSB.print(static_cast<unsigned long>(port.registers[0]));
-    SerialUSB.print(", register[1]=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("register[1]");
     SerialUSB.print(static_cast<unsigned long>(port.registers[1]));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("success=");
+    diagnostic_print_assignment("success");
     SerialUSB.print(static_cast<unsigned long>(port.successful_poll_count));
-    SerialUSB.print(", failed=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("failed");
     SerialUSB.print(static_cast<unsigned long>(port.failed_poll_count));
-    SerialUSB.print("\r\nconsecutive_failures=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("consecutive_failures");
     SerialUSB.print(static_cast<int>(port.consecutive_failures));
-    SerialUSB.print(", uart_errors=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("uart_errors");
     SerialUSB.print(static_cast<unsigned long>(
         lcp_field_port_error_count(port_id)));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("last_update_ms=");
+    diagnostic_print_assignment("last_update_ms");
     SerialUSB.print(static_cast<unsigned long>(port.last_update_ms));
 
     if (port.last_update_ms != 0U)
     {
         const uint32_t age_ms = now_ms - port.last_update_ms;
-        SerialUSB.print("\r\nage_ms=");
+        SerialUSB.print("\r\n");
+        diagnostic_print_assignment("age_ms");
         SerialUSB.print(static_cast<unsigned long>(age_ms));
-        SerialUSB.print(", age_human=");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("age_human");
         diagnostic_print_duration(age_ms);
     }
     else
     {
-        SerialUSB.print(", age=never");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("age");
+        SerialUSB.print("never");
     }
 
     SerialUSB.print("\r\n");
@@ -105,21 +128,33 @@ void field_status_print_report(void)
 
     diagnostic_print_section("FIELDSENSOR S1..S4");
 
-    SerialUSB.print("service=");
+    diagnostic_print_assignment("service");
     SerialUSB.print((field_sensor_service_paused() != 0U) ?
                     "paused" : "running");
-    SerialUSB.print(", config_reload=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("config_reload");
     SerialUSB.print((field_sensor_service_config_reload_pending() != 0U) ?
                     "pending" : "idle");
     SerialUSB.print("\r\n");
-    SerialUSB.print("device_model=hardcoded baseline example\r\n");
-    SerialUSB.print("device_config_location=field_sensor_service.cpp\r\n");
 
-    SerialUSB.print("baud_file=baud.TXT, result=");
+    diagnostic_print_assignment("device_model");
+    SerialUSB.print("hardcoded baseline example\r\n");
+    diagnostic_print_assignment("device_config_location");
+    SerialUSB.print("field_sensor_service.cpp\r\n");
+
+    diagnostic_print_assignment("baud_file");
+    SerialUSB.print("baud.TXT, ");
+    diagnostic_print_assignment("result");
     SerialUSB.print(sd_config_result_text(config_report.baud_result));
-    SerialUSB.print("\r\nparity_file=Parity.TXT, result=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("parity_file");
+    SerialUSB.print("Parity.TXT, ");
+    diagnostic_print_assignment("result");
     SerialUSB.print(sd_config_result_text(config_report.parity_result));
-    SerialUSB.print("\r\nany_serial_value_loaded_from_sd=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("any_serial_value_loaded_from_sd");
     SerialUSB.print((config_report.loaded_from_sd != 0U) ? "yes" : "no");
     SerialUSB.print("\r\n");
 
