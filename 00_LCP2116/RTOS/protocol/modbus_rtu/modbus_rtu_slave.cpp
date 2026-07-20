@@ -12,14 +12,14 @@
 
 namespace
 {
-static const uint8_t MODBUS_FUNCTION_READ_HOLDING = 0x03U;
-static const uint8_t MODBUS_EXCEPTION_ILLEGAL_FUNCTION = 0x01U;
-static const uint8_t MODBUS_EXCEPTION_ILLEGAL_ADDRESS = 0x02U;
-static const uint8_t MODBUS_EXCEPTION_ILLEGAL_VALUE = 0x03U;
-static const uint16_t MODBUS_READ_REQUEST_LENGTH = 8U;
-static const uint16_t MODBUS_CRC_LENGTH = 2U;
-static const uint16_t MODBUS_READ_RESPONSE_FIXED_LENGTH = 5U;
-static const uint16_t MODBUS_MAX_RESPONSE_REGISTERS =
+constexpr uint8_t MODBUS_FUNCTION_READ_HOLDING = 0x03U;
+constexpr uint8_t MODBUS_EXCEPTION_ILLEGAL_FUNCTION = 0x01U;
+constexpr uint8_t MODBUS_EXCEPTION_ILLEGAL_ADDRESS = 0x02U;
+constexpr uint8_t MODBUS_EXCEPTION_ILLEGAL_VALUE = 0x03U;
+constexpr uint16_t MODBUS_READ_REQUEST_LENGTH = 8U;
+constexpr uint16_t MODBUS_CRC_LENGTH = 2U;
+constexpr uint16_t MODBUS_READ_RESPONSE_FIXED_LENGTH = 5U;
+constexpr uint16_t MODBUS_MAX_RESPONSE_REGISTERS =
     (MODBUS_RTU_SLAVE_TX_CAPACITY - MODBUS_READ_RESPONSE_FIXED_LENGTH) / 2U;
 
 uint8_t transport_valid(const ModbusRtuTransport* transport)
@@ -30,6 +30,17 @@ uint8_t transport_valid(const ModbusRtuTransport* transport)
             (transport->read != 0) &&
             (transport->tx_idle != 0) &&
             (transport->clear_rx != 0)) ? 1U : 0U;
+}
+
+uint8_t slave_address_valid(uint8_t slave_address)
+{
+    return ((slave_address >= 1U) &&
+            (slave_address <= MODBUS_RTU_MAX_SLAVE_ADDRESS)) ? 1U : 0U;
+}
+
+uint8_t deadline_reached(uint32_t now_ms, uint32_t deadline_ms)
+{
+    return (static_cast<int32_t>(now_ms - deadline_ms) >= 0) ? 1U : 0U;
 }
 
 uint8_t gap_elapsed(uint32_t now_ms, uint32_t then_ms, uint32_t gap_ms)
@@ -60,7 +71,7 @@ uint8_t request_crc_valid(const ModbusRtuSlave& slave)
 void begin_transmit(ModbusRtuSlave& slave)
 {
     const size_t written = slave.transport->write(slave.tx_buffer,
-                                                   slave.tx_length);
+                                                  slave.tx_length);
 
     if (written != slave.tx_length)
     {
@@ -70,6 +81,7 @@ void begin_transmit(ModbusRtuSlave& slave)
     }
 
     ++slave.response_count;
+    slave.tx_deadline_ms = millis() + MODBUS_RTU_SLAVE_TX_TIMEOUT_MS;
     slave.state = MODBUS_RTU_SLAVE_WAIT_TX;
 }
 
@@ -161,7 +173,8 @@ void process_request(ModbusRtuSlave& slave)
             static_cast<uint8_t>(value & 0x00FFU);
     }
 
-    append_crc(slave, static_cast<uint16_t>(3U + (register_count * 2U)));
+    append_crc(slave,
+               static_cast<uint16_t>(3U + (register_count * 2U)));
     begin_transmit(slave);
 }
 }
@@ -193,6 +206,7 @@ void modbus_rtu_slave_reset(ModbusRtuSlave& slave)
     slave.state = MODBUS_RTU_SLAVE_RECEIVE;
     slave.rx_length = 0U;
     slave.tx_length = 0U;
+    slave.tx_deadline_ms = 0U;
     slave.last_rx_ms = millis();
 
     if (transport_valid(slave.transport) != 0U)
@@ -204,7 +218,7 @@ void modbus_rtu_slave_reset(ModbusRtuSlave& slave)
 void modbus_rtu_slave_poll(ModbusRtuSlave& slave)
 {
     if ((transport_valid(slave.transport) == 0U) ||
-        (slave.slave_address == 0U) ||
+        (slave_address_valid(slave.slave_address) == 0U) ||
         (slave.holding_registers == 0) ||
         (slave.holding_register_count == 0U) ||
         (slave.interframe_gap_ms == 0U))
@@ -212,18 +226,26 @@ void modbus_rtu_slave_poll(ModbusRtuSlave& slave)
         return;
     }
 
+    const uint32_t now_ms = millis();
+
     if (slave.state == MODBUS_RTU_SLAVE_WAIT_TX)
     {
         if (slave.transport->tx_idle() != 0U)
         {
+            modbus_rtu_slave_reset(slave);
+            return;
+        }
+
+        if (deadline_reached(now_ms, slave.tx_deadline_ms) != 0U)
+        {
+            ++slave.error_count;
             modbus_rtu_slave_reset(slave);
         }
 
         return;
     }
 
-    const uint32_t now_ms = millis();
-
+    /* Цикл читает только уже доступные байты и ограничен RX capacity. */
     while (slave.transport->available() > 0U)
     {
         if (slave.rx_length >= MODBUS_RTU_SLAVE_RX_CAPACITY)
