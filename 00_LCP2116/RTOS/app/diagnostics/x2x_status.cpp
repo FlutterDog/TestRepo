@@ -49,55 +49,73 @@ void print_common_device_status(const X2XDeviceHeader& device,
 {
     const uint32_t now_ms = millis();
 
-    SerialUSB.print("slave=");
+    diagnostic_print_assignment("slave");
     SerialUSB.print(static_cast<int>(device.slave_address));
-    SerialUSB.print(", type_id=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("type_id");
     SerialUSB.print(static_cast<int>(device.type));
-    SerialUSB.print(", ASDU=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("ASDU");
     SerialUSB.print(static_cast<unsigned long>(device.asdu));
-    SerialUSB.print("\r\ntype_name=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("type_name");
     SerialUSB.print(descriptor.name);
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("connection=");
+    diagnostic_print_assignment("connection");
     SerialUSB.print((device.connection_lost != 0U) ? "lost" : "online");
-    SerialUSB.print(", device_fault=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("device_fault");
     SerialUSB.print((device.device_fault != 0U) ? "yes" : "no");
-    SerialUSB.print("\r\ncommunication_error=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("communication_error");
     SerialUSB.print(communication_error_text(device.last_communication_error));
-    SerialUSB.print(", exception_code=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("exception_code");
     SerialUSB.print(static_cast<int>(device.last_exception_code));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("success=");
+    diagnostic_print_assignment("success");
     SerialUSB.print(static_cast<unsigned long>(device.successful_poll_count));
-    SerialUSB.print(", failed=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("failed");
     SerialUSB.print(static_cast<unsigned long>(device.failed_poll_count));
-    SerialUSB.print("\r\nconsecutive_failures=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("consecutive_failures");
     SerialUSB.print(static_cast<int>(device.consecutive_failures));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("last_update_ms=");
+    diagnostic_print_assignment("last_update_ms");
     SerialUSB.print(static_cast<unsigned long>(device.last_update_ms));
 
     if (device.last_update_ms != 0U)
     {
         const uint32_t age_ms = now_ms - device.last_update_ms;
-        SerialUSB.print("\r\nage_ms=");
+        SerialUSB.print("\r\n");
+        diagnostic_print_assignment("age_ms");
         SerialUSB.print(static_cast<unsigned long>(age_ms));
-        SerialUSB.print(", age_human=");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("age_human");
         diagnostic_print_duration(age_ms);
     }
     else
     {
-        SerialUSB.print(", age=never");
+        SerialUSB.print(", ");
+        diagnostic_print_assignment("age");
+        SerialUSB.print("never");
     }
 
-    SerialUSB.print("\r\npoints: SP=");
+    SerialUSB.print("\r\npoints: ");
+    diagnostic_print_assignment("SP");
     SerialUSB.print(static_cast<unsigned long>(descriptor.sp_count));
-    SerialUSB.print(", ME=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("ME");
     SerialUSB.print(static_cast<unsigned long>(descriptor.me_count));
-    SerialUSB.print(", TF=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("TF");
     SerialUSB.print(static_cast<unsigned long>(descriptor.tf_count));
     SerialUSB.print("\r\n");
 }
@@ -204,7 +222,7 @@ void handle_ldo_command(const char* arguments)
         (slave > X2X_MAX_MODULES))
     {
         SerialUSB.print("usage: x2x ldo SLAVE VALUE\r\n");
-        SerialUSB.print("SLAVE=1..6 and must reference LDO1118\r\n");
+        SerialUSB.print("SLAVE = 1..6 and must reference LDO1118\r\n");
         SerialUSB.print("VALUE must fit int16\r\n");
         return;
     }
@@ -217,9 +235,11 @@ void handle_ldo_command(const char* arguments)
         return;
     }
 
-    SerialUSB.print("x2x ldo updated: slave=");
+    SerialUSB.print("x2x ldo updated: ");
+    diagnostic_print_assignment("slave");
     SerialUSB.print(static_cast<unsigned long>(slave));
-    SerialUSB.print(", value=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("value");
     SerialUSB.print(static_cast<long>(value));
     SerialUSB.print("\r\n");
 }
@@ -235,47 +255,65 @@ void x2x_status_print_report(void)
     diagnostic_print_section("X2X MODULE BUS");
 
     diagnostic_print_group("Configuration");
-    SerialUSB.print("file=");
+    diagnostic_print_assignment("file");
     SerialUSB.print(X2X_CONFIG_FILE_NAME);
-    SerialUSB.print(", loaded=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("loaded");
     SerialUSB.print((x2x_service_config_loaded() != 0U) ? "yes" : "no");
-    SerialUSB.print(", result=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("result");
     SerialUSB.print(x2x_config_result_text(
         x2x_service_last_config_result()));
-    SerialUSB.print("\r\nreload_pending=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("reload_pending");
     SerialUSB.print((x2x_service_reload_pending() != 0U) ? "yes" : "no");
-    SerialUSB.print(", registry=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("registry");
     SerialUSB.print(x2x_registry_result_text(
         x2x_service_last_registry_result()));
-    SerialUSB.print("\r\nerror_line=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("error_line");
     SerialUSB.print(static_cast<unsigned long>(config_error.physical_line));
-    SerialUSB.print(", error_value=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("error_value");
     SerialUSB.print(static_cast<long>(config_error.value));
     SerialUSB.print("\r\n");
 
     diagnostic_print_group("Runtime");
-    SerialUSB.print("module_count=");
+    diagnostic_print_assignment("module_count");
     SerialUSB.print(static_cast<int>(module_count));
-    SerialUSB.print(", current_slave=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("current_slave");
     SerialUSB.print(static_cast<int>(x2x_service_current_slave()));
-    SerialUSB.print("\r\npaused=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("paused");
     SerialUSB.print((x2x_service_paused() != 0U) ? "yes" : "no");
-    SerialUSB.print(", pause_pending=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("pause_pending");
     SerialUSB.print((x2x_service_pause_pending() != 0U) ? "yes" : "no");
-    SerialUSB.print(", port_owner=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("port_owner");
     SerialUSB.print((x2x_service_owns_port() != 0U) ?
                     "X2X master" : "echo test");
-    SerialUSB.print("\r\nmodbus_state=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("modbus_state");
     SerialUSB.print(modbus_rtu_result_text(x2x_service_modbus_result()));
-    SerialUSB.print(", crc_self_test=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("crc_self_test");
     SerialUSB.print((modbus_rtu_crc_self_test() != 0U) ? "ok" : "failed");
-    SerialUSB.print(", uart_errors=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("uart_errors");
     SerialUSB.print(static_cast<unsigned long>(lcp_x2x_port_error_count()));
     SerialUSB.print("\r\n");
 
     for (uint8_t slave = 1U; slave <= module_count; ++slave)
     {
-        SerialUSB.print("\r\n-- MODULE slave=");
+        SerialUSB.print("\r\n-- MODULE ");
+        diagnostic_print_assignment("slave");
         SerialUSB.print(static_cast<int>(slave));
         SerialUSB.print(" --\r\n");
 
@@ -283,7 +321,8 @@ void x2x_status_print_report(void)
 
         if (device == 0)
         {
-            SerialUSB.print("registry_error=device slot is empty\r\n");
+            diagnostic_print_assignment("registry_error");
+            SerialUSB.print("device slot is empty\r\n");
             continue;
         }
 
@@ -291,8 +330,9 @@ void x2x_status_print_report(void)
 
         if (descriptor == 0)
         {
-            SerialUSB.print("catalog_error=descriptor not found\r\n");
-            SerialUSB.print("type_id=");
+            diagnostic_print_assignment("catalog_error");
+            SerialUSB.print("descriptor not found\r\n");
+            diagnostic_print_assignment("type_id");
             SerialUSB.print(static_cast<int>(device->type));
             SerialUSB.print("\r\n");
             continue;
@@ -306,18 +346,23 @@ void x2x_status_print_report(void)
         }
         else
         {
-            SerialUSB.print("module_specific_diagnostics=not registered\r\n");
+            diagnostic_print_assignment("module_specific_diagnostics");
+            SerialUSB.print("not registered\r\n");
         }
     }
 
     diagnostic_print_group("LCT waveform buffer");
-    SerialUSB.print("valid=");
+    diagnostic_print_assignment("valid");
     SerialUSB.print((waveform.valid != 0U) ? "yes" : "no");
-    SerialUSB.print(", owner_slave=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("owner_slave");
     SerialUSB.print(static_cast<int>(waveform.owner_slave_address));
-    SerialUSB.print("\r\nsamples_per_phase=");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("samples_per_phase");
     SerialUSB.print(static_cast<unsigned long>(waveform.samples_per_phase));
-    SerialUSB.print(", sequence=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("sequence");
     SerialUSB.print(static_cast<unsigned long>(waveform.sequence));
     SerialUSB.print("\r\n");
 }
