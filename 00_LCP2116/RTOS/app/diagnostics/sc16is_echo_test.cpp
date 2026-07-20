@@ -18,6 +18,7 @@ struct Sc16isEchoPort
 {
     LcpSc16isPort port;
     const char* name;
+    uint8_t is_s1;
     uint8_t buffer[SC16IS_ECHO_BUFFER_SIZE];
     uint16_t length;
     uint32_t last_rx_ms;
@@ -28,8 +29,11 @@ struct Sc16isEchoPort
 static Sc16isEchoPort g_sc16is_echo_ports[3];
 static uint8_t g_sc16is_echo_port_count = 0U;
 static uint8_t g_probe_report_printed = 0U;
+static uint8_t g_s1_echo_enabled = 1U;
 
-static void sc16is_echo_add_port(const LcpSc16isPort& port, const char* name)
+static void sc16is_echo_add_port(const LcpSc16isPort& port,
+                                 const char* name,
+                                 uint8_t is_s1)
 {
     if ((port.present == 0U) || (g_sc16is_echo_port_count >= 3U))
     {
@@ -40,6 +44,7 @@ static void sc16is_echo_add_port(const LcpSc16isPort& port, const char* name)
 
     echo_port.port = port;
     echo_port.name = name;
+    echo_port.is_s1 = (is_s1 != 0U) ? 1U : 0U;
     echo_port.length = 0U;
     echo_port.last_rx_ms = 0U;
     echo_port.response_due_ms = 0U;
@@ -84,14 +89,10 @@ static void sc16is_echo_accept_rx(Sc16isEchoPort& port, uint32_t now_ms)
     }
 }
 
-static void sc16is_echo_arm_response_if_frame_complete(Sc16isEchoPort& port, uint32_t now_ms)
+static void sc16is_echo_arm_response_if_frame_complete(Sc16isEchoPort& port,
+                                                         uint32_t now_ms)
 {
-    if (port.length == 0U)
-    {
-        return;
-    }
-
-    if (port.response_pending != 0U)
+    if ((port.length == 0U) || (port.response_pending != 0U))
     {
         return;
     }
@@ -105,7 +106,8 @@ static void sc16is_echo_arm_response_if_frame_complete(Sc16isEchoPort& port, uin
     port.response_pending = 1U;
 }
 
-static void sc16is_echo_send_if_response_due(Sc16isEchoPort& port, uint32_t now_ms)
+static void sc16is_echo_send_if_response_due(Sc16isEchoPort& port,
+                                               uint32_t now_ms)
 {
     if (port.response_pending == 0U)
     {
@@ -118,9 +120,9 @@ static void sc16is_echo_send_if_response_due(Sc16isEchoPort& port, uint32_t now_
     }
 
     const size_t written = sc16is_write_buffer(port.port.chip_select,
-                                               port.port.channel,
-                                               port.buffer,
-                                               port.length);
+                                                port.port.channel,
+                                                port.buffer,
+                                                port.length);
 
     if (written == port.length)
     {
@@ -139,10 +141,11 @@ void sc16is_echo_test_init(void)
     const LcpSc16isMap& map = lcp_sc16is_get_map();
 
     g_sc16is_echo_port_count = 0U;
+    g_s1_echo_enabled = 1U;
 
-    sc16is_echo_add_port(map.pc, "PC");
-    sc16is_echo_add_port(map.hmi, "HMI");
-    sc16is_echo_add_port(map.s1, "S1");
+    sc16is_echo_add_port(map.pc, "PC", 0U);
+    sc16is_echo_add_port(map.hmi, "HMI", 0U);
+    sc16is_echo_add_port(map.s1, "S1", 1U);
 }
 
 void sc16is_echo_test_poll(void)
@@ -151,10 +154,42 @@ void sc16is_echo_test_poll(void)
 
     for (uint8_t index = 0U; index < g_sc16is_echo_port_count; ++index)
     {
-        sc16is_echo_accept_rx(g_sc16is_echo_ports[index], now_ms);
-        sc16is_echo_arm_response_if_frame_complete(g_sc16is_echo_ports[index], now_ms);
-        sc16is_echo_send_if_response_due(g_sc16is_echo_ports[index], now_ms);
+        Sc16isEchoPort& port = g_sc16is_echo_ports[index];
+
+        if ((port.is_s1 != 0U) && (g_s1_echo_enabled == 0U))
+        {
+            continue;
+        }
+
+        sc16is_echo_accept_rx(port, now_ms);
+        sc16is_echo_arm_response_if_frame_complete(port, now_ms);
+        sc16is_echo_send_if_response_due(port, now_ms);
     }
+}
+
+void sc16is_echo_test_set_s1_enabled(uint8_t enabled)
+{
+    const uint8_t normalized = (enabled != 0U) ? 1U : 0U;
+
+    if (normalized == g_s1_echo_enabled)
+    {
+        return;
+    }
+
+    g_s1_echo_enabled = normalized;
+
+    for (uint8_t index = 0U; index < g_sc16is_echo_port_count; ++index)
+    {
+        if (g_sc16is_echo_ports[index].is_s1 != 0U)
+        {
+            sc16is_echo_drop_frame(g_sc16is_echo_ports[index], millis());
+        }
+    }
+}
+
+uint8_t sc16is_echo_test_s1_enabled(void)
+{
+    return g_s1_echo_enabled;
 }
 
 void sc16is_echo_test_print_report_once(void)
