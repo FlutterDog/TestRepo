@@ -66,12 +66,13 @@ SdConfigResult load_octets(const char* file_name,
 }
 
 void initialize_report(EthernetNetworkConfigReport& report,
-                       const EthernetFileSet& files)
+                       const EthernetFileSet& files,
+                       SdConfigResult initial_result)
 {
-    report.mac_result = SD_CONFIG_NOT_ATTEMPTED;
-    report.ip_result = SD_CONFIG_NOT_ATTEMPTED;
-    report.subnet_result = SD_CONFIG_NOT_ATTEMPTED;
-    report.gateway_result = SD_CONFIG_NOT_ATTEMPTED;
+    report.mac_result = initial_result;
+    report.ip_result = initial_result;
+    report.subnet_result = initial_result;
+    report.gateway_result = initial_result;
     report.mac_file = files.mac;
     report.ip_file = files.ip;
     report.subnet_file = files.subnet;
@@ -154,6 +155,21 @@ void ethernet_network_config_set_defaults(
     };
 }
 
+void ethernet_network_config_prepare_reports(
+    EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT],
+    SdConfigResult initial_result)
+{
+    if (reports == 0)
+    {
+        return;
+    }
+
+    for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
+    {
+        initialize_report(reports[index], FILES[index], initial_result);
+    }
+}
+
 void ethernet_network_config_load(
     W5500NetworkConfig configs[LCP_ETHERNET_COUNT],
     EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT])
@@ -163,9 +179,10 @@ void ethernet_network_config_load(
         return;
     }
 
+    ethernet_network_config_prepare_reports(reports, SD_CONFIG_NOT_ATTEMPTED);
+
     for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
     {
-        initialize_report(reports[index], FILES[index]);
         load_interface(configs[index], reports[index], FILES[index]);
     }
 }
