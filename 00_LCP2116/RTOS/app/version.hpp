@@ -3,13 +3,13 @@
  * @brief Версия базовой прошивки LCP.
  *
  * Номер изменяется для каждого аппаратного verification candidate. Release tag
- * и merge выполняются отдельно только после подтверждения Debug/Release build,
- * размеров Flash/RAM и финального прогона на LCP2116.
+ * и merge выполняются отдельно только после подтверждения сборки, размеров
+ * Flash/RAM, аппаратного прогона и актуальности пользовательской документации.
  */
 
 #pragma once
 
 #define LCP_DIAGNOSTIC_SOFTWARE_NAME "LCP Basic Diagnostic Firmware"
-#define LCP_DIAGNOSTIC_SOFTWARE_VERSION "0.18.6"
-#define LCP_DIAGNOSTIC_SOFTWARE_STAGE "Stage 18G: Final index spacing"
+#define LCP_DIAGNOSTIC_SOFTWARE_VERSION "1.00.0"
+#define LCP_DIAGNOSTIC_SOFTWARE_STAGE "Release 1.00.0"
 #define LCP_DIAGNOSTIC_SOFTWARE_TARGET "ATSAM3X8E"
