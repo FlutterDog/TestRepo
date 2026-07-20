@@ -7,6 +7,7 @@
 
 #include <stdint.h>
 
+#include "field_serial_config.hpp"
 #include "../../board/lcp_field_ports.hpp"
 #include "../../protocol/modbus_rtu/modbus_rtu_master.hpp"
 
@@ -18,7 +19,7 @@ enum FieldPortRole : uint8_t
     FIELD_PORT_SLAVE = 2U
 };
 
-/** @brief Жёстко заданные параметры демонстрационного прибора. */
+/** @brief Параметры демонстрационного прибора. */
 struct FieldSensorConfig
 {
     FieldPortRole role;
@@ -63,6 +64,15 @@ void field_sensor_service_resume(void);
 
 /** @brief Возвращает 1, если запуск новых запросов приостановлен. */
 uint8_t field_sensor_service_paused(void);
+
+/** @brief Запрашивает безопасное повторное чтение BAUD.TXT и PARITY.TXT. */
+void field_sensor_service_request_config_reload(void);
+
+/** @brief Возвращает 1, пока ожидается повторное применение настроек. */
+uint8_t field_sensor_service_config_reload_pending(void);
+
+/** @brief Возвращает отчёт последней загрузки serial-конфигурации. */
+const FieldSerialConfigReport& field_sensor_service_serial_config_report(void);
 
 /** @brief Возвращает runtime-состояние выбранного порта. */
 const FieldSensorPortState& field_sensor_service_port(LcpFieldPortId port_id);
