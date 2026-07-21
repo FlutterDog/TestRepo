@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * @file sam3x_uart.hpp
  * @brief HAL встроенных UART/USART ATSAM3X8E.
  */
@@ -38,7 +37,9 @@ enum HalUartFrame
  * @param direction_pin Номер дискретной линии управления DE/RE.
  * @param transmit_level Уровень, включающий передачу.
  */
-void hal_uart_set_rs485_direction_pin(HalUartId port_id, uint32_t direction_pin, uint8_t transmit_level);
+void hal_uart_set_rs485_direction_pin(HalUartId port_id,
+                                      uint32_t direction_pin,
+                                      uint8_t transmit_level);
 
 /**
  * @brief Инициализирует встроенный UART/USART.
@@ -99,6 +100,26 @@ size_t hal_uart_write(HalUartId port_id, uint8_t value);
  * @param port_id Идентификатор порта.
  */
 void hal_uart_flush(HalUartId port_id);
+
+/**
+ * @brief Неблокирующе читает аппаратный флаг TXEMPTY.
+ *
+ * Для пакетных протоколов вызывающий транспорт дополнительно должен учитывать
+ * время загрузки программного кольцевого буфера. X2X выполняет эту проверку в
+ * `lcp_x2x_port.cpp`.
+ *
+ * @return 1 при установленном TXEMPTY либо для неизвестного порта, иначе 0.
+ */
+uint8_t hal_uart_tx_idle(HalUartId port_id);
+
+/**
+ * @brief Удаляет все байты, доступные через программный RX-буфер HAL.
+ *
+ * Используется перед началом новой master-транзакции для удаления остатка
+ * предыдущего или повреждённого кадра. Аппаратный RX обслуживается ISR и
+ * последовательно попадает в этот буфер.
+ */
+void hal_uart_clear_rx(HalUartId port_id);
 
 /**
  * @brief Возвращает количество ошибок приёма.

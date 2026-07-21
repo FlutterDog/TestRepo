@@ -1,27 +1,35 @@
-﻿
-/**
+﻿/**
  * @file sd_card_test.cpp
- * @brief Реализация диагностики microSD интерфейса.
+ * @brief Диагностика microSD и проверка базовых файловых операций.
+ *
+ * Обычный sd_card_test_poll() не блокирует: он выполняет debounce card-detect
+ * и не чаще одного раза в секунду повторяет mount. Команда `sd test` является
+ * явным сервисным действием и синхронно перезаписывает только `SDTEST.TXT`.
+ * Производственные конфигурационные файлы команда не изменяет.
  */
 
 #include "sd_card_test.hpp"
+#include "diagnostic_output.hpp"
 #include "sd_config.hpp"
+
 #include "../../board/lcp_sd.hpp"
 #include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
 #include "../../platform/platform.hpp"
 
-static const uint32_t SD_DETECT_DEBOUNCE_MS = 50U;
-static const uint32_t SD_INIT_RETRY_MS = 1000U;
+namespace
+{
+constexpr uint32_t SD_DETECT_DEBOUNCE_MS = 50U;
+constexpr uint32_t SD_INIT_RETRY_MS = 1000U;
 
-static uint8_t g_detect_stable = 0U;
-static uint8_t g_detect_last_raw = 0U;
-static uint8_t g_detect_debounced = 0U;
-static uint32_t g_detect_last_change_ms = 0U;
-static uint32_t g_last_init_attempt_ms = 0U;
-static uint8_t g_begin_attempted = 0U;
-static LcpSdStorageResult g_last_storage_result = LCP_SD_STORAGE_NOT_READY;
+uint8_t g_detect_stable = 0U;
+uint8_t g_detect_last_raw = 0U;
+uint8_t g_detect_debounced = 0U;
+uint32_t g_detect_last_change_ms = 0U;
+uint32_t g_last_init_attempt_ms = 0U;
+uint8_t g_begin_attempted = 0U;
+LcpSdStorageResult g_last_storage_result = LCP_SD_STORAGE_NOT_READY;
 
-static void sd_update_detect(uint32_t now_ms)
+void update_detect(uint32_t now_ms)
 {
     const uint8_t raw_inserted = lcp_sd_card_inserted();
 
@@ -33,7 +41,9 @@ static void sd_update_detect(uint32_t now_ms)
         return;
     }
 
-    if ((g_detect_stable == 0U) && ((uint32_t)(now_ms - g_detect_last_change_ms) >= SD_DETECT_DEBOUNCE_MS))
+    if ((g_detect_stable == 0U) &&
+        ((uint32_t)(now_ms - g_detect_last_change_ms) >=
+         SD_DETECT_DEBOUNCE_MS))
     {
         g_detect_stable = 1U;
         g_detect_debounced = raw_inserted;
@@ -42,8 +52,10 @@ static void sd_update_detect(uint32_t now_ms)
         {
             lcp_sd_storage_reset();
             lcp_sd_set_ok_led(0U);
+            g_last_storage_result = LCP_SD_STORAGE_NO_CARD;
         }
     }
+}
 }
 
 void sd_card_test_init(void)
@@ -67,7 +79,7 @@ void sd_card_test_poll(void)
 {
     const uint32_t now_ms = millis();
 
-    sd_update_detect(now_ms);
+    update_detect(now_ms);
 
     if (g_detect_debounced == 0U)
     {
@@ -80,7 +92,8 @@ void sd_card_test_poll(void)
         return;
     }
 
-    if ((g_begin_attempted != 0U) && ((uint32_t)(now_ms - g_last_init_attempt_ms) < SD_INIT_RETRY_MS))
+    if ((g_begin_attempted != 0U) &&
+        ((uint32_t)(now_ms - g_last_init_attempt_ms) < SD_INIT_RETRY_MS))
     {
         return;
     }
@@ -94,38 +107,38 @@ void sd_card_test_poll(void)
 
 void sd_card_test_print_report(void)
 {
-    SerialUSB.print("microSD status\r\n");
-    SerialUSB.print("CS pin=23, detect pin=25, SD_OK pin=41\r\n");
+    diagnostic_print_section("MICROSD");
 
-    SerialUSB.print("detect raw=");
+    diagnostic_print_group("Hardware");
+    SerialUSB.print("cs_pin=23, detect_pin=25, sd_ok_pin=41\r\n");
+    SerialUSB.print("detect_raw=");
     SerialUSB.print(static_cast<int>(lcp_sd_detect_raw()));
+    SerialUSB.print(", detect_debounced=");
+    SerialUSB.print((g_detect_debounced != 0U) ? "inserted" : "not inserted");
+    SerialUSB.print(", detect_stable=");
+    SerialUSB.print((g_detect_stable != 0U) ? "yes" : "no");
+    SerialUSB.print(", debounce_ms=");
+    SerialUSB.print(static_cast<unsigned long>(SD_DETECT_DEBOUNCE_MS));
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("card inserted=");
-    SerialUSB.print(g_detect_debounced ? "yes" : "no");
-    SerialUSB.print("\r\n");
-
-    SerialUSB.print("init attempted=");
-    SerialUSB.print(g_begin_attempted ? "yes" : "no");
-    SerialUSB.print("\r\n");
-
-    SerialUSB.print("filesystem ready=");
-    SerialUSB.print(lcp_sd_storage_ready() ? "yes" : "no");
-    SerialUSB.print("\r\n");
-
-    SerialUSB.print("last result=");
+    diagnostic_print_group("Filesystem");
+    SerialUSB.print("init_attempted=");
+    SerialUSB.print((g_begin_attempted != 0U) ? "yes" : "no");
+    SerialUSB.print(", ready=");
+    SerialUSB.print((lcp_sd_storage_ready() != 0U) ? "yes" : "no");
+    SerialUSB.print(", last_result=");
     SerialUSB.print(lcp_sd_storage_result_text(g_last_storage_result));
+    SerialUSB.print(", retry_period_ms=");
+    SerialUSB.print(static_cast<unsigned long>(SD_INIT_RETRY_MS));
     SerialUSB.print("\r\n");
 
     if (lcp_sd_storage_ready() != 0U)
     {
-        SerialUSB.print("fat type=FAT");
+        SerialUSB.print("fat_type=FAT");
         SerialUSB.print(static_cast<int>(lcp_sd_storage_fat_type()));
-        SerialUSB.print(", sectors per cluster=");
+        SerialUSB.print(", sectors_per_cluster=");
         SerialUSB.print(static_cast<int>(lcp_sd_storage_sectors_per_cluster()));
-        SerialUSB.print("\r\n");
-
-        SerialUSB.print("SDTEST.TXT exists=");
+        SerialUSB.print(", SDTEST.TXT_exists=");
         SerialUSB.print(lcp_sd_storage_exists("SDTEST.TXT") ? "yes" : "no");
         SerialUSB.print("\r\n");
     }
@@ -133,54 +146,56 @@ void sd_card_test_print_report(void)
 
 void sd_card_test_run_file_test(void)
 {
-    int16_t values[4];
-    int16_t loaded[4];
+    int16_t values[4] = { 3, 111, -222, 333 };
+    int16_t loaded[4] = { 0, 0, 0, 0 };
     uint8_t loaded_count = 0U;
 
-    SerialUSB.print("microSD file test started\r\n");
+    diagnostic_print_banner("MICROSD FILE TEST");
+    SerialUSB.print("test_file=SDTEST.TXT, action=overwrite then read back\r\n");
 
     sd_card_test_poll();
 
     if (lcp_sd_storage_ready() == 0U)
     {
-        SerialUSB.print("microSD file test failed: card not ready\r\n");
+        SerialUSB.print("result=failed, reason=card not ready\r\n");
         return;
     }
 
-    values[0] = 3;
-    values[1] = 111;
-    values[2] = -222;
-    values[3] = 333;
+    const SdConfigResult save_result =
+        sd_config_save_int16("SDTEST.TXT", values, 3U);
 
-    const SdConfigResult save_result = sd_config_save_int16("SDTEST.TXT", values, 3U);
-
-    SerialUSB.print("save SDTEST.TXT: ");
+    SerialUSB.print("write_result=");
     SerialUSB.print(sd_config_result_text(save_result));
     SerialUSB.print("\r\n");
 
     if (save_result != SD_CONFIG_OK)
     {
+        SerialUSB.print("result=failed\r\n");
         return;
     }
 
-    const SdConfigResult load_result = sd_config_load_int16("SDTEST.TXT", loaded, 4U, &loaded_count);
+    const SdConfigResult load_result = sd_config_load_int16(
+        "SDTEST.TXT",
+        loaded,
+        sizeof(loaded) / sizeof(loaded[0]),
+        &loaded_count);
 
-    SerialUSB.print("load SDTEST.TXT: ");
+    SerialUSB.print("read_result=");
     SerialUSB.print(sd_config_result_text(load_result));
-    SerialUSB.print(", count=");
+    SerialUSB.print(", loaded_count=");
     SerialUSB.print(static_cast<int>(loaded_count));
     SerialUSB.print("\r\n");
 
-    if ((load_result == SD_CONFIG_OK) &&
-        (loaded_count == 3U) &&
-        (loaded[1] == 111) &&
-        (loaded[2] == -222) &&
-        (loaded[3] == 333))
-    {
-        SerialUSB.print("microSD file test OK\r\n");
-    }
-    else
-    {
-        SerialUSB.print("microSD file test failed: data mismatch\r\n");
-    }
+    const uint8_t data_match =
+        ((load_result == SD_CONFIG_OK) &&
+         (loaded_count == 3U) &&
+         (loaded[1] == 111) &&
+         (loaded[2] == -222) &&
+         (loaded[3] == 333)) ? 1U : 0U;
+
+    SerialUSB.print("data_match=");
+    SerialUSB.print((data_match != 0U) ? "yes" : "no");
+    SerialUSB.print("\r\nresult=");
+    SerialUSB.print((data_match != 0U) ? "OK" : "FAILED");
+    SerialUSB.print("\r\n");
 }

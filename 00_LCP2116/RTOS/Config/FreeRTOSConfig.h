@@ -31,12 +31,12 @@
 
 #define configSUPPORT_STATIC_ALLOCATION          0
 #define configSUPPORT_DYNAMIC_ALLOCATION         1
-#define configTOTAL_HEAP_SIZE                    (64U * 1024U)
+#define configTOTAL_HEAP_SIZE                    (32U * 1024U)
 
 #define configCHECK_FOR_STACK_OVERFLOW           2
 #define configUSE_MALLOC_FAILED_HOOK             1
 #define configUSE_IDLE_HOOK                      0
-#define configUSE_TICK_HOOK                      0
+#define configUSE_TICK_HOOK                      1
 
 #define configUSE_TRACE_FACILITY                 1
 #define configGENERATE_RUN_TIME_STATS            0
@@ -46,6 +46,7 @@
 #define INCLUDE_vTaskSuspend                     1
 #define INCLUDE_vTaskDelete                      1
 #define INCLUDE_uxTaskPriorityGet                1
+#define INCLUDE_uxTaskGetStackHighWaterMark      1
 #define INCLUDE_xTaskGetSchedulerState           1
 #define INCLUDE_xTaskGetCurrentTaskHandle        1
 

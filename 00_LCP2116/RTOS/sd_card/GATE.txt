@@ -1,0 +1,6 @@
+4	
+0	// Gate Ethernet 0.0.0.0
+0
+0
+0
+fin

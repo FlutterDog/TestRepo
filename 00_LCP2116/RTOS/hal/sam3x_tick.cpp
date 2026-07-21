@@ -1,13 +1,20 @@
-﻿
-/**
+﻿/**
  * @file sam3x_tick.cpp
- * @brief Реализация системного таймера через SysTick.
+ * @brief Реализация системного времени на базе системного тика FreeRTOS.
  */
 
 #include "sam3x_tick.hpp"
 #include "sam3x_device.hpp"
 
+extern "C"
+{
+#include "FreeRTOS.h"
+}
+
 extern "C" void tickReset(void);
+
+static_assert(configTICK_RATE_HZ == 1000U,
+              "hal_millis requires a 1 kHz FreeRTOS tick");
 
 static volatile uint32_t g_ms_ticks = 0U;
 
@@ -17,12 +24,13 @@ static inline void hal_cpu_relax(void)
 }
 
 /**
- * @brief Обработчик прерывания SysTick.
+ * @brief Обслуживает платформенное время из обработчика тика FreeRTOS.
  *
- * Обработчик увеличивает миллисекундный счётчик системного времени
- * и обслуживает отложенный переход в ROM-загрузчик SAM-BA.
+ * FreeRTOS вызывает эту функцию один раз на каждый системный тик. При частоте
+ * 1 кГц функция увеличивает миллисекундный счётчик и сохраняет обслуживание
+ * отложенного перехода в ROM-загрузчик SAM-BA по команде 1200 baud.
  */
-extern "C" void SysTick_Handler(void)
+extern "C" void vApplicationTickHook(void)
 {
     ++g_ms_ticks;
     tickReset();
@@ -30,17 +38,12 @@ extern "C" void SysTick_Handler(void)
 
 void hal_tick_init(void)
 {
+    /*
+     * Настройку SysTick выполняет порт FreeRTOS при запуске планировщика.
+     * Здесь оставлено только обновление значения частоты ядра для функций,
+     * использующих SystemCoreClock.
+     */
     SystemCoreClockUpdate();
-
-    const uint32_t ticks_per_ms = SystemCoreClock / 1000U;
-
-    if ((ticks_per_ms == 0U) || (SysTick_Config(ticks_per_ms) != 0U))
-    {
-        for (;;)
-        {
-            hal_cpu_relax();
-        }
-    }
 }
 
 uint32_t hal_millis(void)
@@ -64,7 +67,7 @@ uint32_t hal_micros(void)
 
     const uint32_t cycles_per_us = SystemCoreClock / 1000000U;
 
-    if (cycles_per_us == 0U)
+    if ((cycles_per_us == 0U) || (systick_load <= 1U))
     {
         return ms * 1000U;
     }

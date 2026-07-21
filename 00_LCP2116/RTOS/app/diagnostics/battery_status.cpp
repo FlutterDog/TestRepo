@@ -1,21 +1,29 @@
-﻿
-/**
+﻿/**
  * @file battery_status.cpp
- * @brief Реализация диагностики резервной батареи CR2032.
+ * @brief Диагностика резервной батареи CR2032.
+ *
+ * Вход контроллера получает дискретный результат внешнего компаратора, поэтому
+ * прошивка не измеряет напряжение батареи. Значение 2.2 V — аппаратный порог.
+ * Если в новой плате появится ADC, добавляйте его отдельным полем и не заменяйте
+ * существующие raw/debounced состояния.
  */
 
 #include "battery_status.hpp"
+#include "diagnostic_output.hpp"
+
 #include "../../board/lcp_battery.hpp"
 #include "../../platform/platform.hpp"
 
-static const uint32_t BATTERY_DEBOUNCE_MS = 100U;
+namespace
+{
+constexpr uint32_t BATTERY_DEBOUNCE_MS = 100U;
 
-static uint8_t g_last_raw = 0U;
-static uint8_t g_debounced_raw = 0U;
-static uint8_t g_stable = 0U;
-static uint32_t g_last_change_ms = 0U;
+uint8_t g_last_raw = 0U;
+uint8_t g_debounced_raw = 0U;
+uint8_t g_stable = 0U;
+uint32_t g_last_change_ms = 0U;
 
-static uint8_t battery_raw_to_ok(uint8_t raw)
+uint8_t battery_raw_to_ok(uint8_t raw)
 {
     if (LCP_BACKUP_BATTERY_OK_ACTIVE_HIGH != 0U)
     {
@@ -23,6 +31,7 @@ static uint8_t battery_raw_to_ok(uint8_t raw)
     }
 
     return (raw == 0U) ? 1U : 0U;
+}
 }
 
 void battery_status_init(void)
@@ -48,7 +57,8 @@ void battery_status_poll(void)
         return;
     }
 
-    if ((g_stable == 0U) && ((uint32_t)(now_ms - g_last_change_ms) >= BATTERY_DEBOUNCE_MS))
+    if ((g_stable == 0U) &&
+        ((uint32_t)(now_ms - g_last_change_ms) >= BATTERY_DEBOUNCE_MS))
     {
         g_stable = 1U;
         g_debounced_raw = raw;
@@ -61,31 +71,45 @@ void battery_status_print_report(void)
     const uint8_t debounced_ok = battery_raw_to_ok(g_debounced_raw);
     const uint8_t instant_ok = lcp_battery_ok();
 
-    SerialUSB.print("backup battery status\r\n");
-    SerialUSB.print("pin=50, comparator threshold=2.2 V, battery=CR2032, purpose=RTC backup power\r\n");
+    diagnostic_print_section("RTC BACKUP BATTERY");
 
-    SerialUSB.print("raw=");
+    diagnostic_print_assignment("battery");
+    SerialUSB.print("CR2032, ");
+    diagnostic_print_assignment("input_pin");
+    SerialUSB.print("50\r\n");
+
+    diagnostic_print_assignment("comparator_threshold");
+    SerialUSB.print("2.2 V\r\n");
+    diagnostic_print_assignment("voltage_measurement");
+    SerialUSB.print("not available\r\n");
+
+    diagnostic_print_assignment("debounce_ms");
+    SerialUSB.print(static_cast<unsigned long>(BATTERY_DEBOUNCE_MS));
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("input_active_high");
+    SerialUSB.print((LCP_BACKUP_BATTERY_OK_ACTIVE_HIGH != 0U) ? "yes" : "no");
+    SerialUSB.print("\r\n");
+
+    diagnostic_print_assignment("raw");
     SerialUSB.print(static_cast<int>(raw));
-    SerialUSB.print("\r\n");
-
-    SerialUSB.print("debounced_raw=");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("debounced_raw");
     SerialUSB.print(static_cast<int>(g_debounced_raw));
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("stable");
+    SerialUSB.print((g_stable != 0U) ? "yes" : "no");
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("instant_state=");
-    SerialUSB.print(instant_ok ? "ok" : "low");
+    diagnostic_print_assignment("instant_state");
+    SerialUSB.print((instant_ok != 0U) ? "ok" : "low");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("debounced_state");
+    SerialUSB.print((debounced_ok != 0U) ? "ok" : "low");
     SerialUSB.print("\r\n");
 
-    SerialUSB.print("state=");
-    SerialUSB.print(debounced_ok ? "ok" : "low");
+    diagnostic_print_assignment("action");
+    SerialUSB.print((debounced_ok != 0U) ?
+                    "none" :
+                    "replace CR2032 battery");
     SerialUSB.print("\r\n");
-
-    if (debounced_ok != 0U)
-    {
-        SerialUSB.print("message=backup battery voltage is above 2.2 V\r\n");
-    }
-    else
-    {
-        SerialUSB.print("message=replace CR2032 battery\r\n");
-    }
 }

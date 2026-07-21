@@ -1,24 +1,20 @@
-﻿
-/**
+﻿/**
  * @file main.cpp
- * @brief Точка входа диагностической прошивки LCP.
+ * @brief Точка входа baseline-прошивки LCP под управлением FreeRTOS.
  */
 
 #include "sam.h"
 #include "app/app.hpp"
-#include "hal/sam3x_tick.hpp"
 
 extern "C" void SystemInit(void);
 
 int main(void)
 {
     SystemInit();
-    hal_tick_init();
+    app_rtos_start();
 
-    setup();
-
+    /* app_rtos_start() возвращается только при ошибке запуска планировщика. */
     for (;;)
     {
-        loop();
     }
 }

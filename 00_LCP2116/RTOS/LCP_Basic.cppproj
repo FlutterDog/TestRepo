@@ -49,58 +49,39 @@
         <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
         <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
         <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
-        <armgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>NDEBUG</Value>
-          </ListValues>
-        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.symbols.DefSymbols><ListValues><Value>NDEBUG</Value></ListValues></armgcc.compiler.symbols.DefSymbols>
         <armgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
+            <Value>%24(ProjectDir)\Config</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\include</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3</Value>
           </ListValues>
         </armgcc.compiler.directories.IncludePaths>
         <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
         <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
-        <armgcccpp.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>NDEBUG</Value>
-          </ListValues>
-        </armgcccpp.compiler.symbols.DefSymbols>
+        <armgcccpp.compiler.symbols.DefSymbols><ListValues><Value>NDEBUG</Value></ListValues></armgcccpp.compiler.symbols.DefSymbols>
         <armgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
+            <Value>%24(ProjectDir)\Config</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\include</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3</Value>
           </ListValues>
         </armgcccpp.compiler.directories.IncludePaths>
         <armgcccpp.compiler.optimization.level>Optimize for size (-Os)</armgcccpp.compiler.optimization.level>
         <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
-        <armgcccpp.linker.libraries.Libraries>
-          <ListValues>
-            <Value>libm</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.Libraries>
-        <armgcccpp.linker.libraries.LibrarySearchPaths>
-          <ListValues>
-            <Value>%24(ProjectDir)\Device_Startup</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.LibrarySearchPaths>
+        <armgcccpp.linker.libraries.Libraries><ListValues><Value>libm</Value></ListValues></armgcccpp.linker.libraries.Libraries>
+        <armgcccpp.linker.libraries.LibrarySearchPaths><ListValues><Value>%24(ProjectDir)\Device_Startup</Value></ListValues></armgcccpp.linker.libraries.LibrarySearchPaths>
         <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+        <armgcccpp.linker.memorysettings.ExternalRAM />
         <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsam3x8e_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
-        <armgcccpp.assembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.assembler.general.IncludePaths>
-        <armgcccpp.preprocessingassembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.preprocessingassembler.general.IncludePaths>
+        <armgcccpp.assembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.assembler.general.IncludePaths>
+        <armgcccpp.preprocessingassembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.preprocessingassembler.general.IncludePaths>
       </ArmGccCpp>
     </ToolchainSettings>
   </PropertyGroup>
@@ -112,347 +93,213 @@
         <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
         <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
         <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
-        <armgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>DEBUG</Value>
-          </ListValues>
-        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.symbols.DefSymbols><ListValues><Value>DEBUG</Value></ListValues></armgcc.compiler.symbols.DefSymbols>
         <armgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
+            <Value>%24(ProjectDir)\Config</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\include</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3</Value>
           </ListValues>
         </armgcc.compiler.directories.IncludePaths>
         <armgcc.compiler.optimization.level>Optimize debugging experience (-Og)</armgcc.compiler.optimization.level>
         <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
         <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
-        <armgcccpp.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>DEBUG</Value>
-          </ListValues>
-        </armgcccpp.compiler.symbols.DefSymbols>
+        <armgcccpp.compiler.symbols.DefSymbols><ListValues><Value>DEBUG</Value></ListValues></armgcccpp.compiler.symbols.DefSymbols>
         <armgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
+            <Value>%24(ProjectDir)\Config</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\include</Value>
+            <Value>%24(ProjectDir)\middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3</Value>
           </ListValues>
         </armgcccpp.compiler.directories.IncludePaths>
         <armgcccpp.compiler.optimization.level>Optimize debugging experience (-Og)</armgcccpp.compiler.optimization.level>
         <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
         <armgcccpp.compiler.optimization.DebugLevel>Maximum (-g3)</armgcccpp.compiler.optimization.DebugLevel>
         <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
-        <armgcccpp.linker.libraries.Libraries>
-          <ListValues>
-            <Value>libm</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.Libraries>
-        <armgcccpp.linker.libraries.LibrarySearchPaths>
-          <ListValues>
-            <Value>%24(ProjectDir)\Device_Startup</Value>
-          </ListValues>
-        </armgcccpp.linker.libraries.LibrarySearchPaths>
+        <armgcccpp.linker.libraries.Libraries><ListValues><Value>libm</Value></ListValues></armgcccpp.linker.libraries.Libraries>
+        <armgcccpp.linker.libraries.LibrarySearchPaths><ListValues><Value>%24(ProjectDir)\Device_Startup</Value></ListValues></armgcccpp.linker.libraries.LibrarySearchPaths>
         <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
         <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsam3x8e_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
-        <armgcccpp.assembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.assembler.general.IncludePaths>
+        <armgcccpp.assembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.assembler.general.IncludePaths>
         <armgcccpp.assembler.debugging.DebugLevel>Default (-g)</armgcccpp.assembler.debugging.DebugLevel>
-        <armgcccpp.preprocessingassembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
-            <Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value>
-          </ListValues>
-        </armgcccpp.preprocessingassembler.general.IncludePaths>
+        <armgcccpp.preprocessingassembler.general.IncludePaths><ListValues><Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value><Value>%24(PackRepoDir)\atmel\SAM3X_DFP\1.0.50\include</Value></ListValues></armgcccpp.preprocessingassembler.general.IncludePaths>
         <armgcccpp.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcccpp.preprocessingassembler.debugging.DebugLevel>
       </ArmGccCpp>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app\app.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\app.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\battery_status.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\battery_status.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\diagnostic_console.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\diagnostic_console.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\ethernet_echo_test.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\ethernet_echo_test.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\rs485_echo_test.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\rs485_echo_test.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\rtc_status.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\rtc_status.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\sc16is_echo_test.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\sc16is_echo_test.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\sd_card_test.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\sd_card_test.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\sd_config.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\sd_config.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\watchdog_status.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\diagnostics\watchdog_status.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\version.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_battery.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_battery.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_board.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_board.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_ethernet.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_ethernet.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_rs485.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_rs485.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_sc16is.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_sc16is.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_sd.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_sd.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\lcp_usb_identity.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Device_Startup\startup_sam3xa.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Device_Startup\system_sam3xa.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_device.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_gpio.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_gpio.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_rtc.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_rtc.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_spi.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_spi.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_tick.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_tick.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_uart.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_uart.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_watchdog.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sam3x_watchdog.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sc16is7xx.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\sc16is7xx.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\w5500_lite.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\w5500_lite.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\CDC.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\PluggableUSB.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\PluggableUSB.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\Reset.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\Reset.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\sam_usb_chip.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\sam_usb_platform.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\uotghs.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\uotghs_device.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\USBAPI.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\USBCore.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\USBCore.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="libs\SAM_USB\USBDesc.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="main.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\binary_constants.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\newlib_stubs.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\platform.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\platform_gpio.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\platform_serial.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\platform_spi.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\platform_time.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\print.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\print.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\serial_port.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\serial_port.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\spi.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\spi.hpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="platform\syscalls.c">
-      <SubType>compile</SubType>
-    </Compile>
+    <Compile Include="app\app.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\app.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\battery_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\battery_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\diagnostic_console.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\diagnostic_console.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\diagnostic_output.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\ethernet_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\ethernet_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\field_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\field_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\rs485_echo_test.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\rs485_echo_test.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\rtc_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\rtc_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\sc16is_echo_test.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\sc16is_echo_test.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\sd_card_test.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\sd_card_test.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\sd_config.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\sd_config.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\watchdog_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\watchdog_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\x2x_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\x2x_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_modbus_service.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_modbus_service.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_network_config.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\ethernet\ethernet_network_config.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_sensor_service.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_sensor_service.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_sensor_slave_example.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_serial_config.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\field\field_serial_config.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\version.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_lai.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_lct.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_ldi.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_ldo.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_module_common.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_module_common.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\modules\x2x_module_drivers.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_catalog.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_catalog.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_config.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_config.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_module.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_registry.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_registry.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_service.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_service.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\x2x\x2x_types.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_battery.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_battery.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_board.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_board.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_ethernet.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_ethernet.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_field_ports.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_field_ports.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_rs485.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_rs485.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_sc16is.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_sc16is.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_sd.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_sd.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_usb_identity.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_x2x_port.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="board\lcp_x2x_port.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="Config\FreeRTOSConfig.h"><SubType>compile</SubType></Compile>
+    <Compile Include="Device_Startup\startup_sam3xa.c"><SubType>compile</SubType></Compile>
+    <Compile Include="Device_Startup\system_sam3xa.c"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_device.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_gpio.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_gpio.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_rtc.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_rtc.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_spi.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_spi.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_tick.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_tick.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_uart.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_uart.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_uart_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_watchdog.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_watchdog.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sc16is7xx.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sc16is7xx.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\w5500_lite.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\w5500_lite.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\CDC.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\PluggableUSB.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\PluggableUSB.h"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\Reset.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\Reset.h"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\sam_usb_chip.h"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\sam_usb_platform.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\uotghs.c"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\uotghs_device.c"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\USBAPI.h"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\USBCore.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\USBCore.h"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\SAM_USB\USBDesc.h"><SubType>compile</SubType></Compile>
+    <Compile Include="main.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\event_groups.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\list.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3\port.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\portable\MemMang\heap_4.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\queue.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\stream_buffer.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\tasks.c"><SubType>compile</SubType></Compile>
+    <Compile Include="middleware\FreeRTOS-Kernel\timers.c"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\newlib_stubs.c"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\platform_gpio.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\platform_serial.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\platform_spi.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\platform_time.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\print.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\serial_port.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\spi.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="platform\syscalls.c"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_rtu\modbus_rtu_crc.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_rtu\modbus_rtu_crc.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_rtu\modbus_rtu_master.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_rtu\modbus_rtu_master.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_rtu\modbus_rtu_slave.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_rtu\modbus_rtu_slave.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_tcp\modbus_tcp_server.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="protocol\modbus_tcp\modbus_tcp_server.hpp"><SubType>compile</SubType></Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\diagnostics\" />
+    <Folder Include="app\ethernet\" />
+    <Folder Include="app\field\" />
+    <Folder Include="app\x2x\" />
+    <Folder Include="app\x2x\modules\" />
     <Folder Include="board\" />
+    <Folder Include="Config\" />
     <Folder Include="Device_Startup\" />
     <Folder Include="hal\" />
     <Folder Include="libs\" />
     <Folder Include="libs\lcp_sd_storage\" />
     <Folder Include="libs\SAM_USB\" />
+    <Folder Include="middleware\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\include\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\GCC\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\GCC\ARM_CM3\" />
+    <Folder Include="middleware\FreeRTOS-Kernel\portable\MemMang\" />
     <Folder Include="platform\" />
+    <Folder Include="protocol\" />
+    <Folder Include="protocol\modbus_rtu\" />
+    <Folder Include="protocol\modbus_tcp\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Device_Startup\sam3x8e_flash.ld">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="Device_Startup\sam3x8e_sram.ld">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="Device_Startup\sam3xa_flash.ld">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="Device_Startup\sam3xa_sram.ld">
-      <SubType>compile</SubType>
-    </None>
+    <None Include="Device_Startup\sam3x8e_flash.ld"><SubType>compile</SubType></None>
+    <None Include="Device_Startup\sam3x8e_sram.ld"><SubType>compile</SubType></None>
+    <None Include="Device_Startup\sam3xa_flash.ld"><SubType>compile</SubType></None>
+    <None Include="Device_Startup\sam3xa_sram.ld"><SubType>compile</SubType></None>
+    <None Include="middleware\FreeRTOS-Kernel\include\CMakeLists.txt"><SubType>compile</SubType></None>
+    <None Include="middleware\FreeRTOS-Kernel\include\stdint.readme"><SubType>compile</SubType></None>
+    <None Include="middleware\FreeRTOS-Kernel\LICENSE.md"><SubType>compile</SubType></None>
+    <None Include="middleware\FreeRTOS-Kernel\README.md"><SubType>compile</SubType></None>
   </ItemGroup>
-  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
-  <ItemGroup>
-    <None Include="Doxyfile" />
-    <None Include="docs\DoxygenMainPage.md" />
-    <None Include="docs\DoxygenBuild.md" />
-    <None Include="docs\DoxygenCommentReview.md" />
-    <None Include="docs\third_party\THIRD_PARTY_USB_NOTICE.md" />
-  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\Vs\Compiler.targets" />
 </Project>
