@@ -135,8 +135,14 @@
   <ItemGroup>
     <Compile Include="app\app.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\app.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\config\lcp_config_bundle.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\config\lcp_config_bundle.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\config\lcp_config_service.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\config\lcp_config_service.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\battery_status.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\battery_status.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\config_status.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="app\diagnostics\config_status.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_console.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_console.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="app\diagnostics\diagnostic_output.hpp"><SubType>compile</SubType></Compile>
@@ -208,6 +214,8 @@
     <Compile Include="hal\sam3x_device.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\sam3x_gpio.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\sam3x_gpio.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_internal_flash.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="hal\sam3x_internal_flash.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\sam3x_rtc.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\sam3x_rtc.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\sam3x_spi.cpp"><SubType>compile</SubType></Compile>
@@ -223,6 +231,8 @@
     <Compile Include="hal\sc16is7xx.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\w5500_lite.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="hal\w5500_lite.hpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\lcp_crc32\lcp_crc32.cpp"><SubType>compile</SubType></Compile>
+    <Compile Include="libs\lcp_crc32\lcp_crc32.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.cpp"><SubType>compile</SubType></Compile>
     <Compile Include="libs\lcp_sd_storage\lcp_sd_storage.hpp"><SubType>compile</SubType></Compile>
     <Compile Include="libs\SAM_USB\CDC.cpp"><SubType>compile</SubType></Compile>
@@ -267,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\config\" />
     <Folder Include="app\diagnostics\" />
     <Folder Include="app\ethernet\" />
     <Folder Include="app\field\" />
@@ -277,6 +288,7 @@
     <Folder Include="Device_Startup\" />
     <Folder Include="hal\" />
     <Folder Include="libs\" />
+    <Folder Include="libs\lcp_crc32\" />
     <Folder Include="libs\lcp_sd_storage\" />
     <Folder Include="libs\SAM_USB\" />
     <Folder Include="middleware\" />
