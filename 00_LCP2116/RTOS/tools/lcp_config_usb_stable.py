@@ -31,8 +31,6 @@ _RETRY_DELAY_SECONDS = 0.25
 
 _ORIGINAL_INIT = core.LcpUsbClient.__init__
 _ORIGINAL_HELLO = core.LcpUsbClient.hello
-_ORIGINAL_COMMAND_WRITE = core.command_write
-_ORIGINAL_COMMAND_WRITE_TXT = core.command_write_txt
 
 
 def _raw_close(client: core.LcpUsbClient) -> None:
@@ -147,10 +145,11 @@ def _candidate_ports(preferred: str,
     return result
 
 
-def _wait_for_reconnect(port: str,
-                        timeout: float,
-                        expected: core.LcpConfig) -> core.ActiveConfigInfo:
-    identity = _port_identity(port)
+def _wait_for_reconnect(
+        port: str,
+        timeout: float,
+        expected: core.LcpConfig,
+        identity: tuple[int | None, int | None, str | None]) -> core.ActiveConfigInfo:
     expected_payload = expected.pack()
     deadline = time.monotonic() + _RECONNECT_SECONDS
     last_error: Exception | None = None
@@ -186,6 +185,9 @@ def _wait_for_reconnect(port: str,
 
 
 def _write_and_verify(args: Any, config: core.LcpConfig) -> None:
+    # Preserve VID/PID/serial before REBOOT removes the current COM device.
+    identity = _port_identity(args.port)
+
     with core.LcpUsbClient(args.port, timeout=args.timeout) as client:
         client.hello()
         result = client.write_config(config, reboot=not args.no_reboot)
@@ -195,7 +197,12 @@ def _write_and_verify(args: Any, config: core.LcpConfig) -> None:
     if result != core.STATUS_REBOOT_REQUIRED or args.no_reboot:
         return
 
-    active = _wait_for_reconnect(args.port, args.timeout, config)
+    active = _wait_for_reconnect(
+        args.port,
+        args.timeout,
+        config,
+        identity,
+    )
     print(
         "reconnected and verified: "
         f"source={active.source} slot={active.slot} "
