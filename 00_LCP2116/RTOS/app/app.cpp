@@ -3,8 +3,8 @@
  * @brief Базовая прошивка Lorentz под управлением FreeRTOS.
  *
  * Приложение обслуживает внутреннее хранилище конфигурации, X2X, четыре
- * FieldSensor master, два Modbus TCP server, microSD, RTC, watchdog и USB
- * service console в одной прикладной задаче.
+ * FieldSensor master, два Modbus TCP server, microSD, RTC, watchdog, USB
+ * service console и машинный USB-транспорт конфигурации в одной задаче.
  */
 
 #include "app.hpp"
@@ -13,6 +13,7 @@
 #include "../platform/platform.hpp"
 #include "../hal/sam3x_watchdog.hpp"
 #include "config/lcp_config_service.hpp"
+#include "config/lcp_config_usb_transport.hpp"
 #include "diagnostics/rs485_echo_test.hpp"
 #include "diagnostics/sc16is_echo_test.hpp"
 #include "diagnostics/diagnostic_console.hpp"
@@ -154,6 +155,7 @@ void setup(void)
      */
     sd_card_test_init();
     lcp_config_service_init();
+    lcp_config_usb::init();
     g_runtime_services_wait_start_ms = millis();
     g_runtime_services_initialized = 0U;
 
@@ -180,9 +182,18 @@ void loop(void)
         digitalWrite(PLC_OK_PIN, led_state);
     }
 
-    /* Сначала FAT и config store, затем потребители active bundle. */
+    /*
+     * USB transport вызывается перед штатным config service. Если началась
+     * запись USB-кандидата, SD service временно не запускает Flash-команды.
+     */
     sd_card_test_poll();
-    lcp_config_service_poll();
+    lcp_config_usb::poll();
+
+    if (lcp_config_usb::flash_busy() == 0U)
+    {
+        lcp_config_service_poll();
+    }
+
     initialize_runtime_services_when_ready(now_ms);
 
     if (g_runtime_services_initialized != 0U)
@@ -203,7 +214,13 @@ void loop(void)
 
     battery_status_poll();
     rtc_status_poll();
-    diagnostic_console_poll();
+
+    /* В бинарном режиме USB-порт полностью принадлежит Studio transport. */
+    if (lcp_config_usb::active() == 0U)
+    {
+        diagnostic_console_poll();
+    }
+
     watchdog_status_poll();
 }
 
