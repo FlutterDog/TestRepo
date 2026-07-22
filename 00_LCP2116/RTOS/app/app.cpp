@@ -47,6 +47,7 @@ namespace
 constexpr byte PLC_OK_PIN = 40U;
 constexpr uint32_t OK_LED_PERIOD_MS = 500U;
 constexpr uint32_t INITIAL_CONFIG_WAIT_MS = 2000U;
+constexpr uint32_t USB_CONSOLE_STARTUP_GUARD_MS = 250U;
 constexpr uint16_t LCP_TASK_STACK_WORDS = 2048U;
 constexpr UBaseType_t LCP_TASK_PRIORITY = 2U;
 constexpr uintptr_t ATSAM3X8E_RAM_ORIGIN = 0x20000000UL;
@@ -54,6 +55,8 @@ constexpr uintptr_t ATSAM3X8E_RAM_ORIGIN = 0x20000000UL;
 TaskHandle_t g_lcp_task_handle = nullptr;
 uint8_t g_runtime_services_initialized = 0U;
 uint32_t g_runtime_services_wait_start_ms = 0U;
+uint8_t g_usb_was_open = 0U;
+uint32_t g_usb_opened_ms = 0U;
 
 uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
 {
@@ -62,6 +65,31 @@ uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
 
     return (end_address >= begin_address) ?
         static_cast<uint32_t>(end_address - begin_address) : 0U;
+}
+
+uint8_t usb_console_startup_guard(uint32_t now_ms)
+{
+    const uint8_t usb_open = SerialUSB ? 1U : 0U;
+
+    if ((usb_open != 0U) && (g_usb_was_open == 0U))
+    {
+        g_usb_opened_ms = now_ms;
+    }
+
+    if (usb_open == 0U)
+    {
+        g_usb_opened_ms = now_ms;
+    }
+
+    g_usb_was_open = usb_open;
+
+    if (usb_open == 0U)
+    {
+        return 0U;
+    }
+
+    return ((uint32_t)(now_ms - g_usb_opened_ms) <
+            USB_CONSOLE_STARTUP_GUARD_MS) ? 1U : 0U;
 }
 
 void initialize_runtime_services(void)
@@ -158,6 +186,8 @@ void setup(void)
     lcp_config_usb::init();
     g_runtime_services_wait_start_ms = millis();
     g_runtime_services_initialized = 0U;
+    g_usb_was_open = 0U;
+    g_usb_opened_ms = 0U;
 
     /* При наличии валидного Flash-слота интерфейсы запускаются немедленно. */
     initialize_runtime_services_when_ready(millis());
@@ -174,6 +204,7 @@ void loop(void)
     static uint8_t led_state = LOW;
 
     const uint32_t now_ms = millis();
+    const uint8_t usb_console_guard = usb_console_startup_guard(now_ms);
 
     if ((uint32_t)(now_ms - last_toggle_ms) >= OK_LED_PERIOD_MS)
     {
@@ -183,11 +214,20 @@ void loop(void)
     }
 
     /*
-     * USB transport вызывается перед штатным config service. Если началась
-     * запись USB-кандидата, SD service временно не запускает Flash-команды.
+     * USB transport всегда проверяет RX первым. После открытия CDC текстовая
+     * консоль кратковременно удерживается, чтобы первый бинарный кадр Studio не
+     * мог быть принят ею как обычная строка. После guard обе подсистемы
+     * вызываются подряд, без окна, создаваемого опросом остальных сервисов.
      */
-    sd_card_test_poll();
     lcp_config_usb::poll();
+
+    if ((lcp_config_usb::active() == 0U) && (usb_console_guard == 0U))
+    {
+        diagnostic_console_poll();
+    }
+
+    /* Если USB пишет неактивный слот, SD service не запускает Flash-команды. */
+    sd_card_test_poll();
 
     if (lcp_config_usb::flash_busy() == 0U)
     {
@@ -214,13 +254,6 @@ void loop(void)
 
     battery_status_poll();
     rtc_status_poll();
-
-    /* В бинарном режиме USB-порт полностью принадлежит Studio transport. */
-    if (lcp_config_usb::active() == 0U)
-    {
-        diagnostic_console_poll();
-    }
-
     watchdog_status_poll();
 }
 
