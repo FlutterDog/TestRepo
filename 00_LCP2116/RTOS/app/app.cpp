@@ -45,11 +45,14 @@ namespace
 {
 constexpr byte PLC_OK_PIN = 40U;
 constexpr uint32_t OK_LED_PERIOD_MS = 500U;
+constexpr uint32_t INITIAL_CONFIG_WAIT_MS = 2000U;
 constexpr uint16_t LCP_TASK_STACK_WORDS = 2048U;
 constexpr UBaseType_t LCP_TASK_PRIORITY = 2U;
 constexpr uintptr_t ATSAM3X8E_RAM_ORIGIN = 0x20000000UL;
 
 TaskHandle_t g_lcp_task_handle = nullptr;
+uint8_t g_runtime_services_initialized = 0U;
+uint32_t g_runtime_services_wait_start_ms = 0U;
 
 uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
 {
@@ -60,13 +63,47 @@ uint32_t linker_span_bytes(const uint8_t* begin, const uint8_t* end)
         static_cast<uint32_t>(end_address - begin_address) : 0U;
 }
 
+void initialize_runtime_services(void)
+{
+    if (g_runtime_services_initialized != 0U)
+    {
+        return;
+    }
+
+    field_sensor_service_init();
+    ethernet_modbus_service_init();
+    x2x_service_init();
+    g_runtime_services_initialized = 1U;
+}
+
+void initialize_runtime_services_when_ready(uint32_t now_ms)
+{
+    if (g_runtime_services_initialized != 0U)
+    {
+        return;
+    }
+
+    if (lcp_config_service_source() == LCP_CONFIG_SOURCE_INTERNAL_FLASH)
+    {
+        initialize_runtime_services();
+        return;
+    }
+
+    if (((uint32_t)(now_ms - g_runtime_services_wait_start_ms) >=
+         INITIAL_CONFIG_WAIT_MS) &&
+        (lcp_config_service_busy() == 0U))
+    {
+        /*
+         * При отсутствии корректной Flash и SD контроллер переходит на
+         * безопасные defaults. Если карта появится позже, automatic import
+         * увеличит generation, и сервисы применят новый bundle штатно.
+         */
+        initialize_runtime_services();
+    }
+}
+
 /**
  * @brief Останавливает выполнение после невосстановимой RTOS-ошибки.
- *
- * Это единственный намеренный fail-stop в приложении. Interrupts запрещаются,
- * task scheduling прекращается. После штатного setup активный watchdog должен
- * перезапустить MCU; до запуска watchdog контроллер останется остановленным для
- * отладки. Функция не используется для обычных timeout периферии.
  */
 __attribute__((noreturn)) void fatal_stop(void)
 {
@@ -82,10 +119,6 @@ void lcp_task(void *argument)
     (void)argument;
     setup();
 
-    /*
-     * Это штатный бесконечный lifecycle FreeRTOS-задачи. Каждый проход вызывает
-     * только неблокирующие poll-функции, после чего отдаёт CPU минимум на 1 tick.
-     */
     for (;;)
     {
         loop();
@@ -109,7 +142,7 @@ void setup(void)
 
     /*
      * Echo остаётся только на свободных линиях: UART0/X2X до появления модулей
-     * и универсальный HMI. S1–S4 сразу принадлежат FieldSensor service.
+     * и универсальный HMI. S1–S4 после запуска принадлежат FieldSensor service.
      */
     rs485_echo_test_init();
     sc16is_echo_test_init();
@@ -121,10 +154,12 @@ void setup(void)
      */
     sd_card_test_init();
     lcp_config_service_init();
+    g_runtime_services_wait_start_ms = millis();
+    g_runtime_services_initialized = 0U;
 
-    field_sensor_service_init();
-    ethernet_modbus_service_init();
-    x2x_service_init();
+    /* При наличии валидного Flash-слота интерфейсы запускаются немедленно. */
+    initialize_runtime_services_when_ready(millis());
+
     battery_status_init();
     rtc_status_init();
     diagnostic_console_init();
@@ -148,13 +183,19 @@ void loop(void)
     /* Сначала FAT и config store, затем потребители active bundle. */
     sd_card_test_poll();
     lcp_config_service_poll();
-    x2x_service_poll();
-    field_sensor_service_poll();
-    ethernet_modbus_service_poll();
+    initialize_runtime_services_when_ready(now_ms);
+
+    if (g_runtime_services_initialized != 0U)
+    {
+        x2x_service_poll();
+        field_sensor_service_poll();
+        ethernet_modbus_service_poll();
+    }
 
     /* UART0 принадлежит либо X2X master, либо fallback echo, но не обоим. */
     rs485_echo_test_set_x2x_enabled(
-        (x2x_service_owns_port() == 0U) ? 1U : 0U);
+        ((g_runtime_services_initialized == 0U) ||
+         (x2x_service_owns_port() == 0U)) ? 1U : 0U);
     rs485_echo_test_poll();
 
     /* SC16IS echo обслуживает свободный диагностический интерфейс HMI. */
