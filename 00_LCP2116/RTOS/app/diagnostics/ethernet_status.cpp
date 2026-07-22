@@ -1,15 +1,12 @@
 ﻿/**
  * @file ethernet_status.cpp
- * @brief Реализация диагностики Modbus TCP на ETH1 и ETH2.
- *
- * Аппаратное состояние W5500 и прикладная holding map выводятся раздельно.
- * При расширении карты меняйте `ethernet_modbus_service.cpp`, её Doxygen и
- * print_register_map(). W5500 HAL от состава прикладных регистров не зависит.
+ * @brief Диагностика Modbus TCP на ETH1 и ETH2.
  */
 
 #include "ethernet_status.hpp"
 #include "diagnostic_output.hpp"
 
+#include "../config/lcp_config_service.hpp"
 #include "../ethernet/ethernet_modbus_service.hpp"
 #include "../../board/lcp_ethernet.hpp"
 #include "../../board/lcp_field_ports.hpp"
@@ -80,21 +77,6 @@ void print_mac(const W5500MacAddress& mac)
     }
 }
 
-void print_config_item(const char* label,
-                       const char* file_name,
-                       SdConfigResult result)
-{
-    SerialUSB.print("  ");
-    SerialUSB.print(label);
-    SerialUSB.print(": ");
-    diagnostic_print_assignment("file");
-    SerialUSB.print((file_name != 0) ? file_name : "");
-    SerialUSB.print(", ");
-    diagnostic_print_assignment("result");
-    SerialUSB.print(sd_config_result_text(result));
-    SerialUSB.print("\r\n");
-}
-
 void print_interface(LcpEthernetId ethernet_id)
 {
     const EthernetModbusInterfaceState& state =
@@ -140,25 +122,6 @@ void print_interface(LcpEthernetId ethernet_id)
     SerialUSB.print(", ");
     diagnostic_print_assignment("gateway");
     print_ip(state.config.gateway);
-    SerialUSB.print("\r\n");
-
-    SerialUSB.print("configuration_files:\r\n");
-    print_config_item("MAC",
-                      state.config_report.mac_file,
-                      state.config_report.mac_result);
-    print_config_item("IP",
-                      state.config_report.ip_file,
-                      state.config_report.ip_result);
-    print_config_item("SUBNET",
-                      state.config_report.subnet_file,
-                      state.config_report.subnet_result);
-    print_config_item("GATEWAY",
-                      state.config_report.gateway_file,
-                      state.config_report.gateway_result);
-    SerialUSB.print("  ");
-    diagnostic_print_assignment("any_loaded_from_sd");
-    SerialUSB.print((state.config_report.any_loaded_from_sd != 0U) ?
-                    "yes" : "no");
     SerialUSB.print("\r\n");
 
     diagnostic_print_assignment("requests");
@@ -251,7 +214,14 @@ void ethernet_status_print_report(void)
     diagnostic_print_assignment("service_reload");
     SerialUSB.print((ethernet_modbus_service_reload_pending() != 0U) ?
                     "pending" : "idle");
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("config_source");
+    SerialUSB.print(lcp_config_source_text(lcp_config_service_source()));
     SerialUSB.print("\r\n");
+    diagnostic_print_assignment("config_generation");
+    SerialUSB.print(static_cast<unsigned long>(
+        lcp_config_service_generation()));
+    SerialUSB.print(", ");
     diagnostic_print_assignment("function");
     SerialUSB.print("0x03 read-only\r\n");
     diagnostic_print_assignment("holding_address");
@@ -279,7 +249,7 @@ uint8_t ethernet_status_handle_command(const char* command)
     if (strcmp(command, "eth reload") == 0)
     {
         ethernet_modbus_service_request_reload();
-        SerialUSB.print("Ethernet configuration reload: pending\r\n");
+        SerialUSB.print("Ethernet active configuration reload = pending\r\n");
         SerialUSB.print("both W5500 interfaces will be reset\r\n");
         return 1U;
     }
