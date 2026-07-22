@@ -2,8 +2,9 @@
  * @file app.cpp
  * @brief Базовая прошивка Lorentz под управлением FreeRTOS.
  *
- * Приложение обслуживает X2X, четыре FieldSensor master, два Modbus TCP server,
- * microSD, RTC, watchdog и USB service console в одной прикладной задаче.
+ * Приложение обслуживает внутреннее хранилище конфигурации, X2X, четыре
+ * FieldSensor master, два Modbus TCP server, microSD, RTC, watchdog и USB
+ * service console в одной прикладной задаче.
  */
 
 #include "app.hpp"
@@ -11,6 +12,7 @@
 #include "../board/lcp_rs485.hpp"
 #include "../platform/platform.hpp"
 #include "../hal/sam3x_watchdog.hpp"
+#include "config/lcp_config_service.hpp"
 #include "diagnostics/rs485_echo_test.hpp"
 #include "diagnostics/sc16is_echo_test.hpp"
 #include "diagnostics/diagnostic_console.hpp"
@@ -106,20 +108,22 @@ void setup(void)
     SPI.begin();
 
     /*
-     * Echo остаётся только на реально свободных линиях: UART0/X2X до появления
-     * модулей и внешние PC/HMI. S1–S4 сразу принадлежат FieldSensor service.
+     * Echo остаётся только на свободных линиях: UART0/X2X до появления модулей
+     * и универсальный HMI. S1–S4 сразу принадлежат FieldSensor service.
      */
     rs485_echo_test_init();
     sc16is_echo_test_init();
 
     /*
-     * microSD монтируется асинхронно. FieldSensor и Ethernet сначала получают
-     * безопасные defaults, затем применяют TXT-файлы после готовности FAT.
+     * Внутренняя Flash является рабочим источником конфигурации. microSD
+     * монтируется асинхронно и используется для первоначального импорта,
+     * явного обновления и сервисной резервной копии.
      */
     sd_card_test_init();
+    lcp_config_service_init();
+
     field_sensor_service_init();
     ethernet_modbus_service_init();
-
     x2x_service_init();
     battery_status_init();
     rtc_status_init();
@@ -141,8 +145,9 @@ void loop(void)
         digitalWrite(PLC_OK_PIN, led_state);
     }
 
-    /* Сначала FAT, затем services, которые могут применить SD-конфигурацию. */
+    /* Сначала FAT и config store, затем потребители active bundle. */
     sd_card_test_poll();
+    lcp_config_service_poll();
     x2x_service_poll();
     field_sensor_service_poll();
     ethernet_modbus_service_poll();
@@ -152,7 +157,7 @@ void loop(void)
         (x2x_service_owns_port() == 0U) ? 1U : 0U);
     rs485_echo_test_poll();
 
-    /* SC16IS echo обслуживает только постоянно диагностические PC/HMI. */
+    /* SC16IS echo обслуживает свободный диагностический интерфейс HMI. */
     sc16is_echo_test_poll();
 
     battery_status_poll();
