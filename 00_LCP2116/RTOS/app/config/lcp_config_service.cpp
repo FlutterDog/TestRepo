@@ -42,7 +42,7 @@ struct __attribute__((packed)) ConfigCommitRecord
     uint32_t payload_crc32;
     uint32_t header_crc32;
     uint32_t commit_crc32;
-    uint32_t reserved;
+    uint32_t reserved[2];
 };
 
 static_assert(sizeof(ConfigRecordHeader) == 32U,
