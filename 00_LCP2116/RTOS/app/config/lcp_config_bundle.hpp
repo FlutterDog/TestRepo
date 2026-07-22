@@ -20,8 +20,9 @@ static const uint8_t LCP_CONFIG_RESERVED_BYTES = 32U;
  *
  * Поля имеют фиксированную ширину. Reserved заполняется нулями и оставляет
  * пространство для совместимых дополнений без немедленного увеличения записи.
+ * Выравнивание 4 гарантирует безопасный доступ к uint32_t на Cortex-M3.
  */
-struct __attribute__((packed)) LcpConfigBundle
+struct __attribute__((packed, aligned(4))) LcpConfigBundle
 {
     uint32_t field_baudrate[LCP_FIELD_PORT_COUNT];
     uint8_t field_parity[LCP_FIELD_PORT_COUNT]; /**< 0=8N1, 1=8O1, 2=8E1. */
@@ -42,6 +43,8 @@ struct __attribute__((packed)) LcpConfigBundle
 
 static_assert(sizeof(LcpConfigBundle) == 104U,
               "LcpConfigBundle schema v1 size changed");
+static_assert(alignof(LcpConfigBundle) == 4U,
+              "LcpConfigBundle must remain 4-byte aligned");
 
 enum LcpConfigSdResult : uint8_t
 {
