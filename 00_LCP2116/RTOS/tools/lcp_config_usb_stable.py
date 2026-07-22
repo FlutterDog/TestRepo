@@ -6,7 +6,7 @@ This launcher adds Windows usbser.sys handling:
 
 * retry opening a CDC port while an old handle is being removed;
 * wait briefly for both CDC directions after opening;
-* retry HELLO after a transient Windows serial error;
+* retry HELLO for a bounded deadline after a transient Windows serial error;
 * after a configuration write and reboot, find the controller again, reconnect,
   read the active configuration, and verify it against the transmitted bundle.
 """
@@ -26,6 +26,7 @@ from serial.tools import list_ports
 
 _OPEN_RETRY_SECONDS = 8.0
 _OPEN_SETTLE_SECONDS = 0.50
+_HELLO_RETRY_SECONDS = 20.0
 _RECONNECT_SECONDS = 25.0
 _RETRY_DELAY_SECONDS = 0.25
 
@@ -90,32 +91,49 @@ def _stable_init(self: core.LcpUsbClient,
 
 
 def _stable_hello(self: core.LcpUsbClient) -> dict[str, int]:
+    """Complete HELLO without requiring the user to repeat the command.
+
+    Opening a Windows CDC port and making it usable are separate events. Retry
+    until a monotonic deadline rather than for a fixed number of attempts. Every
+    retry closes the stale handle and creates a new serial object.
+    """
+
+    deadline = time.monotonic() + _HELLO_RETRY_SECONDS
     last_error: Exception | None = None
 
-    for attempt in range(3):
+    while time.monotonic() < deadline:
         try:
             return _ORIGINAL_HELLO(self)
         except (core.ProtocolError, core.serial.SerialException, OSError) as exc:
             last_error = exc
 
-            if attempt >= 2:
-                break
+        port = self._stable_port
+        baudrate = self._stable_baudrate
+        timeout = self._stable_timeout
+        _raw_close(self)
+        time.sleep(_RETRY_DELAY_SECONDS)
 
-            port = self._stable_port
-            baudrate = self._stable_baudrate
-            timeout = self._stable_timeout
-            _raw_close(self)
-            time.sleep(_RETRY_DELAY_SECONDS)
-            _open_ready(
-                self,
-                port=port,
-                baudrate=baudrate,
-                timeout=timeout,
-                deadline=time.monotonic() + _OPEN_RETRY_SECONDS,
-            )
+        remaining = deadline - time.monotonic()
+        if remaining <= 0.0:
+            break
 
-    assert last_error is not None
-    raise last_error
+        _open_ready(
+            self,
+            port=port,
+            baudrate=baudrate,
+            timeout=timeout,
+            deadline=time.monotonic() + min(_OPEN_RETRY_SECONDS, remaining),
+        )
+
+    if last_error is not None:
+        raise core.ProtocolError(
+            f"controller did not complete HELLO within "
+            f"{_HELLO_RETRY_SECONDS:.0f} seconds: {last_error}"
+        ) from last_error
+    raise core.ProtocolError(
+        f"controller did not complete HELLO within "
+        f"{_HELLO_RETRY_SECONDS:.0f} seconds"
+    )
 
 
 def _port_identity(port: str) -> tuple[int | None, int | None, str | None]:
