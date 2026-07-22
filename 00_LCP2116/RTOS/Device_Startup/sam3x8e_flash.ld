@@ -58,5 +58,10 @@ HEAP_SIZE = DEFINED(HEAP_SIZE) ? HEAP_SIZE : 0x200;
 
 INCLUDE sam3xa_flash.ld
 
-ASSERT(_etext <= ORIGIN(config),
-       "Application image overlaps reserved internal configuration Flash")
+/*
+ * `.relocate` выполняется из RAM, но её initial image также занимает Flash
+ * сразу после `_etext`. Проверяется полный Flash load image, а не только code.
+ */
+PROVIDE(_flash_image_end = LOADADDR(.relocate) + SIZEOF(.relocate));
+ASSERT(_flash_image_end <= ORIGIN(config),
+       "Application Flash image overlaps reserved configuration area")
