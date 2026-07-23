@@ -1,16 +1,12 @@
 ﻿/**
  * @file field_status.cpp
  * @brief Реализация service console для FieldSensor S1..S4.
- *
- * Отчёт разделяет параметры прибора, состояние обмена, значения и счётчики.
- * При добавлении полей в FieldSensorConfig или FieldSensorPortState выводите их
- * в соответствующей логической группе и не объединяйте несвязанные поля в одну
- * строку длиннее терминального окна.
  */
 
 #include "field_status.hpp"
 #include "diagnostic_output.hpp"
 
+#include "../config/lcp_config_service.hpp"
 #include "../field/field_sensor_service.hpp"
 #include "../../board/lcp_field_ports.hpp"
 #include "../../platform/platform.hpp"
@@ -123,9 +119,6 @@ void print_port(LcpFieldPortId port_id)
 
 void field_status_print_report(void)
 {
-    const FieldSerialConfigReport& config_report =
-        field_sensor_service_serial_config_report();
-
     diagnostic_print_section("FIELDSENSOR S1..S4");
 
     diagnostic_print_assignment("service");
@@ -142,20 +135,12 @@ void field_status_print_report(void)
     diagnostic_print_assignment("device_config_location");
     SerialUSB.print("field_sensor_service.cpp\r\n");
 
-    diagnostic_print_assignment("baud_file");
-    SerialUSB.print("baud.TXT, ");
-    diagnostic_print_assignment("result");
-    SerialUSB.print(sd_config_result_text(config_report.baud_result));
-    SerialUSB.print("\r\n");
-
-    diagnostic_print_assignment("parity_file");
-    SerialUSB.print("Parity.TXT, ");
-    diagnostic_print_assignment("result");
-    SerialUSB.print(sd_config_result_text(config_report.parity_result));
-    SerialUSB.print("\r\n");
-
-    diagnostic_print_assignment("any_serial_value_loaded_from_sd");
-    SerialUSB.print((config_report.loaded_from_sd != 0U) ? "yes" : "no");
+    diagnostic_print_assignment("serial_config_source");
+    SerialUSB.print(lcp_config_source_text(lcp_config_service_source()));
+    SerialUSB.print(", ");
+    diagnostic_print_assignment("config_generation");
+    SerialUSB.print(static_cast<unsigned long>(
+        lcp_config_service_generation()));
     SerialUSB.print("\r\n");
 
     for (uint8_t index = 0U;
@@ -191,14 +176,14 @@ uint8_t field_status_handle_command(const char* command)
     if (strcmp(command, "field resume") == 0)
     {
         field_sensor_service_resume();
-        SerialUSB.print("FieldSensor polling: running\r\n");
+        SerialUSB.print("FieldSensor polling = running\r\n");
         return 1U;
     }
 
     if (strcmp(command, "field reload") == 0)
     {
         field_sensor_service_request_config_reload();
-        SerialUSB.print("FieldSensor serial reload: pending\r\n");
+        SerialUSB.print("FieldSensor active configuration reload = pending\r\n");
         return 1U;
     }
 

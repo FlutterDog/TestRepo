@@ -7,8 +7,8 @@
 #include "x2x_catalog.hpp"
 #include "x2x_module.hpp"
 #include "modules/x2x_module_common.hpp"
+#include "../config/lcp_config_service.hpp"
 #include "../../board/lcp_x2x_port.hpp"
-#include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
 #include "../../platform/platform.hpp"
 
 #include <stddef.h>
@@ -17,13 +17,12 @@
 
 namespace
 {
-static const uint32_t X2X_CONFIG_RETRY_PERIOD_MS = 1000U;
 static const uint32_t X2X_MODULE_CYCLE_GAP_MS = 50U;
 static const uint32_t X2X_MODBUS_INTERFRAME_GAP_MS = 5U;
 
 X2XConfig g_active_config;
 X2XConfigError g_last_config_error;
-X2XConfigResult g_last_config_result = X2X_CONFIG_STORAGE_NOT_READY;
+X2XConfigResult g_last_config_result = X2X_CONFIG_OK;
 X2XRegistryResult g_last_registry_result = X2X_REGISTRY_INVALID_CONFIG;
 ModbusRtuMaster g_modbus_master;
 X2XModuleRuntime g_module_runtime[X2X_MAX_MODULES + 1U];
@@ -36,7 +35,7 @@ uint8_t g_reload_requested = 0U;
 uint8_t g_current_slave = 0U;
 uint8_t g_cycle_in_progress = 0U;
 uint32_t g_next_cycle_ms = 0U;
-uint32_t g_last_reload_attempt_ms = 0U;
+uint32_t g_applied_config_generation = 0U;
 
 void reset_runtime_state(void)
 {
@@ -59,36 +58,39 @@ X2XConfigResult apply_config_now(void)
 {
     X2XConfig candidate_config;
     X2XConfigError candidate_error;
+    x2x_config_reset(candidate_config, candidate_error);
 
-    g_last_reload_attempt_ms = millis();
-    g_last_config_result = x2x_config_load(X2X_CONFIG_FILE_NAME,
-                                           candidate_config,
-                                           candidate_error);
-    g_last_config_error = candidate_error;
     g_reload_requested = 0U;
 
-    if (g_last_config_result != X2X_CONFIG_OK)
+    if (lcp_config_bundle_x2x(lcp_config_service_active(),
+                              candidate_config) == 0U)
     {
+        g_last_config_result = X2X_CONFIG_INVALID_DEVICE_ID;
+        g_last_config_error.result = X2X_CONFIG_INVALID_DEVICE_ID;
+        g_last_config_error.physical_line = 0U;
+        g_last_config_error.value = 0L;
         return g_last_config_result;
     }
 
-    g_last_registry_result =
+    const X2XRegistryResult registry_result =
         x2x_registry_build(candidate_config, X2X_DEFAULT_ASDU);
 
-    if (g_last_registry_result != X2X_REGISTRY_OK)
+    if (registry_result != X2X_REGISTRY_OK)
     {
+        g_last_registry_result = registry_result;
         g_last_config_result = X2X_CONFIG_REGISTRY_BUILD_FAILED;
         g_last_config_error.result = X2X_CONFIG_REGISTRY_BUILD_FAILED;
         g_last_config_error.physical_line = 0U;
-        g_last_config_error.value =
-            static_cast<int32_t>(g_last_registry_result);
-        g_config_loaded = 0U;
-        reset_runtime_state();
+        g_last_config_error.value = static_cast<int32_t>(registry_result);
         return g_last_config_result;
     }
 
     g_active_config = candidate_config;
+    g_last_config_error = candidate_error;
+    g_last_config_result = X2X_CONFIG_OK;
+    g_last_registry_result = X2X_REGISTRY_OK;
     g_config_loaded = 1U;
+    g_applied_config_generation = lcp_config_service_generation();
     reset_runtime_state();
     return X2X_CONFIG_OK;
 }
@@ -188,28 +190,20 @@ void x2x_service_init(void)
     g_current_slave = 0U;
     g_cycle_in_progress = 0U;
     g_next_cycle_ms = 0U;
-    g_last_reload_attempt_ms = millis() - X2X_CONFIG_RETRY_PERIOD_MS;
-    g_last_config_result = X2X_CONFIG_STORAGE_NOT_READY;
+    g_applied_config_generation = 0U;
+    g_last_config_result = X2X_CONFIG_OK;
     g_last_registry_result = X2X_REGISTRY_INVALID_CONFIG;
     memset(&g_waveform, 0, sizeof(g_waveform));
-
-    if (lcp_sd_storage_ready() != 0U)
-    {
-        (void)apply_config_now();
-    }
+    (void)apply_config_now();
 }
 
 void x2x_service_poll(void)
 {
     const uint32_t now_ms = millis();
 
-    if ((g_config_loaded == 0U) &&
-        (g_reload_requested == 0U) &&
-        (lcp_sd_storage_ready() != 0U) &&
-        ((uint32_t)(now_ms - g_last_reload_attempt_ms) >=
-         X2X_CONFIG_RETRY_PERIOD_MS))
+    if (g_applied_config_generation != lcp_config_service_generation())
     {
-        (void)apply_config_now();
+        g_reload_requested = 1U;
     }
 
     if (g_cycle_in_progress != 0U)

@@ -5,17 +5,15 @@
 
 #include "ethernet_modbus_service.hpp"
 
+#include "../config/lcp_config_service.hpp"
 #include "../field/field_sensor_service.hpp"
 #include "../../board/lcp_ethernet.hpp"
 #include "../../hal/w5500_lite.hpp"
-#include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
-#include "../../platform/platform.hpp"
 
 #include <string.h>
 
 namespace
 {
-constexpr uint32_t ETHERNET_CONFIG_WAIT_MS = 2000U;
 constexpr uint8_t W5500_SOCKET_ESTABLISHED = 0x17U;
 constexpr uint8_t MODBUS_EXCEPTION_ILLEGAL_ADDRESS = 0x02U;
 constexpr uint16_t RX_CHUNK_CAPACITY = 128U;
@@ -29,8 +27,8 @@ static_assert(LCP_MODBUS_TCP_HOLDING_COUNT ==
 EthernetModbusInterfaceState g_interfaces[LCP_ETHERNET_COUNT];
 uint16_t g_holding[LCP_MODBUS_TCP_HOLDING_COUNT];
 uint8_t g_rx_chunk[LCP_ETHERNET_COUNT][RX_CHUNK_CAPACITY];
-uint8_t g_reload_pending = 1U;
-uint32_t g_start_ms = 0U;
+uint8_t g_reload_pending = 0U;
+uint32_t g_applied_config_generation = 0U;
 
 LcpEthernetId normalize_ethernet_id(LcpEthernetId ethernet_id)
 {
@@ -108,13 +106,24 @@ uint8_t read_holding(void*,
     return 0U;
 }
 
+void prepare_internal_config_report(
+    EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT])
+{
+    ethernet_network_config_prepare_reports(reports, SD_CONFIG_OK);
+
+    for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
+    {
+        reports[index].any_loaded_from_sd = 0U;
+    }
+}
+
 void apply_configuration(void)
 {
     W5500NetworkConfig configs[LCP_ETHERNET_COUNT];
     EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT];
 
-    ethernet_network_config_set_defaults(configs);
-    ethernet_network_config_load(configs, reports);
+    lcp_config_bundle_ethernet(lcp_config_service_active(), configs);
+    prepare_internal_config_report(reports);
     lcp_ethernet_init_pins();
 
     for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
@@ -133,10 +142,11 @@ void apply_configuration(void)
         if (interface_state.init_ok != 0U)
         {
             w5500_lite_tcp_server_begin(static_cast<LcpEthernetId>(index),
-                                         LCP_MODBUS_TCP_PORT);
+                                        LCP_MODBUS_TCP_PORT);
         }
     }
 
+    g_applied_config_generation = lcp_config_service_generation();
     g_reload_pending = 0U;
 }
 
@@ -240,38 +250,23 @@ void poll_interface(LcpEthernetId ethernet_id)
 
 void ethernet_modbus_service_init(void)
 {
-    W5500NetworkConfig defaults[LCP_ETHERNET_COUNT];
-    EthernetNetworkConfigReport reports[LCP_ETHERNET_COUNT];
-
     memset(g_interfaces, 0, sizeof(g_interfaces));
     memset(g_holding, 0, sizeof(g_holding));
-    ethernet_network_config_set_defaults(defaults);
-    ethernet_network_config_prepare_reports(reports, SD_CONFIG_NOT_ATTEMPTED);
-
-    for (uint8_t index = 0U; index < LCP_ETHERNET_COUNT; ++index)
-    {
-        g_interfaces[index].config = defaults[index];
-        g_interfaces[index].config_report = reports[index];
-        modbus_tcp_server_init(g_interfaces[index].server);
-    }
-
-    g_reload_pending = 1U;
-    g_start_ms = millis();
+    g_reload_pending = 0U;
+    g_applied_config_generation = 0U;
+    apply_configuration();
 }
 
 void ethernet_modbus_service_poll(void)
 {
+    if (g_applied_config_generation != lcp_config_service_generation())
+    {
+        g_reload_pending = 1U;
+    }
+
     if (g_reload_pending != 0U)
     {
-        if ((lcp_sd_storage_ready() != 0U) ||
-            ((uint32_t)(millis() - g_start_ms) >= ETHERNET_CONFIG_WAIT_MS))
-        {
-            apply_configuration();
-        }
-        else
-        {
-            return;
-        }
+        apply_configuration();
     }
 
     update_holding_map();
@@ -282,7 +277,6 @@ void ethernet_modbus_service_poll(void)
 void ethernet_modbus_service_request_reload(void)
 {
     g_reload_pending = 1U;
-    g_start_ms = millis();
 }
 
 uint8_t ethernet_modbus_service_reload_pending(void)

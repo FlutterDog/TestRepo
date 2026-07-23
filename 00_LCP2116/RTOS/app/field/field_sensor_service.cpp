@@ -4,7 +4,7 @@
  */
 
 #include "field_sensor_service.hpp"
-#include "../../libs/lcp_sd_storage/lcp_sd_storage.hpp"
+#include "../config/lcp_config_service.hpp"
 #include "../../platform/platform.hpp"
 
 #include <string.h>
@@ -15,7 +15,6 @@ constexpr uint8_t FIELD_SENSOR_CONNECTION_LOSS_THRESHOLD = 5U;
 constexpr uint32_t FIELD_SENSOR_DEFAULT_POLL_PERIOD_MS = 300U;
 constexpr uint32_t FIELD_SENSOR_DEFAULT_TIMEOUT_MS = 500U;
 constexpr uint32_t FIELD_SENSOR_MODBUS_INTERFRAME_GAP_MS = 5U;
-constexpr uint32_t FIELD_SENSOR_CONFIG_WAIT_MS = 2000U;
 
 FieldSensorConfig g_configs[LCP_FIELD_PORT_COUNT];
 FieldSensorPortState g_ports[LCP_FIELD_PORT_COUNT];
@@ -27,7 +26,7 @@ FieldSerialConfigReport g_serial_config_report =
 };
 uint8_t g_paused = 0U;
 uint8_t g_config_reload_pending = 0U;
-uint32_t g_config_wait_start_ms = 0U;
+uint32_t g_applied_config_generation = 0U;
 
 LcpFieldPortId normalize_port_id(LcpFieldPortId port_id)
 {
@@ -101,31 +100,21 @@ void initialize_runtime(void)
     }
 }
 
-void apply_sd_serial_config(void)
+void apply_active_serial_config(void)
 {
     LcpFieldPortConfig serial[LCP_FIELD_PORT_COUNT];
-
-    for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
-    {
-        serial[index] = g_configs[index].serial;
-    }
-
-    field_serial_config_load(serial, &g_serial_config_report);
+    lcp_config_bundle_field_serial(lcp_config_service_active(), serial);
 
     for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
     {
         g_configs[index].serial = serial[index];
     }
 
-    initialize_runtime();
-    g_config_reload_pending = 0U;
-}
-
-void finish_config_wait_with_defaults(void)
-{
-    g_serial_config_report.baud_result = SD_CONFIG_CARD_NOT_READY;
-    g_serial_config_report.parity_result = SD_CONFIG_CARD_NOT_READY;
+    g_serial_config_report.baud_result = SD_CONFIG_OK;
+    g_serial_config_report.parity_result = SD_CONFIG_OK;
     g_serial_config_report.loaded_from_sd = 0U;
+    g_applied_config_generation = lcp_config_service_generation();
+    initialize_runtime();
     g_config_reload_pending = 0U;
 }
 
@@ -243,37 +232,30 @@ void poll_port(LcpFieldPortId port_id, uint32_t now_ms)
 void field_sensor_service_init(void)
 {
     set_default_configs();
-    initialize_runtime();
     g_paused = 0U;
-    g_config_reload_pending = 1U;
-    g_config_wait_start_ms = millis();
+    g_config_reload_pending = 0U;
+    g_applied_config_generation = 0U;
+    apply_active_serial_config();
 }
 
 void field_sensor_service_poll(void)
 {
     const uint32_t now_ms = millis();
 
+    if (g_applied_config_generation != lcp_config_service_generation())
+    {
+        g_config_reload_pending = 1U;
+    }
+
     for (uint8_t index = 0U; index < LCP_FIELD_PORT_COUNT; ++index)
     {
         poll_port(static_cast<LcpFieldPortId>(index), now_ms);
     }
 
-    if ((g_config_reload_pending == 0U) ||
-        (all_requests_idle() == 0U))
+    if ((g_config_reload_pending != 0U) &&
+        (all_requests_idle() != 0U))
     {
-        return;
-    }
-
-    if (lcp_sd_storage_ready() != 0U)
-    {
-        apply_sd_serial_config();
-        return;
-    }
-
-    if ((uint32_t)(now_ms - g_config_wait_start_ms) >=
-        FIELD_SENSOR_CONFIG_WAIT_MS)
-    {
-        finish_config_wait_with_defaults();
+        apply_active_serial_config();
     }
 }
 
@@ -304,7 +286,6 @@ uint8_t field_sensor_service_paused(void)
 void field_sensor_service_request_config_reload(void)
 {
     g_config_reload_pending = 1U;
-    g_config_wait_start_ms = millis();
 }
 
 uint8_t field_sensor_service_config_reload_pending(void)

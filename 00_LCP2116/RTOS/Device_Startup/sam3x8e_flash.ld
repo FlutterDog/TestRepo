@@ -35,12 +35,20 @@ OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
 SEARCH_DIR(.)
 
-/* Memory Spaces Definitions */
+/*
+ * Последние 32 KiB Flash1 исключены из области программы и используются
+ * сервисом внутренней конфигурации как два независимых слота по 16 KiB.
+ */
 MEMORY
 {
-  rom (rx)  : ORIGIN = 0x00080000, LENGTH = 0x00080000
-  ram (rwx) : ORIGIN = 0x20000000, LENGTH = 0x00018000
+  rom (rx)     : ORIGIN = 0x00080000, LENGTH = 0x00078000
+  config (rx)  : ORIGIN = 0x000F8000, LENGTH = 0x00008000
+  ram (rwx)    : ORIGIN = 0x20000000, LENGTH = 0x00018000
 }
+
+PROVIDE(_config_flash_start = ORIGIN(config));
+PROVIDE(_config_flash_end = ORIGIN(config) + LENGTH(config));
+PROVIDE(_config_flash_slot_size = LENGTH(config) / 2);
 
 /* The stack size used by the application. NOTE: you need to adjust according to your application. */
 STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : 0x400;
@@ -49,3 +57,11 @@ STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : 0x400;
 HEAP_SIZE = DEFINED(HEAP_SIZE) ? HEAP_SIZE : 0x200;
 
 INCLUDE sam3xa_flash.ld
+
+/*
+ * `.relocate` выполняется из RAM, но её initial image также занимает Flash
+ * сразу после `_etext`. Проверяется полный Flash load image, а не только code.
+ */
+PROVIDE(_flash_image_end = LOADADDR(.relocate) + SIZEOF(.relocate));
+ASSERT(_flash_image_end <= ORIGIN(config),
+       "Application Flash image overlaps reserved configuration area")
