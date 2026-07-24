@@ -946,9 +946,9 @@ byte order = little-endian
 | 16 | 4 | payload CRC32 |
 | 20 | 4 | header CRC32 по байтам `0..19` |
 
-CRC32 соответствует стандартному алгоритму, используемому `zlib.crc32` и библиотекой `lcp_crc32`.
+Ответ повторяет `command` и `request ID` запроса, помещает результат в поле `status` и использует нулевые flags. Request с ненулевым полем `status` отклоняется. Поле `flags` в request зарезервировано; host protocol version 1 должен передавать 0.
 
-В response firmware повторяет `command` и `request ID` исходного request, помещает результат в поле `status` и в текущей версии возвращает `flags = 0`.
+CRC32 соответствует стандартному алгоритму, используемому `zlib.crc32` и библиотекой `lcp_crc32`.
 
 #### Команды
 
@@ -997,7 +997,7 @@ offset 8  104 bytes LcpConfigBundle
 - возвращает `NO_CHANGE`, если bundle полностью совпадает с активным;
 - либо немедленно возвращает `ACCEPTED` и запускает неблокирующую запись;
 - host опрашивает `GET_STATUS`; сам кадр ответа имеет status `OK`, а `writer state` и `writer result` находятся в payload;
-- после записи record page, commit page и read-back verification `writer state` становится `COMPLETE`, а `writer result` — `REBOOT_REQUIRED`.
+- после записи record page, commit page и read-back verification `writer state` становится `COMPLETE`, а `writer result` — `REBOOT_REQUIRED`. До reboot поля active source, active slot, active sequence, active CRC32 и generation относятся к текущему runtime; новая запись описывается target slot и target sequence.
 
 #### Ответ `HELLO`
 
@@ -3072,9 +3072,22 @@ defaults
 
 Timeout внешнего интерфейса, к которому не подключён ответчик, не является отказом прошивки. Производственная проверка полной физической цепи S1–S4, Ethernet и X2X выполняется отдельным стендом с внешними ответчиками.
 
-### 19.7 Объём минимального регрессионного теста после изменения
+### 19.7 Минимальный release checklist после изменения
 
-При последующей модификации firmware рекомендуется повторить:
+Перед публикацией следующей версии необходимо:
+
+1. проверить чистое состояние рабочей копии;
+2. обновить `version.hpp`, stage и документацию;
+3. убедиться, что тестовые JSON, build artifacts и `__pycache__` не попали в commit;
+4. выполнить `py_compile` обоих Python-файлов;
+5. выполнить отдельные Clean/Build конфигураций Debug и Release;
+6. подтвердить 0 compiler errors и 0 source warnings;
+7. зафиксировать Flash, `.data`, `.bss`, linker SRAM, heap peak и stack peak;
+8. прошить именно Release build;
+9. выполнить аппаратный smoke test;
+10. проверить итоговый diff, PR и неизменяемый release tag.
+
+Минимальный набор команд smoke test:
 
 ```text
 version
@@ -3092,10 +3105,9 @@ time
 watchdog
 ```
 
-и отдельно проверить:
+Отдельно проверяются:
 
-- Debug/Release build;
-- A/B selection и rollback;
+- A/B selection, rollback и erase;
 - USB read/write/reboot/no-change;
 - SD scan/import;
 - Modbus RTU/TCP;
@@ -3198,7 +3210,7 @@ watchdog
 00_LCP2116/RTOS
 ```
 
-в состоянии тега `v1.02.0` содержит:
+содержит передаваемый проект:
 
 - исходный код LCP Basic Firmware;
 - проект Microchip Studio;
@@ -3210,7 +3222,11 @@ watchdog
 - служебную текстовую консоль;
 - reference Python utility;
 - пример полного TXT-комплекта;
-- настоящее руководство.
+- основное руководство пользователя и разработчика.
+
+Проверенное состояние firmware-кода зафиксировано тегом `v1.02.0` на commit
+`be2071b2e307f4d76bafe63cc59804982a7552d8`. Документационные исправления могут
+находиться в более позднем commit, но не изменяют бинарное поведение firmware 1.02.0.
 
 В микроконтроллер загружается только собранный образ прошивки. README, Python-скрипты и исходные файлы используются на компьютере и не записываются в ATSAM3X8E.
 
@@ -3267,4 +3283,4 @@ LCP Basic Firmware 1.02.0
 
 ## Статус документа
 
-Документ объединяет эксплуатационные и разработческие сведения для `LCP Basic Firmware 1.02.0`. Содержание актуализировано по исходному коду и результатам испытаний версии 1.02.0.
+Документ объединяет эксплуатационные и разработческие сведения для `LCP Basic Firmware 1.02.0`. Содержание актуализировано по исходному коду и результатам испытаний версии 1.02.0. Эта редакция README является документационным исправлением; исходный код и бинарное поведение тега `v1.02.0` не изменялись.
