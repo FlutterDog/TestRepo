@@ -1,0 +1,161 @@
+name: Fix LCP2116 README links
+
+on:
+  push:
+    branches:
+      - agent/fix-lcp2116-readme-links
+    paths:
+      - .github/workflows/fix-lcp2116-readme-links.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/fix-lcp2116-readme-links
+
+      - name: Correct README paths
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("00_LCP2116/README.md")
+          text = path.read_text(encoding="utf-8")
+
+          old_header = '<img src="IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="210"> </p> <br> <p align="center"> <img src="IMG/01.%20StartPage.png" alt="Плата LDO1128" width="450"> </p> <br> ---'
+          new_header = '''<p align="center">
+            <img src="./IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="210">
+          </p>
+          <br>
+          <p align="center">
+            <img src="./IMG/01.%20StartPage.png" alt="LCP2116" width="450">
+          </p>
+          <br>
+
+          ---'''
+          assert text.count(old_header) == 1, "Unexpected README image header"
+          text = text.replace(old_header, new_header, 1)
+
+          stray_closing_tag = '\n</div>\n\n---'
+          assert text.count(stray_closing_tag) == 1, "Unexpected README closing tag layout"
+          text = text.replace(stray_closing_tag, '\n---', 1)
+
+          old_tree = '''```text
+          main.cpp
+              точка входа и запуск FreeRTOS
+
+          app/
+              прикладные сервисы, runtime-состояния, конфигурация и диагностика
+
+          board/
+              привязка логических интерфейсов к ресурсам платы LCP2116
+
+          hal/
+              низкоуровневая работа ATSAM3X8E, SC16IS7xx, W5500 и Flash
+
+          protocol/
+              универсальные реализации Modbus RTU и Modbus TCP
+
+          platform/
+              Serial, SPI, GPIO, millis и другие platform-функции
+
+          libs/
+              независимые повторно используемые библиотеки, USB, CRC32 и SD storage
+
+          middleware/
+              FreeRTOS Kernel
+
+          tools/
+              reference Python utility конфигурирования через USB
+
+          sd_card/
+              пример совместимого канонического TXT-комплекта
+
+          IMG/
+              изображения, используемые данным README
+          ```'''
+          new_tree = '''```text
+          00_LCP2116/
+              README.md
+                  настоящее руководство
+
+              IMG/
+                  изображения, используемые данным README
+
+              RTOS/
+                  LCP_Basic.cppproj
+                      проект Microchip Studio
+
+                  main.cpp
+                      точка входа и запуск FreeRTOS
+
+                  app/
+                      прикладные сервисы, runtime-состояния, конфигурация и диагностика
+
+                  board/
+                      привязка логических интерфейсов к ресурсам платы LCP2116
+
+                  hal/
+                      низкоуровневая работа ATSAM3X8E, SC16IS7xx, W5500 и Flash
+
+                  protocol/
+                      универсальные реализации Modbus RTU и Modbus TCP
+
+                  platform/
+                      Serial, SPI, GPIO, millis и другие platform-функции
+
+                  libs/
+                      независимые повторно используемые библиотеки, USB, CRC32 и SD storage
+
+                  middleware/
+                      FreeRTOS Kernel
+
+                  tools/
+                      reference Python utility конфигурирования через USB
+
+                  sd_card/
+                      пример совместимого канонического TXT-комплекта
+          ```'''
+          assert text.count(old_tree) == 1, "Unexpected README project tree"
+          text = text.replace(old_tree, new_tree, 1)
+
+          old_command = r"python .\tools\lcp_config_usb.py"
+          new_command = r"python .\00_LCP2116\RTOS\tools\lcp_config_usb.py"
+          assert text.count(old_command) == 4, "Unexpected number of Python command paths"
+          text = text.replace(old_command, new_command)
+
+          old_entry = '''```text
+          tools/lcp_config_usb.py
+          ```'''
+          new_entry = '''[`00_LCP2116/RTOS/tools/lcp_config_usb.py`](./RTOS/tools/lcp_config_usb.py)'''
+          assert text.count(old_entry) == 1, "Unexpected user utility path block"
+          text = text.replace(old_entry, new_entry, 1)
+
+          old_core = '''```text
+          tools/_lcp_config_usb_core.py
+          ```'''
+          new_core = '''[`00_LCP2116/RTOS/tools/_lcp_config_usb_core.py`](./RTOS/tools/_lcp_config_usb_core.py)'''
+          assert text.count(old_core) == 1, "Unexpected core utility path block"
+          text = text.replace(old_core, new_core, 1)
+
+          old_troubleshooting = '`tools/lcp_config_usb.py`'
+          new_troubleshooting = '[`00_LCP2116/RTOS/tools/lcp_config_usb.py`](./RTOS/tools/lcp_config_usb.py)'
+          assert text.count(old_troubleshooting) == 1, "Unexpected troubleshooting utility path"
+          text = text.replace(old_troubleshooting, new_troubleshooting, 1)
+
+          path.write_text(text, encoding="utf-8", newline="\n")
+
+      - name: Commit README and remove temporary workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/fix-lcp2116-readme-links.yml
+          git add 00_LCP2116/README.md .github/workflows/fix-lcp2116-readme-links.yml
+          git commit -m "Fix LCP2116 README repository links"
+          git push origin HEAD:agent/fix-lcp2116-readme-links
