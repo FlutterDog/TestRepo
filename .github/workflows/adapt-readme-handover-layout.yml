@@ -1,0 +1,112 @@
+name: Adapt README handover layout
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/adapt-readme-handover-layout
+          fetch-depth: 0
+      - name: Rewrite README paths
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          p = Path('00_LCP2116/RTOS/README.md')
+          text = p.read_text(encoding='utf-8')
+          original = text
+          root = '01_Проект программы (исходники)'
+
+          text = text.replace('00_LCP2116/RTOS', root)
+          text = text.replace('00_LCP2116\\RTOS', root)
+
+          dirs = ['app','board','Config','Debug','Device_Startup','hal','libs','middleware','platform','protocol','Release','sd_card','test_output','tools']
+          for d in dirs:
+              text = re.sub(rf'(?<![\\w/]){re.escape(d)}/', f'{root}/{d}/', text)
+              text = re.sub(rf'(?<![\\w\\\\]){re.escape(d)}\\\\', f'{root}\\\\{d}\\\\', text)
+
+          text = re.sub(r'(?<![\\w/\\\\])LCP_Basic\\.cppproj', f'{root}/LCP_Basic.cppproj', text)
+          text = re.sub(r'(?<![\\w/\\\\])sam3x8e_flash\\.ld', f'{root}/sam3x8e_flash.ld', text)
+
+          text = text.replace(f'python .\\\\{root}\\\\tools\\\\lcp_config_usb.py', f'python ".\\\\{root}\\\\tools\\\\lcp_config_usb.py"')
+          text = text.replace(f'python {root}\\\\tools\\\\lcp_config_usb.py', f'python "{root}\\\\tools\\\\lcp_config_usb.py"')
+          text = text.replace(f'python {root}/tools/lcp_config_usb.py', f'python "{root}/tools/lcp_config_usb.py"')
+
+          start_marker = '### 20.1 Передаваемый проект'
+          end_marker = '### 20.2 Что может делать разработчик на основе LCP Basic'
+          start = text.index(start_marker)
+          end = text.index(end_marker)
+          section = '''### 20.1 Передаваемый проект
+
+Финальный передаваемый комплект организуется следующим образом:
+
+```text
+01_Встроенное ПО/
+├── README.md
+├── IMG/
+├── 01_Проект программы (исходники)/
+├── 02_Описание программы (функциональное)/
+└── 03_Проект программы (релиз)/
+```
+
+Каталог:
+
+```text
+01_Проект программы (исходники)
+```
+
+содержит исходный проект LCP Basic Firmware:
+
+- исходный код прошивки;
+- проект Microchip Studio `LCP_Basic.cppproj`;
+- HAL, board, protocol и service layers;
+- FreeRTOS;
+- платформенную конфигурацию schema-v1;
+- A/B Flash storage;
+- USB configuration protocol;
+- служебную текстовую консоль;
+- reference Python utility в каталоге `tools`;
+- пример полного TXT-комплекта в каталоге `sd_card`.
+
+Файл `README.md` и каталог `IMG` располагаются непосредственно в каталоге `01_Встроенное ПО`, на один уровень выше исходного проекта. Все пути к файлам исходного проекта в настоящем документе заданы относительно этого расположения.
+
+Проверенное состояние firmware-кода зафиксировано тегом `v1.02.0` на commit
+`be2071b2e307f4d76bafe63cc59804982a7552d8`. Документационные исправления могут
+находиться в более позднем commit, но не изменяют бинарное поведение firmware 1.02.0.
+
+В микроконтроллер загружается только собранный образ прошивки. README, изображения, Python-скрипты и исходные файлы используются на компьютере и не записываются в ATSAM3X8E.
+
+'''
+          text = text[:start] + section + text[end:]
+
+          assert 'src="IMG/' in text
+          assert f'{root}/IMG/' not in text
+          assert '00_LCP2116/RTOS' not in text
+          assert text != original
+          p.write_text(text, encoding='utf-8', newline='\n')
+
+      - name: Validate and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F '01_Проект программы (исходники)/tools/lcp_config_usb.py' 00_LCP2116/RTOS/README.md
+          grep -F '01_Проект программы (исходники)/app/' 00_LCP2116/RTOS/README.md
+          grep -F 'src="IMG/' 00_LCP2116/RTOS/README.md
+          ! grep -F '00_LCP2116/RTOS' 00_LCP2116/RTOS/README.md
+          git diff --check
+          rm .github/workflows/adapt-readme-handover-layout.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 00_LCP2116/RTOS/README.md .github/workflows/adapt-readme-handover-layout.yml
+          git commit -m 'Adapt README paths for final handover layout'
+          git push origin HEAD:docs/adapt-readme-handover-layout
