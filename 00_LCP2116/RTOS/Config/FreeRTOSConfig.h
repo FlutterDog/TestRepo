@@ -1,4 +1,18 @@
-﻿#ifndef FREERTOS_CONFIG_H
+﻿/**
+ * @file FreeRTOSConfig.h
+ * @brief Конфигурация FreeRTOS для базовой прошивки контроллера LCP2116.
+ *
+ * Файл задаёт частоту системного тика, размеры heap и служебных стеков,
+ * приоритеты прерываний Cortex-M3, набор включённых API и диагностические hooks.
+ * Значения согласованы с ATSAM3X8E на частоте 84 MHz и linker-конфигурацией
+ * проекта LCP Basic 1.02.0.
+ *
+ * @warning Изменение configTOTAL_HEAP_SIZE, приоритетов прерываний или mapping
+ * системных handlers требует повторной проверки сборки, SRAM, watchdog и
+ * одновременной работы USB, X2X, FieldSensor и Ethernet.
+ */
+
+#ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
 #include <stdint.h>
