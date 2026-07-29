@@ -1,4 +1,13 @@
-<img src="IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="210"> </p> <br> <p align="center"> <img src="IMG/01.%20StartPage.png" alt="Плата LDO1128" width="450"> </p> <br> ---
+<p align="center">
+  <img src="./IMG/IGAS%20Logo%20GIT.png" alt="IGAS" width="210">
+</p>
+<br>
+<p align="center">
+  <img src="./IMG/01.%20StartPage.png" alt="LCP2116" width="450">
+</p>
+<br>
+
+---
 
 
 # Lorentz
@@ -12,8 +21,6 @@
 
 Версия прошивки: **1.02.0**  
 Целевая платформа: **ATSAM3X8E / ARM Cortex-M3**
-
-</div>
 
 ---
 
@@ -244,13 +251,13 @@ python -m pip install pyserial
 Проверка связи:
 
 ```powershell
-python .\tools\lcp_config_usb.py info --port COM10
+python .\00_LCP2116\RTOS\tools\lcp_config_usb.py info --port COM10
 ```
 
 Чтение активной конфигурации:
 
 ```powershell
-python .\tools\lcp_config_usb.py read `
+python .\00_LCP2116\RTOS\tools\lcp_config_usb.py read `
     --port COM10 `
     --output .\test_output\active_config.json
 ```
@@ -258,7 +265,7 @@ python .\tools\lcp_config_usb.py read `
 Запись JSON-модели:
 
 ```powershell
-python .\tools\lcp_config_usb.py write `
+python .\00_LCP2116\RTOS\tools\lcp_config_usb.py write `
     --port COM10 `
     --input .\my_config.json
 ```
@@ -266,7 +273,7 @@ python .\tools\lcp_config_usb.py write `
 Импорт совместимого TXT-каталога и запись:
 
 ```powershell
-python .\tools\lcp_config_usb.py write-txt `
+python .\00_LCP2116\RTOS\tools\lcp_config_usb.py write-txt `
     --port COM10 `
     --directory D:\LCP_Config_USB_Test
 ```
@@ -286,38 +293,46 @@ python .\tools\lcp_config_usb.py write-txt `
 Программное обеспечение разделено на уровни с явно определённой ответственностью:
 
 ```text
-main.cpp
-    точка входа и запуск FreeRTOS
+00_LCP2116/
+    README.md
+        настоящее руководство
 
-app/
-    прикладные сервисы, runtime-состояния, конфигурация и диагностика
+    IMG/
+        изображения, используемые данным README
 
-board/
-    привязка логических интерфейсов к ресурсам платы LCP2116
+    RTOS/
+        LCP_Basic.cppproj
+            проект Microchip Studio
 
-hal/
-    низкоуровневая работа ATSAM3X8E, SC16IS7xx, W5500 и Flash
+        main.cpp
+            точка входа и запуск FreeRTOS
 
-protocol/
-    универсальные реализации Modbus RTU и Modbus TCP
+        app/
+            прикладные сервисы, runtime-состояния, конфигурация и диагностика
 
-platform/
-    Serial, SPI, GPIO, millis и другие platform-функции
+        board/
+            привязка логических интерфейсов к ресурсам платы LCP2116
 
-libs/
-    независимые повторно используемые библиотеки, USB, CRC32 и SD storage
+        hal/
+            низкоуровневая работа ATSAM3X8E, SC16IS7xx, W5500 и Flash
 
-middleware/
-    FreeRTOS Kernel
+        protocol/
+            универсальные реализации Modbus RTU и Modbus TCP
 
-tools/
-    reference Python utility конфигурирования через USB
+        platform/
+            Serial, SPI, GPIO, millis и другие platform-функции
 
-sd_card/
-    пример совместимого канонического TXT-комплекта
+        libs/
+            независимые повторно используемые библиотеки, USB, CRC32 и SD storage
 
-IMG/
-    изображения, используемые данным README
+        middleware/
+            FreeRTOS Kernel
+
+        tools/
+            reference Python utility конфигурирования через USB
+
+        sd_card/
+            пример совместимого канонического TXT-комплекта
 ```
 
 В проекте намеренно нет отдельного каталога эксплуатационной документации: основное объединённое руководство находится в настоящем `README.md`.
@@ -1079,15 +1094,11 @@ Writer states:
 
 Пользовательская точка входа:
 
-```text
-tools/lcp_config_usb.py
-```
+[`00_LCP2116/RTOS/tools/lcp_config_usb.py`](./RTOS/tools/lcp_config_usb.py)
 
 Внутренний модуль реализации протокола и schema:
 
-```text
-tools/_lcp_config_usb_core.py
-```
+[`00_LCP2116/RTOS/tools/_lcp_config_usb_core.py`](./RTOS/tools/_lcp_config_usb_core.py)
 
 Пользователь не должен запускать внутренний модуль напрямую.
 
@@ -2807,7 +2818,7 @@ config status
 1. Закрыть PuTTY и другие программы, удерживающие COM-порт.
 2. Проверить актуальный номер COM после USB reconnect.
 3. Проверить наличие `pyserial`.
-4. Запускать `tools/lcp_config_usb.py`, а не внутренний core module.
+4. Запускать [`00_LCP2116/RTOS/tools/lcp_config_usb.py`](./RTOS/tools/lcp_config_usb.py), а не внутренний core module.
 5. Сначала повторить `info`.
 6. Убедиться, что контроллер использует firmware 1.02.0 и protocol version 1.
 
