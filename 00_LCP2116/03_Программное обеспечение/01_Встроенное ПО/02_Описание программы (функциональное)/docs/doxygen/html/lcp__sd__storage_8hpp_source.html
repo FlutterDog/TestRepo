@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл libs/lcp_sd_storage/lcp_sd_storage.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__sd__storage_8hpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcp_sd_storage.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcp__sd__storage_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file lcp_sd_storage.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Минимальный SPI/FAT16/FAT32 слой microSD контроллера LCP.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Слой работает только с корневым каталогом и короткими именами FAT 8.3. Он не</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * выделяет динамическую память и вызывается последовательно из одной</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * прикладной задачи FreeRTOS.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"></span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/** @brief Результат низкоуровневой операции с microSD. */</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">   16</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32">   18</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32">LCP_SD_STORAGE_OK</a> = 0,                 <span class="comment">/**&lt; Операция завершена успешно. */</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932">   19</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932">LCP_SD_STORAGE_NO_CARD</a> = 1,            <span class="comment">/**&lt; Карта не отвечает на SPI. */</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822">   20</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822">LCP_SD_STORAGE_CARD_INIT_FAILED</a> = 2,   <span class="comment">/**&lt; SD initialization sequence не завершена. */</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b">   21</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b">LCP_SD_STORAGE_VOLUME_UNSUPPORTED</a> = 3, <span class="comment">/**&lt; Раздел или FAT не поддерживается. */</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f">   22</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f">LCP_SD_STORAGE_FILE_NOT_FOUND</a> = 4,     <span class="comment">/**&lt; Файл отсутствует в корневом каталоге. */</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77">   23</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77">LCP_SD_STORAGE_FILE_OPEN_FAILED</a> = 5,   <span class="comment">/**&lt; Directory entry найден, но файл не открыт. */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639">   24</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639">LCP_SD_STORAGE_FILE_EXISTS_ERROR</a> = 6,  <span class="comment">/**&lt; Не удалось корректно заменить существующий файл. */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1">   25</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1">LCP_SD_STORAGE_DIRECTORY_FULL</a> = 7,     <span class="comment">/**&lt; В корневом каталоге нет свободной записи. */</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946">   26</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946">LCP_SD_STORAGE_NO_FREE_CLUSTER</a> = 8,    <span class="comment">/**&lt; FAT не содержит свободного кластера. */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c">   27</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c">LCP_SD_STORAGE_READ_FAILED</a> = 9,        <span class="comment">/**&lt; Ошибка чтения блока или цепочки FAT. */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db">   28</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db">LCP_SD_STORAGE_WRITE_FAILED</a> = 10,      <span class="comment">/**&lt; Ошибка записи данных, FAT или directory entry. */</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2">   29</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2">LCP_SD_STORAGE_INVALID_NAME</a> = 11,      <span class="comment">/**&lt; Имя не соответствует поддерживаемому FAT 8.3. */</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5">   30</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5">LCP_SD_STORAGE_NOT_READY</a> = 12          <span class="comment">/**&lt; Файловая система не смонтирована. */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/** @brief Контекст последовательного чтения одного открытого файла. */</span></div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html">   34</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a6df7a70718a26f45f3e9ca6910b44220">   36</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a6df7a70718a26f45f3e9ca6910b44220">first_cluster</a>;         <span class="comment">/**&lt; Первый кластер файла. */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254">   37</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254">current_cluster</a>;       <span class="comment">/**&lt; Текущий кластер цепочки FAT. */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763">   38</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763">current_cluster_index</a>; <span class="comment">/**&lt; Номер текущего кластера относительно начала файла. */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#ac44412016e3df495556fc8382ba58c41">   39</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#ac44412016e3df495556fc8382ba58c41">file_size</a>;             <span class="comment">/**&lt; Размер файла в байтах. */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a2fa749318ce5c2174b90dcae79ef3242">   40</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a2fa749318ce5c2174b90dcae79ef3242">position</a>;              <span class="comment">/**&lt; Текущая позиция чтения. */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a98b03ca1c4b17d46fd771ae0aa1b0c59">   41</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a98b03ca1c4b17d46fd771ae0aa1b0c59">loaded_sector_lba</a>;     <span class="comment">/**&lt; LBA сектора, находящегося в sector[]. */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a4d002429a6fba93a72e5761327c86d57">   42</a></span>    uint8_t <a class="code hl_variable" href="structLcpSdReadFile.html#a4d002429a6fba93a72e5761327c86d57">sector_loaded</a>;          <span class="comment">/**&lt; Ненулевое значение, если sector[] валиден. */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a8ff7f764117efe835cf5c47bc44b33ca">   43</a></span>    uint8_t <a class="code hl_variable" href="structLcpSdReadFile.html#a8ff7f764117efe835cf5c47bc44b33ca">sector</a>[512];            <span class="comment">/**&lt; Внутренний секторный кэш открытого файла. */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @brief Инициализирует карту и монтирует поддерживаемый FAT-раздел.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * @return Код результата; при успехе lcp_sd_storage_ready() возвращает 1.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a40c613c4e2bab85000541a08b6883f54">lcp_sd_storage_begin</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"></span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/** @brief Сбрасывает runtime монтирования без изменения содержимого карты. */</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a568577ad07b12f89dec826cebd4736f1">lcp_sd_storage_reset</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"></span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/** @return 1 после успешного mount, иначе 0. */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#aa565f9519b5454bce9c360a9cf65d6e5">lcp_sd_storage_ready</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"></span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"> * @brief Возвращает текстовое описание низкоуровневого результата.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"> * @param[in] result Код операции.</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"> * @return Указатель на строковый литерал.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a09b680cf52f089aec58e9bb19e4adfff">lcp_sd_storage_result_text</a>(<a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> result);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"></span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"> * @brief Проверяет наличие файла в корневом каталоге.</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"> * @param[in] file_name Короткое имя FAT 8.3.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"> * @return 1, если обычный файл найден, иначе 0.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a0b03bab6b5e79b73d043c1a9ac668184">lcp_sd_storage_exists</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"> * @brief Открывает обычный файл корневого каталога для последовательного чтения.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"> * @param[in] file_name Короткое имя FAT 8.3.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"> * @param[out] file Контекст, принадлежащий вызывающему коду.</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"> * @return Код результата.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a64ef6f8162a8504a54114ed6213eae65">lcp_sd_storage_open_read</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                                            <a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a>* file);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment"></span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> * @brief Читает следующий байт открытого файла.</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"> * @param[in,out] file Контекст из lcp_sd_storage_open_read().</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment"> * @return Байт 0..255 либо -1 при EOF или ошибке.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">int</span> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#ae397c10353ca985d4b6cdd74e3033fa0">lcp_sd_storage_read_byte</a>(<a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a>* file);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"></span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> * @brief Закрывает контекст последовательного чтения.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> * @param[in,out] file Контекст файла; указатель может быть null.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a733bf3da34c3e2aa96609d86aa3d3cd2">lcp_sd_storage_close_read</a>(<a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a>* file);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"></span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"> * @brief Записывает файл в корневой каталог с заменой существующего.</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> * @param[in] file_name Короткое имя FAT 8.3.</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> * @param[in] data Буфер данных.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> * @param[in] length Размер в байтах.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> * @return Код результата.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a23dc23fe8e1467edd153cab22478a90c">lcp_sd_storage_write_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                             <span class="keyword">const</span> uint8_t* data,</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                             <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment"></span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">/** @return Тип смонтированной FAT: 16, 32 или 0 до mount. */</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a4e7d932e06f89076e5274207590d01b2">lcp_sd_storage_fat_type</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"></span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">/** @return Количество секторов в кластере либо 0 до mount. */</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#af3d952cb49058b95d8f84929a2e11496">lcp_sd_storage_sectors_per_cluster</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a09b680cf52f089aec58e9bb19e4adfff"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a09b680cf52f089aec58e9bb19e4adfff">lcp_sd_storage_result_text</a></div><div class="ttdeci">const char * lcp_sd_storage_result_text(LcpSdStorageResult result)</div><div class="ttdoc">Возвращает текстовое описание низкоуровневого результата.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l00938">lcp_sd_storage.cpp:938</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a0b03bab6b5e79b73d043c1a9ac668184"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a0b03bab6b5e79b73d043c1a9ac668184">lcp_sd_storage_exists</a></div><div class="ttdeci">uint8_t lcp_sd_storage_exists(const char *file_name)</div><div class="ttdoc">Проверяет наличие файла в корневом каталоге.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l00986">lcp_sd_storage.cpp:986</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a23dc23fe8e1467edd153cab22478a90c"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a23dc23fe8e1467edd153cab22478a90c">lcp_sd_storage_write_file</a></div><div class="ttdeci">LcpSdStorageResult lcp_sd_storage_write_file(const char *file_name, const uint8_t *data, size_t length)</div><div class="ttdoc">Записывает файл в корневой каталог с заменой существующего.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l01113">lcp_sd_storage.cpp:1113</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a40c613c4e2bab85000541a08b6883f54"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a40c613c4e2bab85000541a08b6883f54">lcp_sd_storage_begin</a></div><div class="ttdeci">LcpSdStorageResult lcp_sd_storage_begin(void)</div><div class="ttdoc">Инициализирует карту и монтирует поддерживаемый FAT-раздел.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l00904">lcp_sd_storage.cpp:904</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a4e7d932e06f89076e5274207590d01b2"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a4e7d932e06f89076e5274207590d01b2">lcp_sd_storage_fat_type</a></div><div class="ttdeci">uint8_t lcp_sd_storage_fat_type(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l01194">lcp_sd_storage.cpp:1194</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a568577ad07b12f89dec826cebd4736f1"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a568577ad07b12f89dec826cebd4736f1">lcp_sd_storage_reset</a></div><div class="ttdeci">void lcp_sd_storage_reset(void)</div><div class="ttdoc">Сбрасывает runtime монтирования без изменения содержимого карты.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l00928">lcp_sd_storage.cpp:928</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a64ef6f8162a8504a54114ed6213eae65"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a64ef6f8162a8504a54114ed6213eae65">lcp_sd_storage_open_read</a></div><div class="ttdeci">LcpSdStorageResult lcp_sd_storage_open_read(const char *file_name, LcpSdReadFile *file)</div><div class="ttdoc">Открывает обычный файл корневого каталога для последовательного чтения.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l01010">lcp_sd_storage.cpp:1010</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a733bf3da34c3e2aa96609d86aa3d3cd2"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a733bf3da34c3e2aa96609d86aa3d3cd2">lcp_sd_storage_close_read</a></div><div class="ttdeci">void lcp_sd_storage_close_read(LcpSdReadFile *file)</div><div class="ttdoc">Закрывает контекст последовательного чтения.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l01105">lcp_sd_storage.cpp:1105</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a></div><div class="ttdeci">LcpSdStorageResult</div><div class="ttdoc">Результат низкоуровневой операции с microSD.</div><div class="ttdef"><b>Определения</b> <a href="#l00016">lcp_sd_storage.hpp:17</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2">LCP_SD_STORAGE_INVALID_NAME</a></div><div class="ttdeci">@ LCP_SD_STORAGE_INVALID_NAME</div><div class="ttdef"><b>Определения</b> <a href="#l00029">lcp_sd_storage.hpp:29</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c">LCP_SD_STORAGE_READ_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_READ_FAILED</div><div class="ttdef"><b>Определения</b> <a href="#l00027">lcp_sd_storage.hpp:27</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5">LCP_SD_STORAGE_NOT_READY</a></div><div class="ttdeci">@ LCP_SD_STORAGE_NOT_READY</div><div class="ttdef"><b>Определения</b> <a href="#l00030">lcp_sd_storage.hpp:30</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1">LCP_SD_STORAGE_DIRECTORY_FULL</a></div><div class="ttdeci">@ LCP_SD_STORAGE_DIRECTORY_FULL</div><div class="ttdef"><b>Определения</b> <a href="#l00025">lcp_sd_storage.hpp:25</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822">LCP_SD_STORAGE_CARD_INIT_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_CARD_INIT_FAILED</div><div class="ttdef"><b>Определения</b> <a href="#l00020">lcp_sd_storage.hpp:20</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f">LCP_SD_STORAGE_FILE_NOT_FOUND</a></div><div class="ttdeci">@ LCP_SD_STORAGE_FILE_NOT_FOUND</div><div class="ttdef"><b>Определения</b> <a href="#l00022">lcp_sd_storage.hpp:22</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db">LCP_SD_STORAGE_WRITE_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_WRITE_FAILED</div><div class="ttdef"><b>Определения</b> <a href="#l00028">lcp_sd_storage.hpp:28</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32">LCP_SD_STORAGE_OK</a></div><div class="ttdeci">@ LCP_SD_STORAGE_OK</div><div class="ttdef"><b>Определения</b> <a href="#l00018">lcp_sd_storage.hpp:18</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932">LCP_SD_STORAGE_NO_CARD</a></div><div class="ttdeci">@ LCP_SD_STORAGE_NO_CARD</div><div class="ttdef"><b>Определения</b> <a href="#l00019">lcp_sd_storage.hpp:19</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b">LCP_SD_STORAGE_VOLUME_UNSUPPORTED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_VOLUME_UNSUPPORTED</div><div class="ttdef"><b>Определения</b> <a href="#l00021">lcp_sd_storage.hpp:21</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639">LCP_SD_STORAGE_FILE_EXISTS_ERROR</a></div><div class="ttdeci">@ LCP_SD_STORAGE_FILE_EXISTS_ERROR</div><div class="ttdef"><b>Определения</b> <a href="#l00024">lcp_sd_storage.hpp:24</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946">LCP_SD_STORAGE_NO_FREE_CLUSTER</a></div><div class="ttdeci">@ LCP_SD_STORAGE_NO_FREE_CLUSTER</div><div class="ttdef"><b>Определения</b> <a href="#l00026">lcp_sd_storage.hpp:26</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77">LCP_SD_STORAGE_FILE_OPEN_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_FILE_OPEN_FAILED</div><div class="ttdef"><b>Определения</b> <a href="#l00023">lcp_sd_storage.hpp:23</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_aa565f9519b5454bce9c360a9cf65d6e5"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#aa565f9519b5454bce9c360a9cf65d6e5">lcp_sd_storage_ready</a></div><div class="ttdeci">uint8_t lcp_sd_storage_ready(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage.cpp:933</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_ae397c10353ca985d4b6cdd74e3033fa0"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#ae397c10353ca985d4b6cdd74e3033fa0">lcp_sd_storage_read_byte</a></div><div class="ttdeci">int lcp_sd_storage_read_byte(LcpSdReadFile *file)</div><div class="ttdoc">Читает следующий байт открытого файла.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l01050">lcp_sd_storage.cpp:1050</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_af3d952cb49058b95d8f84929a2e11496"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#af3d952cb49058b95d8f84929a2e11496">lcp_sd_storage_sectors_per_cluster</a></div><div class="ttdeci">uint8_t lcp_sd_storage_sectors_per_cluster(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l01199">lcp_sd_storage.cpp:1199</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html"><div class="ttname"><a href="structLcpSdReadFile.html">LcpSdReadFile</a></div><div class="ttdoc">Контекст последовательного чтения одного открытого файла.</div><div class="ttdef"><b>Определения</b> <a href="#l00034">lcp_sd_storage.hpp:35</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a2fa749318ce5c2174b90dcae79ef3242"><div class="ttname"><a href="structLcpSdReadFile.html#a2fa749318ce5c2174b90dcae79ef3242">LcpSdReadFile::position</a></div><div class="ttdeci">uint32_t position</div><div class="ttdef"><b>Определения</b> <a href="#l00040">lcp_sd_storage.hpp:40</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a4590af4c184b5d51a91161b23c34d254"><div class="ttname"><a href="structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254">LcpSdReadFile::current_cluster</a></div><div class="ttdeci">uint32_t current_cluster</div><div class="ttdef"><b>Определения</b> <a href="#l00037">lcp_sd_storage.hpp:37</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a4d002429a6fba93a72e5761327c86d57"><div class="ttname"><a href="structLcpSdReadFile.html#a4d002429a6fba93a72e5761327c86d57">LcpSdReadFile::sector_loaded</a></div><div class="ttdeci">uint8_t sector_loaded</div><div class="ttdef"><b>Определения</b> <a href="#l00042">lcp_sd_storage.hpp:42</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a6df7a70718a26f45f3e9ca6910b44220"><div class="ttname"><a href="structLcpSdReadFile.html#a6df7a70718a26f45f3e9ca6910b44220">LcpSdReadFile::first_cluster</a></div><div class="ttdeci">uint32_t first_cluster</div><div class="ttdef"><b>Определения</b> <a href="#l00036">lcp_sd_storage.hpp:36</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a8ff7f764117efe835cf5c47bc44b33ca"><div class="ttname"><a href="structLcpSdReadFile.html#a8ff7f764117efe835cf5c47bc44b33ca">LcpSdReadFile::sector</a></div><div class="ttdeci">uint8_t sector[512]</div><div class="ttdef"><b>Определения</b> <a href="#l00043">lcp_sd_storage.hpp:43</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a98b03ca1c4b17d46fd771ae0aa1b0c59"><div class="ttname"><a href="structLcpSdReadFile.html#a98b03ca1c4b17d46fd771ae0aa1b0c59">LcpSdReadFile::loaded_sector_lba</a></div><div class="ttdeci">uint32_t loaded_sector_lba</div><div class="ttdef"><b>Определения</b> <a href="#l00041">lcp_sd_storage.hpp:41</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_ac44412016e3df495556fc8382ba58c41"><div class="ttname"><a href="structLcpSdReadFile.html#ac44412016e3df495556fc8382ba58c41">LcpSdReadFile::file_size</a></div><div class="ttdeci">uint32_t file_size</div><div class="ttdef"><b>Определения</b> <a href="#l00039">lcp_sd_storage.hpp:39</a></div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_ae9dfa3d49d356f7973c5da28573c6763"><div class="ttname"><a href="structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763">LcpSdReadFile::current_cluster_index</a></div><div class="ttdeci">uint32_t current_cluster_index</div><div class="ttdef"><b>Определения</b> <a href="#l00038">lcp_sd_storage.hpp:38</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a href="dir_735c9715a8b93e0edb02fbe1da90273b.html">lcp_sd_storage</a></li><li class="navelem"><a href="lcp__sd__storage_8hpp.html">lcp_sd_storage.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

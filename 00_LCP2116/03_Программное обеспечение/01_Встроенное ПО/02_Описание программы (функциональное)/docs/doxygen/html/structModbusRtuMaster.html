@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура ModbusRtuMaster</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structModbusRtuMaster.html','','structModbusRtuMaster-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура ModbusRtuMaster</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Полное состояние одного независимого Modbus RTU master.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="modbus__rtu__master_8hpp_source.html">protocol/modbus_rtu/modbus_rtu_master.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a1954c83be346b5627d411b3b912baea7" id="r_a1954c83be346b5627d411b3b912baea7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1954c83be346b5627d411b3b912baea7">deadline_ms</a></td></tr>
+<tr class="memitem:aa30b9febe9df3df2ee6690196cbb07f8" id="r_aa30b9febe9df3df2ee6690196cbb07f8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa30b9febe9df3df2ee6690196cbb07f8">exception_code</a></td></tr>
+<tr class="memitem:a4d11360d2200d0360a1bd9684e479a67" id="r_a4d11360d2200d0360a1bd9684e479a67"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d11360d2200d0360a1bd9684e479a67">expected_response_length</a></td></tr>
+<tr class="memitem:a71df1c6a8af63ff1a633331bf1edfca7" id="r_a71df1c6a8af63ff1a633331bf1edfca7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71df1c6a8af63ff1a633331bf1edfca7">function_code</a></td></tr>
+<tr class="memitem:a38d8c5d52de6586f8238be3f68fd06f7" id="r_a38d8c5d52de6586f8238be3f68fd06f7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38d8c5d52de6586f8238be3f68fd06f7">interframe_gap_ms</a></td></tr>
+<tr class="memitem:ad9760bffc44ee32e258c46a8ded0704c" id="r_ad9760bffc44ee32e258c46a8ded0704c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9760bffc44ee32e258c46a8ded0704c">next_request_ms</a></td></tr>
+<tr class="memitem:a4ce1594ab691c716c442a4b47690a934" id="r_a4ce1594ab691c716c442a4b47690a934"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ce1594ab691c716c442a4b47690a934">read_output</a></td></tr>
+<tr class="memitem:a6d0ed8a75d2305d01c4afaf4bd5788e4" id="r_a6d0ed8a75d2305d01c4afaf4bd5788e4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d0ed8a75d2305d01c4afaf4bd5788e4">register_count</a></td></tr>
+<tr class="memitem:ab5ebcfe3b203a6d48291cf5b635ebd02" id="r_ab5ebcfe3b203a6d48291cf5b635ebd02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb">ModbusRtuResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5ebcfe3b203a6d48291cf5b635ebd02">result</a></td></tr>
+<tr class="memitem:ac26cc06bdd017dae956dbf390cf19699" id="r_ac26cc06bdd017dae956dbf390cf19699"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac26cc06bdd017dae956dbf390cf19699">rx_buffer</a> [<a class="el" href="modbus__rtu__master_8hpp.html#a0c0264845ce73f523820ff8cdd0323b6">MODBUS_RTU_MASTER_RX_CAPACITY</a>]</td></tr>
+<tr class="memitem:a0eaa976c608c1a80768e1365dd4925d1" id="r_a0eaa976c608c1a80768e1365dd4925d1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eaa976c608c1a80768e1365dd4925d1">rx_length</a></td></tr>
+<tr class="memitem:a674afcde99eba01f4ccc760f6eb07a24" id="r_a674afcde99eba01f4ccc760f6eb07a24"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a674afcde99eba01f4ccc760f6eb07a24">slave_address</a></td></tr>
+<tr class="memitem:a2be6a129939200a0632bce28fb55f3d2" id="r_a2be6a129939200a0632bce28fb55f3d2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2be6a129939200a0632bce28fb55f3d2">start_address</a></td></tr>
+<tr class="memitem:a86e70dfdf9869943166eb5c3f9779559" id="r_a86e70dfdf9869943166eb5c3f9779559"><td class="memItemLeft" align="right" valign="top"><a class="el" href="modbus__rtu__master_8hpp.html#a497201524d0a3143523f453bbd71c92c">ModbusRtuMasterState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e70dfdf9869943166eb5c3f9779559">state</a></td></tr>
+<tr class="memitem:a5e01cf92c0ca6aef3687da5c8a156099" id="r_a5e01cf92c0ca6aef3687da5c8a156099"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e01cf92c0ca6aef3687da5c8a156099">timeout_ms</a></td></tr>
+<tr class="memitem:a64bc5d7c01ce374fee351362fe9e1386" id="r_a64bc5d7c01ce374fee351362fe9e1386"><td class="memItemLeft" align="right" valign="top"><a class="el" href="modbus__rtu__master_8hpp.html#a70783538ff039a065fa105ca6221451f">ModbusRtuTransactionType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64bc5d7c01ce374fee351362fe9e1386">transaction_type</a></td></tr>
+<tr class="memitem:ab705cfb213c65655a355bbd8b6d19c40" id="r_ab705cfb213c65655a355bbd8b6d19c40"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structModbusRtuTransport.html">ModbusRtuTransport</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab705cfb213c65655a355bbd8b6d19c40">transport</a></td></tr>
+<tr class="memitem:aea4de7f0d49e9b735de1031d400495c8" id="r_aea4de7f0d49e9b735de1031d400495c8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea4de7f0d49e9b735de1031d400495c8">tx_buffer</a> [<a class="el" href="modbus__rtu__master_8hpp.html#abad1e9454563c55a5af997455a3710ba">MODBUS_RTU_MASTER_TX_CAPACITY</a>]</td></tr>
+<tr class="memitem:a0a2208aaf42743326a1ac70bdee2f09f" id="r_a0a2208aaf42743326a1ac70bdee2f09f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a2208aaf42743326a1ac70bdee2f09f">tx_length</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Полное состояние одного независимого Modbus RTU master. </p>
+<p>Структура содержит state machine и собственные RX/TX-кадры, но не выделяет динамическую память. <span class="tt"><a class="el" href="#a4ce1594ab691c716c442a4b47690a934">read_output</a></span> устанавливается только на время FC03 и должен указывать на массив не меньше <span class="tt"><a class="el" href="#a6d0ed8a75d2305d01c4afaf4bd5788e4">register_count</a></span> элементов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00092">92</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a1954c83be346b5627d411b3b912baea7" name="a1954c83be346b5627d411b3b912baea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1954c83be346b5627d411b3b912baea7">&#9670;&#160;</a></span>deadline_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusRtuMaster::deadline_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Абсолютный deadline текущей стадии. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00104">104</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00376">modbus_rtu_master_poll()</a>.</p>
+
+</div>
+</div>
+<a id="aa30b9febe9df3df2ee6690196cbb07f8" name="aa30b9febe9df3df2ee6690196cbb07f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa30b9febe9df3df2ee6690196cbb07f8">&#9670;&#160;</a></span>exception_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusRtuMaster::exception_code</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Последний exception code. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00100">100</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00437">modbus_rtu_master_exception_code()</a>.</p>
+
+</div>
+</div>
+<a id="a4d11360d2200d0360a1bd9684e479a67" name="a4d11360d2200d0360a1bd9684e479a67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d11360d2200d0360a1bd9684e479a67">&#9670;&#160;</a></span>expected_response_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusRtuMaster::expected_response_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ожидаемая длина обычного ответа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00108">108</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="a71df1c6a8af63ff1a633331bf1edfca7" name="a71df1c6a8af63ff1a633331bf1edfca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71df1c6a8af63ff1a633331bf1edfca7">&#9670;&#160;</a></span>function_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusRtuMaster::function_code</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>FC03 или FC10. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00099">99</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="a38d8c5d52de6586f8238be3f68fd06f7" name="a38d8c5d52de6586f8238be3f68fd06f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d8c5d52de6586f8238be3f68fd06f7">&#9670;&#160;</a></span>interframe_gap_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusRtuMaster::interframe_gap_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Минимальная пауза между транзакциями. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00107">107</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00234">modbus_rtu_master_init()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00246">modbus_rtu_master_reset()</a>.</p>
+
+</div>
+</div>
+<a id="ad9760bffc44ee32e258c46a8ded0704c" name="ad9760bffc44ee32e258c46a8ded0704c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9760bffc44ee32e258c46a8ded0704c">&#9670;&#160;</a></span>next_request_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusRtuMaster::next_request_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Конец обязательной межкадровой паузы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00106">106</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00234">modbus_rtu_master_init()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00265">modbus_rtu_master_ready()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00246">modbus_rtu_master_reset()</a>.</p>
+
+</div>
+</div>
+<a id="a4ce1594ab691c716c442a4b47690a934" name="a4ce1594ab691c716c442a4b47690a934"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ce1594ab691c716c442a4b47690a934">&#9670;&#160;</a></span>read_output</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t* ModbusRtuMaster::read_output</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Внешний буфер результата FC03. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00103">103</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="a6d0ed8a75d2305d01c4afaf4bd5788e4" name="a6d0ed8a75d2305d01c4afaf4bd5788e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d0ed8a75d2305d01c4afaf4bd5788e4">&#9670;&#160;</a></span>register_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusRtuMaster::register_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Количество регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00102">102</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="ab5ebcfe3b203a6d48291cf5b635ebd02" name="ab5ebcfe3b203a6d48291cf5b635ebd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ebcfe3b203a6d48291cf5b635ebd02">&#9670;&#160;</a></span>result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb">ModbusRtuResult</a> ModbusRtuMaster::result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Текущий или итоговый результат. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00097">97</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00427">modbus_rtu_master_busy()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00234">modbus_rtu_master_init()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00376">modbus_rtu_master_poll()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00265">modbus_rtu_master_ready()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00246">modbus_rtu_master_reset()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00432">modbus_rtu_master_result()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="ac26cc06bdd017dae956dbf390cf19699" name="ac26cc06bdd017dae956dbf390cf19699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac26cc06bdd017dae956dbf390cf19699">&#9670;&#160;</a></span>rx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusRtuMaster::rx_buffer[<a class="el" href="modbus__rtu__master_8hpp.html#a0c0264845ce73f523820ff8cdd0323b6">MODBUS_RTU_MASTER_RX_CAPACITY</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Внутренний RX-кадр. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00111">111</a></p>
+
+</div>
+</div>
+<a id="a0eaa976c608c1a80768e1365dd4925d1" name="a0eaa976c608c1a80768e1365dd4925d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eaa976c608c1a80768e1365dd4925d1">&#9670;&#160;</a></span>rx_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusRtuMaster::rx_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Число принятых байтов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00109">109</a></p>
+
+</div>
+</div>
+<a id="a674afcde99eba01f4ccc760f6eb07a24" name="a674afcde99eba01f4ccc760f6eb07a24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a674afcde99eba01f4ccc760f6eb07a24">&#9670;&#160;</a></span>slave_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusRtuMaster::slave_address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Адрес текущего slave, 1..247. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00098">98</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="a2be6a129939200a0632bce28fb55f3d2" name="a2be6a129939200a0632bce28fb55f3d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2be6a129939200a0632bce28fb55f3d2">&#9670;&#160;</a></span>start_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusRtuMaster::start_address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Начальный адрес регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00101">101</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="a86e70dfdf9869943166eb5c3f9779559" name="a86e70dfdf9869943166eb5c3f9779559"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86e70dfdf9869943166eb5c3f9779559">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="modbus__rtu__master_8hpp.html#a497201524d0a3143523f453bbd71c92c">ModbusRtuMasterState</a> ModbusRtuMaster::state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Текущее состояние автомата. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00095">95</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00234">modbus_rtu_master_init()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00376">modbus_rtu_master_poll()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00265">modbus_rtu_master_ready()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00246">modbus_rtu_master_reset()</a>.</p>
+
+</div>
+</div>
+<a id="a5e01cf92c0ca6aef3687da5c8a156099" name="a5e01cf92c0ca6aef3687da5c8a156099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e01cf92c0ca6aef3687da5c8a156099">&#9670;&#160;</a></span>timeout_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusRtuMaster::timeout_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Timeout ответа после окончания TX. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00105">105</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00376">modbus_rtu_master_poll()</a>.</p>
+
+</div>
+</div>
+<a id="a64bc5d7c01ce374fee351362fe9e1386" name="a64bc5d7c01ce374fee351362fe9e1386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64bc5d7c01ce374fee351362fe9e1386">&#9670;&#160;</a></span>transaction_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="modbus__rtu__master_8hpp.html#a70783538ff039a065fa105ca6221451f">ModbusRtuTransactionType</a> ModbusRtuMaster::transaction_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Тип текущей транзакции. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00096">96</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="ab705cfb213c65655a355bbd8b6d19c40" name="ab705cfb213c65655a355bbd8b6d19c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab705cfb213c65655a355bbd8b6d19c40">&#9670;&#160;</a></span>transport</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structModbusRtuTransport.html">ModbusRtuTransport</a>* ModbusRtuMaster::transport</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Transport, живущий не меньше master. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00094">94</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00234">modbus_rtu_master_init()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00376">modbus_rtu_master_poll()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00246">modbus_rtu_master_reset()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="aea4de7f0d49e9b735de1031d400495c8" name="aea4de7f0d49e9b735de1031d400495c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea4de7f0d49e9b735de1031d400495c8">&#9670;&#160;</a></span>tx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusRtuMaster::tx_buffer[<a class="el" href="modbus__rtu__master_8hpp.html#abad1e9454563c55a5af997455a3710ba">MODBUS_RTU_MASTER_TX_CAPACITY</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Внутренний TX-кадр. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00112">112</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__master_8cpp_source.html#l00276">modbus_rtu_master_start_read_holding()</a> и <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>.</p>
+
+</div>
+</div>
+<a id="a0a2208aaf42743326a1ac70bdee2f09f" name="a0a2208aaf42743326a1ac70bdee2f09f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a2208aaf42743326a1ac70bdee2f09f">&#9670;&#160;</a></span>tx_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusRtuMaster::tx_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Длина сформированного запроса. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a> строка <a class="el" href="modbus__rtu__master_8hpp_source.html#l00110">110</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>protocol/modbus_rtu/<a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structModbusRtuMaster.html">ModbusRtuMaster</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

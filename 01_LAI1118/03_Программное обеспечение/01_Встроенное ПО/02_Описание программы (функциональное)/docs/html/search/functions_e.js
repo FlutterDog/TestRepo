@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['selectledregister_0',['selectLedRegister',['../namespaceanonymous__namespace_02lai__board_8cpp_03.html#aace07a681b14961a9e449f14b8c92d9a',1,'anonymous_namespace{lai_board.cpp}']]],
+  ['selectmoderegister_1',['selectModeRegister',['../namespaceanonymous__namespace_02lai__board_8cpp_03.html#ad06b3d70b8cfaee2a7cfc2a0431acaf7',1,'anonymous_namespace{lai_board.cpp}']]],
+  ['send_2',['send',['../class_i_g_a_s__mb__485.html#a98c850faa601ee6be35218a8bff702b8',1,'IGAS_mb_485']]],
+  ['send_5freply_3',['send_reply',['../class_i_g_a_s__mb__485.html#a7d736d444ce6360b31d845dcfced88e9',1,'IGAS_mb_485']]],
+  ['sendaddressread_4',['sendAddressRead',['../namespaceanonymous__namespace_02compat__twi_8cpp_03.html#aa1a2f34bcba2e8f4683ae8b867c57948',1,'anonymous_namespace{compat_twi.cpp}']]],
+  ['sendaddresswrite_5',['sendAddressWrite',['../namespaceanonymous__namespace_02compat__twi_8cpp_03.html#ac4ee1f014d4c152ba99d83391e97d2df',1,'anonymous_namespace{compat_twi.cpp}']]],
+  ['sensortoconcentration_6',['sensorToConcentration',['../namespaceanonymous__namespace_02app_8cpp_03.html#a8cb0c78a23ab75fd030bbce00653c9f1',1,'anonymous_namespace{app.cpp}']]],
+  ['setdatarate_7',['setDataRate',['../class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c',1,'ADS1115']]],
+  ['setdelegate_8',['setDelegate',['../class_i_g_a_s__mb__485.html#abb956965f3777634deacb09ce878b1be',1,'IGAS_mb_485']]],
+  ['setgain_9',['setGain',['../class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1',1,'ADS1115']]],
+  ['setmode_10',['setMode',['../class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125',1,'ADS1115']]],
+  ['setportbits_11',['setPortBits',['../namespaceanonymous__namespace_02lai__board_8cpp_03.html#a3a182fcf9d2fc0382903a3687bbbeefe',1,'anonymous_namespace{lai_board.cpp}']]],
+  ['setshiftenable_12',['setShiftEnable',['../namespacelai__board.html#a61d7f35e99686a23772b6fa7ae1bf0de',1,'lai_board']]],
+  ['setup_13',['setup',['../app_8cpp.html#a7dfd9b79bc5a37d7df40207afbc5431f',1,'setup(void):&#160;app.cpp'],['../app_8hpp.html#a7dfd9b79bc5a37d7df40207afbc5431f',1,'setup(void):&#160;app.cpp']]],
+  ['spi_5finit_14',['spi_init',['../namespacehal.html#a389bf6229919f75199620324bdac6372',1,'hal']]],
+  ['spi_5ftxrx_15',['spi_txrx',['../namespacehal.html#a5db22b5d9f6a05e7d007dbce812d4370',1,'hal']]],
+  ['startcondition_16',['startCondition',['../namespaceanonymous__namespace_02compat__twi_8cpp_03.html#afe32a6e9b5c8f7d78851245b744ea559',1,'anonymous_namespace{compat_twi.cpp}']]],
+  ['startsingleshot_17',['startSingleShot',['../class_a_d_s1115.html#ab91f012712d5dee9ae80a4f6a0af61dc',1,'ADS1115']]],
+  ['statusledtoggle_18',['statusLedToggle',['../namespacelai__board.html#a5eecc03743472c6f01ed5efde4e7d98d',1,'lai_board']]],
+  ['statusledwrite_19',['statusLedWrite',['../namespacelai__board.html#a3fa4ca0becb7757b4966c1d671352a3e',1,'lai_board']]],
+  ['stopcondition_20',['stopCondition',['../namespaceanonymous__namespace_02compat__twi_8cpp_03.html#a3a3447e40e5c48f34bc456c93d11fcbd',1,'anonymous_namespace{compat_twi.cpp}']]]
+];

@@ -1,0 +1,687 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Файл Libs/IGAS_mb.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_i_g_a_s__mb_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл IGAS_mb.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Интерфейс ведомого устройства Modbus RTU по RS-485.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="compat_8hpp_source.html">compat.hpp</a>&quot;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="_i_g_a_s__mb_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Структуры данных</h2></td></tr>
+<tr class="memitem:IGAS_5Fmb_5F485" id="r_IGAS_5Fmb_5F485"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_g_a_s__mb__485.html">IGAS_mb_485</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ведомое устройство Modbus RTU по RS-485.  <a href="class_i_g_a_s__mb__485.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a21eb8dba0138468885a2b7f8dcac2e6d" id="r_a21eb8dba0138468885a2b7f8dcac2e6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21eb8dba0138468885a2b7f8dcac2e6d">IGAS_MB_H_</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a1e7ca9cae71ee34b6fd339e8d584d1a8" id="r_a1e7ca9cae71ee34b6fd339e8d584d1a8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_i_g_a_s__mb__485.html">IGAS_mb_485</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e7ca9cae71ee34b6fd339e8d584d1a8">IGAS_X2X_485</a></td></tr>
+<tr class="memdesc:a1e7ca9cae71ee34b6fd339e8d584d1a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Дополнительное имя класса транспорта Modbus RTU.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a5dc067f13fceb5a2ac4b5d83c997ae0b" id="r_a5dc067f13fceb5a2ac4b5d83c997ae0b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dc067f13fceb5a2ac4b5d83c997ae0b">ModbusFunctionCode</a> { <a class="el" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a> = 0x03
+, <a class="el" href="#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a> = 0x06
+, <a class="el" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a> = 0x10
+ }</td></tr>
+<tr class="memdesc:a5dc067f13fceb5a2ac4b5d83c997ae0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Поддерживаемые коды функций Modbus.  <a href="#a5dc067f13fceb5a2ac4b5d83c997ae0b">Подробнее...</a><br /></td></tr>
+<tr class="memitem:a0cae3232d9756b249ebaddc2ee1f8c50" id="r_a0cae3232d9756b249ebaddc2ee1f8c50"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50">ModbusException</a> { <br />
+&#160;&#160;<a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a> = -1
+, <a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2">EXC_FUNC_CODE</a> = 1
+, <a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280">EXC_ADDR_RANGE</a> = 2
+, <a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920">EXC_REGS_QUANT</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50a00e93edc9146c12fd21490d1a0d15f89">EXC_EXECUTE</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a0cae3232d9756b249ebaddc2ee1f8c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Коды исключений Modbus и внутренние коды обработчика.  <a href="#a0cae3232d9756b249ebaddc2ee1f8c50">Подробнее...</a><br /></td></tr>
+<tr class="memitem:a6f68bb8dcc24d63540a70bc5bcb9aac3" id="r_a6f68bb8dcc24d63540a70bc5bcb9aac3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3">ModbusFrameIndex</a> { <br />
+&#160;&#160;<a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a> = 0
+, <a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>
+, <a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a>
+, <a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a>
+, <br />
+&#160;&#160;<a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a>
+, <a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>
+, <a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892">BYTE_CNT</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a6f68bb8dcc24d63540a70bc5bcb9aac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Индексы полей внутри массива Modbus RTU кадра.  <a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:ab47fd3e6ed6318f18f3eb0e1ab2eb8ed" id="r_ab47fd3e6ed6318f18f3eb0e1ab2eb8ed"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab47fd3e6ed6318f18f3eb0e1ab2eb8ed">fsupported</a> []</td></tr>
+<tr class="memdesc:ab47fd3e6ed6318f18f3eb0e1ab2eb8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Таблица поддерживаемых кодов функций Modbus.  <br /></td></tr>
+<tr class="memitem:a41cdd946693b919f6e23bb1d70dcfb80" id="r_a41cdd946693b919f6e23bb1d70dcfb80"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41cdd946693b919f6e23bb1d70dcfb80">MAX_READ_REGS</a> = 0x0F</td></tr>
+<tr class="memdesc:a41cdd946693b919f6e23bb1d70dcfb80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальное количество регистров за один запрос FC03.  <br /></td></tr>
+<tr class="memitem:aff1cb5d2103fef17e75001afe7138dca" id="r_aff1cb5d2103fef17e75001afe7138dca"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff1cb5d2103fef17e75001afe7138dca">MAX_WRITE_REGS</a> = 0x0F</td></tr>
+<tr class="memdesc:aff1cb5d2103fef17e75001afe7138dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальное количество регистров за один запрос FC16.  <br /></td></tr>
+<tr class="memitem:a9dbccd523bb0ed9a3266bc8c448f4432" id="r_a9dbccd523bb0ed9a3266bc8c448f4432"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dbccd523bb0ed9a3266bc8c448f4432">MAX_MESSAGE_LENGTH</a> = 40</td></tr>
+<tr class="memdesc:a9dbccd523bb0ed9a3266bc8c448f4432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальная длина Modbus RTU кадра, байт.  <br /></td></tr>
+<tr class="memitem:a5bd4cd503e7a0ae467e9f4434bb7b2d6" id="r_a5bd4cd503e7a0ae467e9f4434bb7b2d6"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bd4cd503e7a0ae467e9f4434bb7b2d6">MIN_REQUEST_SIZE</a> = 8</td></tr>
+<tr class="memdesc:a5bd4cd503e7a0ae467e9f4434bb7b2d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Минимальная длина стандартного запроса Modbus RTU, байт.  <br /></td></tr>
+<tr class="memitem:a20b11ab335c10c5614b867372bc9c1ac" id="r_a20b11ab335c10c5614b867372bc9c1ac"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20b11ab335c10c5614b867372bc9c1ac">MIN_WRITE_MULTIPLE_REQUEST_SIZE</a> = 9</td></tr>
+<tr class="memdesc:a20b11ab335c10c5614b867372bc9c1ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Минимальная длина запроса FC16, байт.  <br /></td></tr>
+<tr class="memitem:af3bff94d6094c0a726233d04dba104d7" id="r_af3bff94d6094c0a726233d04dba104d7"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3bff94d6094c0a726233d04dba104d7">RESPONSE_SIZE</a> = 6</td></tr>
+<tr class="memdesc:af3bff94d6094c0a726233d04dba104d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина ответа FC06/FC16 без CRC, байт.  <br /></td></tr>
+<tr class="memitem:a1e5d916ab728e879961dc03e940c5d96" id="r_a1e5d916ab728e879961dc03e940c5d96"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e5d916ab728e879961dc03e940c5d96">EXCEPTION_SIZE</a> = 3</td></tr>
+<tr class="memdesc:a1e5d916ab728e879961dc03e940c5d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина Modbus exception-ответа без CRC, байт.  <br /></td></tr>
+<tr class="memitem:a5457e572f6d270d2d02e41ed464563a3" id="r_a5457e572f6d270d2d02e41ed464563a3"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a> = 2</td></tr>
+<tr class="memdesc:a5457e572f6d270d2d02e41ed464563a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина поля CRC16 Modbus RTU, байт.  <br /></td></tr>
+<tr class="memitem:a0462eefda0f53a25027de7a8e738a5d2" id="r_a0462eefda0f53a25027de7a8e738a5d2"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0462eefda0f53a25027de7a8e738a5d2">dotDisp</a> = 0x08</td></tr>
+<tr class="memdesc:a0462eefda0f53a25027de7a8e738a5d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг индикации активности передачи.  <br /></td></tr>
+<tr class="memitem:abcd55545c0df484c08ee3f2e113c2988" id="r_abcd55545c0df484c08ee3f2e113c2988"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcd55545c0df484c08ee3f2e113c2988">singleRegister</a> = 1</td></tr>
+<tr class="memdesc:abcd55545c0df484c08ee3f2e113c2988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Количество регистров при обработке одиночной записи.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Интерфейс ведомого устройства Modbus RTU по RS-485. </p>
+<p>Модуль реализует транспортный уровень Modbus RTU поверх UART0.</p>
+<p>Поддерживаемые функции Modbus:</p><ul>
+<li>FC03: Read Holding Registers;</li>
+<li>FC06: Write Single Register;</li>
+<li>FC16: Write Multiple Registers.</li>
+</ul>
+<p>Доступ к прикладной карте Holding-регистров выполняется через делегат, назначаемый функцией <a class="el" href="class_i_g_a_s__mb__485.html#abb956965f3777634deacb09ce878b1be" title="Назначает делегат доступа к прикладной карте регистров.">IGAS_mb_485::setDelegate()</a>.</p>
+<p>Управление направлением RS-485 выполняется через аппаратный слой платы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a></p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Макросы</h2>
+<a id="a21eb8dba0138468885a2b7f8dcac2e6d" name="a21eb8dba0138468885a2b7f8dcac2e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21eb8dba0138468885a2b7f8dcac2e6d">&#9670;&#160;</a></span>IGAS_MB_H_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IGAS_MB_H_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00004">4</a></p>
+
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
+<a id="a1e7ca9cae71ee34b6fd339e8d584d1a8" name="a1e7ca9cae71ee34b6fd339e8d584d1a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e7ca9cae71ee34b6fd339e8d584d1a8">&#9670;&#160;</a></span>IGAS_X2X_485</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_i_g_a_s__mb__485.html">IGAS_mb_485</a> <a class="el" href="#a1e7ca9cae71ee34b6fd339e8d584d1a8">IGAS_X2X_485</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Дополнительное имя класса транспорта Modbus RTU. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00483">483</a></p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a0cae3232d9756b249ebaddc2ee1f8c50" name="a0cae3232d9756b249ebaddc2ee1f8c50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cae3232d9756b249ebaddc2ee1f8c50">&#9670;&#160;</a></span>ModbusException</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a0cae3232d9756b249ebaddc2ee1f8c50">ModbusException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Коды исключений Modbus и внутренние коды обработчика. </p>
+<p>Значение NO_REPLY используется только внутри обработчика и означает, что ответный кадр формировать не требуется. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae" name="a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae"></a>NO_REPLY&#160;</td><td class="fielddoc"><p>Ответ не формируется. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2" name="a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2"></a>EXC_FUNC_CODE&#160;</td><td class="fielddoc"><p>Illegal Function. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280" name="a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280"></a>EXC_ADDR_RANGE&#160;</td><td class="fielddoc"><p>Illegal Data Address. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920" name="a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920"></a>EXC_REGS_QUANT&#160;</td><td class="fielddoc"><p>Illegal Data Value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0cae3232d9756b249ebaddc2ee1f8c50a00e93edc9146c12fd21490d1a0d15f89" name="a0cae3232d9756b249ebaddc2ee1f8c50a00e93edc9146c12fd21490d1a0d15f89"></a>EXC_EXECUTE&#160;</td><td class="fielddoc"><p>Slave Device Failure. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00110">110</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_enumvalue" href="#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a>       = -1, <span class="comment">/**&lt; Ответ не формируется. */</span></div>
+<div class="line"><span class="lineno">  113</span>    <a class="code hl_enumvalue" href="#a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2">EXC_FUNC_CODE</a>  = 1,  <span class="comment">/**&lt; Illegal Function. */</span></div>
+<div class="line"><span class="lineno">  114</span>    <a class="code hl_enumvalue" href="#a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280">EXC_ADDR_RANGE</a> = 2,  <span class="comment">/**&lt; Illegal Data Address. */</span></div>
+<div class="line"><span class="lineno">  115</span>    <a class="code hl_enumvalue" href="#a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920">EXC_REGS_QUANT</a> = 3,  <span class="comment">/**&lt; Illegal Data Value. */</span></div>
+<div class="line"><span class="lineno">  116</span>    <a class="code hl_enumvalue" href="#a0cae3232d9756b249ebaddc2ee1f8c50a00e93edc9146c12fd21490d1a0d15f89">EXC_EXECUTE</a>    = 4   <span class="comment">/**&lt; Slave Device Failure. */</span></div>
+<div class="line"><span class="lineno">  117</span>};</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50a00e93edc9146c12fd21490d1a0d15f89"><div class="ttname"><a href="#a0cae3232d9756b249ebaddc2ee1f8c50a00e93edc9146c12fd21490d1a0d15f89">EXC_EXECUTE</a></div><div class="ttdeci">@ EXC_EXECUTE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00116">IGAS_mb.h:116</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920"><div class="ttname"><a href="#a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920">EXC_REGS_QUANT</a></div><div class="ttdeci">@ EXC_REGS_QUANT</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00115">IGAS_mb.h:115</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae"><div class="ttname"><a href="#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a></div><div class="ttdeci">@ NO_REPLY</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00112">IGAS_mb.h:112</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280"><div class="ttname"><a href="#a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280">EXC_ADDR_RANGE</a></div><div class="ttdeci">@ EXC_ADDR_RANGE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00114">IGAS_mb.h:114</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2"><div class="ttname"><a href="#a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2">EXC_FUNC_CODE</a></div><div class="ttdeci">@ EXC_FUNC_CODE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00113">IGAS_mb.h:113</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6f68bb8dcc24d63540a70bc5bcb9aac3" name="a6f68bb8dcc24d63540a70bc5bcb9aac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3">&#9670;&#160;</a></span>ModbusFrameIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3">ModbusFrameIndex</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Индексы полей внутри массива Modbus RTU кадра. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f" name="a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f"></a>SLAVE&#160;</td><td class="fielddoc"><p>Адрес ведомого устройства. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af" name="a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af"></a>FUNC&#160;</td><td class="fielddoc"><p>Код функции Modbus. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11" name="a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11"></a>START_H&#160;</td><td class="fielddoc"><p>Старший байт стартового адреса. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd" name="a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd"></a>START_L&#160;</td><td class="fielddoc"><p>Младший байт стартового адреса. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7" name="a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7"></a>REGS_H&#160;</td><td class="fielddoc"><p>Старший байт количества регистров или значения FC06. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a" name="a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a"></a>REGS_L&#160;</td><td class="fielddoc"><p>Младший байт количества регистров или значения FC06. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892" name="a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892"></a>BYTE_CNT&#160;</td><td class="fielddoc"><p>Количество байт данных в запросе FC16. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00126">126</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a> = 0, <span class="comment">/**&lt; Адрес ведомого устройства. */</span></div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>,     <span class="comment">/**&lt; Код функции Modbus. */</span></div>
+<div class="line"><span class="lineno">  130</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a>,  <span class="comment">/**&lt; Старший байт стартового адреса. */</span></div>
+<div class="line"><span class="lineno">  131</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a>,  <span class="comment">/**&lt; Младший байт стартового адреса. */</span></div>
+<div class="line"><span class="lineno">  132</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a>,   <span class="comment">/**&lt; Старший байт количества регистров или значения FC06. */</span></div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>,   <span class="comment">/**&lt; Младший байт количества регистров или значения FC06. */</span></div>
+<div class="line"><span class="lineno">  134</span>    <a class="code hl_enumvalue" href="#a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892">BYTE_CNT</a>  <span class="comment">/**&lt; Количество байт данных в запросе FC16. */</span></div>
+<div class="line"><span class="lineno">  135</span>};</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a></div><div class="ttdeci">@ START_L</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00131">IGAS_mb.h:131</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a></div><div class="ttdeci">@ FUNC</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00129">IGAS_mb.h:129</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a></div><div class="ttdeci">@ REGS_L</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00133">IGAS_mb.h:133</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a></div><div class="ttdeci">@ START_H</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00130">IGAS_mb.h:130</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a></div><div class="ttdeci">@ SLAVE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00128">IGAS_mb.h:128</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a></div><div class="ttdeci">@ REGS_H</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00132">IGAS_mb.h:132</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892"><div class="ttname"><a href="#a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892">BYTE_CNT</a></div><div class="ttdeci">@ BYTE_CNT</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00134">IGAS_mb.h:134</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5dc067f13fceb5a2ac4b5d83c997ae0b" name="a5dc067f13fceb5a2ac4b5d83c997ae0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dc067f13fceb5a2ac4b5d83c997ae0b">&#9670;&#160;</a></span>ModbusFunctionCode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a5dc067f13fceb5a2ac4b5d83c997ae0b">ModbusFunctionCode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Поддерживаемые коды функций Modbus. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d" name="a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d"></a>FC_READ_REGS&#160;</td><td class="fielddoc"><p>FC03: Read Holding Registers. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264" name="a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264"></a>FC_WRITE_REG&#160;</td><td class="fielddoc"><p>FC06: Write Single Register. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999" name="a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999"></a>FC_WRITE_REGS&#160;</td><td class="fielddoc"><p>FC16: Write Multiple Registers. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00035">35</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a>  = 0x03, <span class="comment">/**&lt; FC03: Read Holding Registers. */</span></div>
+<div class="line"><span class="lineno">   38</span>    <a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a>  = 0x06, <span class="comment">/**&lt; FC06: Write Single Register. */</span></div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a> = 0x10  <span class="comment">/**&lt; FC16: Write Multiple Registers. */</span></div>
+<div class="line"><span class="lineno">   40</span>};</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264"><div class="ttname"><a href="#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a></div><div class="ttdeci">@ FC_WRITE_REG</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00038">IGAS_mb.h:38</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999"><div class="ttname"><a href="#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a></div><div class="ttdeci">@ FC_WRITE_REGS</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00039">IGAS_mb.h:39</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d"><div class="ttname"><a href="#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a></div><div class="ttdeci">@ FC_READ_REGS</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00037">IGAS_mb.h:37</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a5457e572f6d270d2d02e41ed464563a3" name="a5457e572f6d270d2d02e41ed464563a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5457e572f6d270d2d02e41ed464563a3">&#9670;&#160;</a></span>CHECKSUM_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t CHECKSUM_SIZE = 2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Длина поля CRC16 Modbus RTU, байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00097">97</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00380">IGAS_mb_485::modbus_request()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00554">IGAS_mb_485::preset_multiple_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00306">IGAS_mb_485::send_reply()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00423">IGAS_mb_485::validate_request()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00580">IGAS_mb_485::write_single_register()</a>.</p>
+
+</div>
+</div>
+<a id="a0462eefda0f53a25027de7a8e738a5d2" name="a0462eefda0f53a25027de7a8e738a5d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0462eefda0f53a25027de7a8e738a5d2">&#9670;&#160;</a></span>dotDisp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t dotDisp = 0x08</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Флаг индикации активности передачи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00144">144</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00321">IGAS_mb_485::send()</a>.</p>
+
+</div>
+</div>
+<a id="a1e5d916ab728e879961dc03e940c5d96" name="a1e5d916ab728e879961dc03e940c5d96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5d916ab728e879961dc03e940c5d96">&#9670;&#160;</a></span>EXCEPTION_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t EXCEPTION_SIZE = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Длина Modbus exception-ответа без CRC, байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00092">92</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a>.</p>
+
+</div>
+</div>
+<a id="ab47fd3e6ed6318f18f3eb0e1ab2eb8ed" name="ab47fd3e6ed6318f18f3eb0e1ab2eb8ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab47fd3e6ed6318f18f3eb0e1ab2eb8ed">&#9670;&#160;</a></span>fsupported</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t fsupported[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Инициализатор</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a>),</div>
+<div class="line">    <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a>),</div>
+<div class="line">    <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a>)</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Таблица поддерживаемых кодов функций Modbus. </p>
+<p>Используется при проверке входящего запроса. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00048">48</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a>),</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a>),</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a>)</div>
+<div class="line"><span class="lineno">   53</span>};</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00423">IGAS_mb_485::validate_request()</a>.</p>
+
+</div>
+</div>
+<a id="a9dbccd523bb0ed9a3266bc8c448f4432" name="a9dbccd523bb0ed9a3266bc8c448f4432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dbccd523bb0ed9a3266bc8c448f4432">&#9670;&#160;</a></span>MAX_MESSAGE_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t MAX_MESSAGE_LENGTH = 40</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Максимальная длина Modbus RTU кадра, байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00072">72</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00613">IGAS_mb_485::read_holding_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00353">IGAS_mb_485::receive_request()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a>.</p>
+
+</div>
+</div>
+<a id="a41cdd946693b919f6e23bb1d70dcfb80" name="a41cdd946693b919f6e23bb1d70dcfb80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41cdd946693b919f6e23bb1d70dcfb80">&#9670;&#160;</a></span>MAX_READ_REGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t MAX_READ_REGS = 0x0F</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Максимальное количество регистров за один запрос FC03. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00062">62</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00423">IGAS_mb_485::validate_request()</a>.</p>
+
+</div>
+</div>
+<a id="aff1cb5d2103fef17e75001afe7138dca" name="aff1cb5d2103fef17e75001afe7138dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1cb5d2103fef17e75001afe7138dca">&#9670;&#160;</a></span>MAX_WRITE_REGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t MAX_WRITE_REGS = 0x0F</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Максимальное количество регистров за один запрос FC16. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00067">67</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00423">IGAS_mb_485::validate_request()</a>.</p>
+
+</div>
+</div>
+<a id="a5bd4cd503e7a0ae467e9f4434bb7b2d6" name="a5bd4cd503e7a0ae467e9f4434bb7b2d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd4cd503e7a0ae467e9f4434bb7b2d6">&#9670;&#160;</a></span>MIN_REQUEST_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t MIN_REQUEST_SIZE = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Минимальная длина стандартного запроса Modbus RTU, байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00077">77</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00423">IGAS_mb_485::validate_request()</a>.</p>
+
+</div>
+</div>
+<a id="a20b11ab335c10c5614b867372bc9c1ac" name="a20b11ab335c10c5614b867372bc9c1ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b11ab335c10c5614b867372bc9c1ac">&#9670;&#160;</a></span>MIN_WRITE_MULTIPLE_REQUEST_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t MIN_WRITE_MULTIPLE_REQUEST_SIZE = 9</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Минимальная длина запроса FC16, байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00082">82</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00423">IGAS_mb_485::validate_request()</a>.</p>
+
+</div>
+</div>
+<a id="af3bff94d6094c0a726233d04dba104d7" name="af3bff94d6094c0a726233d04dba104d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3bff94d6094c0a726233d04dba104d7">&#9670;&#160;</a></span>RESPONSE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t RESPONSE_SIZE = 6</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Длина ответа FC06/FC16 без CRC, байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00087">87</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00554">IGAS_mb_485::preset_multiple_registers()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00580">IGAS_mb_485::write_single_register()</a>.</p>
+
+</div>
+</div>
+<a id="abcd55545c0df484c08ee3f2e113c2988" name="abcd55545c0df484c08ee3f2e113c2988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcd55545c0df484c08ee3f2e113c2988">&#9670;&#160;</a></span>singleRegister</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t singleRegister = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Количество регистров при обработке одиночной записи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00149">149</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00523">IGAS_mb_485::write_regs()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00580">IGAS_mb_485::write_single_register()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_6e6cb9563333489fde7459b1f95e59a5.html">Libs</a></li><li class="navelem"><a href="_i_g_a_s__mb_8h.html">IGAS_mb.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: LAI1118 Rev2 Firmware</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">LAI1118 Rev2 Firmware </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<p>Документация по встроенному программному обеспечению модуля аналоговых входов LAI.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Назначение</h1>
+<p>Прошивка реализует прикладную логику модуля LAI:</p>
+<ul>
+<li>чтение восьми аналоговых входов через два преобразователя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>;</li>
+<li>обмен по Modbus RTU через интерфейс RS-485;</li>
+<li>чтение аппаратного адресного переключателя;</li>
+<li>управление SPI-регистром индикации аналоговых входов;</li>
+<li>управление SPI-регистром режимов аналоговых входов;</li>
+<li>расчёт калиброванных значений аналоговых каналов;</li>
+<li>фиксацию максимальных значений по каналам;</li>
+<li>хранение параметров и калибровок в EEPROM;</li>
+<li>контроль потери связи с ведущим устройством;</li>
+<li>индикацию состояния связи;</li>
+<li>программную перезагрузку;</li>
+<li>переход в загрузчик для обновления прошивки.</li>
+</ul>
+<p>Проект предназначен для микроконтроллера ATmega328P с тактовой частотой 16 MHz.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Основные параметры</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Параметр  </th><th class="markdownTableHeadNone">Значение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Микроконтроллер  </td><td class="markdownTableBodyNone">ATmega328P  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Частота CPU  </td><td class="markdownTableBodyNone">16 MHz  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Интерфейс связи  </td><td class="markdownTableBodyNone">RS-485  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Протокол  </td><td class="markdownTableBodyNone">Modbus RTU  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Скорость обмена  </td><td class="markdownTableBodyNone">9600 bit/s  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Формат кадра  </td><td class="markdownTableBodyNone">8N1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Количество аналоговых входов  </td><td class="markdownTableBodyNone">8  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">АЦП  </td><td class="markdownTableBodyNone">2 × <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Адреса <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>  </td><td class="markdownTableBodyNone">0x49, 0x48  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Шина АЦП  </td><td class="markdownTableBodyNone">I2C / TWI  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Частота I2C  </td><td class="markdownTableBodyNone">400 kHz  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Управление индикацией  </td><td class="markdownTableBodyNone">SPI  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Управление режимами входов  </td><td class="markdownTableBodyNone">SPI  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Системный тик  </td><td class="markdownTableBodyNone">Timer0, 1 ms  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Watchdog  </td><td class="markdownTableBodyNone">используется  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Bootloader jump  </td><td class="markdownTableBodyNone">поддерживается  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Состав проекта</h1>
+<div class="fragment"><div class="line">.</div>
+<div class="line">├── app/</div>
+<div class="line">│   ├── app.hpp</div>
+<div class="line">│   ├── app.cpp</div>
+<div class="line">│   ├── ads1115.hpp</div>
+<div class="line">│   ├── ads1115.cpp</div>
+<div class="line">│   ├── lai_board.hpp</div>
+<div class="line">│   ├── lai_board.cpp</div>
+<div class="line">│   └── project.hpp</div>
+<div class="line">│</div>
+<div class="line">├── hal/</div>
+<div class="line">│   ├── compat.hpp</div>
+<div class="line">│   ├── compat_gpio.cpp</div>
+<div class="line">│   ├── compat_serial.cpp</div>
+<div class="line">│   ├── compat_spi.cpp</div>
+<div class="line">│   ├── compat_tick.cpp</div>
+<div class="line">│   └── compat_twi.cpp</div>
+<div class="line">│</div>
+<div class="line">├── Libs/</div>
+<div class="line">│   ├── IGAS_mb.h</div>
+<div class="line">│   └── IGAS_mb.cpp</div>
+<div class="line">│</div>
+<div class="line">├── main.cpp</div>
+<div class="line">├── Doxyfile</div>
+<div class="line">└── README.md</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<span class="tt">main.cpp</span></h2>
+<p>Точка входа прошивки.</p>
+<p>Выполняет:</p>
+<ul>
+<li>запрет прерываний на этапе базовой инициализации;</li>
+<li>запуск системного миллисекундного тикера;</li>
+<li>разрешение прерываний;</li>
+<li>вызов <span class="tt"><a class="el" href="app_8cpp.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Выполняет однократную инициализацию приложения.">setup()</a></span>;</li>
+<li>бесконечный вызов <span class="tt"><a class="el" href="app_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" title="Выполняет основной циклический обработчик приложения.">loop()</a></span>.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<span class="tt">app/</span></h2>
+<p>Прикладной уровень прошивки.</p>
+<p>Содержит:</p>
+<ul>
+<li>инициализацию приложения;</li>
+<li>основной цикл;</li>
+<li>обработку Modbus-регистров;</li>
+<li>чтение аналоговых каналов;</li>
+<li>расчёт калиброванных значений;</li>
+<li>фиксацию максимальных значений;</li>
+<li>работу с EEPROM-параметрами;</li>
+<li>управление индикацией;</li>
+<li>управление режимами аналоговых входов;</li>
+<li>контроль таймаута связи;</li>
+<li>индикацию состояния связи;</li>
+<li>перезагрузку;</li>
+<li>переход в bootloader.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<span class="tt">app/lai_board.hpp</span>, <span class="tt">app/lai_board.cpp</span></h2>
+<p>Аппаратный слой платы LAI.</p>
+<p>Содержит привязку сигналов платы к портам ATmega328P:</p>
+<ul>
+<li>адресный переключатель;</li>
+<li>RS-485 direction;</li>
+<li>SPI chip select для регистра индикации;</li>
+<li>SPI chip select для регистра режимов входов;</li>
+<li>разрешение сдвиговых регистров;</li>
+<li>светодиод состояния связи.</li>
+</ul>
+<p>Прикладной код не должен напрямую работать с <span class="tt">PORTx</span>, <span class="tt">DDRx</span> и <span class="tt">PINx</span> для сигналов платы. Для этого используется <span class="tt"><a class="el" href="namespacelai__board.html" title="Функции аппаратного доступа платы LAI1118 rev2.">lai_board</a></span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<span class="tt">app/ads1115.hpp</span>, <span class="tt">app/ads1115.cpp</span></h2>
+<p>Драйвер аналого-цифрового преобразователя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.</p>
+<p>Содержит:</p>
+<ul>
+<li>запуск одиночного преобразования;</li>
+<li>настройку диапазона входного усилителя;</li>
+<li>настройку режима работы;</li>
+<li>настройку скорости преобразования;</li>
+<li>проверку готовности результата;</li>
+<li>чтение шестнадцатиразрядного значения АЦП.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+<span class="tt">hal/</span></h2>
+<p>Общий аппаратный слой.</p>
+<p>Содержит:</p>
+<ul>
+<li>GPIO;</li>
+<li>UART0;</li>
+<li>SPI master;</li>
+<li>TWI/I2C master;</li>
+<li>системный тикер;</li>
+<li>задержки;</li>
+<li>минимальные системные типы и функции.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+<span class="tt">Libs/IGAS_mb.*</span></h2>
+<p>Транспорт Modbus RTU по RS-485.</p>
+<p>Поддерживаемые функции Modbus:</p>
+<ul>
+<li>FC03 — Read Holding Registers;</li>
+<li>FC06 — Write Single Register;</li>
+<li>FC16 — Write Multiple Registers.</li>
+</ul>
+<p>Доступ к прикладной карте регистров выполняется через callback, назначаемый из <span class="tt"><a class="el" href="app_8cpp.html" title="Прикладная логика модуля LAI.">app.cpp</a></span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+Аппаратная карта LAI</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Сигнал  </th><th class="markdownTableHeadNone">Линия MCU  </th><th class="markdownTableHeadNone">Назначение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RXD  </td><td class="markdownTableBodyNone">PD0  </td><td class="markdownTableBodyNone">Приём UART0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">TXD  </td><td class="markdownTableBodyNone">PD1  </td><td class="markdownTableBodyNone">Передача UART0  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RS-485 DE / RE  </td><td class="markdownTableBodyNone">PD2  </td><td class="markdownTableBodyNone">Управление направлением RS-485  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LED_SS  </td><td class="markdownTableBodyNone">PD3  </td><td class="markdownTableBodyNone">Выбор SPI-регистра индикации  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">MODE_SS  </td><td class="markdownTableBodyNone">PD4  </td><td class="markdownTableBodyNone">Выбор SPI-регистра режимов входов  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SHIFT_EN  </td><td class="markdownTableBodyNone">PD5  </td><td class="markdownTableBodyNone">Разрешение сдвиговых регистров  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADDR0  </td><td class="markdownTableBodyNone">PD6  </td><td class="markdownTableBodyNone">Адресный переключатель, bit 0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ADDR1  </td><td class="markdownTableBodyNone">PD7  </td><td class="markdownTableBodyNone">Адресный переключатель, bit 1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADDR2  </td><td class="markdownTableBodyNone">PB0  </td><td class="markdownTableBodyNone">Адресный переключатель, bit 2  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ADDR3  </td><td class="markdownTableBodyNone">PB1  </td><td class="markdownTableBodyNone">Адресный переключатель, bit 3  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADDR4 / SPI_SS  </td><td class="markdownTableBodyNone">PB2  </td><td class="markdownTableBodyNone">Адресный переключатель, bit 4; линия SPI SS  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SPI_MOSI  </td><td class="markdownTableBodyNone">PB3  </td><td class="markdownTableBodyNone">SPI MOSI  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SPI_MISO  </td><td class="markdownTableBodyNone">PB4  </td><td class="markdownTableBodyNone">SPI MISO  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SPI_SCK  </td><td class="markdownTableBodyNone">PB5  </td><td class="markdownTableBodyNone">SPI SCK  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">STATUS_LED  </td><td class="markdownTableBodyNone">PC0  </td><td class="markdownTableBodyNone">Светодиод состояния связи  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">I2C_SDA  </td><td class="markdownTableBodyNone">PC4  </td><td class="markdownTableBodyNone">Линия данных I2C  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">I2C_SCL  </td><td class="markdownTableBodyNone">PC5  </td><td class="markdownTableBodyNone">Линия тактирования I2C  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+Адресный переключатель</h1>
+<p>Адресный переключатель подключён к линиям <span class="tt">PD6</span>, <span class="tt">PD7</span>, <span class="tt">PB0</span>, <span class="tt">PB1</span>, <span class="tt">PB2</span>.</p>
+<p>Соответствие входов и битов адреса:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Линия MCU  </th><th class="markdownTableHeadRight">Бит адреса  </th><th class="markdownTableHeadRight">Маска  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PD6  </td><td class="markdownTableBodyRight">bit 0  </td><td class="markdownTableBodyRight">0x01  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PD7  </td><td class="markdownTableBodyRight">bit 1  </td><td class="markdownTableBodyRight">0x02  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PB0  </td><td class="markdownTableBodyRight">bit 2  </td><td class="markdownTableBodyRight">0x04  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PB1  </td><td class="markdownTableBodyRight">bit 3  </td><td class="markdownTableBodyRight">0x08  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PB2  </td><td class="markdownTableBodyRight">bit 4  </td><td class="markdownTableBodyRight">0x10  </td></tr>
+</table>
+<p>Вход с низким уровнем считается установленным битом адреса.</p>
+<p>Если аппаратно считанный адрес равен нулю, прошивка использует адрес <span class="tt">1</span>.</p>
+<p>Линия <span class="tt">PB2</span> используется на этапе старта как вход адресного переключателя. После чтения адреса и инициализации SPI эта линия переводится в выходной уровень HIGH для сохранения режима SPI master на ATmega328P.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+RS-485</h1>
+<p>Перед отправкой ответа Modbus трансивер переводится в режим передачи.</p>
+<p>Возврат в режим приёма выполняется после события UART TX Complete, когда физическая передача последнего байта завершена.</p>
+<p>Параметры обмена по умолчанию:</p>
+<div class="fragment"><div class="line">9600 bit/s</div>
+<div class="line">8N1</div>
+<div class="line">Modbus RTU</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+Аналоговые входы</h1>
+<p>Модуль использует два преобразователя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Преобразователь  </th><th class="markdownTableHeadRight">I2C-адрес  </th><th class="markdownTableHeadNone">Каналы  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADS_1  </td><td class="markdownTableBodyRight">0x49  </td><td class="markdownTableBodyNone">четыре аналоговых входа  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ADS_2  </td><td class="markdownTableBodyRight">0x48  </td><td class="markdownTableBodyNone">четыре аналоговых входа  </td></tr>
+</table>
+<p>Преобразователи работают в режиме одиночного преобразования.</p>
+<p>Основные настройки:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Параметр  </th><th class="markdownTableHeadNone">Значение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Gain  </td><td class="markdownTableBodyNone">0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Mode  </td><td class="markdownTableBodyNone">single-shot  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Data rate  </td><td class="markdownTableBodyNone">7  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">I2C frequency  </td><td class="markdownTableBodyNone">400 kHz  </td></tr>
+</table>
+<p>Чтение каналов выполняется циклически через автомат состояний:</p>
+<div class="fragment"><div class="line">requestAI</div>
+<div class="line">delayADC</div>
+<div class="line">checkAIReady</div>
+<div class="line">getAIx</div>
+<div class="line">calcOutput</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+Калибровка аналоговых каналов</h1>
+<p>Для каждого канала используются две калибровочные точки:</p>
+<div class="fragment"><div class="line">sensorAnalogX[2n - 1], gasConcentrationY[2n - 1]</div>
+<div class="line">sensorAnalogX[2n],     gasConcentrationY[2n]</div>
+</div><!-- fragment --><p>Калиброванное значение рассчитывается по линейной зависимости:</p>
+<div class="fragment"><div class="line">y = k * (x - b)</div>
+</div><!-- fragment --><p>где:</p>
+<ul>
+<li><span class="tt">x</span> — код АЦП;</li>
+<li><span class="tt">y</span> — калиброванное значение канала;</li>
+<li><span class="tt">k</span> — коэффициент наклона;</li>
+<li><span class="tt">b</span> — смещение.</li>
+</ul>
+<p>Калибровочные параметры сохраняются в EEPROM командой через <span class="tt">HR 90</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+Регистр индикации и регистр режимов входов</h1>
+<p>Индикация состояния аналоговых входов управляется через SPI-регистр <span class="tt">LED_SS</span>.</p>
+<p>Режимы аналоговых входов управляются через SPI-регистр <span class="tt">MODE_SS</span>.</p>
+<p>Параметр <span class="tt">AI_MODE</span> хранится в EEPROM по адресу <span class="tt">115</span> и передаётся в регистр режимов входов при старте прошивки.</p>
+<p>Изменение <span class="tt">AI_MODE</span> через Modbus выполняется через <span class="tt">HR 115</span> после включения защищённого доступа через <span class="tt">HR 800</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+EEPROM-карта</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Адрес EEPROM  </th><th class="markdownTableHeadNone">Назначение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">72  </td><td class="markdownTableBodyNone">Серийный номер  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">100  </td><td class="markdownTableBodyNone">Modbus-адрес устройства  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">110...113  </td><td class="markdownTableBodyNone">Порог фиксации максимального значения <span class="tt">MOTOR_STOP_THRESHOLD</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">115  </td><td class="markdownTableBodyNone">Режим аналоговых входов <span class="tt">AI_MODE</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">11...18  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 1  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">19...26  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 2  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">27...34  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 3  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">35...42  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 4  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">43...50  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 5  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">51...58  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 6  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">59...66  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 7  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">67...74  </td><td class="markdownTableBodyNone">Калибровочные параметры канала 8  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+Карта Modbus-регистров</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Holding Register  </th><th class="markdownTableHeadNone">Доступ  </th><th class="markdownTableHeadNone">Назначение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">0  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Битовая маска состояния аналоговых входов  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1...16  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Калиброванные значения каналов <span class="tt">ADC_Converted</span> в формате float, два регистра на канал  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">39  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Серийный номер из EEPROM  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">40  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Версия встроенного ПО  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">51...66  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Максимальные значения каналов <span class="tt">maxCurrArray</span> в формате float, два регистра на канал  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">90  </td><td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">Сохранение калибровок всех каналов в EEPROM  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">100  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Modbus-адрес устройства  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">101...102  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Порог фиксации максимального значения <span class="tt">MOTOR_STOP_THRESHOLD</span> в формате float  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">115  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Режим аналоговых входов <span class="tt">AI_MODE</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">201...216  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Текущие калибровочные значения <span class="tt">sensorAnalogX</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">301...316  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Текущие калибровочные значения <span class="tt">gasConcentrationY</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">401...416  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Изменение <span class="tt">sensorAnalogX</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">501...516  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Изменение <span class="tt">gasConcentrationY</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">594  </td><td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">Программная перезагрузка  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">600  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Битовая маска состояния аналоговых входов  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">601...608  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Сырые значения <span class="tt">AIData</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">611...618  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Состояния каналов <span class="tt">channelActive</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">621...636  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Текущие максимальные значения активных импульсов <span class="tt">buffer</span> в формате float  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">701...708  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone"><span class="tt">ADC_Converted * 100</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">800  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Сервисный PIN-код  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">900  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Отложенный переход в bootloader  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1000  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Идентификатор устройства, слово 1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">1001  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Идентификатор устройства, слово 2  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1100  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Аппаратная ревизия, слово 1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">1101  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Аппаратная ревизия, слово 2  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+HR 0 и HR 600 — битовая маска состояния аналоговых входов</h2>
+<p>Регистры возвращают битовую маску состояния аналоговых входов.</p>
+<p>Маска формируется по результатам сравнения сырых значений каналов с внутренним порогом индикации.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+HR 1...16 — калиброванные значения аналоговых каналов</h2>
+<p>Регистры возвращают значения <span class="tt">ADC_Converted</span> в формате IEEE-754 float.</p>
+<p>Каждое значение занимает два Holding-регистра.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+HR 39 — серийный номер</h2>
+<p>Регистр возвращает серийный номер из EEPROM.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+HR 40 — версия ПО</h2>
+<p>Регистр возвращает значение константы версии встроенного программного обеспечения.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+HR 51...66 — максимальные значения каналов</h2>
+<p>Регистры возвращают значения <span class="tt">maxCurrArray</span> в формате IEEE-754 float.</p>
+<p>Каждое значение занимает два Holding-регистра.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+HR 90 — сохранение калибровок</h2>
+<p>Запись в <span class="tt">HR 90</span> сохраняет калибровочные точки всех восьми каналов в EEPROM.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+HR 100 — Modbus-адрес</h2>
+<p>При записи в <span class="tt">HR 100</span> значение младшего байта сохраняется как новый Modbus-адрес устройства.</p>
+<p>Значение сохраняется в EEPROM и применяется к объекту Modbus RTU.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+HR 101...102 — порог фиксации максимального значения</h2>
+<p>Регистры содержат <span class="tt">MOTOR_STOP_THRESHOLD</span> в формате IEEE-754 float.</p>
+<p>Запись разрешена после включения защищённого доступа через <span class="tt">HR 800</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+HR 115 — режим аналоговых входов</h2>
+<p>Регистр содержит маску <span class="tt">AI_MODE</span>.</p>
+<p>Запись разрешена после включения защищённого доступа через <span class="tt">HR 800</span>.</p>
+<p>После записи значение сохраняется в EEPROM и передаётся в SPI-регистр режимов аналоговых входов.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+HR 401...416 и HR 501...516 — изменение калибровочных точек</h2>
+<p>Регистры используются для изменения калибровочных точек в оперативной памяти.</p>
+<p>Для сохранения изменённых калибровок в EEPROM необходимо выполнить запись в <span class="tt">HR 90</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+HR 594 — программная перезагрузка</h2>
+<p>Для перезагрузки записать:</p>
+<div class="fragment"><div class="line">HR 594 = 1</div>
+</div><!-- fragment --><p>После обработки команды прошивка выполняет перезагрузку через watchdog.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+HR 800 — сервисный PIN-код</h2>
+<p>Для включения защищённого доступа записать:</p>
+<div class="fragment"><div class="line">HR 800 = 2210</div>
+</div><!-- fragment --><p>При другом значении защищённый доступ отключается.</p>
+<p>Защищённый доступ используется для записи <span class="tt">HR 101...102</span> и <span class="tt">HR 115</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+HR 900 — переход в bootloader</h2>
+<p>Для перехода в загрузчик записать любое значение в <span class="tt">HR 900</span>.</p>
+<p>Переход выполняется с небольшой задержкой, чтобы Modbus-ответ успел уйти в линию RS-485.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+Поведение при потере связи</h1>
+<p>Прошивка контролирует время последнего корректного Modbus-запроса.</p>
+<p>Если в течение заданного таймаута обмен отсутствует:</p>
+<ul>
+<li>состояние связи считается потерянным;</li>
+<li>светодиод связи переходит в режим мигания.</li>
+</ul>
+<p>При восстановлении обмена светодиод связи включается постоянно.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+Сборка прошивки</h1>
+<p>Проект собирается в Microchip Studio / Atmel Studio с AVR-GCC.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+Рекомендуемые параметры проекта</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Параметр  </th><th class="markdownTableHeadNone">Значение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Device  </td><td class="markdownTableBodyNone">ATmega328P  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Toolchain  </td><td class="markdownTableBodyNone">AVR-GCC  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">F_CPU  </td><td class="markdownTableBodyNone">16000000UL  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Конфигурация сборки  </td><td class="markdownTableBodyNone">Release или Debug  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md46"></a>
+Порядок сборки</h2>
+<ol type="1">
+<li>Открыть проект в Microchip Studio / Atmel Studio.</li>
+<li>Проверить выбранный микроконтроллер: <span class="tt">ATmega328P</span>.</li>
+<li>Проверить наличие определения <span class="tt">F_CPU = 16000000UL</span>.</li>
+<li>Проверить наличие файлов <span class="tt"><a class="el" href="compat__spi_8cpp.html" title="SPI master-драйвер для ATmega328P.">compat_spi.cpp</a></span> и <span class="tt"><a class="el" href="compat__twi_8cpp.html" title="TWI/I2C master-драйвер для ATmega328P.">compat_twi.cpp</a></span> в составе проекта.</li>
+<li>Выполнить сборку проекта.</li>
+<li>Проверить отсутствие ошибок компиляции и линковки.</li>
+<li>Получить файл прошивки <span class="tt">.hex</span> из выходной папки сборки.</li>
+</ol>
+<p>Типовые выходные папки:</p>
+<div class="fragment"><div class="line">Debug/</div>
+<div class="line">Release/</div>
+</div><!-- fragment --><p>Пример ожидаемого результата:</p>
+<div class="fragment"><div class="line">LAI1118_rev2.hex</div>
+</div><!-- fragment --><p>Фактическое имя <span class="tt">.hex</span> зависит от имени проекта в среде разработки.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md48"></a>
+Генерация Doxygen-документации</h1>
+<p>Doxygen-документация формируется из исходных файлов и комментариев в коде.</p>
+<p>Рабочий каталог проекта:</p>
+<div class="fragment"><div class="line">C:\Development\GccApplication1</div>
+</div><!-- fragment --><p>Для генерации выполнить из корня проекта:</p>
+<div class="fragment"><div class="line">cd /d C:\Development\GccApplication1</div>
+<div class="line">if not exist docs\doxygen mkdir docs\doxygen</div>
+<div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><p>Если требуется сохранить лог генерации:</p>
+<div class="fragment"><div class="line">doxygen Doxyfile &gt; doxygen_build.log 2&gt;&amp;1</div>
+</div><!-- fragment --><p>Результат генерации:</p>
+<div class="fragment"><div class="line">docs\doxygen\html\index.html</div>
+</div><!-- fragment --><p>Открыть документацию:</p>
+<div class="fragment"><div class="line">start docs\doxygen\html\index.html</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
+Прошивка микроконтроллера</h1>
+<p>Прошивка может загружаться одним из двух способов:</p>
+<ul>
+<li>через ISP-программатор;</li>
+<li>через установленный bootloader, если он записан в микроконтроллер и настроен корректно.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md51"></a>
+Прошивка через ISP</h2>
+<p>Общий порядок:</p>
+<ol type="1">
+<li>Подключить питание модуля.</li>
+<li>Подключить ISP-программатор к разъёму программирования.</li>
+<li>Выбрать микроконтроллер <span class="tt">ATmega328P</span>.</li>
+<li>Выбрать файл <span class="tt">.hex</span>.</li>
+<li>Выполнить запись flash.</li>
+<li>Перезапустить модуль.</li>
+<li>Проверить связь по Modbus RTU.</li>
+<li>Проверить чтение аналоговых каналов.</li>
+</ol>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
+Прошивка через bootloader</h2>
+<p>Общий порядок:</p>
+<ol type="1">
+<li>Подключить RS-485 интерфейс.</li>
+<li>Перевести модуль в bootloader.</li>
+<li>Загрузить файл <span class="tt">.hex</span> через используемый загрузчик.</li>
+<li>Перезапустить модуль.</li>
+<li>Проверить связь по Modbus RTU.</li>
+<li>Проверить чтение аналоговых каналов.</li>
+</ol>
+<p>Переход в bootloader из рабочей прошивки выполняется записью в <span class="tt">HR 900</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
+Проверка после прошивки</h1>
+<p>После загрузки прошивки проверить:</p>
+<ol type="1">
+<li>Модуль отвечает по Modbus RTU.</li>
+<li>Адрес соответствует положению аппаратного адресного переключателя.</li>
+<li><span class="tt">HR 0</span> или <span class="tt">HR 600</span> возвращает битовую маску состояния аналоговых входов.</li>
+<li><span class="tt">HR 1...16</span> возвращают калиброванные значения каналов.</li>
+<li><span class="tt">HR 601...608</span> возвращают сырые значения каналов.</li>
+<li><span class="tt">HR 40</span> возвращает версию ПО.</li>
+<li><span class="tt">HR 100</span> возвращает текущий Modbus-адрес.</li>
+<li>При отсутствии обмена светодиод связи переходит в режим мигания.</li>
+<li>При восстановлении обмена светодиод связи включается постоянно.</li>
+<li>Запись в <span class="tt">HR 594 = 1</span> выполняет программную перезагрузку.</li>
+<li>Переход в bootloader через <span class="tt">HR 900</span> проверяется только при наличии корректного загрузчика.</li>
+</ol>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md56"></a>
+Минимальный тест Modbus</h1>
+<p>Параметры порта:</p>
+<div class="fragment"><div class="line">9600 bit/s</div>
+<div class="line">8N1</div>
+<div class="line">Modbus RTU</div>
+</div><!-- fragment --><p>Базовые регистры для проверки:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Проверка  </th><th class="markdownTableHeadRight">Регистр  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Битовая маска входов  </td><td class="markdownTableBodyRight">HR 0 или HR 600  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Калиброванные значения  </td><td class="markdownTableBodyRight">HR 1...16  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Версия ПО  </td><td class="markdownTableBodyRight">HR 40  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Максимальные значения  </td><td class="markdownTableBodyRight">HR 51...66  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Modbus-адрес  </td><td class="markdownTableBodyRight">HR 100  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Сырые значения АЦП  </td><td class="markdownTableBodyRight">HR 601...608  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Сервисный PIN-код  </td><td class="markdownTableBodyRight">HR 800  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Перезагрузка  </td><td class="markdownTableBodyRight">HR 594  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Переход в bootloader  </td><td class="markdownTableBodyRight">HR 900  </td></tr>
+</table>
+<p>Пример проверки:</p>
+<div class="fragment"><div class="line">Read HR 40</div>
+<div class="line">Read HR 100</div>
+<div class="line">Read HR 600</div>
+<div class="line">Read HR 601...608</div>
+<div class="line">Read HR 1...16</div>
+<div class="line">Write HR 800 = 2210</div>
+<div class="line">Read HR 800</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md58"></a>
+Возможные ошибки</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Признак  </th><th class="markdownTableHeadNone">Возможная причина  </th><th class="markdownTableHeadNone">Проверка  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Нет ответа по Modbus  </td><td class="markdownTableBodyNone">Неверный адрес  </td><td class="markdownTableBodyNone">Проверить адресный переключатель  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Нет ответа по Modbus  </td><td class="markdownTableBodyNone">Неверные параметры UART  </td><td class="markdownTableBodyNone">Проверить 9600 bit/s, 8N1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Нет ответа по Modbus  </td><td class="markdownTableBodyNone">Ошибка RS-485 A/B  </td><td class="markdownTableBodyNone">Проверить полярность линии  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Ответы нестабильны  </td><td class="markdownTableBodyNone">Ошибка управления DE/RE  </td><td class="markdownTableBodyNone">Проверить линию RS-485 direction  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Нет значений АЦП  </td><td class="markdownTableBodyNone">Ошибка I2C  </td><td class="markdownTableBodyNone">Проверить линии SDA/SCL и адреса <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Нет значений АЦП  </td><td class="markdownTableBodyNone">Не добавлен <span class="tt"><a class="el" href="compat__twi_8cpp.html" title="TWI/I2C master-драйвер для ATmega328P.">compat_twi.cpp</a></span> в проект  </td><td class="markdownTableBodyNone">Проверить состав файлов проекта  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Не работает индикация  </td><td class="markdownTableBodyNone">Ошибка SPI  </td><td class="markdownTableBodyNone">Проверить MOSI/SCK/SS и <span class="tt"><a class="el" href="compat__spi_8cpp.html" title="SPI master-драйвер для ATmega328P.">compat_spi.cpp</a></span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Не меняется режим входов  </td><td class="markdownTableBodyNone">Не включён защищённый доступ  </td><td class="markdownTableBodyNone">Записать <span class="tt">HR 800 = 2210</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Не сохраняется калибровка  </td><td class="markdownTableBodyNone">Не выполнена запись в <span class="tt">HR 90</span>  </td><td class="markdownTableBodyNone">Проверить последовательность записи калибровок  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Адрес не совпадает с переключателем  </td><td class="markdownTableBodyNone">Ошибка порядка битов адресного переключателя  </td><td class="markdownTableBodyNone">Проверить PD6, PD7, PB0, PB1, PB2  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Прошивка перезагружается  </td><td class="markdownTableBodyNone">Watchdog не сбрасывается  </td><td class="markdownTableBodyNone">Проверить зависание основного цикла  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Не работает переход в bootloader  </td><td class="markdownTableBodyNone">Несовпадение bootloader address / fuse  </td><td class="markdownTableBodyNone">Проверить BOOTSZ и адрес boot-секции  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md60"></a>
+Примечания по сопровождению</h1>
+<p>Проект передаётся как исходный код встроенного ПО с базовой документацией в комментариях Doxygen.</p>
+<p>Перед внесением изменений рекомендуется:</p>
+<ol type="1">
+<li>Сначала собрать проект без изменений.</li>
+<li>Сохранить рабочий <span class="tt">.hex</span>.</li>
+<li>Проверить связь по Modbus RTU на стенде.</li>
+<li>Проверить чтение всех аналоговых каналов.</li>
+<li>Проверить запись и чтение основных Modbus-регистров.</li>
+<li>После изменений повторить проверку регистров, аналоговых каналов, SPI-регистров и EEPROM-параметров.</li>
+<li>Проверить переход в bootloader только при наличии корректного загрузчика.</li>
+</ol>
+<p>Изменения аппаратной карты платы следует выполнять в файлах:</p>
+<div class="fragment"><div class="line">app/lai_board.hpp</div>
+<div class="line">app/lai_board.cpp</div>
+</div><!-- fragment --><p>Изменения драйвера <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a> следует выполнять в файлах:</p>
+<div class="fragment"><div class="line">app/ads1115.hpp</div>
+<div class="line">app/ads1115.cpp</div>
+</div><!-- fragment --><p>Изменения прикладной карты Modbus следует выполнять в файле:</p>
+<div class="fragment"><div class="line">app/app.cpp</div>
+</div><!-- fragment --><p>Изменения транспорта Modbus RTU следует выполнять только при необходимости и после проверки на стенде:</p>
+<div class="fragment"><div class="line">Libs/IGAS_mb.h</div>
+<div class="line">Libs/IGAS_mb.cpp</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md62"></a>
+Состав передаваемых материалов</h1>
+<p>Рекомендуемый минимальный комплект для передачи:</p>
+<div class="fragment"><div class="line">исходный код проекта;</div>
+<div class="line">Doxyfile;</div>
+<div class="line">README.md;</div>
+<div class="line">сгенерированная Doxygen-документация;</div>
+<div class="line">скомпилированный HEX-файл;</div>
+<div class="line">краткая инструкция по прошивке;</div>
+<div class="line">краткая инструкция по проверке Modbus-регистров.</div>
+</div><!-- fragment --><p>Этот комплект достаточен для сборки, просмотра структуры проекта, генерации документации, загрузки прошивки и базовой проверки работоспособности модуля. </p>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

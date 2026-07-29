@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл board/lcp_sc16is.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__sc16is_8cpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcp_sc16is.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcp__sc16is_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file lcp_sc16is.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Карта и одноразовое автоопределение внешних UART SC16IS7xx.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Микросхемы являются частью стационарной платы и не рассматриваются как</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * hot-plug устройства. Инициализация SPI/CS и probe поэтому идемпотентны:</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * echo-test, FieldSensor и повторная загрузка serial-конфигурации используют</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * одну сохранённую карту и не повторяют scratchpad-тесты без необходимости.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * Настройку baud/frame выполняет владелец каждого логического порта.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__sc16is_8hpp.html">lcp_sc16is.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="platform_8hpp.html">../platform/platform.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><a class="code hl_struct" href="structLcpSc16isMap.html">LcpSc16isMap</a> g_sc16is_map =</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a69a683cf92421c87c359a6607e124684">LCP_SC16IS_LAYOUT_UNKNOWN</a>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#a15472a7bdd3d69cdbeb847019e3e06cb">LCP_SC16IS_UART1_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>, 0U },</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>, 0U },</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#a571c0ede076b740c70edd3d125d22daf">LCP_SC16IS_UART3_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>, 0U },</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    0U, 0U, 0U, 0U</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>uint8_t g_bus_initialized = 0U;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>uint8_t g_probe_complete = 0U;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>uint8_t channel_present(uint32_t chip_select, <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> (<a class="code hl_function" href="sc16is7xx_8cpp.html#a4c694a78af9de91918a102a6bf3c214d">sc16is_probe_channel</a>(chip_select, channel) ==</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d">SC16IS_PROBE_PRESENT</a>) ? 1U : 0U;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">const</span> <span class="keywordtype">char</span>* layout_text(<a class="code hl_enumeration" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8">LcpSc16isLayout</a> layout)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">switch</span> (layout)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a0a447867fce47bf1283818cfadb01db0">LCP_SC16IS_LAYOUT_DUAL_ON_UART2</a>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;dual-channel device on UART2_CS&quot;</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a0b85e77ddf4ecf94c9cc00b04ed2bc9f">LCP_SC16IS_LAYOUT_TWO_SINGLE_UART2_UART3</a>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;two single-channel devices on UART2_CS and UART3_CS&quot;</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a69a683cf92421c87c359a6607e124684">LCP_SC16IS_LAYOUT_UNKNOWN</a>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;unknown or incomplete&quot;</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> print_present(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, uint8_t present)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    SerialUSB.print(<span class="stringliteral">&quot;  &quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SerialUSB.print(name);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SerialUSB.print(<span class="stringliteral">&quot;=&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SerialUSB.print((present != 0U) ? <span class="stringliteral">&quot;present&quot;</span> : <span class="stringliteral">&quot;absent&quot;</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> print_assignment(<span class="keyword">const</span> <span class="keywordtype">char</span>* logical_name, <span class="keyword">const</span> <a class="code hl_struct" href="structLcpSc16isPort.html">LcpSc16isPort</a>&amp; port)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    SerialUSB.print(<span class="stringliteral">&quot;  &quot;</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    SerialUSB.print(logical_name);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    SerialUSB.print(<span class="stringliteral">&quot;: present=&quot;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    SerialUSB.print((port.<a class="code hl_variable" href="structLcpSc16isPort.html#a1cf9a79b438eafe76e0b73a9381424cc">present</a> != 0U) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    SerialUSB.print(<span class="stringliteral">&quot;, chip_select=&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structLcpSc16isPort.html#a2d3bc0f70033b561032b8dd1c99fd95a">chip_select</a>));</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    SerialUSB.print(<span class="stringliteral">&quot;, channel=&quot;</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    SerialUSB.print((port.<a class="code hl_variable" href="structLcpSc16isPort.html#ab5373228810bb793519b63951d91f462">channel</a> == <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">SC16IS_CHANNEL_B</a>) ? <span class="stringliteral">&quot;B&quot;</span> : <span class="stringliteral">&quot;A&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="lcp__sc16is_8cpp.html#af8605d6d47735db317d0d98ba43b6ec5">   72</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sc16is_8cpp.html#af8605d6d47735db317d0d98ba43b6ec5">lcp_sc16is_init_pins</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>{</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> (g_bus_initialized != 0U)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_function" href="platform_8hpp.html#a36622dcb8bcafb3b160471c8b1e2ab06">pinMode</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#a15472a7bdd3d69cdbeb847019e3e06cb">LCP_SC16IS_UART1_CS</a>, OUTPUT);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_function" href="platform_8hpp.html#a36622dcb8bcafb3b160471c8b1e2ab06">pinMode</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>, OUTPUT);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="platform_8hpp.html#a36622dcb8bcafb3b160471c8b1e2ab06">pinMode</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#a571c0ede076b740c70edd3d125d22daf">LCP_SC16IS_UART3_CS</a>, OUTPUT);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_function" href="platform_8hpp.html#a4df2021e58c507af29330334a7686a33">digitalWrite</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#a15472a7bdd3d69cdbeb847019e3e06cb">LCP_SC16IS_UART1_CS</a>, HIGH);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_function" href="platform_8hpp.html#a4df2021e58c507af29330334a7686a33">digitalWrite</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>, HIGH);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_function" href="platform_8hpp.html#a4df2021e58c507af29330334a7686a33">digitalWrite</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#a571c0ede076b740c70edd3d125d22daf">LCP_SC16IS_UART3_CS</a>, HIGH);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_function" href="sc16is7xx_8cpp.html#aa48af91e4607590cf9ca9f735c5714bf">sc16is_init_bus</a>();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    g_bus_initialized = 1U;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="lcp__sc16is_8cpp.html#ac3dcb0c9c535bc4d15e72c01aca5d29d">   89</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sc16is_8cpp.html#ac3dcb0c9c535bc4d15e72c01aca5d29d">lcp_sc16is_probe</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>{</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span> (g_probe_complete != 0U)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_function" href="lcp__sc16is_8cpp.html#af8605d6d47735db317d0d98ba43b6ec5">lcp_sc16is_init_pins</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#adc031c83899c78616ac17be9cba9100e">layout</a> = <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a69a683cf92421c87c359a6607e124684">LCP_SC16IS_LAYOUT_UNKNOWN</a>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a3a5670f56ffcc285f0e69b2bc2557183">uart1_ch_a_present</a> =</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        channel_present(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#a15472a7bdd3d69cdbeb847019e3e06cb">LCP_SC16IS_UART1_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#ac8f9597086625b077ea3a47452b4aead">uart2_ch_a_present</a> =</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        channel_present(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">const</span> uint8_t uart2_dual =</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_function" href="sc16is7xx_8cpp.html#a43a2bf5b41c3052e204967a6952019ae">sc16is_probe_dual_channel</a>(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a18bf0dc3e434bd470446699de35b54fc">uart2_ch_b_present</a> = uart2_dual;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a0ba962786cb745a40f61c1d0b68d22ea">uart3_ch_a_present</a> =</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        channel_present(<a class="code hl_variable" href="lcp__sc16is_8hpp.html#a571c0ede076b740c70edd3d125d22daf">LCP_SC16IS_UART3_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">if</span> (uart2_dual != 0U)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#adc031c83899c78616ac17be9cba9100e">layout</a> = <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a0a447867fce47bf1283818cfadb01db0">LCP_SC16IS_LAYOUT_DUAL_ON_UART2</a>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a439c3f6cec586481efc85a7efeb87b25">hmi</a> =</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>, 1U };</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a22ec724732e7ab6f99718d482448ee16">s1</a> =</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>, <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">SC16IS_CHANNEL_B</a>, 1U };</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">if</span> ((g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#ac8f9597086625b077ea3a47452b4aead">uart2_ch_a_present</a> != 0U) &amp;&amp;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            (g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a0ba962786cb745a40f61c1d0b68d22ea">uart3_ch_a_present</a> != 0U))</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#adc031c83899c78616ac17be9cba9100e">layout</a> =</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                <a class="code hl_enumvalue" href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a0b85e77ddf4ecf94c9cc00b04ed2bc9f">LCP_SC16IS_LAYOUT_TWO_SINGLE_UART2_UART3</a>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a439c3f6cec586481efc85a7efeb87b25">hmi</a> =</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a>,</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>              <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>,</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>              g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#ac8f9597086625b077ea3a47452b4aead">uart2_ch_a_present</a> };</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a22ec724732e7ab6f99718d482448ee16">s1</a> =</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#a571c0ede076b740c70edd3d125d22daf">LCP_SC16IS_UART3_CS</a>,</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>              <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>              g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a0ba962786cb745a40f61c1d0b68d22ea">uart3_ch_a_present</a> };</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#aeca1a40abbf9d8169a4fd6de1e857595">pc</a> =</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        { <a class="code hl_variable" href="lcp__sc16is_8hpp.html#a15472a7bdd3d69cdbeb847019e3e06cb">LCP_SC16IS_UART1_CS</a>,</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>          <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a>,</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>          g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a3a5670f56ffcc285f0e69b2bc2557183">uart1_ch_a_present</a> };</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    g_probe_complete = 1U;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>}</div>
+</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="foldopen" id="foldopen00145" data-start="{" data-end="}">
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="lcp__sc16is_8cpp.html#a87a5208acd0e20ad40ddc89ceb88f935">  145</a></span><span class="keyword">const</span> <a class="code hl_struct" href="structLcpSc16isMap.html">LcpSc16isMap</a>&amp; <a class="code hl_function" href="lcp__sc16is_8cpp.html#a87a5208acd0e20ad40ddc89ceb88f935">lcp_sc16is_get_map</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>{</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <a class="code hl_function" href="lcp__sc16is_8cpp.html#ac3dcb0c9c535bc4d15e72c01aca5d29d">lcp_sc16is_probe</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">return</span> g_sc16is_map;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}</div>
+</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="lcp__sc16is_8cpp.html#ac81d0f30fe9634e9c6614a873ddf0cd5">  151</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sc16is_8cpp.html#ac81d0f30fe9634e9c6614a873ddf0cd5">lcp_sc16is_print_probe_report</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">if</span> (!SerialUSB)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_function" href="lcp__sc16is_8cpp.html#ac3dcb0c9c535bc4d15e72c01aca5d29d">lcp_sc16is_probe</a>();</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n[ SC16IS EXTERNAL UARTS ]\r\n&quot;</span>);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    SerialUSB.print(<span class="stringliteral">&quot;probe_complete=&quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    SerialUSB.print((g_probe_complete != 0U) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    SerialUSB.print(<span class="stringliteral">&quot;, layout=&quot;</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    SerialUSB.print(layout_text(g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#adc031c83899c78616ac17be9cba9100e">layout</a>));</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n\r\n-- Physical channels --\r\n&quot;</span>);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    print_present(<span class="stringliteral">&quot;UART1_CS channel A&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a3a5670f56ffcc285f0e69b2bc2557183">uart1_ch_a_present</a>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    print_present(<span class="stringliteral">&quot;UART2_CS channel A&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#ac8f9597086625b077ea3a47452b4aead">uart2_ch_a_present</a>);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    print_present(<span class="stringliteral">&quot;UART2_CS channel B&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a18bf0dc3e434bd470446699de35b54fc">uart2_ch_b_present</a>);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    print_present(<span class="stringliteral">&quot;UART3_CS channel A&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a0ba962786cb745a40f61c1d0b68d22ea">uart3_ch_a_present</a>);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n-- Logical assignment --\r\n&quot;</span>);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    print_assignment(<span class="stringliteral">&quot;PC&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#aeca1a40abbf9d8169a4fd6de1e857595">pc</a>);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    print_assignment(<span class="stringliteral">&quot;HMI&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a439c3f6cec586481efc85a7efeb87b25">hmi</a>);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    print_assignment(<span class="stringliteral">&quot;S1&quot;</span>, g_sc16is_map.<a class="code hl_variable" href="structLcpSc16isMap.html#a22ec724732e7ab6f99718d482448ee16">s1</a>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>}</div>
+</div>
+<div class="ttc" id="alcp__sc16is_8cpp_html_a87a5208acd0e20ad40ddc89ceb88f935"><div class="ttname"><a href="lcp__sc16is_8cpp.html#a87a5208acd0e20ad40ddc89ceb88f935">lcp_sc16is_get_map</a></div><div class="ttdeci">const LcpSc16isMap &amp; lcp_sc16is_get_map(void)</div><div class="ttdoc">Возвращает сохранённую логическую карту.</div><div class="ttdef"><b>Определения</b> <a href="#l00145">lcp_sc16is.cpp:145</a></div></div>
+<div class="ttc" id="alcp__sc16is_8cpp_html_ac3dcb0c9c535bc4d15e72c01aca5d29d"><div class="ttname"><a href="lcp__sc16is_8cpp.html#ac3dcb0c9c535bc4d15e72c01aca5d29d">lcp_sc16is_probe</a></div><div class="ttdeci">void lcp_sc16is_probe(void)</div><div class="ttdoc">Один раз определяет SC16IS740/752 и строит логическую карту.</div><div class="ttdef"><b>Определения</b> <a href="#l00089">lcp_sc16is.cpp:89</a></div></div>
+<div class="ttc" id="alcp__sc16is_8cpp_html_ac81d0f30fe9634e9c6614a873ddf0cd5"><div class="ttname"><a href="lcp__sc16is_8cpp.html#ac81d0f30fe9634e9c6614a873ddf0cd5">lcp_sc16is_print_probe_report</a></div><div class="ttdeci">void lcp_sc16is_print_probe_report(void)</div><div class="ttdoc">Печатает физические каналы и логическое назначение PC/HMI/S1.</div><div class="ttdef"><b>Определения</b> <a href="#l00151">lcp_sc16is.cpp:151</a></div></div>
+<div class="ttc" id="alcp__sc16is_8cpp_html_af8605d6d47735db317d0d98ba43b6ec5"><div class="ttname"><a href="lcp__sc16is_8cpp.html#af8605d6d47735db317d0d98ba43b6ec5">lcp_sc16is_init_pins</a></div><div class="ttdeci">void lcp_sc16is_init_pins(void)</div><div class="ttdoc">Один раз инициализирует SPI и переводит все CS в неактивный уровень.</div><div class="ttdef"><b>Определения</b> <a href="#l00072">lcp_sc16is.cpp:72</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html"><div class="ttname"><a href="lcp__sc16is_8hpp.html">lcp_sc16is.hpp</a></div><div class="ttdoc">Одноразовое автоопределение внешних UART SC16IS7xx контроллера LCP.</div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_a15472a7bdd3d69cdbeb847019e3e06cb"><div class="ttname"><a href="lcp__sc16is_8hpp.html#a15472a7bdd3d69cdbeb847019e3e06cb">LCP_SC16IS_UART1_CS</a></div><div class="ttdeci">static const uint32_t LCP_SC16IS_UART1_CS</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00024">lcp_sc16is.hpp:24</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_a571c0ede076b740c70edd3d125d22daf"><div class="ttname"><a href="lcp__sc16is_8hpp.html#a571c0ede076b740c70edd3d125d22daf">LCP_SC16IS_UART3_CS</a></div><div class="ttdeci">static const uint32_t LCP_SC16IS_UART3_CS</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00030">lcp_sc16is.hpp:30</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_a7ebd1ce54597bbce6ea351dce99e6ef8"><div class="ttname"><a href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8">LcpSc16isLayout</a></div><div class="ttdeci">LcpSc16isLayout</div><div class="ttdoc">Тип обнаруженной внешней UART-архитектуры LCP.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00033">lcp_sc16is.hpp:34</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_a7ebd1ce54597bbce6ea351dce99e6ef8a0a447867fce47bf1283818cfadb01db0"><div class="ttname"><a href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a0a447867fce47bf1283818cfadb01db0">LCP_SC16IS_LAYOUT_DUAL_ON_UART2</a></div><div class="ttdeci">@ LCP_SC16IS_LAYOUT_DUAL_ON_UART2</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00036">lcp_sc16is.hpp:36</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_a7ebd1ce54597bbce6ea351dce99e6ef8a0b85e77ddf4ecf94c9cc00b04ed2bc9f"><div class="ttname"><a href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a0b85e77ddf4ecf94c9cc00b04ed2bc9f">LCP_SC16IS_LAYOUT_TWO_SINGLE_UART2_UART3</a></div><div class="ttdeci">@ LCP_SC16IS_LAYOUT_TWO_SINGLE_UART2_UART3</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00037">lcp_sc16is.hpp:37</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_a7ebd1ce54597bbce6ea351dce99e6ef8a69a683cf92421c87c359a6607e124684"><div class="ttname"><a href="lcp__sc16is_8hpp.html#a7ebd1ce54597bbce6ea351dce99e6ef8a69a683cf92421c87c359a6607e124684">LCP_SC16IS_LAYOUT_UNKNOWN</a></div><div class="ttdeci">@ LCP_SC16IS_LAYOUT_UNKNOWN</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00035">lcp_sc16is.hpp:35</a></div></div>
+<div class="ttc" id="alcp__sc16is_8hpp_html_afe3bd27786e67e8d3f6b46d16f3a06da"><div class="ttname"><a href="lcp__sc16is_8hpp.html#afe3bd27786e67e8d3f6b46d16f3a06da">LCP_SC16IS_UART2_CS</a></div><div class="ttdeci">static const uint32_t LCP_SC16IS_UART2_CS</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00027">lcp_sc16is.hpp:27</a></div></div>
+<div class="ttc" id="aplatform_8hpp_html"><div class="ttname"><a href="platform_8hpp.html">platform.hpp</a></div><div class="ttdoc">Верхний платформенный интерфейс проекта.</div></div>
+<div class="ttc" id="aplatform_8hpp_html_a36622dcb8bcafb3b160471c8b1e2ab06"><div class="ttname"><a href="platform_8hpp.html#a36622dcb8bcafb3b160471c8b1e2ab06">pinMode</a></div><div class="ttdeci">void pinMode(uint32_t pin, uint32_t mode)</div><div class="ttdoc">Настраивает режим цифровой линии.</div><div class="ttdef"><b>Определения</b> <a href="platform__gpio_8cpp_source.html#l00011">platform_gpio.cpp:11</a></div></div>
+<div class="ttc" id="aplatform_8hpp_html_a4df2021e58c507af29330334a7686a33"><div class="ttname"><a href="platform_8hpp.html#a4df2021e58c507af29330334a7686a33">digitalWrite</a></div><div class="ttdeci">void digitalWrite(uint32_t pin, uint32_t value)</div><div class="ttdoc">Устанавливает выходной уровень цифровой линии.</div><div class="ttdef"><b>Определения</b> <a href="platform__gpio_8cpp_source.html#l00031">platform_gpio.cpp:31</a></div></div>
+<div class="ttc" id="asc16is7xx_8cpp_html_a43a2bf5b41c3052e204967a6952019ae"><div class="ttname"><a href="sc16is7xx_8cpp.html#a43a2bf5b41c3052e204967a6952019ae">sc16is_probe_dual_channel</a></div><div class="ttdeci">uint8_t sc16is_probe_dual_channel(uint32_t chip_select)</div><div class="ttdoc">Проверяет независимость каналов A/B одной микросхемы.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00134">sc16is7xx.cpp:134</a></div></div>
+<div class="ttc" id="asc16is7xx_8cpp_html_a4c694a78af9de91918a102a6bf3c214d"><div class="ttname"><a href="sc16is7xx_8cpp.html#a4c694a78af9de91918a102a6bf3c214d">sc16is_probe_channel</a></div><div class="ttdeci">Sc16isProbeResult sc16is_probe_channel(uint32_t chip_select, Sc16isChannel channel)</div><div class="ttdoc">Проверяет наличие канала через scratchpad register.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00116">sc16is7xx.cpp:116</a></div></div>
+<div class="ttc" id="asc16is7xx_8cpp_html_aa48af91e4607590cf9ca9f735c5714bf"><div class="ttname"><a href="sc16is7xx_8cpp.html#aa48af91e4607590cf9ca9f735c5714bf">sc16is_init_bus</a></div><div class="ttdeci">void sc16is_init_bus(void)</div><div class="ttdoc">Инициализирует общий доступ к SC16IS7xx.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00111">sc16is7xx.cpp:111</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d"><div class="ttname"><a href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d">SC16IS_PROBE_PRESENT</a></div><div class="ttdeci">@ SC16IS_PROBE_PRESENT</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8hpp_source.html#l00028">sc16is7xx.hpp:28</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a962d74f892501ef436bdc77d191ac882"><div class="ttname"><a href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></div><div class="ttdeci">Sc16isChannel</div><div class="ttdoc">Канал SC16IS7xx.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8hpp_source.html#l00016">sc16is7xx.hpp:17</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d"><div class="ttname"><a href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">SC16IS_CHANNEL_B</a></div><div class="ttdeci">@ SC16IS_CHANNEL_B</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8hpp_source.html#l00019">sc16is7xx.hpp:19</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9"><div class="ttname"><a href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a></div><div class="ttdeci">@ SC16IS_CHANNEL_A</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8hpp_source.html#l00018">sc16is7xx.hpp:18</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html"><div class="ttname"><a href="structLcpSc16isMap.html">LcpSc16isMap</a></div><div class="ttdoc">Полный результат автоопределения внешних UART LCP.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00054">lcp_sc16is.hpp:55</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_a0ba962786cb745a40f61c1d0b68d22ea"><div class="ttname"><a href="structLcpSc16isMap.html#a0ba962786cb745a40f61c1d0b68d22ea">LcpSc16isMap::uart3_ch_a_present</a></div><div class="ttdeci">uint8_t uart3_ch_a_present</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00064">lcp_sc16is.hpp:64</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_a18bf0dc3e434bd470446699de35b54fc"><div class="ttname"><a href="structLcpSc16isMap.html#a18bf0dc3e434bd470446699de35b54fc">LcpSc16isMap::uart2_ch_b_present</a></div><div class="ttdeci">uint8_t uart2_ch_b_present</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00063">lcp_sc16is.hpp:63</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_a22ec724732e7ab6f99718d482448ee16"><div class="ttname"><a href="structLcpSc16isMap.html#a22ec724732e7ab6f99718d482448ee16">LcpSc16isMap::s1</a></div><div class="ttdeci">LcpSc16isPort s1</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00059">lcp_sc16is.hpp:59</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_a3a5670f56ffcc285f0e69b2bc2557183"><div class="ttname"><a href="structLcpSc16isMap.html#a3a5670f56ffcc285f0e69b2bc2557183">LcpSc16isMap::uart1_ch_a_present</a></div><div class="ttdeci">uint8_t uart1_ch_a_present</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00061">lcp_sc16is.hpp:61</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_a439c3f6cec586481efc85a7efeb87b25"><div class="ttname"><a href="structLcpSc16isMap.html#a439c3f6cec586481efc85a7efeb87b25">LcpSc16isMap::hmi</a></div><div class="ttdeci">LcpSc16isPort hmi</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00058">lcp_sc16is.hpp:58</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_ac8f9597086625b077ea3a47452b4aead"><div class="ttname"><a href="structLcpSc16isMap.html#ac8f9597086625b077ea3a47452b4aead">LcpSc16isMap::uart2_ch_a_present</a></div><div class="ttdeci">uint8_t uart2_ch_a_present</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00062">lcp_sc16is.hpp:62</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_adc031c83899c78616ac17be9cba9100e"><div class="ttname"><a href="structLcpSc16isMap.html#adc031c83899c78616ac17be9cba9100e">LcpSc16isMap::layout</a></div><div class="ttdeci">LcpSc16isLayout layout</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00056">lcp_sc16is.hpp:56</a></div></div>
+<div class="ttc" id="astructLcpSc16isMap_html_aeca1a40abbf9d8169a4fd6de1e857595"><div class="ttname"><a href="structLcpSc16isMap.html#aeca1a40abbf9d8169a4fd6de1e857595">LcpSc16isMap::pc</a></div><div class="ttdeci">LcpSc16isPort pc</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00057">lcp_sc16is.hpp:57</a></div></div>
+<div class="ttc" id="astructLcpSc16isPort_html"><div class="ttname"><a href="structLcpSc16isPort.html">LcpSc16isPort</a></div><div class="ttdoc">Дескриптор одного логического канала внешнего UART.</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00041">lcp_sc16is.hpp:42</a></div></div>
+<div class="ttc" id="astructLcpSc16isPort_html_a1cf9a79b438eafe76e0b73a9381424cc"><div class="ttname"><a href="structLcpSc16isPort.html#a1cf9a79b438eafe76e0b73a9381424cc">LcpSc16isPort::present</a></div><div class="ttdeci">uint8_t present</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00045">lcp_sc16is.hpp:45</a></div></div>
+<div class="ttc" id="astructLcpSc16isPort_html_a2d3bc0f70033b561032b8dd1c99fd95a"><div class="ttname"><a href="structLcpSc16isPort.html#a2d3bc0f70033b561032b8dd1c99fd95a">LcpSc16isPort::chip_select</a></div><div class="ttdeci">uint32_t chip_select</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00043">lcp_sc16is.hpp:43</a></div></div>
+<div class="ttc" id="astructLcpSc16isPort_html_ab5373228810bb793519b63951d91f462"><div class="ttname"><a href="structLcpSc16isPort.html#ab5373228810bb793519b63951d91f462">LcpSc16isPort::channel</a></div><div class="ttdeci">Sc16isChannel channel</div><div class="ttdef"><b>Определения</b> <a href="lcp__sc16is_8hpp_source.html#l00044">lcp_sc16is.hpp:44</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a href="lcp__sc16is_8cpp.html">lcp_sc16is.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/sam3x_watchdog.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__watchdog_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sam3x_watchdog.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HAL watchdog-таймера ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="sam3x__watchdog_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:Sam3xWatchdogConfig" id="r_Sam3xWatchdogConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конфигурация watchdog.  <a href="structSam3xWatchdogConfig.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a2172b7315a140849304826c916eb8c76" id="r_a2172b7315a140849304826c916eb8c76"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a> { <br />
+&#160;&#160;<a class="el" href="#a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c">SAM3X_RESET_GENERAL</a> = 0
+, <a class="el" href="#a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3">SAM3X_RESET_BACKUP</a> = 1
+, <a class="el" href="#a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44">SAM3X_RESET_WATCHDOG</a> = 2
+, <a class="el" href="#a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6">SAM3X_RESET_SOFTWARE</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f">SAM3X_RESET_USER</a> = 4
+, <a class="el" href="#a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76">SAM3X_RESET_UNKNOWN</a> = 255
+<br />
+ }</td></tr>
+<tr class="memdesc:a2172b7315a140849304826c916eb8c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Причина последнего сброса по RSTC_SR.RSTTYP.  <a href="#a2172b7315a140849304826c916eb8c76">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ae3c355a3eb3c0fa02822c586d4658dbc" id="r_ae3c355a3eb3c0fa02822c586d4658dbc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3c355a3eb3c0fa02822c586d4658dbc">sam3x_watchdog_boot_count</a> (void)</td></tr>
+<tr class="memdesc:ae3c355a3eb3c0fa02822c586d4658dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает счётчик запусков, сохранённый в GPBR0.  <br /></td></tr>
+<tr class="memitem:a9a99dccd8b36fb941358847314656106" id="r_a9a99dccd8b36fb941358847314656106"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a99dccd8b36fb941358847314656106">sam3x_watchdog_boot_recovery_from_watchdog_reset</a> (void)</td></tr>
+<tr class="memdesc:a9a99dccd8b36fb941358847314656106"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет раннее восстановление после watchdog-reset.  <br /></td></tr>
+<tr class="memitem:a12a7cd5e1a2ead1305fb106d8fd4dbd3" id="r_a12a7cd5e1a2ead1305fb106d8fd4dbd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12a7cd5e1a2ead1305fb106d8fd4dbd3">sam3x_watchdog_capture_boot_status</a> (void)</td></tr>
+<tr class="memdesc:a12a7cd5e1a2ead1305fb106d8fd4dbd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считывает и сохраняет причину последнего сброса.  <br /></td></tr>
+<tr class="memitem:a4704a354e78417bb4456f4c1e0a2314b" id="r_a4704a354e78417bb4456f4c1e0a2314b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4704a354e78417bb4456f4c1e0a2314b">sam3x_watchdog_disable_before_enable</a> (void)</td></tr>
+<tr class="memdesc:a4704a354e78417bb4456f4c1e0a2314b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отключает watchdog до первой конфигурации WDT_MR.  <br /></td></tr>
+<tr class="memitem:af359b15e20db6ba2d9c741730917d8ec" id="r_af359b15e20db6ba2d9c741730917d8ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af359b15e20db6ba2d9c741730917d8ec">sam3x_watchdog_enable</a> (const <a class="el" href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a> *config)</td></tr>
+<tr class="memdesc:af359b15e20db6ba2d9c741730917d8ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Включает watchdog.  <br /></td></tr>
+<tr class="memitem:a68dae260ea18dcc0dc9ff67b176d17c0" id="r_a68dae260ea18dcc0dc9ff67b176d17c0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68dae260ea18dcc0dc9ff67b176d17c0">sam3x_watchdog_enabled</a> (void)</td></tr>
+<tr class="memdesc:a68dae260ea18dcc0dc9ff67b176d17c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает признак включённого watchdog.  <br /></td></tr>
+<tr class="memitem:ae63d12aaaeffde39cc14d2c860f8a005" id="r_ae63d12aaaeffde39cc14d2c860f8a005"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae63d12aaaeffde39cc14d2c860f8a005">sam3x_watchdog_increment_boot_count</a> (void)</td></tr>
+<tr class="memdesc:ae63d12aaaeffde39cc14d2c860f8a005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Увеличивает счётчик запусков в GPBR0.  <br /></td></tr>
+<tr class="memitem:a29714edfcd6d104322b4f1f51f22efd1" id="r_a29714edfcd6d104322b4f1f51f22efd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29714edfcd6d104322b4f1f51f22efd1">sam3x_watchdog_last_reset_type</a> (void)</td></tr>
+<tr class="memdesc:a29714edfcd6d104322b4f1f51f22efd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает сохранённую причину последнего сброса.  <br /></td></tr>
+<tr class="memitem:a30bdeea1e654736b3263d218056fa3b5" id="r_a30bdeea1e654736b3263d218056fa3b5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30bdeea1e654736b3263d218056fa3b5">sam3x_watchdog_mode_register</a> (void)</td></tr>
+<tr class="memdesc:a30bdeea1e654736b3263d218056fa3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает регистр WDT_MR.  <br /></td></tr>
+<tr class="memitem:a333c43b9cbd6e6ece70528e27ff0d9f7" id="r_a333c43b9cbd6e6ece70528e27ff0d9f7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a333c43b9cbd6e6ece70528e27ff0d9f7">sam3x_watchdog_recovery_performed</a> (void)</td></tr>
+<tr class="memdesc:a333c43b9cbd6e6ece70528e27ff0d9f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает признак выполненного recovery-reset после watchdog.  <br /></td></tr>
+<tr class="memitem:ae051392bb7e5a92e3e94a69470e29a74" id="r_ae051392bb7e5a92e3e94a69470e29a74"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae051392bb7e5a92e3e94a69470e29a74">sam3x_watchdog_reset_status_register</a> (void)</td></tr>
+<tr class="memdesc:ae051392bb7e5a92e3e94a69470e29a74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает регистр RSTC_SR.  <br /></td></tr>
+<tr class="memitem:a14770ae7a15af726f9ea621e3c26f86d" id="r_a14770ae7a15af726f9ea621e3c26f86d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14770ae7a15af726f9ea621e3c26f86d">sam3x_watchdog_reset_type_text</a> (<a class="el" href="#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a> reset_type)</td></tr>
+<tr class="memdesc:a14770ae7a15af726f9ea621e3c26f86d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текстовое описание причины последнего сброса.  <br /></td></tr>
+<tr class="memitem:a6e1fa28ab3bf8153c97b77f3c424c751" id="r_a6e1fa28ab3bf8153c97b77f3c424c751"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e1fa28ab3bf8153c97b77f3c424c751">sam3x_watchdog_restart</a> (void)</td></tr>
+<tr class="memdesc:a6e1fa28ab3bf8153c97b77f3c424c751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перезапускает watchdog-счётчик.  <br /></td></tr>
+<tr class="memitem:a26aae499481a0a5c0a9da1ce3736d6ff" id="r_a26aae499481a0a5c0a9da1ce3736d6ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26aae499481a0a5c0a9da1ce3736d6ff">sam3x_watchdog_software_reset_processor_and_peripherals</a> (void)</td></tr>
+<tr class="memdesc:a26aae499481a0a5c0a9da1ce3736d6ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет software reset процессора и периферии через RSTC.  <br /></td></tr>
+<tr class="memitem:a6c0588c804e8bac7d3fcbd5612c0cb71" id="r_a6c0588c804e8bac7d3fcbd5612c0cb71"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c0588c804e8bac7d3fcbd5612c0cb71">sam3x_watchdog_status_register</a> (void)</td></tr>
+<tr class="memdesc:a6c0588c804e8bac7d3fcbd5612c0cb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает регистр WDT_SR.  <br /></td></tr>
+<tr class="memitem:a8889038aa827a671c29ce163e456d1fa" id="r_a8889038aa827a671c29ce163e456d1fa"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8889038aa827a671c29ce163e456d1fa">sam3x_watchdog_timeout_ms</a> (uint16_t timeout_ticks_256hz)</td></tr>
+<tr class="memdesc:a8889038aa827a671c29ce163e456d1fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает время watchdog в миллисекундах.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>HAL watchdog-таймера ATSAM3X8E. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8hpp_source.html">sam3x_watchdog.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a2172b7315a140849304826c916eb8c76" name="a2172b7315a140849304826c916eb8c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2172b7315a140849304826c916eb8c76">&#9670;&#160;</a></span>Sam3xResetType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Причина последнего сброса по RSTC_SR.RSTTYP. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c" name="a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c"></a>SAM3X_RESET_GENERAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3" name="a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3"></a>SAM3X_RESET_BACKUP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44" name="a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44"></a>SAM3X_RESET_WATCHDOG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6" name="a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6"></a>SAM3X_RESET_SOFTWARE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f" name="a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f"></a>SAM3X_RESET_USER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76" name="a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76"></a>SAM3X_RESET_UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8hpp_source.html">sam3x_watchdog.hpp</a> строка <a class="el" href="sam3x__watchdog_8hpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ae3c355a3eb3c0fa02822c586d4658dbc" name="ae3c355a3eb3c0fa02822c586d4658dbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3c355a3eb3c0fa02822c586d4658dbc">&#9670;&#160;</a></span>sam3x_watchdog_boot_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sam3x_watchdog_boot_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает счётчик запусков, сохранённый в GPBR0. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00167">167</a></p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a9a99dccd8b36fb941358847314656106" name="a9a99dccd8b36fb941358847314656106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a99dccd8b36fb941358847314656106">&#9670;&#160;</a></span>sam3x_watchdog_boot_recovery_from_watchdog_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_boot_recovery_from_watchdog_reset </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет раннее восстановление после watchdog-reset. </p>
+<p>Если последний reset был вызван watchdog, функция один раз выполняет software reset процессора и периферии через RSTC. Это принудительно переинициализирует USB-периферию после watchdog-события. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00090">90</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00064">decode_reset_type()</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00019">SAM3X_RESET_SOFTWARE</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00018">SAM3X_RESET_WATCHDOG</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00118">sam3x_watchdog_software_reset_processor_and_peripherals()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00058">WATCHDOG_RECOVERY_IN_PROGRESS_MAGIC</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00059">WATCHDOG_RECOVERY_PERFORMED_MAGIC</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00159">setup()</a>.</p>
+
+</div>
+</div>
+<a id="a12a7cd5e1a2ead1305fb106d8fd4dbd3" name="a12a7cd5e1a2ead1305fb106d8fd4dbd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12a7cd5e1a2ead1305fb106d8fd4dbd3">&#9670;&#160;</a></span>sam3x_watchdog_capture_boot_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_capture_boot_status </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считывает и сохраняет причину последнего сброса. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00127">127</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00064">decode_reset_type()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00062">g_last_reset_status_register</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00061">g_last_reset_type</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00028">watchdog_status_init()</a>.</p>
+
+</div>
+</div>
+<a id="a4704a354e78417bb4456f4c1e0a2314b" name="a4704a354e78417bb4456f4c1e0a2314b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4704a354e78417bb4456f4c1e0a2314b">&#9670;&#160;</a></span>sam3x_watchdog_disable_before_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_disable_before_enable </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Отключает watchdog до первой конфигурации WDT_MR. </p>
+<p>Функция оставлена для сервисных сборок без watchdog. В диагностической baseline-прошивке она не вызывается. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00225">225</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00019">WDT_MR_WDDIS</a>.</p>
+
+</div>
+</div>
+<a id="af359b15e20db6ba2d9c741730917d8ec" name="af359b15e20db6ba2d9c741730917d8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af359b15e20db6ba2d9c741730917d8ec">&#9670;&#160;</a></span>sam3x_watchdog_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_enable </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Включает watchdog. </p>
+<p>Регистр WDT_MR записывается один раз после аппаратного сброса. До вызова этой функции код не должен записывать WDT_MR. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00177">177</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8hpp_source.html#l00032">Sam3xWatchdogConfig::halt_in_debug</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00033">Sam3xWatchdogConfig::halt_in_idle</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00031">Sam3xWatchdogConfig::reset_all</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00030">Sam3xWatchdogConfig::reset_processor</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00230">sam3x_watchdog_restart()</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00029">Sam3xWatchdogConfig::timeout_ticks_256hz</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00043">WDT_MR_WDD</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00031">WDT_MR_WDDBGHLT</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00035">WDT_MR_WDIDLEHLT</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00027">WDT_MR_WDRPROC</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00023">WDT_MR_WDRSTEN</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00039">WDT_MR_WDV</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00028">watchdog_status_init()</a>.</p>
+
+</div>
+</div>
+<a id="a68dae260ea18dcc0dc9ff67b176d17c0" name="a68dae260ea18dcc0dc9ff67b176d17c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68dae260ea18dcc0dc9ff67b176d17c0">&#9670;&#160;</a></span>sam3x_watchdog_enabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sam3x_watchdog_enabled </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает признак включённого watchdog. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00235">235</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00019">WDT_MR_WDDIS</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="ae63d12aaaeffde39cc14d2c860f8a005" name="ae63d12aaaeffde39cc14d2c860f8a005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63d12aaaeffde39cc14d2c860f8a005">&#9670;&#160;</a></span>sam3x_watchdog_increment_boot_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_increment_boot_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Увеличивает счётчик запусков в GPBR0. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00172">172</a></p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00028">watchdog_status_init()</a>.</p>
+
+</div>
+</div>
+<a id="a29714edfcd6d104322b4f1f51f22efd1" name="a29714edfcd6d104322b4f1f51f22efd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29714edfcd6d104322b4f1f51f22efd1">&#9670;&#160;</a></span>sam3x_watchdog_last_reset_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a> sam3x_watchdog_last_reset_type </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает сохранённую причину последнего сброса. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00133">133</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00061">g_last_reset_type</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a30bdeea1e654736b3263d218056fa3b5" name="a30bdeea1e654736b3263d218056fa3b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30bdeea1e654736b3263d218056fa3b5">&#9670;&#160;</a></span>sam3x_watchdog_mode_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sam3x_watchdog_mode_register </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает регистр WDT_MR. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00240">240</a></p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a333c43b9cbd6e6ece70528e27ff0d9f7" name="a333c43b9cbd6e6ece70528e27ff0d9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333c43b9cbd6e6ece70528e27ff0d9f7">&#9670;&#160;</a></span>sam3x_watchdog_recovery_performed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sam3x_watchdog_recovery_performed </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает признак выполненного recovery-reset после watchdog. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00162">162</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00059">WATCHDOG_RECOVERY_PERFORMED_MAGIC</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="ae051392bb7e5a92e3e94a69470e29a74" name="ae051392bb7e5a92e3e94a69470e29a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae051392bb7e5a92e3e94a69470e29a74">&#9670;&#160;</a></span>sam3x_watchdog_reset_status_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sam3x_watchdog_reset_status_register </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает регистр RSTC_SR. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00250">250</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00062">g_last_reset_status_register</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a14770ae7a15af726f9ea621e3c26f86d" name="a14770ae7a15af726f9ea621e3c26f86d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14770ae7a15af726f9ea621e3c26f86d">&#9670;&#160;</a></span>sam3x_watchdog_reset_type_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sam3x_watchdog_reset_type_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a></td>          <td class="paramname"><span class="paramname"><em>reset_type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает текстовое описание причины последнего сброса. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00138">138</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8hpp_source.html#l00017">SAM3X_RESET_BACKUP</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00016">SAM3X_RESET_GENERAL</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00019">SAM3X_RESET_SOFTWARE</a>, <a class="el" href="sam3x__watchdog_8hpp_source.html#l00020">SAM3X_RESET_USER</a> и <a class="el" href="sam3x__watchdog_8hpp_source.html#l00018">SAM3X_RESET_WATCHDOG</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a6e1fa28ab3bf8153c97b77f3c424c751" name="a6e1fa28ab3bf8153c97b77f3c424c751"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e1fa28ab3bf8153c97b77f3c424c751">&#9670;&#160;</a></span>sam3x_watchdog_restart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_restart </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Перезапускает watchdog-счётчик. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00230">230</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00011">WDT_CR_KEY_PASSWD</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00015">WDT_CR_WDRSTT</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sam3x__watchdog_8cpp_source.html#l00177">sam3x_watchdog_enable()</a>, <a class="el" href="watchdog__status_8cpp_source.html#l00118">watchdog_status_handle_command()</a> и <a class="el" href="watchdog__status_8cpp_source.html#l00047">watchdog_status_poll()</a>.</p>
+
+</div>
+</div>
+<a id="a26aae499481a0a5c0a9da1ce3736d6ff" name="a26aae499481a0a5c0a9da1ce3736d6ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26aae499481a0a5c0a9da1ce3736d6ff">&#9670;&#160;</a></span>sam3x_watchdog_software_reset_processor_and_peripherals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sam3x_watchdog_software_reset_processor_and_peripherals </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет software reset процессора и периферии через RSTC. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00118">118</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__watchdog_8cpp_source.html#l00047">RSTC_CR_KEY_PASSWD</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00055">RSTC_CR_PERRST</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00051">RSTC_CR_PROCRST</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sam3x__watchdog_8cpp_source.html#l00090">sam3x_watchdog_boot_recovery_from_watchdog_reset()</a>.</p>
+
+</div>
+</div>
+<a id="a6c0588c804e8bac7d3fcbd5612c0cb71" name="a6c0588c804e8bac7d3fcbd5612c0cb71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c0588c804e8bac7d3fcbd5612c0cb71">&#9670;&#160;</a></span>sam3x_watchdog_status_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sam3x_watchdog_status_register </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает регистр WDT_SR. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00245">245</a></p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a8889038aa827a671c29ce163e456d1fa" name="a8889038aa827a671c29ce163e456d1fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8889038aa827a671c29ce163e456d1fa">&#9670;&#160;</a></span>sam3x_watchdog_timeout_ms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sam3x_watchdog_timeout_ms </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>timeout_ticks_256hz</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает время watchdog в миллисекундах. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__watchdog_8cpp_source.html">sam3x_watchdog.cpp</a> строка <a class="el" href="sam3x__watchdog_8cpp_source.html#l00255">255</a></p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__watchdog_8hpp.html">sam3x_watchdog.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

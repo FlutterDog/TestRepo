@@ -1,0 +1,687 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл board/lcp_ethernet.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__ethernet_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл lcp_ethernet.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Инициализация GPIO двух Ethernet-контроллеров W5500.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="lcp__ethernet_8hpp_source.html">lcp_ethernet.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__device_8hpp_source.html">../hal/sam3x_device.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../platform/platform.hpp</a>&quot;</code><br />
+</div>
+<p><a href="lcp__ethernet_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:LcpEthernetLine" id="r_LcpEthernetLine"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:aa8c049cf09a154e5d4a692f367ee1e7f" id="r_aa8c049cf09a154e5d4a692f367ee1e7f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c049cf09a154e5d4a692f367ee1e7f">lcp_ethernet_configure_input</a> (const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;line)</td></tr>
+<tr class="memitem:afd5bc699b8a5c0ab76a9bafe632323b5" id="r_afd5bc699b8a5c0ab76a9bafe632323b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd5bc699b8a5c0ab76a9bafe632323b5">lcp_ethernet_configure_output</a> (const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;line)</td></tr>
+<tr class="memitem:a0258fccd5ca125371ac70f0cc04f289c" id="r_a0258fccd5ca125371ac70f0cc04f289c"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0258fccd5ca125371ac70f0cc04f289c">lcp_ethernet_cs_line</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memitem:adc2b62ace22690fc1b9f4140922d3bdc" id="r_adc2b62ace22690fc1b9f4140922d3bdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc2b62ace22690fc1b9f4140922d3bdc">lcp_ethernet_deselect</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:adc2b62ace22690fc1b9f4140922d3bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деактивирует SPI CS выбранного W5500.  <br /></td></tr>
+<tr class="memitem:ae9c39c43484cf23bbe87b7ed9092fd76" id="r_ae9c39c43484cf23bbe87b7ed9092fd76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9c39c43484cf23bbe87b7ed9092fd76">lcp_ethernet_deselect_all</a> (void)</td></tr>
+<tr class="memdesc:ae9c39c43484cf23bbe87b7ed9092fd76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деактивирует SPI CS обоих W5500.  <br /></td></tr>
+<tr class="memitem:a9f1ce9c6f84127d2b0b54a660d434b82" id="r_a9f1ce9c6f84127d2b0b54a660d434b82"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f1ce9c6f84127d2b0b54a660d434b82">lcp_ethernet_enable_peripheral_clock</a> (uint32_t peripheral_id)</td></tr>
+<tr class="memitem:ab24bacb1e026cf90e00716232e067eb9" id="r_ab24bacb1e026cf90e00716232e067eb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab24bacb1e026cf90e00716232e067eb9">lcp_ethernet_init_pins</a> (void)</td></tr>
+<tr class="memdesc:ab24bacb1e026cf90e00716232e067eb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует GPIO двух W5500.  <br /></td></tr>
+<tr class="memitem:ac0d27acfd245f3c72de819ebbd6362d3" id="r_ac0d27acfd245f3c72de819ebbd6362d3"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0d27acfd245f3c72de819ebbd6362d3">lcp_ethernet_name</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:ac0d27acfd245f3c72de819ebbd6362d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает имя Ethernet-интерфейса.  <br /></td></tr>
+<tr class="memitem:a115981c902508cf356c98f7e5557d541" id="r_a115981c902508cf356c98f7e5557d541"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a115981c902508cf356c98f7e5557d541">lcp_ethernet_reset</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:a115981c902508cf356c98f7e5557d541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет аппаратный reset выбранного W5500.  <br /></td></tr>
+<tr class="memitem:a4c171bae6b0ac3c1dc4db72cecdf841d" id="r_a4c171bae6b0ac3c1dc4db72cecdf841d"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c171bae6b0ac3c1dc4db72cecdf841d">lcp_ethernet_reset_line</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memitem:ad953a190c776508638db25f6efb426e9" id="r_ad953a190c776508638db25f6efb426e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad953a190c776508638db25f6efb426e9">lcp_ethernet_select</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:ad953a190c776508638db25f6efb426e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Активирует SPI CS выбранного W5500.  <br /></td></tr>
+<tr class="memitem:a9b80b857b82b374000d707abcfc39166" id="r_a9b80b857b82b374000d707abcfc39166"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b80b857b82b374000d707abcfc39166">lcp_ethernet_write_line</a> (const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;line, uint8_t value)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:ae2b5b002a09f009815e97d6b01030ba3" id="r_ae2b5b002a09f009815e97d6b01030ba3"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2b5b002a09f009815e97d6b01030ba3">ETH1_CS</a> = { PIOC, PIO_PC29, ID_PIOC }</td></tr>
+<tr class="memitem:a7ccc0eeb49bdb29165a92afc91dd3697" id="r_a7ccc0eeb49bdb29165a92afc91dd3697"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ccc0eeb49bdb29165a92afc91dd3697">ETH1_INT</a> = { PIOB, PIO_PB25, ID_PIOB }</td></tr>
+<tr class="memitem:a58aad3f13569c45f792014ced3fa0605" id="r_a58aad3f13569c45f792014ced3fa0605"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58aad3f13569c45f792014ced3fa0605">ETH1_RESET</a> = { PIOD, PIO_PD8, ID_PIOD }</td></tr>
+<tr class="memitem:a3da1657d89b62701ae029bd7ed8c93c3" id="r_a3da1657d89b62701ae029bd7ed8c93c3"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da1657d89b62701ae029bd7ed8c93c3">ETH2_CS</a> = { PIOC, PIO_PC15, ID_PIOC }</td></tr>
+<tr class="memitem:a2ced471545f9cbabf362d83faa06e662" id="r_a2ced471545f9cbabf362d83faa06e662"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ced471545f9cbabf362d83faa06e662">ETH2_INT</a> = { PIOC, PIO_PC16, ID_PIOC }</td></tr>
+<tr class="memitem:afbbba9853b16b6cd3f2ede7709c9118f" id="r_afbbba9853b16b6cd3f2ede7709c9118f"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbbba9853b16b6cd3f2ede7709c9118f">ETH2_RESET</a> = { PIOC, PIO_PC19, ID_PIOC }</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Инициализация GPIO двух Ethernet-контроллеров W5500. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="aa8c049cf09a154e5d4a692f367ee1e7f" name="aa8c049cf09a154e5d4a692f367ee1e7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c049cf09a154e5d4a692f367ee1e7f">&#9670;&#160;</a></span>lcp_ethernet_configure_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_configure_input </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>line</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00050">50</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00029">lcp_ethernet_enable_peripheral_clock()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00014">LcpEthernetLine::mask</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00015">LcpEthernetLine::peripheral_id</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00013">LcpEthernetLine::port</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="afd5bc699b8a5c0ab76a9bafe632323b5" name="afd5bc699b8a5c0ab76a9bafe632323b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd5bc699b8a5c0ab76a9bafe632323b5">&#9670;&#160;</a></span>lcp_ethernet_configure_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_configure_output </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>line</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00041">41</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00029">lcp_ethernet_enable_peripheral_clock()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00014">LcpEthernetLine::mask</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00015">LcpEthernetLine::peripheral_id</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00013">LcpEthernetLine::port</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="a0258fccd5ca125371ac70f0cc04f289c" name="a0258fccd5ca125371ac70f0cc04f289c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0258fccd5ca125371ac70f0cc04f289c">&#9670;&#160;</a></span>lcp_ethernet_cs_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp; lcp_ethernet_cs_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00072">72</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00022">ETH1_CS</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00023">ETH2_CS</a> и <a class="el" href="lcp__ethernet_8hpp_source.html#l00017">LCP_ETHERNET_2</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00114">lcp_ethernet_deselect()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00108">lcp_ethernet_select()</a>.</p>
+
+</div>
+</div>
+<a id="adc2b62ace22690fc1b9f4140922d3bdc" name="adc2b62ace22690fc1b9f4140922d3bdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc2b62ace22690fc1b9f4140922d3bdc">&#9670;&#160;</a></span>lcp_ethernet_deselect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_deselect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Деактивирует SPI CS выбранного W5500. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ethernet_id</td><td>Идентификатор Ethernet-интерфейса. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00114">114</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00072">lcp_ethernet_cs_line()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00060">lcp_ethernet_write_line()</a>.</p>
+
+</div>
+</div>
+<a id="ae9c39c43484cf23bbe87b7ed9092fd76" name="ae9c39c43484cf23bbe87b7ed9092fd76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9c39c43484cf23bbe87b7ed9092fd76">&#9670;&#160;</a></span>lcp_ethernet_deselect_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_deselect_all </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Деактивирует SPI CS обоих W5500. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00119">119</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00022">ETH1_CS</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00023">ETH2_CS</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00060">lcp_ethernet_write_line()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00108">lcp_ethernet_select()</a>.</p>
+
+</div>
+</div>
+<a id="a9f1ce9c6f84127d2b0b54a660d434b82" name="a9f1ce9c6f84127d2b0b54a660d434b82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f1ce9c6f84127d2b0b54a660d434b82">&#9670;&#160;</a></span>lcp_ethernet_enable_peripheral_clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_enable_peripheral_clock </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>peripheral_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00029">29</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00050">lcp_ethernet_configure_input()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00041">lcp_ethernet_configure_output()</a>.</p>
+
+</div>
+</div>
+<a id="ab24bacb1e026cf90e00716232e067eb9" name="ab24bacb1e026cf90e00716232e067eb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab24bacb1e026cf90e00716232e067eb9">&#9670;&#160;</a></span>lcp_ethernet_init_pins()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_init_pins </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует GPIO двух W5500. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">82</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00022">ETH1_CS</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00026">ETH1_INT</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00024">ETH1_RESET</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00023">ETH2_CS</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00027">ETH2_INT</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00025">ETH2_RESET</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00050">lcp_ethernet_configure_input()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00041">lcp_ethernet_configure_output()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00119">lcp_ethernet_deselect_all()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00060">lcp_ethernet_write_line()</a>.</p>
+
+</div>
+</div>
+<a id="ac0d27acfd245f3c72de819ebbd6362d3" name="ac0d27acfd245f3c72de819ebbd6362d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d27acfd245f3c72de819ebbd6362d3">&#9670;&#160;</a></span>lcp_ethernet_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * lcp_ethernet_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает имя Ethernet-интерфейса. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ethernet_id</td><td>Идентификатор Ethernet-интерфейса.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка имени. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00125">125</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8hpp_source.html#l00017">LCP_ETHERNET_2</a>.</p>
+
+</div>
+</div>
+<a id="a115981c902508cf356c98f7e5557d541" name="a115981c902508cf356c98f7e5557d541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115981c902508cf356c98f7e5557d541">&#9670;&#160;</a></span>lcp_ethernet_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет аппаратный reset выбранного W5500. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ethernet_id</td><td>Идентификатор Ethernet-интерфейса. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00098">98</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__time_8cpp_source.html#l00084">delay()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00077">lcp_ethernet_reset_line()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00060">lcp_ethernet_write_line()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="w5500__lite_8cpp_source.html#l00364">w5500_lite_begin()</a>.</p>
+
+</div>
+</div>
+<a id="a4c171bae6b0ac3c1dc4db72cecdf841d" name="a4c171bae6b0ac3c1dc4db72cecdf841d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c171bae6b0ac3c1dc4db72cecdf841d">&#9670;&#160;</a></span>lcp_ethernet_reset_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp; lcp_ethernet_reset_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00077">77</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00024">ETH1_RESET</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00025">ETH2_RESET</a> и <a class="el" href="lcp__ethernet_8hpp_source.html#l00017">LCP_ETHERNET_2</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00098">lcp_ethernet_reset()</a>.</p>
+
+</div>
+</div>
+<a id="ad953a190c776508638db25f6efb426e9" name="ad953a190c776508638db25f6efb426e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad953a190c776508638db25f6efb426e9">&#9670;&#160;</a></span>lcp_ethernet_select()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_select </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Активирует SPI CS выбранного W5500. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ethernet_id</td><td>Идентификатор Ethernet-интерфейса. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00108">108</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00072">lcp_ethernet_cs_line()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00119">lcp_ethernet_deselect_all()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00060">lcp_ethernet_write_line()</a>.</p>
+
+</div>
+</div>
+<a id="a9b80b857b82b374000d707abcfc39166" name="a9b80b857b82b374000d707abcfc39166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b80b857b82b374000d707abcfc39166">&#9670;&#160;</a></span>lcp_ethernet_write_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_ethernet_write_line </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00060">60</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8cpp_source.html#l00014">LcpEthernetLine::mask</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00013">LcpEthernetLine::port</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00114">lcp_ethernet_deselect()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00119">lcp_ethernet_deselect_all()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00098">lcp_ethernet_reset()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00108">lcp_ethernet_select()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="ae2b5b002a09f009815e97d6b01030ba3" name="ae2b5b002a09f009815e97d6b01030ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2b5b002a09f009815e97d6b01030ba3">&#9670;&#160;</a></span>ETH1_CS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> ETH1_CS = { PIOC, PIO_PC29, ID_PIOC }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00022">22</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00072">lcp_ethernet_cs_line()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00119">lcp_ethernet_deselect_all()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="a7ccc0eeb49bdb29165a92afc91dd3697" name="a7ccc0eeb49bdb29165a92afc91dd3697"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ccc0eeb49bdb29165a92afc91dd3697">&#9670;&#160;</a></span>ETH1_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> ETH1_INT = { PIOB, PIO_PB25, ID_PIOB }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00026">26</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="a58aad3f13569c45f792014ced3fa0605" name="a58aad3f13569c45f792014ced3fa0605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58aad3f13569c45f792014ced3fa0605">&#9670;&#160;</a></span>ETH1_RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> ETH1_RESET = { PIOD, PIO_PD8, ID_PIOD }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00024">24</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00077">lcp_ethernet_reset_line()</a>.</p>
+
+</div>
+</div>
+<a id="a3da1657d89b62701ae029bd7ed8c93c3" name="a3da1657d89b62701ae029bd7ed8c93c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da1657d89b62701ae029bd7ed8c93c3">&#9670;&#160;</a></span>ETH2_CS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> ETH2_CS = { PIOC, PIO_PC15, ID_PIOC }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00023">23</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00072">lcp_ethernet_cs_line()</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00119">lcp_ethernet_deselect_all()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="a2ced471545f9cbabf362d83faa06e662" name="a2ced471545f9cbabf362d83faa06e662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ced471545f9cbabf362d83faa06e662">&#9670;&#160;</a></span>ETH2_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> ETH2_INT = { PIOC, PIO_PC16, ID_PIOC }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00027">27</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="afbbba9853b16b6cd3f2ede7709c9118f" name="afbbba9853b16b6cd3f2ede7709c9118f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbbba9853b16b6cd3f2ede7709c9118f">&#9670;&#160;</a></span>ETH2_RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpEthernetLine.html">LcpEthernetLine</a> ETH2_RESET = { PIOC, PIO_PC19, ID_PIOC }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__ethernet_8cpp_source.html">lcp_ethernet.cpp</a> строка <a class="el" href="lcp__ethernet_8cpp_source.html#l00025">25</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__ethernet_8cpp_source.html#l00082">lcp_ethernet_init_pins()</a> и <a class="el" href="lcp__ethernet_8cpp_source.html#l00077">lcp_ethernet_reset_line()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a href="lcp__ethernet_8cpp.html">lcp_ethernet.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

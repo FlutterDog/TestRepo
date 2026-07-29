@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл hal/sc16is7xx.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sc16is7xx_8hpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sc16is7xx.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sc16is7xx_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file sc16is7xx.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief HAL внешних UART SC16IS7xx по SPI.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="sam3x__uart_8hpp.html">sam3x_uart.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"></span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * @brief Канал SC16IS7xx.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">   16</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">   18</a></span>    <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a> = 0,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">   19</a></span>    <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">SC16IS_CHANNEL_B</a> = 1</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>};</div>
+</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"></span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * @brief Результат проверки канала SC16IS7xx.</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1">   25</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b">   27</a></span>    <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b">SC16IS_PROBE_ABSENT</a> = 0,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d">   28</a></span>    <a class="code hl_enumvalue" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d">SC16IS_PROBE_PRESENT</a> = 1</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"></span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/** @brief Инициализирует общий доступ к SC16IS7xx. */</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">void</span> <a class="code hl_function" href="sc16is7xx_8hpp.html#aa48af91e4607590cf9ca9f735c5714bf">sc16is_init_bus</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/** @brief Проверяет наличие канала через scratchpad register. */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a> <a class="code hl_function" href="sc16is7xx_8hpp.html#a4c694a78af9de91918a102a6bf3c214d">sc16is_probe_channel</a>(uint32_t chip_select,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                                       <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"></span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/** @brief Проверяет независимость каналов A/B одной микросхемы. */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>uint8_t <a class="code hl_function" href="sc16is7xx_8hpp.html#a43a2bf5b41c3052e204967a6952019ae">sc16is_probe_dual_channel</a>(uint32_t chip_select);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"></span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> * @brief Инициализирует UART-канал SC16IS7xx.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * @param chip_select Номер линии CS.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * @param channel Канал микросхемы.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * @param baudrate Скорость обмена.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @param frame Формат кадра 8N1, 8O1 или 8E1.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> <a class="code hl_function" href="sc16is7xx_8hpp.html#a1fe63ad2b94522536ec24d9cd5a83be6">sc16is_begin</a>(uint32_t chip_select,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                  <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                  uint32_t baudrate,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                  <a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a> frame);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"></span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">/** @brief Возвращает количество байтов в RX FIFO. */</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>uint8_t <a class="code hl_function" href="sc16is7xx_8hpp.html#a300cac2a428e8dc4e9a6d567cd56d6e6">sc16is_available</a>(uint32_t chip_select, <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">/** @brief Читает один байт из RX FIFO либо возвращает -1. */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">int</span> <a class="code hl_function" href="sc16is7xx_8hpp.html#a4f8d341a19520cb2db235142a9e5bc74">sc16is_read</a>(uint32_t chip_select, <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/** @brief Возвращает свободное место в TX FIFO. */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>uint8_t <a class="code hl_function" href="sc16is7xx_8hpp.html#aa4429c672313b9f3137f2f93470aa921">sc16is_tx_available</a>(uint32_t chip_select, <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/** @brief Записывает один байт в TX FIFO. */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="sc16is7xx_8hpp.html#a2a83dfec143bda21d6e508c27afdda93">sc16is_write</a>(uint32_t chip_select,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                    uint8_t value);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"></span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">/** @brief Записывает буфер в TX FIFO. */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="sc16is7xx_8hpp.html#afca656c45ab125caad62571c14cae72b">sc16is_write_buffer</a>(uint32_t chip_select,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                           <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                           <span class="keyword">const</span> uint8_t* buffer,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                           <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"></span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">/** @brief Возвращает регистр LSR. */</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>uint8_t <a class="code hl_function" href="sc16is7xx_8hpp.html#aa88c7f0e956c3baf41e7e90d84bb9f73">sc16is_line_status</a>(uint32_t chip_select, <a class="code hl_enumeration" href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel);</div>
+<div class="ttc" id="asam3x__uart_8hpp_html"><div class="ttname"><a href="sam3x__uart_8hpp.html">sam3x_uart.hpp</a></div><div class="ttdoc">HAL встроенных UART/USART ATSAM3X8E.</div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a43ea2cf83f47e89268d03060cd98b34e"><div class="ttname"><a href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></div><div class="ttdeci">HalUartFrame</div><div class="ttdoc">Формат кадра UART/USART.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8hpp_source.html#l00026">sam3x_uart.hpp:27</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a1fe63ad2b94522536ec24d9cd5a83be6"><div class="ttname"><a href="sc16is7xx_8hpp.html#a1fe63ad2b94522536ec24d9cd5a83be6">sc16is_begin</a></div><div class="ttdeci">void sc16is_begin(uint32_t chip_select, Sc16isChannel channel, uint32_t baudrate, HalUartFrame frame)</div><div class="ttdoc">Инициализирует UART-канал SC16IS7xx.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00164">sc16is7xx.cpp:164</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a2a83dfec143bda21d6e508c27afdda93"><div class="ttname"><a href="sc16is7xx_8hpp.html#a2a83dfec143bda21d6e508c27afdda93">sc16is_write</a></div><div class="ttdeci">size_t sc16is_write(uint32_t chip_select, Sc16isChannel channel, uint8_t value)</div><div class="ttdoc">Записывает один байт в TX FIFO.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00229">sc16is7xx.cpp:229</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a300cac2a428e8dc4e9a6d567cd56d6e6"><div class="ttname"><a href="sc16is7xx_8hpp.html#a300cac2a428e8dc4e9a6d567cd56d6e6">sc16is_available</a></div><div class="ttdeci">uint8_t sc16is_available(uint32_t chip_select, Sc16isChannel channel)</div><div class="ttdoc">Возвращает количество байтов в RX FIFO.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00208">sc16is7xx.cpp:208</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a43a2bf5b41c3052e204967a6952019ae"><div class="ttname"><a href="sc16is7xx_8hpp.html#a43a2bf5b41c3052e204967a6952019ae">sc16is_probe_dual_channel</a></div><div class="ttdeci">uint8_t sc16is_probe_dual_channel(uint32_t chip_select)</div><div class="ttdoc">Проверяет независимость каналов A/B одной микросхемы.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00134">sc16is7xx.cpp:134</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a4c694a78af9de91918a102a6bf3c214d"><div class="ttname"><a href="sc16is7xx_8hpp.html#a4c694a78af9de91918a102a6bf3c214d">sc16is_probe_channel</a></div><div class="ttdeci">Sc16isProbeResult sc16is_probe_channel(uint32_t chip_select, Sc16isChannel channel)</div><div class="ttdoc">Проверяет наличие канала через scratchpad register.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00116">sc16is7xx.cpp:116</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a4f8d341a19520cb2db235142a9e5bc74"><div class="ttname"><a href="sc16is7xx_8hpp.html#a4f8d341a19520cb2db235142a9e5bc74">sc16is_read</a></div><div class="ttdeci">int sc16is_read(uint32_t chip_select, Sc16isChannel channel)</div><div class="ttdoc">Читает один байт из RX FIFO либо возвращает -1.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00213">sc16is7xx.cpp:213</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a515158840ffd7dfb2f0659f9ad4cb1b1"><div class="ttname"><a href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a></div><div class="ttdeci">Sc16isProbeResult</div><div class="ttdoc">Результат проверки канала SC16IS7xx.</div><div class="ttdef"><b>Определения</b> <a href="#l00025">sc16is7xx.hpp:26</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d"><div class="ttname"><a href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d">SC16IS_PROBE_PRESENT</a></div><div class="ttdeci">@ SC16IS_PROBE_PRESENT</div><div class="ttdef"><b>Определения</b> <a href="#l00028">sc16is7xx.hpp:28</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b"><div class="ttname"><a href="sc16is7xx_8hpp.html#a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b">SC16IS_PROBE_ABSENT</a></div><div class="ttdeci">@ SC16IS_PROBE_ABSENT</div><div class="ttdef"><b>Определения</b> <a href="#l00027">sc16is7xx.hpp:27</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a962d74f892501ef436bdc77d191ac882"><div class="ttname"><a href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></div><div class="ttdeci">Sc16isChannel</div><div class="ttdoc">Канал SC16IS7xx.</div><div class="ttdef"><b>Определения</b> <a href="#l00016">sc16is7xx.hpp:17</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d"><div class="ttname"><a href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">SC16IS_CHANNEL_B</a></div><div class="ttdeci">@ SC16IS_CHANNEL_B</div><div class="ttdef"><b>Определения</b> <a href="#l00019">sc16is7xx.hpp:19</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9"><div class="ttname"><a href="sc16is7xx_8hpp.html#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a></div><div class="ttdeci">@ SC16IS_CHANNEL_A</div><div class="ttdef"><b>Определения</b> <a href="#l00018">sc16is7xx.hpp:18</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_aa4429c672313b9f3137f2f93470aa921"><div class="ttname"><a href="sc16is7xx_8hpp.html#aa4429c672313b9f3137f2f93470aa921">sc16is_tx_available</a></div><div class="ttdeci">uint8_t sc16is_tx_available(uint32_t chip_select, Sc16isChannel channel)</div><div class="ttdoc">Возвращает свободное место в TX FIFO.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00224">sc16is7xx.cpp:224</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_aa48af91e4607590cf9ca9f735c5714bf"><div class="ttname"><a href="sc16is7xx_8hpp.html#aa48af91e4607590cf9ca9f735c5714bf">sc16is_init_bus</a></div><div class="ttdeci">void sc16is_init_bus(void)</div><div class="ttdoc">Инициализирует общий доступ к SC16IS7xx.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00111">sc16is7xx.cpp:111</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_aa88c7f0e956c3baf41e7e90d84bb9f73"><div class="ttname"><a href="sc16is7xx_8hpp.html#aa88c7f0e956c3baf41e7e90d84bb9f73">sc16is_line_status</a></div><div class="ttdeci">uint8_t sc16is_line_status(uint32_t chip_select, Sc16isChannel channel)</div><div class="ttdoc">Возвращает регистр LSR.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00278">sc16is7xx.cpp:278</a></div></div>
+<div class="ttc" id="asc16is7xx_8hpp_html_afca656c45ab125caad62571c14cae72b"><div class="ttname"><a href="sc16is7xx_8hpp.html#afca656c45ab125caad62571c14cae72b">sc16is_write_buffer</a></div><div class="ttdeci">size_t sc16is_write_buffer(uint32_t chip_select, Sc16isChannel channel, const uint8_t *buffer, size_t length)</div><div class="ttdoc">Записывает буфер в TX FIFO.</div><div class="ttdef"><b>Определения</b> <a href="sc16is7xx_8cpp_source.html#l00243">sc16is7xx.cpp:243</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sc16is7xx_8hpp.html">sc16is7xx.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

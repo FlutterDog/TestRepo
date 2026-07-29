@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['read_5fholding_5fregisters_0',['read_holding_registers',['../class_i_g_a_s__mb__485.html#a6cf6bd74e6c50f5a55d9cfc99954acfa',1,'IGAS_mb_485']]],
+  ['readinputs_1',['readInputs',['../namespaceldi__board.html#af6cce6b6bb91d2d71c481d651b254758',1,'ldi_board']]],
+  ['readme_2emd_2',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['readslaveaddress_3',['readSlaveAddress',['../namespaceanonymous__namespace_02app_8cpp_03.html#a265cc3dd679e2cf5fb5c6ae21fe94e5a',1,'anonymous_namespace{app.cpp}::readSlaveAddress()'],['../namespaceldi__board.html#a3945162fb5e98036e07eef343c9432eb',1,'ldi_board::readSlaveAddress()']]],
+  ['rebootrequested_4',['rebootRequested',['../namespaceanonymous__namespace_02app_8cpp_03.html#af2d86e95aa7d01597a7c5b33a44da86c',1,'anonymous_namespace{app.cpp}']]],
+  ['receive_5frequest_5',['receive_request',['../class_i_g_a_s__mb__485.html#aa5e3fa77d8578d2fa88b429d5988f963',1,'IGAS_mb_485']]],
+  ['reglimit_6',['regLimit',['../class_i_g_a_s__mb__485.html#ad8ff5cc55974db8425ba858da749ddef',1,'IGAS_mb_485']]],
+  ['regs_5fh_7',['REGS_H',['../_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7',1,'IGAS_mb.h']]],
+  ['regs_5fl_8',['REGS_L',['../_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a',1,'IGAS_mb.h']]],
+  ['resolve_9',['resolve',['../namespaceanonymous__namespace_02compat__gpio_8cpp_03.html#a0e9bec6efe9b5274c521185dc71db867',1,'anonymous_namespace{compat_gpio.cpp}']]],
+  ['response_5fsize_10',['RESPONSE_SIZE',['../_i_g_a_s__mb_8h.html#af3bff94d6094c0a726233d04dba104d7',1,'IGAS_mb.h']]],
+  ['restorepanelmask_11',['restorePanelMask',['../namespaceanonymous__namespace_02ldi__board_8cpp_03.html#ab4ff60fed7587074c9de772353d476af',1,'anonymous_namespace{ldi_board.cpp}']]],
+  ['rev2_20firmware_12',['LDI1118 Rev2 Firmware',['../index.html',1,'']]],
+  ['rs_20485_13',['RS-485',['../index.html#autotoc_md14',1,'']]],
+  ['rs485_5fde_5fmask_14',['RS485_DE_MASK',['../namespaceanonymous__namespace_02ldi__board_8cpp_03.html#a5f143aac159f6de8994a84cb1b750ac8',1,'anonymous_namespace{ldi_board.cpp}']]],
+  ['rs485istransmitmode_15',['rs485IsTransmitMode',['../namespaceldi__board.html#a3935b99e40bcdc98f331aed3da58cdae',1,'ldi_board']]],
+  ['rs485receivemode_16',['rs485ReceiveMode',['../namespaceldi__board.html#a83b55d5a12edd8e555bd856ecb1b54e2',1,'ldi_board']]],
+  ['rs485transmitmode_17',['rs485TransmitMode',['../namespaceldi__board.html#a31fdd923dac52d24efe601bbe1743c3b',1,'ldi_board']]],
+  ['rs485txcompletecallback_18',['rs485TxCompleteCallback',['../namespaceanonymous__namespace_02_i_g_a_s__mb_8cpp_03.html#acf76f77473c48d0a2a014e27ba0d2692',1,'anonymous_namespace{IGAS_mb.cpp}']]],
+  ['rx_5fbuf_19',['rx_buf',['../compat__serial_8cpp.html#a9fab8af9c53b9c331c868feed2367c02',1,'compat_serial.cpp']]],
+  ['rx_5fcount_20',['rx_count',['../compat__serial_8cpp.html#ac44fce60f6d3f62dd5737592d6605234',1,'compat_serial.cpp']]],
+  ['rx_5fhead_21',['rx_head',['../compat__serial_8cpp.html#aa05a46cea94d19035fa075f27d6f4571',1,'compat_serial.cpp']]],
+  ['rx_5fmask_22',['RX_MASK',['../compat__serial_8cpp.html#a20747178ee49fc13627e244b8556b66d',1,'compat_serial.cpp']]],
+  ['rx_5ftail_23',['rx_tail',['../compat__serial_8cpp.html#a619b585d82637125e07ddc7832ff999e',1,'compat_serial.cpp']]]
+];

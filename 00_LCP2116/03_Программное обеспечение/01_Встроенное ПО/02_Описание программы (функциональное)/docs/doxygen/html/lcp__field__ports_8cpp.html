@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл board/lcp_field_ports.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__field__ports_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл lcp_field_ports.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация транспортов пользовательских RS-485 портов S1..S4.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="lcp__field__ports_8hpp_source.html">lcp_field_ports.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__sc16is_8hpp_source.html">lcp_sc16is.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sc16is7xx_8hpp_source.html">../hal/sc16is7xx.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../platform/platform.hpp</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="lcp__field__ports_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a57e7bfb9eabf1adfab2f5503dd565c04" id="r_a57e7bfb9eabf1adfab2f5503dd565c04"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57e7bfb9eabf1adfab2f5503dd565c04">lcp_field_port_config</a> (<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a> port_id)</td></tr>
+<tr class="memdesc:a57e7bfb9eabf1adfab2f5503dd565c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает фактически применённые аппаратные параметры.  <br /></td></tr>
+<tr class="memitem:a680ae2469fb74cfd75813bd15b723c61" id="r_a680ae2469fb74cfd75813bd15b723c61"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a680ae2469fb74cfd75813bd15b723c61">lcp_field_port_error_count</a> (<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a> port_id)</td></tr>
+<tr class="memdesc:a680ae2469fb74cfd75813bd15b723c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает накопительный счётчик аппаратных ошибок RX.  <br /></td></tr>
+<tr class="memitem:a49b656f7322622a9ac2209f2fa5d1f50" id="r_a49b656f7322622a9ac2209f2fa5d1f50"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49b656f7322622a9ac2209f2fa5d1f50">lcp_field_port_name</a> (<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a> port_id)</td></tr>
+<tr class="memitem:ac1acfc716ca3176892ad32e91c62c194" id="r_ac1acfc716ca3176892ad32e91c62c194"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1acfc716ca3176892ad32e91c62c194">lcp_field_port_present</a> (<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a> port_id)</td></tr>
+<tr class="memdesc:ac1acfc716ca3176892ad32e91c62c194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет наличие физического transport.  <br /></td></tr>
+<tr class="memitem:a41eb1353ec6b99a4ccc2c464f1860369" id="r_a41eb1353ec6b99a4ccc2c464f1860369"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structModbusRtuTransport.html">ModbusRtuTransport</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41eb1353ec6b99a4ccc2c464f1860369">lcp_field_port_transport</a> (<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a> port_id)</td></tr>
+<tr class="memdesc:a41eb1353ec6b99a4ccc2c464f1860369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает статический Modbus RTU transport выбранного порта.  <br /></td></tr>
+<tr class="memitem:a91d2e9f76181d6c061c3cc60f39ed3ab" id="r_a91d2e9f76181d6c061c3cc60f39ed3ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91d2e9f76181d6c061c3cc60f39ed3ab">lcp_field_ports_init</a> (const <a class="el" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a> configs[<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41a6c336512f6db22cd97717d0fed554588">LCP_FIELD_PORT_COUNT</a>])</td></tr>
+<tr class="memdesc:a91d2e9f76181d6c061c3cc60f39ed3ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует S1..S4 и их RS-485 direction control.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация транспортов пользовательских RS-485 портов S1..S4. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a57e7bfb9eabf1adfab2f5503dd565c04" name="a57e7bfb9eabf1adfab2f5503dd565c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57e7bfb9eabf1adfab2f5503dd565c04">&#9670;&#160;</a></span>lcp_field_port_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a> &amp; lcp_field_port_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает фактически применённые аппаратные параметры. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Неизменяемая ссылка; некорректный ID нормализуется к S1. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a> строка <a class="el" href="lcp__field__ports_8cpp_source.html#l00264">264</a></p>
+
+</div>
+</div>
+<a id="a680ae2469fb74cfd75813bd15b723c61" name="a680ae2469fb74cfd75813bd15b723c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a680ae2469fb74cfd75813bd15b723c61">&#9670;&#160;</a></span>lcp_field_port_error_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lcp_field_port_error_count </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает накопительный счётчик аппаратных ошибок RX. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>OVRE/FRAME/PARE для встроенных UART; для текущего S1 transport — 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a> строка <a class="el" href="lcp__field__ports_8cpp_source.html#l00269">269</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00567">hal_uart_error_count()</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00017">HAL_UART_PORT_1</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00018">HAL_UART_PORT_2</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00019">HAL_UART_PORT_3</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00016">LCP_FIELD_PORT_S1</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00017">LCP_FIELD_PORT_S2</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00018">LCP_FIELD_PORT_S3</a> и <a class="el" href="lcp__field__ports_8hpp_source.html#l00019">LCP_FIELD_PORT_S4</a>.</p>
+
+</div>
+</div>
+<a id="a49b656f7322622a9ac2209f2fa5d1f50" name="a49b656f7322622a9ac2209f2fa5d1f50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49b656f7322622a9ac2209f2fa5d1f50">&#9670;&#160;</a></span>lcp_field_port_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * lcp_field_port_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Краткое имя <span class="tt">S1</span>, <span class="tt">S2</span>, <span class="tt">S3</span> или <span class="tt">S4</span>. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a> строка <a class="el" href="lcp__field__ports_8cpp_source.html#l00259">259</a></p>
+
+</div>
+</div>
+<a id="ac1acfc716ca3176892ad32e91c62c194" name="ac1acfc716ca3176892ad32e91c62c194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1acfc716ca3176892ad32e91c62c194">&#9670;&#160;</a></span>lcp_field_port_present()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_field_port_present </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет наличие физического transport. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Для S1 результат автоопределения SC16IS; для S2..S4 всегда 1. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a> строка <a class="el" href="lcp__field__ports_8cpp_source.html#l00249">249</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__field__ports_8hpp_source.html#l00020">LCP_FIELD_PORT_COUNT</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00016">LCP_FIELD_PORT_S1</a> и <a class="el" href="lcp__sc16is_8hpp_source.html#l00045">LcpSc16isPort::present</a>.</p>
+
+</div>
+</div>
+<a id="a41eb1353ec6b99a4ccc2c464f1860369" name="a41eb1353ec6b99a4ccc2c464f1860369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41eb1353ec6b99a4ccc2c464f1860369">&#9670;&#160;</a></span>lcp_field_port_transport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structModbusRtuTransport.html">ModbusRtuTransport</a> &amp; lcp_field_port_transport </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает статический Modbus RTU transport выбранного порта. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port_id</td><td>Идентификатор S1..S4. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Ссылка, действительная в течение всего времени работы прошивки. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a> строка <a class="el" href="lcp__field__ports_8cpp_source.html#l00244">244</a></p>
+
+</div>
+</div>
+<a id="a91d2e9f76181d6c061c3cc60f39ed3ab" name="a91d2e9f76181d6c061c3cc60f39ed3ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d2e9f76181d6c061c3cc60f39ed3ab">&#9670;&#160;</a></span>lcp_field_ports_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_field_ports_init </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a></td>          <td class="paramname"><span class="paramname"><em>configs</em></span>[LCP_FIELD_PORT_COUNT]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует S1..S4 и их RS-485 direction control. </p>
+<p>S1 использует карту, полученную автоопределением SC16IS740/752. S2, S3 и S4 используют встроенные UART/USART ATSAM3X8E. Повторный вызов безопасно переинициализирует параметры после <span class="tt">field reload</span>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">configs</td><td>Массив настроек в порядке S1, S2, S3, S4. Null сохраняет ранее установленные значения или baseline defaults. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__field__ports_8cpp_source.html">lcp_field_ports.cpp</a> строка <a class="el" href="lcp__field__ports_8cpp_source.html#l00194">194</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__field__ports_8hpp_source.html#l00026">LcpFieldPortConfig::baudrate</a>, <a class="el" href="lcp__sc16is_8hpp_source.html#l00044">LcpSc16isPort::channel</a>, <a class="el" href="lcp__sc16is_8hpp_source.html#l00043">LcpSc16isPort::chip_select</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00027">LcpFieldPortConfig::frame</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00394">hal_uart_begin()</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00017">HAL_UART_PORT_1</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00018">HAL_UART_PORT_2</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00019">HAL_UART_PORT_3</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00020">LCP_FIELD_PORT_COUNT</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00016">LCP_FIELD_PORT_S1</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00017">LCP_FIELD_PORT_S2</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00018">LCP_FIELD_PORT_S3</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00019">LCP_FIELD_PORT_S4</a>, <a class="el" href="lcp__sc16is_8cpp_source.html#l00145">lcp_sc16is_get_map()</a>, <a class="el" href="lcp__sc16is_8cpp_source.html#l00072">lcp_sc16is_init_pins()</a>, <a class="el" href="lcp__sc16is_8cpp_source.html#l00089">lcp_sc16is_probe()</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="lcp__sc16is_8hpp_source.html#l00045">LcpSc16isPort::present</a>, <a class="el" href="lcp__sc16is_8hpp_source.html#l00059">LcpSc16isMap::s1</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00164">sc16is_begin()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a href="lcp__field__ports_8cpp.html">lcp_field_ports.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

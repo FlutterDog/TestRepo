@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл hal/sam3x_watchdog.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__watchdog_8hpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sam3x_watchdog.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sam3x__watchdog_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment"></span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @file sam3x_watchdog.hpp</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @brief HAL watchdog-таймера ATSAM3X8E.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"></span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @brief Причина последнего сброса по RSTC_SR.RSTTYP.</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76">   14</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c">   16</a></span>    <a class="code hl_enumvalue" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c">SAM3X_RESET_GENERAL</a> = 0,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3">   17</a></span>    <a class="code hl_enumvalue" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3">SAM3X_RESET_BACKUP</a> = 1,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44">   18</a></span>    <a class="code hl_enumvalue" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44">SAM3X_RESET_WATCHDOG</a> = 2,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6">   19</a></span>    <a class="code hl_enumvalue" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6">SAM3X_RESET_SOFTWARE</a> = 3,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f">   20</a></span>    <a class="code hl_enumvalue" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f">SAM3X_RESET_USER</a> = 4,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76">   21</a></span>    <a class="code hl_enumvalue" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76">SAM3X_RESET_UNKNOWN</a> = 255</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"></span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @brief Конфигурация watchdog.</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structSam3xWatchdogConfig.html">   27</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structSam3xWatchdogConfig.html#aabe204dba8ca49309b91ea82589ae5e3">   29</a></span>    uint16_t <a class="code hl_variable" href="structSam3xWatchdogConfig.html#aabe204dba8ca49309b91ea82589ae5e3">timeout_ticks_256hz</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structSam3xWatchdogConfig.html#ae18d359cea360db260a12455bd0e33e0">   30</a></span>    uint8_t <a class="code hl_variable" href="structSam3xWatchdogConfig.html#ae18d359cea360db260a12455bd0e33e0">reset_processor</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structSam3xWatchdogConfig.html#a5cba64d062b4d7bdcce0b7f0b8da911c">   31</a></span>    uint8_t <a class="code hl_variable" href="structSam3xWatchdogConfig.html#a5cba64d062b4d7bdcce0b7f0b8da911c">reset_all</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structSam3xWatchdogConfig.html#a7ae65e5d44d8c6497e93760deb1afe95">   32</a></span>    uint8_t <a class="code hl_variable" href="structSam3xWatchdogConfig.html#a7ae65e5d44d8c6497e93760deb1afe95">halt_in_debug</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structSam3xWatchdogConfig.html#ac6a01cff4d9f0e5f21372d05f8de3e11">   33</a></span>    uint8_t <a class="code hl_variable" href="structSam3xWatchdogConfig.html#ac6a01cff4d9f0e5f21372d05f8de3e11">halt_in_idle</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"></span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * @brief Выполняет раннее восстановление после watchdog-reset.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> * Если последний reset был вызван watchdog, функция один раз выполняет</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * software reset процессора и периферии через RSTC. Это принудительно</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * переинициализирует USB-периферию после watchdog-события.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a9a99dccd8b36fb941358847314656106">sam3x_watchdog_boot_recovery_from_watchdog_reset</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * @brief Выполняет software reset процессора и периферии через RSTC.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a26aae499481a0a5c0a9da1ce3736d6ff">sam3x_watchdog_software_reset_processor_and_peripherals</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"></span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * @brief Считывает и сохраняет причину последнего сброса.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a12a7cd5e1a2ead1305fb106d8fd4dbd3">sam3x_watchdog_capture_boot_status</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"></span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * @brief Возвращает сохранённую причину последнего сброса.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><a class="code hl_enumeration" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a29714edfcd6d104322b4f1f51f22efd1">sam3x_watchdog_last_reset_type</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"> * @brief Возвращает текстовое описание причины последнего сброса.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a14770ae7a15af726f9ea621e3c26f86d">sam3x_watchdog_reset_type_text</a>(<a class="code hl_enumeration" href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a> reset_type);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"></span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"> * @brief Возвращает признак выполненного recovery-reset после watchdog.</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>uint8_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a333c43b9cbd6e6ece70528e27ff0d9f7">sam3x_watchdog_recovery_performed</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment"></span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * @brief Возвращает счётчик запусков, сохранённый в GPBR0.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>uint32_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#ae3c355a3eb3c0fa02822c586d4658dbc">sam3x_watchdog_boot_count</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"></span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"> * @brief Увеличивает счётчик запусков в GPBR0.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#ae63d12aaaeffde39cc14d2c860f8a005">sam3x_watchdog_increment_boot_count</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"></span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"> * @brief Включает watchdog.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"> * Регистр WDT_MR записывается один раз после аппаратного сброса. До вызова</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment"> * этой функции код не должен записывать WDT_MR.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#af359b15e20db6ba2d9c741730917d8ec">sam3x_watchdog_enable</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a>* config);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"></span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> * @brief Отключает watchdog до первой конфигурации WDT_MR.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> * Функция оставлена для сервисных сборок без watchdog. В диагностической</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"> * baseline-прошивке она не вызывается.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a4704a354e78417bb4456f4c1e0a2314b">sam3x_watchdog_disable_before_enable</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"></span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> * @brief Перезапускает watchdog-счётчик.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a6e1fa28ab3bf8153c97b77f3c424c751">sam3x_watchdog_restart</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"></span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment"> * @brief Возвращает признак включённого watchdog.</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>uint8_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a68dae260ea18dcc0dc9ff67b176d17c0">sam3x_watchdog_enabled</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"></span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> * @brief Возвращает регистр WDT_MR.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>uint32_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a30bdeea1e654736b3263d218056fa3b5">sam3x_watchdog_mode_register</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"></span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment"> * @brief Возвращает регистр WDT_SR.</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>uint32_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a6c0588c804e8bac7d3fcbd5612c0cb71">sam3x_watchdog_status_register</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment"></span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"> * @brief Возвращает регистр RSTC_SR.</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>uint32_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#ae051392bb7e5a92e3e94a69470e29a74">sam3x_watchdog_reset_status_register</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment"></span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment"> * @brief Возвращает время watchdog в миллисекундах.</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>uint32_t <a class="code hl_function" href="sam3x__watchdog_8hpp.html#a8889038aa827a671c29ce163e456d1fa">sam3x_watchdog_timeout_ms</a>(uint16_t timeout_ticks_256hz);</div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a12a7cd5e1a2ead1305fb106d8fd4dbd3"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a12a7cd5e1a2ead1305fb106d8fd4dbd3">sam3x_watchdog_capture_boot_status</a></div><div class="ttdeci">void sam3x_watchdog_capture_boot_status(void)</div><div class="ttdoc">Считывает и сохраняет причину последнего сброса.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00127">sam3x_watchdog.cpp:127</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a14770ae7a15af726f9ea621e3c26f86d"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a14770ae7a15af726f9ea621e3c26f86d">sam3x_watchdog_reset_type_text</a></div><div class="ttdeci">const char * sam3x_watchdog_reset_type_text(Sam3xResetType reset_type)</div><div class="ttdoc">Возвращает текстовое описание причины последнего сброса.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00138">sam3x_watchdog.cpp:138</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76">Sam3xResetType</a></div><div class="ttdeci">Sam3xResetType</div><div class="ttdoc">Причина последнего сброса по RSTC_SR.RSTTYP.</div><div class="ttdef"><b>Определения</b> <a href="#l00014">sam3x_watchdog.hpp:15</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a45bfccbf370b0ec2ee3c09a552e6858c">SAM3X_RESET_GENERAL</a></div><div class="ttdeci">@ SAM3X_RESET_GENERAL</div><div class="ttdef"><b>Определения</b> <a href="#l00016">sam3x_watchdog.hpp:16</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a648ba9c39df007b9bb0c7523804f1bb3">SAM3X_RESET_BACKUP</a></div><div class="ttdeci">@ SAM3X_RESET_BACKUP</div><div class="ttdef"><b>Определения</b> <a href="#l00017">sam3x_watchdog.hpp:17</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76a8f2b48880400c0e9034f33b6221fbf76">SAM3X_RESET_UNKNOWN</a></div><div class="ttdeci">@ SAM3X_RESET_UNKNOWN</div><div class="ttdef"><b>Определения</b> <a href="#l00021">sam3x_watchdog.hpp:21</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76aa944ad3af21a099d3e6d58cf38fcc0d6">SAM3X_RESET_SOFTWARE</a></div><div class="ttdeci">@ SAM3X_RESET_SOFTWARE</div><div class="ttdef"><b>Определения</b> <a href="#l00019">sam3x_watchdog.hpp:19</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76aa9c84c99db080a38a237d7bbf3f1888f">SAM3X_RESET_USER</a></div><div class="ttdeci">@ SAM3X_RESET_USER</div><div class="ttdef"><b>Определения</b> <a href="#l00020">sam3x_watchdog.hpp:20</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a2172b7315a140849304826c916eb8c76ad01d8b341ee78ca69bd5211d05dada44">SAM3X_RESET_WATCHDOG</a></div><div class="ttdeci">@ SAM3X_RESET_WATCHDOG</div><div class="ttdef"><b>Определения</b> <a href="#l00018">sam3x_watchdog.hpp:18</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a26aae499481a0a5c0a9da1ce3736d6ff"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a26aae499481a0a5c0a9da1ce3736d6ff">sam3x_watchdog_software_reset_processor_and_peripherals</a></div><div class="ttdeci">void sam3x_watchdog_software_reset_processor_and_peripherals(void)</div><div class="ttdoc">Выполняет software reset процессора и периферии через RSTC.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00118">sam3x_watchdog.cpp:118</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a29714edfcd6d104322b4f1f51f22efd1"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a29714edfcd6d104322b4f1f51f22efd1">sam3x_watchdog_last_reset_type</a></div><div class="ttdeci">Sam3xResetType sam3x_watchdog_last_reset_type(void)</div><div class="ttdoc">Возвращает сохранённую причину последнего сброса.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00133">sam3x_watchdog.cpp:133</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a30bdeea1e654736b3263d218056fa3b5"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a30bdeea1e654736b3263d218056fa3b5">sam3x_watchdog_mode_register</a></div><div class="ttdeci">uint32_t sam3x_watchdog_mode_register(void)</div><div class="ttdoc">Возвращает регистр WDT_MR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00240">sam3x_watchdog.cpp:240</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a333c43b9cbd6e6ece70528e27ff0d9f7"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a333c43b9cbd6e6ece70528e27ff0d9f7">sam3x_watchdog_recovery_performed</a></div><div class="ttdeci">uint8_t sam3x_watchdog_recovery_performed(void)</div><div class="ttdoc">Возвращает признак выполненного recovery-reset после watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00162">sam3x_watchdog.cpp:162</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a4704a354e78417bb4456f4c1e0a2314b"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a4704a354e78417bb4456f4c1e0a2314b">sam3x_watchdog_disable_before_enable</a></div><div class="ttdeci">void sam3x_watchdog_disable_before_enable(void)</div><div class="ttdoc">Отключает watchdog до первой конфигурации WDT_MR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00225">sam3x_watchdog.cpp:225</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a68dae260ea18dcc0dc9ff67b176d17c0"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a68dae260ea18dcc0dc9ff67b176d17c0">sam3x_watchdog_enabled</a></div><div class="ttdeci">uint8_t sam3x_watchdog_enabled(void)</div><div class="ttdoc">Возвращает признак включённого watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00235">sam3x_watchdog.cpp:235</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a6c0588c804e8bac7d3fcbd5612c0cb71"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a6c0588c804e8bac7d3fcbd5612c0cb71">sam3x_watchdog_status_register</a></div><div class="ttdeci">uint32_t sam3x_watchdog_status_register(void)</div><div class="ttdoc">Возвращает регистр WDT_SR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00245">sam3x_watchdog.cpp:245</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a6e1fa28ab3bf8153c97b77f3c424c751"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a6e1fa28ab3bf8153c97b77f3c424c751">sam3x_watchdog_restart</a></div><div class="ttdeci">void sam3x_watchdog_restart(void)</div><div class="ttdoc">Перезапускает watchdog-счётчик.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00230">sam3x_watchdog.cpp:230</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a8889038aa827a671c29ce163e456d1fa"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a8889038aa827a671c29ce163e456d1fa">sam3x_watchdog_timeout_ms</a></div><div class="ttdeci">uint32_t sam3x_watchdog_timeout_ms(uint16_t timeout_ticks_256hz)</div><div class="ttdoc">Возвращает время watchdog в миллисекундах.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00255">sam3x_watchdog.cpp:255</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_a9a99dccd8b36fb941358847314656106"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#a9a99dccd8b36fb941358847314656106">sam3x_watchdog_boot_recovery_from_watchdog_reset</a></div><div class="ttdeci">void sam3x_watchdog_boot_recovery_from_watchdog_reset(void)</div><div class="ttdoc">Выполняет раннее восстановление после watchdog-reset.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00090">sam3x_watchdog.cpp:90</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_ae051392bb7e5a92e3e94a69470e29a74"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#ae051392bb7e5a92e3e94a69470e29a74">sam3x_watchdog_reset_status_register</a></div><div class="ttdeci">uint32_t sam3x_watchdog_reset_status_register(void)</div><div class="ttdoc">Возвращает регистр RSTC_SR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00250">sam3x_watchdog.cpp:250</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_ae3c355a3eb3c0fa02822c586d4658dbc"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#ae3c355a3eb3c0fa02822c586d4658dbc">sam3x_watchdog_boot_count</a></div><div class="ttdeci">uint32_t sam3x_watchdog_boot_count(void)</div><div class="ttdoc">Возвращает счётчик запусков, сохранённый в GPBR0.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00167">sam3x_watchdog.cpp:167</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_ae63d12aaaeffde39cc14d2c860f8a005"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#ae63d12aaaeffde39cc14d2c860f8a005">sam3x_watchdog_increment_boot_count</a></div><div class="ttdeci">void sam3x_watchdog_increment_boot_count(void)</div><div class="ttdoc">Увеличивает счётчик запусков в GPBR0.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00172">sam3x_watchdog.cpp:172</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html_af359b15e20db6ba2d9c741730917d8ec"><div class="ttname"><a href="sam3x__watchdog_8hpp.html#af359b15e20db6ba2d9c741730917d8ec">sam3x_watchdog_enable</a></div><div class="ttdeci">void sam3x_watchdog_enable(const Sam3xWatchdogConfig *config)</div><div class="ttdoc">Включает watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00177">sam3x_watchdog.cpp:177</a></div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html"><div class="ttname"><a href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a></div><div class="ttdoc">Конфигурация watchdog.</div><div class="ttdef"><b>Определения</b> <a href="#l00027">sam3x_watchdog.hpp:28</a></div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html_a5cba64d062b4d7bdcce0b7f0b8da911c"><div class="ttname"><a href="structSam3xWatchdogConfig.html#a5cba64d062b4d7bdcce0b7f0b8da911c">Sam3xWatchdogConfig::reset_all</a></div><div class="ttdeci">uint8_t reset_all</div><div class="ttdef"><b>Определения</b> <a href="#l00031">sam3x_watchdog.hpp:31</a></div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html_a7ae65e5d44d8c6497e93760deb1afe95"><div class="ttname"><a href="structSam3xWatchdogConfig.html#a7ae65e5d44d8c6497e93760deb1afe95">Sam3xWatchdogConfig::halt_in_debug</a></div><div class="ttdeci">uint8_t halt_in_debug</div><div class="ttdef"><b>Определения</b> <a href="#l00032">sam3x_watchdog.hpp:32</a></div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html_aabe204dba8ca49309b91ea82589ae5e3"><div class="ttname"><a href="structSam3xWatchdogConfig.html#aabe204dba8ca49309b91ea82589ae5e3">Sam3xWatchdogConfig::timeout_ticks_256hz</a></div><div class="ttdeci">uint16_t timeout_ticks_256hz</div><div class="ttdef"><b>Определения</b> <a href="#l00029">sam3x_watchdog.hpp:29</a></div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html_ac6a01cff4d9f0e5f21372d05f8de3e11"><div class="ttname"><a href="structSam3xWatchdogConfig.html#ac6a01cff4d9f0e5f21372d05f8de3e11">Sam3xWatchdogConfig::halt_in_idle</a></div><div class="ttdeci">uint8_t halt_in_idle</div><div class="ttdef"><b>Определения</b> <a href="#l00033">sam3x_watchdog.hpp:33</a></div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html_ae18d359cea360db260a12455bd0e33e0"><div class="ttname"><a href="structSam3xWatchdogConfig.html#ae18d359cea360db260a12455bd0e33e0">Sam3xWatchdogConfig::reset_processor</a></div><div class="ttdeci">uint8_t reset_processor</div><div class="ttdef"><b>Определения</b> <a href="#l00030">sam3x_watchdog.hpp:30</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__watchdog_8hpp.html">sam3x_watchdog.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Файл hal/compat_serial.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('compat__serial_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл compat_serial.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Драйвер UART0 для AVR с RX/TX кольцевыми буферами.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="compat_8hpp_source.html">compat.hpp</a>&quot;</code><br />
+<code>#include &lt;avr/interrupt.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="compat__serial_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Пространства имен</h2></td></tr>
+<tr class="memitem:hal" id="r_hal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html">hal</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:aba0ceec384cf3acb51e0d6f45f31379c" id="r_aba0ceec384cf3acb51e0d6f45f31379c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a>&#160;&#160;&#160;64u</td></tr>
+<tr class="memitem:af0d9a9a9aac810bf58f698086f76e516" id="r_af0d9a9a9aac810bf58f698086f76e516"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0d9a9a9aac810bf58f698086f76e516">SERIAL_TX_BUFFER_SIZE</a>&#160;&#160;&#160;64u</td></tr>
+<tr class="memitem:a20747178ee49fc13627e244b8556b66d" id="r_a20747178ee49fc13627e244b8556b66d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20747178ee49fc13627e244b8556b66d">RX_MASK</a>&#160;&#160;&#160;(<a class="el" href="#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a> - 1u)</td></tr>
+<tr class="memdesc:a20747178ee49fc13627e244b8556b66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска кольцевого RX-буфера.  <br /></td></tr>
+<tr class="memitem:a6d06d73a7ef2881a161c3df5bc15db3d" id="r_a6d06d73a7ef2881a161c3df5bc15db3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d06d73a7ef2881a161c3df5bc15db3d">TX_MASK</a>&#160;&#160;&#160;(<a class="el" href="#af0d9a9a9aac810bf58f698086f76e516">SERIAL_TX_BUFFER_SIZE</a> - 1u)</td></tr>
+<tr class="memdesc:a6d06d73a7ef2881a161c3df5bc15db3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска кольцевого TX-буфера.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac44fce60f6d3f62dd5737592d6605234" id="r_ac44fce60f6d3f62dd5737592d6605234"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac44fce60f6d3f62dd5737592d6605234">rx_count</a> (void)</td></tr>
+<tr class="memdesc:ac44fce60f6d3f62dd5737592d6605234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество байт в RX-буфере.  <br /></td></tr>
+<tr class="memitem:a75c3f6e654dd785fb6f090271ad648b9" id="r_a75c3f6e654dd785fb6f090271ad648b9"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75c3f6e654dd785fb6f090271ad648b9">tx_count</a> (void)</td></tr>
+<tr class="memdesc:a75c3f6e654dd785fb6f090271ad648b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество байт в TX-буфере.  <br /></td></tr>
+<tr class="memitem:aca87ed0daa0c5b8fdc48a27d073a50ec" id="r_aca87ed0daa0c5b8fdc48a27d073a50ec"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca87ed0daa0c5b8fdc48a27d073a50ec">tx_space</a> (void)</td></tr>
+<tr class="memdesc:aca87ed0daa0c5b8fdc48a27d073a50ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество свободных мест в TX-буфере.  <br /></td></tr>
+<tr class="memitem:ad1b69a03d67d05f9be7430617ef93dab" id="r_ad1b69a03d67d05f9be7430617ef93dab"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1b69a03d67d05f9be7430617ef93dab">u32_abs_diff</a> (uint32_t a, uint32_t b)</td></tr>
+<tr class="memdesc:ad1b69a03d67d05f9be7430617ef93dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает абсолютную разницу двух uint32_t значений.  <br /></td></tr>
+<tr class="memitem:aebb0942481800d64f5bad28668a4e88b" id="r_aebb0942481800d64f5bad28668a4e88b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebb0942481800d64f5bad28668a4e88b">uart0_calc_ubrr</a> (uint32_t baud, uint8_t use_u2x, uint16_t *ubrr, uint32_t *actual_baud)</td></tr>
+<tr class="memdesc:aebb0942481800d64f5bad28668a4e88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рассчитывает UBRR и фактическую скорость для заданного режима UART.  <br /></td></tr>
+<tr class="memitem:a91e112ae57ce445e16086446e5687f91" id="r_a91e112ae57ce445e16086446e5687f91"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91e112ae57ce445e16086446e5687f91">uart0_set_baud</a> (uint32_t baud)</td></tr>
+<tr class="memdesc:a91e112ae57ce445e16086446e5687f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Настраивает скорость UART0.  <br /></td></tr>
+<tr class="memitem:ac9027257d150fa51d370683272994791" id="r_ac9027257d150fa51d370683272994791"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9027257d150fa51d370683272994791">uart0_set_frame_from_cfg</a> (uint8_t cfg)</td></tr>
+<tr class="memdesc:ac9027257d150fa51d370683272994791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Применяет формат кадра UART.  <br /></td></tr>
+<tr class="memitem:afe50adfdabad26be578b81487930165c" id="r_afe50adfdabad26be578b81487930165c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe50adfdabad26be578b81487930165c">uart0_enable_rx_tx_irq</a> (void)</td></tr>
+<tr class="memdesc:afe50adfdabad26be578b81487930165c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Включает UART0, приём, передачу и прерывание приёма.  <br /></td></tr>
+<tr class="memitem:ae5a8f71ed83f2bdd30748f3b30c7f027" id="r_ae5a8f71ed83f2bdd30748f3b30c7f027"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5a8f71ed83f2bdd30748f3b30c7f027">uart0_disable_rx_tx_irq</a> (void)</td></tr>
+<tr class="memdesc:ae5a8f71ed83f2bdd30748f3b30c7f027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Полностью отключает UART0 и связанные прерывания.  <br /></td></tr>
+<tr class="memitem:a403f9ed12e340e18355fc1557a705e48" id="r_a403f9ed12e340e18355fc1557a705e48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a403f9ed12e340e18355fc1557a705e48">hal::uart0_init</a> (uint32_t baud, uint8_t cfg)</td></tr>
+<tr class="memdesc:a403f9ed12e340e18355fc1557a705e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует UART0.  <br /></td></tr>
+<tr class="memitem:aac0c925104076dfc7e7d5fa9bc7d3aea" id="r_aac0c925104076dfc7e7d5fa9bc7d3aea"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#aac0c925104076dfc7e7d5fa9bc7d3aea">hal::uart0_available</a> (void)</td></tr>
+<tr class="memdesc:aac0c925104076dfc7e7d5fa9bc7d3aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество принятых байт.  <br /></td></tr>
+<tr class="memitem:a4a8101b35df2d702a836455eb758e18e" id="r_a4a8101b35df2d702a836455eb758e18e"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a4a8101b35df2d702a836455eb758e18e">hal::uart0_read</a> (void)</td></tr>
+<tr class="memdesc:a4a8101b35df2d702a836455eb758e18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает один байт из RX-буфера.  <br /></td></tr>
+<tr class="memitem:a493200f084dd051dd2aa12925e4a1e40" id="r_a493200f084dd051dd2aa12925e4a1e40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a493200f084dd051dd2aa12925e4a1e40">hal::uart0_write</a> (uint8_t b)</td></tr>
+<tr class="memdesc:a493200f084dd051dd2aa12925e4a1e40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает один байт в TX-буфер.  <br /></td></tr>
+<tr class="memitem:acc455bbf53021e20a1574342b3f26b2e" id="r_acc455bbf53021e20a1574342b3f26b2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#acc455bbf53021e20a1574342b3f26b2e">hal::uart0_set_tx_complete_callback</a> (Uart0TxCompleteCallback callback)</td></tr>
+<tr class="memdesc:acc455bbf53021e20a1574342b3f26b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Назначает callback окончания физической передачи UART0.  <br /></td></tr>
+<tr class="memitem:a360be333558a636fdd4ab5a5ace9af30" id="r_a360be333558a636fdd4ab5a5ace9af30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a360be333558a636fdd4ab5a5ace9af30">hal::uart0_enable_tx_complete_interrupt</a> (void)</td></tr>
+<tr class="memdesc:a360be333558a636fdd4ab5a5ace9af30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Очищает TXC0 и разрешает прерывание UART0 TX Complete.  <br /></td></tr>
+<tr class="memitem:a6b732f3c9c0d547b46738a27445d3bf8" id="r_a6b732f3c9c0d547b46738a27445d3bf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a6b732f3c9c0d547b46738a27445d3bf8">hal::uart0_disable_tx_complete_interrupt</a> (void)</td></tr>
+<tr class="memdesc:a6b732f3c9c0d547b46738a27445d3bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запрещает прерывание UART0 TX Complete.  <br /></td></tr>
+<tr class="memitem:abc516b4d935ef5c62c2fc9c2ed3ff57c" id="r_abc516b4d935ef5c62c2fc9c2ed3ff57c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc516b4d935ef5c62c2fc9c2ed3ff57c">ISR</a> (UART0_RX_VECTOR)</td></tr>
+<tr class="memdesc:abc516b4d935ef5c62c2fc9c2ed3ff57c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISR приёма байта UART0.  <br /></td></tr>
+<tr class="memitem:ab010a6320e90fd4663b8cc53e551445c" id="r_ab010a6320e90fd4663b8cc53e551445c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab010a6320e90fd4663b8cc53e551445c">ISR</a> (UART0_UDRE_VECTOR)</td></tr>
+<tr class="memdesc:ab010a6320e90fd4663b8cc53e551445c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISR готовности регистра данных UART0.  <br /></td></tr>
+<tr class="memitem:ae3c497349c97dfe20e45a2930924a8f0" id="r_ae3c497349c97dfe20e45a2930924a8f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3c497349c97dfe20e45a2930924a8f0">ISR</a> (UART0_TX_VECTOR)</td></tr>
+<tr class="memdesc:ae3c497349c97dfe20e45a2930924a8f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISR окончания физической передачи UART0.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a9fab8af9c53b9c331c868feed2367c02" id="r_a9fab8af9c53b9c331c868feed2367c02"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fab8af9c53b9c331c868feed2367c02">rx_buf</a> [<a class="el" href="#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a9fab8af9c53b9c331c868feed2367c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Кольцевой буфер приёма UART0.  <br /></td></tr>
+<tr class="memitem:adb38f825bda6d58ccfa34b63431519bf" id="r_adb38f825bda6d58ccfa34b63431519bf"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb38f825bda6d58ccfa34b63431519bf">tx_buf</a> [<a class="el" href="#af0d9a9a9aac810bf58f698086f76e516">SERIAL_TX_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:adb38f825bda6d58ccfa34b63431519bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Кольцевой буфер передачи UART0.  <br /></td></tr>
+<tr class="memitem:aa05a46cea94d19035fa075f27d6f4571" id="r_aa05a46cea94d19035fa075f27d6f4571"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa05a46cea94d19035fa075f27d6f4571">rx_head</a> = 0u</td></tr>
+<tr class="memdesc:aa05a46cea94d19035fa075f27d6f4571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Индекс головы RX-буфера.  <br /></td></tr>
+<tr class="memitem:a619b585d82637125e07ddc7832ff999e" id="r_a619b585d82637125e07ddc7832ff999e"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a619b585d82637125e07ddc7832ff999e">rx_tail</a> = 0u</td></tr>
+<tr class="memdesc:a619b585d82637125e07ddc7832ff999e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Индекс хвоста RX-буфера.  <br /></td></tr>
+<tr class="memitem:abbf149233ac55c827371f7ed3c5aadb7" id="r_abbf149233ac55c827371f7ed3c5aadb7"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbf149233ac55c827371f7ed3c5aadb7">tx_head</a> = 0u</td></tr>
+<tr class="memdesc:abbf149233ac55c827371f7ed3c5aadb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Индекс головы TX-буфера.  <br /></td></tr>
+<tr class="memitem:aacdeab28a6150e19a446172b41da6b90" id="r_aacdeab28a6150e19a446172b41da6b90"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacdeab28a6150e19a446172b41da6b90">tx_tail</a> = 0u</td></tr>
+<tr class="memdesc:aacdeab28a6150e19a446172b41da6b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Индекс хвоста TX-буфера.  <br /></td></tr>
+<tr class="memitem:ab5fbf4ca18c7ccede35bf42ef7f3780e" id="r_ab5fbf4ca18c7ccede35bf42ef7f3780e"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">s_parity_enabled</a> = 0u</td></tr>
+<tr class="memdesc:ab5fbf4ca18c7ccede35bf42ef7f3780e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Признак включённого контроля паритета.  <br /></td></tr>
+<tr class="memitem:a849291335cf7aa06fce19a6f9e4de3d3" id="r_a849291335cf7aa06fce19a6f9e4de3d3"><td class="memItemLeft" align="right" valign="top">static hal::Uart0TxCompleteCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a849291335cf7aa06fce19a6f9e4de3d3">s_tx_complete_callback</a> = 0</td></tr>
+<tr class="memdesc:a849291335cf7aa06fce19a6f9e4de3d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback окончания физической передачи UART0.  <br /></td></tr>
+<tr class="memitem:a645d205797faf77718114532a5dae6f8" id="r_a645d205797faf77718114532a5dae6f8"><td class="memItemLeft" align="right" valign="top">SerialPort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a645d205797faf77718114532a5dae6f8">Serial</a></td></tr>
+<tr class="memdesc:a645d205797faf77718114532a5dae6f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Глобальный потоковый объект UART0.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Драйвер UART0 для AVR с RX/TX кольцевыми буферами. </p>
+<p>Реализация предоставляет низкоуровневый интерфейс hal::uart0_* и поддерживает:</p><ul>
+<li>настройку скорости и формата кадра через SERIAL_*;</li>
+<li>выбор режима U2X по минимальной ошибке baudrate;</li>
+<li>отбраковку байтов с ошибками кадра, переполнения и паритета;</li>
+<li>RX/TX кольцевые буферы фиксированного размера;</li>
+<li>передачу через прерывание UDRE;</li>
+<li>callback окончания физической передачи UART TX Complete;</li>
+<li>глобальный объект SerialPort для потоковой работы с UART0.</li>
+</ul>
+<dl class="section note"><dt>Заметки</dt><dd>Размеры буферов задаются макросами SERIAL_RX_BUFFER_SIZE и SERIAL_TX_BUFFER_SIZE. Размеры должны быть степенями двойки.</dd></dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd><a class="el" href="namespacehal.html#a493200f084dd051dd2aa12925e4a1e40" title="Записывает один байт в TX-буфер.">hal::uart0_write()</a> использует активное ожидание свободного места в TX-буфере. Если глобальные прерывания запрещены и TX-буфер заполнен, функция будет ждать бесконечно.</dd>
+<dd>
+Этот драйвер обслуживает только UART0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a></p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Макросы</h2>
+<a id="a20747178ee49fc13627e244b8556b66d" name="a20747178ee49fc13627e244b8556b66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20747178ee49fc13627e244b8556b66d">&#9670;&#160;</a></span>RX_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RX_MASK&#160;&#160;&#160;(<a class="el" href="#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a> - 1u)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Маска кольцевого RX-буфера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00064">64</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00572">ISR()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00128">rx_count()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00434">hal::uart0_read()</a>.</p>
+
+</div>
+</div>
+<a id="aba0ceec384cf3acb51e0d6f45f31379c" name="aba0ceec384cf3acb51e0d6f45f31379c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba0ceec384cf3acb51e0d6f45f31379c">&#9670;&#160;</a></span>SERIAL_RX_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERIAL_RX_BUFFER_SIZE&#160;&#160;&#160;64u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00038">38</a></p>
+
+</div>
+</div>
+<a id="af0d9a9a9aac810bf58f698086f76e516" name="af0d9a9a9aac810bf58f698086f76e516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0d9a9a9aac810bf58f698086f76e516">&#9670;&#160;</a></span>SERIAL_TX_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERIAL_TX_BUFFER_SIZE&#160;&#160;&#160;64u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00042">42</a></p>
+
+</div>
+</div>
+<a id="a6d06d73a7ef2881a161c3df5bc15db3d" name="a6d06d73a7ef2881a161c3df5bc15db3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d06d73a7ef2881a161c3df5bc15db3d">&#9670;&#160;</a></span>TX_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TX_MASK&#160;&#160;&#160;(<a class="el" href="#af0d9a9a9aac810bf58f698086f76e516">SERIAL_TX_BUFFER_SIZE</a> - 1u)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Маска кольцевого TX-буфера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00069">69</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00609">ISR()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00138">tx_count()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00152">tx_space()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00458">hal::uart0_write()</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="abc516b4d935ef5c62c2fc9c2ed3ff57c" name="abc516b4d935ef5c62c2fc9c2ed3ff57c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc516b4d935ef5c62c2fc9c2ed3ff57c">&#9670;&#160;</a></span>ISR() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ISR </td>
+          <td>(</td>
+          <td class="paramtype">UART0_RX_VECTOR</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ISR приёма байта UART0. </p>
+<p>Считывает статус UART до чтения UDR0, проверяет ошибки кадра, переполнения и паритета, затем помещает байт в RX-буфер. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00572">572</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  573</span>{</div>
+<div class="line"><span class="lineno">  574</span>    <span class="keyword">const</span> uint8_t status = UCSR0A;</div>
+<div class="line"><span class="lineno">  575</span>    <span class="keyword">const</span> uint8_t d = UDR0;</div>
+<div class="line"><span class="lineno">  576</span> </div>
+<div class="line"><span class="lineno">  577</span>    <span class="keywordflow">if</span> ((status &amp; <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(FE0) | _BV(DOR0))) != 0u)</div>
+<div class="line"><span class="lineno">  578</span>    {</div>
+<div class="line"><span class="lineno">  579</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  580</span>    }</div>
+<div class="line"><span class="lineno">  581</span> </div>
+<div class="line"><span class="lineno">  582</span>    <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">s_parity_enabled</a> != 0u) &amp;&amp; ((status &amp; _BV(UPE0)) != 0u))</div>
+<div class="line"><span class="lineno">  583</span>    {</div>
+<div class="line"><span class="lineno">  584</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  585</span>    }</div>
+<div class="line"><span class="lineno">  586</span> </div>
+<div class="line"><span class="lineno">  587</span>    <span class="keyword">const</span> uint8_t next = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((<a class="code hl_variable" href="#aa05a46cea94d19035fa075f27d6f4571">rx_head</a> + 1u) &amp; <a class="code hl_define" href="#a20747178ee49fc13627e244b8556b66d">RX_MASK</a>);</div>
+<div class="line"><span class="lineno">  588</span> </div>
+<div class="line"><span class="lineno">  589</span>    <span class="keywordflow">if</span> (next != <a class="code hl_variable" href="#a619b585d82637125e07ddc7832ff999e">rx_tail</a>)</div>
+<div class="line"><span class="lineno">  590</span>    {</div>
+<div class="line"><span class="lineno">  591</span>        <a class="code hl_variable" href="#a9fab8af9c53b9c331c868feed2367c02">rx_buf</a>[<a class="code hl_variable" href="#aa05a46cea94d19035fa075f27d6f4571">rx_head</a>] = d;</div>
+<div class="line"><span class="lineno">  592</span>        <a class="code hl_variable" href="#aa05a46cea94d19035fa075f27d6f4571">rx_head</a> = next;</div>
+<div class="line"><span class="lineno">  593</span>    }</div>
+<div class="line"><span class="lineno">  594</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  595</span>    {</div>
+<div class="line"><span class="lineno">  596</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  597</span><span class="comment">         * RX-буфер заполнен. Принятый байт отбрасывается.</span></div>
+<div class="line"><span class="lineno">  598</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  599</span>    }</div>
+<div class="line"><span class="lineno">  600</span>}</div>
+<div class="ttc" id="acompat__serial_8cpp_html_a20747178ee49fc13627e244b8556b66d"><div class="ttname"><a href="#a20747178ee49fc13627e244b8556b66d">RX_MASK</a></div><div class="ttdeci">#define RX_MASK</div><div class="ttdoc">Маска кольцевого RX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00064">compat_serial.cpp:64</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_a619b585d82637125e07ddc7832ff999e"><div class="ttname"><a href="#a619b585d82637125e07ddc7832ff999e">rx_tail</a></div><div class="ttdeci">static volatile uint8_t rx_tail</div><div class="ttdoc">Индекс хвоста RX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00093">compat_serial.cpp:93</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_a9fab8af9c53b9c331c868feed2367c02"><div class="ttname"><a href="#a9fab8af9c53b9c331c868feed2367c02">rx_buf</a></div><div class="ttdeci">static volatile uint8_t rx_buf[SERIAL_RX_BUFFER_SIZE]</div><div class="ttdoc">Кольцевой буфер приёма UART0.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00078">compat_serial.cpp:78</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_aa05a46cea94d19035fa075f27d6f4571"><div class="ttname"><a href="#aa05a46cea94d19035fa075f27d6f4571">rx_head</a></div><div class="ttdeci">static volatile uint8_t rx_head</div><div class="ttdoc">Индекс головы RX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00088">compat_serial.cpp:88</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_ab5fbf4ca18c7ccede35bf42ef7f3780e"><div class="ttname"><a href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">s_parity_enabled</a></div><div class="ttdeci">static volatile uint8_t s_parity_enabled</div><div class="ttdoc">Признак включённого контроля паритета.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00108">compat_serial.cpp:108</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00078">rx_buf</a>, <a class="el" href="compat__serial_8cpp_source.html#l00088">rx_head</a>, <a class="el" href="compat__serial_8cpp_source.html#l00064">RX_MASK</a>, <a class="el" href="compat__serial_8cpp_source.html#l00093">rx_tail</a> и <a class="el" href="compat__serial_8cpp_source.html#l00108">s_parity_enabled</a>.</p>
+
+</div>
+</div>
+<a id="ae3c497349c97dfe20e45a2930924a8f0" name="ae3c497349c97dfe20e45a2930924a8f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3c497349c97dfe20e45a2930924a8f0">&#9670;&#160;</a></span>ISR() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ISR </td>
+          <td>(</td>
+          <td class="paramtype">UART0_TX_VECTOR</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ISR окончания физической передачи UART0. </p>
+<p>Срабатывает после передачи последнего стоп-бита, когда регистр данных и сдвиговый регистр передатчика пусты. После срабатывания прерывание TX Complete отключается и вызывается назначенный callback. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00631">631</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  632</span>{</div>
+<div class="line"><span class="lineno">  633</span>    UCSR0B &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~_BV(TXCIE0));</div>
+<div class="line"><span class="lineno">  634</span> </div>
+<div class="line"><span class="lineno">  635</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a849291335cf7aa06fce19a6f9e4de3d3">s_tx_complete_callback</a> != 0)</div>
+<div class="line"><span class="lineno">  636</span>    {</div>
+<div class="line"><span class="lineno">  637</span>        <a class="code hl_variable" href="#a849291335cf7aa06fce19a6f9e4de3d3">s_tx_complete_callback</a>();</div>
+<div class="line"><span class="lineno">  638</span>    }</div>
+<div class="line"><span class="lineno">  639</span>}</div>
+<div class="ttc" id="acompat__serial_8cpp_html_a849291335cf7aa06fce19a6f9e4de3d3"><div class="ttname"><a href="#a849291335cf7aa06fce19a6f9e4de3d3">s_tx_complete_callback</a></div><div class="ttdeci">static hal::Uart0TxCompleteCallback s_tx_complete_callback</div><div class="ttdoc">Callback окончания физической передачи UART0.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00117">compat_serial.cpp:117</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00117">s_tx_complete_callback</a>.</p>
+
+</div>
+</div>
+<a id="ab010a6320e90fd4663b8cc53e551445c" name="ab010a6320e90fd4663b8cc53e551445c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab010a6320e90fd4663b8cc53e551445c">&#9670;&#160;</a></span>ISR() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ISR </td>
+          <td>(</td>
+          <td class="paramtype">UART0_UDRE_VECTOR</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ISR готовности регистра данных UART0. </p>
+<p>Выгружает следующий байт из TX-буфера в UDR0. Если буфер пуст, отключает прерывание UDRE. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00609">609</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  610</span>{</div>
+<div class="line"><span class="lineno">  611</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#abbf149233ac55c827371f7ed3c5aadb7">tx_head</a> == <a class="code hl_variable" href="#aacdeab28a6150e19a446172b41da6b90">tx_tail</a>)</div>
+<div class="line"><span class="lineno">  612</span>    {</div>
+<div class="line"><span class="lineno">  613</span>        UCSR0B &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~_BV(UDRIE0));</div>
+<div class="line"><span class="lineno">  614</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  615</span>    }</div>
+<div class="line"><span class="lineno">  616</span> </div>
+<div class="line"><span class="lineno">  617</span>    <span class="keyword">const</span> uint8_t t = <a class="code hl_variable" href="#aacdeab28a6150e19a446172b41da6b90">tx_tail</a>;</div>
+<div class="line"><span class="lineno">  618</span> </div>
+<div class="line"><span class="lineno">  619</span>    UDR0 = <a class="code hl_variable" href="#adb38f825bda6d58ccfa34b63431519bf">tx_buf</a>[t];</div>
+<div class="line"><span class="lineno">  620</span>    <a class="code hl_variable" href="#aacdeab28a6150e19a446172b41da6b90">tx_tail</a> = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((t + 1u) &amp; <a class="code hl_define" href="#a6d06d73a7ef2881a161c3df5bc15db3d">TX_MASK</a>);</div>
+<div class="line"><span class="lineno">  621</span>}</div>
+<div class="ttc" id="acompat__serial_8cpp_html_a6d06d73a7ef2881a161c3df5bc15db3d"><div class="ttname"><a href="#a6d06d73a7ef2881a161c3df5bc15db3d">TX_MASK</a></div><div class="ttdeci">#define TX_MASK</div><div class="ttdoc">Маска кольцевого TX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00069">compat_serial.cpp:69</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_aacdeab28a6150e19a446172b41da6b90"><div class="ttname"><a href="#aacdeab28a6150e19a446172b41da6b90">tx_tail</a></div><div class="ttdeci">static volatile uint8_t tx_tail</div><div class="ttdoc">Индекс хвоста TX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00103">compat_serial.cpp:103</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_abbf149233ac55c827371f7ed3c5aadb7"><div class="ttname"><a href="#abbf149233ac55c827371f7ed3c5aadb7">tx_head</a></div><div class="ttdeci">static volatile uint8_t tx_head</div><div class="ttdoc">Индекс головы TX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00098">compat_serial.cpp:98</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_adb38f825bda6d58ccfa34b63431519bf"><div class="ttname"><a href="#adb38f825bda6d58ccfa34b63431519bf">tx_buf</a></div><div class="ttdeci">static volatile uint8_t tx_buf[SERIAL_TX_BUFFER_SIZE]</div><div class="ttdoc">Кольцевой буфер передачи UART0.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00083">compat_serial.cpp:83</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00083">tx_buf</a>, <a class="el" href="compat__serial_8cpp_source.html#l00098">tx_head</a>, <a class="el" href="compat__serial_8cpp_source.html#l00069">TX_MASK</a> и <a class="el" href="compat__serial_8cpp_source.html#l00103">tx_tail</a>.</p>
+
+</div>
+</div>
+<a id="ac44fce60f6d3f62dd5737592d6605234" name="ac44fce60f6d3f62dd5737592d6605234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac44fce60f6d3f62dd5737592d6605234">&#9670;&#160;</a></span>rx_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t rx_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает количество байт в RX-буфере. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество доступных байт. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00128">128</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((<a class="code hl_variable" href="#aa05a46cea94d19035fa075f27d6f4571">rx_head</a> - <a class="code hl_variable" href="#a619b585d82637125e07ddc7832ff999e">rx_tail</a>) &amp; <a class="code hl_define" href="#a20747178ee49fc13627e244b8556b66d">RX_MASK</a>);</div>
+<div class="line"><span class="lineno">  131</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00088">rx_head</a>, <a class="el" href="compat__serial_8cpp_source.html#l00064">RX_MASK</a> и <a class="el" href="compat__serial_8cpp_source.html#l00093">rx_tail</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00423">hal::uart0_available()</a>.</p>
+
+</div>
+</div>
+<a id="a75c3f6e654dd785fb6f090271ad648b9" name="a75c3f6e654dd785fb6f090271ad648b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c3f6e654dd785fb6f090271ad648b9">&#9670;&#160;</a></span>tx_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tx_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает количество байт в TX-буфере. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество байт, ожидающих отправки. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00138">138</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((<a class="code hl_variable" href="#abbf149233ac55c827371f7ed3c5aadb7">tx_head</a> - <a class="code hl_variable" href="#aacdeab28a6150e19a446172b41da6b90">tx_tail</a>) &amp; <a class="code hl_define" href="#a6d06d73a7ef2881a161c3df5bc15db3d">TX_MASK</a>);</div>
+<div class="line"><span class="lineno">  141</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00098">tx_head</a>, <a class="el" href="compat__serial_8cpp_source.html#l00069">TX_MASK</a> и <a class="el" href="compat__serial_8cpp_source.html#l00103">tx_tail</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00152">tx_space()</a>.</p>
+
+</div>
+</div>
+<a id="aca87ed0daa0c5b8fdc48a27d073a50ec" name="aca87ed0daa0c5b8fdc48a27d073a50ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca87ed0daa0c5b8fdc48a27d073a50ec">&#9670;&#160;</a></span>tx_space()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tx_space </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает количество свободных мест в TX-буфере. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество свободных байтов.</dd></dl>
+<p>Одно место в кольцевом буфере резервируется для различения пустого и полного состояния. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00152">152</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  153</span>{</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_define" href="#a6d06d73a7ef2881a161c3df5bc15db3d">TX_MASK</a> - <a class="code hl_function" href="#a75c3f6e654dd785fb6f090271ad648b9">tx_count</a>());</div>
+<div class="line"><span class="lineno">  155</span>}</div>
+<div class="ttc" id="acompat__serial_8cpp_html_a75c3f6e654dd785fb6f090271ad648b9"><div class="ttname"><a href="#a75c3f6e654dd785fb6f090271ad648b9">tx_count</a></div><div class="ttdeci">static uint8_t tx_count(void)</div><div class="ttdoc">Возвращает количество байт в TX-буфере.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00138">compat_serial.cpp:138</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00138">tx_count()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00069">TX_MASK</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00458">hal::uart0_write()</a>.</p>
+
+</div>
+</div>
+<a id="ad1b69a03d67d05f9be7430617ef93dab" name="ad1b69a03d67d05f9be7430617ef93dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b69a03d67d05f9be7430617ef93dab">&#9670;&#160;</a></span>u32_abs_diff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t u32_abs_diff </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает абсолютную разницу двух uint32_t значений. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Первое значение. </td></tr>
+    <tr><td class="paramname">b</td><td>Второе значение.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>|a - b|. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00165">165</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  166</span>{</div>
+<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">return</span> (a &gt; b) ? (a - b) : (b - a);</div>
+<div class="line"><span class="lineno">  168</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00242">uart0_set_baud()</a>.</p>
+
+</div>
+</div>
+<a id="aebb0942481800d64f5bad28668a4e88b" name="aebb0942481800d64f5bad28668a4e88b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb0942481800d64f5bad28668a4e88b">&#9670;&#160;</a></span>uart0_calc_ubrr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool uart0_calc_ubrr </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>baud</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>use_u2x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>ubrr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *</td>          <td class="paramname"><span class="paramname"><em>actual_baud</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Рассчитывает UBRR и фактическую скорость для заданного режима UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baud</td><td>Требуемая скорость обмена, бод. </td></tr>
+    <tr><td class="paramname">use_u2x</td><td>1 — использовать режим U2X; 0 — обычный режим. </td></tr>
+    <tr><td class="paramname">ubrr</td><td>Указатель для возврата рассчитанного значения UBRR. </td></tr>
+    <tr><td class="paramname">actual_baud</td><td>Указатель для возврата фактической скорости.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если расчёт выполнен успешно. </dd>
+<dd>
+false, если расчёт невозможен для заданных параметров. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00185">185</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">if</span> ((baud == 0u) || (ubrr == 0) || (actual_baud == 0))</div>
+<div class="line"><span class="lineno">  193</span>    {</div>
+<div class="line"><span class="lineno">  194</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  195</span>    }</div>
+<div class="line"><span class="lineno">  196</span> </div>
+<div class="line"><span class="lineno">  197</span>    <span class="keyword">const</span> uint32_t denom = use_u2x ? 8u : 16u;</div>
+<div class="line"><span class="lineno">  198</span>    <span class="keyword">const</span> uint32_t div = denom * baud;</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">if</span> (div == 0u)</div>
+<div class="line"><span class="lineno">  201</span>    {</div>
+<div class="line"><span class="lineno">  202</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  203</span>    }</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    <span class="keyword">const</span> uint32_t q = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(F_CPU / div);</div>
+<div class="line"><span class="lineno">  206</span>    <span class="keyword">const</span> uint32_t r = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(F_CPU % div);</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">if</span> (q == 0u)</div>
+<div class="line"><span class="lineno">  209</span>    {</div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  211</span>    }</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>    uint32_t ubrr_u32 = q - 1u;</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">if</span> ((2u * r) &gt;= div)</div>
+<div class="line"><span class="lineno">  216</span>    {</div>
+<div class="line"><span class="lineno">  217</span>        ubrr_u32 += 1u;</div>
+<div class="line"><span class="lineno">  218</span>    }</div>
+<div class="line"><span class="lineno">  219</span> </div>
+<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">if</span> (ubrr_u32 &gt; 4095u)</div>
+<div class="line"><span class="lineno">  221</span>    {</div>
+<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    *ubrr = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(ubrr_u32);</div>
+<div class="line"><span class="lineno">  226</span>    *actual_baud = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  227</span>        F_CPU / (denom * (<span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(*ubrr) + 1u))</div>
+<div class="line"><span class="lineno">  228</span>    );</div>
+<div class="line"><span class="lineno">  229</span> </div>
+<div class="line"><span class="lineno">  230</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  231</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00242">uart0_set_baud()</a>.</p>
+
+</div>
+</div>
+<a id="ae5a8f71ed83f2bdd30748f3b30c7f027" name="ae5a8f71ed83f2bdd30748f3b30c7f027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5a8f71ed83f2bdd30748f3b30c7f027">&#9670;&#160;</a></span>uart0_disable_rx_tx_irq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart0_disable_rx_tx_irq </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Полностью отключает UART0 и связанные прерывания. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00375">375</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  376</span>{</div>
+<div class="line"><span class="lineno">  377</span>    UCSR0B = 0u;</div>
+<div class="line"><span class="lineno">  378</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a>.</p>
+
+</div>
+</div>
+<a id="afe50adfdabad26be578b81487930165c" name="afe50adfdabad26be578b81487930165c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe50adfdabad26be578b81487930165c">&#9670;&#160;</a></span>uart0_enable_rx_tx_irq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart0_enable_rx_tx_irq </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Включает UART0, приём, передачу и прерывание приёма. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00367">367</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  368</span>{</div>
+<div class="line"><span class="lineno">  369</span>    UCSR0B = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(RXEN0) | _BV(TXEN0) | _BV(RXCIE0));</div>
+<div class="line"><span class="lineno">  370</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a>.</p>
+
+</div>
+</div>
+<a id="a91e112ae57ce445e16086446e5687f91" name="a91e112ae57ce445e16086446e5687f91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91e112ae57ce445e16086446e5687f91">&#9670;&#160;</a></span>uart0_set_baud()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart0_set_baud </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>baud</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Настраивает скорость UART0. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baud</td><td>Требуемая скорость обмена, бод.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция рассчитывает варианты для обычного режима и режима U2X, выбирает вариант с меньшей ошибкой и записывает UBRR0H/UBRR0L. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00242">242</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>{</div>
+<div class="line"><span class="lineno">  244</span>    uint16_t ubrr_norm = 0u;</div>
+<div class="line"><span class="lineno">  245</span>    uint16_t ubrr_u2x = 0u;</div>
+<div class="line"><span class="lineno">  246</span> </div>
+<div class="line"><span class="lineno">  247</span>    uint32_t act_norm = 0u;</div>
+<div class="line"><span class="lineno">  248</span>    uint32_t act_u2x = 0u;</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> ok_norm = <a class="code hl_function" href="#aebb0942481800d64f5bad28668a4e88b">uart0_calc_ubrr</a>(baud, 0u, &amp;ubrr_norm, &amp;act_norm);</div>
+<div class="line"><span class="lineno">  251</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> ok_u2x  = <a class="code hl_function" href="#aebb0942481800d64f5bad28668a4e88b">uart0_calc_ubrr</a>(baud, 1u, &amp;ubrr_u2x,  &amp;act_u2x);</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>    uint8_t use_u2x = 0u;</div>
+<div class="line"><span class="lineno">  254</span>    uint16_t ubrr = 0u;</div>
+<div class="line"><span class="lineno">  255</span> </div>
+<div class="line"><span class="lineno">  256</span><span class="preprocessor">#if (F_CPU == 16000000UL)</span></div>
+<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">if</span> ((baud == 57600u) &amp;&amp; ok_norm)</div>
+<div class="line"><span class="lineno">  258</span>    {</div>
+<div class="line"><span class="lineno">  259</span>        use_u2x = 0u;</div>
+<div class="line"><span class="lineno">  260</span>        ubrr = ubrr_norm;</div>
+<div class="line"><span class="lineno">  261</span>    }</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  263</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  264</span>    {</div>
+<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">if</span> (ok_norm &amp;&amp; ok_u2x)</div>
+<div class="line"><span class="lineno">  266</span>        {</div>
+<div class="line"><span class="lineno">  267</span>            <span class="keyword">const</span> uint32_t err_norm = <a class="code hl_function" href="#ad1b69a03d67d05f9be7430617ef93dab">u32_abs_diff</a>(act_norm, baud);</div>
+<div class="line"><span class="lineno">  268</span>            <span class="keyword">const</span> uint32_t err_u2x  = <a class="code hl_function" href="#ad1b69a03d67d05f9be7430617ef93dab">u32_abs_diff</a>(act_u2x,  baud);</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>            use_u2x = (err_u2x &lt; err_norm) ? 1u : 0u;</div>
+<div class="line"><span class="lineno">  271</span>            ubrr = use_u2x ? ubrr_u2x : ubrr_norm;</div>
+<div class="line"><span class="lineno">  272</span>        }</div>
+<div class="line"><span class="lineno">  273</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ok_u2x)</div>
+<div class="line"><span class="lineno">  274</span>        {</div>
+<div class="line"><span class="lineno">  275</span>            use_u2x = 1u;</div>
+<div class="line"><span class="lineno">  276</span>            ubrr = ubrr_u2x;</div>
+<div class="line"><span class="lineno">  277</span>        }</div>
+<div class="line"><span class="lineno">  278</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ok_norm)</div>
+<div class="line"><span class="lineno">  279</span>        {</div>
+<div class="line"><span class="lineno">  280</span>            use_u2x = 0u;</div>
+<div class="line"><span class="lineno">  281</span>            ubrr = ubrr_norm;</div>
+<div class="line"><span class="lineno">  282</span>        }</div>
+<div class="line"><span class="lineno">  283</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  284</span>        {</div>
+<div class="line"><span class="lineno">  285</span>            use_u2x = 0u;</div>
+<div class="line"><span class="lineno">  286</span>            ubrr = 0u;</div>
+<div class="line"><span class="lineno">  287</span>        }</div>
+<div class="line"><span class="lineno">  288</span>    }</div>
+<div class="line"><span class="lineno">  289</span> </div>
+<div class="line"><span class="lineno">  290</span>    <span class="keywordflow">if</span> (use_u2x)</div>
+<div class="line"><span class="lineno">  291</span>    {</div>
+<div class="line"><span class="lineno">  292</span>        UCSR0A = _BV(U2X0);</div>
+<div class="line"><span class="lineno">  293</span>    }</div>
+<div class="line"><span class="lineno">  294</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  295</span>    {</div>
+<div class="line"><span class="lineno">  296</span>        UCSR0A = 0u;</div>
+<div class="line"><span class="lineno">  297</span>    }</div>
+<div class="line"><span class="lineno">  298</span> </div>
+<div class="line"><span class="lineno">  299</span>    UBRR0H = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(ubrr &gt;&gt; 8);</div>
+<div class="line"><span class="lineno">  300</span>    UBRR0L = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(ubrr &amp; 0xFFu);</div>
+<div class="line"><span class="lineno">  301</span>}</div>
+<div class="ttc" id="acompat__serial_8cpp_html_ad1b69a03d67d05f9be7430617ef93dab"><div class="ttname"><a href="#ad1b69a03d67d05f9be7430617ef93dab">u32_abs_diff</a></div><div class="ttdeci">static uint32_t u32_abs_diff(uint32_t a, uint32_t b)</div><div class="ttdoc">Возвращает абсолютную разницу двух uint32_t значений.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00165">compat_serial.cpp:165</a></div></div>
+<div class="ttc" id="acompat__serial_8cpp_html_aebb0942481800d64f5bad28668a4e88b"><div class="ttname"><a href="#aebb0942481800d64f5bad28668a4e88b">uart0_calc_ubrr</a></div><div class="ttdeci">static bool uart0_calc_ubrr(uint32_t baud, uint8_t use_u2x, uint16_t *ubrr, uint32_t *actual_baud)</div><div class="ttdoc">Рассчитывает UBRR и фактическую скорость для заданного режима UART.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00185">compat_serial.cpp:185</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00165">u32_abs_diff()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00185">uart0_calc_ubrr()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a>.</p>
+
+</div>
+</div>
+<a id="ac9027257d150fa51d370683272994791" name="ac9027257d150fa51d370683272994791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9027257d150fa51d370683272994791">&#9670;&#160;</a></span>uart0_set_frame_from_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart0_set_frame_from_cfg </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>cfg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Применяет формат кадра UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td>Конфигурационный байт SERIAL_*.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Настраиваются:</p><ul>
+<li>количество бит данных;</li>
+<li>количество стоп-битов;</li>
+<li>режим паритета. </li>
+</ul>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00314">314</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  315</span>{</div>
+<div class="line"><span class="lineno">  316</span>    uint8_t ucsrc = 0u;</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">switch</span> (cfg &amp; 0x06u)</div>
+<div class="line"><span class="lineno">  319</span>    {</div>
+<div class="line"><span class="lineno">  320</span>        <span class="keywordflow">case</span> 0x00u:</div>
+<div class="line"><span class="lineno">  321</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  322</span> </div>
+<div class="line"><span class="lineno">  323</span>        <span class="keywordflow">case</span> 0x02u:</div>
+<div class="line"><span class="lineno">  324</span>            ucsrc |= _BV(UCSZ00);</div>
+<div class="line"><span class="lineno">  325</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>        <span class="keywordflow">case</span> 0x04u:</div>
+<div class="line"><span class="lineno">  328</span>            ucsrc |= _BV(UCSZ01);</div>
+<div class="line"><span class="lineno">  329</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  330</span> </div>
+<div class="line"><span class="lineno">  331</span>        <span class="keywordflow">case</span> 0x06u:</div>
+<div class="line"><span class="lineno">  332</span>            ucsrc |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(UCSZ01) | _BV(UCSZ00));</div>
+<div class="line"><span class="lineno">  333</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  336</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  337</span>    }</div>
+<div class="line"><span class="lineno">  338</span> </div>
+<div class="line"><span class="lineno">  339</span>    <span class="keywordflow">if</span> ((cfg &amp; 0x08u) != 0u)</div>
+<div class="line"><span class="lineno">  340</span>    {</div>
+<div class="line"><span class="lineno">  341</span>        ucsrc |= _BV(USBS0);</div>
+<div class="line"><span class="lineno">  342</span>    }</div>
+<div class="line"><span class="lineno">  343</span> </div>
+<div class="line"><span class="lineno">  344</span>    <span class="keyword">const</span> uint8_t parity = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(cfg &amp; 0x30u);</div>
+<div class="line"><span class="lineno">  345</span> </div>
+<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">if</span> (parity == 0x20u)</div>
+<div class="line"><span class="lineno">  347</span>    {</div>
+<div class="line"><span class="lineno">  348</span>        ucsrc |= _BV(UPM01);</div>
+<div class="line"><span class="lineno">  349</span>        <a class="code hl_variable" href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">s_parity_enabled</a> = 1u;</div>
+<div class="line"><span class="lineno">  350</span>    }</div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (parity == 0x30u)</div>
+<div class="line"><span class="lineno">  352</span>    {</div>
+<div class="line"><span class="lineno">  353</span>        ucsrc |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(UPM01) | _BV(UPM00));</div>
+<div class="line"><span class="lineno">  354</span>        <a class="code hl_variable" href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">s_parity_enabled</a> = 1u;</div>
+<div class="line"><span class="lineno">  355</span>    }</div>
+<div class="line"><span class="lineno">  356</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  357</span>    {</div>
+<div class="line"><span class="lineno">  358</span>        <a class="code hl_variable" href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">s_parity_enabled</a> = 0u;</div>
+<div class="line"><span class="lineno">  359</span>    }</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  361</span>    UCSR0C = ucsrc;</div>
+<div class="line"><span class="lineno">  362</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__serial_8cpp_source.html#l00108">s_parity_enabled</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a9fab8af9c53b9c331c868feed2367c02" name="a9fab8af9c53b9c331c868feed2367c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fab8af9c53b9c331c868feed2367c02">&#9670;&#160;</a></span>rx_buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t rx_buf[<a class="el" href="#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Кольцевой буфер приёма UART0. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00078">78</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00572">ISR()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00434">hal::uart0_read()</a>.</p>
+
+</div>
+</div>
+<a id="aa05a46cea94d19035fa075f27d6f4571" name="aa05a46cea94d19035fa075f27d6f4571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa05a46cea94d19035fa075f27d6f4571">&#9670;&#160;</a></span>rx_head</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t rx_head = 0u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Индекс головы RX-буфера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00088">88</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00572">ISR()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00128">rx_count()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00434">hal::uart0_read()</a>.</p>
+
+</div>
+</div>
+<a id="a619b585d82637125e07ddc7832ff999e" name="a619b585d82637125e07ddc7832ff999e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a619b585d82637125e07ddc7832ff999e">&#9670;&#160;</a></span>rx_tail</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t rx_tail = 0u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Индекс хвоста RX-буфера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00093">93</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00572">ISR()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00128">rx_count()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00434">hal::uart0_read()</a>.</p>
+
+</div>
+</div>
+<a id="ab5fbf4ca18c7ccede35bf42ef7f3780e" name="ab5fbf4ca18c7ccede35bf42ef7f3780e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5fbf4ca18c7ccede35bf42ef7f3780e">&#9670;&#160;</a></span>s_parity_enabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t s_parity_enabled = 0u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Признак включённого контроля паритета. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00108">108</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00572">ISR()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00314">uart0_set_frame_from_cfg()</a>.</p>
+
+</div>
+</div>
+<a id="a849291335cf7aa06fce19a6f9e4de3d3" name="a849291335cf7aa06fce19a6f9e4de3d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a849291335cf7aa06fce19a6f9e4de3d3">&#9670;&#160;</a></span>s_tx_complete_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hal::Uart0TxCompleteCallback s_tx_complete_callback = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback окончания физической передачи UART0. </p>
+<p>Callback вызывается из ISR UART TX Complete. Внешний слой может использовать это событие для действий после полного окончания передачи последнего байта. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00117">117</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00631">ISR()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00490">hal::uart0_set_tx_complete_callback()</a>.</p>
+
+</div>
+</div>
+<a id="a645d205797faf77718114532a5dae6f8" name="a645d205797faf77718114532a5dae6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a645d205797faf77718114532a5dae6f8">&#9670;&#160;</a></span>Serial</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SerialPort Serial</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Глобальный потоковый объект UART0. </p>
+<p>Объявление находится в <a class="el" href="compat_8hpp.html" title="Общий аппаратный интерфейс и базовые системные объявления для AVR.">compat.hpp</a>. Определение должно быть ровно одно во всём проекте. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00652">652</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00064">IGAS_mb_485::initMB()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00353">IGAS_mb_485::receive_request()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00321">IGAS_mb_485::send()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a>.</p>
+
+</div>
+</div>
+<a id="adb38f825bda6d58ccfa34b63431519bf" name="adb38f825bda6d58ccfa34b63431519bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb38f825bda6d58ccfa34b63431519bf">&#9670;&#160;</a></span>tx_buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t tx_buf[<a class="el" href="#af0d9a9a9aac810bf58f698086f76e516">SERIAL_TX_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Кольцевой буфер передачи UART0. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00083">83</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00609">ISR()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00458">hal::uart0_write()</a>.</p>
+
+</div>
+</div>
+<a id="abbf149233ac55c827371f7ed3c5aadb7" name="abbf149233ac55c827371f7ed3c5aadb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbf149233ac55c827371f7ed3c5aadb7">&#9670;&#160;</a></span>tx_head</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t tx_head = 0u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Индекс головы TX-буфера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00098">98</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00609">ISR()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00138">tx_count()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00458">hal::uart0_write()</a>.</p>
+
+</div>
+</div>
+<a id="aacdeab28a6150e19a446172b41da6b90" name="aacdeab28a6150e19a446172b41da6b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacdeab28a6150e19a446172b41da6b90">&#9670;&#160;</a></span>tx_tail</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t tx_tail = 0u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Индекс хвоста TX-буфера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__serial_8cpp_source.html">compat_serial.cpp</a> строка <a class="el" href="compat__serial_8cpp_source.html#l00103">103</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__serial_8cpp_source.html#l00609">ISR()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00138">tx_count()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00396">hal::uart0_init()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00458">hal::uart0_write()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="compat__serial_8cpp.html">compat_serial.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

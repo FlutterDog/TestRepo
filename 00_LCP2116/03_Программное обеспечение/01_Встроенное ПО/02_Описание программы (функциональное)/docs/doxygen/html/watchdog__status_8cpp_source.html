@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл app/diagnostics/watchdog_status.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('watchdog__status_8cpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">watchdog_status.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="watchdog__status_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file watchdog_status.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Диагностика watchdog-таймера ATSAM3X8E.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Нормальный режим перезапускает watchdog из watchdog_status_poll(). Команда</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * `watchdog test reset` намеренно прекращает feed; это контролируемый тест</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * аппаратного reset, а не зависание. Новые тестовые режимы должны работать</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * через флаги и poll(), без бесконечных циклов.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="watchdog__status_8hpp.html">watchdog_status.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="sam3x__watchdog_8hpp.html">../../hal/sam3x_watchdog.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="platform_8hpp.html">../../platform/platform.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">constexpr</span> uint16_t WATCHDOG_TIMEOUT_TICKS = 1024U;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">constexpr</span> uint32_t WATCHDOG_FEED_PERIOD_MS = 500U;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>uint32_t g_last_feed_ms = 0U;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>uint8_t g_test_reset_armed = 0U;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="watchdog__status_8cpp.html#afe06f365f6d26834c882c4004a85c91e">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="watchdog__status_8cpp.html#afe06f365f6d26834c882c4004a85c91e">watchdog_status_init</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a12a7cd5e1a2ead1305fb106d8fd4dbd3">sam3x_watchdog_capture_boot_status</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_function" href="sam3x__watchdog_8cpp.html#ae63d12aaaeffde39cc14d2c860f8a005">sam3x_watchdog_increment_boot_count</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a> config =</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        WATCHDOG_TIMEOUT_TICKS,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        1U,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        1U,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        0U,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        0U</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    };</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_function" href="sam3x__watchdog_8cpp.html#af359b15e20db6ba2d9c741730917d8ec">sam3x_watchdog_enable</a>(&amp;config);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    g_last_feed_ms = <a class="code hl_function" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d">millis</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    g_test_reset_armed = 0U;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="watchdog__status_8cpp.html#a7e2bf983b7aaa1d4bfcaffeb46487252">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="watchdog__status_8cpp.html#a7e2bf983b7aaa1d4bfcaffeb46487252">watchdog_status_poll</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> (g_test_reset_armed != 0U)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">const</span> uint32_t now_ms = <a class="code hl_function" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d">millis</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> ((uint32_t)(now_ms - g_last_feed_ms) &gt;= WATCHDOG_FEED_PERIOD_MS)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        g_last_feed_ms = now_ms;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a6e1fa28ab3bf8153c97b77f3c424c751">sam3x_watchdog_restart</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="watchdog__status_8cpp.html#ad434c06ec465f0b5c2a9daf722a54372">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="watchdog__status_8cpp.html#ad434c06ec465f0b5c2a9daf722a54372">watchdog_status_print_report</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a>(<span class="stringliteral">&quot;WATCHDOG&quot;</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a>(<span class="stringliteral">&quot;Runtime&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;enabled&quot;</span>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    SerialUSB.print(<a class="code hl_function" href="sam3x__watchdog_8cpp.html#a68dae260ea18dcc0dc9ff67b176d17c0">sam3x_watchdog_enabled</a>() ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;timeout_ms&quot;</span>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a8889038aa827a671c29ce163e456d1fa">sam3x_watchdog_timeout_ms</a>(WATCHDOG_TIMEOUT_TICKS)));</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;feed_period_ms&quot;</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(WATCHDOG_FEED_PERIOD_MS));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;test_reset_armed&quot;</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    SerialUSB.print((g_test_reset_armed != 0U) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;mode&quot;</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    SerialUSB.print(<span class="stringliteral">&quot;legacy WDRPROC|WDRSTEN\r\n&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;usb_recovery_after_watchdog&quot;</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    SerialUSB.print(<a class="code hl_function" href="sam3x__watchdog_8cpp.html#a333c43b9cbd6e6ece70528e27ff0d9f7">sam3x_watchdog_recovery_performed</a>() ?</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                    <span class="stringliteral">&quot;performed&quot;</span> : <span class="stringliteral">&quot;not performed&quot;</span>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a>(<span class="stringliteral">&quot;Last reset&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;reset_type&quot;</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    SerialUSB.print(<a class="code hl_function" href="sam3x__watchdog_8cpp.html#a14770ae7a15af726f9ea621e3c26f86d">sam3x_watchdog_reset_type_text</a>(</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a29714edfcd6d104322b4f1f51f22efd1">sam3x_watchdog_last_reset_type</a>()));</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;boot_count&quot;</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="sam3x__watchdog_8cpp.html#ae3c355a3eb3c0fa02822c586d4658dbc">sam3x_watchdog_boot_count</a>()));</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a>(<span class="stringliteral">&quot;Raw registers&quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;RSTC_SR&quot;</span>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    SerialUSB.print(<span class="stringliteral">&quot;0x&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#ae051392bb7e5a92e3e94a69470e29a74">sam3x_watchdog_reset_status_register</a>()), HEX);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;WDT_MR&quot;</span>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    SerialUSB.print(<span class="stringliteral">&quot;0x&quot;</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a30bdeea1e654736b3263d218056fa3b5">sam3x_watchdog_mode_register</a>()), HEX);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;WDT_SR&quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    SerialUSB.print(<span class="stringliteral">&quot;0x&quot;</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a6c0588c804e8bac7d3fcbd5612c0cb71">sam3x_watchdog_status_register</a>()), HEX);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
+</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="watchdog__status_8cpp.html#afb2fb7b0a416b244d150a84bba32a03f">  118</a></span>uint8_t <a class="code hl_function" href="watchdog__status_8cpp.html#afb2fb7b0a416b244d150a84bba32a03f">watchdog_status_handle_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* command)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (command == 0)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">if</span> ((strcmp(command, <span class="stringliteral">&quot;watchdog&quot;</span>) == 0) ||</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        (strcmp(command, <span class="stringliteral">&quot;watchdog status&quot;</span>) == 0))</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_function" href="watchdog__status_8cpp.html#ad434c06ec465f0b5c2a9daf722a54372">watchdog_status_print_report</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (strcmp(command, <span class="stringliteral">&quot;watchdog feed&quot;</span>) == 0)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_function" href="sam3x__watchdog_8cpp.html#a6e1fa28ab3bf8153c97b77f3c424c751">sam3x_watchdog_restart</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        g_last_feed_ms = <a class="code hl_function" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d">millis</a>();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        SerialUSB.print(<span class="stringliteral">&quot;watchdog feed: ok\r\n&quot;</span>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span> (strcmp(command, <span class="stringliteral">&quot;watchdog test reset&quot;</span>) == 0)</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        g_test_reset_armed = 1U;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        SerialUSB.print(<span class="stringliteral">&quot;watchdog reset test armed\r\n&quot;</span>);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        SerialUSB.print(<span class="stringliteral">&quot;automatic feed stopped\r\n&quot;</span>);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        SerialUSB.print(<span class="stringliteral">&quot;hardware reset is expected after timeout\r\n&quot;</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        SerialUSB.print(<span class="stringliteral">&quot;next boot may perform USB-recovery reset\r\n&quot;</span>);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    }</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
+</div>
+<div class="ttc" id="adiagnostic__output_8hpp_html"><div class="ttname"><a href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a></div><div class="ttdoc">Общие функции форматирования USB service console.</div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_a98e20bd6f28d90b4dbb96fca4e745b16"><div class="ttname"><a href="diagnostic__output_8hpp.html#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a></div><div class="ttdeci">void diagnostic_print_section(const char *title)</div><div class="ttdoc">Печатает заголовок самостоятельной диагностической подсистемы.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00051">diagnostic_output.hpp:51</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_abd5ca920d141d5dcd55e7e476cda50a5"><div class="ttname"><a href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a></div><div class="ttdeci">void diagnostic_print_assignment(const char *name)</div><div class="ttdoc">Печатает имя параметра и разделитель  = .</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00080">diagnostic_output.hpp:80</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_ad844b507f5b788115cf38879b2fea020"><div class="ttname"><a href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a></div><div class="ttdeci">void diagnostic_print_group(const char *title)</div><div class="ttdoc">Печатает заголовок логической группы внутри одного отчёта.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00065">diagnostic_output.hpp:65</a></div></div>
+<div class="ttc" id="aplatform_8hpp_html"><div class="ttname"><a href="platform_8hpp.html">platform.hpp</a></div><div class="ttdoc">Верхний платформенный интерфейс проекта.</div></div>
+<div class="ttc" id="aplatform_8hpp_html_acd8d13c328bebdf9eddea27ff9448c2d"><div class="ttname"><a href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d">millis</a></div><div class="ttdeci">uint32_t millis(void)</div><div class="ttdoc">Возвращает время работы прошивки в миллисекундах.</div><div class="ttdef"><b>Определения</b> <a href="platform__time_8cpp_source.html#l00074">platform_time.cpp:74</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a12a7cd5e1a2ead1305fb106d8fd4dbd3"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a12a7cd5e1a2ead1305fb106d8fd4dbd3">sam3x_watchdog_capture_boot_status</a></div><div class="ttdeci">void sam3x_watchdog_capture_boot_status(void)</div><div class="ttdoc">Считывает и сохраняет причину последнего сброса.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00127">sam3x_watchdog.cpp:127</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a14770ae7a15af726f9ea621e3c26f86d"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a14770ae7a15af726f9ea621e3c26f86d">sam3x_watchdog_reset_type_text</a></div><div class="ttdeci">const char * sam3x_watchdog_reset_type_text(Sam3xResetType reset_type)</div><div class="ttdoc">Возвращает текстовое описание причины последнего сброса.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00138">sam3x_watchdog.cpp:138</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a29714edfcd6d104322b4f1f51f22efd1"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a29714edfcd6d104322b4f1f51f22efd1">sam3x_watchdog_last_reset_type</a></div><div class="ttdeci">Sam3xResetType sam3x_watchdog_last_reset_type(void)</div><div class="ttdoc">Возвращает сохранённую причину последнего сброса.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00133">sam3x_watchdog.cpp:133</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a30bdeea1e654736b3263d218056fa3b5"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a30bdeea1e654736b3263d218056fa3b5">sam3x_watchdog_mode_register</a></div><div class="ttdeci">uint32_t sam3x_watchdog_mode_register(void)</div><div class="ttdoc">Возвращает регистр WDT_MR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00240">sam3x_watchdog.cpp:240</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a333c43b9cbd6e6ece70528e27ff0d9f7"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a333c43b9cbd6e6ece70528e27ff0d9f7">sam3x_watchdog_recovery_performed</a></div><div class="ttdeci">uint8_t sam3x_watchdog_recovery_performed(void)</div><div class="ttdoc">Возвращает признак выполненного recovery-reset после watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00162">sam3x_watchdog.cpp:162</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a68dae260ea18dcc0dc9ff67b176d17c0"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a68dae260ea18dcc0dc9ff67b176d17c0">sam3x_watchdog_enabled</a></div><div class="ttdeci">uint8_t sam3x_watchdog_enabled(void)</div><div class="ttdoc">Возвращает признак включённого watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00235">sam3x_watchdog.cpp:235</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a6c0588c804e8bac7d3fcbd5612c0cb71"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a6c0588c804e8bac7d3fcbd5612c0cb71">sam3x_watchdog_status_register</a></div><div class="ttdeci">uint32_t sam3x_watchdog_status_register(void)</div><div class="ttdoc">Возвращает регистр WDT_SR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00245">sam3x_watchdog.cpp:245</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a6e1fa28ab3bf8153c97b77f3c424c751"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a6e1fa28ab3bf8153c97b77f3c424c751">sam3x_watchdog_restart</a></div><div class="ttdeci">void sam3x_watchdog_restart(void)</div><div class="ttdoc">Перезапускает watchdog-счётчик.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00230">sam3x_watchdog.cpp:230</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_a8889038aa827a671c29ce163e456d1fa"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#a8889038aa827a671c29ce163e456d1fa">sam3x_watchdog_timeout_ms</a></div><div class="ttdeci">uint32_t sam3x_watchdog_timeout_ms(uint16_t timeout_ticks_256hz)</div><div class="ttdoc">Возвращает время watchdog в миллисекундах.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00255">sam3x_watchdog.cpp:255</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_ae051392bb7e5a92e3e94a69470e29a74"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#ae051392bb7e5a92e3e94a69470e29a74">sam3x_watchdog_reset_status_register</a></div><div class="ttdeci">uint32_t sam3x_watchdog_reset_status_register(void)</div><div class="ttdoc">Возвращает регистр RSTC_SR.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00250">sam3x_watchdog.cpp:250</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_ae3c355a3eb3c0fa02822c586d4658dbc"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#ae3c355a3eb3c0fa02822c586d4658dbc">sam3x_watchdog_boot_count</a></div><div class="ttdeci">uint32_t sam3x_watchdog_boot_count(void)</div><div class="ttdoc">Возвращает счётчик запусков, сохранённый в GPBR0.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00167">sam3x_watchdog.cpp:167</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_ae63d12aaaeffde39cc14d2c860f8a005"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#ae63d12aaaeffde39cc14d2c860f8a005">sam3x_watchdog_increment_boot_count</a></div><div class="ttdeci">void sam3x_watchdog_increment_boot_count(void)</div><div class="ttdoc">Увеличивает счётчик запусков в GPBR0.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00172">sam3x_watchdog.cpp:172</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8cpp_html_af359b15e20db6ba2d9c741730917d8ec"><div class="ttname"><a href="sam3x__watchdog_8cpp.html#af359b15e20db6ba2d9c741730917d8ec">sam3x_watchdog_enable</a></div><div class="ttdeci">void sam3x_watchdog_enable(const Sam3xWatchdogConfig *config)</div><div class="ttdoc">Включает watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8cpp_source.html#l00177">sam3x_watchdog.cpp:177</a></div></div>
+<div class="ttc" id="asam3x__watchdog_8hpp_html"><div class="ttname"><a href="sam3x__watchdog_8hpp.html">sam3x_watchdog.hpp</a></div><div class="ttdoc">HAL watchdog-таймера ATSAM3X8E.</div></div>
+<div class="ttc" id="astructSam3xWatchdogConfig_html"><div class="ttname"><a href="structSam3xWatchdogConfig.html">Sam3xWatchdogConfig</a></div><div class="ttdoc">Конфигурация watchdog.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__watchdog_8hpp_source.html#l00027">sam3x_watchdog.hpp:28</a></div></div>
+<div class="ttc" id="awatchdog__status_8cpp_html_a7e2bf983b7aaa1d4bfcaffeb46487252"><div class="ttname"><a href="watchdog__status_8cpp.html#a7e2bf983b7aaa1d4bfcaffeb46487252">watchdog_status_poll</a></div><div class="ttdeci">void watchdog_status_poll(void)</div><div class="ttdoc">Периодически перезапускает watchdog, если reset-test не вооружён.</div><div class="ttdef"><b>Определения</b> <a href="#l00047">watchdog_status.cpp:47</a></div></div>
+<div class="ttc" id="awatchdog__status_8cpp_html_ad434c06ec465f0b5c2a9daf722a54372"><div class="ttname"><a href="watchdog__status_8cpp.html#ad434c06ec465f0b5c2a9daf722a54372">watchdog_status_print_report</a></div><div class="ttdeci">void watchdog_status_print_report(void)</div><div class="ttdoc">Печатает runtime, last reset, boot counter и raw-регистры.</div><div class="ttdef"><b>Определения</b> <a href="#l00063">watchdog_status.cpp:63</a></div></div>
+<div class="ttc" id="awatchdog__status_8cpp_html_afb2fb7b0a416b244d150a84bba32a03f"><div class="ttname"><a href="watchdog__status_8cpp.html#afb2fb7b0a416b244d150a84bba32a03f">watchdog_status_handle_command</a></div><div class="ttdeci">uint8_t watchdog_status_handle_command(const char *command)</div><div class="ttdoc">Обрабатывает watchdog, watchdog feed и watchdog test reset.</div><div class="ttdef"><b>Определения</b> <a href="#l00118">watchdog_status.cpp:118</a></div></div>
+<div class="ttc" id="awatchdog__status_8cpp_html_afe06f365f6d26834c882c4004a85c91e"><div class="ttname"><a href="watchdog__status_8cpp.html#afe06f365f6d26834c882c4004a85c91e">watchdog_status_init</a></div><div class="ttdeci">void watchdog_status_init(void)</div><div class="ttdoc">Фиксирует reset cause, увеличивает boot counter и включает watchdog.</div><div class="ttdef"><b>Определения</b> <a href="#l00028">watchdog_status.cpp:28</a></div></div>
+<div class="ttc" id="awatchdog__status_8hpp_html"><div class="ttname"><a href="watchdog__status_8hpp.html">watchdog_status.hpp</a></div><div class="ttdoc">Диагностика watchdog-таймера ATSAM3X8E.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="watchdog__status_8cpp.html">watchdog_status.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл app/diagnostics/ethernet_status.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ethernet__status_8cpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ethernet_status.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ethernet__status_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file ethernet_status.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Диагностика Modbus TCP на ETH1 и ETH2.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="ethernet__status_8hpp.html">ethernet_status.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__config__service_8hpp.html">../config/lcp_config_service.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ethernet__modbus__service_8hpp.html">../ethernet/ethernet_modbus_service.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__ethernet_8hpp.html">../../board/lcp_ethernet.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__field__ports_8hpp.html">../../board/lcp_field_ports.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="w5500__lite_8hpp.html">../../hal/w5500_lite.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="platform_8hpp.html">../../platform/platform.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> print_hex8(uint8_t value)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> hex[] = <span class="stringliteral">&quot;0123456789ABCDEF&quot;</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">char</span> text[5];</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    text[0] = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    text[1] = <span class="charliteral">&#39;x&#39;</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    text[2] = hex[(value &gt;&gt; 4U) &amp; 0x0FU];</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    text[3] = hex[value &amp; 0x0FU];</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    text[4] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    SerialUSB.print(text);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">void</span> print_hex16(uint16_t value)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> hex[] = <span class="stringliteral">&quot;0123456789ABCDEF&quot;</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">char</span> text[7];</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    text[0] = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    text[1] = <span class="charliteral">&#39;x&#39;</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    text[2] = hex[(value &gt;&gt; 12U) &amp; 0x0FU];</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    text[3] = hex[(value &gt;&gt; 8U) &amp; 0x0FU];</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    text[4] = hex[(value &gt;&gt; 4U) &amp; 0x0FU];</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    text[5] = hex[value &amp; 0x0FU];</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    text[6] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    SerialUSB.print(text);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> print_hex_byte(uint8_t value)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> hex[] = <span class="stringliteral">&quot;0123456789ABCDEF&quot;</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">char</span> text[3];</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    text[0] = hex[(value &gt;&gt; 4U) &amp; 0x0FU];</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    text[1] = hex[value &amp; 0x0FU];</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    text[2] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SerialUSB.print(text);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> print_ip(<span class="keyword">const</span> <a class="code hl_struct" href="structW5500IpAddress.html">W5500IpAddress</a>&amp; ip)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ip.<a class="code hl_variable" href="structW5500IpAddress.html#a2e019c93dbf9c8e85c8de3730836c762">octet</a>[0]));</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    SerialUSB.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ip.<a class="code hl_variable" href="structW5500IpAddress.html#a2e019c93dbf9c8e85c8de3730836c762">octet</a>[1]));</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    SerialUSB.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ip.<a class="code hl_variable" href="structW5500IpAddress.html#a2e019c93dbf9c8e85c8de3730836c762">octet</a>[2]));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    SerialUSB.print(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ip.<a class="code hl_variable" href="structW5500IpAddress.html#a2e019c93dbf9c8e85c8de3730836c762">octet</a>[3]));</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">void</span> print_mac(<span class="keyword">const</span> <a class="code hl_struct" href="structW5500MacAddress.html">W5500MacAddress</a>&amp; mac)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">for</span> (uint8_t index = 0U; index &lt; 6U; ++index)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span> (index != 0U)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            SerialUSB.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        print_hex_byte(mac.<a class="code hl_variable" href="structW5500MacAddress.html#a0d5d99aff4e073eb768601c69243ad0f">octet</a>[index]);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">void</span> print_interface(<a class="code hl_enumeration" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structEthernetModbusInterfaceState.html">EthernetModbusInterfaceState</a>&amp; state =</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_function" href="ethernet__modbus__service_8cpp.html#a37950b9707cdcce287ceb5b98e8ad679">ethernet_modbus_service_interface</a>(ethernet_id);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">const</span> uint8_t initialized = state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#ab64612ed2ccab32fad524d482109f634">initialized</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">const</span> uint8_t version = (initialized != 0U) ?</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_function" href="w5500__lite_8cpp.html#a41110c37304288fe8beb816b61d24aed">w5500_lite_version</a>(ethernet_id) : 0U;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keyword">const</span> uint8_t link_up = ((initialized != 0U) &amp;&amp;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                             (state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#a7a0d4bbfc9105e0efc1c24b0abbf969f">init_ok</a> != 0U)) ?</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_function" href="w5500__lite_8cpp.html#abdecff0ab033709a7a573130affb18af">w5500_lite_link_up</a>(ethernet_id) : 0U;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a>(<a class="code hl_function" href="lcp__ethernet_8cpp.html#ac0d27acfd245f3c72de819ebbd6362d3">lcp_ethernet_name</a>(ethernet_id));</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;initialized&quot;</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    SerialUSB.print((initialized != 0U) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;init&quot;</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    SerialUSB.print((state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#a7a0d4bbfc9105e0efc1c24b0abbf969f">init_ok</a> != 0U) ? <span class="stringliteral">&quot;ok&quot;</span> : <span class="stringliteral">&quot;failed&quot;</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;link&quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    SerialUSB.print((link_up != 0U) ? <span class="stringliteral">&quot;up&quot;</span> : <span class="stringliteral">&quot;down&quot;</span>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;VERSIONR&quot;</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    print_hex8(version);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;socket_status&quot;</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    print_hex8(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#a94c4637d225a50e7c29ab4b4824e0879">last_socket_status</a>);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;tcp_port&quot;</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="ethernet__modbus__service_8hpp.html#ae7d415c69b5ba9f157a69baf769ec502">LCP_MODBUS_TCP_PORT</a>));</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;mac&quot;</span>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    print_mac(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#aeead43aa147a03f38ec6f02b61390269">config</a>.<a class="code hl_variable" href="structW5500NetworkConfig.html#a5a89283a2c6358a2eb5013805c5c9eaa">mac</a>);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;ip&quot;</span>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    print_ip(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#aeead43aa147a03f38ec6f02b61390269">config</a>.<a class="code hl_variable" href="structW5500NetworkConfig.html#ac74f293248cf1e181d89d8712859434b">ip</a>);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;subnet&quot;</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    print_ip(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#aeead43aa147a03f38ec6f02b61390269">config</a>.<a class="code hl_variable" href="structW5500NetworkConfig.html#a29faccd05d8df513147c5b780f729551">subnet</a>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;gateway&quot;</span>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    print_ip(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#aeead43aa147a03f38ec6f02b61390269">config</a>.<a class="code hl_variable" href="structW5500NetworkConfig.html#a37e320a6dd32bcdfbc0b0ec56dc8d45a">gateway</a>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;requests&quot;</span>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#afc3f83077663f4234e4de23db2cd7e95">server</a>.<a class="code hl_variable" href="structModbusTcpServer.html#a01d4f191faffc17402ef0162b551842f">request_count</a>));</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;responses&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#afc3f83077663f4234e4de23db2cd7e95">server</a>.<a class="code hl_variable" href="structModbusTcpServer.html#ada7b1680a927408d34bfcc5fb610217c">response_count</a>));</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;exceptions&quot;</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#afc3f83077663f4234e4de23db2cd7e95">server</a>.<a class="code hl_variable" href="structModbusTcpServer.html#a57da6a7848c4bcea9a63dd2de3a3ef6f">exception_count</a>));</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;malformed&quot;</span>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#afc3f83077663f4234e4de23db2cd7e95">server</a>.<a class="code hl_variable" href="structModbusTcpServer.html#a2d7fee1f600a90ced2c06bebe4334449">malformed_count</a>));</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;transport_errors&quot;</span>);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(state.<a class="code hl_variable" href="structEthernetModbusInterfaceState.html#a9860b1e6f44a4c5dda1ee759d692c06c">transport_error_count</a>));</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>}</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keywordtype">void</span> print_quality_flags(uint16_t quality)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>{</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;valid&quot;</span>);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    SerialUSB.print((quality &amp; <a class="code hl_enumvalue" href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53ae63569182d43c033c5e1e9a09b6361ea">FIELD_SENSOR_TCP_QUALITY_VALID</a>) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;lost&quot;</span>);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    SerialUSB.print((quality &amp; <a class="code hl_enumvalue" href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a5f7094757f30ad487fc91a4b287df329">FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST</a>) ?</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                    <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;present&quot;</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    SerialUSB.print((quality &amp; <a class="code hl_enumvalue" href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a4a905d2b3152987e688dec4b306a99d9">FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT</a>) ?</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                    <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n  &quot;</span>);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;request_active&quot;</span>);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    SerialUSB.print((quality &amp; <a class="code hl_enumvalue" href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a14281cd5a9d0e88c33fd173288dbab6b">FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE</a>) ?</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                    <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;paused&quot;</span>);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    SerialUSB.print((quality &amp; <a class="code hl_enumvalue" href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a6d8061dd829105f4d7c9238179d4829e">FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED</a>) ?</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                    <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;last_rtu_result&quot;</span>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>((quality &gt;&gt; 8U) &amp; 0x00FFU));</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="keywordtype">void</span> print_register_map(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>{</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a>(<span class="stringliteral">&quot;Published holding registers&quot;</span>);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;layout&quot;</span>);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    SerialUSB.print(<span class="stringliteral">&quot;value0, value1, quality\r\n&quot;</span>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;registers_per_FieldSensor_port&quot;</span>);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    SerialUSB.print(<span class="stringliteral">&quot;3\r\n&quot;</span>);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">for</span> (uint8_t port_index = 0U;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>         port_index &lt; <a class="code hl_enumvalue" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41a6c336512f6db22cd97717d0fed554588">LCP_FIELD_PORT_COUNT</a>;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>         ++port_index)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keyword">const</span> uint16_t base = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            port_index * <a class="code hl_variable" href="ethernet__modbus__service_8hpp.html#ab90536dd8d067dad28a272e2f13b33e8">LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT</a>);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keyword">const</span> uint16_t value0 = <a class="code hl_function" href="ethernet__modbus__service_8cpp.html#a60efacb53d2e661c7f64d01ba5058df8">ethernet_modbus_service_holding</a>(base);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keyword">const</span> uint16_t value1 = <a class="code hl_function" href="ethernet__modbus__service_8cpp.html#a60efacb53d2e661c7f64d01ba5058df8">ethernet_modbus_service_holding</a>(base + 1U);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keyword">const</span> uint16_t quality = <a class="code hl_function" href="ethernet__modbus__service_8cpp.html#a60efacb53d2e661c7f64d01ba5058df8">ethernet_modbus_service_holding</a>(base + 2U);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        SerialUSB.print(<span class="stringliteral">&quot;S&quot;</span>);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(port_index + 1U));</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        SerialUSB.print(<span class="stringliteral">&quot;: &quot;</span>);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;address&quot;</span>);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(base));</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        SerialUSB.print(<span class="stringliteral">&quot;..&quot;</span>);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(base + 2U));</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;quality&quot;</span>);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        print_hex16(quality);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        SerialUSB.print(<span class="stringliteral">&quot;\r\n  &quot;</span>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;value0&quot;</span>);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(value0));</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;value1&quot;</span>);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(value1));</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        SerialUSB.print(<span class="stringliteral">&quot;\r\n  &quot;</span>);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        print_quality_flags(quality);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="foldopen" id="foldopen00211" data-start="{" data-end="}">
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="ethernet__status_8cpp.html#a65cfdb83e99dfdf605da9fb21fa75209">  211</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ethernet__status_8cpp.html#a65cfdb83e99dfdf605da9fb21fa75209">ethernet_status_print_report</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>{</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a>(<span class="stringliteral">&quot;ETHERNET MODBUS TCP&quot;</span>);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;service_reload&quot;</span>);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    SerialUSB.print((<a class="code hl_function" href="ethernet__modbus__service_8cpp.html#aca352132b3df0b61c1b66d295a3c247a">ethernet_modbus_service_reload_pending</a>() != 0U) ?</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                    <span class="stringliteral">&quot;pending&quot;</span> : <span class="stringliteral">&quot;idle&quot;</span>);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;config_source&quot;</span>);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    SerialUSB.print(<a class="code hl_function" href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">lcp_config_source_text</a>(<a class="code hl_function" href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">lcp_config_service_source</a>()));</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;config_generation&quot;</span>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <a class="code hl_function" href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">lcp_config_service_generation</a>()));</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;function&quot;</span>);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    SerialUSB.print(<span class="stringliteral">&quot;0x03 read-only\r\n&quot;</span>);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;holding_address&quot;</span>);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    SerialUSB.print(<span class="stringliteral">&quot;0..11\r\n&quot;</span>);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    print_interface(<a class="code hl_enumvalue" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0a123d84fce6953bb35c6d9a9b35b89fd1">LCP_ETHERNET_1</a>);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    print_interface(<a class="code hl_enumvalue" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0a4d61811d20a47da4bb4562a1f7fa41c1">LCP_ETHERNET_2</a>);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    print_register_map();</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>}</div>
+</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="foldopen" id="foldopen00235" data-start="{" data-end="}">
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="ethernet__status_8cpp.html#a17d0e3dacc0c04022d818168d7481462">  235</a></span>uint8_t <a class="code hl_function" href="ethernet__status_8cpp.html#a17d0e3dacc0c04022d818168d7481462">ethernet_status_handle_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* command)</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>{</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordflow">if</span> (command == 0)</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    }</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">if</span> ((strcmp(command, <span class="stringliteral">&quot;eth&quot;</span>) == 0) ||</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        (strcmp(command, <span class="stringliteral">&quot;eth status&quot;</span>) == 0))</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    {</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <a class="code hl_function" href="ethernet__status_8cpp.html#a65cfdb83e99dfdf605da9fb21fa75209">ethernet_status_print_report</a>();</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    }</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">if</span> (strcmp(command, <span class="stringliteral">&quot;eth reload&quot;</span>) == 0)</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <a class="code hl_function" href="ethernet__modbus__service_8cpp.html#af2ea53d1dc79698f5f745d20f7ba7bf2">ethernet_modbus_service_request_reload</a>();</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        SerialUSB.print(<span class="stringliteral">&quot;Ethernet active configuration reload = pending\r\n&quot;</span>);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        SerialUSB.print(<span class="stringliteral">&quot;both W5500 interfaces will be reset\r\n&quot;</span>);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    }</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>}</div>
+</div>
+<div class="ttc" id="adiagnostic__output_8hpp_html"><div class="ttname"><a href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a></div><div class="ttdoc">Общие функции форматирования USB service console.</div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_a98e20bd6f28d90b4dbb96fca4e745b16"><div class="ttname"><a href="diagnostic__output_8hpp.html#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a></div><div class="ttdeci">void diagnostic_print_section(const char *title)</div><div class="ttdoc">Печатает заголовок самостоятельной диагностической подсистемы.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00051">diagnostic_output.hpp:51</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_abd5ca920d141d5dcd55e7e476cda50a5"><div class="ttname"><a href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a></div><div class="ttdeci">void diagnostic_print_assignment(const char *name)</div><div class="ttdoc">Печатает имя параметра и разделитель  = .</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00080">diagnostic_output.hpp:80</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_ad844b507f5b788115cf38879b2fea020"><div class="ttname"><a href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a></div><div class="ttdeci">void diagnostic_print_group(const char *title)</div><div class="ttdoc">Печатает заголовок логической группы внутри одного отчёта.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00065">diagnostic_output.hpp:65</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8cpp_html_a37950b9707cdcce287ceb5b98e8ad679"><div class="ttname"><a href="ethernet__modbus__service_8cpp.html#a37950b9707cdcce287ceb5b98e8ad679">ethernet_modbus_service_interface</a></div><div class="ttdeci">const EthernetModbusInterfaceState &amp; ethernet_modbus_service_interface(LcpEthernetId ethernet_id)</div><div class="ttdoc">Возвращает runtime выбранного Ethernet-интерфейса.</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8cpp_source.html#l00287">ethernet_modbus_service.cpp:287</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8cpp_html_a60efacb53d2e661c7f64d01ba5058df8"><div class="ttname"><a href="ethernet__modbus__service_8cpp.html#a60efacb53d2e661c7f64d01ba5058df8">ethernet_modbus_service_holding</a></div><div class="ttdeci">uint16_t ethernet_modbus_service_holding(uint16_t address)</div><div class="ttdoc">Возвращает один регистр текущей опубликованной карты.</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8cpp_source.html#l00293">ethernet_modbus_service.cpp:293</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8cpp_html_aca352132b3df0b61c1b66d295a3c247a"><div class="ttname"><a href="ethernet__modbus__service_8cpp.html#aca352132b3df0b61c1b66d295a3c247a">ethernet_modbus_service_reload_pending</a></div><div class="ttdeci">uint8_t ethernet_modbus_service_reload_pending(void)</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8cpp_source.html#l00282">ethernet_modbus_service.cpp:282</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8cpp_html_af2ea53d1dc79698f5f745d20f7ba7bf2"><div class="ttname"><a href="ethernet__modbus__service_8cpp.html#af2ea53d1dc79698f5f745d20f7ba7bf2">ethernet_modbus_service_request_reload</a></div><div class="ttdeci">void ethernet_modbus_service_request_reload(void)</div><div class="ttdoc">Запрашивает перечитывание сетевых файлов и reset обоих W5500.</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8cpp_source.html#l00277">ethernet_modbus_service.cpp:277</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html">ethernet_modbus_service.hpp</a></div><div class="ttdoc">Read-only Modbus TCP server на двух W5500 контроллера LCP2116.</div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_ab90536dd8d067dad28a272e2f13b33e8"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#ab90536dd8d067dad28a272e2f13b33e8">LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT</a></div><div class="ttdeci">static const uint16_t LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00034">ethernet_modbus_service.hpp:34</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_adfe7c598bd7a366bf3fb619946c49e53a14281cd5a9d0e88c33fd173288dbab6b"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a14281cd5a9d0e88c33fd173288dbab6b">FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE</a></div><div class="ttdeci">@ FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00057">ethernet_modbus_service.hpp:57</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_adfe7c598bd7a366bf3fb619946c49e53a4a905d2b3152987e688dec4b306a99d9"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a4a905d2b3152987e688dec4b306a99d9">FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT</a></div><div class="ttdeci">@ FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00056">ethernet_modbus_service.hpp:56</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_adfe7c598bd7a366bf3fb619946c49e53a5f7094757f30ad487fc91a4b287df329"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a5f7094757f30ad487fc91a4b287df329">FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST</a></div><div class="ttdeci">@ FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00055">ethernet_modbus_service.hpp:55</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_adfe7c598bd7a366bf3fb619946c49e53a6d8061dd829105f4d7c9238179d4829e"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53a6d8061dd829105f4d7c9238179d4829e">FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED</a></div><div class="ttdeci">@ FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00058">ethernet_modbus_service.hpp:58</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_adfe7c598bd7a366bf3fb619946c49e53ae63569182d43c033c5e1e9a09b6361ea"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#adfe7c598bd7a366bf3fb619946c49e53ae63569182d43c033c5e1e9a09b6361ea">FIELD_SENSOR_TCP_QUALITY_VALID</a></div><div class="ttdeci">@ FIELD_SENSOR_TCP_QUALITY_VALID</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00054">ethernet_modbus_service.hpp:54</a></div></div>
+<div class="ttc" id="aethernet__modbus__service_8hpp_html_ae7d415c69b5ba9f157a69baf769ec502"><div class="ttname"><a href="ethernet__modbus__service_8hpp.html#ae7d415c69b5ba9f157a69baf769ec502">LCP_MODBUS_TCP_PORT</a></div><div class="ttdeci">static const uint16_t LCP_MODBUS_TCP_PORT</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00028">ethernet_modbus_service.hpp:28</a></div></div>
+<div class="ttc" id="aethernet__status_8cpp_html_a17d0e3dacc0c04022d818168d7481462"><div class="ttname"><a href="ethernet__status_8cpp.html#a17d0e3dacc0c04022d818168d7481462">ethernet_status_handle_command</a></div><div class="ttdeci">uint8_t ethernet_status_handle_command(const char *command)</div><div class="ttdoc">Обрабатывает eth, eth status и eth reload.</div><div class="ttdef"><b>Определения</b> <a href="#l00235">ethernet_status.cpp:235</a></div></div>
+<div class="ttc" id="aethernet__status_8cpp_html_a65cfdb83e99dfdf605da9fb21fa75209"><div class="ttname"><a href="ethernet__status_8cpp.html#a65cfdb83e99dfdf605da9fb21fa75209">ethernet_status_print_report</a></div><div class="ttdeci">void ethernet_status_print_report(void)</div><div class="ttdoc">Печатает ETH1/ETH2, сетевые файлы, счётчики и holding map.</div><div class="ttdef"><b>Определения</b> <a href="#l00211">ethernet_status.cpp:211</a></div></div>
+<div class="ttc" id="aethernet__status_8hpp_html"><div class="ttname"><a href="ethernet__status_8hpp.html">ethernet_status.hpp</a></div><div class="ttdoc">Service console для двух Modbus TCP server W5500.</div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a4da8cdd14d781ba60f5cce22724d748d"><div class="ttname"><a href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">lcp_config_source_text</a></div><div class="ttdeci">const char * lcp_config_source_text(LcpConfigSource source)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8cpp_source.html#l00730">lcp_config_service.cpp:730</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a58ffd583a0dbd41d8e2dba711c2db163"><div class="ttname"><a href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">lcp_config_service_generation</a></div><div class="ttdeci">uint32_t lcp_config_service_generation(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8cpp_source.html#l00577">lcp_config_service.cpp:577</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_ae18c9ed72f3f15ae3e4ad165d355f2c8"><div class="ttname"><a href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">lcp_config_service_source</a></div><div class="ttdeci">LcpConfigSource lcp_config_service_source(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8cpp_source.html#l00582">lcp_config_service.cpp:582</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html"><div class="ttname"><a href="lcp__config__service_8hpp.html">lcp_config_service.hpp</a></div><div class="ttdoc">Надёжное A/B-хранилище конфигурации во внутренней Flash ATSAM3X8E.</div></div>
+<div class="ttc" id="alcp__ethernet_8cpp_html_ac0d27acfd245f3c72de819ebbd6362d3"><div class="ttname"><a href="lcp__ethernet_8cpp.html#ac0d27acfd245f3c72de819ebbd6362d3">lcp_ethernet_name</a></div><div class="ttdeci">const char * lcp_ethernet_name(LcpEthernetId ethernet_id)</div><div class="ttdoc">Возвращает имя Ethernet-интерфейса.</div><div class="ttdef"><b>Определения</b> <a href="lcp__ethernet_8cpp_source.html#l00125">lcp_ethernet.cpp:125</a></div></div>
+<div class="ttc" id="alcp__ethernet_8hpp_html"><div class="ttname"><a href="lcp__ethernet_8hpp.html">lcp_ethernet.hpp</a></div><div class="ttdoc">Карта двух Ethernet-контроллеров W5500 контроллера LCP.</div></div>
+<div class="ttc" id="alcp__ethernet_8hpp_html_aa2e322920ba28ad99e8137025c2d8ef0"><div class="ttname"><a href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></div><div class="ttdeci">LcpEthernetId</div><div class="ttdoc">Идентификатор физического Ethernet-интерфейса.</div><div class="ttdef"><b>Определения</b> <a href="lcp__ethernet_8hpp_source.html#l00014">lcp_ethernet.hpp:15</a></div></div>
+<div class="ttc" id="alcp__ethernet_8hpp_html_aa2e322920ba28ad99e8137025c2d8ef0a123d84fce6953bb35c6d9a9b35b89fd1"><div class="ttname"><a href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0a123d84fce6953bb35c6d9a9b35b89fd1">LCP_ETHERNET_1</a></div><div class="ttdeci">@ LCP_ETHERNET_1</div><div class="ttdef"><b>Определения</b> <a href="lcp__ethernet_8hpp_source.html#l00016">lcp_ethernet.hpp:16</a></div></div>
+<div class="ttc" id="alcp__ethernet_8hpp_html_aa2e322920ba28ad99e8137025c2d8ef0a4d61811d20a47da4bb4562a1f7fa41c1"><div class="ttname"><a href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0a4d61811d20a47da4bb4562a1f7fa41c1">LCP_ETHERNET_2</a></div><div class="ttdeci">@ LCP_ETHERNET_2</div><div class="ttdef"><b>Определения</b> <a href="lcp__ethernet_8hpp_source.html#l00017">lcp_ethernet.hpp:17</a></div></div>
+<div class="ttc" id="alcp__field__ports_8hpp_html"><div class="ttname"><a href="lcp__field__ports_8hpp.html">lcp_field_ports.hpp</a></div><div class="ttdoc">Аппаратные Modbus RTU transports пользовательских портов S1..S4.</div></div>
+<div class="ttc" id="alcp__field__ports_8hpp_html_a903f26f067c7ad34f8fa3213f7b2da41a6c336512f6db22cd97717d0fed554588"><div class="ttname"><a href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41a6c336512f6db22cd97717d0fed554588">LCP_FIELD_PORT_COUNT</a></div><div class="ttdeci">@ LCP_FIELD_PORT_COUNT</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8hpp_source.html#l00020">lcp_field_ports.hpp:20</a></div></div>
+<div class="ttc" id="aplatform_8hpp_html"><div class="ttname"><a href="platform_8hpp.html">platform.hpp</a></div><div class="ttdoc">Верхний платформенный интерфейс проекта.</div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html"><div class="ttname"><a href="structEthernetModbusInterfaceState.html">EthernetModbusInterfaceState</a></div><div class="ttdoc">Runtime одного независимого Ethernet-интерфейса.</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00067">ethernet_modbus_service.hpp:68</a></div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html_a7a0d4bbfc9105e0efc1c24b0abbf969f"><div class="ttname"><a href="structEthernetModbusInterfaceState.html#a7a0d4bbfc9105e0efc1c24b0abbf969f">EthernetModbusInterfaceState::init_ok</a></div><div class="ttdeci">uint8_t init_ok</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00073">ethernet_modbus_service.hpp:73</a></div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html_a94c4637d225a50e7c29ab4b4824e0879"><div class="ttname"><a href="structEthernetModbusInterfaceState.html#a94c4637d225a50e7c29ab4b4824e0879">EthernetModbusInterfaceState::last_socket_status</a></div><div class="ttdeci">uint8_t last_socket_status</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00074">ethernet_modbus_service.hpp:74</a></div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html_a9860b1e6f44a4c5dda1ee759d692c06c"><div class="ttname"><a href="structEthernetModbusInterfaceState.html#a9860b1e6f44a4c5dda1ee759d692c06c">EthernetModbusInterfaceState::transport_error_count</a></div><div class="ttdeci">uint32_t transport_error_count</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00075">ethernet_modbus_service.hpp:75</a></div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html_ab64612ed2ccab32fad524d482109f634"><div class="ttname"><a href="structEthernetModbusInterfaceState.html#ab64612ed2ccab32fad524d482109f634">EthernetModbusInterfaceState::initialized</a></div><div class="ttdeci">uint8_t initialized</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00072">ethernet_modbus_service.hpp:72</a></div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html_aeead43aa147a03f38ec6f02b61390269"><div class="ttname"><a href="structEthernetModbusInterfaceState.html#aeead43aa147a03f38ec6f02b61390269">EthernetModbusInterfaceState::config</a></div><div class="ttdeci">W5500NetworkConfig config</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00069">ethernet_modbus_service.hpp:69</a></div></div>
+<div class="ttc" id="astructEthernetModbusInterfaceState_html_afc3f83077663f4234e4de23db2cd7e95"><div class="ttname"><a href="structEthernetModbusInterfaceState.html#afc3f83077663f4234e4de23db2cd7e95">EthernetModbusInterfaceState::server</a></div><div class="ttdeci">ModbusTcpServer server</div><div class="ttdef"><b>Определения</b> <a href="ethernet__modbus__service_8hpp_source.html#l00071">ethernet_modbus_service.hpp:71</a></div></div>
+<div class="ttc" id="astructModbusTcpServer_html_a01d4f191faffc17402ef0162b551842f"><div class="ttname"><a href="structModbusTcpServer.html#a01d4f191faffc17402ef0162b551842f">ModbusTcpServer::request_count</a></div><div class="ttdeci">uint32_t request_count</div><div class="ttdef"><b>Определения</b> <a href="modbus__tcp__server_8hpp_source.html#l00038">modbus_tcp_server.hpp:38</a></div></div>
+<div class="ttc" id="astructModbusTcpServer_html_a2d7fee1f600a90ced2c06bebe4334449"><div class="ttname"><a href="structModbusTcpServer.html#a2d7fee1f600a90ced2c06bebe4334449">ModbusTcpServer::malformed_count</a></div><div class="ttdeci">uint32_t malformed_count</div><div class="ttdef"><b>Определения</b> <a href="modbus__tcp__server_8hpp_source.html#l00041">modbus_tcp_server.hpp:41</a></div></div>
+<div class="ttc" id="astructModbusTcpServer_html_a57da6a7848c4bcea9a63dd2de3a3ef6f"><div class="ttname"><a href="structModbusTcpServer.html#a57da6a7848c4bcea9a63dd2de3a3ef6f">ModbusTcpServer::exception_count</a></div><div class="ttdeci">uint32_t exception_count</div><div class="ttdef"><b>Определения</b> <a href="modbus__tcp__server_8hpp_source.html#l00040">modbus_tcp_server.hpp:40</a></div></div>
+<div class="ttc" id="astructModbusTcpServer_html_ada7b1680a927408d34bfcc5fb610217c"><div class="ttname"><a href="structModbusTcpServer.html#ada7b1680a927408d34bfcc5fb610217c">ModbusTcpServer::response_count</a></div><div class="ttdeci">uint32_t response_count</div><div class="ttdef"><b>Определения</b> <a href="modbus__tcp__server_8hpp_source.html#l00039">modbus_tcp_server.hpp:39</a></div></div>
+<div class="ttc" id="astructW5500IpAddress_html"><div class="ttname"><a href="structW5500IpAddress.html">W5500IpAddress</a></div><div class="ttdoc">IPv4-адрес в сетевом порядке октетов.</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00017">w5500_lite.hpp:18</a></div></div>
+<div class="ttc" id="astructW5500IpAddress_html_a2e019c93dbf9c8e85c8de3730836c762"><div class="ttname"><a href="structW5500IpAddress.html#a2e019c93dbf9c8e85c8de3730836c762">W5500IpAddress::octet</a></div><div class="ttdeci">uint8_t octet[4]</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00019">w5500_lite.hpp:19</a></div></div>
+<div class="ttc" id="astructW5500MacAddress_html"><div class="ttname"><a href="structW5500MacAddress.html">W5500MacAddress</a></div><div class="ttdoc">48-битный MAC-адрес.</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00023">w5500_lite.hpp:24</a></div></div>
+<div class="ttc" id="astructW5500MacAddress_html_a0d5d99aff4e073eb768601c69243ad0f"><div class="ttname"><a href="structW5500MacAddress.html#a0d5d99aff4e073eb768601c69243ad0f">W5500MacAddress::octet</a></div><div class="ttdeci">uint8_t octet[6]</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00025">w5500_lite.hpp:25</a></div></div>
+<div class="ttc" id="astructW5500NetworkConfig_html_a29faccd05d8df513147c5b780f729551"><div class="ttname"><a href="structW5500NetworkConfig.html#a29faccd05d8df513147c5b780f729551">W5500NetworkConfig::subnet</a></div><div class="ttdeci">W5500IpAddress subnet</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00034">w5500_lite.hpp:34</a></div></div>
+<div class="ttc" id="astructW5500NetworkConfig_html_a37e320a6dd32bcdfbc0b0ec56dc8d45a"><div class="ttname"><a href="structW5500NetworkConfig.html#a37e320a6dd32bcdfbc0b0ec56dc8d45a">W5500NetworkConfig::gateway</a></div><div class="ttdeci">W5500IpAddress gateway</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00033">w5500_lite.hpp:33</a></div></div>
+<div class="ttc" id="astructW5500NetworkConfig_html_a5a89283a2c6358a2eb5013805c5c9eaa"><div class="ttname"><a href="structW5500NetworkConfig.html#a5a89283a2c6358a2eb5013805c5c9eaa">W5500NetworkConfig::mac</a></div><div class="ttdeci">W5500MacAddress mac</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00031">w5500_lite.hpp:31</a></div></div>
+<div class="ttc" id="astructW5500NetworkConfig_html_ac74f293248cf1e181d89d8712859434b"><div class="ttname"><a href="structW5500NetworkConfig.html#ac74f293248cf1e181d89d8712859434b">W5500NetworkConfig::ip</a></div><div class="ttdeci">W5500IpAddress ip</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8hpp_source.html#l00032">w5500_lite.hpp:32</a></div></div>
+<div class="ttc" id="aw5500__lite_8cpp_html_a41110c37304288fe8beb816b61d24aed"><div class="ttname"><a href="w5500__lite_8cpp.html#a41110c37304288fe8beb816b61d24aed">w5500_lite_version</a></div><div class="ttdeci">uint8_t w5500_lite_version(LcpEthernetId ethernet_id)</div><div class="ttdoc">Возвращает VERSIONR выбранного W5500.</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8cpp_source.html#l00402">w5500_lite.cpp:402</a></div></div>
+<div class="ttc" id="aw5500__lite_8cpp_html_abdecff0ab033709a7a573130affb18af"><div class="ttname"><a href="w5500__lite_8cpp.html#abdecff0ab033709a7a573130affb18af">w5500_lite_link_up</a></div><div class="ttdeci">uint8_t w5500_lite_link_up(LcpEthernetId ethernet_id)</div><div class="ttdef"><b>Определения</b> <a href="w5500__lite_8cpp_source.html#l00414">w5500_lite.cpp:414</a></div></div>
+<div class="ttc" id="aw5500__lite_8hpp_html"><div class="ttname"><a href="w5500__lite_8hpp.html">w5500_lite.hpp</a></div><div class="ttdoc">Минимальный polling HAL W5500 для одного TCP server socket.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="ethernet__status_8cpp.html">ethernet_status.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

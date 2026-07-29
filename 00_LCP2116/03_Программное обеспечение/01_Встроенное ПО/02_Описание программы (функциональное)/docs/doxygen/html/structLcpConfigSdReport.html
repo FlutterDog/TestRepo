@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура LcpConfigSdReport</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structLcpConfigSdReport.html','','structLcpConfigSdReport-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура LcpConfigSdReport</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Диагностика одного полного чтения конфигурационного комплекта.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="lcp__config__bundle_8hpp_source.html">app/config/lcp_config_bundle.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a94ce1e15248874837fd26766ccb04ba0" id="r_a94ce1e15248874837fd26766ccb04ba0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94ce1e15248874837fd26766ccb04ba0">bundle_crc32</a></td></tr>
+<tr class="memitem:aa2fb611a5f9a23ff629d68d20727c2b2" id="r_aa2fb611a5f9a23ff629d68d20727c2b2"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2fb611a5f9a23ff629d68d20727c2b2">failed_file</a></td></tr>
+<tr class="memitem:a8f1581ec8eec2a2c7a6f2904353acc2f" id="r_a8f1581ec8eec2a2c7a6f2904353acc2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f1581ec8eec2a2c7a6f2904353acc2f">result</a></td></tr>
+<tr class="memitem:a278deee3ec0fd5bb59ff1f77b98991ca" id="r_a278deee3ec0fd5bb59ff1f77b98991ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a278deee3ec0fd5bb59ff1f77b98991ca">sd_result</a></td></tr>
+<tr class="memitem:a0ffb544a38566e5575ccad3e85ab18a8" id="r_a0ffb544a38566e5575ccad3e85ab18a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ffb544a38566e5575ccad3e85ab18a8">x2x_result</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Диагностика одного полного чтения конфигурационного комплекта. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a> строка <a class="el" href="lcp__config__bundle_8hpp_source.html#l00060">60</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a94ce1e15248874837fd26766ccb04ba0" name="a94ce1e15248874837fd26766ccb04ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ce1e15248874837fd26766ccb04ba0">&#9670;&#160;</a></span>bundle_crc32</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpConfigSdReport::bundle_crc32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a> строка <a class="el" href="lcp__config__bundle_8hpp_source.html#l00066">66</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a>.</p>
+
+</div>
+</div>
+<a id="aa2fb611a5f9a23ff629d68d20727c2b2" name="aa2fb611a5f9a23ff629d68d20727c2b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2fb611a5f9a23ff629d68d20727c2b2">&#9670;&#160;</a></span>failed_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* LcpConfigSdReport::failed_file</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a> строка <a class="el" href="lcp__config__bundle_8hpp_source.html#l00063">63</a></p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a> и <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a>.</p>
+
+</div>
+</div>
+<a id="a8f1581ec8eec2a2c7a6f2904353acc2f" name="a8f1581ec8eec2a2c7a6f2904353acc2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1581ec8eec2a2c7a6f2904353acc2f">&#9670;&#160;</a></span>result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a> LcpConfigSdReport::result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a> строка <a class="el" href="lcp__config__bundle_8hpp_source.html#l00062">62</a></p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a> и <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a>.</p>
+
+</div>
+</div>
+<a id="a278deee3ec0fd5bb59ff1f77b98991ca" name="a278deee3ec0fd5bb59ff1f77b98991ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a278deee3ec0fd5bb59ff1f77b98991ca">&#9670;&#160;</a></span>sd_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> LcpConfigSdReport::sd_result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a> строка <a class="el" href="lcp__config__bundle_8hpp_source.html#l00064">64</a></p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a> и <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a>.</p>
+
+</div>
+</div>
+<a id="a0ffb544a38566e5575ccad3e85ab18a8" name="a0ffb544a38566e5575ccad3e85ab18a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ffb544a38566e5575ccad3e85ab18a8">&#9670;&#160;</a></span>x2x_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> LcpConfigSdReport::x2x_result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a> строка <a class="el" href="lcp__config__bundle_8hpp_source.html#l00065">65</a></p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/config/<a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structLcpConfigSdReport.html">LcpConfigSdReport</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

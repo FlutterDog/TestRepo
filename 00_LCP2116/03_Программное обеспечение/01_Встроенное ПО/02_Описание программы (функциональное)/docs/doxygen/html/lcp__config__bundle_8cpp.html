@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/config/lcp_config_bundle.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__config__bundle_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл lcp_config_bundle.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация нормализованного конфигурационного комплекта LCP2116.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="lcp__config__bundle_8hpp_source.html">lcp_config_bundle.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__catalog_8hpp_source.html">../x2x/x2x_catalog.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__crc32_8hpp_source.html">../../libs/lcp_crc32/lcp_crc32.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__sd__storage_8hpp_source.html">../../libs/lcp_sd_storage/lcp_sd_storage.hpp</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="lcp__config__bundle_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a0a339f63a53ee4a18f8727c4e39f4b27" id="r_a0a339f63a53ee4a18f8727c4e39f4b27"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a> (const LcpConfigBundle &amp;bundle)</td></tr>
+<tr class="memitem:ab44840fba256908cfc0f0aa927e8507c" id="r_ab44840fba256908cfc0f0aa927e8507c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab44840fba256908cfc0f0aa927e8507c">lcp_config_bundle_equal</a> (const LcpConfigBundle &amp;left, const LcpConfigBundle &amp;right)</td></tr>
+<tr class="memitem:acb2ef5348e0988cc7b94faab726728b3" id="r_acb2ef5348e0988cc7b94faab726728b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb2ef5348e0988cc7b94faab726728b3">lcp_config_bundle_ethernet</a> (const LcpConfigBundle &amp;bundle, <a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a> output[<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0aef6de26ea1a0477fd67c5674a1e7c8d4">LCP_ETHERNET_COUNT</a>])</td></tr>
+<tr class="memdesc:acb2ef5348e0988cc7b94faab726728b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Преобразует bundle в конфигурации ETH1/ETH2.  <br /></td></tr>
+<tr class="memitem:a41543a8811e2a3bf39e2ae26f88d2085" id="r_a41543a8811e2a3bf39e2ae26f88d2085"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41543a8811e2a3bf39e2ae26f88d2085">lcp_config_bundle_field_serial</a> (const LcpConfigBundle &amp;bundle, <a class="el" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a> output[<a class="el" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41a6c336512f6db22cd97717d0fed554588">LCP_FIELD_PORT_COUNT</a>])</td></tr>
+<tr class="memdesc:a41543a8811e2a3bf39e2ae26f88d2085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Преобразует bundle в аппаратные настройки S1..S4.  <br /></td></tr>
+<tr class="memitem:ace3caa4e7da3361a9b6f85aa11b94ad3" id="r_ace3caa4e7da3361a9b6f85aa11b94ad3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace3caa4e7da3361a9b6f85aa11b94ad3">lcp_config_bundle_load_sd</a> (LcpConfigBundle &amp;output, <a class="el" href="structLcpConfigSdReport.html">LcpConfigSdReport</a> &amp;report)</td></tr>
+<tr class="memdesc:ace3caa4e7da3361a9b6f85aa11b94ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Атомарно читает весь канонический комплект TXT с microSD.  <br /></td></tr>
+<tr class="memitem:a2682112c60e132c546ec1d8ffda3abe5" id="r_a2682112c60e132c546ec1d8ffda3abe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2682112c60e132c546ec1d8ffda3abe5">lcp_config_bundle_set_defaults</a> (LcpConfigBundle &amp;bundle)</td></tr>
+<tr class="memdesc:a2682112c60e132c546ec1d8ffda3abe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует полный безопасный набор значений по умолчанию.  <br /></td></tr>
+<tr class="memitem:afed8d1681b323e226eec0270f1971a2f" id="r_afed8d1681b323e226eec0270f1971a2f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afed8d1681b323e226eec0270f1971a2f">lcp_config_bundle_validate</a> (const LcpConfigBundle &amp;bundle)</td></tr>
+<tr class="memdesc:afed8d1681b323e226eec0270f1971a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Полностью проверяет значения уже сформированного bundle.  <br /></td></tr>
+<tr class="memitem:a5163e05daaabf5745a4c0350ed4f5bf8" id="r_a5163e05daaabf5745a4c0350ed4f5bf8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5163e05daaabf5745a4c0350ed4f5bf8">lcp_config_bundle_x2x</a> (const LcpConfigBundle &amp;bundle, <a class="el" href="structX2XConfig.html">X2XConfig</a> &amp;output)</td></tr>
+<tr class="memdesc:a5163e05daaabf5745a4c0350ed4f5bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Преобразует bundle в проверенную <a class="el" href="structX2XConfig.html" title="Полностью проверенная последовательность экземпляров модулей X2X.">X2XConfig</a>.  <br /></td></tr>
+<tr class="memitem:af1fd5f5c8dfba8a8941d757994dfa494" id="r_af1fd5f5c8dfba8a8941d757994dfa494"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1fd5f5c8dfba8a8941d757994dfa494">lcp_config_sd_result_text</a> (<a class="el" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a> result)</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация нормализованного конфигурационного комплекта LCP2116. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a0a339f63a53ee4a18f8727c4e39f4b27" name="a0a339f63a53ee4a18f8727c4e39f4b27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a339f63a53ee4a18f8727c4e39f4b27">&#9670;&#160;</a></span>lcp_config_bundle_crc32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lcp_config_bundle_crc32 </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>CRC32 нормализованного bundle. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">543</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">lcp_config_usb::build_write_pages()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">lcp_config_usb::decode_config_payload()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">lcp_config_usb::handle_get_config()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">lcp_config_usb::handle_put()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">lcp_config_usb::verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="ab44840fba256908cfc0f0aa927e8507c" name="ab44840fba256908cfc0f0aa927e8507c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44840fba256908cfc0f0aa927e8507c">&#9670;&#160;</a></span>lcp_config_bundle_equal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_bundle_equal </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>left</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>right</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>1 при полном совпадении всех нормализованных полей. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00548">548</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">lcp_config_usb::handle_put()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">lcp_config_usb::verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="acb2ef5348e0988cc7b94faab726728b3" name="acb2ef5348e0988cc7b94faab726728b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb2ef5348e0988cc7b94faab726728b3">&#9670;&#160;</a></span>lcp_config_bundle_ethernet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_bundle_ethernet </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a></td>          <td class="paramname"><span class="paramname"><em>output</em></span>[LCP_ETHERNET_COUNT]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Преобразует bundle в конфигурации ETH1/ETH2. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00570">570</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8hpp_source.html#l00018">LCP_ETHERNET_COUNT</a>.</p>
+
+</div>
+</div>
+<a id="a41543a8811e2a3bf39e2ae26f88d2085" name="a41543a8811e2a3bf39e2ae26f88d2085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41543a8811e2a3bf39e2ae26f88d2085">&#9670;&#160;</a></span>lcp_config_bundle_field_serial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_bundle_field_serial </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a></td>          <td class="paramname"><span class="paramname"><em>output</em></span>[LCP_FIELD_PORT_COUNT]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Преобразует bundle в аппаратные настройки S1..S4. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00554">554</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__field__ports_8hpp_source.html#l00020">LCP_FIELD_PORT_COUNT</a>.</p>
+
+</div>
+</div>
+<a id="ace3caa4e7da3361a9b6f85aa11b94ad3" name="ace3caa4e7da3361a9b6f85aa11b94ad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3caa4e7da3361a9b6f85aa11b94ad3">&#9670;&#160;</a></span>lcp_config_bundle_load_sd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a> lcp_config_bundle_load_sd </td>
+          <td>(</td>
+          <td class="paramtype">LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLcpConfigSdReport.html">LcpConfigSdReport</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>report</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Атомарно читает весь канонический комплект TXT с microSD. </p>
+<p>Output изменяется только при полном успехе всех обязательных файлов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">489</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__bundle_8hpp_source.html#l00066">LcpConfigSdReport::bundle_crc32</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00063">LcpConfigSdReport::failed_file</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle_crc32()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00384">lcp_config_bundle_set_defaults()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00418">lcp_config_bundle_validate()</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00055">LCP_CONFIG_SD_INVALID_VALUE</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00052">LCP_CONFIG_SD_OK</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00053">LCP_CONFIG_SD_STORAGE_NOT_READY</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage_ready()</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00062">LcpConfigSdReport::result</a>, <a class="el" href="sd__config_8hpp_source.html#l00021">SD_CONFIG_CARD_NOT_READY</a>, <a class="el" href="sd__config_8hpp_source.html#l00026">SD_CONFIG_INVALID_VALUE</a> и <a class="el" href="lcp__config__bundle_8hpp_source.html#l00064">LcpConfigSdReport::sd_result</a>.</p>
+
+</div>
+</div>
+<a id="a2682112c60e132c546ec1d8ffda3abe5" name="a2682112c60e132c546ec1d8ffda3abe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2682112c60e132c546ec1d8ffda3abe5">&#9670;&#160;</a></span>lcp_config_bundle_set_defaults()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_bundle_set_defaults </td>
+          <td>(</td>
+          <td class="paramtype">LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Формирует полный безопасный набор значений по умолчанию. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00384">384</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__bundle_8hpp_source.html#l00015">LCP_CONFIG_EIA_VALUE_COUNT</a> и <a class="el" href="lcp__field__ports_8hpp_source.html#l00020">LCP_FIELD_PORT_COUNT</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a>.</p>
+
+</div>
+</div>
+<a id="afed8d1681b323e226eec0270f1971a2f" name="afed8d1681b323e226eec0270f1971a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed8d1681b323e226eec0270f1971a2f">&#9670;&#160;</a></span>lcp_config_bundle_validate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_bundle_validate </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Полностью проверяет значения уже сформированного bundle. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00418">418</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__catalog_8hpp_source.html#l00043">X2XModuleDescriptor::allowed_in_x2x_config</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00015">LCP_CONFIG_EIA_VALUE_COUNT</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00016">LCP_CONFIG_RESERVED_BYTES</a>, <a class="el" href="lcp__ethernet_8hpp_source.html#l00018">LCP_ETHERNET_COUNT</a>, <a class="el" href="lcp__field__ports_8hpp_source.html#l00020">LCP_FIELD_PORT_COUNT</a>, <a class="el" href="x2x__catalog_8cpp_source.html#l00216">x2x_catalog_find_by_id()</a> и <a class="el" href="x2x__types_8hpp_source.html#l00016">X2X_MAX_MODULES</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">lcp_config_usb::decode_config_payload()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle_load_sd()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00596">lcp_config_bundle_x2x()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">lcp_config_usb::verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a5163e05daaabf5745a4c0350ed4f5bf8" name="a5163e05daaabf5745a4c0350ed4f5bf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5163e05daaabf5745a4c0350ed4f5bf8">&#9670;&#160;</a></span>lcp_config_bundle_x2x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_bundle_x2x </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structX2XConfig.html">X2XConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Преобразует bundle в проверенную <a class="el" href="structX2XConfig.html" title="Полностью проверенная последовательность экземпляров модулей X2X.">X2XConfig</a>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00596">596</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__bundle_8cpp_source.html#l00418">lcp_config_bundle_validate()</a>, <a class="el" href="x2x__config_8hpp_source.html#l00033">X2XConfig::module_count</a>, <a class="el" href="x2x__config_8hpp_source.html#l00034">X2XConfig::module_types</a>, <a class="el" href="x2x__config_8cpp_source.html#l00206">x2x_config_reset()</a>, <a class="el" href="x2x__types_8hpp_source.html#l00037">X2X_DEVICE_LCP</a> и <a class="el" href="x2x__types_8hpp_source.html#l00016">X2X_MAX_MODULES</a>.</p>
+
+</div>
+</div>
+<a id="af1fd5f5c8dfba8a8941d757994dfa494" name="af1fd5f5c8dfba8a8941d757994dfa494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1fd5f5c8dfba8a8941d757994dfa494">&#9670;&#160;</a></span>lcp_config_sd_result_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * lcp_config_sd_result_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Текст результата полного SD-импорта. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__bundle_8cpp_source.html">lcp_config_bundle.cpp</a> строка <a class="el" href="lcp__config__bundle_8cpp_source.html#l00620">620</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__bundle_8hpp_source.html#l00054">LCP_CONFIG_SD_FILE_ERROR</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00055">LCP_CONFIG_SD_INVALID_VALUE</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00051">LCP_CONFIG_SD_NOT_ATTEMPTED</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00052">LCP_CONFIG_SD_OK</a>, <a class="el" href="lcp__config__bundle_8hpp_source.html#l00053">LCP_CONFIG_SD_STORAGE_NOT_READY</a> и <a class="el" href="lcp__config__bundle_8hpp_source.html#l00056">LCP_CONFIG_SD_X2X_ERROR</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_aea9893897cc10308ef9329a16217ee4.html">config</a></li><li class="navelem"><a href="lcp__config__bundle_8cpp.html">lcp_config_bundle.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

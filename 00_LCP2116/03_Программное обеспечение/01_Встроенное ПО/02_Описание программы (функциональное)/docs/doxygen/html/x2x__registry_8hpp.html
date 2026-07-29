@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/x2x/x2x_registry.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__registry_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл x2x_registry.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Статический реестр экземпляров устройств X2X.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="x2x__config_8hpp_source.html">x2x_config.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a>&quot;</code><br />
+</div>
+<p><a href="x2x__registry_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a9c04b94ec909d5c2126fd937fe52191c" id="r_a9c04b94ec909d5c2126fd937fe52191c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#a9c04b94ec909d5c2126fd937fe52191caad5ec80f707df4de348b8c0b6622ddd2">X2X_REGISTRY_OK</a> = 0U
+, <a class="el" href="#a9c04b94ec909d5c2126fd937fe52191ca6b48feea05e3fefc4a784644677d1653">X2X_REGISTRY_INVALID_CONFIG</a> = 1U
+, <a class="el" href="#a9c04b94ec909d5c2126fd937fe52191caa2879e3e0735939444b8cd6d47d8f9a4">X2X_REGISTRY_UNKNOWN_TYPE</a> = 2U
+, <a class="el" href="#a9c04b94ec909d5c2126fd937fe52191ca6adc02b937d8e76992e2ce7e94328bf1">X2X_REGISTRY_STORAGE_TOO_SMALL</a> = 3U
+, <br />
+&#160;&#160;<a class="el" href="#a9c04b94ec909d5c2126fd937fe52191ca4ae26b08098ac8236360d67919bb6ebe">X2X_REGISTRY_CONSTRUCTION_FAILED</a> = 4U
+<br />
+ }</td></tr>
+<tr class="memdesc:a9c04b94ec909d5c2126fd937fe52191c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Результат построения статического реестра X2X.  <a href="#a9c04b94ec909d5c2126fd937fe52191c">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a826c381310228ff2657ea85dc8317817" id="r_a826c381310228ff2657ea85dc8317817"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a826c381310228ff2657ea85dc8317817">x2x_registry_build</a> (const <a class="el" href="structX2XConfig.html">X2XConfig</a> &amp;config, uint16_t default_asdu)</td></tr>
+<tr class="memdesc:a826c381310228ff2657ea85dc8317817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Строит реестр из полностью проверенной конфигурации.  <br /></td></tr>
+<tr class="memitem:a217812467aeee513d27bc3ff4eaba91e" id="r_a217812467aeee513d27bc3ff4eaba91e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a217812467aeee513d27bc3ff4eaba91e">x2x_registry_controller</a> (void)</td></tr>
+<tr class="memitem:afeb936e62bf827e0a7e1ca38e3fe890b" id="r_afeb936e62bf827e0a7e1ca38e3fe890b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeb936e62bf827e0a7e1ca38e3fe890b">x2x_registry_get_by_index</a> (uint8_t index)</td></tr>
+<tr class="memdesc:afeb936e62bf827e0a7e1ca38e3fe890b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает устройство по внутреннему индексу.  <br /></td></tr>
+<tr class="memitem:a96bc15b3a94198c6a5e991e84fca36f3" id="r_a96bc15b3a94198c6a5e991e84fca36f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96bc15b3a94198c6a5e991e84fca36f3">x2x_registry_get_by_slave</a> (uint8_t slave_address)</td></tr>
+<tr class="memdesc:a96bc15b3a94198c6a5e991e84fca36f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает модуль по физическому адресу slave.  <br /></td></tr>
+<tr class="memitem:af1a550eeeaaf9b5ecf152265ceda0c58" id="r_af1a550eeeaaf9b5ecf152265ceda0c58"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1a550eeeaaf9b5ecf152265ceda0c58">x2x_registry_module_count</a> (void)</td></tr>
+<tr class="memitem:afaeb3744eb2cc7b45fea34a7fa1395ec" id="r_afaeb3744eb2cc7b45fea34a7fa1395ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaeb3744eb2cc7b45fea34a7fa1395ec">x2x_registry_reset</a> (void)</td></tr>
+<tr class="memdesc:afaeb3744eb2cc7b45fea34a7fa1395ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбрасывает реестр и все runtime-данные устройств.  <br /></td></tr>
+<tr class="memitem:acdfe39d75079be2978cebe9ec1855d90" id="r_acdfe39d75079be2978cebe9ec1855d90"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdfe39d75079be2978cebe9ec1855d90">x2x_registry_result_text</a> (<a class="el" href="#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a> result)</td></tr>
+<tr class="memitem:af46c7f96c3d7516a423e7e5feb3b9baa" id="r_af46c7f96c3d7516a423e7e5feb3b9baa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af46c7f96c3d7516a423e7e5feb3b9baa">x2x_registry_total_count</a> (void)</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Статический реестр экземпляров устройств X2X. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8hpp_source.html">x2x_registry.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a9c04b94ec909d5c2126fd937fe52191c" name="a9c04b94ec909d5c2126fd937fe52191c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c04b94ec909d5c2126fd937fe52191c">&#9670;&#160;</a></span>X2XRegistryResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Результат построения статического реестра X2X. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a9c04b94ec909d5c2126fd937fe52191caad5ec80f707df4de348b8c0b6622ddd2" name="a9c04b94ec909d5c2126fd937fe52191caad5ec80f707df4de348b8c0b6622ddd2"></a>X2X_REGISTRY_OK&#160;</td><td class="fielddoc"><p>Реестр полностью построен. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9c04b94ec909d5c2126fd937fe52191ca6b48feea05e3fefc4a784644677d1653" name="a9c04b94ec909d5c2126fd937fe52191ca6b48feea05e3fefc4a784644677d1653"></a>X2X_REGISTRY_INVALID_CONFIG&#160;</td><td class="fielddoc"><p>Конфигурация нарушает ограничения X2X. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9c04b94ec909d5c2126fd937fe52191caa2879e3e0735939444b8cd6d47d8f9a4" name="a9c04b94ec909d5c2126fd937fe52191caa2879e3e0735939444b8cd6d47d8f9a4"></a>X2X_REGISTRY_UNKNOWN_TYPE&#160;</td><td class="fielddoc"><p>Тип отсутствует в каталоге. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9c04b94ec909d5c2126fd937fe52191ca6adc02b937d8e76992e2ce7e94328bf1" name="a9c04b94ec909d5c2126fd937fe52191ca6adc02b937d8e76992e2ce7e94328bf1"></a>X2X_REGISTRY_STORAGE_TOO_SMALL&#160;</td><td class="fielddoc"><p>Runtime-объект не помещается в фиксированный слот. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a9c04b94ec909d5c2126fd937fe52191ca4ae26b08098ac8236360d67919bb6ebe" name="a9c04b94ec909d5c2126fd937fe52191ca4ae26b08098ac8236360d67919bb6ebe"></a>X2X_REGISTRY_CONSTRUCTION_FAILED&#160;</td><td class="fielddoc"><p>Placement-конструктор вернул null. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8hpp_source.html">x2x_registry.hpp</a> строка <a class="el" href="x2x__registry_8hpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a826c381310228ff2657ea85dc8317817" name="a826c381310228ff2657ea85dc8317817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826c381310228ff2657ea85dc8317817">&#9670;&#160;</a></span>x2x_registry_build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a> x2x_registry_build </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structX2XConfig.html">X2XConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>default_asdu</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Строит реестр из полностью проверенной конфигурации. </p>
+<p>Элемент 0 всегда содержит центральный LCP. Элементы 1..N соответствуют адресам X2X slave 1..N, поэтому отдельная таблица адресов не требуется. Функция не выделяет динамическую память.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">config</td><td>Проверенная последовательность типов внешних модулей. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">default_asdu</td><td>ASDU, назначаемый каждому создаваемому объекту. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код результата построения. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00066">66</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__catalog_8hpp_source.html#l00043">X2XModuleDescriptor::allowed_in_x2x_config</a>, <a class="el" href="x2x__config_8hpp_source.html#l00033">X2XConfig::module_count</a>, <a class="el" href="x2x__config_8hpp_source.html#l00034">X2XConfig::module_types</a>, <a class="el" href="x2x__catalog_8hpp_source.html#l00037">X2XModuleDescriptor::type</a>, <a class="el" href="x2x__catalog_8cpp_source.html#l00203">x2x_catalog_find()</a>, <a class="el" href="x2x__types_8hpp_source.html#l00037">X2X_DEVICE_LCP</a>, <a class="el" href="x2x__types_8hpp_source.html#l00016">X2X_MAX_MODULES</a>, <a class="el" href="x2x__registry_8hpp_source.html#l00017">X2X_REGISTRY_INVALID_CONFIG</a>, <a class="el" href="x2x__registry_8hpp_source.html#l00016">X2X_REGISTRY_OK</a>, <a class="el" href="x2x__registry_8cpp_source.html#l00059">x2x_registry_reset()</a> и <a class="el" href="x2x__registry_8hpp_source.html#l00018">X2X_REGISTRY_UNKNOWN_TYPE</a>.</p>
+
+</div>
+</div>
+<a id="a217812467aeee513d27bc3ff4eaba91e" name="a217812467aeee513d27bc3ff4eaba91e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217812467aeee513d27bc3ff4eaba91e">&#9670;&#160;</a></span>x2x_registry_controller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> * x2x_registry_controller </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Центральный объект LCP либо null до успешного построения. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00127">127</a></p>
+
+</div>
+</div>
+<a id="afeb936e62bf827e0a7e1ca38e3fe890b" name="afeb936e62bf827e0a7e1ca38e3fe890b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeb936e62bf827e0a7e1ca38e3fe890b">&#9670;&#160;</a></span>x2x_registry_get_by_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> * x2x_registry_get_by_index </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает устройство по внутреннему индексу. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>0 для LCP, 1..N для внешних модулей. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Заголовок экземпляра либо null. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00142">142</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__registry_8cpp_source.html#l00122">x2x_registry_total_count()</a>.</p>
+
+</div>
+</div>
+<a id="a96bc15b3a94198c6a5e991e84fca36f3" name="a96bc15b3a94198c6a5e991e84fca36f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96bc15b3a94198c6a5e991e84fca36f3">&#9670;&#160;</a></span>x2x_registry_get_by_slave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> * x2x_registry_get_by_slave </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave_address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает модуль по физическому адресу slave. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">slave_address</td><td>Адрес 1..N. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Заголовок экземпляра либо null. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00132">132</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__service_8cpp_source.html#l00332">x2x_service_set_ldo_output()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="af1a550eeeaaf9b5ecf152265ceda0c58" name="af1a550eeeaaf9b5ecf152265ceda0c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a550eeeaaf9b5ecf152265ceda0c58">&#9670;&#160;</a></span>x2x_registry_module_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_registry_module_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Количество внешних модулей без центрального LCP. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00117">117</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__service_8cpp_source.html#l00296">x2x_service_owns_port()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00200">x2x_service_poll()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="afaeb3744eb2cc7b45fea34a7fa1395ec" name="afaeb3744eb2cc7b45fea34a7fa1395ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaeb3744eb2cc7b45fea34a7fa1395ec">&#9670;&#160;</a></span>x2x_registry_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void x2x_registry_reset </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сбрасывает реестр и все runtime-данные устройств. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00059">59</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__registry_8cpp_source.html#l00066">x2x_registry_build()</a> и <a class="el" href="x2x__service_8cpp_source.html#l00177">x2x_service_init()</a>.</p>
+
+</div>
+</div>
+<a id="acdfe39d75079be2978cebe9ec1855d90" name="acdfe39d75079be2978cebe9ec1855d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdfe39d75079be2978cebe9ec1855d90">&#9670;&#160;</a></span>x2x_registry_result_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * x2x_registry_result_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Указатель на строковое описание результата построения. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00152">152</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__registry_8hpp_source.html#l00020">X2X_REGISTRY_CONSTRUCTION_FAILED</a>, <a class="el" href="x2x__registry_8hpp_source.html#l00017">X2X_REGISTRY_INVALID_CONFIG</a>, <a class="el" href="x2x__registry_8hpp_source.html#l00016">X2X_REGISTRY_OK</a>, <a class="el" href="x2x__registry_8hpp_source.html#l00019">X2X_REGISTRY_STORAGE_TOO_SMALL</a> и <a class="el" href="x2x__registry_8hpp_source.html#l00018">X2X_REGISTRY_UNKNOWN_TYPE</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="af46c7f96c3d7516a423e7e5feb3b9baa" name="af46c7f96c3d7516a423e7e5feb3b9baa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46c7f96c3d7516a423e7e5feb3b9baa">&#9670;&#160;</a></span>x2x_registry_total_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_registry_total_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Общее количество объектов, включая центральный LCP. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__registry_8cpp_source.html">x2x_registry.cpp</a> строка <a class="el" href="x2x__registry_8cpp_source.html#l00122">122</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__registry_8cpp_source.html#l00142">x2x_registry_get_by_index()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_e05296bbe1f2b3edfa4799f2a210e301.html">x2x</a></li><li class="navelem"><a href="x2x__registry_8hpp.html">x2x_registry.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

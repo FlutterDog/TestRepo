@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/x2x/x2x_service.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__service_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл x2x_service.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация конфигурации и циклического опроса X2X.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="x2x__service_8hpp_source.html">x2x_service.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__module__common_8hpp_source.html">modules/x2x_module_common.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__config__service_8hpp_source.html">../config/lcp_config_service.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__x2x__port_8hpp_source.html">../../board/lcp_x2x_port.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../../platform/platform.hpp</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="x2x__service_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a8041599bfb522c2fab1d241289a5896f" id="r_a8041599bfb522c2fab1d241289a5896f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8041599bfb522c2fab1d241289a5896f">x2x_service_config_loaded</a> (void)</td></tr>
+<tr class="memdesc:a8041599bfb522c2fab1d241289a5896f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает 1, если применена корректная конфигурация.  <br /></td></tr>
+<tr class="memitem:a24bcc0f3fb8a66da86ae20212927dbd7" id="r_a24bcc0f3fb8a66da86ae20212927dbd7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24bcc0f3fb8a66da86ae20212927dbd7">x2x_service_current_slave</a> (void)</td></tr>
+<tr class="memdesc:a24bcc0f3fb8a66da86ae20212927dbd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает адрес текущего опрашиваемого модуля.  <br /></td></tr>
+<tr class="memitem:a981c1a5c2aded41242eb2b81c814356a" id="r_a981c1a5c2aded41242eb2b81c814356a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a981c1a5c2aded41242eb2b81c814356a">x2x_service_init</a> (void)</td></tr>
+<tr class="memdesc:a981c1a5c2aded41242eb2b81c814356a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует X2X-порт, master и состояние сервиса.  <br /></td></tr>
+<tr class="memitem:aa1f9b512cab00c8f944a8728b88d3f54" id="r_aa1f9b512cab00c8f944a8728b88d3f54"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structX2XConfigError.html">X2XConfigError</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1f9b512cab00c8f944a8728b88d3f54">x2x_service_last_config_error</a> (void)</td></tr>
+<tr class="memdesc:aa1f9b512cab00c8f944a8728b88d3f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает подробности последней ошибки X2X.TXT.  <br /></td></tr>
+<tr class="memitem:a0eae2e6c875ae0ebb8a696377ce5f9a6" id="r_a0eae2e6c875ae0ebb8a696377ce5f9a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eae2e6c875ae0ebb8a696377ce5f9a6">x2x_service_last_config_result</a> (void)</td></tr>
+<tr class="memdesc:a0eae2e6c875ae0ebb8a696377ce5f9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает результат последней завершённой загрузки X2X.TXT.  <br /></td></tr>
+<tr class="memitem:a8755ce8cac2dc5332ff7b9da4ce6463e" id="r_a8755ce8cac2dc5332ff7b9da4ce6463e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__registry_8hpp.html#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8755ce8cac2dc5332ff7b9da4ce6463e">x2x_service_last_registry_result</a> (void)</td></tr>
+<tr class="memdesc:a8755ce8cac2dc5332ff7b9da4ce6463e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает результат последней операции построения реестра.  <br /></td></tr>
+<tr class="memitem:af6d83f7a64e9db6c29af6763587105a4" id="r_af6d83f7a64e9db6c29af6763587105a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb">ModbusRtuResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6d83f7a64e9db6c29af6763587105a4">x2x_service_modbus_result</a> (void)</td></tr>
+<tr class="memdesc:af6d83f7a64e9db6c29af6763587105a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает результат текущей или последней Modbus-транзакции.  <br /></td></tr>
+<tr class="memitem:a16233f0fd7a0518d63d6098e527134b7" id="r_a16233f0fd7a0518d63d6098e527134b7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16233f0fd7a0518d63d6098e527134b7">x2x_service_owns_port</a> (void)</td></tr>
+<tr class="memdesc:a16233f0fd7a0518d63d6098e527134b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает 1, если X2X-сервис использует UART0.  <br /></td></tr>
+<tr class="memitem:a038b07eeff15478ffc0ffed6188dd847" id="r_a038b07eeff15478ffc0ffed6188dd847"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a038b07eeff15478ffc0ffed6188dd847">x2x_service_pause</a> (void)</td></tr>
+<tr class="memdesc:a038b07eeff15478ffc0ffed6188dd847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запрашивает остановку опроса после завершения текущего цикла.  <br /></td></tr>
+<tr class="memitem:a1e366bcdf7b93688a20d0d69a47591e3" id="r_a1e366bcdf7b93688a20d0d69a47591e3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e366bcdf7b93688a20d0d69a47591e3">x2x_service_pause_pending</a> (void)</td></tr>
+<tr class="memdesc:a1e366bcdf7b93688a20d0d69a47591e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает 1, если ожидается безопасная точка для паузы.  <br /></td></tr>
+<tr class="memitem:a33b82d9289493b26ebde21e0fabdf885" id="r_a33b82d9289493b26ebde21e0fabdf885"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33b82d9289493b26ebde21e0fabdf885">x2x_service_paused</a> (void)</td></tr>
+<tr class="memdesc:a33b82d9289493b26ebde21e0fabdf885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает 1, если опрос уже приостановлен.  <br /></td></tr>
+<tr class="memitem:a4c64ea9d0f917bcbd0ebdf1b7e07cd37" id="r_a4c64ea9d0f917bcbd0ebdf1b7e07cd37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c64ea9d0f917bcbd0ebdf1b7e07cd37">x2x_service_poll</a> (void)</td></tr>
+<tr class="memdesc:a4c64ea9d0f917bcbd0ebdf1b7e07cd37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет один неблокирующий шаг загрузки и опроса X2X.  <br /></td></tr>
+<tr class="memitem:af447495bccb05911aa58b13d047cca5f" id="r_af447495bccb05911aa58b13d047cca5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af447495bccb05911aa58b13d047cca5f">x2x_service_reload_config</a> (void)</td></tr>
+<tr class="memdesc:af447495bccb05911aa58b13d047cca5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Повторно читает X2X.TXT и применяет его при успешной проверке.  <br /></td></tr>
+<tr class="memitem:a3a04c1a689e6443065febcfda0b9101b" id="r_a3a04c1a689e6443065febcfda0b9101b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a04c1a689e6443065febcfda0b9101b">x2x_service_reload_pending</a> (void)</td></tr>
+<tr class="memdesc:a3a04c1a689e6443065febcfda0b9101b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает 1, если применение X2X.TXT отложено.  <br /></td></tr>
+<tr class="memitem:a8c0ae29b022448b36abfce76813073a0" id="r_a8c0ae29b022448b36abfce76813073a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c0ae29b022448b36abfce76813073a0">x2x_service_resume</a> (void)</td></tr>
+<tr class="memdesc:a8c0ae29b022448b36abfce76813073a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возобновляет циклический опрос.  <br /></td></tr>
+<tr class="memitem:a95eb1011538a3faa04e2d5d224dd4a7b" id="r_a95eb1011538a3faa04e2d5d224dd4a7b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95eb1011538a3faa04e2d5d224dd4a7b">x2x_service_set_ldo_output</a> (uint8_t slave_address, int16_t value)</td></tr>
+<tr class="memdesc:a95eb1011538a3faa04e2d5d224dd4a7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение выходного регистра экземпляра LDO1118.  <br /></td></tr>
+<tr class="memitem:a51935254d1a6f256904f32f0f100fe2b" id="r_a51935254d1a6f256904f32f0f100fe2b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structX2XWaveformBuffer.html">X2XWaveformBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51935254d1a6f256904f32f0f100fe2b">x2x_service_waveform</a> (void)</td></tr>
+<tr class="memdesc:a51935254d1a6f256904f32f0f100fe2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает буфер последней осциллограммы LCT.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация конфигурации и циклического опроса X2X. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a8041599bfb522c2fab1d241289a5896f" name="a8041599bfb522c2fab1d241289a5896f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8041599bfb522c2fab1d241289a5896f">&#9670;&#160;</a></span>x2x_service_config_loaded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_config_loaded </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает 1, если применена корректная конфигурация. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00291">291</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a24bcc0f3fb8a66da86ae20212927dbd7" name="a24bcc0f3fb8a66da86ae20212927dbd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24bcc0f3fb8a66da86ae20212927dbd7">&#9670;&#160;</a></span>x2x_service_current_slave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_current_slave </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает адрес текущего опрашиваемого модуля. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00317">317</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a981c1a5c2aded41242eb2b81c814356a" name="a981c1a5c2aded41242eb2b81c814356a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a981c1a5c2aded41242eb2b81c814356a">&#9670;&#160;</a></span>x2x_service_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void x2x_service_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует X2X-порт, master и состояние сервиса. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00177">177</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__x2x__port_8cpp_source.html#l00080">lcp_x2x_port_init()</a>, <a class="el" href="lcp__x2x__port_8cpp_source.html#l00092">lcp_x2x_port_transport()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00234">modbus_rtu_master_init()</a>, <a class="el" href="x2x__config_8hpp_source.html#l00015">X2X_CONFIG_OK</a>, <a class="el" href="x2x__config_8cpp_source.html#l00206">x2x_config_reset()</a>, <a class="el" href="x2x__registry_8hpp_source.html#l00017">X2X_REGISTRY_INVALID_CONFIG</a> и <a class="el" href="x2x__registry_8cpp_source.html#l00059">x2x_registry_reset()</a>.</p>
+
+</div>
+</div>
+<a id="aa1f9b512cab00c8f944a8728b88d3f54" name="aa1f9b512cab00c8f944a8728b88d3f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f9b512cab00c8f944a8728b88d3f54">&#9670;&#160;</a></span>x2x_service_last_config_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structX2XConfigError.html">X2XConfigError</a> &amp; x2x_service_last_config_error </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает подробности последней ошибки X2X.TXT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00307">307</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a0eae2e6c875ae0ebb8a696377ce5f9a6" name="a0eae2e6c875ae0ebb8a696377ce5f9a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eae2e6c875ae0ebb8a696377ce5f9a6">&#9670;&#160;</a></span>x2x_service_last_config_result()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> x2x_service_last_config_result </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает результат последней завершённой загрузки X2X.TXT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00302">302</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a8755ce8cac2dc5332ff7b9da4ce6463e" name="a8755ce8cac2dc5332ff7b9da4ce6463e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8755ce8cac2dc5332ff7b9da4ce6463e">&#9670;&#160;</a></span>x2x_service_last_registry_result()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__registry_8hpp.html#a9c04b94ec909d5c2126fd937fe52191c">X2XRegistryResult</a> x2x_service_last_registry_result </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает результат последней операции построения реестра. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00312">312</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="af6d83f7a64e9db6c29af6763587105a4" name="af6d83f7a64e9db6c29af6763587105a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6d83f7a64e9db6c29af6763587105a4">&#9670;&#160;</a></span>x2x_service_modbus_result()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb">ModbusRtuResult</a> x2x_service_modbus_result </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает результат текущей или последней Modbus-транзакции. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00322">322</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="modbus__rtu__master_8cpp_source.html#l00432">modbus_rtu_master_result()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a16233f0fd7a0518d63d6098e527134b7" name="a16233f0fd7a0518d63d6098e527134b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16233f0fd7a0518d63d6098e527134b7">&#9670;&#160;</a></span>x2x_service_owns_port()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_owns_port </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает 1, если X2X-сервис использует UART0. </p>
+<p>При нулевом количестве модулей порт не захватывается и может применяться диагностическим echo-test. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00296">296</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__registry_8cpp_source.html#l00117">x2x_registry_module_count()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a038b07eeff15478ffc0ffed6188dd847" name="a038b07eeff15478ffc0ffed6188dd847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a038b07eeff15478ffc0ffed6188dd847">&#9670;&#160;</a></span>x2x_service_pause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void x2x_service_pause </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Запрашивает остановку опроса после завершения текущего цикла. </p>
+<p>Функция не обрывает физическую передачу и не оставляет DE в активном состоянии. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00258">258</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00370">x2x_status_handle_command()</a>.</p>
+
+</div>
+</div>
+<a id="a1e366bcdf7b93688a20d0d69a47591e3" name="a1e366bcdf7b93688a20d0d69a47591e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e366bcdf7b93688a20d0d69a47591e3">&#9670;&#160;</a></span>x2x_service_pause_pending()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_pause_pending </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает 1, если ожидается безопасная точка для паузы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00281">281</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a33b82d9289493b26ebde21e0fabdf885" name="a33b82d9289493b26ebde21e0fabdf885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b82d9289493b26ebde21e0fabdf885">&#9670;&#160;</a></span>x2x_service_paused()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_paused </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает 1, если опрос уже приостановлен. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00276">276</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00370">x2x_status_handle_command()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a4c64ea9d0f917bcbd0ebdf1b7e07cd37" name="a4c64ea9d0f917bcbd0ebdf1b7e07cd37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c64ea9d0f917bcbd0ebdf1b7e07cd37">&#9670;&#160;</a></span>x2x_service_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void x2x_service_poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет один неблокирующий шаг загрузки и опроса X2X. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00200">200</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__service_8cpp_source.html#l00577">lcp_config_service_generation()</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00427">modbus_rtu_master_busy()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00376">modbus_rtu_master_poll()</a> и <a class="el" href="x2x__registry_8cpp_source.html#l00117">x2x_registry_module_count()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a>.</p>
+
+</div>
+</div>
+<a id="af447495bccb05911aa58b13d047cca5f" name="af447495bccb05911aa58b13d047cca5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af447495bccb05911aa58b13d047cca5f">&#9670;&#160;</a></span>x2x_service_reload_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> x2x_service_reload_config </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Повторно читает X2X.TXT и применяет его при успешной проверке. </p>
+<p>При активной транзакции операция откладывается до окончания текущего цикла модуля и возвращает X2X_CONFIG_APPLY_PENDING. При ошибке файла ранее активная конфигурация продолжает работать. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00246">246</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="modbus__rtu__master_8cpp_source.html#l00427">modbus_rtu_master_busy()</a> и <a class="el" href="x2x__config_8hpp_source.html#l00026">X2X_CONFIG_APPLY_PENDING</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00370">x2x_status_handle_command()</a>.</p>
+
+</div>
+</div>
+<a id="a3a04c1a689e6443065febcfda0b9101b" name="a3a04c1a689e6443065febcfda0b9101b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a04c1a689e6443065febcfda0b9101b">&#9670;&#160;</a></span>x2x_service_reload_pending()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_reload_pending </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает 1, если применение X2X.TXT отложено. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00286">286</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a8c0ae29b022448b36abfce76813073a0" name="a8c0ae29b022448b36abfce76813073a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c0ae29b022448b36abfce76813073a0">&#9670;&#160;</a></span>x2x_service_resume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void x2x_service_resume </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возобновляет циклический опрос. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00269">269</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00370">x2x_status_handle_command()</a>.</p>
+
+</div>
+</div>
+<a id="a95eb1011538a3faa04e2d5d224dd4a7b" name="a95eb1011538a3faa04e2d5d224dd4a7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95eb1011538a3faa04e2d5d224dd4a7b">&#9670;&#160;</a></span>x2x_service_set_ldo_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_service_set_ldo_output </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение выходного регистра экземпляра LDO1118. </p>
+<p>Значение будет передано при следующем цикле опроса данного slave.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>1 при успешной установке, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00332">332</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__types_8hpp_source.html#l00099">X2XLdo1118::output_value</a>, <a class="el" href="x2x__types_8hpp_source.html#l00065">X2XDeviceHeader::type</a>, <a class="el" href="x2x__types_8hpp_source.html#l00038">X2X_DEVICE_LDO1118</a> и <a class="el" href="x2x__registry_8cpp_source.html#l00132">x2x_registry_get_by_slave()</a>.</p>
+
+</div>
+</div>
+<a id="a51935254d1a6f256904f32f0f100fe2b" name="a51935254d1a6f256904f32f0f100fe2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51935254d1a6f256904f32f0f100fe2b">&#9670;&#160;</a></span>x2x_service_waveform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structX2XWaveformBuffer.html">X2XWaveformBuffer</a> &amp; x2x_service_waveform </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает буфер последней осциллограммы LCT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__service_8cpp_source.html">x2x_service.cpp</a> строка <a class="el" href="x2x__service_8cpp_source.html#l00327">327</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_e05296bbe1f2b3edfa4799f2a210e301.html">x2x</a></li><li class="navelem"><a href="x2x__service_8cpp.html">x2x_service.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

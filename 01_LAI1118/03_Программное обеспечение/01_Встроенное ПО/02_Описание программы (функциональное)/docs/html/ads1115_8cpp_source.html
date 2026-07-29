@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Исходный файл app/ads1115.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ads1115_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ads1115.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ads1115_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="ads1115_8hpp.html">ads1115.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"></span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @file ads1115.cpp</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @brief Реализация драйвера аналого-цифрового преобразователя ADS1115.</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacehal.html">    8</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehal.html">hal</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">     * @brief Инициализирует аппаратный интерфейс I2C.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">     * @param scl_hz Частота линии SCL, Гц.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacehal.html#a3d73c0755ea07147d9a69a96863f5caa">twi_init</a>(uint32_t scl_hz);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"></span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">     * @brief Записывает шестнадцатиразрядный регистр I2C-устройства.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * @param address Семибитный I2C-адрес устройства.</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     * @param reg Адрес регистра.</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     * @param value Значение регистра.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">     * @return true — запись выполнена успешно; false — ошибка обмена.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacehal.html#ab20137c6563e255ae4de17d12bd7550c">twi_write_reg16</a>(uint8_t address, uint8_t reg, uint16_t value);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"></span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">     * @brief Читает шестнадцатиразрядный регистр I2C-устройства.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">     * @param address Семибитный I2C-адрес устройства.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">     * @param reg Адрес регистра.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">     * @param value Указатель для сохранения прочитанного значения.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">     * @return true — чтение выполнено успешно; false — ошибка обмена.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacehal.html#a7d9634f41994e820eb6470cb27275f4b">twi_read_reg16</a>(uint8_t address, uint8_t reg, uint16_t* value);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html">   40</a></span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{<span class="comment"></span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">     * @brief Рабочая частота шины I2C для обмена с ADS1115.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#af0198035f5e2ba730ab031086678743f">   45</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint32_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#af0198035f5e2ba730ab031086678743f">ADS1115_TWI_FREQUENCY_HZ</a> = 400000UL;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"></span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">     * @brief Адрес регистра результата преобразования.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a938bd2960efccd6aaf90963247caa243">   50</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a938bd2960efccd6aaf90963247caa243">ADS1115_REG_CONVERSION</a> = 0x00U;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"></span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     * @brief Адрес конфигурационного регистра.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a233a02b1b80ccf3f741a3c03bbd23681">   55</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a233a02b1b80ccf3f741a3c03bbd23681">ADS1115_REG_CONFIG</a> = 0x01U;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">     * @brief Бит запуска одиночного преобразования.</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2">   60</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint16_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2">ADS1115_OS_START</a> = 0x8000U;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"></span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">     * @brief Маска бита готовности результата.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a068d7e1c1f37e4117cfa5dbe8a318733">   65</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint16_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a068d7e1c1f37e4117cfa5dbe8a318733">ADS1115_OS_READY</a> = 0x8000U;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"></span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     * @brief Код непрерывного режима преобразования.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0">   70</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint16_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0">ADS1115_MODE_CONTINUOUS</a> = 0x0000U;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     * @brief Код одиночного режима преобразования.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a3c92ee379ff66efd7ca18f94319e4143">   75</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint16_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a3c92ee379ff66efd7ca18f94319e4143">ADS1115_MODE_SINGLE_SHOT</a> = 0x0100U;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"></span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     * @brief Код отключения компаратора ADS1115.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c">   80</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint16_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c">ADS1115_COMP_DISABLE</a> = 0x0003U;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"></span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     * @brief Смещение поля MUX в конфигурационном регистре.</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1">   85</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1">ADS1115_MUX_SHIFT</a> = 12U;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment"></span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @brief Смещение поля PGA в конфигурационном регистре.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05">   90</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05">ADS1115_PGA_SHIFT</a> = 9U;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"></span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">     * @brief Смещение поля DR в конфигурационном регистре.</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd">   95</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd">ADS1115_DATA_RATE_SHIFT</a> = 5U;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"></span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">     * @brief Базовый код single-ended канала AIN0.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">     * @details</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">     * Коды single-ended каналов ADS1115:</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">     * AIN0 — 100b, AIN1 — 101b, AIN2 — 110b, AIN3 — 111b.</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676">  104</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676">ADS1115_SINGLE_ENDED_MUX_BASE</a> = 0x04U;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"></span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">     * @brief Максимальный номер single-ended канала ADS1115.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ab9c5bc80df8079d57f8916e75f0828a0">  109</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ab9c5bc80df8079d57f8916e75f0828a0">ADS1115_MAX_CHANNEL</a> = 3U;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#a3602c395becdfa587376c77d76766f5b">  112</a></span><a class="code hl_function" href="class_a_d_s1115.html#a3602c395becdfa587376c77d76766f5b">ADS1115::ADS1115</a>(uint8_t address)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    : <a class="code hl_variable" href="class_a_d_s1115.html#a2210526757a6911eddd82342d721aa59">address_</a>(address),</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      <a class="code hl_variable" href="class_a_d_s1115.html#a24514e50761b51618cf3041c84cfeafa">gain_</a>(0U),</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      <a class="code hl_variable" href="class_a_d_s1115.html#a32f2dfcebe171e6b264a3e11894a3853">mode_</a>(1U),</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      <a class="code hl_variable" href="class_a_d_s1115.html#a0dcd260926e587fa01957ee691851198">dataRate_</a>(7U)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#aef105c96b8f0f74d369818d7148812b3">  120</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_d_s1115.html#aef105c96b8f0f74d369818d7148812b3">ADS1115::begin</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>{</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_function" href="namespacehal.html#a3d73c0755ea07147d9a69a96863f5caa">hal::twi_init</a>(ADS1115_TWI_FREQUENCY_HZ);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
+</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1">  126</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1">ADS1115::setGain</a>(uint8_t gain)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_variable" href="class_a_d_s1115.html#a24514e50761b51618cf3041c84cfeafa">gain_</a> = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(gain &amp; 0x07U);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125">  131</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125">ADS1115::setMode</a>(uint8_t mode)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>{</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_variable" href="class_a_d_s1115.html#a32f2dfcebe171e6b264a3e11894a3853">mode_</a> = (mode != 0U) ? 1U : 0U;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c">  136</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c">ADS1115::setDataRate</a>(uint8_t dataRate)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>{</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <a class="code hl_variable" href="class_a_d_s1115.html#a0dcd260926e587fa01957ee691851198">dataRate_</a> = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(dataRate &amp; 0x07U);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
+</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#ab91f012712d5dee9ae80a4f6a0af61dc">  141</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_d_s1115.html#ab91f012712d5dee9ae80a4f6a0af61dc">ADS1115::startSingleShot</a>(uint8_t channel)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>{</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">if</span> (channel &gt; ADS1115_MAX_CHANNEL)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_a_d_s1115.html#a80aadfb417211591275c84163b55fcbf">writeRegister</a>(ADS1115_REG_CONFIG, <a class="code hl_function" href="class_a_d_s1115.html#ac6644311184641ad798b6587fd16dbfe">buildSingleShotConfig</a>(channel));</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}</div>
+</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#a22b3204ffc004f996fd637a8748fe949">  151</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_d_s1115.html#a22b3204ffc004f996fd637a8748fe949">ADS1115::isBusy</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    uint16_t config = 0U;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="class_a_d_s1115.html#a7b0f1db3faf5c34f08d91045c4ff8b04">readRegister</a>(ADS1115_REG_CONFIG, &amp;config))</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">return</span> ((config &amp; ADS1115_OS_READY) == 0U);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>}</div>
+</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="foldopen" id="foldopen00163" data-start="{" data-end="}">
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#ad18aa8d8d5235a5260bb15d52f02fa87">  163</a></span>int16_t <a class="code hl_function" href="class_a_d_s1115.html#ad18aa8d8d5235a5260bb15d52f02fa87">ADS1115::getValue</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>{</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    uint16_t value = 0U;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="class_a_d_s1115.html#a7b0f1db3faf5c34f08d91045c4ff8b04">readRegister</a>(ADS1115_REG_CONVERSION, &amp;value))</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(value);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
+</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#ac6644311184641ad798b6587fd16dbfe">  175</a></span>uint16_t <a class="code hl_function" href="class_a_d_s1115.html#ac6644311184641ad798b6587fd16dbfe">ADS1115::buildSingleShotConfig</a>(uint8_t channel)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">const</span> uint16_t mux = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(ADS1115_SINGLE_ENDED_MUX_BASE + channel) &lt;&lt; ADS1115_MUX_SHIFT</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    );</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">const</span> uint16_t pga = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="class_a_d_s1115.html#a24514e50761b51618cf3041c84cfeafa">gain_</a> &amp; 0x07U) &lt;&lt; ADS1115_PGA_SHIFT</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    );</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">const</span> uint16_t mode = (<a class="code hl_variable" href="class_a_d_s1115.html#a32f2dfcebe171e6b264a3e11894a3853">mode_</a> != 0U)</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        ? ADS1115_MODE_SINGLE_SHOT</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        : ADS1115_MODE_CONTINUOUS;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keyword">const</span> uint16_t dataRate = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="class_a_d_s1115.html#a0dcd260926e587fa01957ee691851198">dataRate_</a> &amp; 0x07U) &lt;&lt; ADS1115_DATA_RATE_SHIFT</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    );</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        ADS1115_OS_START |</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        mux |</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        pga |</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        mode |</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        dataRate |</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        ADS1115_COMP_DISABLE</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    );</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>}</div>
+</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="foldopen" id="foldopen00203" data-start="{" data-end="}">
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#a80aadfb417211591275c84163b55fcbf">  203</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_d_s1115.html#a80aadfb417211591275c84163b55fcbf">ADS1115::writeRegister</a>(uint8_t reg, uint16_t value)</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>{</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacehal.html#ab20137c6563e255ae4de17d12bd7550c">hal::twi_write_reg16</a>(<a class="code hl_variable" href="class_a_d_s1115.html#a2210526757a6911eddd82342d721aa59">address_</a>, reg, value);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="foldopen" id="foldopen00208" data-start="{" data-end="}">
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="class_a_d_s1115.html#a7b0f1db3faf5c34f08d91045c4ff8b04">  208</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_d_s1115.html#a7b0f1db3faf5c34f08d91045c4ff8b04">ADS1115::readRegister</a>(uint8_t reg, uint16_t* value)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>{</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">if</span> (value == 0)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    }</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacehal.html#a7d9634f41994e820eb6470cb27275f4b">hal::twi_read_reg16</a>(<a class="code hl_variable" href="class_a_d_s1115.html#a2210526757a6911eddd82342d721aa59">address_</a>, reg, value);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
+</div>
+<div class="ttc" id="aads1115_8hpp_html"><div class="ttname"><a href="ads1115_8hpp.html">ads1115.hpp</a></div><div class="ttdoc">Драйвер аналого-цифрового преобразователя ADS1115.</div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a0dcd260926e587fa01957ee691851198"><div class="ttname"><a href="class_a_d_s1115.html#a0dcd260926e587fa01957ee691851198">ADS1115::dataRate_</a></div><div class="ttdeci">uint8_t dataRate_</div><div class="ttdoc">Код скорости преобразования.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00128">ads1115.hpp:128</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a16262eb02b1f77cb0edf9afe537b42b1"><div class="ttname"><a href="class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1">ADS1115::setGain</a></div><div class="ttdeci">void setGain(uint8_t gain)</div><div class="ttdoc">Устанавливает диапазон входного усилителя ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00126">ads1115.cpp:126</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a2210526757a6911eddd82342d721aa59"><div class="ttname"><a href="class_a_d_s1115.html#a2210526757a6911eddd82342d721aa59">ADS1115::address_</a></div><div class="ttdeci">uint8_t address_</div><div class="ttdoc">Семибитный I2C-адрес микросхемы.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00113">ads1115.hpp:113</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a22b3204ffc004f996fd637a8748fe949"><div class="ttname"><a href="class_a_d_s1115.html#a22b3204ffc004f996fd637a8748fe949">ADS1115::isBusy</a></div><div class="ttdeci">bool isBusy(void)</div><div class="ttdoc">Проверяет состояние текущего преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00151">ads1115.cpp:151</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a24514e50761b51618cf3041c84cfeafa"><div class="ttname"><a href="class_a_d_s1115.html#a24514e50761b51618cf3041c84cfeafa">ADS1115::gain_</a></div><div class="ttdeci">uint8_t gain_</div><div class="ttdoc">Код диапазона входного усилителя.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00118">ads1115.hpp:118</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a32f2dfcebe171e6b264a3e11894a3853"><div class="ttname"><a href="class_a_d_s1115.html#a32f2dfcebe171e6b264a3e11894a3853">ADS1115::mode_</a></div><div class="ttdeci">uint8_t mode_</div><div class="ttdoc">Код режима работы преобразователя.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00123">ads1115.hpp:123</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a3602c395becdfa587376c77d76766f5b"><div class="ttname"><a href="class_a_d_s1115.html#a3602c395becdfa587376c77d76766f5b">ADS1115::ADS1115</a></div><div class="ttdeci">ADS1115(uint8_t address)</div><div class="ttdoc">Создаёт объект драйвера ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00112">ads1115.cpp:112</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a74300917c84ffefb1127d335617cf125"><div class="ttname"><a href="class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125">ADS1115::setMode</a></div><div class="ttdeci">void setMode(uint8_t mode)</div><div class="ttdoc">Устанавливает режим работы преобразователя.</div><div class="ttdef"><b>Определения</b> <a href="#l00131">ads1115.cpp:131</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a7b0f1db3faf5c34f08d91045c4ff8b04"><div class="ttname"><a href="class_a_d_s1115.html#a7b0f1db3faf5c34f08d91045c4ff8b04">ADS1115::readRegister</a></div><div class="ttdeci">bool readRegister(uint8_t reg, uint16_t *value)</div><div class="ttdoc">Читает шестнадцатиразрядный регистр ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00208">ads1115.cpp:208</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a80aadfb417211591275c84163b55fcbf"><div class="ttname"><a href="class_a_d_s1115.html#a80aadfb417211591275c84163b55fcbf">ADS1115::writeRegister</a></div><div class="ttdeci">bool writeRegister(uint8_t reg, uint16_t value)</div><div class="ttdoc">Записывает шестнадцатиразрядный регистр ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00203">ads1115.cpp:203</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_aa979696ef5a7d1ed20715ede55b1e36c"><div class="ttname"><a href="class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c">ADS1115::setDataRate</a></div><div class="ttdeci">void setDataRate(uint8_t dataRate)</div><div class="ttdoc">Устанавливает скорость преобразования ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00136">ads1115.cpp:136</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_ab91f012712d5dee9ae80a4f6a0af61dc"><div class="ttname"><a href="class_a_d_s1115.html#ab91f012712d5dee9ae80a4f6a0af61dc">ADS1115::startSingleShot</a></div><div class="ttdeci">bool startSingleShot(uint8_t channel)</div><div class="ttdoc">Запускает одиночное преобразование выбранного канала.</div><div class="ttdef"><b>Определения</b> <a href="#l00141">ads1115.cpp:141</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_ac6644311184641ad798b6587fd16dbfe"><div class="ttname"><a href="class_a_d_s1115.html#ac6644311184641ad798b6587fd16dbfe">ADS1115::buildSingleShotConfig</a></div><div class="ttdeci">uint16_t buildSingleShotConfig(uint8_t channel) const</div><div class="ttdoc">Формирует значение конфигурационного регистра для одиночного преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00175">ads1115.cpp:175</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_ad18aa8d8d5235a5260bb15d52f02fa87"><div class="ttname"><a href="class_a_d_s1115.html#ad18aa8d8d5235a5260bb15d52f02fa87">ADS1115::getValue</a></div><div class="ttdeci">int16_t getValue(void)</div><div class="ttdoc">Читает последнее значение из регистра преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00163">ads1115.cpp:163</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_aef105c96b8f0f74d369818d7148812b3"><div class="ttname"><a href="class_a_d_s1115.html#aef105c96b8f0f74d369818d7148812b3">ADS1115::begin</a></div><div class="ttdeci">bool begin(void)</div><div class="ttdoc">Инициализирует интерфейс обмена с ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00120">ads1115.cpp:120</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a068d7e1c1f37e4117cfa5dbe8a318733"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a068d7e1c1f37e4117cfa5dbe8a318733">anonymous_namespace{ads1115.cpp}::ADS1115_OS_READY</a></div><div class="ttdeci">static const uint16_t ADS1115_OS_READY</div><div class="ttdoc">Маска бита готовности результата.</div><div class="ttdef"><b>Определения</b> <a href="#l00065">ads1115.cpp:65</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a1c675bd52f9625c5268ff956fe42e676"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676">anonymous_namespace{ads1115.cpp}::ADS1115_SINGLE_ENDED_MUX_BASE</a></div><div class="ttdeci">static const uint8_t ADS1115_SINGLE_ENDED_MUX_BASE</div><div class="ttdoc">Базовый код single-ended канала AIN0.</div><div class="ttdef"><b>Определения</b> <a href="#l00104">ads1115.cpp:104</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a233a02b1b80ccf3f741a3c03bbd23681"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a233a02b1b80ccf3f741a3c03bbd23681">anonymous_namespace{ads1115.cpp}::ADS1115_REG_CONFIG</a></div><div class="ttdeci">static const uint8_t ADS1115_REG_CONFIG</div><div class="ttdoc">Адрес конфигурационного регистра.</div><div class="ttdef"><b>Определения</b> <a href="#l00055">ads1115.cpp:55</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a2d2cfceed1b2002510bfe30466c3eff1"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1">anonymous_namespace{ads1115.cpp}::ADS1115_MUX_SHIFT</a></div><div class="ttdeci">static const uint8_t ADS1115_MUX_SHIFT</div><div class="ttdoc">Смещение поля MUX в конфигурационном регистре.</div><div class="ttdef"><b>Определения</b> <a href="#l00085">ads1115.cpp:85</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a3c92ee379ff66efd7ca18f94319e4143"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a3c92ee379ff66efd7ca18f94319e4143">anonymous_namespace{ads1115.cpp}::ADS1115_MODE_SINGLE_SHOT</a></div><div class="ttdeci">static const uint16_t ADS1115_MODE_SINGLE_SHOT</div><div class="ttdoc">Код одиночного режима преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00075">ads1115.cpp:75</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a6887b9296a48f1ea0eee67116d5294bd"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd">anonymous_namespace{ads1115.cpp}::ADS1115_DATA_RATE_SHIFT</a></div><div class="ttdeci">static const uint8_t ADS1115_DATA_RATE_SHIFT</div><div class="ttdoc">Смещение поля DR в конфигурационном регистре.</div><div class="ttdef"><b>Определения</b> <a href="#l00095">ads1115.cpp:95</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a936cb81d7196a78ddadcd661c1881cf0"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0">anonymous_namespace{ads1115.cpp}::ADS1115_MODE_CONTINUOUS</a></div><div class="ttdeci">static const uint16_t ADS1115_MODE_CONTINUOUS</div><div class="ttdoc">Код непрерывного режима преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00070">ads1115.cpp:70</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a938bd2960efccd6aaf90963247caa243"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a938bd2960efccd6aaf90963247caa243">anonymous_namespace{ads1115.cpp}::ADS1115_REG_CONVERSION</a></div><div class="ttdeci">static const uint8_t ADS1115_REG_CONVERSION</div><div class="ttdoc">Адрес регистра результата преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00050">ads1115.cpp:50</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a974fd1a2cac8ccbafdc3178388de28e2"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2">anonymous_namespace{ads1115.cpp}::ADS1115_OS_START</a></div><div class="ttdeci">static const uint16_t ADS1115_OS_START</div><div class="ttdoc">Бит запуска одиночного преобразования.</div><div class="ttdef"><b>Определения</b> <a href="#l00060">ads1115.cpp:60</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_ab9c5bc80df8079d57f8916e75f0828a0"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ab9c5bc80df8079d57f8916e75f0828a0">anonymous_namespace{ads1115.cpp}::ADS1115_MAX_CHANNEL</a></div><div class="ttdeci">static const uint8_t ADS1115_MAX_CHANNEL</div><div class="ttdoc">Максимальный номер single-ended канала ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00109">ads1115.cpp:109</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_ad6d1a5654e9aa46a984cf8d841f17e05"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05">anonymous_namespace{ads1115.cpp}::ADS1115_PGA_SHIFT</a></div><div class="ttdeci">static const uint8_t ADS1115_PGA_SHIFT</div><div class="ttdoc">Смещение поля PGA в конфигурационном регистре.</div><div class="ttdef"><b>Определения</b> <a href="#l00090">ads1115.cpp:90</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_af0198035f5e2ba730ab031086678743f"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#af0198035f5e2ba730ab031086678743f">anonymous_namespace{ads1115.cpp}::ADS1115_TWI_FREQUENCY_HZ</a></div><div class="ttdeci">static const uint32_t ADS1115_TWI_FREQUENCY_HZ</div><div class="ttdoc">Рабочая частота шины I2C для обмена с ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00045">ads1115.cpp:45</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_afca67c6002943d62f3eb8fd87005650c"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c">anonymous_namespace{ads1115.cpp}::ADS1115_COMP_DISABLE</a></div><div class="ttdeci">static const uint16_t ADS1115_COMP_DISABLE</div><div class="ttdoc">Код отключения компаратора ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="#l00080">ads1115.cpp:80</a></div></div>
+<div class="ttc" id="anamespacehal_html"><div class="ttname"><a href="namespacehal.html">hal</a></div><div class="ttdef"><b>Определения</b> <a href="#l00008">ads1115.cpp:9</a></div></div>
+<div class="ttc" id="anamespacehal_html_a3d73c0755ea07147d9a69a96863f5caa"><div class="ttname"><a href="namespacehal.html#a3d73c0755ea07147d9a69a96863f5caa">hal::twi_init</a></div><div class="ttdeci">void twi_init(uint32_t scl_hz)</div><div class="ttdoc">Инициализирует аппаратный интерфейс I2C.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00200">compat_twi.cpp:200</a></div></div>
+<div class="ttc" id="anamespacehal_html_a7d9634f41994e820eb6470cb27275f4b"><div class="ttname"><a href="namespacehal.html#a7d9634f41994e820eb6470cb27275f4b">hal::twi_read_reg16</a></div><div class="ttdeci">bool twi_read_reg16(uint8_t address, uint8_t reg, uint16_t *value)</div><div class="ttdoc">Читает шестнадцатиразрядный регистр I2C-устройства.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00262">compat_twi.cpp:262</a></div></div>
+<div class="ttc" id="anamespacehal_html_ab20137c6563e255ae4de17d12bd7550c"><div class="ttname"><a href="namespacehal.html#ab20137c6563e255ae4de17d12bd7550c">hal::twi_write_reg16</a></div><div class="ttdeci">bool twi_write_reg16(uint8_t address, uint8_t reg, uint16_t value)</div><div class="ttdoc">Записывает шестнадцатиразрядный регистр I2C-устройства.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00234">compat_twi.cpp:234</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="ads1115_8cpp.html">ads1115.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

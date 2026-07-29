@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LDO1118 Rev3 Firmware: Файл Libs/SPI.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LDO1118 Rev3 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LDO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_s_p_i_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл SPI.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Проектный SPI-интерфейс поверх HAL.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="compat_8hpp_source.html">../hal/compat.hpp</a>&quot;</code><br />
+</div>
+<p><a href="_s_p_i_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Структуры данных</h2></td></tr>
+<tr class="memitem:SPISettings" id="r_SPISettings"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_p_i_settings.html">SPISettings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Контейнер параметров SPI-обмена.  <a href="class_s_p_i_settings.html#details">Подробнее...</a><br /></td></tr>
+<tr class="memitem:SPIClass" id="r_SPIClass"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_p_i_class.html">SPIClass</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интерфейс доступа к аппаратному SPI.  <a href="class_s_p_i_class.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a572a460c4bc49a4577e319bfd68d1483" id="r_a572a460c4bc49a4577e319bfd68d1483"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a572a460c4bc49a4577e319bfd68d1483">IGAS_SPI_H</a></td></tr>
+<tr class="memitem:a5811613d98580676f67f0dde8125433e" id="r_a5811613d98580676f67f0dde8125433e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5811613d98580676f67f0dde8125433e">LSBFIRST</a>&#160;&#160;&#160;0u</td></tr>
+<tr class="memdesc:a5811613d98580676f67f0dde8125433e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передача младшего бита первым.  <br /></td></tr>
+<tr class="memitem:a1c7ef42eff02618bde70868af4944d81" id="r_a1c7ef42eff02618bde70868af4944d81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c7ef42eff02618bde70868af4944d81">MSBFIRST</a>&#160;&#160;&#160;1u</td></tr>
+<tr class="memdesc:a1c7ef42eff02618bde70868af4944d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передача старшего бита первым.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a6e465b7369052aef62fa043f8f484d4c" id="r_a6e465b7369052aef62fa043f8f484d4c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e465b7369052aef62fa043f8f484d4c">SPI_begin</a> (void)</td></tr>
+<tr class="memdesc:a6e465b7369052aef62fa043f8f484d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует аппаратный SPI-контроллер.  <br /></td></tr>
+<tr class="memitem:ac2aa67f6b21ab40c103cea8e2e40e47a" id="r_ac2aa67f6b21ab40c103cea8e2e40e47a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2aa67f6b21ab40c103cea8e2e40e47a">SPI_beginTransaction</a> (const <a class="el" href="class_s_p_i_settings.html">SPISettings</a> &amp;settings)</td></tr>
+<tr class="memdesc:ac2aa67f6b21ab40c103cea8e2e40e47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Начинает логическую SPI-транзакцию.  <br /></td></tr>
+<tr class="memitem:af203b510be3ba588f8ff83279a3d2042" id="r_af203b510be3ba588f8ff83279a3d2042"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af203b510be3ba588f8ff83279a3d2042">SPI_endTransaction</a> (void)</td></tr>
+<tr class="memdesc:af203b510be3ba588f8ff83279a3d2042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Завершает логическую SPI-транзакцию.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a56953eb3affc2a9f56e1680bbc537bf7" id="r_a56953eb3affc2a9f56e1680bbc537bf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_p_i_class.html">SPIClass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a></td></tr>
+<tr class="memdesc:a56953eb3affc2a9f56e1680bbc537bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Глобальный объект SPI-интерфейса.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Проектный SPI-интерфейс поверх HAL. </p>
+<p>Заголовок предоставляет:</p><ul>
+<li>константы порядка передачи битов;</li>
+<li>класс <a class="el" href="class_s_p_i_settings.html" title="Контейнер параметров SPI-обмена.">SPISettings</a> для хранения параметров SPI-обмена;</li>
+<li>класс <a class="el" href="class_s_p_i_class.html" title="Интерфейс доступа к аппаратному SPI.">SPIClass</a> для инициализации SPI и передачи байтов;</li>
+<li>глобальный объект SPI.</li>
+</ul>
+<p>Низкоуровневая работа с периферией выполняется функциями hal::spi_init() и hal::spi_txrx().</p>
+<dl class="section note"><dt>Заметки</dt><dd>В текущей реализации параметры <a class="el" href="class_s_p_i_settings.html" title="Контейнер параметров SPI-обмена.">SPISettings</a> сохраняются в объекте, но не применяются при настройке аппаратного SPI. Если в проекте потребуется несколько SPI-устройств с разными режимами обмена, драйвер SPI необходимо расширить. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a></p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Макросы</h2>
+<a id="a572a460c4bc49a4577e319bfd68d1483" name="a572a460c4bc49a4577e319bfd68d1483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572a460c4bc49a4577e319bfd68d1483">&#9670;&#160;</a></span>IGAS_SPI_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IGAS_SPI_H</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a> строка <a class="el" href="_s_p_i_8h_source.html#l00004">4</a></p>
+
+</div>
+</div>
+<a id="a5811613d98580676f67f0dde8125433e" name="a5811613d98580676f67f0dde8125433e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5811613d98580676f67f0dde8125433e">&#9670;&#160;</a></span>LSBFIRST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LSBFIRST&#160;&#160;&#160;0u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передача младшего бита первым. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a> строка <a class="el" href="_s_p_i_8h_source.html#l00035">35</a></p>
+
+</div>
+</div>
+<a id="a1c7ef42eff02618bde70868af4944d81" name="a1c7ef42eff02618bde70868af4944d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c7ef42eff02618bde70868af4944d81">&#9670;&#160;</a></span>MSBFIRST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MSBFIRST&#160;&#160;&#160;1u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передача старшего бита первым. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a> строка <a class="el" href="_s_p_i_8h_source.html#l00042">42</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a6e465b7369052aef62fa043f8f484d4c" name="a6e465b7369052aef62fa043f8f484d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e465b7369052aef62fa043f8f484d4c">&#9670;&#160;</a></span>SPI_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPI_begin </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Инициализирует аппаратный SPI-контроллер. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a> строка <a class="el" href="_s_p_i_8h_source.html#l00190">190</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_variable" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a>.begin();</div>
+<div class="line"><span class="lineno">  193</span>}</div>
+<div class="ttc" id="a_s_p_i_8h_html_a56953eb3affc2a9f56e1680bbc537bf7"><div class="ttname"><a href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a></div><div class="ttdeci">SPIClass SPI</div><div class="ttdoc">Глобальный объект SPI-интерфейса.</div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a>.</p>
+
+</div>
+</div>
+<a id="ac2aa67f6b21ab40c103cea8e2e40e47a" name="ac2aa67f6b21ab40c103cea8e2e40e47a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2aa67f6b21ab40c103cea8e2e40e47a">&#9670;&#160;</a></span>SPI_beginTransaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPI_beginTransaction </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_s_p_i_settings.html">SPISettings</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>settings</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Начинает логическую SPI-транзакцию. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">settings</td><td>Параметры SPI-обмена. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a> строка <a class="el" href="_s_p_i_8h_source.html#l00200">200</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
+<div class="line"><span class="lineno">  202</span>    <a class="code hl_variable" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a>.beginTransaction(settings);</div>
+<div class="line"><span class="lineno">  203</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a>.</p>
+
+</div>
+</div>
+<a id="af203b510be3ba588f8ff83279a3d2042" name="af203b510be3ba588f8ff83279a3d2042"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af203b510be3ba588f8ff83279a3d2042">&#9670;&#160;</a></span>SPI_endTransaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPI_endTransaction </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Завершает логическую SPI-транзакцию. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_s_p_i_8h_source.html">SPI.h</a> строка <a class="el" href="_s_p_i_8h_source.html#l00208">208</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  209</span>{</div>
+<div class="line"><span class="lineno">  210</span>    <a class="code hl_variable" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a>.endTransaction();</div>
+<div class="line"><span class="lineno">  211</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="#a56953eb3affc2a9f56e1680bbc537bf7">SPI</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a56953eb3affc2a9f56e1680bbc537bf7" name="a56953eb3affc2a9f56e1680bbc537bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56953eb3affc2a9f56e1680bbc537bf7">&#9670;&#160;</a></span>SPI</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_p_i_class.html">SPIClass</a> SPI</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Глобальный объект SPI-интерфейса. </p>
+<p>Определение экземпляра должно находиться ровно в одном .cpp файле. </p>
+
+<p class="reference">Используется в <a class="el" href="_s_p_i_8h_source.html#l00190">SPI_begin()</a>, <a class="el" href="_s_p_i_8h_source.html#l00200">SPI_beginTransaction()</a> и <a class="el" href="_s_p_i_8h_source.html#l00208">SPI_endTransaction()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_6e6cb9563333489fde7459b1f95e59a5.html">Libs</a></li><li class="navelem"><a href="_s_p_i_8h.html">SPI.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

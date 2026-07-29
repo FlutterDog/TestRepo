@@ -1,0 +1,1089 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура X2XLct1114_2</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structX2XLct1114__2.html','','structX2XLct1114__2-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура X2XLct1114_2</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Runtime-данные второй версии модуля LCT1114.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="x2x__types_8hpp_source.html">app/x2x/x2x_types.hpp</a>&gt;</code></p>
+
+<p>Базовые классы:<a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a>.</p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft anon">union {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:"><td class="memItemLeft anon">&#160;&#160;&#160;struct {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a24c1c0be01a776e3388706a3ca1adec4" id="r_a24c1c0be01a776e3388706a3ca1adec4"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ac99faff7281e3e824deb92ab46190d5a">full_off_time_a</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a6a95c0d3ac92a426e4288b82dd0d044a" id="r_a6a95c0d3ac92a426e4288b82dd0d044a"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a1189680939f6b30ea933d982309cbb33">full_off_time_b</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ae139ac3c9d4863f60837718f20114c9d" id="r_ae139ac3c9d4863f60837718f20114c9d"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a171e36e3d96ed4ee3993af6d830f784e">full_off_time_c</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:aadecd4c9ede4849e3784bfa43c6c29d3" id="r_aadecd4c9ede4849e3784bfa43c6c29d3"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#adc3bd0dc494a0c5cabd36c4689a011f7">full_on_time_a</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a8d8b5bcb97789ca61dc93f1568ebb576" id="r_a8d8b5bcb97789ca61dc93f1568ebb576"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a94167f13e75ab390ec46094e9fd12a40">full_on_time_b</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a3a7c1162f41edd91dc08b85eb0f4ba58" id="r_a3a7c1162f41edd91dc08b85eb0f4ba58"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ad755ab490a4da0e826bd107f0e197bce">full_on_time_c</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a80dc6ebe967a319a68caa6965234ff04" id="r_a80dc6ebe967a319a68caa6965234ff04"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aa64a3bef0c4c87f858eee731092668a1">full_time_off_state</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a8cba556e0361842add586d990c210dfb" id="r_a8cba556e0361842add586d990c210dfb"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aa47592cb459c98421f06a8af259ae560">full_time_on_state</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ab0ae7a195330dd4712c13c8a3991a412" id="r_ab0ae7a195330dd4712c13c8a3991a412"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a46b6a12d8517b515a61e17685f341b40">operation_off_on</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ac0cc9bc3cdf1b648443774ae2bdddc97" id="r_ac0cc9bc3cdf1b648443774ae2bdddc97"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a9b617b9d18418b2beba64746e771ea38">operation_on_off</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a79f16697a487669e849f051c9d594041" id="r_a79f16697a487669e849f051c9d594041"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ad974889cc3ec8225d58c681ceff189d0">own_time_off_state</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a0939d6756bfa2f4bd1e664752fb82224" id="r_a0939d6756bfa2f4bd1e664752fb82224"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ac80ef6f5c2c649f261c18d435ece4abd">own_time_on_state</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a8af93efb6dd7aa53ccc483bd54a5dfa9" id="r_a8af93efb6dd7aa53ccc483bd54a5dfa9"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ac8d704438cb8ab3d817caa839c0520bc">phase_a_electrical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a379726818322d41dd19fa5e173ea890b" id="r_a379726818322d41dd19fa5e173ea890b"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a4c304120e978ba1cb781e0a15b0ceb3a">phase_a_last_arc_lifetime</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ad9762dcf93f036349939402e9088083f" id="r_ad9762dcf93f036349939402e9088083f"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aa7b6c3d5c07dfbdd4a48dd7f61928faa">phase_a_last_switch_electrical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a819edd4e63c46568b7464f4e36cb0dc6" id="r_a819edd4e63c46568b7464f4e36cb0dc6"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ae032956227d0c59561de0a84a67d43d1">phase_a_last_switch_off_current</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a911da9dac2216a5b177d7e584faaf6f6" id="r_a911da9dac2216a5b177d7e584faaf6f6"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a77aa352d444a634d6cc57f2269b62740">phase_a_last_switch_off_resource</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a0a616d63fc416213767d2d53f629f82e" id="r_a0a616d63fc416213767d2d53f629f82e"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ae22887b36ffe27aae1c8a392c2ff826b">phase_a_mechanical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a2737481823ed8f5d30124440a3b74c91" id="r_a2737481823ed8f5d30124440a3b74c91"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ab6e31ef332fc94f1f293998bb73426dd">phase_a_operation_counter</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a02245578102c46c7248ce1dd49b2e54e" id="r_a02245578102c46c7248ce1dd49b2e54e"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a7c681e6d9d70edd570061d0bcab5f2f0">phase_a_passed_resource</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:adc1b66b50fe21312115b728f8a1dbaf9" id="r_adc1b66b50fe21312115b728f8a1dbaf9"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#afc3542e02ca3d9d671f1856da42b8bf4">phase_b_electrical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a80d2acc49cebd15dbd318d09efe4cfce" id="r_a80d2acc49cebd15dbd318d09efe4cfce"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a81460bd15d12a05ba7b101a45d06b304">phase_b_last_arc_lifetime</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:acdd48499b5dc602fa5c298da41177d65" id="r_acdd48499b5dc602fa5c298da41177d65"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a2d0f6a18250e86a2cecdb7942fda46c8">phase_b_last_switch_electrical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a047d99e86d515ea3dea47f2be4a89ea3" id="r_a047d99e86d515ea3dea47f2be4a89ea3"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a9050d52d4a27c498ffe16dab80573598">phase_b_last_switch_off_current</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a5506ed51715c77d26bf9031abb0def41" id="r_a5506ed51715c77d26bf9031abb0def41"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#af084c540f3c249d7287d07649b10da3c">phase_b_last_switch_off_resource</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ad89980a01552f65d2020e605795751b2" id="r_ad89980a01552f65d2020e605795751b2"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aada46ba8cd8cbe9359083e304af2a4d0">phase_b_mechanical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:adff32382e230b18175a2b46a90a4adba" id="r_adff32382e230b18175a2b46a90a4adba"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ae51e9e35e262b1bfdc88a43871c6f12d">phase_b_operation_counter</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a83a5debe1f8af18aaa63d7d35a17d141" id="r_a83a5debe1f8af18aaa63d7d35a17d141"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a36aa3150f61b8d70075a972045ff97d7">phase_b_passed_resource</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:acaaad60cc87c0bcf37e8f68f36226772" id="r_acaaad60cc87c0bcf37e8f68f36226772"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a1fabb0d0723145912b0d8545eabb9f9a">phase_c_electrical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a7c0f74ffb4982905f2ae833cf960269c" id="r_a7c0f74ffb4982905f2ae833cf960269c"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a3af7bd869d58b25dabeb79fef96285e8">phase_c_last_arc_lifetime</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:aaa463da3f0744531419a31804a84c03a" id="r_aaa463da3f0744531419a31804a84c03a"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a59b2d39007564a5593fb1de31fd4d6cc">phase_c_last_switch_electrical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a561cd67728c0b3e2728de1d9e58d9f07" id="r_a561cd67728c0b3e2728de1d9e58d9f07"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ad76b045ffa303797c93615d370fbffce">phase_c_last_switch_off_current</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:acb60c218742e9daa3ea7d98cb0df98b2" id="r_acb60c218742e9daa3ea7d98cb0df98b2"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aa81c04d6949ac69a0e7e865d230e24b7">phase_c_last_switch_off_resource</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:af12fc987a19c854f43a4e6cc0e3fabfb" id="r_af12fc987a19c854f43a4e6cc0e3fabfb"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a0328e37451eeea6e9a821680e8d0f746">phase_c_mechanical_wear</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a2167bc5e45a3f4f97cb33be6886a1975" id="r_a2167bc5e45a3f4f97cb33be6886a1975"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a087a582f65e7aa0dbe8c61ed769407df">phase_c_operation_counter</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a6a1e18013e37b20b27dcbdf1fd58b696" id="r_a6a1e18013e37b20b27dcbdf1fd58b696"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a19a6083701a9038ebdf83e760fc37504">phase_c_passed_resource</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a3cd3241571412900a0c3745941e39569" id="r_a3cd3241571412900a0c3745941e39569"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a72d3efda15a9a36f1ddbd7281c781db7">rms_a</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:af5511b2430a0597c3d197a8a5b15d28c" id="r_af5511b2430a0597c3d197a8a5b15d28c"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a192cff8442e60464b12aab38d51d1619">rms_b</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ac5b08e72c3d05bf4802fb242b2033da7" id="r_ac5b08e72c3d05bf4802fb242b2033da7"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aa41aa751eec4b061dd3c7569c4951459">rms_c</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ab9aa5d9aa60a5d4e125b7af6a62c717d" id="r_ab9aa5d9aa60a5d4e125b7af6a62c717d"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#af645a804744e707d59bb63af1e265e33">short_circuit_off</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a53ad2da240b84b2548a650b0aebfa2c2" id="r_a53ad2da240b84b2548a650b0aebfa2c2"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a5a11ebf637a786c7249627945ab6816e">short_circuit_on</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ac704304ed58a543597035eff8bbece64" id="r_ac704304ed58a543597035eff8bbece64"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#ab8a492897dc82ddc78b1bfceeac00bba">solenoid_current_off_1</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a8f636d794ab9f2c5a44553586b0a7594" id="r_a8f636d794ab9f2c5a44553586b0a7594"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a960f38cc1f6e8b6f7653c46a80ab6c12">solenoid_current_off_2</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a4475c146069a9cf43ac55e30c979fc05" id="r_a4475c146069a9cf43ac55e30c979fc05"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#a59fedf58f888a0fbd4b5b347adac9a63">solenoid_current_on</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a319d6b149589d2848c7b69b2a6dc6ab8" id="r_a319d6b149589d2848c7b69b2a6dc6ab8"><td class="memItemLeft anon">&#160;&#160;&#160;&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#aea0ce399ae3c14e469f97393c5fdbd89">temperature_pt</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a022e93ac6427ad65b7f5d2c591537e5e" id="r_a022e93ac6427ad65b7f5d2c591537e5e"><td class="memItemLeft anonEnd" valign="top">&#160;&#160;&#160;}&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a5899812714feaa885013be25477ff466" id="r_a5899812714feaa885013be25477ff466"><td class="memItemLeft anon">&#160;&#160;&#160;float&#160;&#160;&#160;<a class="el" href="#af1d3a35b5480a032e1f97c6820d8b56f">tf_values</a> [<a class="el" href="#a3bea26a0ba33623f39793f12be10e7bd">TF_COUNT</a>]&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:afe8fc8f6d4a10809c78f5433bcc917e1" id="r_afe8fc8f6d4a10809c78f5433bcc917e1"><td class="memItemLeft anonEnd" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:ac767205750f23197dc01708b045fe477" id="r_ac767205750f23197dc01708b045fe477"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac767205750f23197dc01708b045fe477">contacts_state_raw</a></td></tr>
+<tr class="memitem:a1d4814a57c2b4b28ed37db554ec24d3d" id="r_a1d4814a57c2b4b28ed37db554ec24d3d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d4814a57c2b4b28ed37db554ec24d3d">digital_inputs</a></td></tr>
+<tr class="memitem:ae41061c1d530d2321110d8f3b66e8b44" id="r_ae41061c1d530d2321110d8f3b66e8b44"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae41061c1d530d2321110d8f3b66e8b44">previous_contacts_state</a></td></tr>
+<tr class="inherit_header pub_attribs_structX2XDeviceHeader"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_structX2XDeviceHeader')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Открытые атрибуты унаследованные от <a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a></td></tr>
+<tr class="memitem:add2cecca0cade4f7a82704cc972685cb inherit pub_attribs_structX2XDeviceHeader" id="r_add2cecca0cade4f7a82704cc972685cb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#add2cecca0cade4f7a82704cc972685cb">asdu</a></td></tr>
+<tr class="memitem:a162bc5a690b1a4673fc0b0c930007626 inherit pub_attribs_structX2XDeviceHeader" id="r_a162bc5a690b1a4673fc0b0c930007626"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a162bc5a690b1a4673fc0b0c930007626">connection_lost</a></td></tr>
+<tr class="memitem:ad261c05908dc721420db8efe7e56b240 inherit pub_attribs_structX2XDeviceHeader" id="r_ad261c05908dc721420db8efe7e56b240"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#ad261c05908dc721420db8efe7e56b240">consecutive_failures</a></td></tr>
+<tr class="memitem:adfe783864a5b540c0a0b59a59c3c9446 inherit pub_attribs_structX2XDeviceHeader" id="r_adfe783864a5b540c0a0b59a59c3c9446"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#adfe783864a5b540c0a0b59a59c3c9446">device_fault</a></td></tr>
+<tr class="memitem:a229cef6e0e359236d8e2f137fd29c511 inherit pub_attribs_structX2XDeviceHeader" id="r_a229cef6e0e359236d8e2f137fd29c511"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a229cef6e0e359236d8e2f137fd29c511">failed_poll_count</a></td></tr>
+<tr class="memitem:a570e8192091b744c60ce686e35462fd5 inherit pub_attribs_structX2XDeviceHeader" id="r_a570e8192091b744c60ce686e35462fd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__types_8hpp.html#a5d6209c72ad4302bbd43669379df2947">X2XCommunicationError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a570e8192091b744c60ce686e35462fd5">last_communication_error</a></td></tr>
+<tr class="memitem:a2ccf509f6cc1f823eea002a2492220bd inherit pub_attribs_structX2XDeviceHeader" id="r_a2ccf509f6cc1f823eea002a2492220bd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a2ccf509f6cc1f823eea002a2492220bd">last_exception_code</a></td></tr>
+<tr class="memitem:aca0fe37afbe43c5c2c50b0b2f796dc26 inherit pub_attribs_structX2XDeviceHeader" id="r_aca0fe37afbe43c5c2c50b0b2f796dc26"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#aca0fe37afbe43c5c2c50b0b2f796dc26">last_update_ms</a></td></tr>
+<tr class="memitem:a67899834fdef266dcfc86afaed7bd9bc inherit pub_attribs_structX2XDeviceHeader" id="r_a67899834fdef266dcfc86afaed7bd9bc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a67899834fdef266dcfc86afaed7bd9bc">slave_address</a></td></tr>
+<tr class="memitem:ad7bb83f861e92734e98284c616350a33 inherit pub_attribs_structX2XDeviceHeader" id="r_ad7bb83f861e92734e98284c616350a33"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#ad7bb83f861e92734e98284c616350a33">successful_poll_count</a></td></tr>
+<tr class="memitem:adec55246cfda9a9d15a00ca181e9e264 inherit pub_attribs_structX2XDeviceHeader" id="r_adec55246cfda9a9d15a00ca181e9e264"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#adec55246cfda9a9d15a00ca181e9e264">type</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Статические открытые данные</h2></td></tr>
+<tr class="memitem:ae262146406fadba7f82679c319729b8b" id="r_ae262146406fadba7f82679c319729b8b"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae262146406fadba7f82679c319729b8b">ME_COUNT</a> = 0U</td></tr>
+<tr class="memitem:aff99a6122abc11686912b9f4de0be19b" id="r_aff99a6122abc11686912b9f4de0be19b"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff99a6122abc11686912b9f4de0be19b">SP_COUNT</a> = 20U</td></tr>
+<tr class="memitem:a3bea26a0ba33623f39793f12be10e7bd" id="r_a3bea26a0ba33623f39793f12be10e7bd"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bea26a0ba33623f39793f12be10e7bd">TF_COUNT</a> = 45U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Runtime-данные второй версии модуля LCT1114. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00211">211</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="afe8fc8f6d4a10809c78f5433bcc917e1" name="afe8fc8f6d4a10809c78f5433bcc917e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8fc8f6d4a10809c78f5433bcc917e1">&#9670;&#160;</a></span>[union]</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union  { ... }  <a class="el" href="structX2XLct1114__2.html">X2XLct1114_2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac767205750f23197dc01708b045fe477" name="ac767205750f23197dc01708b045fe477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac767205750f23197dc01708b045fe477">&#9670;&#160;</a></span>contacts_state_raw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t X2XLct1114_2::contacts_state_raw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Регистр 92 LCT2: текущее сырое состояние контактов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00273">273</a></p>
+
+</div>
+</div>
+<a id="a1d4814a57c2b4b28ed37db554ec24d3d" name="a1d4814a57c2b4b28ed37db554ec24d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4814a57c2b4b28ed37db554ec24d3d">&#9670;&#160;</a></span>digital_inputs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t X2XLct1114_2::digital_inputs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00217">217</a></p>
+
+</div>
+</div>
+<a id="ac99faff7281e3e824deb92ab46190d5a" name="ac99faff7281e3e824deb92ab46190d5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac99faff7281e3e824deb92ab46190d5a">&#9670;&#160;</a></span>full_off_time_a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_off_time_a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00250">250</a></p>
+
+</div>
+</div>
+<a id="a1189680939f6b30ea933d982309cbb33" name="a1189680939f6b30ea933d982309cbb33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1189680939f6b30ea933d982309cbb33">&#9670;&#160;</a></span>full_off_time_b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_off_time_b</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00252">252</a></p>
+
+</div>
+</div>
+<a id="a171e36e3d96ed4ee3993af6d830f784e" name="a171e36e3d96ed4ee3993af6d830f784e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a171e36e3d96ed4ee3993af6d830f784e">&#9670;&#160;</a></span>full_off_time_c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_off_time_c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00254">254</a></p>
+
+</div>
+</div>
+<a id="adc3bd0dc494a0c5cabd36c4689a011f7" name="adc3bd0dc494a0c5cabd36c4689a011f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc3bd0dc494a0c5cabd36c4689a011f7">&#9670;&#160;</a></span>full_on_time_a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_on_time_a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00251">251</a></p>
+
+</div>
+</div>
+<a id="a94167f13e75ab390ec46094e9fd12a40" name="a94167f13e75ab390ec46094e9fd12a40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94167f13e75ab390ec46094e9fd12a40">&#9670;&#160;</a></span>full_on_time_b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_on_time_b</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00253">253</a></p>
+
+</div>
+</div>
+<a id="ad755ab490a4da0e826bd107f0e197bce" name="ad755ab490a4da0e826bd107f0e197bce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad755ab490a4da0e826bd107f0e197bce">&#9670;&#160;</a></span>full_on_time_c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_on_time_c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00255">255</a></p>
+
+</div>
+</div>
+<a id="aa64a3bef0c4c87f858eee731092668a1" name="aa64a3bef0c4c87f858eee731092668a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa64a3bef0c4c87f858eee731092668a1">&#9670;&#160;</a></span>full_time_off_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_time_off_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00263">263</a></p>
+
+</div>
+</div>
+<a id="aa47592cb459c98421f06a8af259ae560" name="aa47592cb459c98421f06a8af259ae560"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa47592cb459c98421f06a8af259ae560">&#9670;&#160;</a></span>full_time_on_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::full_time_on_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00264">264</a></p>
+
+</div>
+</div>
+<a id="ae262146406fadba7f82679c319729b8b" name="ae262146406fadba7f82679c319729b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae262146406fadba7f82679c319729b8b">&#9670;&#160;</a></span>ME_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t X2XLct1114_2::ME_COUNT = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00214">214</a></p>
+
+</div>
+</div>
+<a id="a46b6a12d8517b515a61e17685f341b40" name="a46b6a12d8517b515a61e17685f341b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46b6a12d8517b515a61e17685f341b40">&#9670;&#160;</a></span>operation_off_on</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::operation_off_on</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00259">259</a></p>
+
+</div>
+</div>
+<a id="a9b617b9d18418b2beba64746e771ea38" name="a9b617b9d18418b2beba64746e771ea38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b617b9d18418b2beba64746e771ea38">&#9670;&#160;</a></span>operation_on_off</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::operation_on_off</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00260">260</a></p>
+
+</div>
+</div>
+<a id="ad974889cc3ec8225d58c681ceff189d0" name="ad974889cc3ec8225d58c681ceff189d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad974889cc3ec8225d58c681ceff189d0">&#9670;&#160;</a></span>own_time_off_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::own_time_off_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00261">261</a></p>
+
+</div>
+</div>
+<a id="ac80ef6f5c2c649f261c18d435ece4abd" name="ac80ef6f5c2c649f261c18d435ece4abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac80ef6f5c2c649f261c18d435ece4abd">&#9670;&#160;</a></span>own_time_on_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::own_time_on_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00262">262</a></p>
+
+</div>
+</div>
+<a id="ac8d704438cb8ab3d817caa839c0520bc" name="ac8d704438cb8ab3d817caa839c0520bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d704438cb8ab3d817caa839c0520bc">&#9670;&#160;</a></span>phase_a_electrical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_electrical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00244">244</a></p>
+
+</div>
+</div>
+<a id="a4c304120e978ba1cb781e0a15b0ceb3a" name="a4c304120e978ba1cb781e0a15b0ceb3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c304120e978ba1cb781e0a15b0ceb3a">&#9670;&#160;</a></span>phase_a_last_arc_lifetime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_last_arc_lifetime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00229">229</a></p>
+
+</div>
+</div>
+<a id="aa7b6c3d5c07dfbdd4a48dd7f61928faa" name="aa7b6c3d5c07dfbdd4a48dd7f61928faa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7b6c3d5c07dfbdd4a48dd7f61928faa">&#9670;&#160;</a></span>phase_a_last_switch_electrical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_last_switch_electrical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00247">247</a></p>
+
+</div>
+</div>
+<a id="ae032956227d0c59561de0a84a67d43d1" name="ae032956227d0c59561de0a84a67d43d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae032956227d0c59561de0a84a67d43d1">&#9670;&#160;</a></span>phase_a_last_switch_off_current</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_last_switch_off_current</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00232">232</a></p>
+
+</div>
+</div>
+<a id="a77aa352d444a634d6cc57f2269b62740" name="a77aa352d444a634d6cc57f2269b62740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77aa352d444a634d6cc57f2269b62740">&#9670;&#160;</a></span>phase_a_last_switch_off_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_last_switch_off_resource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00235">235</a></p>
+
+</div>
+</div>
+<a id="ae22887b36ffe27aae1c8a392c2ff826b" name="ae22887b36ffe27aae1c8a392c2ff826b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae22887b36ffe27aae1c8a392c2ff826b">&#9670;&#160;</a></span>phase_a_mechanical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_mechanical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00241">241</a></p>
+
+</div>
+</div>
+<a id="ab6e31ef332fc94f1f293998bb73426dd" name="ab6e31ef332fc94f1f293998bb73426dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e31ef332fc94f1f293998bb73426dd">&#9670;&#160;</a></span>phase_a_operation_counter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_operation_counter</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00238">238</a></p>
+
+</div>
+</div>
+<a id="a7c681e6d9d70edd570061d0bcab5f2f0" name="a7c681e6d9d70edd570061d0bcab5f2f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c681e6d9d70edd570061d0bcab5f2f0">&#9670;&#160;</a></span>phase_a_passed_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_a_passed_resource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00226">226</a></p>
+
+</div>
+</div>
+<a id="afc3542e02ca3d9d671f1856da42b8bf4" name="afc3542e02ca3d9d671f1856da42b8bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc3542e02ca3d9d671f1856da42b8bf4">&#9670;&#160;</a></span>phase_b_electrical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_electrical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00245">245</a></p>
+
+</div>
+</div>
+<a id="a81460bd15d12a05ba7b101a45d06b304" name="a81460bd15d12a05ba7b101a45d06b304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81460bd15d12a05ba7b101a45d06b304">&#9670;&#160;</a></span>phase_b_last_arc_lifetime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_last_arc_lifetime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00230">230</a></p>
+
+</div>
+</div>
+<a id="a2d0f6a18250e86a2cecdb7942fda46c8" name="a2d0f6a18250e86a2cecdb7942fda46c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d0f6a18250e86a2cecdb7942fda46c8">&#9670;&#160;</a></span>phase_b_last_switch_electrical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_last_switch_electrical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00248">248</a></p>
+
+</div>
+</div>
+<a id="a9050d52d4a27c498ffe16dab80573598" name="a9050d52d4a27c498ffe16dab80573598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9050d52d4a27c498ffe16dab80573598">&#9670;&#160;</a></span>phase_b_last_switch_off_current</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_last_switch_off_current</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00233">233</a></p>
+
+</div>
+</div>
+<a id="af084c540f3c249d7287d07649b10da3c" name="af084c540f3c249d7287d07649b10da3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af084c540f3c249d7287d07649b10da3c">&#9670;&#160;</a></span>phase_b_last_switch_off_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_last_switch_off_resource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00236">236</a></p>
+
+</div>
+</div>
+<a id="aada46ba8cd8cbe9359083e304af2a4d0" name="aada46ba8cd8cbe9359083e304af2a4d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aada46ba8cd8cbe9359083e304af2a4d0">&#9670;&#160;</a></span>phase_b_mechanical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_mechanical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00242">242</a></p>
+
+</div>
+</div>
+<a id="ae51e9e35e262b1bfdc88a43871c6f12d" name="ae51e9e35e262b1bfdc88a43871c6f12d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51e9e35e262b1bfdc88a43871c6f12d">&#9670;&#160;</a></span>phase_b_operation_counter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_operation_counter</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00239">239</a></p>
+
+</div>
+</div>
+<a id="a36aa3150f61b8d70075a972045ff97d7" name="a36aa3150f61b8d70075a972045ff97d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36aa3150f61b8d70075a972045ff97d7">&#9670;&#160;</a></span>phase_b_passed_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_b_passed_resource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00227">227</a></p>
+
+</div>
+</div>
+<a id="a1fabb0d0723145912b0d8545eabb9f9a" name="a1fabb0d0723145912b0d8545eabb9f9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fabb0d0723145912b0d8545eabb9f9a">&#9670;&#160;</a></span>phase_c_electrical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_electrical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00246">246</a></p>
+
+</div>
+</div>
+<a id="a3af7bd869d58b25dabeb79fef96285e8" name="a3af7bd869d58b25dabeb79fef96285e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3af7bd869d58b25dabeb79fef96285e8">&#9670;&#160;</a></span>phase_c_last_arc_lifetime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_last_arc_lifetime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00231">231</a></p>
+
+</div>
+</div>
+<a id="a59b2d39007564a5593fb1de31fd4d6cc" name="a59b2d39007564a5593fb1de31fd4d6cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b2d39007564a5593fb1de31fd4d6cc">&#9670;&#160;</a></span>phase_c_last_switch_electrical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_last_switch_electrical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00249">249</a></p>
+
+</div>
+</div>
+<a id="ad76b045ffa303797c93615d370fbffce" name="ad76b045ffa303797c93615d370fbffce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad76b045ffa303797c93615d370fbffce">&#9670;&#160;</a></span>phase_c_last_switch_off_current</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_last_switch_off_current</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00234">234</a></p>
+
+</div>
+</div>
+<a id="aa81c04d6949ac69a0e7e865d230e24b7" name="aa81c04d6949ac69a0e7e865d230e24b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa81c04d6949ac69a0e7e865d230e24b7">&#9670;&#160;</a></span>phase_c_last_switch_off_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_last_switch_off_resource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00237">237</a></p>
+
+</div>
+</div>
+<a id="a0328e37451eeea6e9a821680e8d0f746" name="a0328e37451eeea6e9a821680e8d0f746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0328e37451eeea6e9a821680e8d0f746">&#9670;&#160;</a></span>phase_c_mechanical_wear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_mechanical_wear</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00243">243</a></p>
+
+</div>
+</div>
+<a id="a087a582f65e7aa0dbe8c61ed769407df" name="a087a582f65e7aa0dbe8c61ed769407df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a087a582f65e7aa0dbe8c61ed769407df">&#9670;&#160;</a></span>phase_c_operation_counter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_operation_counter</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00240">240</a></p>
+
+</div>
+</div>
+<a id="a19a6083701a9038ebdf83e760fc37504" name="a19a6083701a9038ebdf83e760fc37504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19a6083701a9038ebdf83e760fc37504">&#9670;&#160;</a></span>phase_c_passed_resource</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::phase_c_passed_resource</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00228">228</a></p>
+
+</div>
+</div>
+<a id="ae41061c1d530d2321110d8f3b66e8b44" name="ae41061c1d530d2321110d8f3b66e8b44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae41061c1d530d2321110d8f3b66e8b44">&#9670;&#160;</a></span>previous_contacts_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t X2XLct1114_2::previous_contacts_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Регистр 93 LCT2: предыдущее состояние контактов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00276">276</a></p>
+
+</div>
+</div>
+<a id="a72d3efda15a9a36f1ddbd7281c781db7" name="a72d3efda15a9a36f1ddbd7281c781db7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d3efda15a9a36f1ddbd7281c781db7">&#9670;&#160;</a></span>rms_a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::rms_a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00223">223</a></p>
+
+</div>
+</div>
+<a id="a192cff8442e60464b12aab38d51d1619" name="a192cff8442e60464b12aab38d51d1619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192cff8442e60464b12aab38d51d1619">&#9670;&#160;</a></span>rms_b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::rms_b</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00224">224</a></p>
+
+</div>
+</div>
+<a id="aa41aa751eec4b061dd3c7569c4951459" name="aa41aa751eec4b061dd3c7569c4951459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41aa751eec4b061dd3c7569c4951459">&#9670;&#160;</a></span>rms_c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::rms_c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00225">225</a></p>
+
+</div>
+</div>
+<a id="af645a804744e707d59bb63af1e265e33" name="af645a804744e707d59bb63af1e265e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af645a804744e707d59bb63af1e265e33">&#9670;&#160;</a></span>short_circuit_off</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::short_circuit_off</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00258">258</a></p>
+
+</div>
+</div>
+<a id="a5a11ebf637a786c7249627945ab6816e" name="a5a11ebf637a786c7249627945ab6816e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a11ebf637a786c7249627945ab6816e">&#9670;&#160;</a></span>short_circuit_on</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::short_circuit_on</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00257">257</a></p>
+
+</div>
+</div>
+<a id="ab8a492897dc82ddc78b1bfceeac00bba" name="ab8a492897dc82ddc78b1bfceeac00bba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8a492897dc82ddc78b1bfceeac00bba">&#9670;&#160;</a></span>solenoid_current_off_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::solenoid_current_off_1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00266">266</a></p>
+
+</div>
+</div>
+<a id="a960f38cc1f6e8b6f7653c46a80ab6c12" name="a960f38cc1f6e8b6f7653c46a80ab6c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960f38cc1f6e8b6f7653c46a80ab6c12">&#9670;&#160;</a></span>solenoid_current_off_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::solenoid_current_off_2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00267">267</a></p>
+
+</div>
+</div>
+<a id="a59fedf58f888a0fbd4b5b347adac9a63" name="a59fedf58f888a0fbd4b5b347adac9a63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59fedf58f888a0fbd4b5b347adac9a63">&#9670;&#160;</a></span>solenoid_current_on</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::solenoid_current_on</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00265">265</a></p>
+
+</div>
+</div>
+<a id="aff99a6122abc11686912b9f4de0be19b" name="aff99a6122abc11686912b9f4de0be19b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff99a6122abc11686912b9f4de0be19b">&#9670;&#160;</a></span>SP_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t X2XLct1114_2::SP_COUNT = 20U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00213">213</a></p>
+
+</div>
+</div>
+<a id="aea0ce399ae3c14e469f97393c5fdbd89" name="aea0ce399ae3c14e469f97393c5fdbd89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0ce399ae3c14e469f97393c5fdbd89">&#9670;&#160;</a></span>temperature_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::temperature_pt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00256">256</a></p>
+
+</div>
+</div>
+<a id="a3bea26a0ba33623f39793f12be10e7bd" name="a3bea26a0ba33623f39793f12be10e7bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bea26a0ba33623f39793f12be10e7bd">&#9670;&#160;</a></span>TF_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t X2XLct1114_2::TF_COUNT = 45U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00215">215</a></p>
+
+</div>
+</div>
+<a id="af1d3a35b5480a032e1f97c6820d8b56f" name="af1d3a35b5480a032e1f97c6820d8b56f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d3a35b5480a032e1f97c6820d8b56f">&#9670;&#160;</a></span>tf_values</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float X2XLct1114_2::tf_values[<a class="el" href="#a3bea26a0ba33623f39793f12be10e7bd">TF_COUNT</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00269">269</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/x2x/<a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structX2XLct1114__2.html">X2XLct1114_2</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+PROJECT_NAME           = "GccApplication1 Firmware"
+OUTPUT_DIRECTORY       = docs\doxygen
+
+INPUT                  = .
+RECURSIVE              = YES
+
+FILE_PATTERNS          = *.c \
+                         *.cpp \
+                         *.h \
+                         *.hpp \
+                         *.ino
+
+EXCLUDE                = Debug \
+                         Release \
+                         .git \
+                         .vs \
+                         docs\doxygen
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+HAVE_DOT               = NO
+
+OUTPUT_LANGUAGE        = Russian
+INPUT_ENCODING         = UTF-8

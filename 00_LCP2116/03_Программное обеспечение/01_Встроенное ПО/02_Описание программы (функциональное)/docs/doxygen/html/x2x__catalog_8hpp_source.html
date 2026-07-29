@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл app/x2x/x2x_catalog.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__catalog_8hpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">x2x_catalog.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="x2x__catalog_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file x2x_catalog.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Централизованный каталог поддерживаемых типов модулей X2X.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="x2x__module_8hpp.html">x2x_module.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="x2x__types_8hpp.html">x2x_types.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * @brief Callback placement-конструирования объекта модуля в статическом слоте.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * @param[out] storage Начало выделенного слота реестра.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * @param[in] storage_size Размер слота в байтах.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * @param[in] slave_address Физический адрес X2X, совпадающий с позицией файла.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * @param[in] asdu Логический ASDU устройства.</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * @return Заголовок созданного объекта либо null при ошибке.</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="x2x__catalog_8hpp.html#acbe213a4c3a63484ae82c9fe83d96130">   23</a></span><span class="keyword">typedef</span> <a class="code hl_struct" href="structX2XDeviceHeader.html">X2XDeviceHeader</a>* (*X2XModuleConstructFunction)(<span class="keywordtype">void</span>* storage,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                                                       <span class="keywordtype">size_t</span> storage_size,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                                                       uint8_t slave_address,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                                                       uint16_t asdu);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"></span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * @brief Полное описание одного поддерживаемого типа X2X.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * Каталог является единой точкой регистрации: валидатор конфигурации, реестр,</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * диспетчер опроса и диагностика используют одну запись. Добавление типа не</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> * требует нового `switch` в X2X service или service console.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html">   35</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structX2XModuleDescriptor.html">X2XModuleDescriptor</a></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a24a595264fa638e171efe9027ca94f1d">   37</a></span>    <a class="code hl_enumeration" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a> <a class="code hl_variable" href="structX2XModuleDescriptor.html#a24a595264fa638e171efe9027ca94f1d">type</a>;                   <span class="comment">/**&lt; Стабильный числовой ID X2X.TXT. */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a51494420a1430b4608e1d075254bcded">   38</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structX2XModuleDescriptor.html#a51494420a1430b4608e1d075254bcded">name</a>;                     <span class="comment">/**&lt; Краткое неизменяемое имя типа. */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a2b56b53cd3e434f2c197cb31f0170e9c">   39</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structX2XModuleDescriptor.html#a2b56b53cd3e434f2c197cb31f0170e9c">object_size</a>;                   <span class="comment">/**&lt; sizeof конкретной runtime-структуры. */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a877cdbdaeeacb5c25ce78186bb60f2bb">   40</a></span>    uint16_t <a class="code hl_variable" href="structX2XModuleDescriptor.html#a877cdbdaeeacb5c25ce78186bb60f2bb">sp_count</a>;                    <span class="comment">/**&lt; Число single-point значений. */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a0ad176a22176a1cf484c006d31b4bb1d">   41</a></span>    uint16_t <a class="code hl_variable" href="structX2XModuleDescriptor.html#a0ad176a22176a1cf484c006d31b4bb1d">me_count</a>;                    <span class="comment">/**&lt; Число integer measured values. */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a7249276a8c5a8edf026528c84891859b">   42</a></span>    uint16_t <a class="code hl_variable" href="structX2XModuleDescriptor.html#a7249276a8c5a8edf026528c84891859b">tf_count</a>;                    <span class="comment">/**&lt; Число float measured values. */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a5aa35f6c3f90ed55e1077e1d970b8fd5">   43</a></span>    uint8_t <a class="code hl_variable" href="structX2XModuleDescriptor.html#a5aa35f6c3f90ed55e1077e1d970b8fd5">allowed_in_x2x_config</a>;        <span class="comment">/**&lt; Разрешён ли ID во внешней цепочке. */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#afc1ea329f30154412108bfd737ca3b8f">   44</a></span>    <a class="code hl_typedef" href="x2x__catalog_8hpp.html#acbe213a4c3a63484ae82c9fe83d96130">X2XModuleConstructFunction</a> <a class="code hl_variable" href="structX2XModuleDescriptor.html#afc1ea329f30154412108bfd737ca3b8f">construct</a>; <span class="comment">/**&lt; Конструктор экземпляра в слоте. */</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#ae351392f59e5a5a522136340e5f73dd1">   45</a></span>    <a class="code hl_typedef" href="x2x__module_8hpp.html#a5fbfa303c01b54027b3a27da16f3d2fd">X2XModulePollFunction</a> <a class="code hl_variable" href="structX2XModuleDescriptor.html#ae351392f59e5a5a522136340e5f73dd1">poll</a>;           <span class="comment">/**&lt; Неблокирующий драйвер типа. */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structX2XModuleDescriptor.html#a19dbbde86ef8764024812b1f7c31f3df">   46</a></span>    <a class="code hl_typedef" href="x2x__module_8hpp.html#a71cf424d7aa8cc8d263d3b3f461eeaa3">X2XModulePrintFunction</a> <a class="code hl_variable" href="structX2XModuleDescriptor.html#a19dbbde86ef8764024812b1f7c31f3df">print</a>;         <span class="comment">/**&lt; Специфическая диагностика типа. */</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> * @brief Ищет описание по типизированному ID.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * @param[in] type Тип X2X.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * @return Указатель на неизменяемую запись либо null.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">const</span> <a class="code hl_struct" href="structX2XModuleDescriptor.html">X2XModuleDescriptor</a>* <a class="code hl_function" href="x2x__catalog_8hpp.html#a49e17d1c9d4918a71cdbf43ddac066d1">x2x_catalog_find</a>(<a class="code hl_enumeration" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a> type);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"></span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * @brief Ищет описание по числовому ID из X2X.TXT.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"> * @param[in] type_id Значение из конфигурационного файла.</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"> * @return Указатель на неизменяемую запись либо null.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">const</span> <a class="code hl_struct" href="structX2XModuleDescriptor.html">X2XModuleDescriptor</a>* <a class="code hl_function" href="x2x__catalog_8hpp.html#a26d36d557bf09cabc0ba618ea7a92da9">x2x_catalog_find_by_id</a>(uint16_t type_id);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/** @return Количество зарегистрированных типов, включая центральный LCP. */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="x2x__catalog_8hpp.html#ab6107e605049449e2478887f1fa11b8a">x2x_catalog_size</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"></span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"> * @brief Возвращает запись каталога по порядковому индексу.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"> * @param[in] index Индекс 0..x2x_catalog_size()-1.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment"> * @return Запись либо null для индекса вне диапазона.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">const</span> <a class="code hl_struct" href="structX2XModuleDescriptor.html">X2XModuleDescriptor</a>* <a class="code hl_function" href="x2x__catalog_8hpp.html#a540388662d0d1ce480de83ba9623c4d8">x2x_catalog_at</a>(<span class="keywordtype">size_t</span> index);</div>
+<div class="ttc" id="astructX2XDeviceHeader_html"><div class="ttname"><a href="structX2XDeviceHeader.html">X2XDeviceHeader</a></div><div class="ttdoc">Общий заголовок любого экземпляра устройства X2X.</div><div class="ttdef"><b>Определения</b> <a href="x2x__types_8hpp_source.html#l00063">x2x_types.hpp:64</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html"><div class="ttname"><a href="structX2XModuleDescriptor.html">X2XModuleDescriptor</a></div><div class="ttdoc">Полное описание одного поддерживаемого типа X2X.</div><div class="ttdef"><b>Определения</b> <a href="#l00035">x2x_catalog.hpp:36</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a0ad176a22176a1cf484c006d31b4bb1d"><div class="ttname"><a href="structX2XModuleDescriptor.html#a0ad176a22176a1cf484c006d31b4bb1d">X2XModuleDescriptor::me_count</a></div><div class="ttdeci">uint16_t me_count</div><div class="ttdef"><b>Определения</b> <a href="#l00041">x2x_catalog.hpp:41</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a19dbbde86ef8764024812b1f7c31f3df"><div class="ttname"><a href="structX2XModuleDescriptor.html#a19dbbde86ef8764024812b1f7c31f3df">X2XModuleDescriptor::print</a></div><div class="ttdeci">X2XModulePrintFunction print</div><div class="ttdef"><b>Определения</b> <a href="#l00046">x2x_catalog.hpp:46</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a24a595264fa638e171efe9027ca94f1d"><div class="ttname"><a href="structX2XModuleDescriptor.html#a24a595264fa638e171efe9027ca94f1d">X2XModuleDescriptor::type</a></div><div class="ttdeci">X2XDeviceType type</div><div class="ttdef"><b>Определения</b> <a href="#l00037">x2x_catalog.hpp:37</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a2b56b53cd3e434f2c197cb31f0170e9c"><div class="ttname"><a href="structX2XModuleDescriptor.html#a2b56b53cd3e434f2c197cb31f0170e9c">X2XModuleDescriptor::object_size</a></div><div class="ttdeci">size_t object_size</div><div class="ttdef"><b>Определения</b> <a href="#l00039">x2x_catalog.hpp:39</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a51494420a1430b4608e1d075254bcded"><div class="ttname"><a href="structX2XModuleDescriptor.html#a51494420a1430b4608e1d075254bcded">X2XModuleDescriptor::name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Определения</b> <a href="#l00038">x2x_catalog.hpp:38</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a5aa35f6c3f90ed55e1077e1d970b8fd5"><div class="ttname"><a href="structX2XModuleDescriptor.html#a5aa35f6c3f90ed55e1077e1d970b8fd5">X2XModuleDescriptor::allowed_in_x2x_config</a></div><div class="ttdeci">uint8_t allowed_in_x2x_config</div><div class="ttdef"><b>Определения</b> <a href="#l00043">x2x_catalog.hpp:43</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a7249276a8c5a8edf026528c84891859b"><div class="ttname"><a href="structX2XModuleDescriptor.html#a7249276a8c5a8edf026528c84891859b">X2XModuleDescriptor::tf_count</a></div><div class="ttdeci">uint16_t tf_count</div><div class="ttdef"><b>Определения</b> <a href="#l00042">x2x_catalog.hpp:42</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_a877cdbdaeeacb5c25ce78186bb60f2bb"><div class="ttname"><a href="structX2XModuleDescriptor.html#a877cdbdaeeacb5c25ce78186bb60f2bb">X2XModuleDescriptor::sp_count</a></div><div class="ttdeci">uint16_t sp_count</div><div class="ttdef"><b>Определения</b> <a href="#l00040">x2x_catalog.hpp:40</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_ae351392f59e5a5a522136340e5f73dd1"><div class="ttname"><a href="structX2XModuleDescriptor.html#ae351392f59e5a5a522136340e5f73dd1">X2XModuleDescriptor::poll</a></div><div class="ttdeci">X2XModulePollFunction poll</div><div class="ttdef"><b>Определения</b> <a href="#l00045">x2x_catalog.hpp:45</a></div></div>
+<div class="ttc" id="astructX2XModuleDescriptor_html_afc1ea329f30154412108bfd737ca3b8f"><div class="ttname"><a href="structX2XModuleDescriptor.html#afc1ea329f30154412108bfd737ca3b8f">X2XModuleDescriptor::construct</a></div><div class="ttdeci">X2XModuleConstructFunction construct</div><div class="ttdef"><b>Определения</b> <a href="#l00044">x2x_catalog.hpp:44</a></div></div>
+<div class="ttc" id="ax2x__catalog_8hpp_html_a26d36d557bf09cabc0ba618ea7a92da9"><div class="ttname"><a href="x2x__catalog_8hpp.html#a26d36d557bf09cabc0ba618ea7a92da9">x2x_catalog_find_by_id</a></div><div class="ttdeci">const X2XModuleDescriptor * x2x_catalog_find_by_id(uint16_t type_id)</div><div class="ttdoc">Ищет описание по числовому ID из X2X.TXT.</div><div class="ttdef"><b>Определения</b> <a href="x2x__catalog_8cpp_source.html#l00216">x2x_catalog.cpp:216</a></div></div>
+<div class="ttc" id="ax2x__catalog_8hpp_html_a49e17d1c9d4918a71cdbf43ddac066d1"><div class="ttname"><a href="x2x__catalog_8hpp.html#a49e17d1c9d4918a71cdbf43ddac066d1">x2x_catalog_find</a></div><div class="ttdeci">const X2XModuleDescriptor * x2x_catalog_find(X2XDeviceType type)</div><div class="ttdoc">Ищет описание по типизированному ID.</div><div class="ttdef"><b>Определения</b> <a href="x2x__catalog_8cpp_source.html#l00203">x2x_catalog.cpp:203</a></div></div>
+<div class="ttc" id="ax2x__catalog_8hpp_html_a540388662d0d1ce480de83ba9623c4d8"><div class="ttname"><a href="x2x__catalog_8hpp.html#a540388662d0d1ce480de83ba9623c4d8">x2x_catalog_at</a></div><div class="ttdeci">const X2XModuleDescriptor * x2x_catalog_at(size_t index)</div><div class="ttdoc">Возвращает запись каталога по порядковому индексу.</div><div class="ttdef"><b>Определения</b> <a href="x2x__catalog_8cpp_source.html#l00234">x2x_catalog.cpp:234</a></div></div>
+<div class="ttc" id="ax2x__catalog_8hpp_html_ab6107e605049449e2478887f1fa11b8a"><div class="ttname"><a href="x2x__catalog_8hpp.html#ab6107e605049449e2478887f1fa11b8a">x2x_catalog_size</a></div><div class="ttdeci">size_t x2x_catalog_size(void)</div><div class="ttdef"><b>Определения</b> <a href="x2x__catalog_8cpp_source.html#l00229">x2x_catalog.cpp:229</a></div></div>
+<div class="ttc" id="ax2x__catalog_8hpp_html_acbe213a4c3a63484ae82c9fe83d96130"><div class="ttname"><a href="x2x__catalog_8hpp.html#acbe213a4c3a63484ae82c9fe83d96130">X2XModuleConstructFunction</a></div><div class="ttdeci">X2XDeviceHeader *(* X2XModuleConstructFunction)(void *storage, size_t storage_size, uint8_t slave_address, uint16_t asdu)</div><div class="ttdoc">Callback placement-конструирования объекта модуля в статическом слоте.</div><div class="ttdef"><b>Определения</b> <a href="#l00023">x2x_catalog.hpp:23</a></div></div>
+<div class="ttc" id="ax2x__module_8hpp_html"><div class="ttname"><a href="x2x__module_8hpp.html">x2x_module.hpp</a></div><div class="ttdoc">Общий интерфейс неблокирующих драйверов модулей X2X.</div></div>
+<div class="ttc" id="ax2x__module_8hpp_html_a5fbfa303c01b54027b3a27da16f3d2fd"><div class="ttname"><a href="x2x__module_8hpp.html#a5fbfa303c01b54027b3a27da16f3d2fd">X2XModulePollFunction</a></div><div class="ttdeci">X2XModulePollResult(* X2XModulePollFunction)(X2XDeviceHeader *device, X2XModuleContext &amp;context)</div><div class="ttdoc">Callback неблокирующего опроса конкретного типа модуля.</div><div class="ttdef"><b>Определения</b> <a href="x2x__module_8hpp_source.html#l00062">x2x_module.hpp:62</a></div></div>
+<div class="ttc" id="ax2x__module_8hpp_html_a71cf424d7aa8cc8d263d3b3f461eeaa3"><div class="ttname"><a href="x2x__module_8hpp.html#a71cf424d7aa8cc8d263d3b3f461eeaa3">X2XModulePrintFunction</a></div><div class="ttdeci">void(* X2XModulePrintFunction)(const X2XDeviceHeader &amp;device)</div><div class="ttdoc">Callback вывода специфических данных модуля в service console.</div><div class="ttdef"><b>Определения</b> <a href="x2x__module_8hpp_source.html#l00074">x2x_module.hpp:74</a></div></div>
+<div class="ttc" id="ax2x__types_8hpp_html"><div class="ttname"><a href="x2x__types_8hpp.html">x2x_types.hpp</a></div><div class="ttdoc">Типы данных модулей внутренней шины X2X контроллера LCP.</div></div>
+<div class="ttc" id="ax2x__types_8hpp_html_af09f7869617ea75d14d7281937ce19bf"><div class="ttname"><a href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a></div><div class="ttdeci">X2XDeviceType</div><div class="ttdoc">Стабильные идентификаторы типов устройств X2X.</div><div class="ttdef"><b>Определения</b> <a href="x2x__types_8hpp_source.html#l00035">x2x_types.hpp:36</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_e05296bbe1f2b3edfa4799f2a210e301.html">x2x</a></li><li class="navelem"><a href="x2x__catalog_8hpp.html">x2x_catalog.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

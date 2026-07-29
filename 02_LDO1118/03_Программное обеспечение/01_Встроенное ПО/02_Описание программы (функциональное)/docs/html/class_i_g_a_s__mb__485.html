@@ -1,0 +1,1832 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LDO1118 Rev3 Firmware: Класс IGAS_mb_485</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LDO1118 Rev3 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LDO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_i_g_a_s__mb__485.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс IGAS_mb_485</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ведомое устройство Modbus RTU по RS-485.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_g_a_s__mb_8h_source.html">Libs/IGAS_mb.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:ad8a2c9443a4f848672f12980ff7b4e51" id="r_ad8a2c9443a4f848672f12980ff7b4e51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8a2c9443a4f848672f12980ff7b4e51">IGAS_mb_485</a> (void)</td></tr>
+<tr class="memdesc:ad8a2c9443a4f848672f12980ff7b4e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт объект транспорта Modbus RTU.  <br /></td></tr>
+<tr class="memitem:ab5c90e1c4039a5abda14858b5ab53bc1" id="r_ab5c90e1c4039a5abda14858b5ab53bc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5c90e1c4039a5abda14858b5ab53bc1">initMB</a> (uint32_t COMM_BPS=1200UL, uint8_t SERIAL_MODE=<a class="el" href="compat_8hpp.html#a0db78b4521d43c0d702b9577bd3acda2">SERIAL_8N1</a>, uint16_t allRegs=1000U)</td></tr>
+<tr class="memdesc:ab5c90e1c4039a5abda14858b5ab53bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует UART и внутренние параметры Modbus RTU.  <br /></td></tr>
+<tr class="memitem:a921eb474cd74770d5dcb0953a9433bc2" id="r_a921eb474cd74770d5dcb0953a9433bc2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a921eb474cd74770d5dcb0953a9433bc2">update</a> (void)</td></tr>
+<tr class="memdesc:a921eb474cd74770d5dcb0953a9433bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает входящие запросы Modbus RTU.  <br /></td></tr>
+<tr class="memitem:ad4e3fa4409df9643a7a08ed0d77d1610" id="r_ad4e3fa4409df9643a7a08ed0d77d1610"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4e3fa4409df9643a7a08ed0d77d1610">setDelegate</a> (void(*fp)(int16_t *, int16_t, int16_t, int16_t))</td></tr>
+<tr class="memdesc:ad4e3fa4409df9643a7a08ed0d77d1610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Назначает делегат доступа к прикладной карте регистров.  <br /></td></tr>
+<tr class="memitem:a98c850faa601ee6be35218a8bff702b8" id="r_a98c850faa601ee6be35218a8bff702b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98c850faa601ee6be35218a8bff702b8">send</a> (uint8_t *query, uint8_t string_length)</td></tr>
+<tr class="memdesc:a98c850faa601ee6be35218a8bff702b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправляет массив байт без добавления CRC.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Поля данных</h2></td></tr>
+<tr class="memitem:a7671381fb4dd188731fca68379466a04" id="r_a7671381fb4dd188731fca68379466a04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a></td></tr>
+<tr class="memdesc:a7671381fb4dd188731fca68379466a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес ведомого устройства Modbus.  <br /></td></tr>
+<tr class="memitem:ab097430a0474a4637d437091d79fab51" id="r_ab097430a0474a4637d437091d79fab51"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab097430a0474a4637d437091d79fab51">transmitLED</a></td></tr>
+<tr class="memdesc:ab097430a0474a4637d437091d79fab51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг индикации активности передачи.  <br /></td></tr>
+<tr class="memitem:a4f67157c882c69a7695a8c4a96c19a3e" id="r_a4f67157c882c69a7695a8c4a96c19a3e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f67157c882c69a7695a8c4a96c19a3e">func</a></td></tr>
+<tr class="memdesc:a4f67157c882c69a7695a8c4a96c19a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Последний обработанный код функции Modbus.  <br /></td></tr>
+<tr class="memitem:a1764f581cc1611cbad29d3aa812d72ca" id="r_a1764f581cc1611cbad29d3aa812d72ca"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a></td></tr>
+<tr class="memdesc:a1764f581cc1611cbad29d3aa812d72ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Межкадровая пауза Modbus RTU, мс.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr class="memitem:a232d3abef22e5395eccc9b5f11c723ad" id="r_a232d3abef22e5395eccc9b5f11c723ad"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a232d3abef22e5395eccc9b5f11c723ad">crc</a> (uint8_t *buf, uint8_t start, uint8_t cnt)</td></tr>
+<tr class="memdesc:a232d3abef22e5395eccc9b5f11c723ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рассчитывает CRC16 Modbus RTU.  <br /></td></tr>
+<tr class="memitem:a04efece8096284174250e68be7e77cd4" id="r_a04efece8096284174250e68be7e77cd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04efece8096284174250e68be7e77cd4">build_read_packet</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint8_t function, uint8_t count, uint8_t *packet)</td></tr>
+<tr class="memdesc:a04efece8096284174250e68be7e77cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует заголовок ответа FC03.  <br /></td></tr>
+<tr class="memitem:a3da0e2eb93e241dc43eb95164000ae8d" id="r_a3da0e2eb93e241dc43eb95164000ae8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da0e2eb93e241dc43eb95164000ae8d">build_write_packet</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint8_t function, uint16_t start_addr, uint8_t count, uint8_t *packet)</td></tr>
+<tr class="memdesc:a3da0e2eb93e241dc43eb95164000ae8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует ответ FC16.  <br /></td></tr>
+<tr class="memitem:a1e9f90decf2c10056d9ee6cb32d7eea5" id="r_a1e9f90decf2c10056d9ee6cb32d7eea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9f90decf2c10056d9ee6cb32d7eea5">build_write_single_packet</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint8_t function, uint16_t write_addr, uint16_t reg_val, uint8_t *packet)</td></tr>
+<tr class="memdesc:a1e9f90decf2c10056d9ee6cb32d7eea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует ответ FC06.  <br /></td></tr>
+<tr class="memitem:acc2645d1b4600a14c6f983b5677e1e70" id="r_acc2645d1b4600a14c6f983b5677e1e70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc2645d1b4600a14c6f983b5677e1e70">build_error_packet</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint8_t function, uint8_t exception, uint8_t *packet)</td></tr>
+<tr class="memdesc:acc2645d1b4600a14c6f983b5677e1e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует Modbus exception-ответ.  <br /></td></tr>
+<tr class="memitem:a36012052075783e37b59ce89cf61b2d8" id="r_a36012052075783e37b59ce89cf61b2d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36012052075783e37b59ce89cf61b2d8">modbus_reply</a> (uint8_t *packet, uint8_t string_length)</td></tr>
+<tr class="memdesc:a36012052075783e37b59ce89cf61b2d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет CRC16 в конец пакета.  <br /></td></tr>
+<tr class="memitem:a7d736d444ce6360b31d845dcfced88e9" id="r_a7d736d444ce6360b31d845dcfced88e9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d736d444ce6360b31d845dcfced88e9">send_reply</a> (uint8_t *query, uint8_t string_length)</td></tr>
+<tr class="memdesc:a7d736d444ce6360b31d845dcfced88e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправляет Modbus-ответ с добавлением CRC16.  <br /></td></tr>
+<tr class="memitem:aa5e3fa77d8578d2fa88b429d5988f963" id="r_aa5e3fa77d8578d2fa88b429d5988f963"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5e3fa77d8578d2fa88b429d5988f963">receive_request</a> (uint8_t *received_string)</td></tr>
+<tr class="memdesc:aa5e3fa77d8578d2fa88b429d5988f963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает доступные байты из RX-буфера UART.  <br /></td></tr>
+<tr class="memitem:a87a48bdf0f9c76ee48471c53f5e3f3ec" id="r_a87a48bdf0f9c76ee48471c53f5e3f3ec"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87a48bdf0f9c76ee48471c53f5e3f3ec">modbus_request</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint8_t *data)</td></tr>
+<tr class="memdesc:a87a48bdf0f9c76ee48471c53f5e3f3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Принимает и проверяет входящий Modbus RTU кадр.  <br /></td></tr>
+<tr class="memitem:ae221cf1105d925854ece241c21b29e6f" id="r_ae221cf1105d925854ece241c21b29e6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae221cf1105d925854ece241c21b29e6f">validate_request</a> (uint8_t *data, uint8_t length)</td></tr>
+<tr class="memdesc:ae221cf1105d925854ece241c21b29e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет запрос на поддерживаемость и допустимость диапазонов.  <br /></td></tr>
+<tr class="memitem:a411f7c848973e64f69e06b7eb451f413" id="r_a411f7c848973e64f69e06b7eb451f413"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a411f7c848973e64f69e06b7eb451f413">write_regs</a> (uint16_t start_addr, uint8_t *query, int16_t *regs)</td></tr>
+<tr class="memdesc:a411f7c848973e64f69e06b7eb451f413"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает запись нескольких регистров через делегат.  <br /></td></tr>
+<tr class="memitem:a0826455e5ebe5f513f9267cdc99a3c05" id="r_a0826455e5ebe5f513f9267cdc99a3c05"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0826455e5ebe5f513f9267cdc99a3c05">preset_multiple_registers</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint16_t start_addr, uint8_t count, uint8_t *query, int16_t *regs)</td></tr>
+<tr class="memdesc:a0826455e5ebe5f513f9267cdc99a3c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает функцию FC16.  <br /></td></tr>
+<tr class="memitem:a8db186db4ae7bf9a9886bd475a2a738c" id="r_a8db186db4ae7bf9a9886bd475a2a738c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8db186db4ae7bf9a9886bd475a2a738c">write_single_register</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint16_t write_addr, uint8_t *query, int16_t *regs)</td></tr>
+<tr class="memdesc:a8db186db4ae7bf9a9886bd475a2a738c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает функцию FC06.  <br /></td></tr>
+<tr class="memitem:a6cf6bd74e6c50f5a55d9cfc99954acfa" id="r_a6cf6bd74e6c50f5a55d9cfc99954acfa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cf6bd74e6c50f5a55d9cfc99954acfa">read_holding_registers</a> (uint8_t <a class="el" href="#a7671381fb4dd188731fca68379466a04">slave</a>, uint16_t start_addr, uint8_t reg_count, int16_t *regs)</td></tr>
+<tr class="memdesc:a6cf6bd74e6c50f5a55d9cfc99954acfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает функцию FC03.  <br /></td></tr>
+<tr class="memitem:a795e121f3656c2d99441377be8e67232" id="r_a795e121f3656c2d99441377be8e67232"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a795e121f3656c2d99441377be8e67232">doAction</a> (int16_t *t1, int16_t t2, int16_t t3, int16_t t4)</td></tr>
+<tr class="memdesc:a795e121f3656c2d99441377be8e67232"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вызывает делегат карты регистров, если он назначен.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:ac97030be84671d4f5ffd02456aacdf4f" id="r_ac97030be84671d4f5ffd02456aacdf4f"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac97030be84671d4f5ffd02456aacdf4f">fpAction</a> )(int16_t *, int16_t, int16_t, int16_t)</td></tr>
+<tr class="memdesc:ac97030be84671d4f5ffd02456aacdf4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Делегат доступа к прикладной карте регистров.  <br /></td></tr>
+<tr class="memitem:ad8ff5cc55974db8425ba858da749ddef" id="r_ad8ff5cc55974db8425ba858da749ddef"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8ff5cc55974db8425ba858da749ddef">regLimit</a></td></tr>
+<tr class="memdesc:ad8ff5cc55974db8425ba858da749ddef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Верхняя исключающая граница адресного пространства Holding-регистров.  <br /></td></tr>
+<tr class="memitem:aa420a42b99466a6ceac417949d1f3aad" id="r_aa420a42b99466a6ceac417949d1f3aad"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa420a42b99466a6ceac417949d1f3aad">Nowdt</a></td></tr>
+<tr class="memdesc:aa420a42b99466a6ceac417949d1f3aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время последнего изменения количества принятых байт.  <br /></td></tr>
+<tr class="memitem:a941f04361c76cc4793e64a76b0ab8cd9" id="r_a941f04361c76cc4793e64a76b0ab8cd9"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a941f04361c76cc4793e64a76b0ab8cd9">lastBytesReceived</a></td></tr>
+<tr class="memdesc:a941f04361c76cc4793e64a76b0ab8cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Последнее зафиксированное количество байт в RX-буфере.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Ведомое устройство Modbus RTU по RS-485. </p>
+<p>Класс обслуживает приём запросов, проверку CRC, проверку адреса, обработку поддерживаемых функций и формирование ответов.</p>
+<p>Прикладная карта регистров реализуется вне класса и вызывается через делегат, назначенный функцией <a class="el" href="#ad4e3fa4409df9643a7a08ed0d77d1610" title="Назначает делегат доступа к прикладной карте регистров.">setDelegate()</a>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00156">156</a></p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="ad8a2c9443a4f848672f12980ff7b4e51" name="ad8a2c9443a4f848672f12980ff7b4e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8a2c9443a4f848672f12980ff7b4e51">&#9670;&#160;</a></span>IGAS_mb_485()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IGAS_mb_485::IGAS_mb_485 </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт объект транспорта Modbus RTU. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">51</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>    : <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>(0),</div>
+<div class="line"><span class="lineno">   53</span>      <a class="code hl_variable" href="#ab097430a0474a4637d437091d79fab51">transmitLED</a>(0),</div>
+<div class="line"><span class="lineno">   54</span>      <a class="code hl_variable" href="#a4f67157c882c69a7695a8c4a96c19a3e">func</a>(0),</div>
+<div class="line"><span class="lineno">   55</span>      <a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a>(5),</div>
+<div class="line"><span class="lineno">   56</span>      <a class="code hl_variable" href="#ac97030be84671d4f5ffd02456aacdf4f">fpAction</a>(0),</div>
+<div class="line"><span class="lineno">   57</span>      <a class="code hl_variable" href="#ad8ff5cc55974db8425ba858da749ddef">regLimit</a>(0),</div>
+<div class="line"><span class="lineno">   58</span>      <a class="code hl_variable" href="#aa420a42b99466a6ceac417949d1f3aad">Nowdt</a>(0),</div>
+<div class="line"><span class="lineno">   59</span>      <a class="code hl_variable" href="#a941f04361c76cc4793e64a76b0ab8cd9">lastBytesReceived</a>(0)</div>
+<div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>}</div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a1764f581cc1611cbad29d3aa812d72ca"><div class="ttname"><a href="#a1764f581cc1611cbad29d3aa812d72ca">IGAS_mb_485::interframe_delay</a></div><div class="ttdeci">uint16_t interframe_delay</div><div class="ttdoc">Межкадровая пауза Modbus RTU, мс.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00240">IGAS_mb.h:240</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a4f67157c882c69a7695a8c4a96c19a3e"><div class="ttname"><a href="#a4f67157c882c69a7695a8c4a96c19a3e">IGAS_mb_485::func</a></div><div class="ttdeci">uint8_t func</div><div class="ttdoc">Последний обработанный код функции Modbus.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00232">IGAS_mb.h:232</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a7671381fb4dd188731fca68379466a04"><div class="ttname"><a href="#a7671381fb4dd188731fca68379466a04">IGAS_mb_485::slave</a></div><div class="ttdeci">uint8_t slave</div><div class="ttdoc">Адрес ведомого устройства Modbus.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00219">IGAS_mb.h:219</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a941f04361c76cc4793e64a76b0ab8cd9"><div class="ttname"><a href="#a941f04361c76cc4793e64a76b0ab8cd9">IGAS_mb_485::lastBytesReceived</a></div><div class="ttdeci">int16_t lastBytesReceived</div><div class="ttdoc">Последнее зафиксированное количество байт в RX-буфере.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00380">IGAS_mb.h:380</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_aa420a42b99466a6ceac417949d1f3aad"><div class="ttname"><a href="#aa420a42b99466a6ceac417949d1f3aad">IGAS_mb_485::Nowdt</a></div><div class="ttdeci">uint32_t Nowdt</div><div class="ttdoc">Время последнего изменения количества принятых байт.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00375">IGAS_mb.h:375</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_ab097430a0474a4637d437091d79fab51"><div class="ttname"><a href="#ab097430a0474a4637d437091d79fab51">IGAS_mb_485::transmitLED</a></div><div class="ttdeci">uint8_t transmitLED</div><div class="ttdoc">Флаг индикации активности передачи.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00224">IGAS_mb.h:224</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_ac97030be84671d4f5ffd02456aacdf4f"><div class="ttname"><a href="#ac97030be84671d4f5ffd02456aacdf4f">IGAS_mb_485::fpAction</a></div><div class="ttdeci">void(* fpAction)(int16_t *, int16_t, int16_t, int16_t)</div><div class="ttdoc">Делегат доступа к прикладной карте регистров.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00360">IGAS_mb.h:360</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_ad8ff5cc55974db8425ba858da749ddef"><div class="ttname"><a href="#ad8ff5cc55974db8425ba858da749ddef">IGAS_mb_485::regLimit</a></div><div class="ttdeci">uint16_t regLimit</div><div class="ttdoc">Верхняя исключающая граница адресного пространства Holding-регистров.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00370">IGAS_mb.h:370</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00360">fpAction</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00232">func</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00240">interframe_delay</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00380">lastBytesReceived</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00375">Nowdt</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00370">regLimit</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00224">transmitLED</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="acc2645d1b4600a14c6f983b5677e1e70" name="acc2645d1b4600a14c6f983b5677e1e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc2645d1b4600a14c6f983b5677e1e70">&#9670;&#160;</a></span>build_error_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::build_error_packet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>function</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>exception</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>packet</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует Modbus exception-ответ. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00324">324</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  330</span>{</div>
+<div class="line"><span class="lineno">  331</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a>] = <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>;</div>
+<div class="line"><span class="lineno">  332</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(function + 0x80u);</div>
+<div class="line"><span class="lineno">  333</span>    packet[2] = exception;</div>
+<div class="line"><span class="lineno">  334</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a></div><div class="ttdeci">@ FUNC</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00119">IGAS_mb.h:119</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a></div><div class="ttdeci">@ SLAVE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00118">IGAS_mb.h:118</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00119">FUNC</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00118">SLAVE</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="a04efece8096284174250e68be7e77cd4" name="a04efece8096284174250e68be7e77cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04efece8096284174250e68be7e77cd4">&#9670;&#160;</a></span>build_read_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::build_read_packet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>function</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>packet</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует заголовок ответа FC03. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00271">271</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  277</span>{</div>
+<div class="line"><span class="lineno">  278</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a>] = <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>;</div>
+<div class="line"><span class="lineno">  279</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] = function;</div>
+<div class="line"><span class="lineno">  280</span>    packet[2] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(count * 2u);</div>
+<div class="line"><span class="lineno">  281</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00119">FUNC</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00118">SLAVE</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00691">read_holding_registers()</a>.</p>
+
+</div>
+</div>
+<a id="a3da0e2eb93e241dc43eb95164000ae8d" name="a3da0e2eb93e241dc43eb95164000ae8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da0e2eb93e241dc43eb95164000ae8d">&#9670;&#160;</a></span>build_write_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::build_write_packet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>function</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>start_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>packet</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует ответ FC16. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00286">286</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>{</div>
+<div class="line"><span class="lineno">  294</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a>] = <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>;</div>
+<div class="line"><span class="lineno">  295</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] = function;</div>
+<div class="line"><span class="lineno">  296</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(start_addr &gt;&gt; 8);</div>
+<div class="line"><span class="lineno">  297</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(start_addr &amp; 0x00FFu);</div>
+<div class="line"><span class="lineno">  298</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a>] = 0x00;</div>
+<div class="line"><span class="lineno">  299</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>] = count;</div>
+<div class="line"><span class="lineno">  300</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a></div><div class="ttdeci">@ START_L</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00121">IGAS_mb.h:121</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a></div><div class="ttdeci">@ REGS_L</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00123">IGAS_mb.h:123</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a></div><div class="ttdeci">@ START_H</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00120">IGAS_mb.h:120</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a></div><div class="ttdeci">@ REGS_H</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00122">IGAS_mb.h:122</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00119">FUNC</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00122">REGS_H</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00123">REGS_L</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00118">SLAVE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00120">START_H</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00121">START_L</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00626">preset_multiple_registers()</a>.</p>
+
+</div>
+</div>
+<a id="a1e9f90decf2c10056d9ee6cb32d7eea5" name="a1e9f90decf2c10056d9ee6cb32d7eea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9f90decf2c10056d9ee6cb32d7eea5">&#9670;&#160;</a></span>build_write_single_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::build_write_single_packet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>function</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>write_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>reg_val</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>packet</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует ответ FC06. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00305">305</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  312</span>{</div>
+<div class="line"><span class="lineno">  313</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a>] = <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>;</div>
+<div class="line"><span class="lineno">  314</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] = function;</div>
+<div class="line"><span class="lineno">  315</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(write_addr &gt;&gt; 8);</div>
+<div class="line"><span class="lineno">  316</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(write_addr &amp; 0x00FFu);</div>
+<div class="line"><span class="lineno">  317</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(reg_val &gt;&gt; 8);</div>
+<div class="line"><span class="lineno">  318</span>    packet[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(reg_val &amp; 0x00FFu);</div>
+<div class="line"><span class="lineno">  319</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00119">FUNC</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00122">REGS_H</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00123">REGS_L</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00118">SLAVE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00120">START_H</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00121">START_L</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00655">write_single_register()</a>.</p>
+
+</div>
+</div>
+<a id="a232d3abef22e5395eccc9b5f11c723ad" name="a232d3abef22e5395eccc9b5f11c723ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a232d3abef22e5395eccc9b5f11c723ad">&#9670;&#160;</a></span>crc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t IGAS_mb_485::crc </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>cnt</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Рассчитывает CRC16 Modbus RTU. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Буфер данных. </td></tr>
+    <tr><td class="paramname">start</td><td>Начальный индекс. </td></tr>
+    <tr><td class="paramname">cnt</td><td>Конечный индекс, не включительно.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>CRC16.</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Буфер данных. </td></tr>
+    <tr><td class="paramname">start</td><td>Начальный индекс. </td></tr>
+    <tr><td class="paramname">cnt</td><td>Конечный индекс, не включительно.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>CRC16 в формате, используемом функциями формирования и проверки кадров. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00237">237</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  238</span>{</div>
+<div class="line"><span class="lineno">  239</span>    uint16_t temp = 0xFFFFu;</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">for</span> (uint8_t i = start; i &lt; cnt; ++i)</div>
+<div class="line"><span class="lineno">  242</span>    {</div>
+<div class="line"><span class="lineno">  243</span>        temp ^= <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(buf[i]);</div>
+<div class="line"><span class="lineno">  244</span> </div>
+<div class="line"><span class="lineno">  245</span>        <span class="keywordflow">for</span> (uint8_t j = 0; j &lt; 8u; ++j)</div>
+<div class="line"><span class="lineno">  246</span>        {</div>
+<div class="line"><span class="lineno">  247</span>            <span class="keyword">const</span> uint16_t lsb =</div>
+<div class="line"><span class="lineno">  248</span>                <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(temp &amp; 0x0001u);</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>            temp &gt;&gt;= 1;</div>
+<div class="line"><span class="lineno">  251</span> </div>
+<div class="line"><span class="lineno">  252</span>            <span class="keywordflow">if</span> (lsb != 0u)</div>
+<div class="line"><span class="lineno">  253</span>            {</div>
+<div class="line"><span class="lineno">  254</span>                temp ^= 0xA001u;</div>
+<div class="line"><span class="lineno">  255</span>            }</div>
+<div class="line"><span class="lineno">  256</span>        }</div>
+<div class="line"><span class="lineno">  257</span>    }</div>
+<div class="line"><span class="lineno">  258</span> </div>
+<div class="line"><span class="lineno">  259</span>    temp = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>((temp &lt;&lt; 8) | (temp &gt;&gt; 8));</div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">return</span> temp;</div>
+<div class="line"><span class="lineno">  262</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00342">modbus_reply()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00461">modbus_request()</a>.</p>
+
+</div>
+</div>
+<a id="a795e121f3656c2d99441377be8e67232" name="a795e121f3656c2d99441377be8e67232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795e121f3656c2d99441377be8e67232">&#9670;&#160;</a></span>doAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::doAction </td>
+          <td>(</td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>t1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>t2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>t3</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>t4</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Вызывает делегат карты регистров, если он назначен. </p>
+<p>Вызывает делегат карты регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00744">744</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  750</span>{</div>
+<div class="line"><span class="lineno">  751</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac97030be84671d4f5ffd02456aacdf4f">fpAction</a> != 0)</div>
+<div class="line"><span class="lineno">  752</span>    {</div>
+<div class="line"><span class="lineno">  753</span>        (*fpAction)(t1, t2, t3, t4);</div>
+<div class="line"><span class="lineno">  754</span>    }</div>
+<div class="line"><span class="lineno">  755</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00360">fpAction</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00691">read_holding_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00592">write_regs()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00655">write_single_register()</a>.</p>
+
+</div>
+</div>
+<a id="ab5c90e1c4039a5abda14858b5ab53bc1" name="ab5c90e1c4039a5abda14858b5ab53bc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c90e1c4039a5abda14858b5ab53bc1">&#9670;&#160;</a></span>initMB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::initMB </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>COMM_BPS</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1200UL</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>SERIAL_MODE</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="compat_8hpp.html#a0db78b4521d43c0d702b9577bd3acda2">SERIAL_8N1</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>allRegs</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1000U</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует UART и внутренние параметры Modbus RTU. </p>
+<p>Инициализирует транспорт Modbus RTU.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">COMM_BPS</td><td>Скорость UART, бод. </td></tr>
+    <tr><td class="paramname">SERIAL_MODE</td><td>Формат кадра UART. </td></tr>
+    <tr><td class="paramname">allRegs</td><td>Верхняя исключающая граница адресного пространства Holding-регистров.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Например, при allRegs = 1001 допустимы адреса регистров 0...1000.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">COMM_BPS</td><td>Скорость UART, бод. </td></tr>
+    <tr><td class="paramname">SERIAL_MODE</td><td>Формат кадра UART. </td></tr>
+    <tr><td class="paramname">allRegs</td><td>Верхняя исключающая граница адресного пространства Holding-регистров. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00075">75</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="compat__serial_8cpp.html#a645d205797faf77718114532a5dae6f8">Serial</a>.begin(COMM_BPS, SERIAL_MODE);</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_function" href="namespacehal.html#acc455bbf53021e20a1574342b3f26b2e">hal::uart0_set_tx_complete_callback</a>(rs485TxCompleteCallback);</div>
+<div class="line"><span class="lineno">   84</span>    <a class="code hl_function" href="namespacehal.html#a6b732f3c9c0d547b46738a27445d3bf8">hal::uart0_disable_tx_complete_interrupt</a>();</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (COMM_BPS == 0UL)</div>
+<div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>        <a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a> = 5u;</div>
+<div class="line"><span class="lineno">   89</span>    }</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   91</span>    {</div>
+<div class="line"><span class="lineno">   92</span>        <a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a> = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(40000UL / COMM_BPS);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a> &lt; 2u)</div>
+<div class="line"><span class="lineno">   95</span>        {</div>
+<div class="line"><span class="lineno">   96</span>            <a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a> = 2u;</div>
+<div class="line"><span class="lineno">   97</span>        }</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (COMM_BPS &lt;= 9600UL)</div>
+<div class="line"><span class="lineno">  100</span>        {</div>
+<div class="line"><span class="lineno">  101</span>            <a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a> = 5u;</div>
+<div class="line"><span class="lineno">  102</span>        }</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="#ad8ff5cc55974db8425ba858da749ddef">regLimit</a> = allRegs;</div>
+<div class="line"><span class="lineno">  106</span>}</div>
+<div class="ttc" id="acompat__serial_8cpp_html_a645d205797faf77718114532a5dae6f8"><div class="ttname"><a href="compat__serial_8cpp.html#a645d205797faf77718114532a5dae6f8">Serial</a></div><div class="ttdeci">SerialPort Serial</div><div class="ttdoc">Глобальный потоковый объект UART0.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00646">compat_serial.cpp:646</a></div></div>
+<div class="ttc" id="anamespacehal_html_a6b732f3c9c0d547b46738a27445d3bf8"><div class="ttname"><a href="namespacehal.html#a6b732f3c9c0d547b46738a27445d3bf8">hal::uart0_disable_tx_complete_interrupt</a></div><div class="ttdeci">void uart0_disable_tx_complete_interrupt(void)</div><div class="ttdoc">Запрещает прерывание UART0 TX Complete.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00516">compat_serial.cpp:516</a></div></div>
+<div class="ttc" id="anamespacehal_html_acc455bbf53021e20a1574342b3f26b2e"><div class="ttname"><a href="namespacehal.html#acc455bbf53021e20a1574342b3f26b2e">hal::uart0_set_tx_complete_callback</a></div><div class="ttdeci">void uart0_set_tx_complete_callback(Uart0TxCompleteCallback callback)</div><div class="ttdoc">Назначает callback окончания физической передачи UART0.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00489">compat_serial.cpp:489</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00240">interframe_delay</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00370">regLimit</a>, <a class="el" href="compat__serial_8cpp_source.html#l00646">Serial</a>, <a class="el" href="compat__serial_8cpp_source.html#l00516">hal::uart0_disable_tx_complete_interrupt()</a> и <a class="el" href="compat__serial_8cpp_source.html#l00489">hal::uart0_set_tx_complete_callback()</a>.</p>
+
+</div>
+</div>
+<a id="a36012052075783e37b59ce89cf61b2d8" name="a36012052075783e37b59ce89cf61b2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36012052075783e37b59ce89cf61b2d8">&#9670;&#160;</a></span>modbus_reply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::modbus_reply </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>packet</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>string_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Добавляет CRC16 в конец пакета. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packet</td><td>Буфер пакета. </td></tr>
+    <tr><td class="paramname">string_length</td><td>Длина пакета без CRC. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00342">342</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  343</span>{</div>
+<div class="line"><span class="lineno">  344</span>    <span class="keyword">const</span> uint16_t temp_crc = <a class="code hl_function" href="#a232d3abef22e5395eccc9b5f11c723ad">crc</a>(packet, 0, string_length);</div>
+<div class="line"><span class="lineno">  345</span> </div>
+<div class="line"><span class="lineno">  346</span>    packet[string_length++] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(temp_crc &gt;&gt; 8);</div>
+<div class="line"><span class="lineno">  347</span>    packet[string_length++] = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(temp_crc &amp; 0x00FFu);</div>
+<div class="line"><span class="lineno">  348</span>}</div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a232d3abef22e5395eccc9b5f11c723ad"><div class="ttname"><a href="#a232d3abef22e5395eccc9b5f11c723ad">IGAS_mb_485::crc</a></div><div class="ttdeci">uint16_t crc(uint8_t *buf, uint8_t start, uint8_t cnt)</div><div class="ttdoc">Рассчитывает CRC16 Modbus RTU.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00237">IGAS_mb.cpp:237</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00237">crc()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">send_reply()</a>.</p>
+
+</div>
+</div>
+<a id="a87a48bdf0f9c76ee48471c53f5e3f3ec" name="a87a48bdf0f9c76ee48471c53f5e3f3ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87a48bdf0f9c76ee48471c53f5e3f3ec">&#9670;&#160;</a></span>modbus_request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t IGAS_mb_485::modbus_request </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Принимает и проверяет входящий Modbus RTU кадр. </p>
+<p>Принимает и проверяет Modbus RTU кадр.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slave</td><td>Ожидаемый slave-адрес. </td></tr>
+    <tr><td class="paramname">data</td><td>Буфер принятого кадра.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Длина кадра при успешной проверке. </dd>
+<dd>
+NO_REPLY при ошибке CRC, неподходящем адресе или некорректной длине. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00461">461</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  462</span>{</div>
+<div class="line"><span class="lineno">  463</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> response_length = <a class="code hl_function" href="#aa5e3fa77d8578d2fa88b429d5988f963">receive_request</a>(data);</div>
+<div class="line"><span class="lineno">  464</span> </div>
+<div class="line"><span class="lineno">  465</span>    <span class="keywordflow">if</span> (response_length &lt;= 0)</div>
+<div class="line"><span class="lineno">  466</span>    {</div>
+<div class="line"><span class="lineno">  467</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(response_length);</div>
+<div class="line"><span class="lineno">  468</span>    }</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>    <span class="keywordflow">if</span> (response_length &lt; <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a>)</div>
+<div class="line"><span class="lineno">  471</span>    {</div>
+<div class="line"><span class="lineno">  472</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a>;</div>
+<div class="line"><span class="lineno">  473</span>    }</div>
+<div class="line"><span class="lineno">  474</span> </div>
+<div class="line"><span class="lineno">  475</span>    <span class="keyword">const</span> uint16_t crc_calc =</div>
+<div class="line"><span class="lineno">  476</span>        <a class="code hl_function" href="#a232d3abef22e5395eccc9b5f11c723ad">crc</a>(data, 0, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(response_length - <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a>));</div>
+<div class="line"><span class="lineno">  477</span> </div>
+<div class="line"><span class="lineno">  478</span>    uint16_t crc_received =</div>
+<div class="line"><span class="lineno">  479</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(data[response_length - 2]);</div>
+<div class="line"><span class="lineno">  480</span> </div>
+<div class="line"><span class="lineno">  481</span>    crc_received =</div>
+<div class="line"><span class="lineno">  482</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  483</span>            (crc_received &lt;&lt; 8) |</div>
+<div class="line"><span class="lineno">  484</span>            <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(data[response_length - 1])</div>
+<div class="line"><span class="lineno">  485</span>        );</div>
+<div class="line"><span class="lineno">  486</span> </div>
+<div class="line"><span class="lineno">  487</span>    <span class="keywordflow">if</span> (crc_calc != crc_received)</div>
+<div class="line"><span class="lineno">  488</span>    {</div>
+<div class="line"><span class="lineno">  489</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a>;</div>
+<div class="line"><span class="lineno">  490</span>    }</div>
+<div class="line"><span class="lineno">  491</span> </div>
+<div class="line"><span class="lineno">  492</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a> != data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3acb616235f3e84323e870be70b278ac7f">SLAVE</a>])</div>
+<div class="line"><span class="lineno">  493</span>    {</div>
+<div class="line"><span class="lineno">  494</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a>;</div>
+<div class="line"><span class="lineno">  495</span>    }</div>
+<div class="line"><span class="lineno">  496</span> </div>
+<div class="line"><span class="lineno">  497</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(response_length);</div>
+<div class="line"><span class="lineno">  498</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a></div><div class="ttdeci">@ NO_REPLY</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00102">IGAS_mb.h:102</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5457e572f6d270d2d02e41ed464563a3"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a></div><div class="ttdeci">static const uint8_t CHECKSUM_SIZE</div><div class="ttdoc">Длина CRC16 Modbus RTU, байт.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00087">IGAS_mb.h:87</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_aa5e3fa77d8578d2fa88b429d5988f963"><div class="ttname"><a href="#aa5e3fa77d8578d2fa88b429d5988f963">IGAS_mb_485::receive_request</a></div><div class="ttdeci">int receive_request(uint8_t *received_string)</div><div class="ttdoc">Читает доступные байты из RX-буфера UART.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00425">IGAS_mb.cpp:425</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00087">CHECKSUM_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00237">crc()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00102">NO_REPLY</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00425">receive_request()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00118">SLAVE</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="a0826455e5ebe5f513f9267cdc99a3c05" name="a0826455e5ebe5f513f9267cdc99a3c05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0826455e5ebe5f513f9267cdc99a3c05">&#9670;&#160;</a></span>preset_multiple_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::preset_multiple_registers </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>start_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>regs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Обрабатывает функцию FC16. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00626">626</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  633</span>{</div>
+<div class="line"><span class="lineno">  634</span>    uint8_t packet[<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#af3bff94d6094c0a726233d04dba104d7">RESPONSE_SIZE</a> + <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a>];</div>
+<div class="line"><span class="lineno">  635</span> </div>
+<div class="line"><span class="lineno">  636</span>    <a class="code hl_function" href="#a3da0e2eb93e241dc43eb95164000ae8d">build_write_packet</a>(</div>
+<div class="line"><span class="lineno">  637</span>        <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  638</span>        <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a>,</div>
+<div class="line"><span class="lineno">  639</span>        start_addr,</div>
+<div class="line"><span class="lineno">  640</span>        count,</div>
+<div class="line"><span class="lineno">  641</span>        packet</div>
+<div class="line"><span class="lineno">  642</span>    );</div>
+<div class="line"><span class="lineno">  643</span> </div>
+<div class="line"><span class="lineno">  644</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="#a411f7c848973e64f69e06b7eb451f413">write_regs</a>(start_addr, query, regs) != 0)</div>
+<div class="line"><span class="lineno">  645</span>    {</div>
+<div class="line"><span class="lineno">  646</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="#a7d736d444ce6360b31d845dcfced88e9">send_reply</a>(packet, <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#af3bff94d6094c0a726233d04dba104d7">RESPONSE_SIZE</a>);</div>
+<div class="line"><span class="lineno">  647</span>    }</div>
+<div class="line"><span class="lineno">  648</span> </div>
+<div class="line"><span class="lineno">  649</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  650</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a></div><div class="ttdeci">@ FC_WRITE_REGS</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00039">IGAS_mb.h:39</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_af3bff94d6094c0a726233d04dba104d7"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#af3bff94d6094c0a726233d04dba104d7">RESPONSE_SIZE</a></div><div class="ttdeci">static const uint8_t RESPONSE_SIZE</div><div class="ttdoc">Длина ответа FC06/FC16 без CRC, байт.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00077">IGAS_mb.h:77</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a3da0e2eb93e241dc43eb95164000ae8d"><div class="ttname"><a href="#a3da0e2eb93e241dc43eb95164000ae8d">IGAS_mb_485::build_write_packet</a></div><div class="ttdeci">void build_write_packet(uint8_t slave, uint8_t function, uint16_t start_addr, uint8_t count, uint8_t *packet)</div><div class="ttdoc">Формирует ответ FC16.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00286">IGAS_mb.cpp:286</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a411f7c848973e64f69e06b7eb451f413"><div class="ttname"><a href="#a411f7c848973e64f69e06b7eb451f413">IGAS_mb_485::write_regs</a></div><div class="ttdeci">int write_regs(uint16_t start_addr, uint8_t *query, int16_t *regs)</div><div class="ttdoc">Обрабатывает запись нескольких регистров через делегат.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00592">IGAS_mb.cpp:592</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a7d736d444ce6360b31d845dcfced88e9"><div class="ttname"><a href="#a7d736d444ce6360b31d845dcfced88e9">IGAS_mb_485::send_reply</a></div><div class="ttdeci">int send_reply(uint8_t *query, uint8_t string_length)</div><div class="ttdoc">Отправляет Modbus-ответ с добавлением CRC16.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00358">IGAS_mb.cpp:358</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00286">build_write_packet()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00087">CHECKSUM_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00039">FC_WRITE_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00077">RESPONSE_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">send_reply()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00592">write_regs()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="a6cf6bd74e6c50f5a55d9cfc99954acfa" name="a6cf6bd74e6c50f5a55d9cfc99954acfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf6bd74e6c50f5a55d9cfc99954acfa">&#9670;&#160;</a></span>read_holding_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::read_holding_registers </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>start_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg_count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>regs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Обрабатывает функцию FC03. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00691">691</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  697</span>{</div>
+<div class="line"><span class="lineno">  698</span>    uint8_t packet[<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a9dbccd523bb0ed9a3266bc8c448f4432">MAX_MESSAGE_LENGTH</a>];</div>
+<div class="line"><span class="lineno">  699</span>    <span class="keywordtype">int</span> packet_size = 3;</div>
+<div class="line"><span class="lineno">  700</span> </div>
+<div class="line"><span class="lineno">  701</span>    <a class="code hl_function" href="#a04efece8096284174250e68be7e77cd4">build_read_packet</a>(</div>
+<div class="line"><span class="lineno">  702</span>        <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  703</span>        <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a>,</div>
+<div class="line"><span class="lineno">  704</span>        reg_count,</div>
+<div class="line"><span class="lineno">  705</span>        packet</div>
+<div class="line"><span class="lineno">  706</span>    );</div>
+<div class="line"><span class="lineno">  707</span> </div>
+<div class="line"><span class="lineno">  708</span>    <a class="code hl_function" href="#a795e121f3656c2d99441377be8e67232">doAction</a>(</div>
+<div class="line"><span class="lineno">  709</span>        regs,</div>
+<div class="line"><span class="lineno">  710</span>        <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(start_addr),</div>
+<div class="line"><span class="lineno">  711</span>        <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(reg_count),</div>
+<div class="line"><span class="lineno">  712</span>        0</div>
+<div class="line"><span class="lineno">  713</span>    );</div>
+<div class="line"><span class="lineno">  714</span> </div>
+<div class="line"><span class="lineno">  715</span>    <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; reg_count; ++i)</div>
+<div class="line"><span class="lineno">  716</span>    {</div>
+<div class="line"><span class="lineno">  717</span>        packet[packet_size++] =</div>
+<div class="line"><span class="lineno">  718</span>            <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(regs[i] &gt;&gt; 8);</div>
+<div class="line"><span class="lineno">  719</span> </div>
+<div class="line"><span class="lineno">  720</span>        packet[packet_size++] =</div>
+<div class="line"><span class="lineno">  721</span>            <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(regs[i] &amp; 0x00FF);</div>
+<div class="line"><span class="lineno">  722</span>    }</div>
+<div class="line"><span class="lineno">  723</span> </div>
+<div class="line"><span class="lineno">  724</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a7d736d444ce6360b31d845dcfced88e9">send_reply</a>(packet, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(packet_size));</div>
+<div class="line"><span class="lineno">  725</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a></div><div class="ttdeci">@ FC_READ_REGS</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00037">IGAS_mb.h:37</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a9dbccd523bb0ed9a3266bc8c448f4432"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a9dbccd523bb0ed9a3266bc8c448f4432">MAX_MESSAGE_LENGTH</a></div><div class="ttdeci">static const uint8_t MAX_MESSAGE_LENGTH</div><div class="ttdoc">Максимальная длина Modbus RTU кадра, байт.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00072">IGAS_mb.h:72</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a04efece8096284174250e68be7e77cd4"><div class="ttname"><a href="#a04efece8096284174250e68be7e77cd4">IGAS_mb_485::build_read_packet</a></div><div class="ttdeci">void build_read_packet(uint8_t slave, uint8_t function, uint8_t count, uint8_t *packet)</div><div class="ttdoc">Формирует заголовок ответа FC03.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00271">IGAS_mb.cpp:271</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a795e121f3656c2d99441377be8e67232"><div class="ttname"><a href="#a795e121f3656c2d99441377be8e67232">IGAS_mb_485::doAction</a></div><div class="ttdeci">void doAction(int16_t *t1, int16_t t2, int16_t t3, int16_t t4)</div><div class="ttdoc">Вызывает делегат карты регистров, если он назначен.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00744">IGAS_mb.cpp:744</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00271">build_read_packet()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00744">doAction()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00037">FC_READ_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00072">MAX_MESSAGE_LENGTH</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">send_reply()</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="aa5e3fa77d8578d2fa88b429d5988f963" name="aa5e3fa77d8578d2fa88b429d5988f963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e3fa77d8578d2fa88b429d5988f963">&#9670;&#160;</a></span>receive_request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::receive_request </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>received_string</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Читает доступные байты из RX-буфера UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">received_string</td><td>Буфер назначения.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество принятых байт. </dd>
+<dd>
+NO_REPLY при переполнении буфера. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00425">425</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  426</span>{</div>
+<div class="line"><span class="lineno">  427</span>    <span class="keywordtype">int</span> bytes_received = 0;</div>
+<div class="line"><span class="lineno">  428</span> </div>
+<div class="line"><span class="lineno">  429</span>    <span class="keywordflow">while</span> (<a class="code hl_variable" href="compat__serial_8cpp.html#a645d205797faf77718114532a5dae6f8">Serial</a>.available() != 0)</div>
+<div class="line"><span class="lineno">  430</span>    {</div>
+<div class="line"><span class="lineno">  431</span>        <span class="keywordflow">if</span> (bytes_received &gt;= <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a9dbccd523bb0ed9a3266bc8c448f4432">MAX_MESSAGE_LENGTH</a>)</div>
+<div class="line"><span class="lineno">  432</span>        {</div>
+<div class="line"><span class="lineno">  433</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50aa04c58a8cc2e7777f6f781e8d51524ae">NO_REPLY</a>;</div>
+<div class="line"><span class="lineno">  434</span>        }</div>
+<div class="line"><span class="lineno">  435</span> </div>
+<div class="line"><span class="lineno">  436</span>        <span class="keyword">const</span> <span class="keywordtype">int</span> byte_value = <a class="code hl_variable" href="compat__serial_8cpp.html#a645d205797faf77718114532a5dae6f8">Serial</a>.read();</div>
+<div class="line"><span class="lineno">  437</span> </div>
+<div class="line"><span class="lineno">  438</span>        <span class="keywordflow">if</span> (byte_value &lt; 0)</div>
+<div class="line"><span class="lineno">  439</span>        {</div>
+<div class="line"><span class="lineno">  440</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  441</span>        }</div>
+<div class="line"><span class="lineno">  442</span> </div>
+<div class="line"><span class="lineno">  443</span>        received_string[bytes_received] =</div>
+<div class="line"><span class="lineno">  444</span>            <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(byte_value);</div>
+<div class="line"><span class="lineno">  445</span> </div>
+<div class="line"><span class="lineno">  446</span>        ++bytes_received;</div>
+<div class="line"><span class="lineno">  447</span>    }</div>
+<div class="line"><span class="lineno">  448</span> </div>
+<div class="line"><span class="lineno">  449</span>    <span class="keywordflow">return</span> bytes_received;</div>
+<div class="line"><span class="lineno">  450</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00072">MAX_MESSAGE_LENGTH</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00102">NO_REPLY</a> и <a class="el" href="compat__serial_8cpp_source.html#l00646">Serial</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00461">modbus_request()</a>.</p>
+
+</div>
+</div>
+<a id="a98c850faa601ee6be35218a8bff702b8" name="a98c850faa601ee6be35218a8bff702b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98c850faa601ee6be35218a8bff702b8">&#9670;&#160;</a></span>send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::send </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>string_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Отправляет массив байт без добавления CRC. </p>
+<p>Отправляет массив байт через UART0.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>Буфер данных. </td></tr>
+    <tr><td class="paramname">string_length</td><td>Количество байт для отправки.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество байт, поставленных в UART-драйвер.</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>Буфер данных. </td></tr>
+    <tr><td class="paramname">string_length</td><td>Количество байт для отправки.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество байт, поставленных в UART-драйвер.</dd></dl>
+<p>Перед отправкой RS-485-трансивер переводится в режим передачи. Возврат в режим приёма выполняется по событию UART TX Complete. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00385">385</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  386</span>{</div>
+<div class="line"><span class="lineno">  387</span>    <span class="keywordflow">if</span> ((query == 0) || (string_length == 0u))</div>
+<div class="line"><span class="lineno">  388</span>    {</div>
+<div class="line"><span class="lineno">  389</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  390</span>    }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>    {</div>
+<div class="line"><span class="lineno">  393</span>        <span class="keyword">const</span> uint8_t old_sreg = SREG;</div>
+<div class="line"><span class="lineno">  394</span>        cli();</div>
+<div class="line"><span class="lineno">  395</span> </div>
+<div class="line"><span class="lineno">  396</span>        <a class="code hl_function" href="namespaceldo__board.html#a7e4efa7d7510d8f2f99bf2204e612abb">ldo_board::rs485TransmitMode</a>();</div>
+<div class="line"><span class="lineno">  397</span> </div>
+<div class="line"><span class="lineno">  398</span>        SREG = old_sreg;</div>
+<div class="line"><span class="lineno">  399</span>    }</div>
+<div class="line"><span class="lineno">  400</span> </div>
+<div class="line"><span class="lineno">  401</span>    <a class="code hl_variable" href="#ab097430a0474a4637d437091d79fab51">transmitLED</a> = <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a0462eefda0f53a25027de7a8e738a5d2">dotDisp</a>;</div>
+<div class="line"><span class="lineno">  402</span> </div>
+<div class="line"><span class="lineno">  403</span>    <a class="code hl_function" href="namespacehal.html#aecc319e065a0929d4c89a072c9871db2">delayMicroseconds</a>(10);</div>
+<div class="line"><span class="lineno">  404</span> </div>
+<div class="line"><span class="lineno">  405</span>    uint8_t i = 0u;</div>
+<div class="line"><span class="lineno">  406</span> </div>
+<div class="line"><span class="lineno">  407</span>    <span class="keywordflow">for</span> (i = 0u; i &lt; string_length; ++i)</div>
+<div class="line"><span class="lineno">  408</span>    {</div>
+<div class="line"><span class="lineno">  409</span>        <a class="code hl_variable" href="compat__serial_8cpp.html#a645d205797faf77718114532a5dae6f8">Serial</a>.write(query[i]);</div>
+<div class="line"><span class="lineno">  410</span>    }</div>
+<div class="line"><span class="lineno">  411</span> </div>
+<div class="line"><span class="lineno">  412</span>    <a class="code hl_function" href="namespacehal.html#a360be333558a636fdd4ab5a5ace9af30">hal::uart0_enable_tx_complete_interrupt</a>();</div>
+<div class="line"><span class="lineno">  413</span> </div>
+<div class="line"><span class="lineno">  414</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i);</div>
+<div class="line"><span class="lineno">  415</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0462eefda0f53a25027de7a8e738a5d2"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a0462eefda0f53a25027de7a8e738a5d2">dotDisp</a></div><div class="ttdeci">static const uint8_t dotDisp</div><div class="ttdoc">Флаг проектной индикации передачи.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00134">IGAS_mb.h:134</a></div></div>
+<div class="ttc" id="anamespacehal_html_a360be333558a636fdd4ab5a5ace9af30"><div class="ttname"><a href="namespacehal.html#a360be333558a636fdd4ab5a5ace9af30">hal::uart0_enable_tx_complete_interrupt</a></div><div class="ttdeci">void uart0_enable_tx_complete_interrupt(void)</div><div class="ttdoc">Очищает TXC0 и разрешает прерывание UART0 TX Complete.</div><div class="ttdef"><b>Определения</b> <a href="compat__serial_8cpp_source.html#l00502">compat_serial.cpp:502</a></div></div>
+<div class="ttc" id="anamespacehal_html_aecc319e065a0929d4c89a072c9871db2"><div class="ttname"><a href="namespacehal.html#aecc319e065a0929d4c89a072c9871db2">hal::delayMicroseconds</a></div><div class="ttdeci">void delayMicroseconds(uint16_t us)</div><div class="ttdoc">Выполняет блокирующую задержку в микросекундах.</div><div class="ttdef"><b>Определения</b> <a href="compat__tick_8cpp_source.html#l00137">compat_tick.cpp:137</a></div></div>
+<div class="ttc" id="anamespaceldo__board_html_a7e4efa7d7510d8f2f99bf2204e612abb"><div class="ttname"><a href="namespaceldo__board.html#a7e4efa7d7510d8f2f99bf2204e612abb">ldo_board::rs485TransmitMode</a></div><div class="ttdeci">void rs485TransmitMode(void)</div><div class="ttdoc">Переводит RS-485-трансивер в режим передачи.</div><div class="ttdef"><b>Определения</b> <a href="ldo__board_8cpp_source.html#l00201">ldo_board.cpp:201</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00134">dotDisp</a>, <a class="el" href="ldo__board_8cpp_source.html#l00201">ldo_board::rs485TransmitMode()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00646">Serial</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00224">transmitLED</a> и <a class="el" href="compat__serial_8cpp_source.html#l00502">hal::uart0_enable_tx_complete_interrupt()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">send_reply()</a>.</p>
+
+</div>
+</div>
+<a id="a7d736d444ce6360b31d845dcfced88e9" name="a7d736d444ce6360b31d845dcfced88e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d736d444ce6360b31d845dcfced88e9">&#9670;&#160;</a></span>send_reply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::send_reply </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>string_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Отправляет Modbus-ответ с добавлением CRC16. </p>
+<p>Отправляет Modbus RTU ответ.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>Буфер ответа без CRC. </td></tr>
+    <tr><td class="paramname">string_length</td><td>Длина ответа без CRC.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>0 после постановки ответа на передачу. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">358</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  359</span>{</div>
+<div class="line"><span class="lineno">  360</span>    <a class="code hl_function" href="#a36012052075783e37b59ce89cf61b2d8">modbus_reply</a>(query, string_length);</div>
+<div class="line"><span class="lineno">  361</span> </div>
+<div class="line"><span class="lineno">  362</span>    string_length = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(string_length + <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a>);</div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>    (void)<a class="code hl_function" href="#a98c850faa601ee6be35218a8bff702b8">send</a>(query, string_length);</div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  366</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  367</span>}</div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a36012052075783e37b59ce89cf61b2d8"><div class="ttname"><a href="#a36012052075783e37b59ce89cf61b2d8">IGAS_mb_485::modbus_reply</a></div><div class="ttdeci">void modbus_reply(uint8_t *packet, uint8_t string_length)</div><div class="ttdoc">Добавляет CRC16 в конец пакета.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00342">IGAS_mb.cpp:342</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a98c850faa601ee6be35218a8bff702b8"><div class="ttname"><a href="#a98c850faa601ee6be35218a8bff702b8">IGAS_mb_485::send</a></div><div class="ttdeci">int send(uint8_t *query, uint8_t string_length)</div><div class="ttdoc">Отправляет массив байт без добавления CRC.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00385">IGAS_mb.cpp:385</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00087">CHECKSUM_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00342">modbus_reply()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00385">send()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00626">preset_multiple_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00691">read_holding_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00655">write_single_register()</a>.</p>
+
+</div>
+</div>
+<a id="ad4e3fa4409df9643a7a08ed0d77d1610" name="ad4e3fa4409df9643a7a08ed0d77d1610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e3fa4409df9643a7a08ed0d77d1610">&#9670;&#160;</a></span>setDelegate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IGAS_mb_485::setDelegate </td>
+          <td>(</td>
+          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>fp&#160;</em></span>)(int16_t *, int16_t, int16_t, int16_t)</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Назначает делегат доступа к прикладной карте регистров. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>Функция обработки регистров.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Сигнатура делегата:</p><ul>
+<li>regs — буфер регистров ответа;</li>
+<li>start_addr — стартовый адрес;</li>
+<li>reg_count — количество регистров;</li>
+<li>value — значение при операции записи. </li>
+</ul>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00734">734</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  737</span>{</div>
+<div class="line"><span class="lineno">  738</span>    <a class="code hl_variable" href="#ac97030be84671d4f5ffd02456aacdf4f">fpAction</a> = fp;</div>
+<div class="line"><span class="lineno">  739</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00360">fpAction</a>.</p>
+
+</div>
+</div>
+<a id="a921eb474cd74770d5dcb0953a9433bc2" name="a921eb474cd74770d5dcb0953a9433bc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a921eb474cd74770d5dcb0953a9433bc2">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t IGAS_mb_485::update </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обрабатывает входящие запросы Modbus RTU. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>0, если запрос не обработан или ответ не требуется. </dd>
+<dd>
+Код исключения, если сформирован exception-ответ. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">118</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>{</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keyword">const</span> int16_t length_now =</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="compat__serial_8cpp.html#a645d205797faf77718114532a5dae6f8">Serial</a>.available());</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">if</span> (length_now == 0)</div>
+<div class="line"><span class="lineno">  124</span>    {</div>
+<div class="line"><span class="lineno">  125</span>        <a class="code hl_variable" href="#a941f04361c76cc4793e64a76b0ab8cd9">lastBytesReceived</a> = 0;</div>
+<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceldo__board.html#a32e9f2dac77a3fdb33fec5bd98b3704c">ldo_board::rs485IsTransmitMode</a>())</div>
+<div class="line"><span class="lineno">  130</span>    {</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  132</span>    }</div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>    uint8_t query[<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a9dbccd523bb0ed9a3266bc8c448f4432">MAX_MESSAGE_LENGTH</a>];</div>
+<div class="line"><span class="lineno">  135</span>    uint8_t errpacket[<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a1e5d916ab728e879961dc03e940c5d96">EXCEPTION_SIZE</a> + <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a>];</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <span class="keyword">const</span> uint32_t t_ms = <a class="code hl_function" href="namespacehal.html#aedc926311c95144acd208036100d0acb">millis</a>();</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a941f04361c76cc4793e64a76b0ab8cd9">lastBytesReceived</a> != length_now)</div>
+<div class="line"><span class="lineno">  140</span>    {</div>
+<div class="line"><span class="lineno">  141</span>        <a class="code hl_variable" href="#a941f04361c76cc4793e64a76b0ab8cd9">lastBytesReceived</a> = length_now;</div>
+<div class="line"><span class="lineno">  142</span>        <a class="code hl_variable" href="#aa420a42b99466a6ceac417949d1f3aad">Nowdt</a> = t_ms;</div>
+<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  144</span>    }</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(t_ms - <a class="code hl_variable" href="#aa420a42b99466a6ceac417949d1f3aad">Nowdt</a>) &lt; <a class="code hl_variable" href="#a1764f581cc1611cbad29d3aa812d72ca">interframe_delay</a>)</div>
+<div class="line"><span class="lineno">  147</span>    {</div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>    <a class="code hl_variable" href="#a941f04361c76cc4793e64a76b0ab8cd9">lastBytesReceived</a> = 0;</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>    <span class="keyword">const</span> int16_t frame_len = <a class="code hl_function" href="#a87a48bdf0f9c76ee48471c53f5e3f3ec">modbus_request</a>(<a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>, query);</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (frame_len &lt;= 0)</div>
+<div class="line"><span class="lineno">  156</span>    {</div>
+<div class="line"><span class="lineno">  157</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  158</span>    }</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> exception =</div>
+<div class="line"><span class="lineno">  161</span>        <a class="code hl_function" href="#ae221cf1105d925854ece241c21b29e6f">validate_request</a>(query, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(frame_len));</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">if</span> (exception != 0)</div>
+<div class="line"><span class="lineno">  164</span>    {</div>
+<div class="line"><span class="lineno">  165</span>        <a class="code hl_function" href="#acc2645d1b4600a14c6f983b5677e1e70">build_error_packet</a>(</div>
+<div class="line"><span class="lineno">  166</span>            <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  167</span>            query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>],</div>
+<div class="line"><span class="lineno">  168</span>            <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(exception),</div>
+<div class="line"><span class="lineno">  169</span>            errpacket</div>
+<div class="line"><span class="lineno">  170</span>        );</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>        (void)<a class="code hl_function" href="#a7d736d444ce6360b31d845dcfced88e9">send_reply</a>(errpacket, <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a1e5d916ab728e879961dc03e940c5d96">EXCEPTION_SIZE</a>);</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(exception);</div>
+<div class="line"><span class="lineno">  175</span>    }</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>    <span class="keyword">const</span> uint16_t start_addr =</div>
+<div class="line"><span class="lineno">  178</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  179</span>            (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a>]) &lt;&lt; 8) |</div>
+<div class="line"><span class="lineno">  180</span>            <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a>])</div>
+<div class="line"><span class="lineno">  181</span>        );</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span>    int16_t regs[<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a9dbccd523bb0ed9a3266bc8c448f4432">MAX_MESSAGE_LENGTH</a>];</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    <a class="code hl_variable" href="#a4f67157c882c69a7695a8c4a96c19a3e">func</a> = query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>];</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">switch</span> (query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>])</div>
+<div class="line"><span class="lineno">  188</span>    {</div>
+<div class="line"><span class="lineno">  189</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a>:</div>
+<div class="line"><span class="lineno">  190</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  191</span>                <a class="code hl_function" href="#a6cf6bd74e6c50f5a55d9cfc99954acfa">read_holding_registers</a>(</div>
+<div class="line"><span class="lineno">  192</span>                    <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  193</span>                    start_addr,</div>
+<div class="line"><span class="lineno">  194</span>                    query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>],</div>
+<div class="line"><span class="lineno">  195</span>                    regs</div>
+<div class="line"><span class="lineno">  196</span>                )</div>
+<div class="line"><span class="lineno">  197</span>            );</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a>:</div>
+<div class="line"><span class="lineno">  200</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  201</span>                <a class="code hl_function" href="#a0826455e5ebe5f513f9267cdc99a3c05">preset_multiple_registers</a>(</div>
+<div class="line"><span class="lineno">  202</span>                    <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  203</span>                    start_addr,</div>
+<div class="line"><span class="lineno">  204</span>                    query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>],</div>
+<div class="line"><span class="lineno">  205</span>                    query,</div>
+<div class="line"><span class="lineno">  206</span>                    regs</div>
+<div class="line"><span class="lineno">  207</span>                )</div>
+<div class="line"><span class="lineno">  208</span>            );</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a>:</div>
+<div class="line"><span class="lineno">  211</span>            (void)<a class="code hl_function" href="#a8db186db4ae7bf9a9886bd475a2a738c">write_single_register</a>(</div>
+<div class="line"><span class="lineno">  212</span>                <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  213</span>                start_addr,</div>
+<div class="line"><span class="lineno">  214</span>                query,</div>
+<div class="line"><span class="lineno">  215</span>                regs</div>
+<div class="line"><span class="lineno">  216</span>            );</div>
+<div class="line"><span class="lineno">  217</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  220</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  221</span>    }</div>
+<div class="line"><span class="lineno">  222</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a1e5d916ab728e879961dc03e940c5d96"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a1e5d916ab728e879961dc03e940c5d96">EXCEPTION_SIZE</a></div><div class="ttdeci">static const uint8_t EXCEPTION_SIZE</div><div class="ttdoc">Длина Modbus exception-ответа без CRC, байт.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00082">IGAS_mb.h:82</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a></div><div class="ttdeci">@ FC_WRITE_REG</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00038">IGAS_mb.h:38</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a0826455e5ebe5f513f9267cdc99a3c05"><div class="ttname"><a href="#a0826455e5ebe5f513f9267cdc99a3c05">IGAS_mb_485::preset_multiple_registers</a></div><div class="ttdeci">int preset_multiple_registers(uint8_t slave, uint16_t start_addr, uint8_t count, uint8_t *query, int16_t *regs)</div><div class="ttdoc">Обрабатывает функцию FC16.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00626">IGAS_mb.cpp:626</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a6cf6bd74e6c50f5a55d9cfc99954acfa"><div class="ttname"><a href="#a6cf6bd74e6c50f5a55d9cfc99954acfa">IGAS_mb_485::read_holding_registers</a></div><div class="ttdeci">int read_holding_registers(uint8_t slave, uint16_t start_addr, uint8_t reg_count, int16_t *regs)</div><div class="ttdoc">Обрабатывает функцию FC03.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00691">IGAS_mb.cpp:691</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a87a48bdf0f9c76ee48471c53f5e3f3ec"><div class="ttname"><a href="#a87a48bdf0f9c76ee48471c53f5e3f3ec">IGAS_mb_485::modbus_request</a></div><div class="ttdeci">int16_t modbus_request(uint8_t slave, uint8_t *data)</div><div class="ttdoc">Принимает и проверяет входящий Modbus RTU кадр.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00461">IGAS_mb.cpp:461</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a8db186db4ae7bf9a9886bd475a2a738c"><div class="ttname"><a href="#a8db186db4ae7bf9a9886bd475a2a738c">IGAS_mb_485::write_single_register</a></div><div class="ttdeci">int write_single_register(uint8_t slave, uint16_t write_addr, uint8_t *query, int16_t *regs)</div><div class="ttdoc">Обрабатывает функцию FC06.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00655">IGAS_mb.cpp:655</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_acc2645d1b4600a14c6f983b5677e1e70"><div class="ttname"><a href="#acc2645d1b4600a14c6f983b5677e1e70">IGAS_mb_485::build_error_packet</a></div><div class="ttdeci">void build_error_packet(uint8_t slave, uint8_t function, uint8_t exception, uint8_t *packet)</div><div class="ttdoc">Формирует Modbus exception-ответ.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00324">IGAS_mb.cpp:324</a></div></div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_ae221cf1105d925854ece241c21b29e6f"><div class="ttname"><a href="#ae221cf1105d925854ece241c21b29e6f">IGAS_mb_485::validate_request</a></div><div class="ttdeci">int validate_request(uint8_t *data, uint8_t length)</div><div class="ttdoc">Проверяет запрос на поддерживаемость и допустимость диапазонов.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00513">IGAS_mb.cpp:513</a></div></div>
+<div class="ttc" id="anamespacehal_html_aedc926311c95144acd208036100d0acb"><div class="ttname"><a href="namespacehal.html#aedc926311c95144acd208036100d0acb">hal::millis</a></div><div class="ttdeci">uint32_t millis(void)</div><div class="ttdoc">Возвращает количество миллисекунд с момента запуска тикера.</div><div class="ttdef"><b>Определения</b> <a href="compat__tick_8cpp_source.html#l00096">compat_tick.cpp:96</a></div></div>
+<div class="ttc" id="anamespaceldo__board_html_a32e9f2dac77a3fdb33fec5bd98b3704c"><div class="ttname"><a href="namespaceldo__board.html#a32e9f2dac77a3fdb33fec5bd98b3704c">ldo_board::rs485IsTransmitMode</a></div><div class="ttdeci">bool rs485IsTransmitMode(void)</div><div class="ttdoc">Проверяет текущее состояние линии управления RS-485.</div><div class="ttdef"><b>Определения</b> <a href="ldo__board_8cpp_source.html#l00234">ldo_board.cpp:234</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00324">build_error_packet()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00087">CHECKSUM_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00082">EXCEPTION_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00037">FC_READ_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00038">FC_WRITE_REG</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00039">FC_WRITE_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00119">FUNC</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00232">func</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00240">interframe_delay</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00380">lastBytesReceived</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00072">MAX_MESSAGE_LENGTH</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00461">modbus_request()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00375">Nowdt</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00626">preset_multiple_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00691">read_holding_registers()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00123">REGS_L</a>, <a class="el" href="ldo__board_8cpp_source.html#l00234">ldo_board::rs485IsTransmitMode()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">send_reply()</a>, <a class="el" href="compat__serial_8cpp_source.html#l00646">Serial</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00120">START_H</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00121">START_L</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00513">validate_request()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00655">write_single_register()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00644">loop()</a>.</p>
+
+</div>
+</div>
+<a id="ae221cf1105d925854ece241c21b29e6f" name="ae221cf1105d925854ece241c21b29e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae221cf1105d925854ece241c21b29e6f">&#9670;&#160;</a></span>validate_request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::validate_request </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Проверяет запрос на поддерживаемость и допустимость диапазонов. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Принятый Modbus RTU кадр. </td></tr>
+    <tr><td class="paramname">length</td><td>Длина кадра.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>0 при успешной проверке. </dd>
+<dd>
+Код Modbus exception при ошибке. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00513">513</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  514</span>{</div>
+<div class="line"><span class="lineno">  515</span>    (void)length;</div>
+<div class="line"><span class="lineno">  516</span> </div>
+<div class="line"><span class="lineno">  517</span>    <span class="keywordtype">bool</span> function_supported = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  518</span> </div>
+<div class="line"><span class="lineno">  519</span>    <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; static_cast&lt;uint8_t&gt;(<span class="keyword">sizeof</span>(<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#ab47fd3e6ed6318f18f3eb0e1ab2eb8ed">fsupported</a>)); ++i)</div>
+<div class="line"><span class="lineno">  520</span>    {</div>
+<div class="line"><span class="lineno">  521</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#ab47fd3e6ed6318f18f3eb0e1ab2eb8ed">fsupported</a>[i] == data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>])</div>
+<div class="line"><span class="lineno">  522</span>        {</div>
+<div class="line"><span class="lineno">  523</span>            function_supported = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  524</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  525</span>        }</div>
+<div class="line"><span class="lineno">  526</span>    }</div>
+<div class="line"><span class="lineno">  527</span> </div>
+<div class="line"><span class="lineno">  528</span>    <span class="keywordflow">if</span> (!function_supported)</div>
+<div class="line"><span class="lineno">  529</span>    {</div>
+<div class="line"><span class="lineno">  530</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2">EXC_FUNC_CODE</a>;</div>
+<div class="line"><span class="lineno">  531</span>    }</div>
+<div class="line"><span class="lineno">  532</span> </div>
+<div class="line"><span class="lineno">  533</span>    <span class="keyword">const</span> uint16_t start_addr =</div>
+<div class="line"><span class="lineno">  534</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  535</span>            (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a75f4c6a57a503d7d6d30b5c0a9fe4a11">START_H</a>]) &lt;&lt; 8) |</div>
+<div class="line"><span class="lineno">  536</span>            <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a20061f57d1acaa7acb0525304b78effd">START_L</a>])</div>
+<div class="line"><span class="lineno">  537</span>        );</div>
+<div class="line"><span class="lineno">  538</span> </div>
+<div class="line"><span class="lineno">  539</span>    <span class="keywordflow">if</span> (start_addr &gt;= <a class="code hl_variable" href="#ad8ff5cc55974db8425ba858da749ddef">regLimit</a>)</div>
+<div class="line"><span class="lineno">  540</span>    {</div>
+<div class="line"><span class="lineno">  541</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280">EXC_ADDR_RANGE</a>;</div>
+<div class="line"><span class="lineno">  542</span>    }</div>
+<div class="line"><span class="lineno">  543</span> </div>
+<div class="line"><span class="lineno">  544</span>    <span class="keywordflow">if</span> (data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] == <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a>)</div>
+<div class="line"><span class="lineno">  545</span>    {</div>
+<div class="line"><span class="lineno">  546</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  547</span>    }</div>
+<div class="line"><span class="lineno">  548</span> </div>
+<div class="line"><span class="lineno">  549</span>    <span class="keyword">const</span> uint16_t regs_num =</div>
+<div class="line"><span class="lineno">  550</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  551</span>            (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a>]) &lt;&lt; 8) |</div>
+<div class="line"><span class="lineno">  552</span>            <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>])</div>
+<div class="line"><span class="lineno">  553</span>        );</div>
+<div class="line"><span class="lineno">  554</span> </div>
+<div class="line"><span class="lineno">  555</span>    uint8_t max_regs_num = 0;</div>
+<div class="line"><span class="lineno">  556</span> </div>
+<div class="line"><span class="lineno">  557</span>    <span class="keywordflow">if</span> (data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] == <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bace56f3faae905b86bce9a92f6fbc796d">FC_READ_REGS</a>)</div>
+<div class="line"><span class="lineno">  558</span>    {</div>
+<div class="line"><span class="lineno">  559</span>        max_regs_num = <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a41cdd946693b919f6e23bb1d70dcfb80">MAX_READ_REGS</a>;</div>
+<div class="line"><span class="lineno">  560</span>    }</div>
+<div class="line"><span class="lineno">  561</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a389e03ce61ac2d93fd54069187ab58af">FUNC</a>] == <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0bac2a3f72e810a3804ac18dfadb866c999">FC_WRITE_REGS</a>)</div>
+<div class="line"><span class="lineno">  562</span>    {</div>
+<div class="line"><span class="lineno">  563</span>        max_regs_num = <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#aff1cb5d2103fef17e75001afe7138dca">MAX_WRITE_REGS</a>;</div>
+<div class="line"><span class="lineno">  564</span>    }</div>
+<div class="line"><span class="lineno">  565</span> </div>
+<div class="line"><span class="lineno">  566</span>    <span class="keywordflow">if</span> ((regs_num &lt; 1u) || (regs_num &gt; <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(max_regs_num)))</div>
+<div class="line"><span class="lineno">  567</span>    {</div>
+<div class="line"><span class="lineno">  568</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920">EXC_REGS_QUANT</a>;</div>
+<div class="line"><span class="lineno">  569</span>    }</div>
+<div class="line"><span class="lineno">  570</span> </div>
+<div class="line"><span class="lineno">  571</span>    <span class="keywordflow">if</span> (regs_num &gt; <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#ad8ff5cc55974db8425ba858da749ddef">regLimit</a> - start_addr))</div>
+<div class="line"><span class="lineno">  572</span>    {</div>
+<div class="line"><span class="lineno">  573</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280">EXC_ADDR_RANGE</a>;</div>
+<div class="line"><span class="lineno">  574</span>    }</div>
+<div class="line"><span class="lineno">  575</span> </div>
+<div class="line"><span class="lineno">  576</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  577</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50a062e13fdfefabb1d620506a526be3920">EXC_REGS_QUANT</a></div><div class="ttdeci">@ EXC_REGS_QUANT</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00105">IGAS_mb.h:105</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50ad3899b13b2069997f5db7f18e9978280">EXC_ADDR_RANGE</a></div><div class="ttdeci">@ EXC_ADDR_RANGE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00104">IGAS_mb.h:104</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a0cae3232d9756b249ebaddc2ee1f8c50ad82ec66545269170f1401af6e418e8f2">EXC_FUNC_CODE</a></div><div class="ttdeci">@ EXC_FUNC_CODE</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00103">IGAS_mb.h:103</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a41cdd946693b919f6e23bb1d70dcfb80"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a41cdd946693b919f6e23bb1d70dcfb80">MAX_READ_REGS</a></div><div class="ttdeci">static const uint8_t MAX_READ_REGS</div><div class="ttdoc">Максимальное количество регистров за один запрос FC03.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00062">IGAS_mb.h:62</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_ab47fd3e6ed6318f18f3eb0e1ab2eb8ed"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#ab47fd3e6ed6318f18f3eb0e1ab2eb8ed">fsupported</a></div><div class="ttdeci">static const uint8_t fsupported[]</div><div class="ttdoc">Таблица поддерживаемых кодов функций.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00048">IGAS_mb.h:48</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_aff1cb5d2103fef17e75001afe7138dca"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#aff1cb5d2103fef17e75001afe7138dca">MAX_WRITE_REGS</a></div><div class="ttdeci">static const uint8_t MAX_WRITE_REGS</div><div class="ttdoc">Максимальное количество регистров за один запрос FC16.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00067">IGAS_mb.h:67</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00104">EXC_ADDR_RANGE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00103">EXC_FUNC_CODE</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00105">EXC_REGS_QUANT</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00037">FC_READ_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00038">FC_WRITE_REG</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00039">FC_WRITE_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00048">fsupported</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00119">FUNC</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00062">MAX_READ_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00067">MAX_WRITE_REGS</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00370">regLimit</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00122">REGS_H</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00123">REGS_L</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00120">START_H</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00121">START_L</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="a411f7c848973e64f69e06b7eb451f413" name="a411f7c848973e64f69e06b7eb451f413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a411f7c848973e64f69e06b7eb451f413">&#9670;&#160;</a></span>write_regs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::write_regs </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>start_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>regs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Обрабатывает запись нескольких регистров через делегат. </p>
+<p>Передаёт значения FC16 в прикладной делегат.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_addr</td><td>Стартовый адрес регистров. </td></tr>
+    <tr><td class="paramname">query</td><td>Принятый Modbus RTU кадр. </td></tr>
+    <tr><td class="paramname">regs</td><td>Временный буфер регистров.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество обработанных регистров. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00592">592</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  597</span>{</div>
+<div class="line"><span class="lineno">  598</span>    uint16_t i = 0;</div>
+<div class="line"><span class="lineno">  599</span> </div>
+<div class="line"><span class="lineno">  600</span>    <span class="keywordflow">for</span> (i = 0; i &lt; static_cast&lt;uint16_t&gt;(query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>]); ++i)</div>
+<div class="line"><span class="lineno">  601</span>    {</div>
+<div class="line"><span class="lineno">  602</span>        int16_t temp =</div>
+<div class="line"><span class="lineno">  603</span>            <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  604</span>                <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(query[(<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892">BYTE_CNT</a> + 1) + i * 2]) &lt;&lt; 8</div>
+<div class="line"><span class="lineno">  605</span>            );</div>
+<div class="line"><span class="lineno">  606</span> </div>
+<div class="line"><span class="lineno">  607</span>        temp = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  608</span>            temp |</div>
+<div class="line"><span class="lineno">  609</span>            <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(query[(<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892">BYTE_CNT</a> + 2) + i * 2])</div>
+<div class="line"><span class="lineno">  610</span>        );</div>
+<div class="line"><span class="lineno">  611</span> </div>
+<div class="line"><span class="lineno">  612</span>        <a class="code hl_function" href="#a795e121f3656c2d99441377be8e67232">doAction</a>(</div>
+<div class="line"><span class="lineno">  613</span>            regs,</div>
+<div class="line"><span class="lineno">  614</span>            <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(start_addr + i),</div>
+<div class="line"><span class="lineno">  615</span>            <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#abcd55545c0df484c08ee3f2e113c2988">singleRegister</a>,</div>
+<div class="line"><span class="lineno">  616</span>            temp</div>
+<div class="line"><span class="lineno">  617</span>        );</div>
+<div class="line"><span class="lineno">  618</span>    }</div>
+<div class="line"><span class="lineno">  619</span> </div>
+<div class="line"><span class="lineno">  620</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i);</div>
+<div class="line"><span class="lineno">  621</span>}</div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af84036e1dd68a2e160c3394fc083e892">BYTE_CNT</a></div><div class="ttdeci">@ BYTE_CNT</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00124">IGAS_mb.h:124</a></div></div>
+<div class="ttc" id="a_i_g_a_s__mb_8h_html_abcd55545c0df484c08ee3f2e113c2988"><div class="ttname"><a href="_i_g_a_s__mb_8h.html#abcd55545c0df484c08ee3f2e113c2988">singleRegister</a></div><div class="ttdeci">static const uint8_t singleRegister</div><div class="ttdoc">Количество регистров при обработке одиночной записи.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8h_source.html#l00139">IGAS_mb.h:139</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8h_source.html#l00124">BYTE_CNT</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00744">doAction()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00123">REGS_L</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00139">singleRegister</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00626">preset_multiple_registers()</a>.</p>
+
+</div>
+</div>
+<a id="a8db186db4ae7bf9a9886bd475a2a738c" name="a8db186db4ae7bf9a9886bd475a2a738c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db186db4ae7bf9a9886bd475a2a738c">&#9670;&#160;</a></span>write_single_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IGAS_mb_485::write_single_register </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>write_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>query</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>regs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Обрабатывает функцию FC06. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a> строка <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00655">655</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  661</span>{</div>
+<div class="line"><span class="lineno">  662</span>    <span class="keyword">const</span> uint16_t reg_val =</div>
+<div class="line"><span class="lineno">  663</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  664</span>            (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3af3846862aea217f23781df7eb2f7afe7">REGS_H</a>]) &lt;&lt; 8) |</div>
+<div class="line"><span class="lineno">  665</span>            <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(query[<a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a6f68bb8dcc24d63540a70bc5bcb9aac3a42259aae240aa063e5d63a914eda564a">REGS_L</a>])</div>
+<div class="line"><span class="lineno">  666</span>        );</div>
+<div class="line"><span class="lineno">  667</span> </div>
+<div class="line"><span class="lineno">  668</span>    uint8_t packet[<a class="code hl_variable" href="_i_g_a_s__mb_8h.html#af3bff94d6094c0a726233d04dba104d7">RESPONSE_SIZE</a> + <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#a5457e572f6d270d2d02e41ed464563a3">CHECKSUM_SIZE</a>];</div>
+<div class="line"><span class="lineno">  669</span> </div>
+<div class="line"><span class="lineno">  670</span>    <a class="code hl_function" href="#a1e9f90decf2c10056d9ee6cb32d7eea5">build_write_single_packet</a>(</div>
+<div class="line"><span class="lineno">  671</span>        <a class="code hl_variable" href="#a7671381fb4dd188731fca68379466a04">slave</a>,</div>
+<div class="line"><span class="lineno">  672</span>        <a class="code hl_enumvalue" href="_i_g_a_s__mb_8h.html#a5dc067f13fceb5a2ac4b5d83c997ae0ba158f564254e85b6660871b3f8c0f7264">FC_WRITE_REG</a>,</div>
+<div class="line"><span class="lineno">  673</span>        write_addr,</div>
+<div class="line"><span class="lineno">  674</span>        reg_val,</div>
+<div class="line"><span class="lineno">  675</span>        packet</div>
+<div class="line"><span class="lineno">  676</span>    );</div>
+<div class="line"><span class="lineno">  677</span> </div>
+<div class="line"><span class="lineno">  678</span>    <a class="code hl_function" href="#a795e121f3656c2d99441377be8e67232">doAction</a>(</div>
+<div class="line"><span class="lineno">  679</span>        regs,</div>
+<div class="line"><span class="lineno">  680</span>        <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(write_addr),</div>
+<div class="line"><span class="lineno">  681</span>        <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#abcd55545c0df484c08ee3f2e113c2988">singleRegister</a>,</div>
+<div class="line"><span class="lineno">  682</span>        <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(reg_val)</div>
+<div class="line"><span class="lineno">  683</span>    );</div>
+<div class="line"><span class="lineno">  684</span> </div>
+<div class="line"><span class="lineno">  685</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a7d736d444ce6360b31d845dcfced88e9">send_reply</a>(packet, <a class="code hl_variable" href="_i_g_a_s__mb_8h.html#af3bff94d6094c0a726233d04dba104d7">RESPONSE_SIZE</a>);</div>
+<div class="line"><span class="lineno">  686</span>}</div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a1e9f90decf2c10056d9ee6cb32d7eea5"><div class="ttname"><a href="#a1e9f90decf2c10056d9ee6cb32d7eea5">IGAS_mb_485::build_write_single_packet</a></div><div class="ttdeci">void build_write_single_packet(uint8_t slave, uint8_t function, uint16_t write_addr, uint16_t reg_val, uint8_t *packet)</div><div class="ttdoc">Формирует ответ FC06.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00305">IGAS_mb.cpp:305</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00305">build_write_single_packet()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00087">CHECKSUM_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00744">doAction()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00038">FC_WRITE_REG</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00122">REGS_H</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00123">REGS_L</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00077">RESPONSE_SIZE</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00358">send_reply()</a>, <a class="el" href="_i_g_a_s__mb_8h_source.html#l00139">singleRegister</a> и <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">slave</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Поля</h2>
+<a id="ac97030be84671d4f5ffd02456aacdf4f" name="ac97030be84671d4f5ffd02456aacdf4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac97030be84671d4f5ffd02456aacdf4f">&#9670;&#160;</a></span>fpAction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* IGAS_mb_485::fpAction) (int16_t *, int16_t, int16_t, int16_t)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Делегат доступа к прикладной карте регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00360">360</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00744">doAction()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00734">setDelegate()</a>.</p>
+
+</div>
+</div>
+<a id="a4f67157c882c69a7695a8c4a96c19a3e" name="a4f67157c882c69a7695a8c4a96c19a3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f67157c882c69a7695a8c4a96c19a3e">&#9670;&#160;</a></span>func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t IGAS_mb_485::func</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Последний обработанный код функции Modbus. </p>
+<p>Используется прикладным делегатом для различения операций чтения и записи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00232">232</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="a1764f581cc1611cbad29d3aa812d72ca" name="a1764f581cc1611cbad29d3aa812d72ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1764f581cc1611cbad29d3aa812d72ca">&#9670;&#160;</a></span>interframe_delay</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t IGAS_mb_485::interframe_delay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Межкадровая пауза Modbus RTU, мс. </p>
+<p>Используется для определения завершения входящего кадра. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00240">240</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00075">initMB()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="a941f04361c76cc4793e64a76b0ab8cd9" name="a941f04361c76cc4793e64a76b0ab8cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a941f04361c76cc4793e64a76b0ab8cd9">&#9670;&#160;</a></span>lastBytesReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t IGAS_mb_485::lastBytesReceived</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Последнее зафиксированное количество байт в RX-буфере. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00380">380</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="aa420a42b99466a6ceac417949d1f3aad" name="aa420a42b99466a6ceac417949d1f3aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa420a42b99466a6ceac417949d1f3aad">&#9670;&#160;</a></span>Nowdt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t IGAS_mb_485::Nowdt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Время последнего изменения количества принятых байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00375">375</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a>.</p>
+
+</div>
+</div>
+<a id="ad8ff5cc55974db8425ba858da749ddef" name="ad8ff5cc55974db8425ba858da749ddef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8ff5cc55974db8425ba858da749ddef">&#9670;&#160;</a></span>regLimit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t IGAS_mb_485::regLimit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Верхняя исключающая граница адресного пространства Holding-регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00370">370</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00075">initMB()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00513">validate_request()</a>.</p>
+
+</div>
+</div>
+<a id="a7671381fb4dd188731fca68379466a04" name="a7671381fb4dd188731fca68379466a04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7671381fb4dd188731fca68379466a04">&#9670;&#160;</a></span>slave</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t IGAS_mb_485::slave</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Адрес ведомого устройства Modbus. </p>
+<p>Устанавливается прикладным кодом после чтения адресного переключателя. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00219">219</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00324">build_error_packet()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00271">build_read_packet()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00286">build_write_packet()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00305">build_write_single_packet()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00461">modbus_request()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00626">preset_multiple_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00691">read_holding_registers()</a>, <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">update()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00655">write_single_register()</a>.</p>
+
+</div>
+</div>
+<a id="ab097430a0474a4637d437091d79fab51" name="ab097430a0474a4637d437091d79fab51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab097430a0474a4637d437091d79fab51">&#9670;&#160;</a></span>transmitLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t IGAS_mb_485::transmitLED</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Флаг индикации активности передачи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a> строка <a class="el" href="_i_g_a_s__mb_8h_source.html#l00224">224</a></p>
+
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00051">IGAS_mb_485()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00385">send()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>Libs/<a class="el" href="_i_g_a_s__mb_8h_source.html">IGAS_mb.h</a></li>
+<li>Libs/<a class="el" href="_i_g_a_s__mb_8cpp_source.html">IGAS_mb.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_i_g_a_s__mb__485.html">IGAS_mb_485</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

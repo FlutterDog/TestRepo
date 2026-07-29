@@ -1,0 +1,613 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LDO1118 Rev3 Firmware: LDO1118 Rev3 Firmware</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LDO1118 Rev3 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LDO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">LDO1118 Rev3 Firmware </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<p>Документация по встроенному программному обеспечению модуля дискретных релейных выходов LDO.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Назначение</h1>
+<p>Прошивка реализует прикладную логику модуля LDO:</p>
+<ul>
+<li>управление восемью релейными выходами;</li>
+<li>обмен по Modbus RTU через интерфейс RS-485;</li>
+<li>чтение аппаратного адресного переключателя;</li>
+<li>контроль потери связи с ведущим устройством;</li>
+<li>перевод выходов в безопасное состояние при потере связи;</li>
+<li>индикацию состояния связи;</li>
+<li>программную перезагрузку;</li>
+<li>переход в загрузчик для обновления прошивки.</li>
+</ul>
+<p>Проект предназначен для микроконтроллера ATmega328P с тактовой частотой 16 MHz.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Основные параметры</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Параметр  </th><th class="markdownTableHeadNone">Значение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Микроконтроллер  </td><td class="markdownTableBodyNone">ATmega328P  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Частота CPU  </td><td class="markdownTableBodyNone">16 MHz  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Интерфейс связи  </td><td class="markdownTableBodyNone">RS-485  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Протокол  </td><td class="markdownTableBodyNone">Modbus RTU  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Скорость обмена  </td><td class="markdownTableBodyNone">9600 bit/s  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Формат кадра  </td><td class="markdownTableBodyNone">8N1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Количество дискретных выходов  </td><td class="markdownTableBodyNone">8  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Тип выходов  </td><td class="markdownTableBodyNone">Релейные выходы  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Системный тик  </td><td class="markdownTableBodyNone">Timer0, 1 ms  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Watchdog  </td><td class="markdownTableBodyNone">используется  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Bootloader jump  </td><td class="markdownTableBodyNone">поддерживается  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Состав проекта</h1>
+<div class="fragment"><div class="line">.</div>
+<div class="line">├── app/</div>
+<div class="line">│   ├── app.hpp</div>
+<div class="line">│   ├── app.cpp</div>
+<div class="line">│   ├── ldo_board.hpp</div>
+<div class="line">│   ├── ldo_board.cpp</div>
+<div class="line">│   └── project.hpp</div>
+<div class="line">│</div>
+<div class="line">├── hal/</div>
+<div class="line">│   ├── compat.hpp</div>
+<div class="line">│   ├── compat_gpio.cpp</div>
+<div class="line">│   ├── compat_serial.cpp</div>
+<div class="line">│   └── compat_tick.cpp</div>
+<div class="line">│</div>
+<div class="line">├── Libs/</div>
+<div class="line">│   ├── IGAS_mb.h</div>
+<div class="line">│   └── IGAS_mb.cpp</div>
+<div class="line">│</div>
+<div class="line">├── main.cpp</div>
+<div class="line">├── Doxyfile</div>
+<div class="line">└── README.md</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<span class="tt">main.cpp</span></h2>
+<p>Точка входа прошивки.</p>
+<p>Выполняет:</p>
+<ul>
+<li>запрет прерываний на этапе базовой инициализации;</li>
+<li>запуск системного миллисекундного тикера;</li>
+<li>разрешение прерываний;</li>
+<li>вызов <span class="tt"><a class="el" href="app_8cpp.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Выполняет однократную инициализацию приложения LDO.">setup()</a></span>;</li>
+<li>бесконечный вызов <span class="tt"><a class="el" href="app_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" title="Выполняет один проход основного цикла приложения LDO.">loop()</a></span>.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<span class="tt">app/</span></h2>
+<p>Прикладной уровень прошивки.</p>
+<p>Содержит:</p>
+<ul>
+<li>инициализацию приложения;</li>
+<li>основной цикл;</li>
+<li>обработку Modbus-регистров;</li>
+<li>управление релейными выходами;</li>
+<li>контроль таймаута связи;</li>
+<li>индикацию состояния связи;</li>
+<li>перезагрузку;</li>
+<li>переход в bootloader.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<span class="tt">app/ldo_board.hpp</span>, <span class="tt">app/ldo_board.cpp</span></h2>
+<p>Аппаратный слой платы LDO.</p>
+<p>Содержит привязку сигналов платы к портам ATmega328P:</p>
+<ul>
+<li>адресный переключатель;</li>
+<li>RS-485 direction;</li>
+<li>релейные выходы;</li>
+<li>светодиод состояния связи;</li>
+<li>выбор аппаратной ревизии платы.</li>
+</ul>
+<p>Прикладной код не должен напрямую работать с <span class="tt">PORTx</span>, <span class="tt">DDRx</span> и <span class="tt">PINx</span> для сигналов платы. Для этого используется <span class="tt"><a class="el" href="namespaceldo__board.html">ldo_board</a></span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<span class="tt">hal/</span></h2>
+<p>Общий аппаратный слой.</p>
+<p>Содержит:</p>
+<ul>
+<li>GPIO;</li>
+<li>UART0;</li>
+<li>системный тикер;</li>
+<li>задержки;</li>
+<li>минимальные системные типы и функции.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+<span class="tt">Libs/IGAS_mb.*</span></h2>
+<p>Транспорт Modbus RTU по RS-485.</p>
+<p>Поддерживаемые функции Modbus:</p>
+<ul>
+<li>FC03 — Read Holding Registers;</li>
+<li>FC06 — Write Single Register;</li>
+<li>FC16 — Write Multiple Registers.</li>
+</ul>
+<p>Доступ к прикладной карте регистров выполняется через callback, назначаемый из <span class="tt"><a class="el" href="app_8cpp.html" title="Прикладная логика модуля релейных выходов LDO.">app.cpp</a></span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+Аппаратная карта LDO</h1>
+<p>Прошивка поддерживает две аппаратные версии платы LDO.</p>
+<p>Выбор активной аппаратной версии выполняется в <span class="tt"><a class="el" href="ldo__board_8cpp.html" title="Реализация аппаратного слоя платы LDO.">ldo_board.cpp</a></span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+Новая плата</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Сигнал  </th><th class="markdownTableHeadNone">Линия MCU  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RXD  </td><td class="markdownTableBodyNone">PD0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">TXD  </td><td class="markdownTableBodyNone">PD1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RS-485 DE / RE  </td><td class="markdownTableBodyNone">PD2  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 0  </td><td class="markdownTableBodyNone">PB2  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 1  </td><td class="markdownTableBodyNone">PB1  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 2  </td><td class="markdownTableBodyNone">PB0  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 3  </td><td class="markdownTableBodyNone">PD7  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 4  </td><td class="markdownTableBodyNone">PD6  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 5  </td><td class="markdownTableBodyNone">PD5  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 6  </td><td class="markdownTableBodyNone">PD4  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 7  </td><td class="markdownTableBodyNone">PD3  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LED состояния связи  </td><td class="markdownTableBodyNone">PC0  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+Старая плата</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Сигнал  </th><th class="markdownTableHeadNone">Линия MCU  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RXD  </td><td class="markdownTableBodyNone">PD0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">TXD  </td><td class="markdownTableBodyNone">PD1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RS-485 DE / RE  </td><td class="markdownTableBodyNone">PB2  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 0  </td><td class="markdownTableBodyNone">PB1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 1  </td><td class="markdownTableBodyNone">PB0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 2  </td><td class="markdownTableBodyNone">PD7  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 3  </td><td class="markdownTableBodyNone">PD6  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 4  </td><td class="markdownTableBodyNone">PD5  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 5  </td><td class="markdownTableBodyNone">PD4  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Relay bit 6  </td><td class="markdownTableBodyNone">PD3  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Relay bit 7  </td><td class="markdownTableBodyNone">PD2  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LED состояния связи  </td><td class="markdownTableBodyNone">PC0  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+Адресный переключатель</h1>
+<p>Адресный переключатель подключён к линиям <span class="tt">PC1...PC5</span>.</p>
+<p>Соответствие входов и битов адреса:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Линия MCU  </th><th class="markdownTableHeadRight">Бит адреса  </th><th class="markdownTableHeadRight">Маска  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PC5  </td><td class="markdownTableBodyRight">bit 0  </td><td class="markdownTableBodyRight">0x01  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PC4  </td><td class="markdownTableBodyRight">bit 1  </td><td class="markdownTableBodyRight">0x02  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PC3  </td><td class="markdownTableBodyRight">bit 2  </td><td class="markdownTableBodyRight">0x04  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PC2  </td><td class="markdownTableBodyRight">bit 3  </td><td class="markdownTableBodyRight">0x08  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PC1  </td><td class="markdownTableBodyRight">bit 4  </td><td class="markdownTableBodyRight">0x10  </td></tr>
+</table>
+<p>Если аппаратно считанный адрес равен нулю, прошивка использует адрес <span class="tt">1</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+RS-485</h1>
+<p>Перед отправкой ответа Modbus трансивер переводится в режим передачи.</p>
+<p>Возврат в режим приёма выполняется после события UART TX Complete, когда физическая передача последнего байта завершена.</p>
+<p>Для корректной работы необходимо, чтобы аппаратная версия платы в <span class="tt"><a class="el" href="ldo__board_8cpp.html" title="Реализация аппаратного слоя платы LDO.">ldo_board.cpp</a></span> соответствовала фактической плате.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+Релейные выходы</h1>
+<p>Релейные выходы управляются битовой маской.</p>
+<p>Каждый бит соответствует одному релейному выходу.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Бит  </th><th class="markdownTableHeadRight">Маска  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">bit 0  </td><td class="markdownTableBodyRight">0x01  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">bit 1  </td><td class="markdownTableBodyRight">0x02  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">bit 2  </td><td class="markdownTableBodyRight">0x04  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">bit 3  </td><td class="markdownTableBodyRight">0x08  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">bit 4  </td><td class="markdownTableBodyRight">0x10  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">bit 5  </td><td class="markdownTableBodyRight">0x20  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">bit 6  </td><td class="markdownTableBodyRight">0x40  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">bit 7  </td><td class="markdownTableBodyRight">0x80  </td></tr>
+</table>
+<p>При потере связи прошивка сбрасывает требуемое состояние выходов в <span class="tt">0x00</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+Карта Modbus-регистров</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Holding Register  </th><th class="markdownTableHeadNone">Доступ  </th><th class="markdownTableHeadNone">Назначение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">0  </td><td class="markdownTableBodyNone">Read / Write  </td><td class="markdownTableBodyNone">Управление релейными выходами или чтение текущего состояния  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Текущее состояние релейных выходов  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">3  </td><td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone">Байт ошибки устройства  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">580  </td><td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">Вход в сервисный режим по ключу  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">590  </td><td class="markdownTableBodyNone">Reserved  </td><td class="markdownTableBodyNone">Зарезервировано под сервисные данные / EEPROM  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">591  </td><td class="markdownTableBodyNone">Reserved  </td><td class="markdownTableBodyNone">Зарезервировано под сервисные данные / EEPROM  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">592  </td><td class="markdownTableBodyNone">Reserved  </td><td class="markdownTableBodyNone">Зарезервировано под сервисные данные / EEPROM  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">593  </td><td class="markdownTableBodyNone">Reserved  </td><td class="markdownTableBodyNone">Зарезервировано под сервисные данные / EEPROM  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">594  </td><td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">Программная перезагрузка  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">900  </td><td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">Отложенный переход в bootloader  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+HR 0 — управление релейными выходами</h2>
+<p>При записи в <span class="tt">HR 0</span> значение регистра задаёт требуемое состояние релейных выходов.</p>
+<p>Пример:</p>
+<div class="fragment"><div class="line">HR 0 = 0x01</div>
+</div><!-- fragment --><p>Включает выход, соответствующий <span class="tt">bit 0</span>.</p>
+<div class="fragment"><div class="line">HR 0 = 0x00</div>
+</div><!-- fragment --><p>Выключает все релейные выходы.</p>
+<p>При чтении <span class="tt">HR 0</span> возвращается текущее применённое состояние релейных выходов.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+HR 1 — состояние релейных выходов</h2>
+<p>Регистр только для чтения.</p>
+<p>Возвращает текущее состояние релейных выходов.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+HR 3 — байт ошибки</h2>
+<p>Регистр только для чтения.</p>
+<p>В текущей базовой реализации используется как поле совместимости с картой регистров.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+HR 580 — сервисный режим</h2>
+<p>Запись сервисного ключа включает сервисный режим.</p>
+<p>Сервисный режим используется для защищённых операций, если они реализованы в текущей версии прошивки.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+HR 590...593 — резерв</h2>
+<p>Регистры оставлены под сервисные данные и EEPROM-параметры.</p>
+<p>Если в конкретной версии проекта EEPROM-логика не используется, регистры не выполняют активных действий.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+HR 594 — программная перезагрузка</h2>
+<p>Для перезагрузки записать:</p>
+<div class="fragment"><div class="line">HR 594 = 1</div>
+</div><!-- fragment --><p>После обработки команды прошивка выполняет перезагрузку через watchdog.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+HR 900 — переход в bootloader</h2>
+<p>Для перехода в загрузчик записать любое значение в <span class="tt">HR 900</span>.</p>
+<p>Переход выполняется с небольшой задержкой, чтобы Modbus-ответ успел уйти в линию RS-485.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+Поведение при потере связи</h1>
+<p>Прошивка контролирует время последнего корректного Modbus-запроса.</p>
+<p>Если в течение заданного таймаута обмен отсутствует:</p>
+<ul>
+<li>состояние связи считается потерянным;</li>
+<li>требуемое состояние релейных выходов сбрасывается в <span class="tt">0x00</span>;</li>
+<li>релейные выходы выключаются при следующем цикле применения состояния;</li>
+<li>светодиод связи переходит в режим мигания.</li>
+</ul>
+<p>При восстановлении обмена светодиод связи включается постоянно.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+Сборка прошивки</h1>
+<p>Проект собирается в Microchip Studio / Atmel Studio с AVR-GCC.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+Рекомендуемые параметры проекта</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Параметр  </th><th class="markdownTableHeadNone">Значение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Device  </td><td class="markdownTableBodyNone">ATmega328P  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Toolchain  </td><td class="markdownTableBodyNone">AVR-GCC  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">F_CPU  </td><td class="markdownTableBodyNone">16000000UL  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Конфигурация сборки  </td><td class="markdownTableBodyNone">Release или Debug  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+Порядок сборки</h2>
+<ol type="1">
+<li>Открыть проект в Microchip Studio / Atmel Studio.</li>
+<li>Проверить выбранный микроконтроллер: <span class="tt">ATmega328P</span>.</li>
+<li>Проверить наличие определения <span class="tt"><a class="el" href="project_8hpp.html#a43bafb28b29491ec7f871319b5a3b2f8">F_CPU</a> = 16000000UL</span>.</li>
+<li>Проверить выбранную аппаратную ревизию платы в <span class="tt"><a class="el" href="ldo__board_8cpp.html" title="Реализация аппаратного слоя платы LDO.">app/ldo_board.cpp</a></span>.</li>
+<li>Выполнить сборку проекта.</li>
+<li>Проверить отсутствие ошибок компиляции и линковки.</li>
+<li>Получить файл прошивки <span class="tt">.hex</span> из выходной папки сборки.</li>
+</ol>
+<p>Типовые выходные папки:</p>
+<div class="fragment"><div class="line">Debug/</div>
+<div class="line">Release/</div>
+</div><!-- fragment --><p>Пример ожидаемого результата:</p>
+<div class="fragment"><div class="line">LDO1118_rev3.hex</div>
+</div><!-- fragment --><p>Фактическое имя <span class="tt">.hex</span> зависит от имени проекта в среде разработки.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+Генерация Doxygen-документации</h1>
+<p>Doxygen-документация формируется из исходных файлов и комментариев в коде.</p>
+<p>Для генерации выполнить из корня проекта:</p>
+<div class="fragment"><div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><p>Если требуется сохранить лог генерации:</p>
+<div class="fragment"><div class="line">doxygen Doxyfile &gt; doxygen_build.log 2&gt;&amp;1</div>
+</div><!-- fragment --><p>Результат генерации:</p>
+<div class="fragment"><div class="line">docs/html/index.html</div>
+</div><!-- fragment --><p>Открыть документацию:</p>
+<div class="fragment"><div class="line">start docs\html\index.html</div>
+</div><!-- fragment --><p>Если папка <span class="tt">docs</span> отсутствует, её можно создать вручную:</p>
+<div class="fragment"><div class="line">mkdir docs</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+Прошивка микроконтроллера</h1>
+<p>Прошивка может загружаться одним из двух способов:</p>
+<ul>
+<li>через ISP-программатор;</li>
+<li>через установленный bootloader, если он записан в микроконтроллер и настроен корректно.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+Прошивка через ISP</h2>
+<p>Общий порядок:</p>
+<ol type="1">
+<li>Подключить питание модуля.</li>
+<li>Подключить ISP-программатор к разъёму программирования.</li>
+<li>Выбрать микроконтроллер <span class="tt">ATmega328P</span>.</li>
+<li>Выбрать файл <span class="tt">.hex</span>.</li>
+<li>Выполнить запись flash.</li>
+<li>Перезапустить модуль.</li>
+<li>Проверить связь по Modbus RTU.</li>
+<li>Проверить переключение релейных выходов.</li>
+</ol>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+Прошивка через bootloader</h2>
+<p>Общий порядок:</p>
+<ol type="1">
+<li>Подключить RS-485 интерфейс.</li>
+<li>Перевести модуль в bootloader.</li>
+<li>Загрузить файл <span class="tt">.hex</span> через используемый загрузчик.</li>
+<li>Перезапустить модуль.</li>
+<li>Проверить связь по Modbus RTU.</li>
+<li>Проверить переключение релейных выходов.</li>
+</ol>
+<p>Переход в bootloader из рабочей прошивки выполняется записью в <span class="tt">HR 900</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
+Проверка после прошивки</h1>
+<p>После загрузки прошивки проверить:</p>
+<ol type="1">
+<li>Модуль отвечает по Modbus RTU.</li>
+<li>Адрес соответствует положению аппаратного адресного переключателя.</li>
+<li><span class="tt">HR 0</span> записывается и читается.</li>
+<li><span class="tt">HR 1</span> возвращает текущее состояние релейных выходов.</li>
+<li>При записи <span class="tt">HR 0 = 0x00</span> все реле выключаются.</li>
+<li>При записи одиночных битов в <span class="tt">HR 0</span> соответствующие реле включаются.</li>
+<li>При отсутствии обмена светодиод связи переходит в режим мигания.</li>
+<li>При восстановлении обмена светодиод связи включается постоянно.</li>
+<li>При потере связи релейные выходы выключаются.</li>
+</ol>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+Минимальный тест Modbus</h1>
+<p>Параметры порта:</p>
+<div class="fragment"><div class="line">9600 bit/s</div>
+<div class="line">8N1</div>
+<div class="line">Modbus RTU</div>
+</div><!-- fragment --><p>Базовые регистры для проверки:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Проверка  </th><th class="markdownTableHeadRight">Регистр  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Управление реле  </td><td class="markdownTableBodyRight">HR 0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Состояние реле  </td><td class="markdownTableBodyRight">HR 1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Байт ошибки  </td><td class="markdownTableBodyRight">HR 3  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Перезагрузка  </td><td class="markdownTableBodyRight">HR 594  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Переход в bootloader  </td><td class="markdownTableBodyRight">HR 900  </td></tr>
+</table>
+<p>Пример проверки релейных выходов:</p>
+<div class="fragment"><div class="line">HR 0 = 0x01</div>
+<div class="line">HR 0 = 0x02</div>
+<div class="line">HR 0 = 0x04</div>
+<div class="line">HR 0 = 0x08</div>
+<div class="line">HR 0 = 0x10</div>
+<div class="line">HR 0 = 0x20</div>
+<div class="line">HR 0 = 0x40</div>
+<div class="line">HR 0 = 0x80</div>
+<div class="line">HR 0 = 0x00</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
+Возможные ошибки</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Признак  </th><th class="markdownTableHeadNone">Возможная причина  </th><th class="markdownTableHeadNone">Проверка  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Нет ответа по Modbus  </td><td class="markdownTableBodyNone">Неверный адрес  </td><td class="markdownTableBodyNone">Проверить адресный переключатель  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Нет ответа по Modbus  </td><td class="markdownTableBodyNone">Неверные параметры UART  </td><td class="markdownTableBodyNone">Проверить 9600 bit/s, 8N1  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Нет ответа по Modbus  </td><td class="markdownTableBodyNone">Ошибка RS-485 A/B  </td><td class="markdownTableBodyNone">Проверить полярность линии  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Ответы нестабильны  </td><td class="markdownTableBodyNone">Ошибка управления DE/RE  </td><td class="markdownTableBodyNone">Проверить линию RS-485 direction  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Реле не включаются  </td><td class="markdownTableBodyNone">Выбрана неверная аппаратная ревизия платы  </td><td class="markdownTableBodyNone">Проверить <span class="tt"><a class="el" href="ldo__board_8cpp.html" title="Реализация аппаратного слоя платы LDO.">ldo_board.cpp</a></span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Включаются не те реле  </td><td class="markdownTableBodyNone">Неверная карта выходов  </td><td class="markdownTableBodyNone">Проверить соответствие платы и <span class="tt"><a class="el" href="ldo__board_8cpp.html" title="Реализация аппаратного слоя платы LDO.">ldo_board.cpp</a></span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Реле отключаются через таймаут  </td><td class="markdownTableBodyNone">Нет регулярного обмена по Modbus  </td><td class="markdownTableBodyNone">Проверить период опроса ведущего устройства  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Адрес не совпадает с переключателем  </td><td class="markdownTableBodyNone">Ошибка порядка битов адресного переключателя  </td><td class="markdownTableBodyNone">Проверить PC1...PC5  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Прошивка перезагружается  </td><td class="markdownTableBodyNone">Watchdog не сбрасывается  </td><td class="markdownTableBodyNone">Проверить зависание основного цикла  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Не работает переход в bootloader  </td><td class="markdownTableBodyNone">Несовпадение bootloader address / fuse  </td><td class="markdownTableBodyNone">Проверить BOOTSZ и адрес boot-секции  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
+Примечания по сопровождению</h1>
+<p>Проект передаётся как исходный код встроенного ПО с базовой документацией в комментариях Doxygen.</p>
+<p>Перед внесением изменений рекомендуется:</p>
+<ol type="1">
+<li>Сначала собрать проект без изменений.</li>
+<li>Сохранить рабочий <span class="tt">.hex</span>.</li>
+<li>Проверить связь по Modbus RTU на стенде.</li>
+<li>Проверить переключение всех релейных выходов.</li>
+<li>После изменений повторить проверку регистров и выходов.</li>
+<li>Проверить переход в bootloader только при наличии корректного загрузчика.</li>
+</ol>
+<p>Изменения аппаратной карты платы следует выполнять в файлах:</p>
+<div class="fragment"><div class="line">app/ldo_board.hpp</div>
+<div class="line">app/ldo_board.cpp</div>
+</div><!-- fragment --><p>Изменения прикладной карты Modbus следует выполнять в файле:</p>
+<div class="fragment"><div class="line">app/app.cpp</div>
+</div><!-- fragment --><p>Изменения транспорта Modbus RTU следует выполнять только при необходимости и после проверки на стенде:</p>
+<div class="fragment"><div class="line">Libs/IGAS_mb.h</div>
+<div class="line">Libs/IGAS_mb.cpp</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md51"></a>
+Состав передаваемых материалов</h1>
+<p>Рекомендуемый минимальный комплект для передачи:</p>
+<div class="fragment"><div class="line">исходный код проекта;</div>
+<div class="line">Doxyfile;</div>
+<div class="line">README.md;</div>
+<div class="line">сгенерированная Doxygen-документация;</div>
+<div class="line">скомпилированный HEX-файл;</div>
+<div class="line">краткая инструкция по прошивке;</div>
+<div class="line">краткая инструкция по проверке Modbus-регистров.</div>
+</div><!-- fragment --><p>Этот комплект достаточен для сборки, просмотра структуры проекта, генерации документации, загрузки прошивки и базовой проверки работоспособности модуля. </p>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

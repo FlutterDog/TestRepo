@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура X2XModuleDescriptor</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structX2XModuleDescriptor.html','','structX2XModuleDescriptor-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура X2XModuleDescriptor</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Полное описание одного поддерживаемого типа X2X.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="x2x__catalog_8hpp_source.html">app/x2x/x2x_catalog.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a5aa35f6c3f90ed55e1077e1d970b8fd5" id="r_a5aa35f6c3f90ed55e1077e1d970b8fd5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5aa35f6c3f90ed55e1077e1d970b8fd5">allowed_in_x2x_config</a></td></tr>
+<tr class="memitem:afc1ea329f30154412108bfd737ca3b8f" id="r_afc1ea329f30154412108bfd737ca3b8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__catalog_8hpp.html#acbe213a4c3a63484ae82c9fe83d96130">X2XModuleConstructFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc1ea329f30154412108bfd737ca3b8f">construct</a></td></tr>
+<tr class="memitem:a0ad176a22176a1cf484c006d31b4bb1d" id="r_a0ad176a22176a1cf484c006d31b4bb1d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ad176a22176a1cf484c006d31b4bb1d">me_count</a></td></tr>
+<tr class="memitem:a51494420a1430b4608e1d075254bcded" id="r_a51494420a1430b4608e1d075254bcded"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51494420a1430b4608e1d075254bcded">name</a></td></tr>
+<tr class="memitem:a2b56b53cd3e434f2c197cb31f0170e9c" id="r_a2b56b53cd3e434f2c197cb31f0170e9c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b56b53cd3e434f2c197cb31f0170e9c">object_size</a></td></tr>
+<tr class="memitem:ae351392f59e5a5a522136340e5f73dd1" id="r_ae351392f59e5a5a522136340e5f73dd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__module_8hpp.html#a5fbfa303c01b54027b3a27da16f3d2fd">X2XModulePollFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae351392f59e5a5a522136340e5f73dd1">poll</a></td></tr>
+<tr class="memitem:a19dbbde86ef8764024812b1f7c31f3df" id="r_a19dbbde86ef8764024812b1f7c31f3df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__module_8hpp.html#a71cf424d7aa8cc8d263d3b3f461eeaa3">X2XModulePrintFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19dbbde86ef8764024812b1f7c31f3df">print</a></td></tr>
+<tr class="memitem:a877cdbdaeeacb5c25ce78186bb60f2bb" id="r_a877cdbdaeeacb5c25ce78186bb60f2bb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a877cdbdaeeacb5c25ce78186bb60f2bb">sp_count</a></td></tr>
+<tr class="memitem:a7249276a8c5a8edf026528c84891859b" id="r_a7249276a8c5a8edf026528c84891859b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7249276a8c5a8edf026528c84891859b">tf_count</a></td></tr>
+<tr class="memitem:a24a595264fa638e171efe9027ca94f1d" id="r_a24a595264fa638e171efe9027ca94f1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24a595264fa638e171efe9027ca94f1d">type</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Полное описание одного поддерживаемого типа X2X. </p>
+<p>Каталог является единой точкой регистрации: валидатор конфигурации, реестр, диспетчер опроса и диагностика используют одну запись. Добавление типа не требует нового <span class="tt">switch</span> в X2X service или service console. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00035">35</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a5aa35f6c3f90ed55e1077e1d970b8fd5" name="a5aa35f6c3f90ed55e1077e1d970b8fd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aa35f6c3f90ed55e1077e1d970b8fd5">&#9670;&#160;</a></span>allowed_in_x2x_config</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t X2XModuleDescriptor::allowed_in_x2x_config</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Разрешён ли ID во внешней цепочке. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00043">43</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__bundle_8cpp_source.html#l00418">lcp_config_bundle_validate()</a>, <a class="el" href="x2x__config_8cpp_source.html#l00220">x2x_config_load()</a> и <a class="el" href="x2x__registry_8cpp_source.html#l00066">x2x_registry_build()</a>.</p>
+
+</div>
+</div>
+<a id="afc1ea329f30154412108bfd737ca3b8f" name="afc1ea329f30154412108bfd737ca3b8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1ea329f30154412108bfd737ca3b8f">&#9670;&#160;</a></span>construct</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__catalog_8hpp.html#acbe213a4c3a63484ae82c9fe83d96130">X2XModuleConstructFunction</a> X2XModuleDescriptor::construct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Конструктор экземпляра в слоте. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00044">44</a></p>
+
+</div>
+</div>
+<a id="a0ad176a22176a1cf484c006d31b4bb1d" name="a0ad176a22176a1cf484c006d31b4bb1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad176a22176a1cf484c006d31b4bb1d">&#9670;&#160;</a></span>me_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t X2XModuleDescriptor::me_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Число integer measured values. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00041">41</a></p>
+
+</div>
+</div>
+<a id="a51494420a1430b4608e1d075254bcded" name="a51494420a1430b4608e1d075254bcded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51494420a1430b4608e1d075254bcded">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* X2XModuleDescriptor::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Краткое неизменяемое имя типа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00038">38</a></p>
+
+</div>
+</div>
+<a id="a2b56b53cd3e434f2c197cb31f0170e9c" name="a2b56b53cd3e434f2c197cb31f0170e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b56b53cd3e434f2c197cb31f0170e9c">&#9670;&#160;</a></span>object_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t X2XModuleDescriptor::object_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>sizeof конкретной runtime-структуры. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00039">39</a></p>
+
+</div>
+</div>
+<a id="ae351392f59e5a5a522136340e5f73dd1" name="ae351392f59e5a5a522136340e5f73dd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae351392f59e5a5a522136340e5f73dd1">&#9670;&#160;</a></span>poll</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__module_8hpp.html#a5fbfa303c01b54027b3a27da16f3d2fd">X2XModulePollFunction</a> X2XModuleDescriptor::poll</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Неблокирующий драйвер типа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00045">45</a></p>
+
+</div>
+</div>
+<a id="a19dbbde86ef8764024812b1f7c31f3df" name="a19dbbde86ef8764024812b1f7c31f3df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19dbbde86ef8764024812b1f7c31f3df">&#9670;&#160;</a></span>print</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__module_8hpp.html#a71cf424d7aa8cc8d263d3b3f461eeaa3">X2XModulePrintFunction</a> X2XModuleDescriptor::print</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Специфическая диагностика типа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00046">46</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a877cdbdaeeacb5c25ce78186bb60f2bb" name="a877cdbdaeeacb5c25ce78186bb60f2bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877cdbdaeeacb5c25ce78186bb60f2bb">&#9670;&#160;</a></span>sp_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t X2XModuleDescriptor::sp_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Число single-point значений. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00040">40</a></p>
+
+</div>
+</div>
+<a id="a7249276a8c5a8edf026528c84891859b" name="a7249276a8c5a8edf026528c84891859b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7249276a8c5a8edf026528c84891859b">&#9670;&#160;</a></span>tf_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t X2XModuleDescriptor::tf_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Число float measured values. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00042">42</a></p>
+
+</div>
+</div>
+<a id="a24a595264fa638e171efe9027ca94f1d" name="a24a595264fa638e171efe9027ca94f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24a595264fa638e171efe9027ca94f1d">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a> X2XModuleDescriptor::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Стабильный числовой ID X2X.TXT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a> строка <a class="el" href="x2x__catalog_8hpp_source.html#l00037">37</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__config_8cpp_source.html#l00220">x2x_config_load()</a> и <a class="el" href="x2x__registry_8cpp_source.html#l00066">x2x_registry_build()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/x2x/<a class="el" href="x2x__catalog_8hpp_source.html">x2x_catalog.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structX2XModuleDescriptor.html">X2XModuleDescriptor</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

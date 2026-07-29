@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/diagnostics/x2x_status.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__status_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл x2x_status.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>USB-диагностика конфигурации и опроса модулей X2X.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="x2x__status_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a92547e72fe5e03378a0320ca3cde61bf" id="r_a92547e72fe5e03378a0320ca3cde61bf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92547e72fe5e03378a0320ca3cde61bf">x2x_status_handle_command</a> (const char *command)</td></tr>
+<tr class="memdesc:a92547e72fe5e03378a0320ca3cde61bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает сервисные команды X2X.  <br /></td></tr>
+<tr class="memitem:a157088963050576219f79b9497881de4" id="r_a157088963050576219f79b9497881de4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a157088963050576219f79b9497881de4">x2x_status_print_report</a> (void)</td></tr>
+<tr class="memdesc:a157088963050576219f79b9497881de4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает X2X.TXT, состояние service, каждый module slot и waveform.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>USB-диагностика конфигурации и опроса модулей X2X. </p>
+<p>Общие поля устройств печатаются в <a class="el" href="x2x__status_8cpp.html" title="Реализация USB-диагностики X2X.">x2x_status.cpp</a>. Значения конкретного типа выводит <span class="tt"><a class="el" href="structX2XModuleDescriptor.html#a19dbbde86ef8764024812b1f7c31f3df">X2XModuleDescriptor::print</a></span>, зарегистрированный в <a class="el" href="x2x__catalog_8cpp.html" title="Реализация каталога поддерживаемых модулей X2X.">x2x_catalog.cpp</a>. Поэтому новый модуль не должен добавлять switch в console: его Doxygen, construct/poll/print callback и descriptor являются единой точкой расширения. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__status_8hpp_source.html">x2x_status.hpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a92547e72fe5e03378a0320ca3cde61bf" name="a92547e72fe5e03378a0320ca3cde61bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92547e72fe5e03378a0320ca3cde61bf">&#9670;&#160;</a></span>x2x_status_handle_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t x2x_status_handle_command </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обрабатывает сервисные команды X2X. </p>
+<p>Поддерживаются:</p><ul>
+<li><span class="tt">x2x</span>, <span class="tt">x2x status</span>;</li>
+<li><span class="tt">x2x reload</span>;</li>
+<li><span class="tt">x2x pause</span>, <span class="tt">x2x resume</span>;</li>
+<li><span class="tt">x2x ldo SLAVE VALUE</span>, где SLAVE=1..6, VALUE=int16.</li>
+</ul>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>Нормализованная строка нижнего регистра без CR/LF. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1, если команда относится к X2X, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__status_8cpp_source.html">x2x_status.cpp</a> строка <a class="el" href="x2x__status_8cpp_source.html#l00370">370</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__config_8cpp_source.html#l00379">x2x_config_result_text()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00258">x2x_service_pause()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00276">x2x_service_paused()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00246">x2x_service_reload_config()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00269">x2x_service_resume()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a157088963050576219f79b9497881de4" name="a157088963050576219f79b9497881de4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157088963050576219f79b9497881de4">&#9670;&#160;</a></span>x2x_status_print_report()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void x2x_status_print_report </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печатает X2X.TXT, состояние service, каждый module slot и waveform. </p>
+<p>Функция безопасно сообщает отсутствующий registry slot, неизвестный catalog descriptor и отсутствующий module-specific print callback вместо тихого пропуска данных. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__status_8cpp_source.html">x2x_status.cpp</a> строка <a class="el" href="x2x__status_8cpp_source.html#l00248">248</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="diagnostic__output_8hpp_source.html#l00080">diagnostic_print_assignment()</a>, <a class="el" href="diagnostic__output_8hpp_source.html#l00065">diagnostic_print_group()</a>, <a class="el" href="diagnostic__output_8hpp_source.html#l00051">diagnostic_print_section()</a>, <a class="el" href="lcp__x2x__port_8cpp_source.html#l00097">lcp_x2x_port_error_count()</a>, <a class="el" href="modbus__rtu__crc_8cpp_source.html#l00037">modbus_rtu_crc_self_test()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00442">modbus_rtu_result_text()</a>, <a class="el" href="x2x__types_8hpp_source.html#l00289">X2XWaveformBuffer::owner_slave_address</a>, <a class="el" href="x2x__config_8hpp_source.html#l00041">X2XConfigError::physical_line</a>, <a class="el" href="x2x__catalog_8hpp_source.html#l00046">X2XModuleDescriptor::print</a>, <a class="el" href="x2x__types_8hpp_source.html#l00290">X2XWaveformBuffer::samples_per_phase</a>, <a class="el" href="x2x__types_8hpp_source.html#l00291">X2XWaveformBuffer::sequence</a>, <a class="el" href="x2x__types_8hpp_source.html#l00065">X2XDeviceHeader::type</a>, <a class="el" href="x2x__types_8hpp_source.html#l00288">X2XWaveformBuffer::valid</a>, <a class="el" href="x2x__config_8hpp_source.html#l00042">X2XConfigError::value</a>, <a class="el" href="x2x__catalog_8cpp_source.html#l00203">x2x_catalog_find()</a>, <a class="el" href="x2x__types_8hpp_source.html#l00019">X2X_CONFIG_FILE_NAME</a>, <a class="el" href="x2x__config_8cpp_source.html#l00379">x2x_config_result_text()</a>, <a class="el" href="x2x__registry_8cpp_source.html#l00132">x2x_registry_get_by_slave()</a>, <a class="el" href="x2x__registry_8cpp_source.html#l00117">x2x_registry_module_count()</a>, <a class="el" href="x2x__registry_8cpp_source.html#l00152">x2x_registry_result_text()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00291">x2x_service_config_loaded()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00317">x2x_service_current_slave()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00307">x2x_service_last_config_error()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00302">x2x_service_last_config_result()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00312">x2x_service_last_registry_result()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00322">x2x_service_modbus_result()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00296">x2x_service_owns_port()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00281">x2x_service_pause_pending()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00276">x2x_service_paused()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00286">x2x_service_reload_pending()</a> и <a class="el" href="x2x__service_8cpp_source.html#l00327">x2x_service_waveform()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="x2x__status_8cpp_source.html#l00370">x2x_status_handle_command()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="x2x__status_8hpp.html">x2x_status.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

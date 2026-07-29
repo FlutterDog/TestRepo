@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/ethernet/ethernet_modbus_service.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ethernet__modbus__service_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл ethernet_modbus_service.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Read-only Modbus TCP server на двух W5500 контроллера LCP2116.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ethernet__network__config_8hpp_source.html">ethernet_network_config.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="modbus__tcp__server_8hpp_source.html">../../protocol/modbus_tcp/modbus_tcp_server.hpp</a>&quot;</code><br />
+</div>
+<p><a href="ethernet__modbus__service_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:EthernetModbusInterfaceState" id="r_EthernetModbusInterfaceState"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEthernetModbusInterfaceState.html">EthernetModbusInterfaceState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runtime одного независимого Ethernet-интерфейса.  <a href="structEthernetModbusInterfaceState.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:adfe7c598bd7a366bf3fb619946c49e53" id="r_adfe7c598bd7a366bf3fb619946c49e53"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53">FieldSensorTcpQuality</a> : uint16_t { <br />
+&#160;&#160;<a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53ae63569182d43c033c5e1e9a09b6361ea">FIELD_SENSOR_TCP_QUALITY_VALID</a> = 0x0001U
+, <a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53a5f7094757f30ad487fc91a4b287df329">FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST</a> = 0x0002U
+, <a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53a4a905d2b3152987e688dec4b306a99d9">FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT</a> = 0x0004U
+, <a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53a14281cd5a9d0e88c33fd173288dbab6b">FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE</a> = 0x0008U
+, <br />
+&#160;&#160;<a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53a6d8061dd829105f4d7c9238179d4829e">FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED</a> = 0x0010U
+<br />
+ }</td></tr>
+<tr class="memdesc:adfe7c598bd7a366bf3fb619946c49e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Младшие биты quality-регистра одного FieldSensor-порта.  <a href="#adfe7c598bd7a366bf3fb619946c49e53">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a60efacb53d2e661c7f64d01ba5058df8" id="r_a60efacb53d2e661c7f64d01ba5058df8"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60efacb53d2e661c7f64d01ba5058df8">ethernet_modbus_service_holding</a> (uint16_t address)</td></tr>
+<tr class="memdesc:a60efacb53d2e661c7f64d01ba5058df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает один регистр текущей опубликованной карты.  <br /></td></tr>
+<tr class="memitem:a575668517f44137feceb4dd3a656b006" id="r_a575668517f44137feceb4dd3a656b006"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a575668517f44137feceb4dd3a656b006">ethernet_modbus_service_init</a> (void)</td></tr>
+<tr class="memdesc:a575668517f44137feceb4dd3a656b006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбрасывает runtime и ставит отложенное применение конфигурации.  <br /></td></tr>
+<tr class="memitem:a37950b9707cdcce287ceb5b98e8ad679" id="r_a37950b9707cdcce287ceb5b98e8ad679"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structEthernetModbusInterfaceState.html">EthernetModbusInterfaceState</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37950b9707cdcce287ceb5b98e8ad679">ethernet_modbus_service_interface</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:a37950b9707cdcce287ceb5b98e8ad679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает runtime выбранного Ethernet-интерфейса.  <br /></td></tr>
+<tr class="memitem:a71ceb251804e6c1e6127cd571820638f" id="r_a71ceb251804e6c1e6127cd571820638f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71ceb251804e6c1e6127cd571820638f">ethernet_modbus_service_poll</a> (void)</td></tr>
+<tr class="memdesc:a71ceb251804e6c1e6127cd571820638f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет один неблокирующий шаг обоих W5500 и Modbus TCP engines.  <br /></td></tr>
+<tr class="memitem:aca352132b3df0b61c1b66d295a3c247a" id="r_aca352132b3df0b61c1b66d295a3c247a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca352132b3df0b61c1b66d295a3c247a">ethernet_modbus_service_reload_pending</a> (void)</td></tr>
+<tr class="memitem:af2ea53d1dc79698f5f745d20f7ba7bf2" id="r_af2ea53d1dc79698f5f745d20f7ba7bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2ea53d1dc79698f5f745d20f7ba7bf2">ethernet_modbus_service_request_reload</a> (void)</td></tr>
+<tr class="memdesc:af2ea53d1dc79698f5f745d20f7ba7bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запрашивает перечитывание сетевых файлов и reset обоих W5500.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:ad1131244fac482a508c2477827d2c8a5" id="r_ad1131244fac482a508c2477827d2c8a5"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1131244fac482a508c2477827d2c8a5">LCP_MODBUS_TCP_HOLDING_COUNT</a> = 12U</td></tr>
+<tr class="memitem:ae7d415c69b5ba9f157a69baf769ec502" id="r_ae7d415c69b5ba9f157a69baf769ec502"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7d415c69b5ba9f157a69baf769ec502">LCP_MODBUS_TCP_PORT</a> = 502U</td></tr>
+<tr class="memitem:ab90536dd8d067dad28a272e2f13b33e8" id="r_ab90536dd8d067dad28a272e2f13b33e8"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab90536dd8d067dad28a272e2f13b33e8">LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT</a> = 3U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Read-only Modbus TCP server на двух W5500 контроллера LCP2116. </p>
+<p>Слой связывает три независимые части:</p>
+<ol type="1">
+<li><span class="tt">ethernet_network_config.*</span> читает MAC/IP/subnet/gateway;</li>
+<li><span class="tt">w5500_lite.*</span> передаёт и принимает цельные TCP chunks через socket 0;</li>
+<li><span class="tt">modbus_tcp_server.*</span> разбирает поток и формирует protocol response.</li>
+</ol>
+<p>Прикладная holding map строится только в <a class="el" href="ethernet__modbus__service_8cpp.html" title="Реализация Modbus TCP server на ETH1 и ETH2.">ethernet_modbus_service.cpp</a>. Для добавления новых регистров измените размер карты, <span class="tt">update_holding_map()</span> и диагностическую расшифровку. W5500 HAL при этом менять не нужно.</p>
+<p>Если требуется новая Modbus-функция, сначала добавьте отдельный callback в protocol/modbus_tcp, затем подключите его здесь. Не размещайте прикладные FieldSensor/X2X-зависимости непосредственно в W5500 HAL. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8hpp_source.html">ethernet_modbus_service.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="adfe7c598bd7a366bf3fb619946c49e53" name="adfe7c598bd7a366bf3fb619946c49e53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe7c598bd7a366bf3fb619946c49e53">&#9670;&#160;</a></span>FieldSensorTcpQuality</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#adfe7c598bd7a366bf3fb619946c49e53">FieldSensorTcpQuality</a> : uint16_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Младшие биты quality-регистра одного FieldSensor-порта. </p>
+<p>Старший байт содержит числовой <a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb" title="Результат последней Modbus RTU-транзакции.">ModbusRtuResult</a> последней завершённой или текущей транзакции. Последние значения сохраняются при ошибке, но потребитель обязан проверять VALID перед их использованием. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="adfe7c598bd7a366bf3fb619946c49e53ae63569182d43c033c5e1e9a09b6361ea" name="adfe7c598bd7a366bf3fb619946c49e53ae63569182d43c033c5e1e9a09b6361ea"></a>FIELD_SENSOR_TCP_QUALITY_VALID&#160;</td><td class="fielddoc"><p>Последние values допустимы. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adfe7c598bd7a366bf3fb619946c49e53a5f7094757f30ad487fc91a4b287df329" name="adfe7c598bd7a366bf3fb619946c49e53a5f7094757f30ad487fc91a4b287df329"></a>FIELD_SENSOR_TCP_QUALITY_CONNECTION_LOST&#160;</td><td class="fielddoc"><p>Достигнут порог ошибок. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adfe7c598bd7a366bf3fb619946c49e53a4a905d2b3152987e688dec4b306a99d9" name="adfe7c598bd7a366bf3fb619946c49e53a4a905d2b3152987e688dec4b306a99d9"></a>FIELD_SENSOR_TCP_QUALITY_PORT_PRESENT&#160;</td><td class="fielddoc"><p>Физический UART существует. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adfe7c598bd7a366bf3fb619946c49e53a14281cd5a9d0e88c33fd173288dbab6b" name="adfe7c598bd7a366bf3fb619946c49e53a14281cd5a9d0e88c33fd173288dbab6b"></a>FIELD_SENSOR_TCP_QUALITY_REQUEST_ACTIVE&#160;</td><td class="fielddoc"><p>RTU master сейчас занят. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adfe7c598bd7a366bf3fb619946c49e53a6d8061dd829105f4d7c9238179d4829e" name="adfe7c598bd7a366bf3fb619946c49e53a6d8061dd829105f4d7c9238179d4829e"></a>FIELD_SENSOR_TCP_QUALITY_SERVICE_PAUSED&#160;</td><td class="fielddoc"><p>Новые RTU-запросы запрещены. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8hpp_source.html">ethernet_modbus_service.hpp</a> строка <a class="el" href="ethernet__modbus__service_8hpp_source.html#l00052">52</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a60efacb53d2e661c7f64d01ba5058df8" name="a60efacb53d2e661c7f64d01ba5058df8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60efacb53d2e661c7f64d01ba5058df8">&#9670;&#160;</a></span>ethernet_modbus_service_holding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ethernet_modbus_service_holding </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает один регистр текущей опубликованной карты. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>Адрес 0..11. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение регистра либо 0 для адреса вне карты. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8cpp_source.html">ethernet_modbus_service.cpp</a> строка <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00293">293</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="ethernet__modbus__service_8hpp_source.html#l00043">LCP_MODBUS_TCP_HOLDING_COUNT</a>.</p>
+
+</div>
+</div>
+<a id="a575668517f44137feceb4dd3a656b006" name="a575668517f44137feceb4dd3a656b006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a575668517f44137feceb4dd3a656b006">&#9670;&#160;</a></span>ethernet_modbus_service_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernet_modbus_service_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сбрасывает runtime и ставит отложенное применение конфигурации. </p>
+<p>Сервис ждёт готовности microSD ограниченное время, затем запускает оба W5500 с безопасными defaults. Функция сама не выполняет длительный SD wait. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8cpp_source.html">ethernet_modbus_service.cpp</a> строка <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00251">251</a></p>
+
+</div>
+</div>
+<a id="a37950b9707cdcce287ceb5b98e8ad679" name="a37950b9707cdcce287ceb5b98e8ad679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37950b9707cdcce287ceb5b98e8ad679">&#9670;&#160;</a></span>ethernet_modbus_service_interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structEthernetModbusInterfaceState.html">EthernetModbusInterfaceState</a> &amp; ethernet_modbus_service_interface </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает runtime выбранного Ethernet-интерфейса. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ethernet_id</td><td>ETH1 или ETH2. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Ссылка со сроком жизни программы; некорректный ID нормализуется к ETH1. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8cpp_source.html">ethernet_modbus_service.cpp</a> строка <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00287">287</a></p>
+
+</div>
+</div>
+<a id="a71ceb251804e6c1e6127cd571820638f" name="a71ceb251804e6c1e6127cd571820638f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71ceb251804e6c1e6127cd571820638f">&#9670;&#160;</a></span>ethernet_modbus_service_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernet_modbus_service_poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет один неблокирующий шаг обоих W5500 и Modbus TCP engines. </p>
+<p>За один вызов каждый интерфейс принимает ограниченный chunk и формирует не более заданного числа ответов. Готовый ADU хранится до полной постановки в TX. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8cpp_source.html">ethernet_modbus_service.cpp</a> строка <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00260">260</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__service_8cpp_source.html#l00577">lcp_config_service_generation()</a>, <a class="el" href="lcp__ethernet_8hpp_source.html#l00016">LCP_ETHERNET_1</a> и <a class="el" href="lcp__ethernet_8hpp_source.html#l00017">LCP_ETHERNET_2</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a>.</p>
+
+</div>
+</div>
+<a id="aca352132b3df0b61c1b66d295a3c247a" name="aca352132b3df0b61c1b66d295a3c247a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca352132b3df0b61c1b66d295a3c247a">&#9670;&#160;</a></span>ethernet_modbus_service_reload_pending()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ethernet_modbus_service_reload_pending </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>1, пока ожидается применение сетевой конфигурации, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8cpp_source.html">ethernet_modbus_service.cpp</a> строка <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00282">282</a></p>
+
+<p class="reference">Используется в <a class="el" href="ethernet__status_8cpp_source.html#l00211">ethernet_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="af2ea53d1dc79698f5f745d20f7ba7bf2" name="af2ea53d1dc79698f5f745d20f7ba7bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ea53d1dc79698f5f745d20f7ba7bf2">&#9670;&#160;</a></span>ethernet_modbus_service_request_reload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernet_modbus_service_request_reload </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Запрашивает перечитывание сетевых файлов и reset обоих W5500. </p>
+<p>Операция выполняется следующим poll-вызовом; активные TCP-соединения будут закрыты аппаратным reset. Используйте только как явную сервисную команду. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8cpp_source.html">ethernet_modbus_service.cpp</a> строка <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00277">277</a></p>
+
+<p class="reference">Используется в <a class="el" href="ethernet__status_8cpp_source.html#l00235">ethernet_status_handle_command()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="ad1131244fac482a508c2477827d2c8a5" name="ad1131244fac482a508c2477827d2c8a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1131244fac482a508c2477827d2c8a5">&#9670;&#160;</a></span>LCP_MODBUS_TCP_HOLDING_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t LCP_MODBUS_TCP_HOLDING_COUNT = 12U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Полный размер read-only map: четыре порта × три регистра.</p>
+<p><span class="tt"><a class="el" href="ethernet__modbus__service_8cpp.html" title="Реализация Modbus TCP server на ETH1 и ETH2.">ethernet_modbus_service.cpp</a></span> содержит static_assert связи этого значения с LCP_FIELD_PORT_COUNT. При изменении FieldSensor count/map сборка должна остановиться, пока обе стороны не приведены в соответствие. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8hpp_source.html">ethernet_modbus_service.hpp</a> строка <a class="el" href="ethernet__modbus__service_8hpp_source.html#l00043">43</a></p>
+
+<p class="reference">Используется в <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00293">ethernet_modbus_service_holding()</a>.</p>
+
+</div>
+</div>
+<a id="ae7d415c69b5ba9f157a69baf769ec502" name="ae7d415c69b5ba9f157a69baf769ec502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d415c69b5ba9f157a69baf769ec502">&#9670;&#160;</a></span>LCP_MODBUS_TCP_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t LCP_MODBUS_TCP_PORT = 502U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Стандартный TCP-порт Modbus, одинаковый для ETH1 и ETH2. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8hpp_source.html">ethernet_modbus_service.hpp</a> строка <a class="el" href="ethernet__modbus__service_8hpp_source.html#l00028">28</a></p>
+
+</div>
+</div>
+<a id="ab90536dd8d067dad28a272e2f13b33e8" name="ab90536dd8d067dad28a272e2f13b33e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab90536dd8d067dad28a272e2f13b33e8">&#9670;&#160;</a></span>LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t LCP_MODBUS_TCP_REGISTERS_PER_FIELD_PORT = 3U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Количество регистров на один физический FieldSensor-порт: value 0, value 1 и quality. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__modbus__service_8hpp_source.html">ethernet_modbus_service.hpp</a> строка <a class="el" href="ethernet__modbus__service_8hpp_source.html#l00034">34</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_047e6a9b50704b573e2fe46b4b7b199f.html">ethernet</a></li><li class="navelem"><a href="ethernet__modbus__service_8hpp.html">ethernet_modbus_service.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

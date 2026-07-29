@@ -1,0 +1,27 @@
+var group__serial__config =
+[
+    [ "SERIAL_5E1", "group__serial__config.html#gabda4b80c55bc393154084064740920d9", null ],
+    [ "SERIAL_5E2", "group__serial__config.html#ga64290f61ee0ef350809da9a8f38f82fc", null ],
+    [ "SERIAL_5N1", "group__serial__config.html#gad4f2710a1b673218d47b087048df36e4", null ],
+    [ "SERIAL_5N2", "group__serial__config.html#ga1c84ae9720db3da34d1b41feda5d0ff8", null ],
+    [ "SERIAL_5O1", "group__serial__config.html#ga86943415d1a48302f139c6f9d0b93b15", null ],
+    [ "SERIAL_5O2", "group__serial__config.html#ga4963a0a78042baed49c6db9f796466c2", null ],
+    [ "SERIAL_6E1", "group__serial__config.html#ga3c850a2f00866c70650544b13c7520e6", null ],
+    [ "SERIAL_6E2", "group__serial__config.html#ga8d4709fe81b033884d7eb2f2f6198207", null ],
+    [ "SERIAL_6N1", "group__serial__config.html#gacc2c4fc8ebd00b4025ea682feafa918d", null ],
+    [ "SERIAL_6N2", "group__serial__config.html#ga5fc288ec7a223cab69e3e8fef9f57297", null ],
+    [ "SERIAL_6O1", "group__serial__config.html#ga28c78ae44d98a1b8c811499eaa80036d", null ],
+    [ "SERIAL_6O2", "group__serial__config.html#ga29945a7028fed5ddacfbcd0af3d6afd0", null ],
+    [ "SERIAL_7E1", "group__serial__config.html#gaa3f6fb24c1c391871963d91167810e36", null ],
+    [ "SERIAL_7E2", "group__serial__config.html#ga6977c02dc5065be6c5a195ba7e5bd04e", null ],
+    [ "SERIAL_7N1", "group__serial__config.html#gaca9cc0079a4238c2a56408cc901c685f", null ],
+    [ "SERIAL_7N2", "group__serial__config.html#gae34cdbf61a5de6754ad91446c49a6f3a", null ],
+    [ "SERIAL_7O1", "group__serial__config.html#ga6d839c41ea33bcc71a425378ff2a3e65", null ],
+    [ "SERIAL_7O2", "group__serial__config.html#gae39b2970f001b3b6326a52f29ae444c3", null ],
+    [ "SERIAL_8E1", "group__serial__config.html#ga5c423c7cb3c21df297cdbe4150c552b1", null ],
+    [ "SERIAL_8E2", "group__serial__config.html#ga9aa5dcd1702a2cd381263ce385496a93", null ],
+    [ "SERIAL_8N1", "group__serial__config.html#ga0db78b4521d43c0d702b9577bd3acda2", null ],
+    [ "SERIAL_8N2", "group__serial__config.html#gac289a2558f5e442e87ca18a43f293a27", null ],
+    [ "SERIAL_8O1", "group__serial__config.html#ga90bd1d61f7dca9dc83601926fbf00761", null ],
+    [ "SERIAL_8O2", "group__serial__config.html#gac2c02757b23d33fc2efa5c889a8f26db", null ]
+];

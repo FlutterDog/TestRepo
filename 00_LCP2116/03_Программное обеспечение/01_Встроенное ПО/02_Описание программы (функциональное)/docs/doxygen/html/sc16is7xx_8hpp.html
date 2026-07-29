@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/sc16is7xx.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sc16is7xx_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sc16is7xx.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HAL внешних UART SC16IS7xx по SPI.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__uart_8hpp_source.html">sam3x_uart.hpp</a>&quot;</code><br />
+</div>
+<p><a href="sc16is7xx_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a962d74f892501ef436bdc77d191ac882" id="r_a962d74f892501ef436bdc77d191ac882"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> { <a class="el" href="#a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9">SC16IS_CHANNEL_A</a> = 0
+, <a class="el" href="#a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d">SC16IS_CHANNEL_B</a> = 1
+ }</td></tr>
+<tr class="memdesc:a962d74f892501ef436bdc77d191ac882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Канал SC16IS7xx.  <a href="#a962d74f892501ef436bdc77d191ac882">Подробнее...</a><br /></td></tr>
+<tr class="memitem:a515158840ffd7dfb2f0659f9ad4cb1b1" id="r_a515158840ffd7dfb2f0659f9ad4cb1b1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a> { <a class="el" href="#a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b">SC16IS_PROBE_ABSENT</a> = 0
+, <a class="el" href="#a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d">SC16IS_PROBE_PRESENT</a> = 1
+ }</td></tr>
+<tr class="memdesc:a515158840ffd7dfb2f0659f9ad4cb1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Результат проверки канала SC16IS7xx.  <a href="#a515158840ffd7dfb2f0659f9ad4cb1b1">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a300cac2a428e8dc4e9a6d567cd56d6e6" id="r_a300cac2a428e8dc4e9a6d567cd56d6e6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a300cac2a428e8dc4e9a6d567cd56d6e6">sc16is_available</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel)</td></tr>
+<tr class="memdesc:a300cac2a428e8dc4e9a6d567cd56d6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество байтов в RX FIFO.  <br /></td></tr>
+<tr class="memitem:a1fe63ad2b94522536ec24d9cd5a83be6" id="r_a1fe63ad2b94522536ec24d9cd5a83be6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fe63ad2b94522536ec24d9cd5a83be6">sc16is_begin</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel, uint32_t baudrate, <a class="el" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a> frame)</td></tr>
+<tr class="memdesc:a1fe63ad2b94522536ec24d9cd5a83be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует UART-канал SC16IS7xx.  <br /></td></tr>
+<tr class="memitem:aa48af91e4607590cf9ca9f735c5714bf" id="r_aa48af91e4607590cf9ca9f735c5714bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa48af91e4607590cf9ca9f735c5714bf">sc16is_init_bus</a> (void)</td></tr>
+<tr class="memdesc:aa48af91e4607590cf9ca9f735c5714bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует общий доступ к SC16IS7xx.  <br /></td></tr>
+<tr class="memitem:aa88c7f0e956c3baf41e7e90d84bb9f73" id="r_aa88c7f0e956c3baf41e7e90d84bb9f73"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa88c7f0e956c3baf41e7e90d84bb9f73">sc16is_line_status</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel)</td></tr>
+<tr class="memdesc:aa88c7f0e956c3baf41e7e90d84bb9f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает регистр LSR.  <br /></td></tr>
+<tr class="memitem:a4c694a78af9de91918a102a6bf3c214d" id="r_a4c694a78af9de91918a102a6bf3c214d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c694a78af9de91918a102a6bf3c214d">sc16is_probe_channel</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel)</td></tr>
+<tr class="memdesc:a4c694a78af9de91918a102a6bf3c214d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет наличие канала через scratchpad register.  <br /></td></tr>
+<tr class="memitem:a43a2bf5b41c3052e204967a6952019ae" id="r_a43a2bf5b41c3052e204967a6952019ae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43a2bf5b41c3052e204967a6952019ae">sc16is_probe_dual_channel</a> (uint32_t chip_select)</td></tr>
+<tr class="memdesc:a43a2bf5b41c3052e204967a6952019ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет независимость каналов A/B одной микросхемы.  <br /></td></tr>
+<tr class="memitem:a4f8d341a19520cb2db235142a9e5bc74" id="r_a4f8d341a19520cb2db235142a9e5bc74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f8d341a19520cb2db235142a9e5bc74">sc16is_read</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel)</td></tr>
+<tr class="memdesc:a4f8d341a19520cb2db235142a9e5bc74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает один байт из RX FIFO либо возвращает -1.  <br /></td></tr>
+<tr class="memitem:aa4429c672313b9f3137f2f93470aa921" id="r_aa4429c672313b9f3137f2f93470aa921"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4429c672313b9f3137f2f93470aa921">sc16is_tx_available</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel)</td></tr>
+<tr class="memdesc:aa4429c672313b9f3137f2f93470aa921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает свободное место в TX FIFO.  <br /></td></tr>
+<tr class="memitem:a2a83dfec143bda21d6e508c27afdda93" id="r_a2a83dfec143bda21d6e508c27afdda93"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a83dfec143bda21d6e508c27afdda93">sc16is_write</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel, uint8_t value)</td></tr>
+<tr class="memdesc:a2a83dfec143bda21d6e508c27afdda93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает один байт в TX FIFO.  <br /></td></tr>
+<tr class="memitem:afca656c45ab125caad62571c14cae72b" id="r_afca656c45ab125caad62571c14cae72b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afca656c45ab125caad62571c14cae72b">sc16is_write_buffer</a> (uint32_t chip_select, <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a> channel, const uint8_t *buffer, size_t length)</td></tr>
+<tr class="memdesc:afca656c45ab125caad62571c14cae72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает буфер в TX FIFO.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>HAL внешних UART SC16IS7xx по SPI. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8hpp_source.html">sc16is7xx.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a962d74f892501ef436bdc77d191ac882" name="a962d74f892501ef436bdc77d191ac882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a962d74f892501ef436bdc77d191ac882">&#9670;&#160;</a></span>Sc16isChannel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Канал SC16IS7xx. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9" name="a962d74f892501ef436bdc77d191ac882a4623da62dfe9965eca295aec177228e9"></a>SC16IS_CHANNEL_A&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d" name="a962d74f892501ef436bdc77d191ac882a10ec9f9838238b8fd8dd3db0cf4a207d"></a>SC16IS_CHANNEL_B&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8hpp_source.html">sc16is7xx.hpp</a> строка <a class="el" href="sc16is7xx_8hpp_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a id="a515158840ffd7dfb2f0659f9ad4cb1b1" name="a515158840ffd7dfb2f0659f9ad4cb1b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515158840ffd7dfb2f0659f9ad4cb1b1">&#9670;&#160;</a></span>Sc16isProbeResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Результат проверки канала SC16IS7xx. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b" name="a515158840ffd7dfb2f0659f9ad4cb1b1a6fe3a8e7a557c7b6d2efcfdfd7557e4b"></a>SC16IS_PROBE_ABSENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d" name="a515158840ffd7dfb2f0659f9ad4cb1b1a3a8ea421506d8983fdd9befb1944388d"></a>SC16IS_PROBE_PRESENT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8hpp_source.html">sc16is7xx.hpp</a> строка <a class="el" href="sc16is7xx_8hpp_source.html#l00025">25</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a300cac2a428e8dc4e9a6d567cd56d6e6" name="a300cac2a428e8dc4e9a6d567cd56d6e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300cac2a428e8dc4e9a6d567cd56d6e6">&#9670;&#160;</a></span>sc16is_available()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sc16is_available </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает количество байтов в RX FIFO. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00208">208</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00020">SC16IS_REG_RXLVL</a>.</p>
+
+</div>
+</div>
+<a id="a1fe63ad2b94522536ec24d9cd5a83be6" name="a1fe63ad2b94522536ec24d9cd5a83be6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fe63ad2b94522536ec24d9cd5a83be6">&#9670;&#160;</a></span>sc16is_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_begin </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>baudrate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></td>          <td class="paramname"><span class="paramname"><em>frame</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует UART-канал SC16IS7xx. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chip_select</td><td>Номер линии CS. </td></tr>
+    <tr><td class="paramname">channel</td><td>Канал микросхемы. </td></tr>
+    <tr><td class="paramname">baudrate</td><td>Скорость обмена. </td></tr>
+    <tr><td class="paramname">frame</td><td>Формат кадра 8N1, 8O1 или 8E1. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00164">164</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00037">SC16IS_EFCR_RS485_ENABLE_RTS</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00039">SC16IS_EFCR_RS485_MODE</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00038">SC16IS_EFCR_RTS_INVERT</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00030">SC16IS_FCR_ENABLE_FIFO</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00031">SC16IS_FCR_RX_FIFO_RESET</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00032">SC16IS_FCR_TX_FIFO_RESET</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00028">SC16IS_LCR_ENABLE_DIVISOR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00095">sc16is_lcr_for_frame()</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00023">SC16IS_REG_DLH</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00022">SC16IS_REG_DLL</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00021">SC16IS_REG_EFCR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00014">SC16IS_REG_FCR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00013">SC16IS_REG_IER</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00015">SC16IS_REG_LCR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00016">SC16IS_REG_MCR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00073">sc16is_write_register()</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00009">SC16IS_XTAL_HZ</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__field__ports_8cpp_source.html#l00194">lcp_field_ports_init()</a>.</p>
+
+</div>
+</div>
+<a id="aa48af91e4607590cf9ca9f735c5714bf" name="aa48af91e4607590cf9ca9f735c5714bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa48af91e4607590cf9ca9f735c5714bf">&#9670;&#160;</a></span>sc16is_init_bus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_init_bus </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует общий доступ к SC16IS7xx. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00111">111</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__spi_8cpp_source.html#l00008">SPI</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__sc16is_8cpp_source.html#l00072">lcp_sc16is_init_pins()</a>.</p>
+
+</div>
+</div>
+<a id="aa88c7f0e956c3baf41e7e90d84bb9f73" name="aa88c7f0e956c3baf41e7e90d84bb9f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa88c7f0e956c3baf41e7e90d84bb9f73">&#9670;&#160;</a></span>sc16is_line_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sc16is_line_status </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает регистр LSR. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00278">278</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00017">SC16IS_REG_LSR</a>.</p>
+
+</div>
+</div>
+<a id="a4c694a78af9de91918a102a6bf3c214d" name="a4c694a78af9de91918a102a6bf3c214d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c694a78af9de91918a102a6bf3c214d">&#9670;&#160;</a></span>sc16is_probe_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a515158840ffd7dfb2f0659f9ad4cb1b1">Sc16isProbeResult</a> sc16is_probe_channel </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет наличие канала через scratchpad register. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00116">116</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8hpp_source.html#l00027">SC16IS_PROBE_ABSENT</a>, <a class="el" href="sc16is7xx_8hpp_source.html#l00028">SC16IS_PROBE_PRESENT</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00018">SC16IS_REG_SPR</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00073">sc16is_write_register()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sc16is7xx_8cpp_source.html#l00134">sc16is_probe_dual_channel()</a>.</p>
+
+</div>
+</div>
+<a id="a43a2bf5b41c3052e204967a6952019ae" name="a43a2bf5b41c3052e204967a6952019ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43a2bf5b41c3052e204967a6952019ae">&#9670;&#160;</a></span>sc16is_probe_dual_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sc16is_probe_dual_channel </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет независимость каналов A/B одной микросхемы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00134">134</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8hpp_source.html#l00018">SC16IS_CHANNEL_A</a>, <a class="el" href="sc16is7xx_8hpp_source.html#l00019">SC16IS_CHANNEL_B</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00116">sc16is_probe_channel()</a>, <a class="el" href="sc16is7xx_8hpp_source.html#l00028">SC16IS_PROBE_PRESENT</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00018">SC16IS_REG_SPR</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00073">sc16is_write_register()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__sc16is_8cpp_source.html#l00089">lcp_sc16is_probe()</a>.</p>
+
+</div>
+</div>
+<a id="a4f8d341a19520cb2db235142a9e5bc74" name="a4f8d341a19520cb2db235142a9e5bc74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f8d341a19520cb2db235142a9e5bc74">&#9670;&#160;</a></span>sc16is_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sc16is_read </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает один байт из RX FIFO либо возвращает -1. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00213">213</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00034">SC16IS_LSR_DATA_READY</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00017">SC16IS_REG_LSR</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00011">SC16IS_REG_RHR</a>.</p>
+
+</div>
+</div>
+<a id="aa4429c672313b9f3137f2f93470aa921" name="aa4429c672313b9f3137f2f93470aa921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4429c672313b9f3137f2f93470aa921">&#9670;&#160;</a></span>sc16is_tx_available()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sc16is_tx_available </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает свободное место в TX FIFO. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00224">224</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00019">SC16IS_REG_TXLVL</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sc16is7xx_8cpp_source.html#l00243">sc16is_write_buffer()</a>.</p>
+
+</div>
+</div>
+<a id="a2a83dfec143bda21d6e508c27afdda93" name="a2a83dfec143bda21d6e508c27afdda93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a83dfec143bda21d6e508c27afdda93">&#9670;&#160;</a></span>sc16is_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sc16is_write </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает один байт в TX FIFO. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00229">229</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00035">SC16IS_LSR_THR_EMPTY</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00084">sc16is_read_register()</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00017">SC16IS_REG_LSR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00012">SC16IS_REG_THR</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00073">sc16is_write_register()</a>.</p>
+
+</div>
+</div>
+<a id="afca656c45ab125caad62571c14cae72b" name="afca656c45ab125caad62571c14cae72b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afca656c45ab125caad62571c14cae72b">&#9670;&#160;</a></span>sc16is_write_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sc16is_write_buffer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>chip_select</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a962d74f892501ef436bdc77d191ac882">Sc16isChannel</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает буфер в TX FIFO. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sc16is7xx_8cpp_source.html">sc16is7xx.cpp</a> строка <a class="el" href="sc16is7xx_8cpp_source.html#l00243">243</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sc16is7xx_8cpp_source.html#l00012">SC16IS_REG_THR</a>, <a class="el" href="sc16is7xx_8cpp_source.html#l00224">sc16is_tx_available()</a> и <a class="el" href="sc16is7xx_8cpp_source.html#l00073">sc16is_write_register()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sc16is7xx_8hpp.html">sc16is7xx.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

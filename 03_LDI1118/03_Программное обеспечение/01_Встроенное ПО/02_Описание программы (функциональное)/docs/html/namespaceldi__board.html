@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LDI1118 Rev2 Firmware: Пространство имен ldi_board</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LDI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LDI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespaceldi__board.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Пространство имен ldi_board</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac3a733984f2d71c449e9fe022e863a38" id="r_ac3a733984f2d71c449e9fe022e863a38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3a733984f2d71c449e9fe022e863a38">initIo</a> (void)</td></tr>
+<tr class="memdesc:ac3a733984f2d71c449e9fe022e863a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует аппаратные линии платы LDI.  <br /></td></tr>
+<tr class="memitem:a3945162fb5e98036e07eef343c9432eb" id="r_a3945162fb5e98036e07eef343c9432eb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3945162fb5e98036e07eef343c9432eb">readSlaveAddress</a> (void)</td></tr>
+<tr class="memdesc:a3945162fb5e98036e07eef343c9432eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считывает Modbus-адрес с аппаратного адресного переключателя.  <br /></td></tr>
+<tr class="memitem:a60b35a3a9b9c00911feff162ebab2d80" id="r_a60b35a3a9b9c00911feff162ebab2d80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60b35a3a9b9c00911feff162ebab2d80">statusLedWrite</a> (bool state)</td></tr>
+<tr class="memdesc:a60b35a3a9b9c00911feff162ebab2d80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает состояние светодиода связи.  <br /></td></tr>
+<tr class="memitem:a6e9001d0eb714242987fa5e02c7d63f2" id="r_a6e9001d0eb714242987fa5e02c7d63f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e9001d0eb714242987fa5e02c7d63f2">statusLedToggle</a> (void)</td></tr>
+<tr class="memdesc:a6e9001d0eb714242987fa5e02c7d63f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инвертирует состояние светодиода связи.  <br /></td></tr>
+<tr class="memitem:a31fdd923dac52d24efe601bbe1743c3b" id="r_a31fdd923dac52d24efe601bbe1743c3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31fdd923dac52d24efe601bbe1743c3b">rs485TransmitMode</a> (void)</td></tr>
+<tr class="memdesc:a31fdd923dac52d24efe601bbe1743c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переводит RS-485-трансивер в режим передачи.  <br /></td></tr>
+<tr class="memitem:a83b55d5a12edd8e555bd856ecb1b54e2" id="r_a83b55d5a12edd8e555bd856ecb1b54e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83b55d5a12edd8e555bd856ecb1b54e2">rs485ReceiveMode</a> (void)</td></tr>
+<tr class="memdesc:a83b55d5a12edd8e555bd856ecb1b54e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переводит RS-485-трансивер в режим приёма.  <br /></td></tr>
+<tr class="memitem:a3935b99e40bcdc98f331aed3da58cdae" id="r_a3935b99e40bcdc98f331aed3da58cdae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3935b99e40bcdc98f331aed3da58cdae">rs485IsTransmitMode</a> (void)</td></tr>
+<tr class="memdesc:a3935b99e40bcdc98f331aed3da58cdae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет состояние линии управления RS-485.  <br /></td></tr>
+<tr class="memitem:af6cce6b6bb91d2d71c481d651b254758" id="r_af6cce6b6bb91d2d71c481d651b254758"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6cce6b6bb91d2d71c481d651b254758">readInputs</a> (void)</td></tr>
+<tr class="memdesc:af6cce6b6bb91d2d71c481d651b254758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считывает состояние шестнадцати дискретных входов.  <br /></td></tr>
+<tr class="memitem:a3fff9e72ad5dbf4492ad3252d94e359c" id="r_a3fff9e72ad5dbf4492ad3252d94e359c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fff9e72ad5dbf4492ad3252d94e359c">writeInputLeds</a> (uint16_t state)</td></tr>
+<tr class="memdesc:a3fff9e72ad5dbf4492ad3252d94e359c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит состояние входов на LED-панель.  <br /></td></tr>
+<tr class="memitem:ae02130e7abca8f485bcd4a083d782e80" id="r_ae02130e7abca8f485bcd4a083d782e80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae02130e7abca8f485bcd4a083d782e80">writePanelMask</a> (uint16_t state)</td></tr>
+<tr class="memdesc:ae02130e7abca8f485bcd4a083d782e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит битовую маску на LED-панель.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:adc76d413c1ed06c80eedf389c64f3887" id="r_adc76d413c1ed06c80eedf389c64f3887"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc76d413c1ed06c80eedf389c64f3887">INPUT_COUNT</a> = 16u</td></tr>
+<tr class="memdesc:adc76d413c1ed06c80eedf389c64f3887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Количество дискретных входов модуля LDI.  <br /></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ac3a733984f2d71c449e9fe022e863a38" name="ac3a733984f2d71c449e9fe022e863a38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a733984f2d71c449e9fe022e863a38">&#9670;&#160;</a></span>initIo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::initIo </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует аппаратные линии платы LDI. </p>
+<p>Настраивает:</p><ul>
+<li>входы адресного переключателя;</li>
+<li>линии UART/RS-485;</li>
+<li>линии 74HC165;</li>
+<li>линии 74HC595;</li>
+<li>светодиод состояния связи.</li>
+</ul>
+<p>После инициализации:</p><ul>
+<li>RS-485 переводится в режим приёма;</li>
+<li>LED-панель сбрасывается в ноль;</li>
+<li>светодиод состояния связи выключается. </li>
+</ul>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00292">292</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>    {</div>
+<div class="line"><span class="lineno">  294</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  295</span><span class="comment">         * Адресный переключатель: PC0...PC4, входы с внутренней подтяжкой.</span></div>
+<div class="line"><span class="lineno">  296</span><span class="comment">         * Переключатели активны низким уровнем.</span></div>
+<div class="line"><span class="lineno">  297</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  298</span>        DDRC &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~ADDRESS_INPUTS_MASK);</div>
+<div class="line"><span class="lineno">  299</span>        PORTC |= ADDRESS_INPUTS_MASK;</div>
+<div class="line"><span class="lineno">  300</span> </div>
+<div class="line"><span class="lineno">  301</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  302</span><span class="comment">         * UART/RS-485:</span></div>
+<div class="line"><span class="lineno">  303</span><span class="comment">         * - PD0 RXD, вход без внутренней подтяжки;</span></div>
+<div class="line"><span class="lineno">  304</span><span class="comment">         * - PD1 TXD, выход;</span></div>
+<div class="line"><span class="lineno">  305</span><span class="comment">         * - PD2 DE/RE, выход, начально режим приёма.</span></div>
+<div class="line"><span class="lineno">  306</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  307</span>        DDRD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~_BV(PD0));</div>
+<div class="line"><span class="lineno">  308</span>        DDRD |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(PD1) | RS485_DE_MASK);</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~_BV(PD0));</div>
+<div class="line"><span class="lineno">  311</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~_BV(PD1));</div>
+<div class="line"><span class="lineno">  312</span>        <a class="code hl_function" href="#a83b55d5a12edd8e555bd856ecb1b54e2">rs485ReceiveMode</a>();</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  315</span><span class="comment">         * Сдвиговые регистры:</span></div>
+<div class="line"><span class="lineno">  316</span><span class="comment">         * - PD3 latch, выход;</span></div>
+<div class="line"><span class="lineno">  317</span><span class="comment">         * - PD4 clock, выход;</span></div>
+<div class="line"><span class="lineno">  318</span><span class="comment">         * - PD5 data from 74HC165, вход без внутренней подтяжки;</span></div>
+<div class="line"><span class="lineno">  319</span><span class="comment">         * - PB1 data to 74HC595, выход.</span></div>
+<div class="line"><span class="lineno">  320</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  321</span>        DDRD |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(SR_LATCH_MASK | SR_CLOCK_MASK);</div>
+<div class="line"><span class="lineno">  322</span>        DDRD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~SR_INPUT_DATA_MASK);</div>
+<div class="line"><span class="lineno">  323</span> </div>
+<div class="line"><span class="lineno">  324</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~SR_LATCH_MASK);</div>
+<div class="line"><span class="lineno">  325</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~SR_CLOCK_MASK);</div>
+<div class="line"><span class="lineno">  326</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~SR_INPUT_DATA_MASK);</div>
+<div class="line"><span class="lineno">  327</span> </div>
+<div class="line"><span class="lineno">  328</span>        DDRB |= SR_LED_DATA_MASK;</div>
+<div class="line"><span class="lineno">  329</span>        PORTB &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~SR_LED_DATA_MASK);</div>
+<div class="line"><span class="lineno">  330</span> </div>
+<div class="line"><span class="lineno">  331</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  332</span><span class="comment">         * Светодиод состояния связи: PB0, выход, начально выключен.</span></div>
+<div class="line"><span class="lineno">  333</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  334</span>        DDRB |= STATUS_LED_MASK;</div>
+<div class="line"><span class="lineno">  335</span>        <a class="code hl_function" href="#a60b35a3a9b9c00911feff162ebab2d80">statusLedWrite</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  336</span> </div>
+<div class="line"><span class="lineno">  337</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  338</span><span class="comment">         * Начальное состояние панели индикации.</span></div>
+<div class="line"><span class="lineno">  339</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  340</span>        <a class="code hl_function" href="#ae02130e7abca8f485bcd4a083d782e80">writePanelMask</a>(0x0000u);</div>
+<div class="line"><span class="lineno">  341</span>    }</div>
+<div class="ttc" id="anamespaceldi__board_html_a60b35a3a9b9c00911feff162ebab2d80"><div class="ttname"><a href="#a60b35a3a9b9c00911feff162ebab2d80">ldi_board::statusLedWrite</a></div><div class="ttdeci">void statusLedWrite(bool state)</div><div class="ttdoc">Устанавливает состояние светодиода связи.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00372">ldi_board.cpp:372</a></div></div>
+<div class="ttc" id="anamespaceldi__board_html_a83b55d5a12edd8e555bd856ecb1b54e2"><div class="ttname"><a href="#a83b55d5a12edd8e555bd856ecb1b54e2">ldi_board::rs485ReceiveMode</a></div><div class="ttdeci">void rs485ReceiveMode(void)</div><div class="ttdoc">Переводит RS-485-трансивер в режим приёма.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00396">ldi_board.cpp:396</a></div></div>
+<div class="ttc" id="anamespaceldi__board_html_ae02130e7abca8f485bcd4a083d782e80"><div class="ttname"><a href="#ae02130e7abca8f485bcd4a083d782e80">ldi_board::writePanelMask</a></div><div class="ttdeci">void writePanelMask(uint16_t state)</div><div class="ttdoc">Выводит битовую маску на LED-панель.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00456">ldi_board.cpp:456</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00396">rs485ReceiveMode()</a>, <a class="el" href="ldi__board_8cpp_source.html#l00372">statusLedWrite()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00456">writePanelMask()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00325">anonymous_namespace{app.cpp}::initBoardIo()</a>.</p>
+
+</div>
+</div>
+<a id="af6cce6b6bb91d2d71c481d651b254758" name="af6cce6b6bb91d2d71c481d651b254758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6cce6b6bb91d2d71c481d651b254758">&#9670;&#160;</a></span>readInputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ldi_board::readInputs </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считывает состояние шестнадцати дискретных входов. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Битовое состояние входов.</dd>
+<dd>
+Битовое состояние входов.</dd></dl>
+<p>Чтение выполняется через последовательный выход 74HC165. Первый считанный бит помещается в bit 15 результата, последний считанный бит помещается в bit 0 результата.</p>
+<p>Логическая единица на выходе 74HC165 записывается как 1 в соответствующий бит результата.</p>
+<dl class="section note"><dt>Заметки</dt><dd>Линии latch и clock общие для 74HC165 и 74HC595. Поэтому после чтения входов аппаратный слой восстанавливает последнее состояние LED-панели. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00417">417</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  418</span>    {</div>
+<div class="line"><span class="lineno">  419</span>        uint16_t state = 0u;</div>
+<div class="line"><span class="lineno">  420</span> </div>
+<div class="line"><span class="lineno">  421</span>        capture165Inputs();</div>
+<div class="line"><span class="lineno">  422</span> </div>
+<div class="line"><span class="lineno">  423</span>        <span class="keywordflow">for</span> (uint8_t i = 0u; i &lt; <a class="code hl_variable" href="#adc76d413c1ed06c80eedf389c64f3887">INPUT_COUNT</a>; ++i)</div>
+<div class="line"><span class="lineno">  424</span>        {</div>
+<div class="line"><span class="lineno">  425</span>            state &lt;&lt;= 1;</div>
+<div class="line"><span class="lineno">  426</span> </div>
+<div class="line"><span class="lineno">  427</span>            <span class="keywordflow">if</span> ((PIND &amp; SR_INPUT_DATA_MASK) != 0u)</div>
+<div class="line"><span class="lineno">  428</span>            {</div>
+<div class="line"><span class="lineno">  429</span>                state |= 0x0001u;</div>
+<div class="line"><span class="lineno">  430</span>            }</div>
+<div class="line"><span class="lineno">  431</span> </div>
+<div class="line"><span class="lineno">  432</span>            shiftClockPulse();</div>
+<div class="line"><span class="lineno">  433</span>        }</div>
+<div class="line"><span class="lineno">  434</span> </div>
+<div class="line"><span class="lineno">  435</span>        <a class="code hl_function" href="namespaceanonymous__namespace_02ldi__board_8cpp_03.html#afc64acdca78a3c9d7dd930ed724d4e66">latchLow</a>();</div>
+<div class="line"><span class="lineno">  436</span>        <a class="code hl_function" href="namespaceanonymous__namespace_02ldi__board_8cpp_03.html#ab4ff60fed7587074c9de772353d476af">restorePanelMask</a>();</div>
+<div class="line"><span class="lineno">  437</span> </div>
+<div class="line"><span class="lineno">  438</span>        <span class="keywordflow">return</span> state;</div>
+<div class="line"><span class="lineno">  439</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_ab4ff60fed7587074c9de772353d476af"><div class="ttname"><a href="namespaceanonymous__namespace_02ldi__board_8cpp_03.html#ab4ff60fed7587074c9de772353d476af">anonymous_namespace{ldi_board.cpp}::restorePanelMask</a></div><div class="ttdeci">void restorePanelMask(void)</div><div class="ttdoc">Восстанавливает состояние LED-панели после чтения входов.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00281">ldi_board.cpp:281</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_afc64acdca78a3c9d7dd930ed724d4e66"><div class="ttname"><a href="namespaceanonymous__namespace_02ldi__board_8cpp_03.html#afc64acdca78a3c9d7dd930ed724d4e66">anonymous_namespace{ldi_board.cpp}::latchLow</a></div><div class="ttdeci">void latchLow(void)</div><div class="ttdoc">Оставляет latch-линию в низком уровне.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00206">ldi_board.cpp:206</a></div></div>
+<div class="ttc" id="anamespaceldi__board_html_adc76d413c1ed06c80eedf389c64f3887"><div class="ttname"><a href="#adc76d413c1ed06c80eedf389c64f3887">ldi_board::INPUT_COUNT</a></div><div class="ttdeci">static const uint8_t INPUT_COUNT</div><div class="ttdoc">Количество дискретных входов модуля LDI.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8hpp_source.html#l00030">ldi_board.hpp:30</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8hpp_source.html#l00030">INPUT_COUNT</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00361">anonymous_namespace{app.cpp}::updateInputs()</a>.</p>
+
+</div>
+</div>
+<a id="a3945162fb5e98036e07eef343c9432eb" name="a3945162fb5e98036e07eef343c9432eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3945162fb5e98036e07eef343c9432eb">&#9670;&#160;</a></span>readSlaveAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ldi_board::readSlaveAddress </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считывает Modbus-адрес с аппаратного адресного переключателя. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Modbus-адрес устройства.</dd>
+<dd>
+Modbus-адрес устройства.</dd></dl>
+<p>Адресный переключатель подключён к PC0...PC4. Входы работают с внутренними подтяжками к Vcc. Активное положение переключателя даёт логический ноль на входе.</p>
+<p>После инверсии и зеркального разворота битов соответствие такое:</p><ul>
+<li>PC4 -&gt; bit 0, 0b00000001;</li>
+<li>PC3 -&gt; bit 1, 0b00000010;</li>
+<li>PC2 -&gt; bit 2, 0b00000100;</li>
+<li>PC1 -&gt; bit 3, 0b00001000;</li>
+<li>PC0 -&gt; bit 4, 0b00010000.</li>
+</ul>
+<p>Если считанное значение равно нулю, возвращается адрес 1. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00348">348</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  349</span>    {</div>
+<div class="line"><span class="lineno">  350</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  351</span><span class="comment">         * Входы подтянуты к Vcc, активное положение переключателя даёт ноль.</span></div>
+<div class="line"><span class="lineno">  352</span><span class="comment">         * Поэтому состояние входов инвертируется.</span></div>
+<div class="line"><span class="lineno">  353</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  354</span>        <span class="keyword">const</span> uint8_t raw =</div>
+<div class="line"><span class="lineno">  355</span>            <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((~PINC) &amp; ADDRESS_INPUTS_MASK);</div>
+<div class="line"><span class="lineno">  356</span> </div>
+<div class="line"><span class="lineno">  357</span>        uint8_t addr = mirrorFiveBits(raw);</div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span>        <span class="keywordflow">if</span> (addr == 0u)</div>
+<div class="line"><span class="lineno">  360</span>        {</div>
+<div class="line"><span class="lineno">  361</span>            addr = 1u;</div>
+<div class="line"><span class="lineno">  362</span>        }</div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>        <span class="keywordflow">return</span> addr;</div>
+<div class="line"><span class="lineno">  365</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00335">anonymous_namespace{app.cpp}::readSlaveAddress()</a>.</p>
+
+</div>
+</div>
+<a id="a3935b99e40bcdc98f331aed3da58cdae" name="a3935b99e40bcdc98f331aed3da58cdae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3935b99e40bcdc98f331aed3da58cdae">&#9670;&#160;</a></span>rs485IsTransmitMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ldi_board::rs485IsTransmitMode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет состояние линии управления RS-485. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true — активен режим передачи. </dd>
+<dd>
+false — активен режим приёма.</dd>
+<dd>
+true — трансивер находится в режиме передачи. </dd>
+<dd>
+false — трансивер находится в режиме приёма. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00407">407</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  408</span>    {</div>
+<div class="line"><span class="lineno">  409</span>        <span class="keywordflow">return</span> ((PORTD &amp; RS485_DE_MASK) != 0u);</div>
+<div class="line"><span class="lineno">  410</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00118">IGAS_mb_485::update()</a>.</p>
+
+</div>
+</div>
+<a id="a83b55d5a12edd8e555bd856ecb1b54e2" name="a83b55d5a12edd8e555bd856ecb1b54e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b55d5a12edd8e555bd856ecb1b54e2">&#9670;&#160;</a></span>rs485ReceiveMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::rs485ReceiveMode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переводит RS-485-трансивер в режим приёма. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00396">396</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  397</span>    {</div>
+<div class="line"><span class="lineno">  398</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~RS485_DE_MASK);</div>
+<div class="line"><span class="lineno">  399</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00292">initIo()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00037">anonymous_namespace{IGAS_mb.cpp}::rs485TxCompleteCallback()</a>.</p>
+
+</div>
+</div>
+<a id="a31fdd923dac52d24efe601bbe1743c3b" name="a31fdd923dac52d24efe601bbe1743c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31fdd923dac52d24efe601bbe1743c3b">&#9670;&#160;</a></span>rs485TransmitMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::rs485TransmitMode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переводит RS-485-трансивер в режим передачи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00388">388</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  389</span>    {</div>
+<div class="line"><span class="lineno">  390</span>        PORTD |= RS485_DE_MASK;</div>
+<div class="line"><span class="lineno">  391</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00385">IGAS_mb_485::send()</a>.</p>
+
+</div>
+</div>
+<a id="a6e9001d0eb714242987fa5e02c7d63f2" name="a6e9001d0eb714242987fa5e02c7d63f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e9001d0eb714242987fa5e02c7d63f2">&#9670;&#160;</a></span>statusLedToggle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::statusLedToggle </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инвертирует состояние светодиода связи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00380">380</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  381</span>    {</div>
+<div class="line"><span class="lineno">  382</span>        PORTB ^= STATUS_LED_MASK;</div>
+<div class="line"><span class="lineno">  383</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00353">anonymous_namespace{app.cpp}::statusLedToggle()</a>.</p>
+
+</div>
+</div>
+<a id="a60b35a3a9b9c00911feff162ebab2d80" name="a60b35a3a9b9c00911feff162ebab2d80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b35a3a9b9c00911feff162ebab2d80">&#9670;&#160;</a></span>statusLedWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::statusLedWrite </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает состояние светодиода связи. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>true — включить светодиод; false — выключить светодиод. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00372">372</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  373</span>    {</div>
+<div class="line"><span class="lineno">  374</span>        writePortMask(PORTB, STATUS_LED_MASK, state);</div>
+<div class="line"><span class="lineno">  375</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00292">initIo()</a> и <a class="el" href="app_8cpp_source.html#l00345">anonymous_namespace{app.cpp}::statusLedWrite()</a>.</p>
+
+</div>
+</div>
+<a id="a3fff9e72ad5dbf4492ad3252d94e359c" name="a3fff9e72ad5dbf4492ad3252d94e359c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fff9e72ad5dbf4492ad3252d94e359c">&#9670;&#160;</a></span>writeInputLeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::writeInputLeds </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выводит состояние входов на LED-панель. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Битовое состояние входов.</td></tr>
+    <tr><td class="paramname">state</td><td>Битовое состояние входов.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Перед выводом на 74HC595 выполняется перестановка младшего и старшего байта, соответствующая разводке LED-панели. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00446">446</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  447</span>    {</div>
+<div class="line"><span class="lineno">  448</span>        <a class="code hl_function" href="#ae02130e7abca8f485bcd4a083d782e80">writePanelMask</a>(state);</div>
+<div class="line"><span class="lineno">  449</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00456">writePanelMask()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00373">anonymous_namespace{app.cpp}::updateInputIndication()</a>.</p>
+
+</div>
+</div>
+<a id="ae02130e7abca8f485bcd4a083d782e80" name="ae02130e7abca8f485bcd4a083d782e80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02130e7abca8f485bcd4a083d782e80">&#9670;&#160;</a></span>writePanelMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldi_board::writePanelMask </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выводит битовую маску на LED-панель. </p>
+<p>Выводит произвольную маску на LED-панель.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Битовая маска светодиодов.</td></tr>
+    <tr><td class="paramname">state</td><td>Битовая маска светодиодов.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция применяет ту же перестановку байтов, что и <a class="el" href="#a3fff9e72ad5dbf4492ad3252d94e359c" title="Выводит состояние входов на LED-панель.">writeInputLeds()</a>. Последняя переданная маска сохраняется внутри аппаратного слоя и используется для восстановления LED-панели после чтения входов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00456">456</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  457</span>    {</div>
+<div class="line"><span class="lineno">  458</span>        s_lastPanelMask = state;</div>
+<div class="line"><span class="lineno">  459</span>        transferPanelMask(state);</div>
+<div class="line"><span class="lineno">  460</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00292">initIo()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00446">writeInputLeds()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="adc76d413c1ed06c80eedf389c64f3887" name="adc76d413c1ed06c80eedf389c64f3887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc76d413c1ed06c80eedf389c64f3887">&#9670;&#160;</a></span>INPUT_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t ldi_board::INPUT_COUNT = 16u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Количество дискретных входов модуля LDI. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8hpp_source.html">ldi_board.hpp</a> строка <a class="el" href="ldi__board_8hpp_source.html#l00030">30</a></p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00417">readInputs()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceldi__board.html">ldi_board</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

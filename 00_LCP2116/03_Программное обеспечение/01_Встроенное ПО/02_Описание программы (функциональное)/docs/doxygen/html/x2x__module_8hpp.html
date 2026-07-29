@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/x2x/x2x_module.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__module_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл x2x_module.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Общий интерфейс неблокирующих драйверов модулей X2X.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="modbus__rtu__master_8hpp_source.html">../../protocol/modbus_rtu/modbus_rtu_master.hpp</a>&quot;</code><br />
+</div>
+<p><a href="x2x__module_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:X2XModuleContext" id="r_X2XModuleContext"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XModuleContext.html">X2XModuleContext</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Общие ресурсы одного вызова драйвера текущего модуля.  <a href="structX2XModuleContext.html#details">Подробнее...</a><br /></td></tr>
+<tr class="memitem:X2XModuleRuntime" id="r_X2XModuleRuntime"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XModuleRuntime.html">X2XModuleRuntime</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние драйвера отдельного экземпляра модуля.  <a href="structX2XModuleRuntime.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a5fbfa303c01b54027b3a27da16f3d2fd" id="r_a5fbfa303c01b54027b3a27da16f3d2fd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="#a985f94d26c1523fb0cee86f55e380258">X2XModulePollResult</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fbfa303c01b54027b3a27da16f3d2fd">X2XModulePollFunction</a>) (<a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *device, <a class="el" href="structX2XModuleContext.html">X2XModuleContext</a> &amp;context)</td></tr>
+<tr class="memdesc:a5fbfa303c01b54027b3a27da16f3d2fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback неблокирующего опроса конкретного типа модуля.  <br /></td></tr>
+<tr class="memitem:a71cf424d7aa8cc8d263d3b3f461eeaa3" id="r_a71cf424d7aa8cc8d263d3b3f461eeaa3"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71cf424d7aa8cc8d263d3b3f461eeaa3">X2XModulePrintFunction</a>) (const <a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> &amp;device)</td></tr>
+<tr class="memdesc:a71cf424d7aa8cc8d263d3b3f461eeaa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback вывода специфических данных модуля в service console.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a985f94d26c1523fb0cee86f55e380258" id="r_a985f94d26c1523fb0cee86f55e380258"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a985f94d26c1523fb0cee86f55e380258">X2XModulePollResult</a> : uint8_t { <a class="el" href="#a985f94d26c1523fb0cee86f55e380258a88cfe055ffad1c7d9665270cde537f70">X2X_MODULE_POLL_IN_PROGRESS</a> = 0U
+, <a class="el" href="#a985f94d26c1523fb0cee86f55e380258aa0ca875d26eda9cc05d98e6a88f1b5c0">X2X_MODULE_POLL_CYCLE_COMPLETE</a> = 1U
+ }</td></tr>
+<tr class="memdesc:a985f94d26c1523fb0cee86f55e380258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Результат одного вызова неблокирующего драйвера модуля.  <a href="#a985f94d26c1523fb0cee86f55e380258">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a93a9fb0e5f1ccdd1faa30ab2912b4858" id="r_a93a9fb0e5f1ccdd1faa30ab2912b4858"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93a9fb0e5f1ccdd1faa30ab2912b4858">X2X_DEVICE_SLOT_BYTES</a> = 256U</td></tr>
+<tr class="memdesc:a93a9fb0e5f1ccdd1faa30ab2912b4858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Размер одного статического слота реестра устройств X2X.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Общий интерфейс неблокирующих драйверов модулей X2X. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a></p>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
+<a id="a5fbfa303c01b54027b3a27da16f3d2fd" name="a5fbfa303c01b54027b3a27da16f3d2fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fbfa303c01b54027b3a27da16f3d2fd">&#9670;&#160;</a></span>X2XModulePollFunction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="#a985f94d26c1523fb0cee86f55e380258">X2XModulePollResult</a>(* X2XModulePollFunction) (<a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *device, <a class="el" href="structX2XModuleContext.html">X2XModuleContext</a> &amp;context)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback неблокирующего опроса конкретного типа модуля. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">device</td><td>Заголовок и данные конкретного экземпляра. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">context</td><td>Общие ресурсы X2X-сервиса. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Состояние цикла из <a class="el" href="#a985f94d26c1523fb0cee86f55e380258" title="Результат одного вызова неблокирующего драйвера модуля.">X2XModulePollResult</a>. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00062">62</a></p>
+
+</div>
+</div>
+<a id="a71cf424d7aa8cc8d263d3b3f461eeaa3" name="a71cf424d7aa8cc8d263d3b3f461eeaa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71cf424d7aa8cc8d263d3b3f461eeaa3">&#9670;&#160;</a></span>X2XModulePrintFunction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* X2XModulePrintFunction) (const <a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> &amp;device)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback вывода специфических данных модуля в service console. </p>
+<p>Общий статус связи печатается диагностикой X2X. Callback выводит только данные типа: дискретные входы, float-поля или выходное значение.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>Заголовок, фактически являющийся началом структуры типа. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00074">74</a></p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a985f94d26c1523fb0cee86f55e380258" name="a985f94d26c1523fb0cee86f55e380258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a985f94d26c1523fb0cee86f55e380258">&#9670;&#160;</a></span>X2XModulePollResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a985f94d26c1523fb0cee86f55e380258">X2XModulePollResult</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Результат одного вызова неблокирующего драйвера модуля. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a985f94d26c1523fb0cee86f55e380258a88cfe055ffad1c7d9665270cde537f70" name="a985f94d26c1523fb0cee86f55e380258a88cfe055ffad1c7d9665270cde537f70"></a>X2X_MODULE_POLL_IN_PROGRESS&#160;</td><td class="fielddoc"><p>Цикл модуля ещё не завершён. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a985f94d26c1523fb0cee86f55e380258aa0ca875d26eda9cc05d98e6a88f1b5c0" name="a985f94d26c1523fb0cee86f55e380258aa0ca875d26eda9cc05d98e6a88f1b5c0"></a>X2X_MODULE_POLL_CYCLE_COMPLETE&#160;</td><td class="fielddoc"><p>Можно переходить к следующему slave. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00024">24</a></p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a93a9fb0e5f1ccdd1faa30ab2912b4858" name="a93a9fb0e5f1ccdd1faa30ab2912b4858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93a9fb0e5f1ccdd1faa30ab2912b4858">&#9670;&#160;</a></span>X2X_DEVICE_SLOT_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t X2X_DEVICE_SLOT_BYTES = 256U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Размер одного статического слота реестра устройств X2X. </p>
+<p>Каждый тип каталога проверяется <span class="tt">static_assert</span> в функции-конструкторе. Если структура нового модуля больше слота, сборка завершается ошибкой вместо скрытого переполнения статического реестра. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00021">21</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_e05296bbe1f2b3edfa4799f2a210e301.html">x2x</a></li><li class="navelem"><a href="x2x__module_8hpp.html">x2x_module.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

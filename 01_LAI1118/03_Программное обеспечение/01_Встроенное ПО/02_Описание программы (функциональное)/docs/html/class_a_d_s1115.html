@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Класс ADS1115</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_a_d_s1115.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс ADS1115</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Драйвер микросхемы <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ads1115_8hpp_source.html">app/ads1115.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a3602c395becdfa587376c77d76766f5b" id="r_a3602c395becdfa587376c77d76766f5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3602c395becdfa587376c77d76766f5b">ADS1115</a> (uint8_t address)</td></tr>
+<tr class="memdesc:a3602c395becdfa587376c77d76766f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт объект драйвера <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:aef105c96b8f0f74d369818d7148812b3" id="r_aef105c96b8f0f74d369818d7148812b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef105c96b8f0f74d369818d7148812b3">begin</a> (void)</td></tr>
+<tr class="memdesc:aef105c96b8f0f74d369818d7148812b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует интерфейс обмена с <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a16262eb02b1f77cb0edf9afe537b42b1" id="r_a16262eb02b1f77cb0edf9afe537b42b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16262eb02b1f77cb0edf9afe537b42b1">setGain</a> (uint8_t gain)</td></tr>
+<tr class="memdesc:a16262eb02b1f77cb0edf9afe537b42b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает диапазон входного усилителя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a74300917c84ffefb1127d335617cf125" id="r_a74300917c84ffefb1127d335617cf125"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74300917c84ffefb1127d335617cf125">setMode</a> (uint8_t mode)</td></tr>
+<tr class="memdesc:a74300917c84ffefb1127d335617cf125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает режим работы преобразователя.  <br /></td></tr>
+<tr class="memitem:aa979696ef5a7d1ed20715ede55b1e36c" id="r_aa979696ef5a7d1ed20715ede55b1e36c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa979696ef5a7d1ed20715ede55b1e36c">setDataRate</a> (uint8_t dataRate)</td></tr>
+<tr class="memdesc:aa979696ef5a7d1ed20715ede55b1e36c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает скорость преобразования <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:ab91f012712d5dee9ae80a4f6a0af61dc" id="r_ab91f012712d5dee9ae80a4f6a0af61dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab91f012712d5dee9ae80a4f6a0af61dc">startSingleShot</a> (uint8_t channel)</td></tr>
+<tr class="memdesc:ab91f012712d5dee9ae80a4f6a0af61dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запускает одиночное преобразование выбранного канала.  <br /></td></tr>
+<tr class="memitem:a22b3204ffc004f996fd637a8748fe949" id="r_a22b3204ffc004f996fd637a8748fe949"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22b3204ffc004f996fd637a8748fe949">isBusy</a> (void)</td></tr>
+<tr class="memdesc:a22b3204ffc004f996fd637a8748fe949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет состояние текущего преобразования.  <br /></td></tr>
+<tr class="memitem:ad18aa8d8d5235a5260bb15d52f02fa87" id="r_ad18aa8d8d5235a5260bb15d52f02fa87"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad18aa8d8d5235a5260bb15d52f02fa87">getValue</a> (void)</td></tr>
+<tr class="memdesc:ad18aa8d8d5235a5260bb15d52f02fa87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает последнее значение из регистра преобразования.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr class="memitem:ac6644311184641ad798b6587fd16dbfe" id="r_ac6644311184641ad798b6587fd16dbfe"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6644311184641ad798b6587fd16dbfe">buildSingleShotConfig</a> (uint8_t channel) const</td></tr>
+<tr class="memdesc:ac6644311184641ad798b6587fd16dbfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует значение конфигурационного регистра для одиночного преобразования.  <br /></td></tr>
+<tr class="memitem:a80aadfb417211591275c84163b55fcbf" id="r_a80aadfb417211591275c84163b55fcbf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80aadfb417211591275c84163b55fcbf">writeRegister</a> (uint8_t reg, uint16_t value)</td></tr>
+<tr class="memdesc:a80aadfb417211591275c84163b55fcbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает шестнадцатиразрядный регистр <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a7b0f1db3faf5c34f08d91045c4ff8b04" id="r_a7b0f1db3faf5c34f08d91045c4ff8b04"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b0f1db3faf5c34f08d91045c4ff8b04">readRegister</a> (uint8_t reg, uint16_t *value)</td></tr>
+<tr class="memdesc:a7b0f1db3faf5c34f08d91045c4ff8b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает шестнадцатиразрядный регистр <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:a2210526757a6911eddd82342d721aa59" id="r_a2210526757a6911eddd82342d721aa59"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2210526757a6911eddd82342d721aa59">address_</a></td></tr>
+<tr class="memdesc:a2210526757a6911eddd82342d721aa59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Семибитный I2C-адрес микросхемы.  <br /></td></tr>
+<tr class="memitem:a24514e50761b51618cf3041c84cfeafa" id="r_a24514e50761b51618cf3041c84cfeafa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24514e50761b51618cf3041c84cfeafa">gain_</a></td></tr>
+<tr class="memdesc:a24514e50761b51618cf3041c84cfeafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Код диапазона входного усилителя.  <br /></td></tr>
+<tr class="memitem:a32f2dfcebe171e6b264a3e11894a3853" id="r_a32f2dfcebe171e6b264a3e11894a3853"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32f2dfcebe171e6b264a3e11894a3853">mode_</a></td></tr>
+<tr class="memdesc:a32f2dfcebe171e6b264a3e11894a3853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Код режима работы преобразователя.  <br /></td></tr>
+<tr class="memitem:a0dcd260926e587fa01957ee691851198" id="r_a0dcd260926e587fa01957ee691851198"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dcd260926e587fa01957ee691851198">dataRate_</a></td></tr>
+<tr class="memdesc:a0dcd260926e587fa01957ee691851198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Код скорости преобразования.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Драйвер микросхемы <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<p>Класс хранит I2C-адрес микросхемы и параметры конфигурации, используемые при запуске одиночного преобразования. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a> строка <a class="el" href="ads1115_8hpp_source.html#l00032">32</a></p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a3602c395becdfa587376c77d76766f5b" name="a3602c395becdfa587376c77d76766f5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3602c395becdfa587376c77d76766f5b">&#9670;&#160;</a></span>ADS1115()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ADS1115::ADS1115 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Создаёт объект драйвера <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Семибитный I2C-адрес микросхемы. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00112">112</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>    : <a class="code hl_variable" href="#a2210526757a6911eddd82342d721aa59">address_</a>(address),</div>
+<div class="line"><span class="lineno">  114</span>      <a class="code hl_variable" href="#a24514e50761b51618cf3041c84cfeafa">gain_</a>(0U),</div>
+<div class="line"><span class="lineno">  115</span>      <a class="code hl_variable" href="#a32f2dfcebe171e6b264a3e11894a3853">mode_</a>(1U),</div>
+<div class="line"><span class="lineno">  116</span>      <a class="code hl_variable" href="#a0dcd260926e587fa01957ee691851198">dataRate_</a>(7U)</div>
+<div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>}</div>
+<div class="ttc" id="aclass_a_d_s1115_html_a0dcd260926e587fa01957ee691851198"><div class="ttname"><a href="#a0dcd260926e587fa01957ee691851198">ADS1115::dataRate_</a></div><div class="ttdeci">uint8_t dataRate_</div><div class="ttdoc">Код скорости преобразования.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00128">ads1115.hpp:128</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a2210526757a6911eddd82342d721aa59"><div class="ttname"><a href="#a2210526757a6911eddd82342d721aa59">ADS1115::address_</a></div><div class="ttdeci">uint8_t address_</div><div class="ttdoc">Семибитный I2C-адрес микросхемы.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00113">ads1115.hpp:113</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a24514e50761b51618cf3041c84cfeafa"><div class="ttname"><a href="#a24514e50761b51618cf3041c84cfeafa">ADS1115::gain_</a></div><div class="ttdeci">uint8_t gain_</div><div class="ttdoc">Код диапазона входного усилителя.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00118">ads1115.hpp:118</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a32f2dfcebe171e6b264a3e11894a3853"><div class="ttname"><a href="#a32f2dfcebe171e6b264a3e11894a3853">ADS1115::mode_</a></div><div class="ttdeci">uint8_t mode_</div><div class="ttdoc">Код режима работы преобразователя.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8hpp_source.html#l00123">ads1115.hpp:123</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00113">address_</a>, <a class="el" href="ads1115_8hpp_source.html#l00128">dataRate_</a>, <a class="el" href="ads1115_8hpp_source.html#l00118">gain_</a> и <a class="el" href="ads1115_8hpp_source.html#l00123">mode_</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="aef105c96b8f0f74d369818d7148812b3" name="aef105c96b8f0f74d369818d7148812b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef105c96b8f0f74d369818d7148812b3">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADS1115::begin </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует интерфейс обмена с <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<p>Функция настраивает шину I2C на рабочую частоту, используемую для обмена с микросхемами <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a> на плате LAI.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>true — инициализация выполнена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00120">120</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>{</div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_function" href="namespacehal.html#a3d73c0755ea07147d9a69a96863f5caa">hal::twi_init</a>(ADS1115_TWI_FREQUENCY_HZ);</div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  124</span>}</div>
+<div class="ttc" id="anamespacehal_html_a3d73c0755ea07147d9a69a96863f5caa"><div class="ttname"><a href="namespacehal.html#a3d73c0755ea07147d9a69a96863f5caa">hal::twi_init</a></div><div class="ttdeci">void twi_init(uint32_t scl_hz)</div><div class="ttdoc">Инициализирует аппаратный интерфейс I2C.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00200">compat_twi.cpp:200</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00200">hal::twi_init()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="ac6644311184641ad798b6587fd16dbfe" name="ac6644311184641ad798b6587fd16dbfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6644311184641ad798b6587fd16dbfe">&#9670;&#160;</a></span>buildSingleShotConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ADS1115::buildSingleShotConfig </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует значение конфигурационного регистра для одиночного преобразования. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>Номер single-ended канала: AIN0...AIN3.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение регистра конфигурации <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00175">175</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>{</div>
+<div class="line"><span class="lineno">  177</span>    <span class="keyword">const</span> uint16_t mux = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  178</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676">ADS1115_SINGLE_ENDED_MUX_BASE</a> + channel) &lt;&lt; <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1">ADS1115_MUX_SHIFT</a></div>
+<div class="line"><span class="lineno">  179</span>    );</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>    <span class="keyword">const</span> uint16_t pga = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a24514e50761b51618cf3041c84cfeafa">gain_</a> &amp; 0x07U) &lt;&lt; <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05">ADS1115_PGA_SHIFT</a></div>
+<div class="line"><span class="lineno">  183</span>    );</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    <span class="keyword">const</span> uint16_t mode = (<a class="code hl_variable" href="#a32f2dfcebe171e6b264a3e11894a3853">mode_</a> != 0U)</div>
+<div class="line"><span class="lineno">  186</span>        ? ADS1115_MODE_SINGLE_SHOT</div>
+<div class="line"><span class="lineno">  187</span>        : <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0">ADS1115_MODE_CONTINUOUS</a>;</div>
+<div class="line"><span class="lineno">  188</span> </div>
+<div class="line"><span class="lineno">  189</span>    <span class="keyword">const</span> uint16_t dataRate = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  190</span>        <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a0dcd260926e587fa01957ee691851198">dataRate_</a> &amp; 0x07U) &lt;&lt; <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd">ADS1115_DATA_RATE_SHIFT</a></div>
+<div class="line"><span class="lineno">  191</span>    );</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2">ADS1115_OS_START</a> |</div>
+<div class="line"><span class="lineno">  195</span>        mux |</div>
+<div class="line"><span class="lineno">  196</span>        pga |</div>
+<div class="line"><span class="lineno">  197</span>        mode |</div>
+<div class="line"><span class="lineno">  198</span>        dataRate |</div>
+<div class="line"><span class="lineno">  199</span>        <a class="code hl_variable" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c">ADS1115_COMP_DISABLE</a></div>
+<div class="line"><span class="lineno">  200</span>    );</div>
+<div class="line"><span class="lineno">  201</span>}</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a1c675bd52f9625c5268ff956fe42e676"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676">anonymous_namespace{ads1115.cpp}::ADS1115_SINGLE_ENDED_MUX_BASE</a></div><div class="ttdeci">static const uint8_t ADS1115_SINGLE_ENDED_MUX_BASE</div><div class="ttdoc">Базовый код single-ended канала AIN0.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00104">ads1115.cpp:104</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a2d2cfceed1b2002510bfe30466c3eff1"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1">anonymous_namespace{ads1115.cpp}::ADS1115_MUX_SHIFT</a></div><div class="ttdeci">static const uint8_t ADS1115_MUX_SHIFT</div><div class="ttdoc">Смещение поля MUX в конфигурационном регистре.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00085">ads1115.cpp:85</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a6887b9296a48f1ea0eee67116d5294bd"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd">anonymous_namespace{ads1115.cpp}::ADS1115_DATA_RATE_SHIFT</a></div><div class="ttdeci">static const uint8_t ADS1115_DATA_RATE_SHIFT</div><div class="ttdoc">Смещение поля DR в конфигурационном регистре.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00095">ads1115.cpp:95</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a936cb81d7196a78ddadcd661c1881cf0"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0">anonymous_namespace{ads1115.cpp}::ADS1115_MODE_CONTINUOUS</a></div><div class="ttdeci">static const uint16_t ADS1115_MODE_CONTINUOUS</div><div class="ttdoc">Код непрерывного режима преобразования.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00070">ads1115.cpp:70</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_a974fd1a2cac8ccbafdc3178388de28e2"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2">anonymous_namespace{ads1115.cpp}::ADS1115_OS_START</a></div><div class="ttdeci">static const uint16_t ADS1115_OS_START</div><div class="ttdoc">Бит запуска одиночного преобразования.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00060">ads1115.cpp:60</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_ad6d1a5654e9aa46a984cf8d841f17e05"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05">anonymous_namespace{ads1115.cpp}::ADS1115_PGA_SHIFT</a></div><div class="ttdeci">static const uint8_t ADS1115_PGA_SHIFT</div><div class="ttdoc">Смещение поля PGA в конфигурационном регистре.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00090">ads1115.cpp:90</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ads1115_8cpp_03_html_afca67c6002943d62f3eb8fd87005650c"><div class="ttname"><a href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c">anonymous_namespace{ads1115.cpp}::ADS1115_COMP_DISABLE</a></div><div class="ttdeci">static const uint16_t ADS1115_COMP_DISABLE</div><div class="ttdoc">Код отключения компаратора ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00080">ads1115.cpp:80</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00128">dataRate_</a>, <a class="el" href="ads1115_8hpp_source.html#l00118">gain_</a> и <a class="el" href="ads1115_8hpp_source.html#l00123">mode_</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00141">startSingleShot()</a>.</p>
+
+</div>
+</div>
+<a id="ad18aa8d8d5235a5260bb15d52f02fa87" name="ad18aa8d8d5235a5260bb15d52f02fa87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad18aa8d8d5235a5260bb15d52f02fa87">&#9670;&#160;</a></span>getValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t ADS1115::getValue </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает последнее значение из регистра преобразования. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Шестнадцатиразрядный знаковый код АЦП. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00163">163</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
+<div class="line"><span class="lineno">  165</span>    uint16_t value = 0U;</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a7b0f1db3faf5c34f08d91045c4ff8b04">readRegister</a>(ADS1115_REG_CONVERSION, &amp;value))</div>
+<div class="line"><span class="lineno">  168</span>    {</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  170</span>    }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(value);</div>
+<div class="line"><span class="lineno">  173</span>}</div>
+<div class="ttc" id="aclass_a_d_s1115_html_a7b0f1db3faf5c34f08d91045c4ff8b04"><div class="ttname"><a href="#a7b0f1db3faf5c34f08d91045c4ff8b04">ADS1115::readRegister</a></div><div class="ttdeci">bool readRegister(uint8_t reg, uint16_t *value)</div><div class="ttdoc">Читает шестнадцатиразрядный регистр ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00208">ads1115.cpp:208</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8cpp_source.html#l00208">readRegister()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00859">anonymous_namespace{app.cpp}::handleConversion()</a>.</p>
+
+</div>
+</div>
+<a id="a22b3204ffc004f996fd637a8748fe949" name="a22b3204ffc004f996fd637a8748fe949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b3204ffc004f996fd637a8748fe949">&#9670;&#160;</a></span>isBusy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADS1115::isBusy </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет состояние текущего преобразования. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true — преобразование ещё выполняется; false — результат преобразования готов. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00151">151</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    uint16_t config = 0U;</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a7b0f1db3faf5c34f08d91045c4ff8b04">readRegister</a>(ADS1115_REG_CONFIG, &amp;config))</div>
+<div class="line"><span class="lineno">  156</span>    {</div>
+<div class="line"><span class="lineno">  157</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  158</span>    }</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">return</span> ((config &amp; ADS1115_OS_READY) == 0U);</div>
+<div class="line"><span class="lineno">  161</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8cpp_source.html#l00208">readRegister()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00859">anonymous_namespace{app.cpp}::handleConversion()</a>.</p>
+
+</div>
+</div>
+<a id="a7b0f1db3faf5c34f08d91045c4ff8b04" name="a7b0f1db3faf5c34f08d91045c4ff8b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b0f1db3faf5c34f08d91045c4ff8b04">&#9670;&#160;</a></span>readRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADS1115::readRegister </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Читает шестнадцатиразрядный регистр <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Адрес регистра. </td></tr>
+    <tr><td class="paramname">value</td><td>Указатель для сохранения прочитанного значения.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — чтение выполнено успешно; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00208">208</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  209</span>{</div>
+<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">if</span> (value == 0)</div>
+<div class="line"><span class="lineno">  211</span>    {</div>
+<div class="line"><span class="lineno">  212</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  213</span>    }</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacehal.html#a7d9634f41994e820eb6470cb27275f4b">hal::twi_read_reg16</a>(<a class="code hl_variable" href="#a2210526757a6911eddd82342d721aa59">address_</a>, reg, value);</div>
+<div class="line"><span class="lineno">  216</span>}</div>
+<div class="ttc" id="anamespacehal_html_a7d9634f41994e820eb6470cb27275f4b"><div class="ttname"><a href="namespacehal.html#a7d9634f41994e820eb6470cb27275f4b">hal::twi_read_reg16</a></div><div class="ttdeci">bool twi_read_reg16(uint8_t address, uint8_t reg, uint16_t *value)</div><div class="ttdoc">Читает шестнадцатиразрядный регистр I2C-устройства.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00262">compat_twi.cpp:262</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00113">address_</a> и <a class="el" href="compat__twi_8cpp_source.html#l00262">hal::twi_read_reg16()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00163">getValue()</a> и <a class="el" href="ads1115_8cpp_source.html#l00151">isBusy()</a>.</p>
+
+</div>
+</div>
+<a id="aa979696ef5a7d1ed20715ede55b1e36c" name="aa979696ef5a7d1ed20715ede55b1e36c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa979696ef5a7d1ed20715ede55b1e36c">&#9670;&#160;</a></span>setDataRate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADS1115::setDataRate </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>dataRate</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает скорость преобразования <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<p>Значение записывается в поле DR конфигурационного регистра. Фактическая частота преобразования определяется таблицей скоростей из документации <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dataRate</td><td>Код скорости преобразования. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00136">136</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  137</span>{</div>
+<div class="line"><span class="lineno">  138</span>    <a class="code hl_variable" href="#a0dcd260926e587fa01957ee691851198">dataRate_</a> = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(dataRate &amp; 0x07U);</div>
+<div class="line"><span class="lineno">  139</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00128">dataRate_</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="a16262eb02b1f77cb0edf9afe537b42b1" name="a16262eb02b1f77cb0edf9afe537b42b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16262eb02b1f77cb0edf9afe537b42b1">&#9670;&#160;</a></span>setGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADS1115::setGain </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>gain</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает диапазон входного усилителя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<p>Значение записывается в поле PGA конфигурационного регистра. Фактическая интерпретация значения соответствует документации на микросхему <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gain</td><td>Код диапазона входного усилителя. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00126">126</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_variable" href="#a24514e50761b51618cf3041c84cfeafa">gain_</a> = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(gain &amp; 0x07U);</div>
+<div class="line"><span class="lineno">  129</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00118">gain_</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="a74300917c84ffefb1127d335617cf125" name="a74300917c84ffefb1127d335617cf125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74300917c84ffefb1127d335617cf125">&#9670;&#160;</a></span>setMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADS1115::setMode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает режим работы преобразователя. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>Ненулевое значение — одиночный режим; ноль — непрерывный режим. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00131">131</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>{</div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_variable" href="#a32f2dfcebe171e6b264a3e11894a3853">mode_</a> = (mode != 0U) ? 1U : 0U;</div>
+<div class="line"><span class="lineno">  134</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00123">mode_</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="ab91f012712d5dee9ae80a4f6a0af61dc" name="ab91f012712d5dee9ae80a4f6a0af61dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91f012712d5dee9ae80a4f6a0af61dc">&#9670;&#160;</a></span>startSingleShot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADS1115::startSingleShot </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Запускает одиночное преобразование выбранного канала. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>Номер single-ended канала: AIN0...AIN3.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — команда запуска передана успешно; false — номер канала некорректен или обмен по I2C завершился ошибкой. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00141">141</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>{</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">if</span> (channel &gt; ADS1115_MAX_CHANNEL)</div>
+<div class="line"><span class="lineno">  144</span>    {</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  146</span>    }</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a80aadfb417211591275c84163b55fcbf">writeRegister</a>(ADS1115_REG_CONFIG, <a class="code hl_function" href="#ac6644311184641ad798b6587fd16dbfe">buildSingleShotConfig</a>(channel));</div>
+<div class="line"><span class="lineno">  149</span>}</div>
+<div class="ttc" id="aclass_a_d_s1115_html_a80aadfb417211591275c84163b55fcbf"><div class="ttname"><a href="#a80aadfb417211591275c84163b55fcbf">ADS1115::writeRegister</a></div><div class="ttdeci">bool writeRegister(uint8_t reg, uint16_t value)</div><div class="ttdoc">Записывает шестнадцатиразрядный регистр ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00203">ads1115.cpp:203</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_ac6644311184641ad798b6587fd16dbfe"><div class="ttname"><a href="#ac6644311184641ad798b6587fd16dbfe">ADS1115::buildSingleShotConfig</a></div><div class="ttdeci">uint16_t buildSingleShotConfig(uint8_t channel) const</div><div class="ttdoc">Формирует значение конфигурационного регистра для одиночного преобразования.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00175">ads1115.cpp:175</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8cpp_source.html#l00175">buildSingleShotConfig()</a> и <a class="el" href="ads1115_8cpp_source.html#l00203">writeRegister()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00859">anonymous_namespace{app.cpp}::handleConversion()</a>.</p>
+
+</div>
+</div>
+<a id="a80aadfb417211591275c84163b55fcbf" name="a80aadfb417211591275c84163b55fcbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80aadfb417211591275c84163b55fcbf">&#9670;&#160;</a></span>writeRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADS1115::writeRegister </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Записывает шестнадцатиразрядный регистр <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Адрес регистра. </td></tr>
+    <tr><td class="paramname">value</td><td>Записываемое значение.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — запись выполнена успешно; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a> строка <a class="el" href="ads1115_8cpp_source.html#l00203">203</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  204</span>{</div>
+<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacehal.html#ab20137c6563e255ae4de17d12bd7550c">hal::twi_write_reg16</a>(<a class="code hl_variable" href="#a2210526757a6911eddd82342d721aa59">address_</a>, reg, value);</div>
+<div class="line"><span class="lineno">  206</span>}</div>
+<div class="ttc" id="anamespacehal_html_ab20137c6563e255ae4de17d12bd7550c"><div class="ttname"><a href="namespacehal.html#ab20137c6563e255ae4de17d12bd7550c">hal::twi_write_reg16</a></div><div class="ttdeci">bool twi_write_reg16(uint8_t address, uint8_t reg, uint16_t value)</div><div class="ttdoc">Записывает шестнадцатиразрядный регистр I2C-устройства.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00234">compat_twi.cpp:234</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ads1115_8hpp_source.html#l00113">address_</a> и <a class="el" href="compat__twi_8cpp_source.html#l00234">hal::twi_write_reg16()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00141">startSingleShot()</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Поля</h2>
+<a id="a2210526757a6911eddd82342d721aa59" name="a2210526757a6911eddd82342d721aa59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2210526757a6911eddd82342d721aa59">&#9670;&#160;</a></span>address_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ADS1115::address_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Семибитный I2C-адрес микросхемы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a> строка <a class="el" href="ads1115_8hpp_source.html#l00113">113</a></p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00112">ADS1115()</a>, <a class="el" href="ads1115_8cpp_source.html#l00208">readRegister()</a> и <a class="el" href="ads1115_8cpp_source.html#l00203">writeRegister()</a>.</p>
+
+</div>
+</div>
+<a id="a0dcd260926e587fa01957ee691851198" name="a0dcd260926e587fa01957ee691851198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dcd260926e587fa01957ee691851198">&#9670;&#160;</a></span>dataRate_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ADS1115::dataRate_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Код скорости преобразования. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a> строка <a class="el" href="ads1115_8hpp_source.html#l00128">128</a></p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00112">ADS1115()</a>, <a class="el" href="ads1115_8cpp_source.html#l00175">buildSingleShotConfig()</a> и <a class="el" href="ads1115_8cpp_source.html#l00136">setDataRate()</a>.</p>
+
+</div>
+</div>
+<a id="a24514e50761b51618cf3041c84cfeafa" name="a24514e50761b51618cf3041c84cfeafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24514e50761b51618cf3041c84cfeafa">&#9670;&#160;</a></span>gain_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ADS1115::gain_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Код диапазона входного усилителя. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a> строка <a class="el" href="ads1115_8hpp_source.html#l00118">118</a></p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00112">ADS1115()</a>, <a class="el" href="ads1115_8cpp_source.html#l00175">buildSingleShotConfig()</a> и <a class="el" href="ads1115_8cpp_source.html#l00126">setGain()</a>.</p>
+
+</div>
+</div>
+<a id="a32f2dfcebe171e6b264a3e11894a3853" name="a32f2dfcebe171e6b264a3e11894a3853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f2dfcebe171e6b264a3e11894a3853">&#9670;&#160;</a></span>mode_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ADS1115::mode_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Код режима работы преобразователя. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a> строка <a class="el" href="ads1115_8hpp_source.html#l00123">123</a></p>
+
+<p class="reference">Используется в <a class="el" href="ads1115_8cpp_source.html#l00112">ADS1115()</a>, <a class="el" href="ads1115_8cpp_source.html#l00175">buildSingleShotConfig()</a> и <a class="el" href="ads1115_8cpp_source.html#l00131">setMode()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>app/<a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a></li>
+<li>app/<a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_a_d_s1115.html">ADS1115</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

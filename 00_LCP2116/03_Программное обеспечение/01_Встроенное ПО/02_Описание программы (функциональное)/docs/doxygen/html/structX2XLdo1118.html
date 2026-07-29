@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура X2XLdo1118</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structX2XLdo1118.html','','structX2XLdo1118-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура X2XLdo1118</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Runtime-данные релейного модуля LDO1118.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="x2x__types_8hpp_source.html">app/x2x/x2x_types.hpp</a>&gt;</code></p>
+
+<p>Базовые классы:<a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a>.</p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft anon">union {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a69aeee41d11680b21096f1da055b2c7c" id="r_a69aeee41d11680b21096f1da055b2c7c"><td class="memItemLeft anon">&#160;&#160;&#160;int16_t&#160;&#160;&#160;<a class="el" href="#aec218280c644dec29245c8031d5264ad">me_values</a> [<a class="el" href="#ad57f08a6b817432bff388e16412ad6a3">ME_COUNT</a>]&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a0e29340ca20f37fc86021d29f46c792b" id="r_a0e29340ca20f37fc86021d29f46c792b"><td class="memItemLeft anon">&#160;&#160;&#160;int16_t&#160;&#160;&#160;<a class="el" href="#a936a032e2b0c22f3dbea9a92857f43af">output_value</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:adb6c8e62ba7f7dddd3fd83454fadd123" id="r_adb6c8e62ba7f7dddd3fd83454fadd123"><td class="memItemLeft anonEnd" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:aeddc90c8d1933b648cc4ff5f812f0bca" id="r_aeddc90c8d1933b648cc4ff5f812f0bca"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeddc90c8d1933b648cc4ff5f812f0bca">digital_inputs</a></td></tr>
+<tr class="inherit_header pub_attribs_structX2XDeviceHeader"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_structX2XDeviceHeader')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Открытые атрибуты унаследованные от <a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a></td></tr>
+<tr class="memitem:add2cecca0cade4f7a82704cc972685cb inherit pub_attribs_structX2XDeviceHeader" id="r_add2cecca0cade4f7a82704cc972685cb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#add2cecca0cade4f7a82704cc972685cb">asdu</a></td></tr>
+<tr class="memitem:a162bc5a690b1a4673fc0b0c930007626 inherit pub_attribs_structX2XDeviceHeader" id="r_a162bc5a690b1a4673fc0b0c930007626"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a162bc5a690b1a4673fc0b0c930007626">connection_lost</a></td></tr>
+<tr class="memitem:ad261c05908dc721420db8efe7e56b240 inherit pub_attribs_structX2XDeviceHeader" id="r_ad261c05908dc721420db8efe7e56b240"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#ad261c05908dc721420db8efe7e56b240">consecutive_failures</a></td></tr>
+<tr class="memitem:adfe783864a5b540c0a0b59a59c3c9446 inherit pub_attribs_structX2XDeviceHeader" id="r_adfe783864a5b540c0a0b59a59c3c9446"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#adfe783864a5b540c0a0b59a59c3c9446">device_fault</a></td></tr>
+<tr class="memitem:a229cef6e0e359236d8e2f137fd29c511 inherit pub_attribs_structX2XDeviceHeader" id="r_a229cef6e0e359236d8e2f137fd29c511"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a229cef6e0e359236d8e2f137fd29c511">failed_poll_count</a></td></tr>
+<tr class="memitem:a570e8192091b744c60ce686e35462fd5 inherit pub_attribs_structX2XDeviceHeader" id="r_a570e8192091b744c60ce686e35462fd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__types_8hpp.html#a5d6209c72ad4302bbd43669379df2947">X2XCommunicationError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a570e8192091b744c60ce686e35462fd5">last_communication_error</a></td></tr>
+<tr class="memitem:a2ccf509f6cc1f823eea002a2492220bd inherit pub_attribs_structX2XDeviceHeader" id="r_a2ccf509f6cc1f823eea002a2492220bd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a2ccf509f6cc1f823eea002a2492220bd">last_exception_code</a></td></tr>
+<tr class="memitem:aca0fe37afbe43c5c2c50b0b2f796dc26 inherit pub_attribs_structX2XDeviceHeader" id="r_aca0fe37afbe43c5c2c50b0b2f796dc26"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#aca0fe37afbe43c5c2c50b0b2f796dc26">last_update_ms</a></td></tr>
+<tr class="memitem:a67899834fdef266dcfc86afaed7bd9bc inherit pub_attribs_structX2XDeviceHeader" id="r_a67899834fdef266dcfc86afaed7bd9bc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#a67899834fdef266dcfc86afaed7bd9bc">slave_address</a></td></tr>
+<tr class="memitem:ad7bb83f861e92734e98284c616350a33 inherit pub_attribs_structX2XDeviceHeader" id="r_ad7bb83f861e92734e98284c616350a33"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#ad7bb83f861e92734e98284c616350a33">successful_poll_count</a></td></tr>
+<tr class="memitem:adec55246cfda9a9d15a00ca181e9e264 inherit pub_attribs_structX2XDeviceHeader" id="r_adec55246cfda9a9d15a00ca181e9e264"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structX2XDeviceHeader.html#adec55246cfda9a9d15a00ca181e9e264">type</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Статические открытые данные</h2></td></tr>
+<tr class="memitem:ad57f08a6b817432bff388e16412ad6a3" id="r_ad57f08a6b817432bff388e16412ad6a3"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad57f08a6b817432bff388e16412ad6a3">ME_COUNT</a> = 1U</td></tr>
+<tr class="memitem:a57177b9491da74ad0d74e9c05f4ced26" id="r_a57177b9491da74ad0d74e9c05f4ced26"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57177b9491da74ad0d74e9c05f4ced26">SP_COUNT</a> = 1U</td></tr>
+<tr class="memitem:a1254f69e4319db561f751fa91a74688e" id="r_a1254f69e4319db561f751fa91a74688e"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1254f69e4319db561f751fa91a74688e">TF_COUNT</a> = 0U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Runtime-данные релейного модуля LDO1118. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00089">89</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="adb6c8e62ba7f7dddd3fd83454fadd123" name="adb6c8e62ba7f7dddd3fd83454fadd123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb6c8e62ba7f7dddd3fd83454fadd123">&#9670;&#160;</a></span>[union]</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union  { ... }  <a class="el" href="structX2XLdo1118.html">X2XLdo1118</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeddc90c8d1933b648cc4ff5f812f0bca" name="aeddc90c8d1933b648cc4ff5f812f0bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeddc90c8d1933b648cc4ff5f812f0bca">&#9670;&#160;</a></span>digital_inputs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t X2XLdo1118::digital_inputs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00095">95</a></p>
+
+</div>
+</div>
+<a id="ad57f08a6b817432bff388e16412ad6a3" name="ad57f08a6b817432bff388e16412ad6a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad57f08a6b817432bff388e16412ad6a3">&#9670;&#160;</a></span>ME_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t X2XLdo1118::ME_COUNT = 1U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00092">92</a></p>
+
+</div>
+</div>
+<a id="aec218280c644dec29245c8031d5264ad" name="aec218280c644dec29245c8031d5264ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec218280c644dec29245c8031d5264ad">&#9670;&#160;</a></span>me_values</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t X2XLdo1118::me_values[<a class="el" href="#ad57f08a6b817432bff388e16412ad6a3">ME_COUNT</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00100">100</a></p>
+
+</div>
+</div>
+<a id="a936a032e2b0c22f3dbea9a92857f43af" name="a936a032e2b0c22f3dbea9a92857f43af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a936a032e2b0c22f3dbea9a92857f43af">&#9670;&#160;</a></span>output_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t X2XLdo1118::output_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00099">99</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__ldo_8cpp_source.html#l00018">x2x_module_poll_ldo1118()</a> и <a class="el" href="x2x__service_8cpp_source.html#l00332">x2x_service_set_ldo_output()</a>.</p>
+
+</div>
+</div>
+<a id="a57177b9491da74ad0d74e9c05f4ced26" name="a57177b9491da74ad0d74e9c05f4ced26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57177b9491da74ad0d74e9c05f4ced26">&#9670;&#160;</a></span>SP_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t X2XLdo1118::SP_COUNT = 1U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00091">91</a></p>
+
+</div>
+</div>
+<a id="a1254f69e4319db561f751fa91a74688e" name="a1254f69e4319db561f751fa91a74688e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1254f69e4319db561f751fa91a74688e">&#9670;&#160;</a></span>TF_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t X2XLdo1118::TF_COUNT = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a> строка <a class="el" href="x2x__types_8hpp_source.html#l00093">93</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/x2x/<a class="el" href="x2x__types_8hpp_source.html">x2x_types.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structX2XLdo1118.html">X2XLdo1118</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

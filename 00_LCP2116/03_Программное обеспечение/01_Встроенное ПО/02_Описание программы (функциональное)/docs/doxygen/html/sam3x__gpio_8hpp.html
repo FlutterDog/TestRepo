@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/sam3x_gpio.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__gpio_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sam3x_gpio.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HAL GPIO для ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="sam3x__gpio_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:af725cf464e16140c2be59e1cf303ff97" id="r_af725cf464e16140c2be59e1cf303ff97"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af725cf464e16140c2be59e1cf303ff97">HalGpioMode</a> { <a class="el" href="#af725cf464e16140c2be59e1cf303ff97af69cb3b5075cad32cf53b0f472d95ccb">HAL_GPIO_INPUT</a> = 0
+, <a class="el" href="#af725cf464e16140c2be59e1cf303ff97a74f85581f38ac6b00f5df19bd29f480e">HAL_GPIO_OUTPUT</a> = 1
+, <a class="el" href="#af725cf464e16140c2be59e1cf303ff97ac80ebc216b24f5816b9232ee92ebf267">HAL_GPIO_INPUT_PULLUP</a> = 2
+ }</td></tr>
+<tr class="memdesc:af725cf464e16140c2be59e1cf303ff97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Режим дискретной линии.  <a href="#af725cf464e16140c2be59e1cf303ff97">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a864756019043144c8f1f334bbfbdd828" id="r_a864756019043144c8f1f334bbfbdd828"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a864756019043144c8f1f334bbfbdd828">hal_gpio_configure</a> (uint32_t pin_id, <a class="el" href="#af725cf464e16140c2be59e1cf303ff97">HalGpioMode</a> mode)</td></tr>
+<tr class="memdesc:a864756019043144c8f1f334bbfbdd828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Настраивает режим дискретной линии.  <br /></td></tr>
+<tr class="memitem:af5d9cf568718b2deae8fc6b0a5f9e7f3" id="r_af5d9cf568718b2deae8fc6b0a5f9e7f3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5d9cf568718b2deae8fc6b0a5f9e7f3">hal_gpio_is_valid</a> (uint32_t pin_id)</td></tr>
+<tr class="memdesc:af5d9cf568718b2deae8fc6b0a5f9e7f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет наличие линии в таблице GPIO.  <br /></td></tr>
+<tr class="memitem:a79bee12466ddf2d09b2f67f6239e6989" id="r_a79bee12466ddf2d09b2f67f6239e6989"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79bee12466ddf2d09b2f67f6239e6989">hal_gpio_read</a> (uint32_t pin_id)</td></tr>
+<tr class="memdesc:a79bee12466ddf2d09b2f67f6239e6989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считывает состояние дискретной линии.  <br /></td></tr>
+<tr class="memitem:a883a7dd2321f8e19cbb6ca844e581a9e" id="r_a883a7dd2321f8e19cbb6ca844e581a9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a883a7dd2321f8e19cbb6ca844e581a9e">hal_gpio_write</a> (uint32_t pin_id, uint32_t value)</td></tr>
+<tr class="memdesc:a883a7dd2321f8e19cbb6ca844e581a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает состояние дискретного выхода.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>HAL GPIO для ATSAM3X8E. </p>
+<p>Модуль управляет дискретными линиями через контроллеры PIO микроконтроллера. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__gpio_8hpp_source.html">sam3x_gpio.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="af725cf464e16140c2be59e1cf303ff97" name="af725cf464e16140c2be59e1cf303ff97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af725cf464e16140c2be59e1cf303ff97">&#9670;&#160;</a></span>HalGpioMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#af725cf464e16140c2be59e1cf303ff97">HalGpioMode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Режим дискретной линии. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="af725cf464e16140c2be59e1cf303ff97af69cb3b5075cad32cf53b0f472d95ccb" name="af725cf464e16140c2be59e1cf303ff97af69cb3b5075cad32cf53b0f472d95ccb"></a>HAL_GPIO_INPUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af725cf464e16140c2be59e1cf303ff97a74f85581f38ac6b00f5df19bd29f480e" name="af725cf464e16140c2be59e1cf303ff97a74f85581f38ac6b00f5df19bd29f480e"></a>HAL_GPIO_OUTPUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af725cf464e16140c2be59e1cf303ff97ac80ebc216b24f5816b9232ee92ebf267" name="af725cf464e16140c2be59e1cf303ff97ac80ebc216b24f5816b9232ee92ebf267"></a>HAL_GPIO_INPUT_PULLUP&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__gpio_8hpp_source.html">sam3x_gpio.hpp</a> строка <a class="el" href="sam3x__gpio_8hpp_source.html#l00015">15</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a864756019043144c8f1f334bbfbdd828" name="a864756019043144c8f1f334bbfbdd828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a864756019043144c8f1f334bbfbdd828">&#9670;&#160;</a></span>hal_gpio_configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_gpio_configure </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>pin_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#af725cf464e16140c2be59e1cf303ff97">HalGpioMode</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Настраивает режим дискретной линии. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin_id</td><td>Платформенный номер линии. </td></tr>
+    <tr><td class="paramname">mode</td><td>Режим линии. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__gpio_8cpp_source.html">sam3x_gpio.cpp</a> строка <a class="el" href="sam3x__gpio_8cpp_source.html#l00071">71</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__gpio_8cpp_source.html#l00059">hal_gpio_enable_clock()</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00044">hal_gpio_find_pin()</a>, <a class="el" href="sam3x__gpio_8hpp_source.html#l00019">HAL_GPIO_INPUT_PULLUP</a>, <a class="el" href="sam3x__gpio_8hpp_source.html#l00018">HAL_GPIO_OUTPUT</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00013">HalGpioPinDescription::mask</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00014">HalGpioPinDescription::peripheral_id</a> и <a class="el" href="sam3x__gpio_8cpp_source.html#l00012">HalGpioPinDescription::port</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="platform__gpio_8cpp_source.html#l00011">pinMode()</a>.</p>
+
+</div>
+</div>
+<a id="af5d9cf568718b2deae8fc6b0a5f9e7f3" name="af5d9cf568718b2deae8fc6b0a5f9e7f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d9cf568718b2deae8fc6b0a5f9e7f3">&#9670;&#160;</a></span>hal_gpio_is_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t hal_gpio_is_valid </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>pin_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет наличие линии в таблице GPIO. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin_id</td><td>Платформенный номер линии. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Единица, если линия описана в таблице GPIO; ноль, если линия не описана. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__gpio_8cpp_source.html">sam3x_gpio.cpp</a> строка <a class="el" href="sam3x__gpio_8cpp_source.html#l00140">140</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__gpio_8cpp_source.html#l00044">hal_gpio_find_pin()</a>.</p>
+
+</div>
+</div>
+<a id="a79bee12466ddf2d09b2f67f6239e6989" name="a79bee12466ddf2d09b2f67f6239e6989"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79bee12466ddf2d09b2f67f6239e6989">&#9670;&#160;</a></span>hal_gpio_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t hal_gpio_read </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>pin_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считывает состояние дискретной линии. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin_id</td><td>Платформенный номер линии. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Ноль при низком уровне, единица при высоком уровне. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__gpio_8cpp_source.html">sam3x_gpio.cpp</a> строка <a class="el" href="sam3x__gpio_8cpp_source.html#l00126">126</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__gpio_8cpp_source.html#l00059">hal_gpio_enable_clock()</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00044">hal_gpio_find_pin()</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00013">HalGpioPinDescription::mask</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00014">HalGpioPinDescription::peripheral_id</a> и <a class="el" href="sam3x__gpio_8cpp_source.html#l00012">HalGpioPinDescription::port</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="platform__gpio_8cpp_source.html#l00036">digitalRead()</a>.</p>
+
+</div>
+</div>
+<a id="a883a7dd2321f8e19cbb6ca844e581a9e" name="a883a7dd2321f8e19cbb6ca844e581a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883a7dd2321f8e19cbb6ca844e581a9e">&#9670;&#160;</a></span>hal_gpio_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_gpio_write </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>pin_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает состояние дискретного выхода. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin_id</td><td>Платформенный номер линии. </td></tr>
+    <tr><td class="paramname">value</td><td>Ноль задаёт низкий уровень, ненулевое значение задаёт высокий уровень. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__gpio_8cpp_source.html">sam3x_gpio.cpp</a> строка <a class="el" href="sam3x__gpio_8cpp_source.html#l00105">105</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__gpio_8cpp_source.html#l00059">hal_gpio_enable_clock()</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00044">hal_gpio_find_pin()</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00013">HalGpioPinDescription::mask</a>, <a class="el" href="sam3x__gpio_8cpp_source.html#l00014">HalGpioPinDescription::peripheral_id</a> и <a class="el" href="sam3x__gpio_8cpp_source.html#l00012">HalGpioPinDescription::port</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="platform__gpio_8cpp_source.html#l00031">digitalWrite()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__gpio_8hpp.html">sam3x_gpio.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

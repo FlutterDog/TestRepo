@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура LcpConfigSlotStatus</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structLcpConfigSlotStatus.html','','structLcpConfigSlotStatus-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура LcpConfigSlotStatus</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Состояние одного физического A/B-слота.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="lcp__config__service_8hpp_source.html">app/config/lcp_config_service.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a8bb9c5d35b207c60f086c4bb7bc8ae72" id="r_a8bb9c5d35b207c60f086c4bb7bc8ae72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bb9c5d35b207c60f086c4bb7bc8ae72">flash_result</a></td></tr>
+<tr class="memitem:acf9edbb141a6599a679fb183658806bb" id="r_acf9edbb141a6599a679fb183658806bb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf9edbb141a6599a679fb183658806bb">payload_crc32</a></td></tr>
+<tr class="memitem:a27abe38babb490b93161e304a247c285" id="r_a27abe38babb490b93161e304a247c285"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27abe38babb490b93161e304a247c285">sequence</a></td></tr>
+<tr class="memitem:aca099c9bf3923d613d0a8c93b3a1ba97" id="r_aca099c9bf3923d613d0a8c93b3a1ba97"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca099c9bf3923d613d0a8c93b3a1ba97">valid</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Состояние одного физического A/B-слота. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__service_8hpp_source.html">lcp_config_service.hpp</a> строка <a class="el" href="lcp__config__service_8hpp_source.html#l00053">53</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a8bb9c5d35b207c60f086c4bb7bc8ae72" name="a8bb9c5d35b207c60f086c4bb7bc8ae72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb9c5d35b207c60f086c4bb7bc8ae72">&#9670;&#160;</a></span>flash_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> LcpConfigSlotStatus::flash_result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__service_8hpp_source.html">lcp_config_service.hpp</a> строка <a class="el" href="lcp__config__service_8hpp_source.html#l00058">58</a></p>
+
+</div>
+</div>
+<a id="acf9edbb141a6599a679fb183658806bb" name="acf9edbb141a6599a679fb183658806bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9edbb141a6599a679fb183658806bb">&#9670;&#160;</a></span>payload_crc32</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpConfigSlotStatus::payload_crc32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__service_8hpp_source.html">lcp_config_service.hpp</a> строка <a class="el" href="lcp__config__service_8hpp_source.html#l00057">57</a></p>
+
+</div>
+</div>
+<a id="a27abe38babb490b93161e304a247c285" name="a27abe38babb490b93161e304a247c285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27abe38babb490b93161e304a247c285">&#9670;&#160;</a></span>sequence</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpConfigSlotStatus::sequence</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__service_8hpp_source.html">lcp_config_service.hpp</a> строка <a class="el" href="lcp__config__service_8hpp_source.html#l00056">56</a></p>
+
+</div>
+</div>
+<a id="aca099c9bf3923d613d0a8c93b3a1ba97" name="aca099c9bf3923d613d0a8c93b3a1ba97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca099c9bf3923d613d0a8c93b3a1ba97">&#9670;&#160;</a></span>valid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t LcpConfigSlotStatus::valid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__service_8hpp_source.html">lcp_config_service.hpp</a> строка <a class="el" href="lcp__config__service_8hpp_source.html#l00055">55</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__service_8cpp_source.html#l00481">lcp_config_service_init()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/config/<a class="el" href="lcp__config__service_8hpp_source.html">lcp_config_service.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

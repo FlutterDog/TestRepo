@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/diagnostics/sd_config.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sd__config_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sd_config.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация общего парсера числовых файлов microSD.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="sd__config_8hpp_source.html">sd_config.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__sd__storage_8hpp_source.html">../../libs/lcp_sd_storage/lcp_sd_storage.hpp</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="sd__config_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a37a68bfd10d0c097de995005b3b9ad1d" id="r_a37a68bfd10d0c097de995005b3b9ad1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a68bfd10d0c097de995005b3b9ad1d">sd_config_load_int16</a> (const char *file_name, int16_t *output, size_t capacity, uint8_t *loaded_count)</td></tr>
+<tr class="memdesc:a37a68bfd10d0c097de995005b3b9ad1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает знаковые 16-битные значения из числового TXT-файла.  <br /></td></tr>
+<tr class="memitem:a578cc8463774b26fdc486cb75309cba0" id="r_a578cc8463774b26fdc486cb75309cba0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a578cc8463774b26fdc486cb75309cba0">sd_config_load_uint32</a> (const char *file_name, uint32_t *output, size_t capacity, uint8_t *loaded_count)</td></tr>
+<tr class="memdesc:a578cc8463774b26fdc486cb75309cba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает беззнаковые 32-битные значения из числового TXT-файла.  <br /></td></tr>
+<tr class="memitem:a0b058a59d0df9cf91e47649a9c199303" id="r_a0b058a59d0df9cf91e47649a9c199303"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b058a59d0df9cf91e47649a9c199303">sd_config_result_text</a> (<a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> result)</td></tr>
+<tr class="memdesc:a0b058a59d0df9cf91e47649a9c199303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает неизменяемую строку с описанием результата.  <br /></td></tr>
+<tr class="memitem:a6fb5daebb8165f2fe212a88a5029820e" id="r_a6fb5daebb8165f2fe212a88a5029820e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb5daebb8165f2fe212a88a5029820e">sd_config_save_int16</a> (const char *file_name, const int16_t *input, uint8_t size)</td></tr>
+<tr class="memdesc:a6fb5daebb8165f2fe212a88a5029820e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет int16-конфигурацию в числовой TXT-файл.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация общего парсера числовых файлов microSD. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__config_8cpp_source.html">sd_config.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a37a68bfd10d0c097de995005b3b9ad1d" name="a37a68bfd10d0c097de995005b3b9ad1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a68bfd10d0c097de995005b3b9ad1d">&#9670;&#160;</a></span>sd_config_load_int16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> sd_config_load_int16 </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>loaded_count</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загружает знаковые 16-битные значения из числового TXT-файла. </p>
+<p>Формат файла:</p>
+<div class="fragment"><div class="line">N</div>
+<div class="line">value_1</div>
+<div class="line">...</div>
+<div class="line">value_N</div>
+<div class="line">fin</div>
+</div><!-- fragment --><p>Маркер <span class="tt">fin</span> необязателен. Пустые строки, UTF-8 BOM в начале файла и комментарии после <span class="tt">//</span> или <span class="tt">#</span> игнорируются.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_name</td><td>Каноническое имя файла в формате FAT 8.3. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output</td><td>Буфер результата; <span class="tt">output[0]</span> получает количество N, значения размещаются в <span class="tt">output[1..N]</span>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacity</td><td>Количество элементов в <span class="tt">output</span>, включая <span class="tt">output[0]</span>. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">loaded_count</td><td>Фактическое количество значений без <span class="tt">output[0]</span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код результата операции. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__config_8cpp_source.html">sd_config.cpp</a> строка <a class="el" href="sd__config_8cpp_source.html#l00449">449</a></p>
+
+<p class="reference">Используется в <a class="el" href="sd__card__test_8cpp_source.html#l00147">sd_card_test_run_file_test()</a>.</p>
+
+</div>
+</div>
+<a id="a578cc8463774b26fdc486cb75309cba0" name="a578cc8463774b26fdc486cb75309cba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a578cc8463774b26fdc486cb75309cba0">&#9670;&#160;</a></span>sd_config_load_uint32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> sd_config_load_uint32 </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>loaded_count</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загружает беззнаковые 32-битные значения из числового TXT-файла. </p>
+<p>Использует тот же формат, правила комментариев и необязательный маркер <span class="tt">fin</span>, что и <a class="el" href="sd__config_8hpp.html#a37a68bfd10d0c097de995005b3b9ad1d" title="Загружает знаковые 16-битные значения из числового TXT-файла.">sd_config_load_int16()</a>. Функция предназначена, в частности, для реальных значений baudrate, которые не обязаны помещаться в int16_t.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_name</td><td>Каноническое имя файла в формате FAT 8.3. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output</td><td>Буфер результата; <span class="tt">output[0]</span> получает количество N, значения размещаются в <span class="tt">output[1..N]</span>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacity</td><td>Количество элементов в <span class="tt">output</span>, включая <span class="tt">output[0]</span>. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">loaded_count</td><td>Фактическое количество значений без <span class="tt">output[0]</span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код результата операции. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__config_8cpp_source.html">sd_config.cpp</a> строка <a class="el" href="sd__config_8cpp_source.html#l00461">461</a></p>
+
+</div>
+</div>
+<a id="a0b058a59d0df9cf91e47649a9c199303" name="a0b058a59d0df9cf91e47649a9c199303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b058a59d0df9cf91e47649a9c199303">&#9670;&#160;</a></span>sd_config_result_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sd_config_result_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает неизменяемую строку с описанием результата. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">result</td><td>Код операции. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Указатель на строковый литерал. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__config_8cpp_source.html">sd_config.cpp</a> строка <a class="el" href="sd__config_8cpp_source.html#l00541">541</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sd__config_8hpp_source.html#l00021">SD_CONFIG_CARD_NOT_READY</a>, <a class="el" href="sd__config_8hpp_source.html#l00024">SD_CONFIG_EMPTY_FILE</a>, <a class="el" href="sd__config_8hpp_source.html#l00022">SD_CONFIG_FILE_NOT_FOUND</a>, <a class="el" href="sd__config_8hpp_source.html#l00023">SD_CONFIG_FILE_OPEN_FAILED</a>, <a class="el" href="sd__config_8hpp_source.html#l00027">SD_CONFIG_INCOMPLETE_FILE</a>, <a class="el" href="sd__config_8hpp_source.html#l00025">SD_CONFIG_INVALID_COUNT</a>, <a class="el" href="sd__config_8hpp_source.html#l00026">SD_CONFIG_INVALID_VALUE</a>, <a class="el" href="sd__config_8hpp_source.html#l00029">SD_CONFIG_LINE_TOO_LONG</a>, <a class="el" href="sd__config_8hpp_source.html#l00031">SD_CONFIG_NOT_ATTEMPTED</a>, <a class="el" href="sd__config_8hpp_source.html#l00020">SD_CONFIG_OK</a>, <a class="el" href="sd__config_8hpp_source.html#l00030">SD_CONFIG_STORAGE_ERROR</a> и <a class="el" href="sd__config_8hpp_source.html#l00028">SD_CONFIG_WRITE_FAILED</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a> и <a class="el" href="sd__card__test_8cpp_source.html#l00147">sd_card_test_run_file_test()</a>.</p>
+
+</div>
+</div>
+<a id="a6fb5daebb8165f2fe212a88a5029820e" name="a6fb5daebb8165f2fe212a88a5029820e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fb5daebb8165f2fe212a88a5029820e">&#9670;&#160;</a></span>sd_config_save_int16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> sd_config_save_int16 </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int16_t *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохраняет int16-конфигурацию в числовой TXT-файл. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_name</td><td>Имя файла в формате FAT 8.3. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>Буфер; значения берутся из <span class="tt">input[1..size]</span>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Количество сохраняемых значений. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код результата операции.</dd></dl>
+<dl class="section note"><dt>Заметки</dt><dd>Функция записывает количество и значения. Маркер <span class="tt">fin</span> не обязателен для чтения и поэтому автоматически не добавляется. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__config_8cpp_source.html">sd_config.cpp</a> строка <a class="el" href="sd__config_8cpp_source.html#l00473">473</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__sd__storage_8hpp_source.html#l00018">LCP_SD_STORAGE_OK</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage_ready()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l01113">lcp_sd_storage_write_file()</a>, <a class="el" href="sd__config_8hpp_source.html#l00021">SD_CONFIG_CARD_NOT_READY</a>, <a class="el" href="sd__config_8hpp_source.html#l00025">SD_CONFIG_INVALID_COUNT</a>, <a class="el" href="sd__config_8hpp_source.html#l00020">SD_CONFIG_OK</a>, <a class="el" href="sd__config_8hpp_source.html#l00030">SD_CONFIG_STORAGE_ERROR</a> и <a class="el" href="sd__config_8hpp_source.html#l00028">SD_CONFIG_WRITE_FAILED</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sd__card__test_8cpp_source.html#l00147">sd_card_test_run_file_test()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="sd__config_8cpp.html">sd_config.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

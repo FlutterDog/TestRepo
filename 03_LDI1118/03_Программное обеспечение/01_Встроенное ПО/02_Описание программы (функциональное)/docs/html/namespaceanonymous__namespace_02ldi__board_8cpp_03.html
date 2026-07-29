@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LDI1118 Rev2 Firmware: Пространство имен anonymous_namespace{ldi_board.cpp}</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LDI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LDI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespaceanonymous__namespace_02ldi__board_8cpp_03.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Пространство имен anonymous_namespace{ldi_board.cpp}</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a0de91f47f2a47c8e83cb05aaf33d4096" id="r_a0de91f47f2a47c8e83cb05aaf33d4096"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0de91f47f2a47c8e83cb05aaf33d4096">writePortMask</a> (volatile uint8_t &amp;port, uint8_t mask, bool state)</td></tr>
+<tr class="memdesc:a0de91f47f2a47c8e83cb05aaf33d4096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает или сбрасывает выбранные биты PORT-регистра.  <br /></td></tr>
+<tr class="memitem:a42678d644b76afb0284b9809f32f24b8" id="r_a42678d644b76afb0284b9809f32f24b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a> (void)</td></tr>
+<tr class="memdesc:a42678d644b76afb0284b9809f32f24b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует короткую паузу между фронтами управляющих сигналов.  <br /></td></tr>
+<tr class="memitem:abcc88353a8cc95e73b8168f4c00a47c5" id="r_abcc88353a8cc95e73b8168f4c00a47c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcc88353a8cc95e73b8168f4c00a47c5">ledShiftDataWrite</a> (bool state)</td></tr>
+<tr class="memdesc:abcc88353a8cc95e73b8168f4c00a47c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает уровень линии данных 74HC595.  <br /></td></tr>
+<tr class="memitem:aa45ace5819189ff2c12ec18f1d4e5c7e" id="r_aa45ace5819189ff2c12ec18f1d4e5c7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa45ace5819189ff2c12ec18f1d4e5c7e">shiftClockPulse</a> (void)</td></tr>
+<tr class="memdesc:aa45ace5819189ff2c12ec18f1d4e5c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует тактовый импульс для сдвиговых регистров.  <br /></td></tr>
+<tr class="memitem:a1e9eaba6b45306842f924f6d44a169a1" id="r_a1e9eaba6b45306842f924f6d44a169a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9eaba6b45306842f924f6d44a169a1">latch595Pulse</a> (void)</td></tr>
+<tr class="memdesc:a1e9eaba6b45306842f924f6d44a169a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует импульс latch для записи данных в 74HC595.  <br /></td></tr>
+<tr class="memitem:a5c4bf658b2c8e6b146015cf2f00868d8" id="r_a5c4bf658b2c8e6b146015cf2f00868d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c4bf658b2c8e6b146015cf2f00868d8">capture165Inputs</a> (void)</td></tr>
+<tr class="memdesc:a5c4bf658b2c8e6b146015cf2f00868d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет захват состояния параллельных входов 74HC165.  <br /></td></tr>
+<tr class="memitem:afc64acdca78a3c9d7dd930ed724d4e66" id="r_afc64acdca78a3c9d7dd930ed724d4e66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc64acdca78a3c9d7dd930ed724d4e66">latchLow</a> (void)</td></tr>
+<tr class="memdesc:afc64acdca78a3c9d7dd930ed724d4e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оставляет latch-линию в низком уровне.  <br /></td></tr>
+<tr class="memitem:a02033d460798c92bb8b3999b78873e95" id="r_a02033d460798c92bb8b3999b78873e95"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02033d460798c92bb8b3999b78873e95">mirrorFiveBits</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a02033d460798c92bb8b3999b78873e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Зеркально разворачивает младшие пять бит.  <br /></td></tr>
+<tr class="memitem:a5954ce09c7baa9478a0cd519c74c2f88" id="r_a5954ce09c7baa9478a0cd519c74c2f88"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5954ce09c7baa9478a0cd519c74c2f88">isBitSet</a> (uint16_t value, uint8_t bit)</td></tr>
+<tr class="memdesc:a5954ce09c7baa9478a0cd519c74c2f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает состояние бита в маске.  <br /></td></tr>
+<tr class="memitem:a9ff714df6be4196da07e5fd7a2365bd4" id="r_a9ff714df6be4196da07e5fd7a2365bd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ff714df6be4196da07e5fd7a2365bd4">transferPanelMask</a> (uint16_t state)</td></tr>
+<tr class="memdesc:a9ff714df6be4196da07e5fd7a2365bd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт маску в 74HC595 без изменения сохранённого состояния.  <br /></td></tr>
+<tr class="memitem:ab4ff60fed7587074c9de772353d476af" id="r_ab4ff60fed7587074c9de772353d476af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4ff60fed7587074c9de772353d476af">restorePanelMask</a> (void)</td></tr>
+<tr class="memdesc:ab4ff60fed7587074c9de772353d476af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Восстанавливает состояние LED-панели после чтения входов.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a461e45ffb2b30cf257c766dd01206f33" id="r_a461e45ffb2b30cf257c766dd01206f33"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a461e45ffb2b30cf257c766dd01206f33">ADDRESS_INPUTS_MASK</a></td></tr>
+<tr class="memdesc:a461e45ffb2b30cf257c766dd01206f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска входов адресного переключателя.  <br /></td></tr>
+<tr class="memitem:a5f143aac159f6de8994a84cb1b750ac8" id="r_a5f143aac159f6de8994a84cb1b750ac8"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f143aac159f6de8994a84cb1b750ac8">RS485_DE_MASK</a> = _BV(PD2)</td></tr>
+<tr class="memdesc:a5f143aac159f6de8994a84cb1b750ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии управления направлением RS-485.  <br /></td></tr>
+<tr class="memitem:a8269f0ece67c6e89aa10f26c3c91f983" id="r_a8269f0ece67c6e89aa10f26c3c91f983"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8269f0ece67c6e89aa10f26c3c91f983">STATUS_LED_MASK</a> = _BV(PB0)</td></tr>
+<tr class="memdesc:a8269f0ece67c6e89aa10f26c3c91f983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска светодиода состояния связи.  <br /></td></tr>
+<tr class="memitem:a64dc0326141cbb2a55f5f220ce9c5823" id="r_a64dc0326141cbb2a55f5f220ce9c5823"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64dc0326141cbb2a55f5f220ce9c5823">SR_LATCH_MASK</a> = _BV(PD3)</td></tr>
+<tr class="memdesc:a64dc0326141cbb2a55f5f220ce9c5823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии latch для 74HC165 и 74HC595.  <br /></td></tr>
+<tr class="memitem:ad32a58008b972d3d655368b8e9cf2bef" id="r_ad32a58008b972d3d655368b8e9cf2bef"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad32a58008b972d3d655368b8e9cf2bef">SR_CLOCK_MASK</a> = _BV(PD4)</td></tr>
+<tr class="memdesc:ad32a58008b972d3d655368b8e9cf2bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии clock для 74HC165 и 74HC595.  <br /></td></tr>
+<tr class="memitem:a78e712292d73dfad85519f6eeb86b94e" id="r_a78e712292d73dfad85519f6eeb86b94e"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78e712292d73dfad85519f6eeb86b94e">SR_INPUT_DATA_MASK</a> = _BV(PD5)</td></tr>
+<tr class="memdesc:a78e712292d73dfad85519f6eeb86b94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска входа данных от 74HC165.  <br /></td></tr>
+<tr class="memitem:a3750b3471d16115ef3fa5c751131872f" id="r_a3750b3471d16115ef3fa5c751131872f"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3750b3471d16115ef3fa5c751131872f">SR_LED_DATA_MASK</a> = _BV(PB1)</td></tr>
+<tr class="memdesc:a3750b3471d16115ef3fa5c751131872f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска выхода данных на 74HC595.  <br /></td></tr>
+<tr class="memitem:a81eb7bfd8ff625a584fb9b3d1b6f397f" id="r_a81eb7bfd8ff625a584fb9b3d1b6f397f"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81eb7bfd8ff625a584fb9b3d1b6f397f">s_lastPanelMask</a> = 0x0000u</td></tr>
+<tr class="memdesc:a81eb7bfd8ff625a584fb9b3d1b6f397f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Последняя маска, выведенная на LED-панель.  <br /></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a5c4bf658b2c8e6b146015cf2f00868d8" name="a5c4bf658b2c8e6b146015cf2f00868d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4bf658b2c8e6b146015cf2f00868d8">&#9670;&#160;</a></span>capture165Inputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::capture165Inputs </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет захват состояния параллельных входов 74HC165. </p>
+<p>Для 74HC165 линия SH/LD активна низким уровнем. Последовательность:</p><ul>
+<li>перевод линии в высокий уровень;</li>
+<li>кратковременный низкий уровень для загрузки параллельных входов;</li>
+<li>возврат в высокий уровень для последовательного сдвига. </li>
+</ul>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00188">188</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>    {</div>
+<div class="line"><span class="lineno">  190</span>        PORTD |= <a class="code hl_variable" href="#a64dc0326141cbb2a55f5f220ce9c5823">SR_LATCH_MASK</a>;</div>
+<div class="line"><span class="lineno">  191</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a64dc0326141cbb2a55f5f220ce9c5823">~SR_LATCH_MASK</a>);</div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>        PORTD |= <a class="code hl_variable" href="#a64dc0326141cbb2a55f5f220ce9c5823">SR_LATCH_MASK</a>;</div>
+<div class="line"><span class="lineno">  197</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  198</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a42678d644b76afb0284b9809f32f24b8"><div class="ttname"><a href="#a42678d644b76afb0284b9809f32f24b8">anonymous_namespace{ldi_board.cpp}::ioNop</a></div><div class="ttdeci">void ioNop(void)</div><div class="ttdoc">Формирует короткую паузу между фронтами управляющих сигналов.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00133">ldi_board.cpp:133</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a64dc0326141cbb2a55f5f220ce9c5823"><div class="ttname"><a href="#a64dc0326141cbb2a55f5f220ce9c5823">anonymous_namespace{ldi_board.cpp}::SR_LATCH_MASK</a></div><div class="ttdeci">static const uint8_t SR_LATCH_MASK</div><div class="ttdoc">Маска линии latch для 74HC165 и 74HC595.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00069">ldi_board.cpp:69</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00133">ioNop()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00069">SR_LATCH_MASK</a>.</p>
+
+</div>
+</div>
+<a id="a42678d644b76afb0284b9809f32f24b8" name="a42678d644b76afb0284b9809f32f24b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42678d644b76afb0284b9809f32f24b8">&#9670;&#160;</a></span>ioNop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::ioNop </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует короткую паузу между фронтами управляющих сигналов. </p>
+<p>Используется при ручном тактировании сдвиговых регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00133">133</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>    {</div>
+<div class="line"><span class="lineno">  135</span>        <span class="keyword">asm</span> <span class="keyword">volatile</span> (<span class="stringliteral">&quot;nop&quot;</span>);</div>
+<div class="line"><span class="lineno">  136</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00188">capture165Inputs()</a>, <a class="el" href="ldi__board_8cpp_source.html#l00169">latch595Pulse()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00154">shiftClockPulse()</a>.</p>
+
+</div>
+</div>
+<a id="a5954ce09c7baa9478a0cd519c74c2f88" name="a5954ce09c7baa9478a0cd519c74c2f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5954ce09c7baa9478a0cd519c74c2f88">&#9670;&#160;</a></span>isBitSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{ldi_board.cpp}::isBitSet </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>bit</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает состояние бита в маске. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Битовая маска. </td></tr>
+    <tr><td class="paramname">bit</td><td>Номер бита.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — бит установлен; false — бит сброшен. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00242">242</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>    {</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span> ((value &amp; <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(1u &lt;&lt; bit)) != 0u);</div>
+<div class="line"><span class="lineno">  245</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00256">transferPanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="a1e9eaba6b45306842f924f6d44a169a1" name="a1e9eaba6b45306842f924f6d44a169a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9eaba6b45306842f924f6d44a169a1">&#9670;&#160;</a></span>latch595Pulse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::latch595Pulse </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Формирует импульс latch для записи данных в 74HC595. </p>
+<p>Последовательность импульса: низкий уровень -&gt; высокий уровень -&gt; низкий уровень. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00169">169</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>    {</div>
+<div class="line"><span class="lineno">  171</span>        PORTD |= <a class="code hl_variable" href="#a64dc0326141cbb2a55f5f220ce9c5823">SR_LATCH_MASK</a>;</div>
+<div class="line"><span class="lineno">  172</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a64dc0326141cbb2a55f5f220ce9c5823">~SR_LATCH_MASK</a>);</div>
+<div class="line"><span class="lineno">  175</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  176</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00133">ioNop()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00069">SR_LATCH_MASK</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00256">transferPanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="afc64acdca78a3c9d7dd930ed724d4e66" name="afc64acdca78a3c9d7dd930ed724d4e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc64acdca78a3c9d7dd930ed724d4e66">&#9670;&#160;</a></span>latchLow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::latchLow </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Оставляет latch-линию в низком уровне. </p>
+<p>Это исходное состояние линии между циклами обмена. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00206">206</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  207</span>    {</div>
+<div class="line"><span class="lineno">  208</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a64dc0326141cbb2a55f5f220ce9c5823">~SR_LATCH_MASK</a>);</div>
+<div class="line"><span class="lineno">  209</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00069">SR_LATCH_MASK</a>.</p>
+
+</div>
+</div>
+<a id="abcc88353a8cc95e73b8168f4c00a47c5" name="abcc88353a8cc95e73b8168f4c00a47c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc88353a8cc95e73b8168f4c00a47c5">&#9670;&#160;</a></span>ledShiftDataWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::ledShiftDataWrite </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает уровень линии данных 74HC595. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>true — логическая единица; false — логический ноль. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00143">143</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>    {</div>
+<div class="line"><span class="lineno">  145</span>        <a class="code hl_function" href="#a0de91f47f2a47c8e83cb05aaf33d4096">writePortMask</a>(PORTB, <a class="code hl_variable" href="#a3750b3471d16115ef3fa5c751131872f">SR_LED_DATA_MASK</a>, state);</div>
+<div class="line"><span class="lineno">  146</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a0de91f47f2a47c8e83cb05aaf33d4096"><div class="ttname"><a href="#a0de91f47f2a47c8e83cb05aaf33d4096">anonymous_namespace{ldi_board.cpp}::writePortMask</a></div><div class="ttdeci">void writePortMask(volatile uint8_t &amp;port, uint8_t mask, bool state)</div><div class="ttdoc">Устанавливает или сбрасывает выбранные биты PORT-регистра.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00115">ldi_board.cpp:115</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a3750b3471d16115ef3fa5c751131872f"><div class="ttname"><a href="#a3750b3471d16115ef3fa5c751131872f">anonymous_namespace{ldi_board.cpp}::SR_LED_DATA_MASK</a></div><div class="ttdeci">static const uint8_t SR_LED_DATA_MASK</div><div class="ttdoc">Маска выхода данных на 74HC595.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00093">ldi_board.cpp:93</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00093">SR_LED_DATA_MASK</a> и <a class="el" href="ldi__board_8cpp_source.html#l00115">writePortMask()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00256">transferPanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="a02033d460798c92bb8b3999b78873e95" name="a02033d460798c92bb8b3999b78873e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02033d460798c92bb8b3999b78873e95">&#9670;&#160;</a></span>mirrorFiveBits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t anonymous_namespace{ldi_board.cpp}::mirrorFiveBits </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Зеркально разворачивает младшие пять бит. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Входное значение.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение с развёрнутыми пятью младшими битами.</dd></dl>
+<p>Используется для преобразования порядка битов адресного переключателя. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00221">221</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>    {</div>
+<div class="line"><span class="lineno">  223</span>        uint8_t result = 0u;</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> ((value &amp; 0x01u) != 0u) { result |= 0x10u; } <span class="comment">// PC0 -&gt; bit 4</span></div>
+<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">if</span> ((value &amp; 0x02u) != 0u) { result |= 0x08u; } <span class="comment">// PC1 -&gt; bit 3</span></div>
+<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">if</span> ((value &amp; 0x04u) != 0u) { result |= 0x04u; } <span class="comment">// PC2 -&gt; bit 2</span></div>
+<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">if</span> ((value &amp; 0x08u) != 0u) { result |= 0x02u; } <span class="comment">// PC3 -&gt; bit 1</span></div>
+<div class="line"><span class="lineno">  229</span>        <span class="keywordflow">if</span> ((value &amp; 0x10u) != 0u) { result |= 0x01u; } <span class="comment">// PC4 -&gt; bit 0</span></div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  232</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab4ff60fed7587074c9de772353d476af" name="ab4ff60fed7587074c9de772353d476af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4ff60fed7587074c9de772353d476af">&#9670;&#160;</a></span>restorePanelMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::restorePanelMask </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Восстанавливает состояние LED-панели после чтения входов. </p>
+<p>При чтении 74HC165 линия clock также тактирует 74HC595. Поэтому после чтения входов необходимо повторно загрузить последнюю LED-маску. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00281">281</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>    {</div>
+<div class="line"><span class="lineno">  283</span>        <a class="code hl_function" href="#a9ff714df6be4196da07e5fd7a2365bd4">transferPanelMask</a>(<a class="code hl_variable" href="#a81eb7bfd8ff625a584fb9b3d1b6f397f">s_lastPanelMask</a>);</div>
+<div class="line"><span class="lineno">  284</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a81eb7bfd8ff625a584fb9b3d1b6f397f"><div class="ttname"><a href="#a81eb7bfd8ff625a584fb9b3d1b6f397f">anonymous_namespace{ldi_board.cpp}::s_lastPanelMask</a></div><div class="ttdeci">static uint16_t s_lastPanelMask</div><div class="ttdoc">Последняя маска, выведенная на LED-панель.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00102">ldi_board.cpp:102</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a9ff714df6be4196da07e5fd7a2365bd4"><div class="ttname"><a href="#a9ff714df6be4196da07e5fd7a2365bd4">anonymous_namespace{ldi_board.cpp}::transferPanelMask</a></div><div class="ttdeci">void transferPanelMask(uint16_t state)</div><div class="ttdoc">Передаёт маску в 74HC595 без изменения сохранённого состояния.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00256">ldi_board.cpp:256</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00102">s_lastPanelMask</a> и <a class="el" href="ldi__board_8cpp_source.html#l00256">transferPanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="aa45ace5819189ff2c12ec18f1d4e5c7e" name="aa45ace5819189ff2c12ec18f1d4e5c7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa45ace5819189ff2c12ec18f1d4e5c7e">&#9670;&#160;</a></span>shiftClockPulse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::shiftClockPulse </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Формирует тактовый импульс для сдвиговых регистров. </p>
+<p>Последовательность импульса: низкий уровень -&gt; высокий уровень -&gt; низкий уровень. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00154">154</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  155</span>    {</div>
+<div class="line"><span class="lineno">  156</span>        PORTD |= <a class="code hl_variable" href="#ad32a58008b972d3d655368b8e9cf2bef">SR_CLOCK_MASK</a>;</div>
+<div class="line"><span class="lineno">  157</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>        PORTD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<a class="code hl_variable" href="#ad32a58008b972d3d655368b8e9cf2bef">~SR_CLOCK_MASK</a>);</div>
+<div class="line"><span class="lineno">  160</span>        <a class="code hl_function" href="#a42678d644b76afb0284b9809f32f24b8">ioNop</a>();</div>
+<div class="line"><span class="lineno">  161</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_ad32a58008b972d3d655368b8e9cf2bef"><div class="ttname"><a href="#ad32a58008b972d3d655368b8e9cf2bef">anonymous_namespace{ldi_board.cpp}::SR_CLOCK_MASK</a></div><div class="ttdeci">static const uint8_t SR_CLOCK_MASK</div><div class="ttdoc">Маска линии clock для 74HC165 и 74HC595.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00077">ldi_board.cpp:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00133">ioNop()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00077">SR_CLOCK_MASK</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00256">transferPanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="a9ff714df6be4196da07e5fd7a2365bd4" name="a9ff714df6be4196da07e5fd7a2365bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ff714df6be4196da07e5fd7a2365bd4">&#9670;&#160;</a></span>transferPanelMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::transferPanelMask </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт маску в 74HC595 без изменения сохранённого состояния. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Битовая маска светодиодов.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Сначала передаются исходные bit 7...bit 0, затем bit 15...bit 8. Такой порядок соответствует разводке LED-панели. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00256">256</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  257</span>    {</div>
+<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">for</span> (int8_t bit = 7; bit &gt;= 0; --bit)</div>
+<div class="line"><span class="lineno">  259</span>        {</div>
+<div class="line"><span class="lineno">  260</span>            <a class="code hl_function" href="#abcc88353a8cc95e73b8168f4c00a47c5">ledShiftDataWrite</a>(<a class="code hl_function" href="#a5954ce09c7baa9478a0cd519c74c2f88">isBitSet</a>(state, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(bit)));</div>
+<div class="line"><span class="lineno">  261</span>            <a class="code hl_function" href="#aa45ace5819189ff2c12ec18f1d4e5c7e">shiftClockPulse</a>();</div>
+<div class="line"><span class="lineno">  262</span>        }</div>
+<div class="line"><span class="lineno">  263</span> </div>
+<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">for</span> (int8_t bit = 15; bit &gt;= 8; --bit)</div>
+<div class="line"><span class="lineno">  265</span>        {</div>
+<div class="line"><span class="lineno">  266</span>            <a class="code hl_function" href="#abcc88353a8cc95e73b8168f4c00a47c5">ledShiftDataWrite</a>(<a class="code hl_function" href="#a5954ce09c7baa9478a0cd519c74c2f88">isBitSet</a>(state, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(bit)));</div>
+<div class="line"><span class="lineno">  267</span>            <a class="code hl_function" href="#aa45ace5819189ff2c12ec18f1d4e5c7e">shiftClockPulse</a>();</div>
+<div class="line"><span class="lineno">  268</span>        }</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>        <a class="code hl_function" href="#abcc88353a8cc95e73b8168f4c00a47c5">ledShiftDataWrite</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  271</span>        <a class="code hl_function" href="#a1e9eaba6b45306842f924f6d44a169a1">latch595Pulse</a>();</div>
+<div class="line"><span class="lineno">  272</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a1e9eaba6b45306842f924f6d44a169a1"><div class="ttname"><a href="#a1e9eaba6b45306842f924f6d44a169a1">anonymous_namespace{ldi_board.cpp}::latch595Pulse</a></div><div class="ttdeci">void latch595Pulse(void)</div><div class="ttdoc">Формирует импульс latch для записи данных в 74HC595.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00169">ldi_board.cpp:169</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_a5954ce09c7baa9478a0cd519c74c2f88"><div class="ttname"><a href="#a5954ce09c7baa9478a0cd519c74c2f88">anonymous_namespace{ldi_board.cpp}::isBitSet</a></div><div class="ttdeci">bool isBitSet(uint16_t value, uint8_t bit)</div><div class="ttdoc">Возвращает состояние бита в маске.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00242">ldi_board.cpp:242</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_aa45ace5819189ff2c12ec18f1d4e5c7e"><div class="ttname"><a href="#aa45ace5819189ff2c12ec18f1d4e5c7e">anonymous_namespace{ldi_board.cpp}::shiftClockPulse</a></div><div class="ttdeci">void shiftClockPulse(void)</div><div class="ttdoc">Формирует тактовый импульс для сдвиговых регистров.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00154">ldi_board.cpp:154</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02ldi__board_8cpp_03_html_abcc88353a8cc95e73b8168f4c00a47c5"><div class="ttname"><a href="#abcc88353a8cc95e73b8168f4c00a47c5">anonymous_namespace{ldi_board.cpp}::ledShiftDataWrite</a></div><div class="ttdeci">void ledShiftDataWrite(bool state)</div><div class="ttdoc">Устанавливает уровень линии данных 74HC595.</div><div class="ttdef"><b>Определения</b> <a href="ldi__board_8cpp_source.html#l00143">ldi_board.cpp:143</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="ldi__board_8cpp_source.html#l00242">isBitSet()</a>, <a class="el" href="ldi__board_8cpp_source.html#l00169">latch595Pulse()</a>, <a class="el" href="ldi__board_8cpp_source.html#l00143">ledShiftDataWrite()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00154">shiftClockPulse()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00281">restorePanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="a0de91f47f2a47c8e83cb05aaf33d4096" name="a0de91f47f2a47c8e83cb05aaf33d4096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0de91f47f2a47c8e83cb05aaf33d4096">&#9670;&#160;</a></span>writePortMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{ldi_board.cpp}::writePortMask </td>
+          <td>(</td>
+          <td class="paramtype">volatile uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает или сбрасывает выбранные биты PORT-регистра. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Регистр PORTx. </td></tr>
+    <tr><td class="paramname">mask</td><td>Маска изменяемых битов. </td></tr>
+    <tr><td class="paramname">state</td><td>true — установить биты; false — сбросить биты. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00115">115</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>    {</div>
+<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">if</span> (state)</div>
+<div class="line"><span class="lineno">  118</span>        {</div>
+<div class="line"><span class="lineno">  119</span>            port |= mask;</div>
+<div class="line"><span class="lineno">  120</span>        }</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  122</span>        {</div>
+<div class="line"><span class="lineno">  123</span>            port &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~mask);</div>
+<div class="line"><span class="lineno">  124</span>        }</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00143">ledShiftDataWrite()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a461e45ffb2b30cf257c766dd01206f33" name="a461e45ffb2b30cf257c766dd01206f33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a461e45ffb2b30cf257c766dd01206f33">&#9670;&#160;</a></span>ADDRESS_INPUTS_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::ADDRESS_INPUTS_MASK</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Инициализатор</b><div class="fragment"><div class="line">=</div>
+<div class="line">        <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(PC0) | _BV(PC1) | _BV(PC2) | _BV(PC3) | _BV(PC4))</div>
+</div><!-- fragment -->
+<p>Маска входов адресного переключателя. </p>
+<p>Используются линии PC0...PC4. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00032">32</a></p>
+
+</div>
+</div>
+<a id="a5f143aac159f6de8994a84cb1b750ac8" name="a5f143aac159f6de8994a84cb1b750ac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f143aac159f6de8994a84cb1b750ac8">&#9670;&#160;</a></span>RS485_DE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::RS485_DE_MASK = _BV(PD2)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии управления направлением RS-485. </p>
+<p>Линия DE/RE RS-485-трансивера подключена к PD2. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00045">45</a></p>
+
+</div>
+</div>
+<a id="a81eb7bfd8ff625a584fb9b3d1b6f397f" name="a81eb7bfd8ff625a584fb9b3d1b6f397f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81eb7bfd8ff625a584fb9b3d1b6f397f">&#9670;&#160;</a></span>s_lastPanelMask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t anonymous_namespace{ldi_board.cpp}::s_lastPanelMask = 0x0000u</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Последняя маска, выведенная на LED-панель. </p>
+<p>Используется для восстановления LED-панели после чтения входов, так как 74HC165 и 74HC595 имеют общие линии latch и clock. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00102">102</a></p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00281">restorePanelMask()</a>.</p>
+
+</div>
+</div>
+<a id="ad32a58008b972d3d655368b8e9cf2bef" name="ad32a58008b972d3d655368b8e9cf2bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32a58008b972d3d655368b8e9cf2bef">&#9670;&#160;</a></span>SR_CLOCK_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::SR_CLOCK_MASK = _BV(PD4)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии clock для 74HC165 и 74HC595. </p>
+<p>Линия подключена к PD4. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00077">77</a></p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00154">shiftClockPulse()</a>.</p>
+
+</div>
+</div>
+<a id="a78e712292d73dfad85519f6eeb86b94e" name="a78e712292d73dfad85519f6eeb86b94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e712292d73dfad85519f6eeb86b94e">&#9670;&#160;</a></span>SR_INPUT_DATA_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::SR_INPUT_DATA_MASK = _BV(PD5)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска входа данных от 74HC165. </p>
+<p>Линия подключена к PD5. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00085">85</a></p>
+
+</div>
+</div>
+<a id="a64dc0326141cbb2a55f5f220ce9c5823" name="a64dc0326141cbb2a55f5f220ce9c5823"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64dc0326141cbb2a55f5f220ce9c5823">&#9670;&#160;</a></span>SR_LATCH_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::SR_LATCH_MASK = _BV(PD3)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии latch для 74HC165 и 74HC595. </p>
+<p>Линия подключена к PD3. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00069">69</a></p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00188">capture165Inputs()</a>, <a class="el" href="ldi__board_8cpp_source.html#l00169">latch595Pulse()</a> и <a class="el" href="ldi__board_8cpp_source.html#l00206">latchLow()</a>.</p>
+
+</div>
+</div>
+<a id="a3750b3471d16115ef3fa5c751131872f" name="a3750b3471d16115ef3fa5c751131872f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3750b3471d16115ef3fa5c751131872f">&#9670;&#160;</a></span>SR_LED_DATA_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::SR_LED_DATA_MASK = _BV(PB1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска выхода данных на 74HC595. </p>
+<p>Линия подключена к PB1. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00093">93</a></p>
+
+<p class="reference">Используется в <a class="el" href="ldi__board_8cpp_source.html#l00143">ledShiftDataWrite()</a>.</p>
+
+</div>
+</div>
+<a id="a8269f0ece67c6e89aa10f26c3c91f983" name="a8269f0ece67c6e89aa10f26c3c91f983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8269f0ece67c6e89aa10f26c3c91f983">&#9670;&#160;</a></span>STATUS_LED_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{ldi_board.cpp}::STATUS_LED_MASK = _BV(PB0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска светодиода состояния связи. </p>
+<p>Светодиод подключён к PB0. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ldi__board_8cpp_source.html">ldi_board.cpp</a> строка <a class="el" href="ldi__board_8cpp_source.html#l00057">57</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceanonymous__namespace_02ldi__board_8cpp_03.html">anonymous_namespace{ldi_board.cpp}</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

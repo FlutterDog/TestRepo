@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура X2XModuleRuntime</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structX2XModuleRuntime.html','','structX2XModuleRuntime-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура X2XModuleRuntime</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Состояние драйвера отдельного экземпляра модуля.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="x2x__module_8hpp_source.html">app/x2x/x2x_module.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:aca4c017a84315268986d5703da494148" id="r_aca4c017a84315268986d5703da494148"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca4c017a84315268986d5703da494148">next_waveform_check_ms</a></td></tr>
+<tr class="memitem:a56534f42d3dee2df38f882515891e1ae" id="r_a56534f42d3dee2df38f882515891e1ae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56534f42d3dee2df38f882515891e1ae">state</a></td></tr>
+<tr class="memitem:a3710d06b882a8ca82af4bda02175a774" id="r_a3710d06b882a8ca82af4bda02175a774"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3710d06b882a8ca82af4bda02175a774">transfer_offset</a></td></tr>
+<tr class="memitem:a94df6896456374b7109b47c37f8fa517" id="r_a94df6896456374b7109b47c37f8fa517"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94df6896456374b7109b47c37f8fa517">waveform_phase</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Состояние драйвера отдельного экземпляра модуля. </p>
+<p>Runtime хранится отдельно от данных устройства, чтобы общая структура <a class="el" href="structX2XDeviceHeader.html" title="Общий заголовок любого экземпляра устройства X2X.">X2XDeviceHeader</a> отражала состояние связи, а многошаговая машина драйвера не загрязняла пользовательские данные конкретного типа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00037">37</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="aca4c017a84315268986d5703da494148" name="aca4c017a84315268986d5703da494148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca4c017a84315268986d5703da494148">&#9670;&#160;</a></span>next_waveform_check_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t X2XModuleRuntime::next_waveform_check_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Срок следующей проверки готовности LCT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00042">42</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__module__common_8cpp_source.html#l00010">x2x_module_runtime_reset()</a>.</p>
+
+</div>
+</div>
+<a id="a56534f42d3dee2df38f882515891e1ae" name="a56534f42d3dee2df38f882515891e1ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56534f42d3dee2df38f882515891e1ae">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t X2XModuleRuntime::state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Текущее состояние драйвера типа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00039">39</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__lai_8cpp_source.html#l00021">x2x_module_poll_lai1118()</a>, <a class="el" href="x2x__ldo_8cpp_source.html#l00018">x2x_module_poll_ldo1118()</a> и <a class="el" href="x2x__module__common_8cpp_source.html#l00010">x2x_module_runtime_reset()</a>.</p>
+
+</div>
+</div>
+<a id="a3710d06b882a8ca82af4bda02175a774" name="a3710d06b882a8ca82af4bda02175a774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3710d06b882a8ca82af4bda02175a774">&#9670;&#160;</a></span>transfer_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t X2XModuleRuntime::transfer_offset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Смещение очередного блока осциллограммы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00041">41</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__module__common_8cpp_source.html#l00010">x2x_module_runtime_reset()</a>.</p>
+
+</div>
+</div>
+<a id="a94df6896456374b7109b47c37f8fa517" name="a94df6896456374b7109b47c37f8fa517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94df6896456374b7109b47c37f8fa517">&#9670;&#160;</a></span>waveform_phase</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t X2XModuleRuntime::waveform_phase</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Текущая фаза A/B/C при чтении LCT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a> строка <a class="el" href="x2x__module_8hpp_source.html#l00040">40</a></p>
+
+<p class="reference">Используется в <a class="el" href="x2x__module__common_8cpp_source.html#l00010">x2x_module_runtime_reset()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/x2x/<a class="el" href="x2x__module_8hpp_source.html">x2x_module.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structX2XModuleRuntime.html">X2XModuleRuntime</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

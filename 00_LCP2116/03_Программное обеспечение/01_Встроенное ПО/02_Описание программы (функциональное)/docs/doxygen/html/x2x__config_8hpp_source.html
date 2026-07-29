@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл app/x2x/x2x_config.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__config_8hpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">x2x_config.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="x2x__config_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file x2x_config.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Строгое чтение и проверка X2X.TXT с microSD.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="x2x__types_8hpp.html">x2x_types.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"></span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">/** @brief Результат загрузки или применения конфигурации X2X. */</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">   13</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> : uint8_t</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9">   15</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9">X2X_CONFIG_OK</a> = 0U,                    <span class="comment">/**&lt; Конфигурация проверена и применима. */</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca616d7eefd4106c43589978df9ee753bb">   16</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca616d7eefd4106c43589978df9ee753bb">X2X_CONFIG_STORAGE_NOT_READY</a> = 1U,     <span class="comment">/**&lt; microSD ещё не доступна. */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca716d57a1ecd7acffd4132c6d739b1422">   17</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca716d57a1ecd7acffd4132c6d739b1422">X2X_CONFIG_FILE_NOT_FOUND</a> = 2U,        <span class="comment">/**&lt; X2X.TXT отсутствует. */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca2cd3586ef0ce5d52540b79c26aeb21c4">   18</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca2cd3586ef0ce5d52540b79c26aeb21c4">X2X_CONFIG_FILE_OPEN_FAILED</a> = 3U,      <span class="comment">/**&lt; Файл найден, но не открыт. */</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcaa0b9e25a7da1ab655399d2f5f749657b">   19</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcaa0b9e25a7da1ab655399d2f5f749657b">X2X_CONFIG_EMPTY_FILE</a> = 4U,            <span class="comment">/**&lt; Не найдено количество модулей. */</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca87c98c4bef0acd8ba56254895928d278">   20</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca87c98c4bef0acd8ba56254895928d278">X2X_CONFIG_INVALID_COUNT</a> = 5U,         <span class="comment">/**&lt; Количество вне диапазона 0..X2X_MAX_MODULES. */</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcaaf3d1484cff2b094c1d732ec5ff3b525">   21</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcaaf3d1484cff2b094c1d732ec5ff3b525">X2X_CONFIG_LINE_TOO_LONG</a> = 6U,         <span class="comment">/**&lt; Физическая строка превышает предел парсера. */</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca94d5bd9057f9b8babc9ddb968856ea09">   22</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca94d5bd9057f9b8babc9ddb968856ea09">X2X_CONFIG_INVALID_VALUE</a> = 7U,         <span class="comment">/**&lt; Строка не является допустимым целым числом. */</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca1f46419f7de280a7b8aae2b4beb31871">   23</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca1f46419f7de280a7b8aae2b4beb31871">X2X_CONFIG_INVALID_DEVICE_ID</a> = 8U,     <span class="comment">/**&lt; ID отсутствует или запрещён каталогом. */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca304069c5244a9d513976d36c6ca74def">   24</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca304069c5244a9d513976d36c6ca74def">X2X_CONFIG_INCOMPLETE_FILE</a> = 9U,       <span class="comment">/**&lt; Типов меньше заявленного количества. */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca91eee79e0b622707e2c3b6e7b5672bf9">   25</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca91eee79e0b622707e2c3b6e7b5672bf9">X2X_CONFIG_EXTRA_DATA</a> = 10U,           <span class="comment">/**&lt; После ожидаемых типов найдены лишние данные. */</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcab8569045073062a8f4a5a4031b452d43">   26</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcab8569045073062a8f4a5a4031b452d43">X2X_CONFIG_APPLY_PENDING</a> = 11U,        <span class="comment">/**&lt; Применение отложено до безопасной точки. */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca35b1d4d49fc6a7909c94fdfc8a19199c">   27</a></span>    <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca35b1d4d49fc6a7909c94fdfc8a19199c">X2X_CONFIG_REGISTRY_BUILD_FAILED</a> = 12U <span class="comment">/**&lt; Каталог не смог построить runtime-реестр. */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"></span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/** @brief Полностью проверенная последовательность экземпляров модулей X2X. */</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structX2XConfig.html">   31</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structX2XConfig.html">X2XConfig</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structX2XConfig.html#afc81f85b65935cc79f4d30b2a83fe1fd">   33</a></span>    uint8_t <a class="code hl_variable" href="structX2XConfig.html#afc81f85b65935cc79f4d30b2a83fe1fd">module_count</a>; <span class="comment">/**&lt; Количество внешних модулей, 0..X2X_MAX_MODULES. */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structX2XConfig.html#ac94c78f4e2dcc6f5ee509772cfc572a0">   34</a></span>    <a class="code hl_enumeration" href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a> <a class="code hl_variable" href="structX2XConfig.html#ac94c78f4e2dcc6f5ee509772cfc572a0">module_types</a>[<a class="code hl_variable" href="x2x__types_8hpp.html#a423ef5e1fcac1ad321d65da101dc0179">X2X_MAX_MODULES</a>]; <span class="comment">/**&lt; Типы в порядке slave 1..N. */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">/** @brief Дополнительная информация о последней ошибке X2X.TXT. */</span></div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structX2XConfigError.html">   38</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structX2XConfigError.html">X2XConfigError</a></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structX2XConfigError.html#a7f37832371fbe3594e6864e325b15a4e">   40</a></span>    <a class="code hl_enumeration" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> <a class="code hl_variable" href="structX2XConfigError.html#a7f37832371fbe3594e6864e325b15a4e">result</a>; <span class="comment">/**&lt; Основной код ошибки. */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structX2XConfigError.html#ab7ea16ddcb5fafce13e5381a5c806a59">   41</a></span>    uint16_t <a class="code hl_variable" href="structX2XConfigError.html#ab7ea16ddcb5fafce13e5381a5c806a59">physical_line</a>; <span class="comment">/**&lt; Номер физической строки файла, начиная с 1. */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structX2XConfigError.html#a22bf9ac6aa7774e50db3dc36e14d541d">   42</a></span>    int32_t <a class="code hl_variable" href="structX2XConfigError.html#a22bf9ac6aa7774e50db3dc36e14d541d">value</a>;          <span class="comment">/**&lt; Проблемное число либо дополнительный код. */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * @brief Обнуляет конфигурацию и структуру ошибки.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @param[out] config Конфигурация.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * @param[out] error Диагностика ошибки.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="x2x__config_8hpp.html#adddcab7115be56307d33271039922167">x2x_config_reset</a>(<a class="code hl_struct" href="structX2XConfig.html">X2XConfig</a>&amp; config, <a class="code hl_struct" href="structX2XConfigError.html">X2XConfigError</a>&amp; error);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"></span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * @brief Загружает и полностью проверяет X2X.TXT.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * Первая содержательная строка — количество модулей, следующие строки —</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * числовые ID. Поддерживаются пустые строки, комментарии `//` и необязательная</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * завершающая строка `Fin`. Порядок ID задаёт slave address.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"> * @param[in] file_name Каноническое имя в корневом каталоге microSD.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"> * @param[out] config Результирующая конфигурация, изменяемая только при успехе.</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"> * @param[out] error Подробности результата.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> * @return Код результата.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><a class="code hl_enumeration" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> <a class="code hl_function" href="x2x__config_8hpp.html#af995908110ef05d5464bd6f2341fa3d2">x2x_config_load</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                <a class="code hl_struct" href="structX2XConfig.html">X2XConfig</a>&amp; config,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                <a class="code hl_struct" href="structX2XConfigError.html">X2XConfigError</a>&amp; error);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"></span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">/** @return Указатель на строковое описание результата. */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="x2x__config_8hpp.html#a223c1ecaecb023a651b19adb9e2b4d66">x2x_config_result_text</a>(<a class="code hl_enumeration" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a> result);</div>
+<div class="ttc" id="astructX2XConfigError_html"><div class="ttname"><a href="structX2XConfigError.html">X2XConfigError</a></div><div class="ttdoc">Дополнительная информация о последней ошибке X2X.TXT.</div><div class="ttdef"><b>Определения</b> <a href="#l00038">x2x_config.hpp:39</a></div></div>
+<div class="ttc" id="astructX2XConfigError_html_a22bf9ac6aa7774e50db3dc36e14d541d"><div class="ttname"><a href="structX2XConfigError.html#a22bf9ac6aa7774e50db3dc36e14d541d">X2XConfigError::value</a></div><div class="ttdeci">int32_t value</div><div class="ttdef"><b>Определения</b> <a href="#l00042">x2x_config.hpp:42</a></div></div>
+<div class="ttc" id="astructX2XConfigError_html_a7f37832371fbe3594e6864e325b15a4e"><div class="ttname"><a href="structX2XConfigError.html#a7f37832371fbe3594e6864e325b15a4e">X2XConfigError::result</a></div><div class="ttdeci">X2XConfigResult result</div><div class="ttdef"><b>Определения</b> <a href="#l00040">x2x_config.hpp:40</a></div></div>
+<div class="ttc" id="astructX2XConfigError_html_ab7ea16ddcb5fafce13e5381a5c806a59"><div class="ttname"><a href="structX2XConfigError.html#ab7ea16ddcb5fafce13e5381a5c806a59">X2XConfigError::physical_line</a></div><div class="ttdeci">uint16_t physical_line</div><div class="ttdef"><b>Определения</b> <a href="#l00041">x2x_config.hpp:41</a></div></div>
+<div class="ttc" id="astructX2XConfig_html"><div class="ttname"><a href="structX2XConfig.html">X2XConfig</a></div><div class="ttdoc">Полностью проверенная последовательность экземпляров модулей X2X.</div><div class="ttdef"><b>Определения</b> <a href="#l00031">x2x_config.hpp:32</a></div></div>
+<div class="ttc" id="astructX2XConfig_html_ac94c78f4e2dcc6f5ee509772cfc572a0"><div class="ttname"><a href="structX2XConfig.html#ac94c78f4e2dcc6f5ee509772cfc572a0">X2XConfig::module_types</a></div><div class="ttdeci">X2XDeviceType module_types[X2X_MAX_MODULES]</div><div class="ttdef"><b>Определения</b> <a href="#l00034">x2x_config.hpp:34</a></div></div>
+<div class="ttc" id="astructX2XConfig_html_afc81f85b65935cc79f4d30b2a83fe1fd"><div class="ttname"><a href="structX2XConfig.html#afc81f85b65935cc79f4d30b2a83fe1fd">X2XConfig::module_count</a></div><div class="ttdeci">uint8_t module_count</div><div class="ttdef"><b>Определения</b> <a href="#l00033">x2x_config.hpp:33</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a223c1ecaecb023a651b19adb9e2b4d66"><div class="ttname"><a href="x2x__config_8hpp.html#a223c1ecaecb023a651b19adb9e2b4d66">x2x_config_result_text</a></div><div class="ttdeci">const char * x2x_config_result_text(X2XConfigResult result)</div><div class="ttdef"><b>Определения</b> <a href="x2x__config_8cpp_source.html#l00379">x2x_config.cpp:379</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bc"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bc">X2XConfigResult</a></div><div class="ttdeci">X2XConfigResult</div><div class="ttdoc">Результат загрузки или применения конфигурации X2X.</div><div class="ttdef"><b>Определения</b> <a href="#l00013">x2x_config.hpp:14</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9">X2X_CONFIG_OK</a></div><div class="ttdeci">@ X2X_CONFIG_OK</div><div class="ttdef"><b>Определения</b> <a href="#l00015">x2x_config.hpp:15</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca1f46419f7de280a7b8aae2b4beb31871"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca1f46419f7de280a7b8aae2b4beb31871">X2X_CONFIG_INVALID_DEVICE_ID</a></div><div class="ttdeci">@ X2X_CONFIG_INVALID_DEVICE_ID</div><div class="ttdef"><b>Определения</b> <a href="#l00023">x2x_config.hpp:23</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca2cd3586ef0ce5d52540b79c26aeb21c4"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca2cd3586ef0ce5d52540b79c26aeb21c4">X2X_CONFIG_FILE_OPEN_FAILED</a></div><div class="ttdeci">@ X2X_CONFIG_FILE_OPEN_FAILED</div><div class="ttdef"><b>Определения</b> <a href="#l00018">x2x_config.hpp:18</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca304069c5244a9d513976d36c6ca74def"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca304069c5244a9d513976d36c6ca74def">X2X_CONFIG_INCOMPLETE_FILE</a></div><div class="ttdeci">@ X2X_CONFIG_INCOMPLETE_FILE</div><div class="ttdef"><b>Определения</b> <a href="#l00024">x2x_config.hpp:24</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca35b1d4d49fc6a7909c94fdfc8a19199c"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca35b1d4d49fc6a7909c94fdfc8a19199c">X2X_CONFIG_REGISTRY_BUILD_FAILED</a></div><div class="ttdeci">@ X2X_CONFIG_REGISTRY_BUILD_FAILED</div><div class="ttdef"><b>Определения</b> <a href="#l00027">x2x_config.hpp:27</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca616d7eefd4106c43589978df9ee753bb"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca616d7eefd4106c43589978df9ee753bb">X2X_CONFIG_STORAGE_NOT_READY</a></div><div class="ttdeci">@ X2X_CONFIG_STORAGE_NOT_READY</div><div class="ttdef"><b>Определения</b> <a href="#l00016">x2x_config.hpp:16</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca716d57a1ecd7acffd4132c6d739b1422"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca716d57a1ecd7acffd4132c6d739b1422">X2X_CONFIG_FILE_NOT_FOUND</a></div><div class="ttdeci">@ X2X_CONFIG_FILE_NOT_FOUND</div><div class="ttdef"><b>Определения</b> <a href="#l00017">x2x_config.hpp:17</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca87c98c4bef0acd8ba56254895928d278"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca87c98c4bef0acd8ba56254895928d278">X2X_CONFIG_INVALID_COUNT</a></div><div class="ttdeci">@ X2X_CONFIG_INVALID_COUNT</div><div class="ttdef"><b>Определения</b> <a href="#l00020">x2x_config.hpp:20</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca91eee79e0b622707e2c3b6e7b5672bf9"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca91eee79e0b622707e2c3b6e7b5672bf9">X2X_CONFIG_EXTRA_DATA</a></div><div class="ttdeci">@ X2X_CONFIG_EXTRA_DATA</div><div class="ttdef"><b>Определения</b> <a href="#l00025">x2x_config.hpp:25</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca94d5bd9057f9b8babc9ddb968856ea09"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca94d5bd9057f9b8babc9ddb968856ea09">X2X_CONFIG_INVALID_VALUE</a></div><div class="ttdeci">@ X2X_CONFIG_INVALID_VALUE</div><div class="ttdef"><b>Определения</b> <a href="#l00022">x2x_config.hpp:22</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bcaa0b9e25a7da1ab655399d2f5f749657b"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcaa0b9e25a7da1ab655399d2f5f749657b">X2X_CONFIG_EMPTY_FILE</a></div><div class="ttdeci">@ X2X_CONFIG_EMPTY_FILE</div><div class="ttdef"><b>Определения</b> <a href="#l00019">x2x_config.hpp:19</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bcaaf3d1484cff2b094c1d732ec5ff3b525"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcaaf3d1484cff2b094c1d732ec5ff3b525">X2X_CONFIG_LINE_TOO_LONG</a></div><div class="ttdeci">@ X2X_CONFIG_LINE_TOO_LONG</div><div class="ttdef"><b>Определения</b> <a href="#l00021">x2x_config.hpp:21</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bcab8569045073062a8f4a5a4031b452d43"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bcab8569045073062a8f4a5a4031b452d43">X2X_CONFIG_APPLY_PENDING</a></div><div class="ttdeci">@ X2X_CONFIG_APPLY_PENDING</div><div class="ttdef"><b>Определения</b> <a href="#l00026">x2x_config.hpp:26</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_adddcab7115be56307d33271039922167"><div class="ttname"><a href="x2x__config_8hpp.html#adddcab7115be56307d33271039922167">x2x_config_reset</a></div><div class="ttdeci">void x2x_config_reset(X2XConfig &amp;config, X2XConfigError &amp;error)</div><div class="ttdoc">Обнуляет конфигурацию и структуру ошибки.</div><div class="ttdef"><b>Определения</b> <a href="x2x__config_8cpp_source.html#l00206">x2x_config.cpp:206</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_af995908110ef05d5464bd6f2341fa3d2"><div class="ttname"><a href="x2x__config_8hpp.html#af995908110ef05d5464bd6f2341fa3d2">x2x_config_load</a></div><div class="ttdeci">X2XConfigResult x2x_config_load(const char *file_name, X2XConfig &amp;config, X2XConfigError &amp;error)</div><div class="ttdoc">Загружает и полностью проверяет X2X.TXT.</div><div class="ttdef"><b>Определения</b> <a href="x2x__config_8cpp_source.html#l00220">x2x_config.cpp:220</a></div></div>
+<div class="ttc" id="ax2x__types_8hpp_html"><div class="ttname"><a href="x2x__types_8hpp.html">x2x_types.hpp</a></div><div class="ttdoc">Типы данных модулей внутренней шины X2X контроллера LCP.</div></div>
+<div class="ttc" id="ax2x__types_8hpp_html_a423ef5e1fcac1ad321d65da101dc0179"><div class="ttname"><a href="x2x__types_8hpp.html#a423ef5e1fcac1ad321d65da101dc0179">X2X_MAX_MODULES</a></div><div class="ttdeci">static const uint8_t X2X_MAX_MODULES</div><div class="ttdef"><b>Определения</b> <a href="x2x__types_8hpp_source.html#l00016">x2x_types.hpp:16</a></div></div>
+<div class="ttc" id="ax2x__types_8hpp_html_af09f7869617ea75d14d7281937ce19bf"><div class="ttname"><a href="x2x__types_8hpp.html#af09f7869617ea75d14d7281937ce19bf">X2XDeviceType</a></div><div class="ttdeci">X2XDeviceType</div><div class="ttdoc">Стабильные идентификаторы типов устройств X2X.</div><div class="ttdef"><b>Определения</b> <a href="x2x__types_8hpp_source.html#l00035">x2x_types.hpp:36</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_e05296bbe1f2b3edfa4799f2a210e301.html">x2x</a></li><li class="navelem"><a href="x2x__config_8hpp.html">x2x_config.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1769 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Пространство имен lcp_config_usb</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespacelcp__config__usb.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Пространство имен lcp_config_usb</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:Runtime" id="r_Runtime"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlcp__config__usb_1_1Runtime.html">Runtime</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a7709b2f6b1357d5de9e5f21d17caf2b9" id="r_a7709b2f6b1357d5de9e5f21d17caf2b9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9">Command</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9a001997750626d6fa5989550e70924c1c">COMMAND_HELLO</a> = 1U
+, <a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9a5b6c95ff2878a3bd42e532e01804c1bc">COMMAND_GET_CONFIG</a> = 2U
+, <a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9ab6b5c10b068daec94fc471df0e7b65f8">COMMAND_VALIDATE_CONFIG</a> = 3U
+, <a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9ad7a2f9e2eafe9ec8c122127bf5e71179">COMMAND_PUT_CONFIG</a> = 4U
+, <br />
+&#160;&#160;<a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9a80cab79f55d904d7c2166a416c7ccaf8">COMMAND_GET_STATUS</a> = 5U
+, <a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9a9236abe2273ff78bace3f2495d7c0327">COMMAND_REBOOT</a> = 6U
+, <a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9ade8bca64c58c3a2a1ce024ff80ee5892">COMMAND_EXIT</a> = 7U
+<br />
+ }</td></tr>
+<tr class="memitem:a414371fc144bd0d6d61c0312926749fd" id="r_a414371fc144bd0d6d61c0312926749fd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#a414371fc144bd0d6d61c0312926749fda2876ec56f3aee61efb6ce08622eb1fc7">STATUS_OK</a> = 0U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fdaf2cfb94f39378b2b8c538e755b42b003">STATUS_ACCEPTED</a> = 1U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fdab306fedda07e36a9c13f3820d681231d">STATUS_BUSY</a> = 2U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda3e8701060dbc951ea77d742ea7590f64">STATUS_NO_CHANGE</a> = 3U
+, <br />
+&#160;&#160;<a class="el" href="#a414371fc144bd0d6d61c0312926749fda42879da4c11203f585f3f78145574ed2">STATUS_INVALID_CRC</a> = 4U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda3b2b9485e70c170047cf0af3b5e1824b">STATUS_UNSUPPORTED_VERSION</a> = 5U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda75eb5635301aeab2c7ce3162b7c57bd0">STATUS_UNSUPPORTED_COMMAND</a> = 6U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda8411a64fa6531c059b7c6110a5565150">STATUS_INVALID_LENGTH</a> = 7U
+, <br />
+&#160;&#160;<a class="el" href="#a414371fc144bd0d6d61c0312926749fdaae9dfbfbd1b0efdb00a94578b0617907">STATUS_INVALID_SCHEMA</a> = 8U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda5a39ea7c2ebbd0f53a9fa6b46148de7a">STATUS_INVALID_CONFIG</a> = 9U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda7b125a4f0057a05cff82dd3609a4ea0e">STATUS_FLASH_ERROR</a> = 10U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fda159d577b9e856a122d6cb627b520177a">STATUS_VERIFY_ERROR</a> = 11U
+, <br />
+&#160;&#160;<a class="el" href="#a414371fc144bd0d6d61c0312926749fda9d4166fa8b7d1d0929128c674c9e0f99">STATUS_REBOOT_REQUIRED</a> = 12U
+, <a class="el" href="#a414371fc144bd0d6d61c0312926749fdad3bd0b927dbb08fe696372e0e5aba66f">STATUS_INTERNAL_ERROR</a> = 13U
+<br />
+ }</td></tr>
+<tr class="memitem:a1f01bed12298233be276c668aa288507" id="r_a1f01bed12298233be276c668aa288507"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f01bed12298233be276c668aa288507">WriterState</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#a1f01bed12298233be276c668aa288507a1681a743a1412afea1746091a51a1f0f">WRITER_IDLE</a> = 0U
+, <a class="el" href="#a1f01bed12298233be276c668aa288507a51ba121451b7ea81e9a40a4307ec8fff">WRITER_WRITE_RECORD</a> = 1U
+, <a class="el" href="#a1f01bed12298233be276c668aa288507add96e01de64a28f15530b9712d153648">WRITER_WRITE_COMMIT</a> = 2U
+, <a class="el" href="#a1f01bed12298233be276c668aa288507a19eb715380526f3282ef6e156c9956a9">WRITER_VERIFY</a> = 3U
+, <br />
+&#160;&#160;<a class="el" href="#a1f01bed12298233be276c668aa288507aaa233244b0b1a6d175f1ca1810421595">WRITER_COMPLETE</a> = 4U
+, <a class="el" href="#a1f01bed12298233be276c668aa288507ab7a722cbe7f4bb8bc0a4e7e619f2fa01">WRITER_ERROR</a> = 5U
+<br />
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a6c7f91dd270946368fdeeff282fd00b7" id="r_a6c7f91dd270946368fdeeff282fd00b7"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c7f91dd270946368fdeeff282fd00b7">__attribute__</a> ((packed)) StorageRecordHeader</td></tr>
+<tr class="memitem:a2ab9265333ce6e973ca83993abe1368f" id="r_a2ab9265333ce6e973ca83993abe1368f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ab9265333ce6e973ca83993abe1368f">active</a> (void)</td></tr>
+<tr class="memitem:a851d436609db75d3e7af10a8ba71f484" id="r_a851d436609db75d3e7af10a8ba71f484"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a851d436609db75d3e7af10a8ba71f484">build_write_pages</a> (const LcpConfigBundle &amp;bundle, uint32_t sequence)</td></tr>
+<tr class="memitem:a4042442992462fec0fb9d2d27cbbba42" id="r_a4042442992462fec0fb9d2d27cbbba42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4042442992462fec0fb9d2d27cbbba42">decode_config_payload</a> (const uint8_t *payload, uint16_t payload_length, LcpConfigBundle &amp;bundle)</td></tr>
+<tr class="memitem:a1ea9cac089b11dfe13ac68d013769515" id="r_a1ea9cac089b11dfe13ac68d013769515"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ea9cac089b11dfe13ac68d013769515">flash_busy</a> (void)</td></tr>
+<tr class="memitem:a44127d8689281142f202762e806cc0a6" id="r_a44127d8689281142f202762e806cc0a6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44127d8689281142f202762e806cc0a6">frame_magic_valid</a> (const uint8_t *header)</td></tr>
+<tr class="memitem:a8e539a3ac74c909108a3a648a18ed4c9" id="r_a8e539a3ac74c909108a3a648a18ed4c9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e539a3ac74c909108a3a648a18ed4c9">get_u16</a> (const uint8_t *input)</td></tr>
+<tr class="memitem:ad4211fc70414354a8a8cd542466c1c2c" id="r_ad4211fc70414354a8a8cd542466c1c2c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4211fc70414354a8a8cd542466c1c2c">get_u32</a> (const uint8_t *input)</td></tr>
+<tr class="memitem:a898e0fc64fd3676b78f55ba074844fcd" id="r_a898e0fc64fd3676b78f55ba074844fcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a898e0fc64fd3676b78f55ba074844fcd">handle_frame</a> (void)</td></tr>
+<tr class="memitem:a1e5eb9a42ce8eeed822f62dffb04012a" id="r_a1e5eb9a42ce8eeed822f62dffb04012a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e5eb9a42ce8eeed822f62dffb04012a">handle_get_config</a> (uint8_t command, uint32_t request_id)</td></tr>
+<tr class="memitem:ab2a47d84a03a489d4d04b9976432c168" id="r_ab2a47d84a03a489d4d04b9976432c168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2a47d84a03a489d4d04b9976432c168">handle_get_status</a> (uint8_t command, uint32_t request_id)</td></tr>
+<tr class="memitem:a3ba23cc2aa5e8410d38a31894535d789" id="r_a3ba23cc2aa5e8410d38a31894535d789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ba23cc2aa5e8410d38a31894535d789">handle_hello</a> (uint8_t command, uint32_t request_id)</td></tr>
+<tr class="memitem:af5da84e8be74a5f6d233d747fd8389ec" id="r_af5da84e8be74a5f6d233d747fd8389ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5da84e8be74a5f6d233d747fd8389ec">handle_put</a> (uint8_t command, uint32_t request_id, const uint8_t *payload, uint16_t payload_length)</td></tr>
+<tr class="memitem:ae8bfea2002f3b7c15b43a48f93c10fe9" id="r_ae8bfea2002f3b7c15b43a48f93c10fe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8bfea2002f3b7c15b43a48f93c10fe9">handle_validate</a> (uint8_t command, uint32_t request_id, const uint8_t *payload, uint16_t payload_length)</td></tr>
+<tr class="memitem:a9845ac4e15fff3db8a0deab89c390867" id="r_a9845ac4e15fff3db8a0deab89c390867"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9845ac4e15fff3db8a0deab89c390867">inactive_slot</a> (void)</td></tr>
+<tr class="memitem:a3130f1171025ae33cc7d55a4edc8b45e" id="r_a3130f1171025ae33cc7d55a4edc8b45e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3130f1171025ae33cc7d55a4edc8b45e">init</a> (void)</td></tr>
+<tr class="memitem:abfc1df01097075129777734371547b73" id="r_abfc1df01097075129777734371547b73"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfc1df01097075129777734371547b73">next_sequence</a> (void)</td></tr>
+<tr class="memitem:a39346c4ec2e594461d530dfb2b708372" id="r_a39346c4ec2e594461d530dfb2b708372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39346c4ec2e594461d530dfb2b708372">poll</a> (void)</td></tr>
+<tr class="memitem:ac26260c54a20cce8fd6ec75462d78a6e" id="r_ac26260c54a20cce8fd6ec75462d78a6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac26260c54a20cce8fd6ec75462d78a6e">poll_tx</a> (void)</td></tr>
+<tr class="memitem:a7b766d0dba675a48b66bce45d07fd056" id="r_a7b766d0dba675a48b66bce45d07fd056"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b766d0dba675a48b66bce45d07fd056">poll_writer</a> (void)</td></tr>
+<tr class="memitem:ae1b134f885f221be0759b87d20599014" id="r_ae1b134f885f221be0759b87d20599014"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1b134f885f221be0759b87d20599014">process_rx_byte</a> (uint8_t value)</td></tr>
+<tr class="memitem:a668c1afbaf2e94ef79c96437a25e1720" id="r_a668c1afbaf2e94ef79c96437a25e1720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a668c1afbaf2e94ef79c96437a25e1720">put_u16</a> (uint8_t *output, uint16_t value)</td></tr>
+<tr class="memitem:aed5453197f1e2f0145e44b3721a2e425" id="r_aed5453197f1e2f0145e44b3721a2e425"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed5453197f1e2f0145e44b3721a2e425">put_u32</a> (uint8_t *output, uint32_t value)</td></tr>
+<tr class="memitem:aa627ffde4651dc60b286122eb692495b" id="r_aa627ffde4651dc60b286122eb692495b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa627ffde4651dc60b286122eb692495b">queue_response</a> (uint8_t command, <a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a> status, uint8_t flags, uint32_t request_id, const uint8_t *payload, uint16_t payload_length)</td></tr>
+<tr class="memitem:a4dc032fc543f06b2049b2c31becef702" id="r_a4dc032fc543f06b2049b2c31becef702"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc032fc543f06b2049b2c31becef702">queue_simple_response</a> (uint8_t command, <a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a> status, uint32_t request_id)</td></tr>
+<tr class="memitem:a084799547ca476fe77b0cff311e045ca" id="r_a084799547ca476fe77b0cff311e045ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a084799547ca476fe77b0cff311e045ca">reset_rx</a> (void)</td></tr>
+<tr class="memitem:a7832e96ae448109dfc81870a9c18e190" id="r_a7832e96ae448109dfc81870a9c18e190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7832e96ae448109dfc81870a9c18e190">reset_transport_session</a> (void)</td></tr>
+<tr class="memitem:aa78261ada34e196a63bb3f2570b0417f" id="r_aa78261ada34e196a63bb3f2570b0417f"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa78261ada34e196a63bb3f2570b0417f">slot_base</a> (<a class="el" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot)</td></tr>
+<tr class="memitem:aec37e54c197fbb24d3fb15bc70ef06a1" id="r_aec37e54c197fbb24d3fb15bc70ef06a1"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec37e54c197fbb24d3fb15bc70ef06a1">slot_commit_page</a> (<a class="el" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot)</td></tr>
+<tr class="memitem:a3d745559091110fe9067a8ba42efcc47" id="r_a3d745559091110fe9067a8ba42efcc47"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d745559091110fe9067a8ba42efcc47">storage_commit_crc</a> (const StorageCommitRecord &amp;commit)</td></tr>
+<tr class="memitem:a5cf3c6ea4604dc81d512448bdf08bf6e" id="r_a5cf3c6ea4604dc81d512448bdf08bf6e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cf3c6ea4604dc81d512448bdf08bf6e">storage_header_crc</a> (const StorageRecordHeader &amp;header)</td></tr>
+<tr class="memitem:abe59f40b050db37560cb1d61e2aa7433" id="r_abe59f40b050db37560cb1d61e2aa7433"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe59f40b050db37560cb1d61e2aa7433">verify_target_slot</a> (void)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a85b316223ef99052113078c2a5d6bad0" id="r_a85b316223ef99052113078c2a5d6bad0"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85b316223ef99052113078c2a5d6bad0">COMMIT_MAGIC</a> = 0x4C434343UL</td></tr>
+<tr class="memitem:a92576e0e552869d2d84967568f49e9c8" id="r_a92576e0e552869d2d84967568f49e9c8"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92576e0e552869d2d84967568f49e9c8">CONFIG_RESERVED_TOTAL_BYTES</a> = 32U * 1024U</td></tr>
+<tr class="memitem:a31fae5cfc69a877805c2ea22ee516646" id="r_a31fae5cfc69a877805c2ea22ee516646"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31fae5cfc69a877805c2ea22ee516646">CONFIG_SCHEMA_VERSION</a> = 1U</td></tr>
+<tr class="memitem:a7ef05ee454f5c246fe512115102e8bda" id="r_a7ef05ee454f5c246fe512115102e8bda"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ef05ee454f5c246fe512115102e8bda">CONFIG_SLOT_BYTES</a> = <a class="el" href="#a92576e0e552869d2d84967568f49e9c8">CONFIG_RESERVED_TOTAL_BYTES</a> / 2U</td></tr>
+<tr class="memitem:ac8c088ad5d29f058da9019619ee72d2c" id="r_ac8c088ad5d29f058da9019619ee72d2c"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8c088ad5d29f058da9019619ee72d2c">FRAME_HEADER_BYTES</a> = 24U</td></tr>
+<tr class="memitem:aff70e2f08cc6065f1ed53b26be453852" id="r_aff70e2f08cc6065f1ed53b26be453852"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff70e2f08cc6065f1ed53b26be453852">FRAME_MAGIC</a> [4] = { 0x00U, 'L', 'C', 'P' }</td></tr>
+<tr class="memitem:a8b01a08d8e851e220f99f1fbc7eb1152" id="r_a8b01a08d8e851e220f99f1fbc7eb1152"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structlcp__config__usb_1_1Runtime.html">Runtime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b01a08d8e851e220f99f1fbc7eb1152">g_runtime</a></td></tr>
+<tr class="memitem:a6bd3f9202dbef1e69113578dcc3f0111" id="r_a6bd3f9202dbef1e69113578dcc3f0111"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bd3f9202dbef1e69113578dcc3f0111">MAX_FRAME_BYTES</a> = <a class="el" href="#ac8c088ad5d29f058da9019619ee72d2c">FRAME_HEADER_BYTES</a> + <a class="el" href="#a3b7d795d6336dafac668c2c46df53c11">MAX_PAYLOAD_BYTES</a></td></tr>
+<tr class="memitem:a3b7d795d6336dafac668c2c46df53c11" id="r_a3b7d795d6336dafac668c2c46df53c11"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b7d795d6336dafac668c2c46df53c11">MAX_PAYLOAD_BYTES</a> = 160U</td></tr>
+<tr class="memitem:ac262859b0c514a409c1d664bc4bd10ea" id="r_ac262859b0c514a409c1d664bc4bd10ea"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac262859b0c514a409c1d664bc4bd10ea">PROTOCOL_VERSION</a> = 1U</td></tr>
+<tr class="memitem:a98ea5840e95cb1ae0993072fe182225d" id="r_a98ea5840e95cb1ae0993072fe182225d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98ea5840e95cb1ae0993072fe182225d">RESET_DELAY_MS</a> = 100U</td></tr>
+<tr class="memitem:a146841cde91acc47a2d492fa688d09f0" id="r_a146841cde91acc47a2d492fa688d09f0"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a146841cde91acc47a2d492fa688d09f0">RX_BYTES_PER_POLL</a> = 64U</td></tr>
+<tr class="memitem:affac6b22babbe7f8131529894f54711b" id="r_affac6b22babbe7f8131529894f54711b"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affac6b22babbe7f8131529894f54711b">STORAGE_FORMAT_VERSION</a> = 1U</td></tr>
+<tr class="memitem:a9a42427d456a76954445a0a173cfd610" id="r_a9a42427d456a76954445a0a173cfd610"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a42427d456a76954445a0a173cfd610">STORAGE_MAGIC</a> = 0x4C434346UL</td></tr>
+<tr class="memitem:af816010b33c5a398ba9b2a44b6a706fa" id="r_af816010b33c5a398ba9b2a44b6a706fa"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af816010b33c5a398ba9b2a44b6a706fa">TX_BYTES_PER_POLL</a> = 64U</td></tr>
+</table>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a7709b2f6b1357d5de9e5f21d17caf2b9" name="a7709b2f6b1357d5de9e5f21d17caf2b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7709b2f6b1357d5de9e5f21d17caf2b9">&#9670;&#160;</a></span>Command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a7709b2f6b1357d5de9e5f21d17caf2b9">lcp_config_usb::Command</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9a001997750626d6fa5989550e70924c1c" name="a7709b2f6b1357d5de9e5f21d17caf2b9a001997750626d6fa5989550e70924c1c"></a>COMMAND_HELLO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9a5b6c95ff2878a3bd42e532e01804c1bc" name="a7709b2f6b1357d5de9e5f21d17caf2b9a5b6c95ff2878a3bd42e532e01804c1bc"></a>COMMAND_GET_CONFIG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9ab6b5c10b068daec94fc471df0e7b65f8" name="a7709b2f6b1357d5de9e5f21d17caf2b9ab6b5c10b068daec94fc471df0e7b65f8"></a>COMMAND_VALIDATE_CONFIG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9ad7a2f9e2eafe9ec8c122127bf5e71179" name="a7709b2f6b1357d5de9e5f21d17caf2b9ad7a2f9e2eafe9ec8c122127bf5e71179"></a>COMMAND_PUT_CONFIG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9a80cab79f55d904d7c2166a416c7ccaf8" name="a7709b2f6b1357d5de9e5f21d17caf2b9a80cab79f55d904d7c2166a416c7ccaf8"></a>COMMAND_GET_STATUS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9a9236abe2273ff78bace3f2495d7c0327" name="a7709b2f6b1357d5de9e5f21d17caf2b9a9236abe2273ff78bace3f2495d7c0327"></a>COMMAND_REBOOT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7709b2f6b1357d5de9e5f21d17caf2b9ade8bca64c58c3a2a1ce024ff80ee5892" name="a7709b2f6b1357d5de9e5f21d17caf2b9ade8bca64c58c3a2a1ce024ff80ee5892"></a>COMMAND_EXIT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00042">42</a></p>
+
+</div>
+</div>
+<a id="a414371fc144bd0d6d61c0312926749fd" name="a414371fc144bd0d6d61c0312926749fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414371fc144bd0d6d61c0312926749fd">&#9670;&#160;</a></span>Status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a414371fc144bd0d6d61c0312926749fd">lcp_config_usb::Status</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda2876ec56f3aee61efb6ce08622eb1fc7" name="a414371fc144bd0d6d61c0312926749fda2876ec56f3aee61efb6ce08622eb1fc7"></a>STATUS_OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fdaf2cfb94f39378b2b8c538e755b42b003" name="a414371fc144bd0d6d61c0312926749fdaf2cfb94f39378b2b8c538e755b42b003"></a>STATUS_ACCEPTED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fdab306fedda07e36a9c13f3820d681231d" name="a414371fc144bd0d6d61c0312926749fdab306fedda07e36a9c13f3820d681231d"></a>STATUS_BUSY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda3e8701060dbc951ea77d742ea7590f64" name="a414371fc144bd0d6d61c0312926749fda3e8701060dbc951ea77d742ea7590f64"></a>STATUS_NO_CHANGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda42879da4c11203f585f3f78145574ed2" name="a414371fc144bd0d6d61c0312926749fda42879da4c11203f585f3f78145574ed2"></a>STATUS_INVALID_CRC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda3b2b9485e70c170047cf0af3b5e1824b" name="a414371fc144bd0d6d61c0312926749fda3b2b9485e70c170047cf0af3b5e1824b"></a>STATUS_UNSUPPORTED_VERSION&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda75eb5635301aeab2c7ce3162b7c57bd0" name="a414371fc144bd0d6d61c0312926749fda75eb5635301aeab2c7ce3162b7c57bd0"></a>STATUS_UNSUPPORTED_COMMAND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda8411a64fa6531c059b7c6110a5565150" name="a414371fc144bd0d6d61c0312926749fda8411a64fa6531c059b7c6110a5565150"></a>STATUS_INVALID_LENGTH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fdaae9dfbfbd1b0efdb00a94578b0617907" name="a414371fc144bd0d6d61c0312926749fdaae9dfbfbd1b0efdb00a94578b0617907"></a>STATUS_INVALID_SCHEMA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda5a39ea7c2ebbd0f53a9fa6b46148de7a" name="a414371fc144bd0d6d61c0312926749fda5a39ea7c2ebbd0f53a9fa6b46148de7a"></a>STATUS_INVALID_CONFIG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda7b125a4f0057a05cff82dd3609a4ea0e" name="a414371fc144bd0d6d61c0312926749fda7b125a4f0057a05cff82dd3609a4ea0e"></a>STATUS_FLASH_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda159d577b9e856a122d6cb627b520177a" name="a414371fc144bd0d6d61c0312926749fda159d577b9e856a122d6cb627b520177a"></a>STATUS_VERIFY_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fda9d4166fa8b7d1d0929128c674c9e0f99" name="a414371fc144bd0d6d61c0312926749fda9d4166fa8b7d1d0929128c674c9e0f99"></a>STATUS_REBOOT_REQUIRED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a414371fc144bd0d6d61c0312926749fdad3bd0b927dbb08fe696372e0e5aba66f" name="a414371fc144bd0d6d61c0312926749fdad3bd0b927dbb08fe696372e0e5aba66f"></a>STATUS_INTERNAL_ERROR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a id="a1f01bed12298233be276c668aa288507" name="a1f01bed12298233be276c668aa288507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f01bed12298233be276c668aa288507">&#9670;&#160;</a></span>WriterState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a1f01bed12298233be276c668aa288507">lcp_config_usb::WriterState</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a1f01bed12298233be276c668aa288507a1681a743a1412afea1746091a51a1f0f" name="a1f01bed12298233be276c668aa288507a1681a743a1412afea1746091a51a1f0f"></a>WRITER_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f01bed12298233be276c668aa288507a51ba121451b7ea81e9a40a4307ec8fff" name="a1f01bed12298233be276c668aa288507a51ba121451b7ea81e9a40a4307ec8fff"></a>WRITER_WRITE_RECORD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f01bed12298233be276c668aa288507add96e01de64a28f15530b9712d153648" name="a1f01bed12298233be276c668aa288507add96e01de64a28f15530b9712d153648"></a>WRITER_WRITE_COMMIT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f01bed12298233be276c668aa288507a19eb715380526f3282ef6e156c9956a9" name="a1f01bed12298233be276c668aa288507a19eb715380526f3282ef6e156c9956a9"></a>WRITER_VERIFY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f01bed12298233be276c668aa288507aaa233244b0b1a6d175f1ca1810421595" name="a1f01bed12298233be276c668aa288507aaa233244b0b1a6d175f1ca1810421595"></a>WRITER_COMPLETE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f01bed12298233be276c668aa288507ab7a722cbe7f4bb8bc0a4e7e619f2fa01" name="a1f01bed12298233be276c668aa288507ab7a722cbe7f4bb8bc0a4e7e619f2fa01"></a>WRITER_ERROR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00071">71</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a6c7f91dd270946368fdeeff282fd00b7" name="a6c7f91dd270946368fdeeff282fd00b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7f91dd270946368fdeeff282fd00b7">&#9670;&#160;</a></span>__attribute__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct lcp_config_usb::__attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(packed)</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">40</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">FRAME_MAGIC</a>.</p>
+
+</div>
+</div>
+<a id="a2ab9265333ce6e973ca83993abe1368f" name="a2ab9265333ce6e973ca83993abe1368f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ab9265333ce6e973ca83993abe1368f">&#9670;&#160;</a></span>active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_usb::active </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00816">816</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00204">inactive_slot()</a> и <a class="el" href="app_8cpp_source.html#l00201">loop()</a>.</p>
+
+</div>
+</div>
+<a id="a851d436609db75d3e7af10a8ba71f484" name="a851d436609db75d3e7af10a8ba71f484"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a851d436609db75d3e7af10a8ba71f484">&#9670;&#160;</a></span>build_write_pages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::build_write_pages </td>
+          <td>(</td>
+          <td class="paramtype">const LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>sequence</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">278</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00037">COMMIT_MAGIC</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00027">CONFIG_SCHEMA_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle_crc32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00184">storage_commit_crc()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00028">STORAGE_FORMAT_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00177">storage_header_crc()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00036">STORAGE_MAGIC</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>.</p>
+
+</div>
+</div>
+<a id="a4042442992462fec0fb9d2d27cbbba42" name="a4042442992462fec0fb9d2d27cbbba42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4042442992462fec0fb9d2d27cbbba42">&#9670;&#160;</a></span>decode_config_payload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a> lcp_config_usb::decode_config_payload </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>payload</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>payload_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LcpConfigBundle &amp;</td>          <td class="paramname"><span class="paramname"><em>bundle</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">424</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00027">CONFIG_SCHEMA_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00158">get_u16()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00164">get_u32()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle_crc32()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00418">lcp_config_bundle_validate()</a>, <a class="el" href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00064">STATUS_INVALID_CONFIG</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00059">STATUS_INVALID_CRC</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00062">STATUS_INVALID_LENGTH</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00063">STATUS_INVALID_SCHEMA</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00503">handle_validate()</a>.</p>
+
+</div>
+</div>
+<a id="a1ea9cac089b11dfe13ac68d013769515" name="a1ea9cac089b11dfe13ac68d013769515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea9cac089b11dfe13ac68d013769515">&#9670;&#160;</a></span>flash_busy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_usb::flash_busy </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00821">821</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00076">WRITER_VERIFY</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00075">WRITER_WRITE_COMMIT</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00074">WRITER_WRITE_RECORD</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a>.</p>
+
+</div>
+</div>
+<a id="a44127d8689281142f202762e806cc0a6" name="a44127d8689281142f202762e806cc0a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44127d8689281142f202762e806cc0a6">&#9670;&#160;</a></span>frame_magic_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_usb::frame_magic_valid </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>header</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00172">172</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">FRAME_MAGIC</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a>.</p>
+
+</div>
+</div>
+<a id="a8e539a3ac74c909108a3a648a18ed4c9" name="a8e539a3ac74c909108a3a648a18ed4c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e539a3ac74c909108a3a648a18ed4c9">&#9670;&#160;</a></span>get_u16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t lcp_config_usb::get_u16 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00158">158</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">decode_config_payload()</a>.</p>
+
+</div>
+</div>
+<a id="ad4211fc70414354a8a8cd542466c1c2c" name="ad4211fc70414354a8a8cd542466c1c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4211fc70414354a8a8cd542466c1c2c">&#9670;&#160;</a></span>get_u32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lcp_config_usb::get_u32 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00164">164</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">decode_config_payload()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a>.</p>
+
+</div>
+</div>
+<a id="a898e0fc64fd3676b78f55ba074844fcd" name="a898e0fc64fd3676b78f55ba074844fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a898e0fc64fd3676b78f55ba074844fcd">&#9670;&#160;</a></span>handle_frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::handle_frame </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">585</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00050">COMMAND_EXIT</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00045">COMMAND_GET_CONFIG</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00048">COMMAND_GET_STATUS</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00044">COMMAND_HELLO</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00047">COMMAND_PUT_CONFIG</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00049">COMMAND_REBOOT</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00046">COMMAND_VALIDATE_CONFIG</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00164">get_u32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">handle_get_config()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00566">handle_get_status()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00503">handle_validate()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00026">PROTOCOL_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00271">queue_simple_response()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00068">STATUS_INTERNAL_ERROR</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00062">STATUS_INVALID_LENGTH</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00061">STATUS_UNSUPPORTED_COMMAND</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00060">STATUS_UNSUPPORTED_VERSION</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a>.</p>
+
+</div>
+</div>
+<a id="a1e5eb9a42ce8eeed822f62dffb04012a" name="a1e5eb9a42ce8eeed822f62dffb04012a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5eb9a42ce8eeed822f62dffb04012a">&#9670;&#160;</a></span>handle_get_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::handle_get_config </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">483</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00027">CONFIG_SCHEMA_VERSION</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle_crc32()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00572">lcp_config_service_active()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00592">lcp_config_service_active_sequence()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00587">lcp_config_service_active_slot()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00577">lcp_config_service_generation()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00582">lcp_config_service_source()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00144">put_u16()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00150">put_u32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>.</p>
+
+</div>
+</div>
+<a id="ab2a47d84a03a489d4d04b9976432c168" name="ab2a47d84a03a489d4d04b9976432c168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2a47d84a03a489d4d04b9976432c168">&#9670;&#160;</a></span>handle_get_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::handle_get_status </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00566">566</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00597">lcp_config_service_active_crc32()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00592">lcp_config_service_active_sequence()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00587">lcp_config_service_active_slot()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00642">lcp_config_service_busy()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00577">lcp_config_service_generation()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00582">lcp_config_service_source()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00150">put_u32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>.</p>
+
+</div>
+</div>
+<a id="a3ba23cc2aa5e8410d38a31894535d789" name="a3ba23cc2aa5e8410d38a31894535d789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba23cc2aa5e8410d38a31894535d789">&#9670;&#160;</a></span>handle_hello()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::handle_hello </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">468</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00027">CONFIG_SCHEMA_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00029">FRAME_HEADER_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00030">MAX_PAYLOAD_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00026">PROTOCOL_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00144">put_u16()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00150">put_u32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00028">STORAGE_FORMAT_VERSION</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>.</p>
+
+</div>
+</div>
+<a id="af5da84e8be74a5f6d233d747fd8389ec" name="af5da84e8be74a5f6d233d747fd8389ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5da84e8be74a5f6d233d747fd8389ec">&#9670;&#160;</a></span>handle_put()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::handle_put </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>payload</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>payload_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">513</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00034">CONFIG_RESERVED_TOTAL_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">decode_config_payload()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00204">inactive_slot()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle_crc32()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00548">lcp_config_bundle_equal()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00572">lcp_config_service_active()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00597">lcp_config_service_active_crc32()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00592">lcp_config_service_active_sequence()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00587">lcp_config_service_active_slot()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00642">lcp_config_service_busy()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00216">next_sequence()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00271">queue_simple_response()</a>, <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00177">sam3x_internal_flash_config_size()</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00056">STATUS_ACCEPTED</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00057">STATUS_BUSY</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00068">STATUS_INTERNAL_ERROR</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00058">STATUS_NO_CHANGE</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00077">WRITER_COMPLETE</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00076">WRITER_VERIFY</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00075">WRITER_WRITE_COMMIT</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00074">WRITER_WRITE_RECORD</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>.</p>
+
+</div>
+</div>
+<a id="ae8bfea2002f3b7c15b43a48f93c10fe9" name="ae8bfea2002f3b7c15b43a48f93c10fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8bfea2002f3b7c15b43a48f93c10fe9">&#9670;&#160;</a></span>handle_validate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::handle_validate </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>payload</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>payload_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00503">503</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">decode_config_payload()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00271">queue_simple_response()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>.</p>
+
+</div>
+</div>
+<a id="a9845ac4e15fff3db8a0deab89c390867" name="a9845ac4e15fff3db8a0deab89c390867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9845ac4e15fff3db8a0deab89c390867">&#9670;&#160;</a></span>inactive_slot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> lcp_config_usb::inactive_slot </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00204">204</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00816">active()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00587">lcp_config_service_active_slot()</a>, <a class="el" href="lcp__config__service_8hpp_source.html#l00022">LCP_CONFIG_SLOT_A</a> и <a class="el" href="lcp__config__service_8hpp_source.html#l00023">LCP_CONFIG_SLOT_B</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>.</p>
+
+</div>
+</div>
+<a id="a3130f1171025ae33cc7d55a4edc8b45e" name="a3130f1171025ae33cc7d55a4edc8b45e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3130f1171025ae33cc7d55a4edc8b45e">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00807">807</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__service_8hpp_source.html#l00021">LCP_CONFIG_SLOT_NONE</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00055">STATUS_OK</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00073">WRITER_IDLE</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00159">setup()</a>.</p>
+
+</div>
+</div>
+<a id="abfc1df01097075129777734371547b73" name="abfc1df01097075129777734371547b73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfc1df01097075129777734371547b73">&#9670;&#160;</a></span>next_sequence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lcp_config_usb::next_sequence </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00216">216</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__service_8cpp_source.html#l00592">lcp_config_service_active_sequence()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>.</p>
+
+</div>
+</div>
+<a id="a39346c4ec2e594461d530dfb2b708372" name="a39346c4ec2e594461d530dfb2b708372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39346c4ec2e594461d530dfb2b708372">&#9670;&#160;</a></span>poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">828</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">FRAME_MAGIC</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00763">poll_tx()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">poll_writer()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00038">RESET_DELAY_MS</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00222">reset_rx()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00229">reset_transport_session()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00032">RX_BYTES_PER_POLL</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a>.</p>
+
+</div>
+</div>
+<a id="ac26260c54a20cce8fd6ec75462d78a6e" name="ac26260c54a20cce8fd6ec75462d78a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac26260c54a20cce8fd6ec75462d78a6e">&#9670;&#160;</a></span>poll_tx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::poll_tx </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00763">763</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00229">reset_transport_session()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00033">TX_BYTES_PER_POLL</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>.</p>
+
+</div>
+</div>
+<a id="a7b766d0dba675a48b66bce45d07fd056" name="a7b766d0dba675a48b66bce45d07fd056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b766d0dba675a48b66bce45d07fd056">&#9670;&#160;</a></span>poll_writer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::poll_writer </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">367</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00207">sam3x_internal_flash_erase_write_page()</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00191">slot_base()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00198">slot_commit_page()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00065">STATUS_FLASH_ERROR</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00067">STATUS_REBOOT_REQUIRED</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00066">STATUS_VERIFY_ERROR</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00077">WRITER_COMPLETE</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00078">WRITER_ERROR</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00073">WRITER_IDLE</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00076">WRITER_VERIFY</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00075">WRITER_WRITE_COMMIT</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00074">WRITER_WRITE_RECORD</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>.</p>
+
+</div>
+</div>
+<a id="ae1b134f885f221be0759b87d20599014" name="ae1b134f885f221be0759b87d20599014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1b134f885f221be0759b87d20599014">&#9670;&#160;</a></span>process_rx_byte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::process_rx_byte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">683</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00029">FRAME_HEADER_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">FRAME_MAGIC</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00172">frame_magic_valid()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00164">get_u32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>, <a class="el" href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00030">MAX_PAYLOAD_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00271">queue_simple_response()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00222">reset_rx()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00059">STATUS_INVALID_CRC</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00062">STATUS_INVALID_LENGTH</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>.</p>
+
+</div>
+</div>
+<a id="a668c1afbaf2e94ef79c96437a25e1720" name="a668c1afbaf2e94ef79c96437a25e1720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668c1afbaf2e94ef79c96437a25e1720">&#9670;&#160;</a></span>put_u16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::put_u16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00144">144</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">handle_get_config()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a>.</p>
+
+</div>
+</div>
+<a id="aed5453197f1e2f0145e44b3721a2e425" name="aed5453197f1e2f0145e44b3721a2e425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed5453197f1e2f0145e44b3721a2e425">&#9670;&#160;</a></span>put_u32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::put_u32 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00150">150</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">handle_get_config()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00566">handle_get_status()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>.</p>
+
+</div>
+</div>
+<a id="aa627ffde4651dc60b286122eb692495b" name="aa627ffde4651dc60b286122eb692495b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa627ffde4651dc60b286122eb692495b">&#9670;&#160;</a></span>queue_response()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::queue_response </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a></td>          <td class="paramname"><span class="paramname"><em>status</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>flags</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>payload</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>payload_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">238</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00029">FRAME_HEADER_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">FRAME_MAGIC</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00030">MAX_PAYLOAD_BYTES</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00026">PROTOCOL_VERSION</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00150">put_u32()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">handle_get_config()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00566">handle_get_status()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00271">queue_simple_response()</a>.</p>
+
+</div>
+</div>
+<a id="a4dc032fc543f06b2049b2c31becef702" name="a4dc032fc543f06b2049b2c31becef702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc032fc543f06b2049b2c31becef702">&#9670;&#160;</a></span>queue_simple_response()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::queue_simple_response </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a414371fc144bd0d6d61c0312926749fd">Status</a></td>          <td class="paramname"><span class="paramname"><em>status</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>request_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00271">271</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00503">handle_validate()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a>.</p>
+
+</div>
+</div>
+<a id="a084799547ca476fe77b0cff311e045ca" name="a084799547ca476fe77b0cff311e045ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084799547ca476fe77b0cff311e045ca">&#9670;&#160;</a></span>reset_rx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::reset_rx </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00222">222</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00229">reset_transport_session()</a>.</p>
+
+</div>
+</div>
+<a id="a7832e96ae448109dfc81870a9c18e190" name="a7832e96ae448109dfc81870a9c18e190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7832e96ae448109dfc81870a9c18e190">&#9670;&#160;</a></span>reset_transport_session()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lcp_config_usb::reset_transport_session </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00229">229</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00222">reset_rx()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00763">poll_tx()</a>.</p>
+
+</div>
+</div>
+<a id="aa78261ada34e196a63bb3f2570b0417f" name="aa78261ada34e196a63bb3f2570b0417f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa78261ada34e196a63bb3f2570b0417f">&#9670;&#160;</a></span>slot_base()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uintptr_t lcp_config_usb::slot_base </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a></td>          <td class="paramname"><span class="paramname"><em>slot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00191">191</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00035">CONFIG_SLOT_BYTES</a>, <a class="el" href="lcp__config__service_8hpp_source.html#l00023">LCP_CONFIG_SLOT_B</a> и <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00167">sam3x_internal_flash_config_start()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">poll_writer()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00198">slot_commit_page()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="aec37e54c197fbb24d3fb15bc70ef06a1" name="aec37e54c197fbb24d3fb15bc70ef06a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec37e54c197fbb24d3fb15bc70ef06a1">&#9670;&#160;</a></span>slot_commit_page()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uintptr_t lcp_config_usb::slot_commit_page </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a></td>          <td class="paramname"><span class="paramname"><em>slot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00198">198</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00035">CONFIG_SLOT_BYTES</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00014">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00191">slot_base()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">poll_writer()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a3d745559091110fe9067a8ba42efcc47" name="a3d745559091110fe9067a8ba42efcc47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d745559091110fe9067a8ba42efcc47">&#9670;&#160;</a></span>storage_commit_crc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lcp_config_usb::storage_commit_crc </td>
+          <td>(</td>
+          <td class="paramtype">const StorageCommitRecord &amp;</td>          <td class="paramname"><span class="paramname"><em>commit</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00184">184</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a5cf3c6ea4604dc81d512448bdf08bf6e" name="a5cf3c6ea4604dc81d512448bdf08bf6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cf3c6ea4604dc81d512448bdf08bf6e">&#9670;&#160;</a></span>storage_header_crc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lcp_config_usb::storage_header_crc </td>
+          <td>(</td>
+          <td class="paramtype">const StorageRecordHeader &amp;</td>          <td class="paramname"><span class="paramname"><em>header</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00177">177</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="abe59f40b050db37560cb1d61e2aa7433" name="abe59f40b050db37560cb1d61e2aa7433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe59f40b050db37560cb1d61e2aa7433">&#9670;&#160;</a></span>verify_target_slot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lcp_config_usb::verify_target_slot </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">309</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00037">COMMIT_MAGIC</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00027">CONFIG_SCHEMA_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">g_runtime</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle_crc32()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00548">lcp_config_bundle_equal()</a>, <a class="el" href="lcp__config__bundle_8cpp_source.html#l00418">lcp_config_bundle_validate()</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a>, <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00185">sam3x_internal_flash_read()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00191">slot_base()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00198">slot_commit_page()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00184">storage_commit_crc()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00028">STORAGE_FORMAT_VERSION</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00177">storage_header_crc()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00036">STORAGE_MAGIC</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">poll_writer()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a85b316223ef99052113078c2a5d6bad0" name="a85b316223ef99052113078c2a5d6bad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85b316223ef99052113078c2a5d6bad0">&#9670;&#160;</a></span>COMMIT_MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t lcp_config_usb::COMMIT_MAGIC = 0x4C434343UL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00037">37</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a92576e0e552869d2d84967568f49e9c8" name="a92576e0e552869d2d84967568f49e9c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92576e0e552869d2d84967568f49e9c8">&#9670;&#160;</a></span>CONFIG_RESERVED_TOTAL_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t lcp_config_usb::CONFIG_RESERVED_TOTAL_BYTES = 32U * 1024U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00034">34</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>.</p>
+
+</div>
+</div>
+<a id="a31fae5cfc69a877805c2ea22ee516646" name="a31fae5cfc69a877805c2ea22ee516646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31fae5cfc69a877805c2ea22ee516646">&#9670;&#160;</a></span>CONFIG_SCHEMA_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::CONFIG_SCHEMA_VERSION = 1U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00027">27</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00424">decode_config_payload()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00483">handle_get_config()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a7ef05ee454f5c246fe512115102e8bda" name="a7ef05ee454f5c246fe512115102e8bda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef05ee454f5c246fe512115102e8bda">&#9670;&#160;</a></span>CONFIG_SLOT_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t lcp_config_usb::CONFIG_SLOT_BYTES = <a class="el" href="#a92576e0e552869d2d84967568f49e9c8">CONFIG_RESERVED_TOTAL_BYTES</a> / 2U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00035">35</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00191">slot_base()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00198">slot_commit_page()</a>.</p>
+
+</div>
+</div>
+<a id="ac8c088ad5d29f058da9019619ee72d2c" name="ac8c088ad5d29f058da9019619ee72d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c088ad5d29f058da9019619ee72d2c">&#9670;&#160;</a></span>FRAME_HEADER_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::FRAME_HEADER_BYTES = 24U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00029">29</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>.</p>
+
+</div>
+</div>
+<a id="aff70e2f08cc6065f1ed53b26be453852" name="aff70e2f08cc6065f1ed53b26be453852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff70e2f08cc6065f1ed53b26be453852">&#9670;&#160;</a></span>FRAME_MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t lcp_config_usb::FRAME_MAGIC[4] = { 0x00U, 'L', 'C', 'P' }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00040">40</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00081">__attribute__()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00172">frame_magic_valid()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>.</p>
+
+</div>
+</div>
+<a id="a8b01a08d8e851e220f99f1fbc7eb1152" name="a8b01a08d8e851e220f99f1fbc7eb1152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b01a08d8e851e220f99f1fbc7eb1152">&#9670;&#160;</a></span>g_runtime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structlcp__config__usb_1_1Runtime.html">Runtime</a> lcp_config_usb::g_runtime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00142">142</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00816">active()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00821">flash_busy()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00566">handle_get_status()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">handle_put()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00807">init()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00763">poll_tx()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">poll_writer()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00222">reset_rx()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00229">reset_transport_session()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a6bd3f9202dbef1e69113578dcc3f0111" name="a6bd3f9202dbef1e69113578dcc3f0111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bd3f9202dbef1e69113578dcc3f0111">&#9670;&#160;</a></span>MAX_FRAME_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::MAX_FRAME_BYTES = <a class="el" href="#ac8c088ad5d29f058da9019619ee72d2c">FRAME_HEADER_BYTES</a> + <a class="el" href="#a3b7d795d6336dafac668c2c46df53c11">MAX_PAYLOAD_BYTES</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00031">31</a></p>
+
+</div>
+</div>
+<a id="a3b7d795d6336dafac668c2c46df53c11" name="a3b7d795d6336dafac668c2c46df53c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b7d795d6336dafac668c2c46df53c11">&#9670;&#160;</a></span>MAX_PAYLOAD_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::MAX_PAYLOAD_BYTES = 160U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00030">30</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00683">process_rx_byte()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>.</p>
+
+</div>
+</div>
+<a id="ac262859b0c514a409c1d664bc4bd10ea" name="ac262859b0c514a409c1d664bc4bd10ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac262859b0c514a409c1d664bc4bd10ea">&#9670;&#160;</a></span>PROTOCOL_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t lcp_config_usb::PROTOCOL_VERSION = 1U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00026">26</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00585">handle_frame()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00238">queue_response()</a>.</p>
+
+</div>
+</div>
+<a id="a98ea5840e95cb1ae0993072fe182225d" name="a98ea5840e95cb1ae0993072fe182225d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98ea5840e95cb1ae0993072fe182225d">&#9670;&#160;</a></span>RESET_DELAY_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t lcp_config_usb::RESET_DELAY_MS = 100U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00038">38</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>.</p>
+
+</div>
+</div>
+<a id="a146841cde91acc47a2d492fa688d09f0" name="a146841cde91acc47a2d492fa688d09f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a146841cde91acc47a2d492fa688d09f0">&#9670;&#160;</a></span>RX_BYTES_PER_POLL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::RX_BYTES_PER_POLL = 64U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00032">32</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">poll()</a>.</p>
+
+</div>
+</div>
+<a id="affac6b22babbe7f8131529894f54711b" name="affac6b22babbe7f8131529894f54711b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affac6b22babbe7f8131529894f54711b">&#9670;&#160;</a></span>STORAGE_FORMAT_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::STORAGE_FORMAT_VERSION = 1U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00028">28</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00468">handle_hello()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a9a42427d456a76954445a0a173cfd610" name="a9a42427d456a76954445a0a173cfd610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a42427d456a76954445a0a173cfd610">&#9670;&#160;</a></span>STORAGE_MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t lcp_config_usb::STORAGE_MAGIC = 0x4C434346UL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00036">36</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00278">build_write_pages()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="af816010b33c5a398ba9b2a44b6a706fa" name="af816010b33c5a398ba9b2a44b6a706fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af816010b33c5a398ba9b2a44b6a706fa">&#9670;&#160;</a></span>TX_BYTES_PER_POLL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t lcp_config_usb::TX_BYTES_PER_POLL = 64U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__config__usb__transport_8hpp_source.html">lcp_config_usb_transport.hpp</a> строка <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00033">33</a></p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00763">poll_tx()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespacelcp__config__usb.html">lcp_config_usb</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

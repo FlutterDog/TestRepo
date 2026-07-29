@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['card_5ftype_0',['card_type',['../structLcpSdVolume.html#aa2c17f2837f1e2313136d6f4c5451f27',1,'LcpSdVolume']]],
+  ['channel_1',['channel',['../structLcpSc16isPort.html#ab5373228810bb793519b63951d91f462',1,'LcpSc16isPort']]],
+  ['chip_5fselect_2',['chip_select',['../structLcpSc16isPort.html#a2d3bc0f70033b561032b8dd1c99fd95a',1,'LcpSc16isPort']]],
+  ['clear_5frx_3',['clear_rx',['../structModbusRtuTransport.html#a8159e7843ba50fcbc1f7cdf710ee0b45',1,'ModbusRtuTransport']]],
+  ['clock_5fhz_4',['clock_hz',['../structHalSpiConfig.html#aad3c3d35cb54cebce8c08c351d966fc0',1,'HalSpiConfig']]],
+  ['cluster_5fcount_5',['cluster_count',['../structLcpSdVolume.html#a76e9f69beabdf6ece224c66ea8ea8d22',1,'LcpSdVolume']]],
+  ['commit_5fmagic_6',['COMMIT_MAGIC',['../namespacelcp__config__usb.html#a85b316223ef99052113078c2a5d6bad0',1,'lcp_config_usb']]],
+  ['commit_5fpage_7',['commit_page',['../structlcp__config__usb_1_1Runtime.html#a212566f2d4d0c511f61982ea9fddb60b',1,'lcp_config_usb::Runtime']]],
+  ['config_8',['config',['../structEthernetModbusInterfaceState.html#aeead43aa147a03f38ec6f02b61390269',1,'EthernetModbusInterfaceState::config'],['../structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91',1,'FieldSensorPortState::config']]],
+  ['config_5freport_9',['config_report',['../structEthernetModbusInterfaceState.html#afd1ea026c43117dca86b4175e66e40af',1,'EthernetModbusInterfaceState']]],
+  ['config_5freserved_5ftotal_5fbytes_10',['CONFIG_RESERVED_TOTAL_BYTES',['../namespacelcp__config__usb.html#a92576e0e552869d2d84967568f49e9c8',1,'lcp_config_usb']]],
+  ['config_5fschema_5fversion_11',['CONFIG_SCHEMA_VERSION',['../namespacelcp__config__usb.html#a31fae5cfc69a877805c2ea22ee516646',1,'lcp_config_usb']]],
+  ['config_5fslot_5fbytes_12',['CONFIG_SLOT_BYTES',['../namespacelcp__config__usb.html#a7ef05ee454f5c246fe512115102e8bda',1,'lcp_config_usb']]],
+  ['connection_5flost_13',['connection_lost',['../structFieldSensorPortState.html#a96c00c32e761301b371346227128f150',1,'FieldSensorPortState::connection_lost'],['../structX2XDeviceHeader.html#a162bc5a690b1a4673fc0b0c930007626',1,'X2XDeviceHeader::connection_lost']]],
+  ['consecutive_5ffailures_14',['consecutive_failures',['../structFieldSensorPortState.html#a5a5d828c3559b832f1b4b37391c33bd1',1,'FieldSensorPortState::consecutive_failures'],['../structX2XDeviceHeader.html#ad261c05908dc721420db8efe7e56b240',1,'X2XDeviceHeader::consecutive_failures']]],
+  ['construct_15',['construct',['../structX2XModuleDescriptor.html#afc1ea329f30154412108bfd737ca3b8f',1,'X2XModuleDescriptor']]],
+  ['contacts_5fstate_5fraw_16',['contacts_state_raw',['../structX2XLct1114__2.html#ac767205750f23197dc01708b045fe477',1,'X2XLct1114_2']]],
+  ['crc32_17',['crc32',['../structLcpConfigCandidateStatus.html#ac9df8e6f39cfb32d5f4dd210c1a4439e',1,'LcpConfigCandidateStatus']]],
+  ['current_5fcluster_18',['current_cluster',['../structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254',1,'LcpSdReadFile']]],
+  ['current_5fcluster_5findex_19',['current_cluster_index',['../structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763',1,'LcpSdReadFile']]]
+];

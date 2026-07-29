@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/diagnostics/diagnostic_output.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('diagnostic__output_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл diagnostic_output.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Общие функции форматирования USB service console.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__uart_8hpp_source.html">../../hal/sam3x_uart.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../../platform/platform.hpp</a>&quot;</code><br />
+</div>
+<p><a href="diagnostic__output_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:abd5ca920d141d5dcd55e7e476cda50a5" id="r_abd5ca920d141d5dcd55e7e476cda50a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a> (const char *name)</td></tr>
+<tr class="memdesc:abd5ca920d141d5dcd55e7e476cda50a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает имя параметра и разделитель <span class="tt"> = </span>.  <br /></td></tr>
+<tr class="memitem:a8d3c8cc8132711b51876521aae1c9d73" id="r_a8d3c8cc8132711b51876521aae1c9d73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d3c8cc8132711b51876521aae1c9d73">diagnostic_print_banner</a> (const char *title)</td></tr>
+<tr class="memdesc:a8d3c8cc8132711b51876521aae1c9d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает крупный заголовок полного отчёта.  <br /></td></tr>
+<tr class="memitem:a6ac45276c2a7af4783f42c18debdcbec" id="r_a6ac45276c2a7af4783f42c18debdcbec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ac45276c2a7af4783f42c18debdcbec">diagnostic_print_duration</a> (uint32_t milliseconds)</td></tr>
+<tr class="memdesc:a6ac45276c2a7af4783f42c18debdcbec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает длительность в привычном виде <span class="tt">D d HH:MM:SS</span>.  <br /></td></tr>
+<tr class="memitem:ad844b507f5b788115cf38879b2fea020" id="r_ad844b507f5b788115cf38879b2fea020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a> (const char *title)</td></tr>
+<tr class="memdesc:ad844b507f5b788115cf38879b2fea020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает заголовок логической группы внутри одного отчёта.  <br /></td></tr>
+<tr class="memitem:ad518e5c8521d9d18abb639ae93f2ad1d" id="r_ad518e5c8521d9d18abb639ae93f2ad1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad518e5c8521d9d18abb639ae93f2ad1d">diagnostic_print_index</a> (uint32_t index)</td></tr>
+<tr class="memdesc:ad518e5c8521d9d18abb639ae93f2ad1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает индекс элемента и разделитель <span class="tt">: </span>.  <br /></td></tr>
+<tr class="memitem:a73bf735dbf4172a6aac9beab86055873" id="r_a73bf735dbf4172a6aac9beab86055873"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73bf735dbf4172a6aac9beab86055873">diagnostic_print_percent</a> (uint32_t part, uint32_t total)</td></tr>
+<tr class="memdesc:a73bf735dbf4172a6aac9beab86055873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает долю <span class="tt">part / total</span> в процентах с одной десятичной цифрой.  <br /></td></tr>
+<tr class="memitem:a98e20bd6f28d90b4dbb96fca4e745b16" id="r_a98e20bd6f28d90b4dbb96fca4e745b16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a> (const char *title)</td></tr>
+<tr class="memdesc:a98e20bd6f28d90b4dbb96fca4e745b16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает заголовок самостоятельной диагностической подсистемы.  <br /></td></tr>
+<tr class="memitem:ae14f83449ef365323aeecbcd468d8d2d" id="r_ae14f83449ef365323aeecbcd468d8d2d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae14f83449ef365323aeecbcd468d8d2d">diagnostic_uart_frame_text</a> (<a class="el" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a> frame)</td></tr>
+<tr class="memdesc:ae14f83449ef365323aeecbcd468d8d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает человекочитаемое имя формата UART.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Общие функции форматирования USB service console. </p>
+<p>Этот заголовок является единой точкой оформления диагностических отчётов. При добавлении нового раздела не следует вручную копировать длинные строки из символов <span class="tt">=</span> или собственный расчёт процентов/uptime. Используйте функции ниже, чтобы отдельная команда и общий <span class="tt">status</span> выглядели одинаково.</p>
+<p>Формат полей service console:</p><ul>
+<li>именованный параметр: <span class="tt">name = value</span>;</li>
+<li>индексированный элемент: <span class="tt">0: value</span>;</li>
+<li>соседние параметры: <span class="tt">name = value, next = value</span>.</li>
+</ul>
+<p>Двоеточия внутри самих данных не изменяются: MAC-адрес, время и другие составные значения сохраняют штатный вид <span class="tt">DE:AD:BE:EF:FE:EE</span> и <span class="tt">12:30:45</span>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="abd5ca920d141d5dcd55e7e476cda50a5" name="abd5ca920d141d5dcd55e7e476cda50a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd5ca920d141d5dcd55e7e476cda50a5">&#9670;&#160;</a></span>diagnostic_print_assignment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_assignment </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает имя параметра и разделитель <span class="tt"> = </span>. </p>
+<p>Используйте функцию перед значением во всех человекочитаемых отчётах. Это исключает смешение вариантов <span class="tt">name=value</span> и <span class="tt">name = value</span> между модулями.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Имя параметра без пробелов и знака равенства. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00080">80</a></p>
+
+<p class="reference">Используется в <a class="el" href="battery__status_8cpp_source.html#l00068">battery_status_print_report()</a>, <a class="el" href="ethernet__status_8cpp_source.html#l00211">ethernet_status_print_report()</a>, <a class="el" href="field__status_8cpp_source.html#l00120">field_status_print_report()</a>, <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="a8d3c8cc8132711b51876521aae1c9d73" name="a8d3c8cc8132711b51876521aae1c9d73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d3c8cc8132711b51876521aae1c9d73">&#9670;&#160;</a></span>diagnostic_print_banner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_banner </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает крупный заголовок полного отчёта. </p>
+<p>Используется только для верхнего уровня, например <span class="tt">status</span>, <span class="tt">help</span> и <span class="tt">rtos</span>. Вложенные подсистемы должны использовать <a class="el" href="#a98e20bd6f28d90b4dbb96fca4e745b16" title="Печатает заголовок самостоятельной диагностической подсистемы.">diagnostic_print_section()</a>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>Короткое имя отчёта без перевода строки. Null допускается и печатается как пустой заголовок. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00035">35</a></p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00420">config_status_handle_command()</a> и <a class="el" href="sd__card__test_8cpp_source.html#l00147">sd_card_test_run_file_test()</a>.</p>
+
+</div>
+</div>
+<a id="a6ac45276c2a7af4783f42c18debdcbec" name="a6ac45276c2a7af4783f42c18debdcbec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ac45276c2a7af4783f42c18debdcbec">&#9670;&#160;</a></span>diagnostic_print_duration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_duration </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>milliseconds</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает длительность в привычном виде <span class="tt">D d HH:MM:SS</span>. </p>
+<p>Функция предназначена для human-readable представления <span class="tt"><a class="el" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d" title="Возвращает время работы прошивки в миллисекундах.">millis()</a></span>. Сырое значение миллисекунд следует печатать отдельно для отладки. ATSAM3X8E использует 32-битный <span class="tt"><a class="el" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d" title="Возвращает время работы прошивки в миллисекундах.">millis()</a></span>, поэтому после примерно 49.7 суток счётчик переполняется; все внутренние интервалы прошивки рассчитаны с учётом такого переполнения.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">milliseconds</td><td>Длительность в миллисекундах. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00167">167</a></p>
+
+</div>
+</div>
+<a id="ad844b507f5b788115cf38879b2fea020" name="ad844b507f5b788115cf38879b2fea020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad844b507f5b788115cf38879b2fea020">&#9670;&#160;</a></span>diagnostic_print_group()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_group </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает заголовок логической группы внутри одного отчёта. </p>
+<p>Пример: группы <span class="tt">RAM</span>, <span class="tt">FreeRTOS heap</span> и <span class="tt">LCP task stack</span> в команде <span class="tt">rtos</span>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>Название группы. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00065">65</a></p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>, <a class="el" href="rtc__status_8cpp_source.html#l00291">rtc_status_print_report()</a>, <a class="el" href="sd__card__test_8cpp_source.html#l00108">sd_card_test_print_report()</a>, <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="ad518e5c8521d9d18abb639ae93f2ad1d" name="ad518e5c8521d9d18abb639ae93f2ad1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad518e5c8521d9d18abb639ae93f2ad1d">&#9670;&#160;</a></span>diagnostic_print_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_index </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает индекс элемента и разделитель <span class="tt">: </span>. </p>
+<p>Предназначено для массивов измерений и регистров: <span class="tt">0: 12.34</span>. Перед двоеточием пробел не ставится, после двоеточия ставится один пробел.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Номер элемента. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00094">94</a></p>
+
+</div>
+</div>
+<a id="a73bf735dbf4172a6aac9beab86055873" name="a73bf735dbf4172a6aac9beab86055873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73bf735dbf4172a6aac9beab86055873">&#9670;&#160;</a></span>diagnostic_print_percent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_percent </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>part</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>total</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает долю <span class="tt">part / total</span> в процентах с одной десятичной цифрой. </p>
+<p>Вычисление выполняется целочисленно и не подключает printf или float. Значение насыщается на 100.0 %, если <span class="tt">part</span> больше <span class="tt">total</span>. При нулевом <span class="tt">total</span> печатается <span class="tt">n/a</span>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">part</td><td>Использованная или свободная часть. </td></tr>
+    <tr><td class="paramname">total</td><td>Полный объём. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00134">134</a></p>
+
+</div>
+</div>
+<a id="a98e20bd6f28d90b4dbb96fca4e745b16" name="a98e20bd6f28d90b4dbb96fca4e745b16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98e20bd6f28d90b4dbb96fca4e745b16">&#9670;&#160;</a></span>diagnostic_print_section()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void diagnostic_print_section </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>title</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Печатает заголовок самостоятельной диагностической подсистемы. </p>
+<p>Эту функцию следует вызывать первой в <span class="tt">*_print_report()</span>. Тогда один и тот же отчёт остаётся читаемым как при прямой команде (<span class="tt">field</span>, <span class="tt">eth</span>, <span class="tt">x2x</span>), так и внутри общего <span class="tt">status</span>.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>Название подсистемы без квадратных скобок и перевода строки. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00051">51</a></p>
+
+<p class="reference">Используется в <a class="el" href="battery__status_8cpp_source.html#l00068">battery_status_print_report()</a>, <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>, <a class="el" href="ethernet__status_8cpp_source.html#l00211">ethernet_status_print_report()</a>, <a class="el" href="field__status_8cpp_source.html#l00120">field_status_print_report()</a>, <a class="el" href="rtc__status_8cpp_source.html#l00291">rtc_status_print_report()</a>, <a class="el" href="rtc__status_8cpp_source.html#l00265">rtc_status_print_time()</a>, <a class="el" href="sd__card__test_8cpp_source.html#l00108">sd_card_test_print_report()</a>, <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a> и <a class="el" href="x2x__status_8cpp_source.html#l00248">x2x_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="ae14f83449ef365323aeecbcd468d8d2d" name="ae14f83449ef365323aeecbcd468d8d2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae14f83449ef365323aeecbcd468d8d2d">&#9670;&#160;</a></span>diagnostic_uart_frame_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * diagnostic_uart_frame_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает человекочитаемое имя формата UART. </p>
+<p>Используйте эту функцию во всех диагностических отчётах S1..S4 и встроенных UART. При добавлении нового <a class="el" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e" title="Формат кадра UART/USART.">HalUartFrame</a> сначала реализуйте его в HAL, затем добавьте соответствующую строку в этот switch.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>Формат кадра HAL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Статическая строка <span class="tt">8N1</span>, <span class="tt">8O1</span> или <span class="tt">8E1</span>. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a> строка <a class="el" href="diagnostic__output_8hpp_source.html#l00110">110</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8hpp_source.html#l00030">HAL_UART_FRAME_8E1</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00028">HAL_UART_FRAME_8N1</a> и <a class="el" href="sam3x__uart_8hpp_source.html#l00029">HAL_UART_FRAME_8O1</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

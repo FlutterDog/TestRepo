@@ -1,0 +1,1064 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл app/config/lcp_config_service.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__config__service_8cpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcp_config_service.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcp__config__service_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file lcp_config_service.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Реализация A/B-хранилища конфигурации LCP2116.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__config__service_8hpp.html">lcp_config_service.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__crc32_8hpp.html">../../libs/lcp_crc32/lcp_crc32.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__sd__storage_8hpp.html">../../libs/lcp_sd_storage/lcp_sd_storage.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">constexpr</span> uint32_t CONFIG_STORAGE_MAGIC = 0x4C434346UL; <span class="comment">/* LCCF */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">constexpr</span> uint32_t CONFIG_COMMIT_MAGIC = 0x4C434343UL;  <span class="comment">/* LCCC */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">constexpr</span> uint16_t CONFIG_STORAGE_VERSION = 1U;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">constexpr</span> uint16_t CONFIG_SCHEMA_VERSION = 1U;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">constexpr</span> uint32_t CONFIG_RESERVED_TOTAL_BYTES = 32U * 1024U;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">constexpr</span> uint32_t CONFIG_SLOT_SIZE = CONFIG_RESERVED_TOTAL_BYTES / 2U;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">constexpr</span> uint32_t CONFIG_SLOT_COUNT = 2U;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">struct </span><a class="code hl_function" href="lcp__config__bundle_8hpp.html#a6a9bf2b5e0a8bdcc298f57da5d4c34dc">__attribute__</a>((packed)) ConfigRecordHeader</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    uint32_t magic;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    uint16_t storage_version;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    uint16_t schema_version;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    uint32_t sequence;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    uint32_t payload_size;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint32_t payload_crc32;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    uint32_t header_crc32;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint32_t reserved[2];</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">struct </span><a class="code hl_function" href="lcp__config__bundle_8hpp.html#a6a9bf2b5e0a8bdcc298f57da5d4c34dc">__attribute__</a>((packed)) ConfigCommitRecord</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    uint32_t magic;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    uint16_t storage_version;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    uint16_t schema_version;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint32_t sequence;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    uint32_t payload_crc32;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    uint32_t header_crc32;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint32_t commit_crc32;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint32_t reserved[2];</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(ConfigRecordHeader) == 32U,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>              <span class="stringliteral">&quot;ConfigRecordHeader must remain 32 bytes&quot;</span>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(ConfigCommitRecord) == 32U,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>              <span class="stringliteral">&quot;ConfigCommitRecord must remain 32 bytes&quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">static_assert</span>((<span class="keyword">sizeof</span>(ConfigRecordHeader) + <span class="keyword">sizeof</span>(LcpConfigBundle)) &lt;=</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>              <a class="code hl_variable" href="sam3x__internal__flash_8hpp.html#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a>,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>              <span class="stringliteral">&quot;Configuration record must fit one Flash page&quot;</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">enum</span> ConfigServiceStep : uint8_t</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    CONFIG_STEP_IDLE = 0U,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    CONFIG_STEP_SD_READ_FIRST = 1U,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    CONFIG_STEP_SD_READ_SECOND = 2U,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    CONFIG_STEP_WRITE_RECORD = 3U,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    CONFIG_STEP_WRITE_COMMIT = 4U,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    CONFIG_STEP_VERIFY_SLOT = 5U,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    CONFIG_STEP_ERASE_FIRST = 6U,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    CONFIG_STEP_ERASE_SECOND = 7U</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>LcpConfigBundle g_active_bundle;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>LcpConfigBundle g_slot_bundle[CONFIG_SLOT_COUNT];</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>LcpConfigBundle g_sd_first_bundle;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>LcpConfigBundle g_candidate_bundle;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><a class="code hl_struct" href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a> g_slot_status[CONFIG_SLOT_COUNT];</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><a class="code hl_struct" href="structLcpConfigCandidateStatus.html">LcpConfigCandidateStatus</a> g_candidate_status;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51">LcpConfigSource</a> g_source = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4b43e49d5d6d9b899adbf59c0b7bbdff">LCP_CONFIG_SOURCE_DEFAULTS</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> g_active_slot = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54">LcpConfigOperation</a> g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54ae8ae0dcd08bef5b91bc4750728e9596e">LCP_CONFIG_OPERATION_NONE</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70af34e81ad0ab00b0b451c243193e1bbba">LCP_CONFIG_SERVICE_IDLE</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>ConfigServiceStep g_step = CONFIG_STEP_IDLE;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><a class="code hl_enumeration" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> g_last_flash_result = <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> g_write_target = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> g_erase_first = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> g_erase_second = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>uint32_t g_active_sequence = 0U;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>uint32_t g_active_crc32 = 0U;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>uint32_t g_generation = 1U;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>uint32_t g_write_sequence = 0U;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>uint8_t g_auto_import_pending = 0U;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>uint8_t g_record_page[<a class="code hl_variable" href="sam3x__internal__flash_8hpp.html#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a>];</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>uint8_t g_commit_page[<a class="code hl_variable" href="sam3x__internal__flash_8hpp.html#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a>];</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>uint8_t g_erased_page[<a class="code hl_variable" href="sam3x__internal__flash_8hpp.html#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a>];</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>uint8_t slot_index(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">return</span> (slot_id == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>) ? 1U : 0U;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> other_slot(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">return</span> (slot_id == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>) ?</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a> : <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>uintptr_t <a class="code hl_function" href="namespacelcp__config__usb.html#aa78261ada34e196a63bb3f2570b0417f">slot_base</a>(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>{</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">const</span> uintptr_t start = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#a2adcb382322198bb47afde39f2caf0aa">sam3x_internal_flash_config_start</a>();</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">return</span> start + (<span class="keyword">static_cast&lt;</span>uintptr_t<span class="keyword">&gt;</span>(slot_index(slot_id)) *</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                    CONFIG_SLOT_SIZE);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>uintptr_t <a class="code hl_function" href="namespacelcp__config__usb.html#aec37e54c197fbb24d3fb15bc70ef06a1">slot_commit_page</a>(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>{</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacelcp__config__usb.html#aa78261ada34e196a63bb3f2570b0417f">slot_base</a>(slot_id) + CONFIG_SLOT_SIZE -</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>           <a class="code hl_variable" href="sam3x__internal__flash_8hpp.html#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>uint32_t record_header_crc32(<span class="keyword">const</span> ConfigRecordHeader&amp; header)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    ConfigRecordHeader copy = header;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    copy.header_crc32 = 0U;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="lcp__crc32_8cpp.html#a5bd774e3454a43dce037c7b5aa1fcb99">lcp_crc32</a>(&amp;copy, <span class="keyword">sizeof</span>(copy));</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>uint32_t commit_record_crc32(<span class="keyword">const</span> ConfigCommitRecord&amp; commit)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>{</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    ConfigCommitRecord copy = commit;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    copy.commit_crc32 = 0U;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="lcp__crc32_8cpp.html#a5bd774e3454a43dce037c7b5aa1fcb99">lcp_crc32</a>(&amp;copy, <span class="keyword">sizeof</span>(copy));</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keywordtype">void</span> reset_slot_status(<a class="code hl_struct" href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a>&amp; status)</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>{</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#aca099c9bf3923d613d0a8c93b3a1ba97">valid</a> = 0U;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a27abe38babb490b93161e304a247c285">sequence</a> = 0U;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#acf9edbb141a6599a679fb183658806bb">payload_crc32</a> = 0U;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a8bb9c5d35b207c60f086c4bb7bc8ae72">flash_result</a> = <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keywordtype">void</span> reset_candidate_status(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>{</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    memset(&amp;g_candidate_status, 0, <span class="keyword">sizeof</span>(g_candidate_status));</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a>.<a class="code hl_variable" href="structLcpConfigSdReport.html#a8f1581ec8eec2a2c7a6f2904353acc2f">result</a> = <a class="code hl_enumvalue" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58badee8eef54bbaef29760054c477dc9d79">LCP_CONFIG_SD_NOT_ATTEMPTED</a>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a>.<a class="code hl_variable" href="structLcpConfigSdReport.html#a278deee3ec0fd5bb59ff1f77b98991ca">sd_result</a> = <a class="code hl_enumvalue" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4ccacf2f10927a3c54b90be4ca1ad4e3df55">SD_CONFIG_NOT_ATTEMPTED</a>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a>.<a class="code hl_variable" href="structLcpConfigSdReport.html#a0ffb544a38566e5575ccad3e85ab18a8">x2x_result</a> = <a class="code hl_enumvalue" href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9">X2X_CONFIG_OK</a>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>}</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>uint8_t read_slot(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>{</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">const</span> uint8_t index = slot_index(slot_id);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <a class="code hl_struct" href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a>&amp; status = g_slot_status[index];</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    reset_slot_status(status);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    ConfigRecordHeader header;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    g_last_flash_result = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#addd2167dd70201c321f69fb076b20ff7">sam3x_internal_flash_read</a>(<a class="code hl_function" href="namespacelcp__config__usb.html#aa78261ada34e196a63bb3f2570b0417f">slot_base</a>(slot_id),</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                                                    &amp;header,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                                                    <span class="keyword">sizeof</span>(header));</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a8bb9c5d35b207c60f086c4bb7bc8ae72">flash_result</a> = g_last_flash_result;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordflow">if</span> (g_last_flash_result != <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">if</span> ((header.magic != CONFIG_STORAGE_MAGIC) ||</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        (header.storage_version != CONFIG_STORAGE_VERSION) ||</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        (header.schema_version != CONFIG_SCHEMA_VERSION) ||</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        (header.sequence == 0U) ||</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        (header.payload_size != <span class="keyword">sizeof</span>(LcpConfigBundle)) ||</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        (header.header_crc32 != record_header_crc32(header)))</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    }</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    LcpConfigBundle bundle;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    g_last_flash_result = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#addd2167dd70201c321f69fb076b20ff7">sam3x_internal_flash_read</a>(</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <a class="code hl_function" href="namespacelcp__config__usb.html#aa78261ada34e196a63bb3f2570b0417f">slot_base</a>(slot_id) + <span class="keyword">sizeof</span>(ConfigRecordHeader),</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        &amp;bundle,</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keyword">sizeof</span>(bundle));</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a8bb9c5d35b207c60f086c4bb7bc8ae72">flash_result</a> = g_last_flash_result;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (g_last_flash_result != <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordflow">if</span> ((<a class="code hl_function" href="lcp__config__bundle_8cpp.html#afed8d1681b323e226eec0270f1971a2f">lcp_config_bundle_validate</a>(bundle) == 0U) ||</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        (header.payload_crc32 != <a class="code hl_function" href="lcp__config__bundle_8cpp.html#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a>(bundle)))</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    {</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    ConfigCommitRecord commit;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    g_last_flash_result = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#addd2167dd70201c321f69fb076b20ff7">sam3x_internal_flash_read</a>(<a class="code hl_function" href="namespacelcp__config__usb.html#aec37e54c197fbb24d3fb15bc70ef06a1">slot_commit_page</a>(slot_id),</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                                                    &amp;commit,</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                                                    <span class="keyword">sizeof</span>(commit));</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a8bb9c5d35b207c60f086c4bb7bc8ae72">flash_result</a> = g_last_flash_result;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">if</span> (g_last_flash_result != <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>)</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    {</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordflow">if</span> ((commit.magic != CONFIG_COMMIT_MAGIC) ||</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        (commit.storage_version != CONFIG_STORAGE_VERSION) ||</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        (commit.schema_version != CONFIG_SCHEMA_VERSION) ||</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        (commit.sequence != header.sequence) ||</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        (commit.payload_crc32 != header.payload_crc32) ||</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        (commit.header_crc32 != header.header_crc32) ||</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        (commit.commit_crc32 != commit_record_crc32(commit)))</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    g_slot_bundle[index] = bundle;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#aca099c9bf3923d613d0a8c93b3a1ba97">valid</a> = 1U;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a27abe38babb490b93161e304a247c285">sequence</a> = header.sequence;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    status.<a class="code hl_variable" href="structLcpConfigSlotStatus.html#acf9edbb141a6599a679fb183658806bb">payload_crc32</a> = header.payload_crc32;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>}</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>uint8_t sequence_newer(uint32_t left, uint32_t right)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>{</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">return</span> (<span class="keyword">static_cast&lt;</span>int32_t<span class="keyword">&gt;</span>(left - right) &gt; 0) ? 1U : 0U;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>}</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="keywordtype">void</span> increment_generation(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>{</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    ++g_generation;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordflow">if</span> (g_generation == 0U)</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    {</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        g_generation = 1U;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>}</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keywordtype">void</span> activate_defaults(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>{</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <a class="code hl_function" href="lcp__config__bundle_8cpp.html#a2682112c60e132c546ec1d8ffda3abe5">lcp_config_bundle_set_defaults</a>(g_active_bundle);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    g_source = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4b43e49d5d6d9b899adbf59c0b7bbdff">LCP_CONFIG_SOURCE_DEFAULTS</a>;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    g_active_slot = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    g_active_sequence = 0U;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    g_active_crc32 = <a class="code hl_function" href="lcp__config__bundle_8cpp.html#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a>(g_active_bundle);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    increment_generation();</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>}</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="keywordtype">void</span> activate_slot(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>{</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keyword">const</span> uint8_t index = slot_index(slot_id);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    g_active_bundle = g_slot_bundle[index];</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    g_source = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4d5b495446f84064d5bd3bd3cc055e82">LCP_CONFIG_SOURCE_INTERNAL_FLASH</a>;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    g_active_slot = slot_id;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    g_active_sequence = g_slot_status[index].<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a27abe38babb490b93161e304a247c285">sequence</a>;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    g_active_crc32 = g_slot_status[index].<a class="code hl_variable" href="structLcpConfigSlotStatus.html#acf9edbb141a6599a679fb183658806bb">payload_crc32</a>;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    increment_generation();</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>}</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>uint32_t <a class="code hl_function" href="namespacelcp__config__usb.html#abfc1df01097075129777734371547b73">next_sequence</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>{</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    uint32_t newest = 0U;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordflow">for</span> (uint8_t index = 0U; index &lt; CONFIG_SLOT_COUNT; ++index)</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keywordflow">if</span> ((g_slot_status[index].valid != 0U) &amp;&amp;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            ((newest == 0U) ||</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>             (sequence_newer(g_slot_status[index].sequence, newest) != 0U)))</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        {</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            newest = g_slot_status[index].<a class="code hl_variable" href="structLcpConfigSlotStatus.html#a27abe38babb490b93161e304a247c285">sequence</a>;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        }</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    }</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    ++newest;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keywordflow">return</span> (newest == 0U) ? 1U : newest;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>}</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacelcp__config__usb.html#a851d436609db75d3e7af10a8ba71f484">build_write_pages</a>(<span class="keyword">const</span> LcpConfigBundle&amp; bundle, uint32_t sequence)</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>{</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    memset(g_record_page, 0xFF, <span class="keyword">sizeof</span>(g_record_page));</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    memset(g_commit_page, 0xFF, <span class="keyword">sizeof</span>(g_commit_page));</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    ConfigRecordHeader header;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    memset(&amp;header, 0, <span class="keyword">sizeof</span>(header));</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    header.magic = CONFIG_STORAGE_MAGIC;</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    header.storage_version = CONFIG_STORAGE_VERSION;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    header.schema_version = CONFIG_SCHEMA_VERSION;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    header.sequence = sequence;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    header.payload_size = <span class="keyword">sizeof</span>(LcpConfigBundle);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    header.payload_crc32 = <a class="code hl_function" href="lcp__config__bundle_8cpp.html#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a>(bundle);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    header.header_crc32 = record_header_crc32(header);</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    memcpy(g_record_page, &amp;header, <span class="keyword">sizeof</span>(header));</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    memcpy(g_record_page + <span class="keyword">sizeof</span>(header), &amp;bundle, <span class="keyword">sizeof</span>(bundle));</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    ConfigCommitRecord commit;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    memset(&amp;commit, 0, <span class="keyword">sizeof</span>(commit));</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    commit.magic = CONFIG_COMMIT_MAGIC;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    commit.storage_version = CONFIG_STORAGE_VERSION;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    commit.schema_version = CONFIG_SCHEMA_VERSION;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    commit.sequence = sequence;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    commit.payload_crc32 = header.payload_crc32;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    commit.header_crc32 = header.header_crc32;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    commit.commit_crc32 = commit_record_crc32(commit);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    memcpy(g_commit_page, &amp;commit, <span class="keyword">sizeof</span>(commit));</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>}</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="keywordtype">void</span> finish_operation(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> result)</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>{</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    g_result = result;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    g_step = CONFIG_STEP_IDLE;</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>}</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="keywordtype">void</span> begin_write(<span class="keyword">const</span> LcpConfigBundle&amp; bundle)</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>{</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    g_write_target = (g_active_slot == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>) ?</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a> : other_slot(g_active_slot);</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    g_write_sequence = <a class="code hl_function" href="namespacelcp__config__usb.html#abfc1df01097075129777734371547b73">next_sequence</a>();</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <a class="code hl_function" href="namespacelcp__config__usb.html#a851d436609db75d3e7af10a8ba71f484">build_write_pages</a>(bundle, g_write_sequence);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    g_step = CONFIG_STEP_WRITE_RECORD;</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>}</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> begin_sd_operation(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54">LcpConfigOperation</a> operation)</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>{</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="keywordflow">if</span> (g_step != CONFIG_STEP_IDLE)</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    {</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a2f969bb8b255972e5535ea1bdf6e537e">LCP_CONFIG_SERVICE_BUSY</a>;</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    }</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    g_auto_import_pending = 0U;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    g_operation = operation;</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a9d1f17e28122ea41b86db5e135942b83">LCP_CONFIG_SERVICE_IN_PROGRESS</a>;</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    reset_candidate_status();</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    g_step = CONFIG_STEP_SD_READ_FIRST;</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="keywordflow">return</span> g_result;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>}</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="keywordtype">void</span> poll_sd_first(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>{</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <a class="code hl_struct" href="structLcpConfigSdReport.html">LcpConfigSdReport</a> report;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a> result =</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <a class="code hl_function" href="lcp__config__bundle_8cpp.html#ace3caa4e7da3361a9b6f85aa11b94ad3">lcp_config_bundle_load_sd</a>(g_sd_first_bundle, report);</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keywordflow">if</span> (result != <a class="code hl_enumvalue" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58ba2dbcb0705f56bf2b07aff41546d288c1">LCP_CONFIG_SD_OK</a>)</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    {</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a> = report;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4b72ec793bd2b705909da30ae615ac26">LCP_CONFIG_SERVICE_SD_ERROR</a>);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    }</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    g_step = CONFIG_STEP_SD_READ_SECOND;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>}</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="keywordtype">void</span> poll_sd_second(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>{</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    LcpConfigBundle second;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <a class="code hl_struct" href="structLcpConfigSdReport.html">LcpConfigSdReport</a> report;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a> result = <a class="code hl_function" href="lcp__config__bundle_8cpp.html#ace3caa4e7da3361a9b6f85aa11b94ad3">lcp_config_bundle_load_sd</a>(second, report);</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    <span class="keywordflow">if</span> (result != <a class="code hl_enumvalue" href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58ba2dbcb0705f56bf2b07aff41546d288c1">LCP_CONFIG_SD_OK</a>)</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    {</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a> = report;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4b72ec793bd2b705909da30ae615ac26">LCP_CONFIG_SERVICE_SD_ERROR</a>);</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    }</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keyword">const</span> uint32_t first_crc = <a class="code hl_function" href="lcp__config__bundle_8cpp.html#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a>(g_sd_first_bundle);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    <span class="keyword">const</span> uint32_t second_crc = <a class="code hl_function" href="lcp__config__bundle_8cpp.html#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a>(second);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="keywordflow">if</span> ((first_crc != second_crc) ||</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        (<a class="code hl_function" href="lcp__config__bundle_8cpp.html#ab44840fba256908cfc0f0aa927e8507c">lcp_config_bundle_equal</a>(g_sd_first_bundle, second) == 0U))</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    {</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a> = report;</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a03d6248480bbee86bfb65470f6447f92">available</a> = 1U;</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>        g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1a2cadffec2bb939896320240fd18a69">stable</a> = 0U;</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#ac9df8e6f39cfb32d5f4dd210c1a4439e">crc32</a> = second_crc;</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a6dba600ccd76040ba82fcec968f632bb">LCP_CONFIG_SERVICE_SD_UNSTABLE</a>);</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    }</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    g_candidate_bundle = second;</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a03d6248480bbee86bfb65470f6447f92">available</a> = 1U;</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1a2cadffec2bb939896320240fd18a69">stable</a> = 1U;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#ac9df8e6f39cfb32d5f4dd210c1a4439e">crc32</a> = second_crc;</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#af9fa351185fdaedb47d205b72090a126">equal_to_active</a> =</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        <a class="code hl_function" href="lcp__config__bundle_8cpp.html#ab44840fba256908cfc0f0aa927e8507c">lcp_config_bundle_equal</a>(g_candidate_bundle, g_active_bundle);</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">report</a> = report;</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="keywordflow">if</span> ((g_operation == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a28429c3ee0f5eb04f95650606953d806">LCP_CONFIG_OPERATION_SCAN_SD</a>) ||</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        (g_operation == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a69532c70390fc93ae4606e546351bf9f">LCP_CONFIG_OPERATION_COMPARE_SD</a>))</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    {</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a7a2150605168d853255a2a6386ea3c10">LCP_CONFIG_SERVICE_OK</a>);</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    }</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    <span class="keywordflow">if</span> (((g_operation == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54abe8a2c020f91431917ae1303343d09ba">LCP_CONFIG_OPERATION_IMPORT_SD</a>) ||</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>         (g_operation == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a86e87ae9fc520b575b478dcb957577b4">LCP_CONFIG_OPERATION_AUTO_IMPORT</a>)) &amp;&amp;</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>        (g_source == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4d5b495446f84064d5bd3bd3cc055e82">LCP_CONFIG_SOURCE_INTERNAL_FLASH</a>) &amp;&amp;</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>        (g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#af9fa351185fdaedb47d205b72090a126">equal_to_active</a> != 0U))</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    {</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a3c8867a15cb7a3d300a21dad1d9d533f">LCP_CONFIG_SERVICE_NO_CHANGE</a>);</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    }</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span> </div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    begin_write(g_candidate_bundle);</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>}</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span> </div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span><span class="keywordtype">void</span> poll_write_record(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>{</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    g_last_flash_result = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#ae421d07fcf4176f36c1ce2b61d3b6a87">sam3x_internal_flash_erase_write_page</a>(</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>        <a class="code hl_function" href="namespacelcp__config__usb.html#aa78261ada34e196a63bb3f2570b0417f">slot_base</a>(g_write_target),</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>        g_record_page);</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span> </div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    <span class="keywordflow">if</span> (g_last_flash_result != <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>)</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    {</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ad59d66d3811caa6d518be0c3bbbd6545">LCP_CONFIG_SERVICE_FLASH_ERROR</a>);</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    }</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>    g_step = CONFIG_STEP_WRITE_COMMIT;</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>}</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span><span class="keywordtype">void</span> poll_write_commit(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>{</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    g_last_flash_result = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#ae421d07fcf4176f36c1ce2b61d3b6a87">sam3x_internal_flash_erase_write_page</a>(</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>        <a class="code hl_function" href="namespacelcp__config__usb.html#aec37e54c197fbb24d3fb15bc70ef06a1">slot_commit_page</a>(g_write_target),</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>        g_commit_page);</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>    <span class="keywordflow">if</span> (g_last_flash_result != <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>)</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    {</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ad59d66d3811caa6d518be0c3bbbd6545">LCP_CONFIG_SERVICE_FLASH_ERROR</a>);</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    }</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>    g_step = CONFIG_STEP_VERIFY_SLOT;</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>}</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span> </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span><span class="keywordtype">void</span> poll_verify_slot(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>{</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    <span class="keywordflow">if</span> ((read_slot(g_write_target) == 0U) ||</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>        (g_slot_status[slot_index(g_write_target)].sequence !=</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>         g_write_sequence))</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>    {</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ae9b7ed92429333eadd2c3fee881d010f">LCP_CONFIG_SERVICE_VERIFY_ERROR</a>);</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>    }</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span> </div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>    activate_slot(g_write_target);</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>    finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a7a2150605168d853255a2a6386ea3c10">LCP_CONFIG_SERVICE_OK</a>);</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>}</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span> </div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span><span class="keywordtype">void</span> invalidate_slot(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>{</div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>    reset_slot_status(g_slot_status[slot_index(slot_id)]);</div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    memset(&amp;g_slot_bundle[slot_index(slot_id)], 0, <span class="keyword">sizeof</span>(LcpConfigBundle));</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>}</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span> </div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span><span class="keywordtype">void</span> poll_erase_slot(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id, ConfigServiceStep next_step)</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>{</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    g_last_flash_result = <a class="code hl_function" href="sam3x__internal__flash_8cpp.html#ae421d07fcf4176f36c1ce2b61d3b6a87">sam3x_internal_flash_erase_write_page</a>(</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>        <a class="code hl_function" href="namespacelcp__config__usb.html#aec37e54c197fbb24d3fb15bc70ef06a1">slot_commit_page</a>(slot_id),</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>        g_erased_page);</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span> </div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    <span class="keywordflow">if</span> (g_last_flash_result != <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>)</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>    {</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>        finish_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ad59d66d3811caa6d518be0c3bbbd6545">LCP_CONFIG_SERVICE_FLASH_ERROR</a>);</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>    }</div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span> </div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>    invalidate_slot(slot_id);</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>    g_step = next_step;</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>}</div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span> </div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span><span class="keywordtype">void</span> start_auto_import_if_ready(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>{</div>
+<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>    <span class="keywordflow">if</span> ((g_auto_import_pending != 0U) &amp;&amp;</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>        (g_step == CONFIG_STEP_IDLE) &amp;&amp;</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>        (<a class="code hl_function" href="lcp__sd__storage_8cpp.html#aa565f9519b5454bce9c360a9cf65d6e5">lcp_sd_storage_ready</a>() != 0U))</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>    {</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>        (void)begin_sd_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a86e87ae9fc520b575b478dcb957577b4">LCP_CONFIG_OPERATION_AUTO_IMPORT</a>);</div>
+<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>    }</div>
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span>}</div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>}</div>
+<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span> </div>
+<div class="foldopen" id="foldopen00481" data-start="{" data-end="}">
+<div class="line"><a id="l00481" name="l00481"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a8a0c45ccabbd81ca40beeaaf69de2e46">  481</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__config__service_8cpp.html#a8a0c45ccabbd81ca40beeaaf69de2e46">lcp_config_service_init</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span>{</div>
+<div class="line"><a id="l00483" name="l00483"></a><span class="lineno">  483</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="sam3x__internal__flash_8cpp.html#aae9a3535adbc5901f3c95c5cc24896a7">sam3x_internal_flash_config_size</a>() != CONFIG_RESERVED_TOTAL_BYTES)</div>
+<div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span>    {</div>
+<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span>        memset(g_slot_status, 0, <span class="keyword">sizeof</span>(g_slot_status));</div>
+<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span>        activate_defaults();</div>
+<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span>        g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54ae8ae0dcd08bef5b91bc4750728e9596e">LCP_CONFIG_OPERATION_NONE</a>;</div>
+<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>        g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4afbe25e62d895ed2f535449a2e55426">LCP_CONFIG_SERVICE_INVALID_STATE</a>;</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>        g_step = CONFIG_STEP_IDLE;</div>
+<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>        g_auto_import_pending = 0U;</div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>    }</div>
+<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span> </div>
+<div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span>    memset(g_slot_bundle, 0, <span class="keyword">sizeof</span>(g_slot_bundle));</div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>    memset(g_erased_page, 0xFF, <span class="keyword">sizeof</span>(g_erased_page));</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>    reset_candidate_status();</div>
+<div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>    (void)read_slot(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>);</div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>    (void)read_slot(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>);</div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span> </div>
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>    <span class="keyword">const</span> uint8_t a_valid = g_slot_status[0].<a class="code hl_variable" href="structLcpConfigSlotStatus.html#aca099c9bf3923d613d0a8c93b3a1ba97">valid</a>;</div>
+<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>    <span class="keyword">const</span> uint8_t b_valid = g_slot_status[1].<a class="code hl_variable" href="structLcpConfigSlotStatus.html#aca099c9bf3923d613d0a8c93b3a1ba97">valid</a>;</div>
+<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span> </div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>    <span class="keywordflow">if</span> ((a_valid != 0U) &amp;&amp; (b_valid != 0U))</div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>    {</div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>        activate_slot(</div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>            (sequence_newer(g_slot_status[1].sequence,</div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>                            g_slot_status[0].sequence) != 0U)</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>                ? <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a></div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>                : <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>);</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    }</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (a_valid != 0U)</div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    {</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        activate_slot(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>);</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>    }</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (b_valid != 0U)</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>    {</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>        activate_slot(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>);</div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>    }</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>    {</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>        activate_defaults();</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>    }</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span> </div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>    g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54ae8ae0dcd08bef5b91bc4750728e9596e">LCP_CONFIG_OPERATION_NONE</a>;</div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>    g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70af34e81ad0ab00b0b451c243193e1bbba">LCP_CONFIG_SERVICE_IDLE</a>;</div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>    g_step = CONFIG_STEP_IDLE;</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    g_last_flash_result = <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a>;</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>    g_auto_import_pending =</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>        (g_source == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4b43e49d5d6d9b899adbf59c0b7bbdff">LCP_CONFIG_SOURCE_DEFAULTS</a>) ? 1U : 0U;</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>}</div>
+</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span> </div>
+<div class="foldopen" id="foldopen00532" data-start="{" data-end="}">
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#aeda00de795acd9e9666b4107e5865e7f">  532</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__config__service_8cpp.html#aeda00de795acd9e9666b4107e5865e7f">lcp_config_service_poll</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>{</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>    start_auto_import_if_ready();</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span> </div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>    <span class="keywordflow">switch</span> (g_step)</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>    {</div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>        <span class="keywordflow">case</span> CONFIG_STEP_SD_READ_FIRST:</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>            poll_sd_first();</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>        <span class="keywordflow">case</span> CONFIG_STEP_SD_READ_SECOND:</div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>            poll_sd_second();</div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>        <span class="keywordflow">case</span> CONFIG_STEP_WRITE_RECORD:</div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>            poll_write_record();</div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>        <span class="keywordflow">case</span> CONFIG_STEP_WRITE_COMMIT:</div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>            poll_write_commit();</div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>        <span class="keywordflow">case</span> CONFIG_STEP_VERIFY_SLOT:</div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>            poll_verify_slot();</div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>        <span class="keywordflow">case</span> CONFIG_STEP_ERASE_FIRST:</div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>            poll_erase_slot(g_erase_first, CONFIG_STEP_ERASE_SECOND);</div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>        <span class="keywordflow">case</span> CONFIG_STEP_ERASE_SECOND:</div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>            poll_erase_slot(g_erase_second, CONFIG_STEP_IDLE);</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span> </div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>            <span class="keywordflow">if</span> (g_step == CONFIG_STEP_IDLE)</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>            {</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>                activate_defaults();</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>                g_auto_import_pending = 0U;</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>                g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a7a2150605168d853255a2a6386ea3c10">LCP_CONFIG_SERVICE_OK</a>;</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>            }</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>        <span class="keywordflow">case</span> CONFIG_STEP_IDLE:</div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>    }</div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>}</div>
+</div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span> </div>
+<div class="foldopen" id="foldopen00572" data-start="{" data-end="}">
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a7a24d60f7963363f39bd64b298422107">  572</a></span><span class="keyword">const</span> LcpConfigBundle&amp; <a class="code hl_function" href="lcp__config__service_8cpp.html#a7a24d60f7963363f39bd64b298422107">lcp_config_service_active</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>{</div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>    <span class="keywordflow">return</span> g_active_bundle;</div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>}</div>
+</div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span> </div>
+<div class="foldopen" id="foldopen00577" data-start="{" data-end="}">
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">  577</a></span>uint32_t <a class="code hl_function" href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">lcp_config_service_generation</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>{</div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>    <span class="keywordflow">return</span> g_generation;</div>
+<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>}</div>
+</div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span> </div>
+<div class="foldopen" id="foldopen00582" data-start="{" data-end="}">
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">  582</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51">LcpConfigSource</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">lcp_config_service_source</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>{</div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>    <span class="keywordflow">return</span> g_source;</div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>}</div>
+</div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span> </div>
+<div class="foldopen" id="foldopen00587" data-start="{" data-end="}">
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a2c3b5ed0879fc6177d3eb32fbe936099">  587</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#a2c3b5ed0879fc6177d3eb32fbe936099">lcp_config_service_active_slot</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>{</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    <span class="keywordflow">return</span> g_active_slot;</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>}</div>
+</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span> </div>
+<div class="foldopen" id="foldopen00592" data-start="{" data-end="}">
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a19340fc586ba80ea55a80cc551656dd2">  592</a></span>uint32_t <a class="code hl_function" href="lcp__config__service_8cpp.html#a19340fc586ba80ea55a80cc551656dd2">lcp_config_service_active_sequence</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>{</div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    <span class="keywordflow">return</span> g_active_sequence;</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>}</div>
+</div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span> </div>
+<div class="foldopen" id="foldopen00597" data-start="{" data-end="}">
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#af8b9786d29c259f18f8615bebc49346e">  597</a></span>uint32_t <a class="code hl_function" href="lcp__config__service_8cpp.html#af8b9786d29c259f18f8615bebc49346e">lcp_config_service_active_crc32</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>{</div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>    <span class="keywordflow">return</span> g_active_crc32;</div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>}</div>
+</div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span> </div>
+<div class="foldopen" id="foldopen00602" data-start="{" data-end="}">
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a2bf1fdc91ffa4e761affbadfebe87447">  602</a></span><span class="keyword">const</span> <a class="code hl_struct" href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a>&amp; <a class="code hl_function" href="lcp__config__service_8cpp.html#a2bf1fdc91ffa4e761affbadfebe87447">lcp_config_service_slot_status</a>(</div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>    <a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>{</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_struct" href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a> invalid =</div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    {</div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>        0U,</div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>        0U,</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>        0U,</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>        <a class="code hl_enumvalue" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061da610516966c91251dc8f23c94c8f48166">SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</a></div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>    };</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span> </div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>    <span class="keywordflow">if</span> ((slot_id != <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>) &amp;&amp;</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>        (slot_id != <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>))</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>    {</div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>        <span class="keywordflow">return</span> invalid;</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>    }</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span> </div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>    <span class="keywordflow">return</span> g_slot_status[slot_index(slot_id)];</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>}</div>
+</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span> </div>
+<div class="foldopen" id="foldopen00622" data-start="{" data-end="}">
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a33da45035450da3e0c1c29d5f076f1e4">  622</a></span><span class="keyword">const</span> <a class="code hl_struct" href="structLcpConfigCandidateStatus.html">LcpConfigCandidateStatus</a>&amp; <a class="code hl_function" href="lcp__config__service_8cpp.html#a33da45035450da3e0c1c29d5f076f1e4">lcp_config_service_candidate_status</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>{</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>    <span class="keywordflow">return</span> g_candidate_status;</div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>}</div>
+</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span> </div>
+<div class="foldopen" id="foldopen00627" data-start="{" data-end="}">
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#acfecd75f508528a8f8eaacc46a8a0167">  627</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54">LcpConfigOperation</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#acfecd75f508528a8f8eaacc46a8a0167">lcp_config_service_operation</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>{</div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>    <span class="keywordflow">return</span> g_operation;</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>}</div>
+</div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span> </div>
+<div class="foldopen" id="foldopen00632" data-start="{" data-end="}">
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a8b470ef892b14567e38dc484ac6ff61b">  632</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#a8b470ef892b14567e38dc484ac6ff61b">lcp_config_service_result</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>{</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>    <span class="keywordflow">return</span> g_result;</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>}</div>
+</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span> </div>
+<div class="foldopen" id="foldopen00637" data-start="{" data-end="}">
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a52784eda8f5a659592d08254fa9ab8b6">  637</a></span><a class="code hl_enumeration" href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#a52784eda8f5a659592d08254fa9ab8b6">lcp_config_service_last_flash_result</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>{</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    <span class="keywordflow">return</span> g_last_flash_result;</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>}</div>
+</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span> </div>
+<div class="foldopen" id="foldopen00642" data-start="{" data-end="}">
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a76c7124c6c3dce7620e0c819417f01cf">  642</a></span>uint8_t <a class="code hl_function" href="lcp__config__service_8cpp.html#a76c7124c6c3dce7620e0c819417f01cf">lcp_config_service_busy</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>{</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="keywordflow">return</span> (g_step != CONFIG_STEP_IDLE) ? 1U : 0U;</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>}</div>
+</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
+<div class="foldopen" id="foldopen00647" data-start="{" data-end="}">
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a475881238a13112e4d7e32ccab31b5f0">  647</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#a475881238a13112e4d7e32ccab31b5f0">lcp_config_service_request_scan_sd</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>{</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>    <span class="keywordflow">return</span> begin_sd_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a28429c3ee0f5eb04f95650606953d806">LCP_CONFIG_OPERATION_SCAN_SD</a>);</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>}</div>
+</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span> </div>
+<div class="foldopen" id="foldopen00652" data-start="{" data-end="}">
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a94055e4a69db856e98db11e4adcd3708">  652</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#a94055e4a69db856e98db11e4adcd3708">lcp_config_service_request_compare_sd</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>{</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="keywordflow">return</span> begin_sd_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a69532c70390fc93ae4606e546351bf9f">LCP_CONFIG_OPERATION_COMPARE_SD</a>);</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>}</div>
+</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span> </div>
+<div class="foldopen" id="foldopen00657" data-start="{" data-end="}">
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#abdaaf7ecea93b25ceee40c2ae607d7ae">  657</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#abdaaf7ecea93b25ceee40c2ae607d7ae">lcp_config_service_request_import_sd</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>{</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    <span class="keywordflow">return</span> begin_sd_operation(<a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54abe8a2c020f91431917ae1303343d09ba">LCP_CONFIG_OPERATION_IMPORT_SD</a>);</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>}</div>
+</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span> </div>
+<div class="foldopen" id="foldopen00662" data-start="{" data-end="}">
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#ab44173654964e47b906489daa9e33d75">  662</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#ab44173654964e47b906489daa9e33d75">lcp_config_service_request_rollback</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>{</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    <span class="keywordflow">if</span> (g_step != CONFIG_STEP_IDLE)</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    {</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a2f969bb8b255972e5535ea1bdf6e537e">LCP_CONFIG_SERVICE_BUSY</a>;</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    }</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="keywordflow">if</span> (g_active_slot == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>)</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    {</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>        g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a04152f9b3bdf6c2b9a1bbe42772e4686">LCP_CONFIG_OPERATION_ROLLBACK</a>;</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>        g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4ac59a383ba258e2364b6b3c43d33f97">LCP_CONFIG_SERVICE_NO_ROLLBACK</a>;</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>        <span class="keywordflow">return</span> g_result;</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    }</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span> </div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> previous = other_slot(g_active_slot);</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span> </div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    <span class="keywordflow">if</span> (g_slot_status[slot_index(previous)].valid == 0U)</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    {</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>        g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a04152f9b3bdf6c2b9a1bbe42772e4686">LCP_CONFIG_OPERATION_ROLLBACK</a>;</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>        g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4ac59a383ba258e2364b6b3c43d33f97">LCP_CONFIG_SERVICE_NO_ROLLBACK</a>;</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>        <span class="keywordflow">return</span> g_result;</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    }</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span> </div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a04152f9b3bdf6c2b9a1bbe42772e4686">LCP_CONFIG_OPERATION_ROLLBACK</a>;</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a9d1f17e28122ea41b86db5e135942b83">LCP_CONFIG_SERVICE_IN_PROGRESS</a>;</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    begin_write(g_slot_bundle[slot_index(previous)]);</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>    <span class="keywordflow">return</span> g_result;</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>}</div>
+</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span> </div>
+<div class="foldopen" id="foldopen00691" data-start="{" data-end="}">
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a0ca4e3ec9844933a3de0d8c4ecb218f4">  691</a></span><a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> <a class="code hl_function" href="lcp__config__service_8cpp.html#a0ca4e3ec9844933a3de0d8c4ecb218f4">lcp_config_service_request_erase</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>{</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>    <span class="keywordflow">if</span> (g_step != CONFIG_STEP_IDLE)</div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    {</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a2f969bb8b255972e5535ea1bdf6e537e">LCP_CONFIG_SERVICE_BUSY</a>;</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>    }</div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span> </div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>    g_operation = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a53118eee7878417860fb6a9bc8e39602">LCP_CONFIG_OPERATION_ERASE</a>;</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>    g_result = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a9d1f17e28122ea41b86db5e135942b83">LCP_CONFIG_SERVICE_IN_PROGRESS</a>;</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>    g_auto_import_pending = 0U;</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span> </div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>    <span class="keywordflow">if</span> (g_active_slot == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>)</div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>    {</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>        g_erase_first = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>;</div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>        g_erase_second = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>;</div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>    }</div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (g_active_slot == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>)</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    {</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>        g_erase_first = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>;</div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>        g_erase_second = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>;</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    }</div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>    {</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>        g_erase_first = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>;</div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>        g_erase_second = <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>;</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>    }</div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span> </div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>    g_step = CONFIG_STEP_ERASE_FIRST;</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>    <span class="keywordflow">return</span> g_result;</div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>}</div>
+</div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span> </div>
+<div class="foldopen" id="foldopen00722" data-start="{" data-end="}">
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a4cde6af914efac9a4ee64b66a5aaddf8">  722</a></span><span class="keyword">const</span> LcpConfigBundle* <a class="code hl_function" href="lcp__config__service_8cpp.html#a4cde6af914efac9a4ee64b66a5aaddf8">lcp_config_service_candidate</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>{</div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>    <span class="keywordflow">return</span> ((g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a03d6248480bbee86bfb65470f6447f92">available</a> != 0U) &amp;&amp;</div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>            (g_candidate_status.<a class="code hl_variable" href="structLcpConfigCandidateStatus.html#a1a2cadffec2bb939896320240fd18a69">stable</a> != 0U))</div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>        ? &amp;g_candidate_bundle</div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>        : 0;</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>}</div>
+</div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span> </div>
+<div class="foldopen" id="foldopen00730" data-start="{" data-end="}">
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">  730</a></span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">lcp_config_source_text</a>(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51">LcpConfigSource</a> source)</div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>{</div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>    <span class="keywordflow">return</span> (source == <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4d5b495446f84064d5bd3bd3cc055e82">LCP_CONFIG_SOURCE_INTERNAL_FLASH</a>)</div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>        ? <span class="stringliteral">&quot;internal Flash&quot;</span></div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>        : <span class="stringliteral">&quot;defaults&quot;</span>;</div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>}</div>
+</div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span> </div>
+<div class="foldopen" id="foldopen00737" data-start="{" data-end="}">
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a08e5dfe19f47cd6847f42868dc6ce5d1">  737</a></span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="lcp__config__service_8cpp.html#a08e5dfe19f47cd6847f42868dc6ce5d1">lcp_config_slot_text</a>(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a> slot_id)</div>
+<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>{</div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>    <span class="keywordflow">switch</span> (slot_id)</div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>    {</div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a>:</div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span>;</div>
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a>:</div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;B&quot;</span>;</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a>:</div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;none&quot;</span>;</div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>    }</div>
+<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>}</div>
+</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span> </div>
+<div class="foldopen" id="foldopen00751" data-start="{" data-end="}">
+<div class="line"><a id="l00751" name="l00751"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a86b5837f9544833b78e40c852ec3184d">  751</a></span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="lcp__config__service_8cpp.html#a86b5837f9544833b78e40c852ec3184d">lcp_config_operation_text</a>(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54">LcpConfigOperation</a> operation)</div>
+<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>{</div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>    <span class="keywordflow">switch</span> (operation)</div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>    {</div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a86e87ae9fc520b575b478dcb957577b4">LCP_CONFIG_OPERATION_AUTO_IMPORT</a>:</div>
+<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;automatic SD import&quot;</span>;</div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a28429c3ee0f5eb04f95650606953d806">LCP_CONFIG_OPERATION_SCAN_SD</a>:</div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;SD scan&quot;</span>;</div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a69532c70390fc93ae4606e546351bf9f">LCP_CONFIG_OPERATION_COMPARE_SD</a>:</div>
+<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;SD compare&quot;</span>;</div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54abe8a2c020f91431917ae1303343d09ba">LCP_CONFIG_OPERATION_IMPORT_SD</a>:</div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;SD import&quot;</span>;</div>
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a04152f9b3bdf6c2b9a1bbe42772e4686">LCP_CONFIG_OPERATION_ROLLBACK</a>:</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;rollback&quot;</span>;</div>
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a53118eee7878417860fb6a9bc8e39602">LCP_CONFIG_OPERATION_ERASE</a>:</div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;erase&quot;</span>;</div>
+<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54ae8ae0dcd08bef5b91bc4750728e9596e">LCP_CONFIG_OPERATION_NONE</a>:</div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;none&quot;</span>;</div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>    }</div>
+<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>}</div>
+</div>
+<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span> </div>
+<div class="foldopen" id="foldopen00773" data-start="{" data-end="}">
+<div class="line"><a id="l00773" name="l00773"></a><span class="lineno"><a class="line" href="lcp__config__service_8cpp.html#a1afe149e665e02162517a6c24641e75a">  773</a></span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="lcp__config__service_8cpp.html#a1afe149e665e02162517a6c24641e75a">lcp_config_service_result_text</a>(<a class="code hl_enumeration" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a> result)</div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>{</div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>    <span class="keywordflow">switch</span> (result)</div>
+<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>    {</div>
+<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70af34e81ad0ab00b0b451c243193e1bbba">LCP_CONFIG_SERVICE_IDLE</a>:</div>
+<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;idle&quot;</span>;</div>
+<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a9d1f17e28122ea41b86db5e135942b83">LCP_CONFIG_SERVICE_IN_PROGRESS</a>:</div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;in progress&quot;</span>;</div>
+<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a7a2150605168d853255a2a6386ea3c10">LCP_CONFIG_SERVICE_OK</a>:</div>
+<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;ok&quot;</span>;</div>
+<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a3c8867a15cb7a3d300a21dad1d9d533f">LCP_CONFIG_SERVICE_NO_CHANGE</a>:</div>
+<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;no change&quot;</span>;</div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a2f969bb8b255972e5535ea1bdf6e537e">LCP_CONFIG_SERVICE_BUSY</a>:</div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;busy&quot;</span>;</div>
+<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4b72ec793bd2b705909da30ae615ac26">LCP_CONFIG_SERVICE_SD_ERROR</a>:</div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;SD error&quot;</span>;</div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a6dba600ccd76040ba82fcec968f632bb">LCP_CONFIG_SERVICE_SD_UNSTABLE</a>:</div>
+<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;SD changed between reads&quot;</span>;</div>
+<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ad59d66d3811caa6d518be0c3bbbd6545">LCP_CONFIG_SERVICE_FLASH_ERROR</a>:</div>
+<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Flash error&quot;</span>;</div>
+<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ae9b7ed92429333eadd2c3fee881d010f">LCP_CONFIG_SERVICE_VERIFY_ERROR</a>:</div>
+<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;verify error&quot;</span>;</div>
+<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4ac59a383ba258e2364b6b3c43d33f97">LCP_CONFIG_SERVICE_NO_ROLLBACK</a>:</div>
+<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;no rollback slot&quot;</span>;</div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4afbe25e62d895ed2f535449a2e55426">LCP_CONFIG_SERVICE_INVALID_STATE</a>:</div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;invalid storage layout&quot;</span>;</div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;unknown&quot;</span>;</div>
+<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>    }</div>
+<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>}</div>
+</div>
+<div class="ttc" id="alcp__config__bundle_8cpp_html_a0a339f63a53ee4a18f8727c4e39f4b27"><div class="ttname"><a href="lcp__config__bundle_8cpp.html#a0a339f63a53ee4a18f8727c4e39f4b27">lcp_config_bundle_crc32</a></div><div class="ttdeci">uint32_t lcp_config_bundle_crc32(const LcpConfigBundle &amp;bundle)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8cpp_source.html#l00543">lcp_config_bundle.cpp:543</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8cpp_html_a2682112c60e132c546ec1d8ffda3abe5"><div class="ttname"><a href="lcp__config__bundle_8cpp.html#a2682112c60e132c546ec1d8ffda3abe5">lcp_config_bundle_set_defaults</a></div><div class="ttdeci">void lcp_config_bundle_set_defaults(LcpConfigBundle &amp;bundle)</div><div class="ttdoc">Формирует полный безопасный набор значений по умолчанию.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8cpp_source.html#l00384">lcp_config_bundle.cpp:384</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8cpp_html_ab44840fba256908cfc0f0aa927e8507c"><div class="ttname"><a href="lcp__config__bundle_8cpp.html#ab44840fba256908cfc0f0aa927e8507c">lcp_config_bundle_equal</a></div><div class="ttdeci">uint8_t lcp_config_bundle_equal(const LcpConfigBundle &amp;left, const LcpConfigBundle &amp;right)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8cpp_source.html#l00548">lcp_config_bundle.cpp:548</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8cpp_html_ace3caa4e7da3361a9b6f85aa11b94ad3"><div class="ttname"><a href="lcp__config__bundle_8cpp.html#ace3caa4e7da3361a9b6f85aa11b94ad3">lcp_config_bundle_load_sd</a></div><div class="ttdeci">LcpConfigSdResult lcp_config_bundle_load_sd(LcpConfigBundle &amp;output, LcpConfigSdReport &amp;report)</div><div class="ttdoc">Атомарно читает весь канонический комплект TXT с microSD.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8cpp_source.html#l00489">lcp_config_bundle.cpp:489</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8cpp_html_afed8d1681b323e226eec0270f1971a2f"><div class="ttname"><a href="lcp__config__bundle_8cpp.html#afed8d1681b323e226eec0270f1971a2f">lcp_config_bundle_validate</a></div><div class="ttdeci">uint8_t lcp_config_bundle_validate(const LcpConfigBundle &amp;bundle)</div><div class="ttdoc">Полностью проверяет значения уже сформированного bundle.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8cpp_source.html#l00418">lcp_config_bundle.cpp:418</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8hpp_html_a6a9bf2b5e0a8bdcc298f57da5d4c34dc"><div class="ttname"><a href="lcp__config__bundle_8hpp.html#a6a9bf2b5e0a8bdcc298f57da5d4c34dc">__attribute__</a></div><div class="ttdeci">struct __attribute__((packed, aligned(4))) LcpConfigBundle</div><div class="ttdoc">Версия 1 бинарного payload внутреннего хранилища.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00016">lcp_config_bundle.hpp:25</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8hpp_html_adc1e9f59c4c43d77b199f8b086a6b58b"><div class="ttname"><a href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58b">LcpConfigSdResult</a></div><div class="ttdeci">LcpConfigSdResult</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00049">lcp_config_bundle.hpp:50</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8hpp_html_adc1e9f59c4c43d77b199f8b086a6b58ba2dbcb0705f56bf2b07aff41546d288c1"><div class="ttname"><a href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58ba2dbcb0705f56bf2b07aff41546d288c1">LCP_CONFIG_SD_OK</a></div><div class="ttdeci">@ LCP_CONFIG_SD_OK</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00052">lcp_config_bundle.hpp:52</a></div></div>
+<div class="ttc" id="alcp__config__bundle_8hpp_html_adc1e9f59c4c43d77b199f8b086a6b58badee8eef54bbaef29760054c477dc9d79"><div class="ttname"><a href="lcp__config__bundle_8hpp.html#adc1e9f59c4c43d77b199f8b086a6b58badee8eef54bbaef29760054c477dc9d79">LCP_CONFIG_SD_NOT_ATTEMPTED</a></div><div class="ttdeci">@ LCP_CONFIG_SD_NOT_ATTEMPTED</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00051">lcp_config_bundle.hpp:51</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a08e5dfe19f47cd6847f42868dc6ce5d1"><div class="ttname"><a href="lcp__config__service_8cpp.html#a08e5dfe19f47cd6847f42868dc6ce5d1">lcp_config_slot_text</a></div><div class="ttdeci">const char * lcp_config_slot_text(LcpConfigSlotId slot_id)</div><div class="ttdef"><b>Определения</b> <a href="#l00737">lcp_config_service.cpp:737</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a0ca4e3ec9844933a3de0d8c4ecb218f4"><div class="ttname"><a href="lcp__config__service_8cpp.html#a0ca4e3ec9844933a3de0d8c4ecb218f4">lcp_config_service_request_erase</a></div><div class="ttdeci">LcpConfigServiceResult lcp_config_service_request_erase(void)</div><div class="ttdoc">Инвалидирует оба Flash-слота и активирует defaults.</div><div class="ttdef"><b>Определения</b> <a href="#l00691">lcp_config_service.cpp:691</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a19340fc586ba80ea55a80cc551656dd2"><div class="ttname"><a href="lcp__config__service_8cpp.html#a19340fc586ba80ea55a80cc551656dd2">lcp_config_service_active_sequence</a></div><div class="ttdeci">uint32_t lcp_config_service_active_sequence(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00592">lcp_config_service.cpp:592</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a1afe149e665e02162517a6c24641e75a"><div class="ttname"><a href="lcp__config__service_8cpp.html#a1afe149e665e02162517a6c24641e75a">lcp_config_service_result_text</a></div><div class="ttdeci">const char * lcp_config_service_result_text(LcpConfigServiceResult result)</div><div class="ttdef"><b>Определения</b> <a href="#l00773">lcp_config_service.cpp:773</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a2bf1fdc91ffa4e761affbadfebe87447"><div class="ttname"><a href="lcp__config__service_8cpp.html#a2bf1fdc91ffa4e761affbadfebe87447">lcp_config_service_slot_status</a></div><div class="ttdeci">const LcpConfigSlotStatus &amp; lcp_config_service_slot_status(LcpConfigSlotId slot_id)</div><div class="ttdef"><b>Определения</b> <a href="#l00602">lcp_config_service.cpp:602</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a2c3b5ed0879fc6177d3eb32fbe936099"><div class="ttname"><a href="lcp__config__service_8cpp.html#a2c3b5ed0879fc6177d3eb32fbe936099">lcp_config_service_active_slot</a></div><div class="ttdeci">LcpConfigSlotId lcp_config_service_active_slot(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00587">lcp_config_service.cpp:587</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a33da45035450da3e0c1c29d5f076f1e4"><div class="ttname"><a href="lcp__config__service_8cpp.html#a33da45035450da3e0c1c29d5f076f1e4">lcp_config_service_candidate_status</a></div><div class="ttdeci">const LcpConfigCandidateStatus &amp; lcp_config_service_candidate_status(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00622">lcp_config_service.cpp:622</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a475881238a13112e4d7e32ccab31b5f0"><div class="ttname"><a href="lcp__config__service_8cpp.html#a475881238a13112e4d7e32ccab31b5f0">lcp_config_service_request_scan_sd</a></div><div class="ttdeci">LcpConfigServiceResult lcp_config_service_request_scan_sd(void)</div><div class="ttdoc">Запускает двойное чтение и проверку SD без записи Flash.</div><div class="ttdef"><b>Определения</b> <a href="#l00647">lcp_config_service.cpp:647</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a4cde6af914efac9a4ee64b66a5aaddf8"><div class="ttname"><a href="lcp__config__service_8cpp.html#a4cde6af914efac9a4ee64b66a5aaddf8">lcp_config_service_candidate</a></div><div class="ttdeci">const LcpConfigBundle * lcp_config_service_candidate(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00722">lcp_config_service.cpp:722</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a4da8cdd14d781ba60f5cce22724d748d"><div class="ttname"><a href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">lcp_config_source_text</a></div><div class="ttdeci">const char * lcp_config_source_text(LcpConfigSource source)</div><div class="ttdef"><b>Определения</b> <a href="#l00730">lcp_config_service.cpp:730</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a52784eda8f5a659592d08254fa9ab8b6"><div class="ttname"><a href="lcp__config__service_8cpp.html#a52784eda8f5a659592d08254fa9ab8b6">lcp_config_service_last_flash_result</a></div><div class="ttdeci">Sam3xInternalFlashResult lcp_config_service_last_flash_result(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00637">lcp_config_service.cpp:637</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a58ffd583a0dbd41d8e2dba711c2db163"><div class="ttname"><a href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">lcp_config_service_generation</a></div><div class="ttdeci">uint32_t lcp_config_service_generation(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00577">lcp_config_service.cpp:577</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a76c7124c6c3dce7620e0c819417f01cf"><div class="ttname"><a href="lcp__config__service_8cpp.html#a76c7124c6c3dce7620e0c819417f01cf">lcp_config_service_busy</a></div><div class="ttdeci">uint8_t lcp_config_service_busy(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00642">lcp_config_service.cpp:642</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a7a24d60f7963363f39bd64b298422107"><div class="ttname"><a href="lcp__config__service_8cpp.html#a7a24d60f7963363f39bd64b298422107">lcp_config_service_active</a></div><div class="ttdeci">const LcpConfigBundle &amp; lcp_config_service_active(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00572">lcp_config_service.cpp:572</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a86b5837f9544833b78e40c852ec3184d"><div class="ttname"><a href="lcp__config__service_8cpp.html#a86b5837f9544833b78e40c852ec3184d">lcp_config_operation_text</a></div><div class="ttdeci">const char * lcp_config_operation_text(LcpConfigOperation operation)</div><div class="ttdef"><b>Определения</b> <a href="#l00751">lcp_config_service.cpp:751</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a8a0c45ccabbd81ca40beeaaf69de2e46"><div class="ttname"><a href="lcp__config__service_8cpp.html#a8a0c45ccabbd81ca40beeaaf69de2e46">lcp_config_service_init</a></div><div class="ttdeci">void lcp_config_service_init(void)</div><div class="ttdoc">Читает оба слота, выбирает последнее корректное поколение.</div><div class="ttdef"><b>Определения</b> <a href="#l00481">lcp_config_service.cpp:481</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a8b470ef892b14567e38dc484ac6ff61b"><div class="ttname"><a href="lcp__config__service_8cpp.html#a8b470ef892b14567e38dc484ac6ff61b">lcp_config_service_result</a></div><div class="ttdeci">LcpConfigServiceResult lcp_config_service_result(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00632">lcp_config_service.cpp:632</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a94055e4a69db856e98db11e4adcd3708"><div class="ttname"><a href="lcp__config__service_8cpp.html#a94055e4a69db856e98db11e4adcd3708">lcp_config_service_request_compare_sd</a></div><div class="ttdeci">LcpConfigServiceResult lcp_config_service_request_compare_sd(void)</div><div class="ttdoc">Запускает двойное чтение SD для последующего сравнения.</div><div class="ttdef"><b>Определения</b> <a href="#l00652">lcp_config_service.cpp:652</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_ab44173654964e47b906489daa9e33d75"><div class="ttname"><a href="lcp__config__service_8cpp.html#ab44173654964e47b906489daa9e33d75">lcp_config_service_request_rollback</a></div><div class="ttdeci">LcpConfigServiceResult lcp_config_service_request_rollback(void)</div><div class="ttdoc">Публикует предыдущий корректный слот как новое поколение.</div><div class="ttdef"><b>Определения</b> <a href="#l00662">lcp_config_service.cpp:662</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_abdaaf7ecea93b25ceee40c2ae607d7ae"><div class="ttname"><a href="lcp__config__service_8cpp.html#abdaaf7ecea93b25ceee40c2ae607d7ae">lcp_config_service_request_import_sd</a></div><div class="ttdeci">LcpConfigServiceResult lcp_config_service_request_import_sd(void)</div><div class="ttdoc">Проверяет SD дважды и атомарно записывает новый bundle во Flash.</div><div class="ttdef"><b>Определения</b> <a href="#l00657">lcp_config_service.cpp:657</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_acfecd75f508528a8f8eaacc46a8a0167"><div class="ttname"><a href="lcp__config__service_8cpp.html#acfecd75f508528a8f8eaacc46a8a0167">lcp_config_service_operation</a></div><div class="ttdeci">LcpConfigOperation lcp_config_service_operation(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00627">lcp_config_service.cpp:627</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_ae18c9ed72f3f15ae3e4ad165d355f2c8"><div class="ttname"><a href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">lcp_config_service_source</a></div><div class="ttdeci">LcpConfigSource lcp_config_service_source(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00582">lcp_config_service.cpp:582</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_aeda00de795acd9e9666b4107e5865e7f"><div class="ttname"><a href="lcp__config__service_8cpp.html#aeda00de795acd9e9666b4107e5865e7f">lcp_config_service_poll</a></div><div class="ttdeci">void lcp_config_service_poll(void)</div><div class="ttdoc">Выполняет один шаг SD-проверки или Flash-записи.</div><div class="ttdef"><b>Определения</b> <a href="#l00532">lcp_config_service.cpp:532</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_af8b9786d29c259f18f8615bebc49346e"><div class="ttname"><a href="lcp__config__service_8cpp.html#af8b9786d29c259f18f8615bebc49346e">lcp_config_service_active_crc32</a></div><div class="ttdeci">uint32_t lcp_config_service_active_crc32(void)</div><div class="ttdef"><b>Определения</b> <a href="#l00597">lcp_config_service.cpp:597</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html"><div class="ttname"><a href="lcp__config__service_8hpp.html">lcp_config_service.hpp</a></div><div class="ttdoc">Надёжное A/B-хранилище конфигурации во внутренней Flash ATSAM3X8E.</div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a05d2563d50323f24b13ef693d3c19c51"><div class="ttname"><a href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51">LcpConfigSource</a></div><div class="ttdeci">LcpConfigSource</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00013">lcp_config_service.hpp:14</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a05d2563d50323f24b13ef693d3c19c51a4b43e49d5d6d9b899adbf59c0b7bbdff"><div class="ttname"><a href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4b43e49d5d6d9b899adbf59c0b7bbdff">LCP_CONFIG_SOURCE_DEFAULTS</a></div><div class="ttdeci">@ LCP_CONFIG_SOURCE_DEFAULTS</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00015">lcp_config_service.hpp:15</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a05d2563d50323f24b13ef693d3c19c51a4d5b495446f84064d5bd3bd3cc055e82"><div class="ttname"><a href="lcp__config__service_8hpp.html#a05d2563d50323f24b13ef693d3c19c51a4d5b495446f84064d5bd3bd3cc055e82">LCP_CONFIG_SOURCE_INTERNAL_FLASH</a></div><div class="ttdeci">@ LCP_CONFIG_SOURCE_INTERNAL_FLASH</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00016">lcp_config_service.hpp:16</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70">LcpConfigServiceResult</a></div><div class="ttdeci">LcpConfigServiceResult</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00037">lcp_config_service.hpp:38</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a2f969bb8b255972e5535ea1bdf6e537e"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a2f969bb8b255972e5535ea1bdf6e537e">LCP_CONFIG_SERVICE_BUSY</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_BUSY</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00043">lcp_config_service.hpp:43</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a3c8867a15cb7a3d300a21dad1d9d533f"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a3c8867a15cb7a3d300a21dad1d9d533f">LCP_CONFIG_SERVICE_NO_CHANGE</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_NO_CHANGE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00042">lcp_config_service.hpp:42</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a4ac59a383ba258e2364b6b3c43d33f97"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4ac59a383ba258e2364b6b3c43d33f97">LCP_CONFIG_SERVICE_NO_ROLLBACK</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_NO_ROLLBACK</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00048">lcp_config_service.hpp:48</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a4afbe25e62d895ed2f535449a2e55426"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4afbe25e62d895ed2f535449a2e55426">LCP_CONFIG_SERVICE_INVALID_STATE</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_INVALID_STATE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00049">lcp_config_service.hpp:49</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a4b72ec793bd2b705909da30ae615ac26"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a4b72ec793bd2b705909da30ae615ac26">LCP_CONFIG_SERVICE_SD_ERROR</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_SD_ERROR</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00044">lcp_config_service.hpp:44</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a6dba600ccd76040ba82fcec968f632bb"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a6dba600ccd76040ba82fcec968f632bb">LCP_CONFIG_SERVICE_SD_UNSTABLE</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_SD_UNSTABLE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00045">lcp_config_service.hpp:45</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a7a2150605168d853255a2a6386ea3c10"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a7a2150605168d853255a2a6386ea3c10">LCP_CONFIG_SERVICE_OK</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_OK</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00041">lcp_config_service.hpp:41</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70a9d1f17e28122ea41b86db5e135942b83"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70a9d1f17e28122ea41b86db5e135942b83">LCP_CONFIG_SERVICE_IN_PROGRESS</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_IN_PROGRESS</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00040">lcp_config_service.hpp:40</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70ad59d66d3811caa6d518be0c3bbbd6545"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ad59d66d3811caa6d518be0c3bbbd6545">LCP_CONFIG_SERVICE_FLASH_ERROR</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_FLASH_ERROR</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00046">lcp_config_service.hpp:46</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70ae9b7ed92429333eadd2c3fee881d010f"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70ae9b7ed92429333eadd2c3fee881d010f">LCP_CONFIG_SERVICE_VERIFY_ERROR</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_VERIFY_ERROR</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00047">lcp_config_service.hpp:47</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a420379ee19bbdadd9b82b7024b032f70af34e81ad0ab00b0b451c243193e1bbba"><div class="ttname"><a href="lcp__config__service_8hpp.html#a420379ee19bbdadd9b82b7024b032f70af34e81ad0ab00b0b451c243193e1bbba">LCP_CONFIG_SERVICE_IDLE</a></div><div class="ttdeci">@ LCP_CONFIG_SERVICE_IDLE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00039">lcp_config_service.hpp:39</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54">LcpConfigOperation</a></div><div class="ttdeci">LcpConfigOperation</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00026">lcp_config_service.hpp:27</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54a04152f9b3bdf6c2b9a1bbe42772e4686"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a04152f9b3bdf6c2b9a1bbe42772e4686">LCP_CONFIG_OPERATION_ROLLBACK</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_ROLLBACK</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00033">lcp_config_service.hpp:33</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54a28429c3ee0f5eb04f95650606953d806"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a28429c3ee0f5eb04f95650606953d806">LCP_CONFIG_OPERATION_SCAN_SD</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_SCAN_SD</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00030">lcp_config_service.hpp:30</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54a53118eee7878417860fb6a9bc8e39602"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a53118eee7878417860fb6a9bc8e39602">LCP_CONFIG_OPERATION_ERASE</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_ERASE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00034">lcp_config_service.hpp:34</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54a69532c70390fc93ae4606e546351bf9f"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a69532c70390fc93ae4606e546351bf9f">LCP_CONFIG_OPERATION_COMPARE_SD</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_COMPARE_SD</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00031">lcp_config_service.hpp:31</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54a86e87ae9fc520b575b478dcb957577b4"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54a86e87ae9fc520b575b478dcb957577b4">LCP_CONFIG_OPERATION_AUTO_IMPORT</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_AUTO_IMPORT</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00029">lcp_config_service.hpp:29</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54abe8a2c020f91431917ae1303343d09ba"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54abe8a2c020f91431917ae1303343d09ba">LCP_CONFIG_OPERATION_IMPORT_SD</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_IMPORT_SD</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00032">lcp_config_service.hpp:32</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_a4f36eb30a86a4ddcb65f42cc173e3f54ae8ae0dcd08bef5b91bc4750728e9596e"><div class="ttname"><a href="lcp__config__service_8hpp.html#a4f36eb30a86a4ddcb65f42cc173e3f54ae8ae0dcd08bef5b91bc4750728e9596e">LCP_CONFIG_OPERATION_NONE</a></div><div class="ttdeci">@ LCP_CONFIG_OPERATION_NONE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00028">lcp_config_service.hpp:28</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_aa60228dc5df181f002550e8b1024d4ea"><div class="ttname"><a href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4ea">LcpConfigSlotId</a></div><div class="ttdeci">LcpConfigSlotId</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00019">lcp_config_service.hpp:20</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd"><div class="ttname"><a href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa881c47e2372029fae4e1c9ad678ffebd">LCP_CONFIG_SLOT_B</a></div><div class="ttdeci">@ LCP_CONFIG_SLOT_B</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00023">lcp_config_service.hpp:23</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e"><div class="ttname"><a href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaa8cb0720aa958cba79ac57eadf6e5425e">LCP_CONFIG_SLOT_NONE</a></div><div class="ttdeci">@ LCP_CONFIG_SLOT_NONE</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00021">lcp_config_service.hpp:21</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html_aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a"><div class="ttname"><a href="lcp__config__service_8hpp.html#aa60228dc5df181f002550e8b1024d4eaaaa6faf58d4948df7da8f68b7fd1df52a">LCP_CONFIG_SLOT_A</a></div><div class="ttdeci">@ LCP_CONFIG_SLOT_A</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00022">lcp_config_service.hpp:22</a></div></div>
+<div class="ttc" id="alcp__crc32_8cpp_html_a5bd774e3454a43dce037c7b5aa1fcb99"><div class="ttname"><a href="lcp__crc32_8cpp.html#a5bd774e3454a43dce037c7b5aa1fcb99">lcp_crc32</a></div><div class="ttdeci">uint32_t lcp_crc32(const void *data, size_t length)</div><div class="ttdoc">Вычисляет CRC-32/ISO-HDLC (polynomial 0xEDB88320).</div><div class="ttdef"><b>Определения</b> <a href="lcp__crc32_8cpp_source.html#l00008">lcp_crc32.cpp:8</a></div></div>
+<div class="ttc" id="alcp__crc32_8hpp_html"><div class="ttname"><a href="lcp__crc32_8hpp.html">lcp_crc32.hpp</a></div><div class="ttdoc">Небольшой CRC-32/ISO-HDLC без динамической памяти.</div></div>
+<div class="ttc" id="alcp__sd__storage_8cpp_html_aa565f9519b5454bce9c360a9cf65d6e5"><div class="ttname"><a href="lcp__sd__storage_8cpp.html#aa565f9519b5454bce9c360a9cf65d6e5">lcp_sd_storage_ready</a></div><div class="ttdeci">uint8_t lcp_sd_storage_ready(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage.cpp:933</a></div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html"><div class="ttname"><a href="lcp__sd__storage_8hpp.html">lcp_sd_storage.hpp</a></div><div class="ttdoc">Минимальный SPI/FAT16/FAT32 слой microSD контроллера LCP.</div></div>
+<div class="ttc" id="anamespacelcp__config__usb_html_a851d436609db75d3e7af10a8ba71f484"><div class="ttname"><a href="namespacelcp__config__usb.html#a851d436609db75d3e7af10a8ba71f484">lcp_config_usb::build_write_pages</a></div><div class="ttdeci">void build_write_pages(const LcpConfigBundle &amp;bundle, uint32_t sequence)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__usb__transport_8hpp_source.html#l00278">lcp_config_usb_transport.hpp:278</a></div></div>
+<div class="ttc" id="anamespacelcp__config__usb_html_aa78261ada34e196a63bb3f2570b0417f"><div class="ttname"><a href="namespacelcp__config__usb.html#aa78261ada34e196a63bb3f2570b0417f">lcp_config_usb::slot_base</a></div><div class="ttdeci">uintptr_t slot_base(LcpConfigSlotId slot)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__usb__transport_8hpp_source.html#l00191">lcp_config_usb_transport.hpp:191</a></div></div>
+<div class="ttc" id="anamespacelcp__config__usb_html_abfc1df01097075129777734371547b73"><div class="ttname"><a href="namespacelcp__config__usb.html#abfc1df01097075129777734371547b73">lcp_config_usb::next_sequence</a></div><div class="ttdeci">uint32_t next_sequence(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__usb__transport_8hpp_source.html#l00216">lcp_config_usb_transport.hpp:216</a></div></div>
+<div class="ttc" id="anamespacelcp__config__usb_html_aec37e54c197fbb24d3fb15bc70ef06a1"><div class="ttname"><a href="namespacelcp__config__usb.html#aec37e54c197fbb24d3fb15bc70ef06a1">lcp_config_usb::slot_commit_page</a></div><div class="ttdeci">uintptr_t slot_commit_page(LcpConfigSlotId slot)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__usb__transport_8hpp_source.html#l00198">lcp_config_usb_transport.hpp:198</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8cpp_html_a2adcb382322198bb47afde39f2caf0aa"><div class="ttname"><a href="sam3x__internal__flash_8cpp.html#a2adcb382322198bb47afde39f2caf0aa">sam3x_internal_flash_config_start</a></div><div class="ttdeci">uintptr_t sam3x_internal_flash_config_start(void)</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8cpp_source.html#l00167">sam3x_internal_flash.cpp:167</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8cpp_html_aae9a3535adbc5901f3c95c5cc24896a7"><div class="ttname"><a href="sam3x__internal__flash_8cpp.html#aae9a3535adbc5901f3c95c5cc24896a7">sam3x_internal_flash_config_size</a></div><div class="ttdeci">uint32_t sam3x_internal_flash_config_size(void)</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8cpp_source.html#l00177">sam3x_internal_flash.cpp:177</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8cpp_html_addd2167dd70201c321f69fb076b20ff7"><div class="ttname"><a href="sam3x__internal__flash_8cpp.html#addd2167dd70201c321f69fb076b20ff7">sam3x_internal_flash_read</a></div><div class="ttdeci">Sam3xInternalFlashResult sam3x_internal_flash_read(uintptr_t address, void *output, size_t length)</div><div class="ttdoc">Читает байты из memory-mapped Flash.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8cpp_source.html#l00185">sam3x_internal_flash.cpp:185</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8cpp_html_ae421d07fcf4176f36c1ce2b61d3b6a87"><div class="ttname"><a href="sam3x__internal__flash_8cpp.html#ae421d07fcf4176f36c1ce2b61d3b6a87">sam3x_internal_flash_erase_write_page</a></div><div class="ttdeci">Sam3xInternalFlashResult sam3x_internal_flash_erase_write_page(uintptr_t page_address, const uint8_t page[SAM3X_INTERNAL_FLASH_PAGE_SIZE])</div><div class="ttdoc">Стирает и записывает одну страницу Flash1, затем проверяет read-back.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8cpp_source.html#l00207">sam3x_internal_flash.cpp:207</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8hpp_html_aacd3da7dd48ea887d2ce41158221d0d1"><div class="ttname"><a href="sam3x__internal__flash_8hpp.html#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a></div><div class="ttdeci">static const uint32_t SAM3X_INTERNAL_FLASH_PAGE_SIZE</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8hpp_source.html#l00014">sam3x_internal_flash.hpp:14</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8hpp_html_ad9062ff5ac0abb3b9aa8d3f957b2061d"><div class="ttname"><a href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a></div><div class="ttdeci">Sam3xInternalFlashResult</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8hpp_source.html#l00016">sam3x_internal_flash.hpp:17</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8hpp_html_ad9062ff5ac0abb3b9aa8d3f957b2061da610516966c91251dc8f23c94c8f48166"><div class="ttname"><a href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061da610516966c91251dc8f23c94c8f48166">SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</a></div><div class="ttdeci">@ SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8hpp_source.html#l00019">sam3x_internal_flash.hpp:19</a></div></div>
+<div class="ttc" id="asam3x__internal__flash_8hpp_html_ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d"><div class="ttname"><a href="sam3x__internal__flash_8hpp.html#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a></div><div class="ttdeci">@ SAM3X_INTERNAL_FLASH_OK</div><div class="ttdef"><b>Определения</b> <a href="sam3x__internal__flash_8hpp_source.html#l00018">sam3x_internal_flash.hpp:18</a></div></div>
+<div class="ttc" id="asd__config_8hpp_html_a37dbffa40dde27774769332802ffe4ccacf2f10927a3c54b90be4ca1ad4e3df55"><div class="ttname"><a href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4ccacf2f10927a3c54b90be4ca1ad4e3df55">SD_CONFIG_NOT_ATTEMPTED</a></div><div class="ttdeci">@ SD_CONFIG_NOT_ATTEMPTED</div><div class="ttdef"><b>Определения</b> <a href="sd__config_8hpp_source.html#l00031">sd_config.hpp:31</a></div></div>
+<div class="ttc" id="astructLcpConfigCandidateStatus_html"><div class="ttname"><a href="structLcpConfigCandidateStatus.html">LcpConfigCandidateStatus</a></div><div class="ttdoc">Последний дважды прочитанный кандидат с microSD.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00062">lcp_config_service.hpp:63</a></div></div>
+<div class="ttc" id="astructLcpConfigCandidateStatus_html_a03d6248480bbee86bfb65470f6447f92"><div class="ttname"><a href="structLcpConfigCandidateStatus.html#a03d6248480bbee86bfb65470f6447f92">LcpConfigCandidateStatus::available</a></div><div class="ttdeci">uint8_t available</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00064">lcp_config_service.hpp:64</a></div></div>
+<div class="ttc" id="astructLcpConfigCandidateStatus_html_a1a2cadffec2bb939896320240fd18a69"><div class="ttname"><a href="structLcpConfigCandidateStatus.html#a1a2cadffec2bb939896320240fd18a69">LcpConfigCandidateStatus::stable</a></div><div class="ttdeci">uint8_t stable</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00065">lcp_config_service.hpp:65</a></div></div>
+<div class="ttc" id="astructLcpConfigCandidateStatus_html_a1fda74a8dd379722ccdaab9b9358a306"><div class="ttname"><a href="structLcpConfigCandidateStatus.html#a1fda74a8dd379722ccdaab9b9358a306">LcpConfigCandidateStatus::report</a></div><div class="ttdeci">LcpConfigSdReport report</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00068">lcp_config_service.hpp:68</a></div></div>
+<div class="ttc" id="astructLcpConfigCandidateStatus_html_ac9df8e6f39cfb32d5f4dd210c1a4439e"><div class="ttname"><a href="structLcpConfigCandidateStatus.html#ac9df8e6f39cfb32d5f4dd210c1a4439e">LcpConfigCandidateStatus::crc32</a></div><div class="ttdeci">uint32_t crc32</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00067">lcp_config_service.hpp:67</a></div></div>
+<div class="ttc" id="astructLcpConfigCandidateStatus_html_af9fa351185fdaedb47d205b72090a126"><div class="ttname"><a href="structLcpConfigCandidateStatus.html#af9fa351185fdaedb47d205b72090a126">LcpConfigCandidateStatus::equal_to_active</a></div><div class="ttdeci">uint8_t equal_to_active</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00066">lcp_config_service.hpp:66</a></div></div>
+<div class="ttc" id="astructLcpConfigSdReport_html"><div class="ttname"><a href="structLcpConfigSdReport.html">LcpConfigSdReport</a></div><div class="ttdoc">Диагностика одного полного чтения конфигурационного комплекта.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00060">lcp_config_bundle.hpp:61</a></div></div>
+<div class="ttc" id="astructLcpConfigSdReport_html_a0ffb544a38566e5575ccad3e85ab18a8"><div class="ttname"><a href="structLcpConfigSdReport.html#a0ffb544a38566e5575ccad3e85ab18a8">LcpConfigSdReport::x2x_result</a></div><div class="ttdeci">X2XConfigResult x2x_result</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00065">lcp_config_bundle.hpp:65</a></div></div>
+<div class="ttc" id="astructLcpConfigSdReport_html_a278deee3ec0fd5bb59ff1f77b98991ca"><div class="ttname"><a href="structLcpConfigSdReport.html#a278deee3ec0fd5bb59ff1f77b98991ca">LcpConfigSdReport::sd_result</a></div><div class="ttdeci">SdConfigResult sd_result</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00064">lcp_config_bundle.hpp:64</a></div></div>
+<div class="ttc" id="astructLcpConfigSdReport_html_a8f1581ec8eec2a2c7a6f2904353acc2f"><div class="ttname"><a href="structLcpConfigSdReport.html#a8f1581ec8eec2a2c7a6f2904353acc2f">LcpConfigSdReport::result</a></div><div class="ttdeci">LcpConfigSdResult result</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__bundle_8hpp_source.html#l00062">lcp_config_bundle.hpp:62</a></div></div>
+<div class="ttc" id="astructLcpConfigSlotStatus_html"><div class="ttname"><a href="structLcpConfigSlotStatus.html">LcpConfigSlotStatus</a></div><div class="ttdoc">Состояние одного физического A/B-слота.</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00053">lcp_config_service.hpp:54</a></div></div>
+<div class="ttc" id="astructLcpConfigSlotStatus_html_a27abe38babb490b93161e304a247c285"><div class="ttname"><a href="structLcpConfigSlotStatus.html#a27abe38babb490b93161e304a247c285">LcpConfigSlotStatus::sequence</a></div><div class="ttdeci">uint32_t sequence</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00056">lcp_config_service.hpp:56</a></div></div>
+<div class="ttc" id="astructLcpConfigSlotStatus_html_a8bb9c5d35b207c60f086c4bb7bc8ae72"><div class="ttname"><a href="structLcpConfigSlotStatus.html#a8bb9c5d35b207c60f086c4bb7bc8ae72">LcpConfigSlotStatus::flash_result</a></div><div class="ttdeci">Sam3xInternalFlashResult flash_result</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00058">lcp_config_service.hpp:58</a></div></div>
+<div class="ttc" id="astructLcpConfigSlotStatus_html_aca099c9bf3923d613d0a8c93b3a1ba97"><div class="ttname"><a href="structLcpConfigSlotStatus.html#aca099c9bf3923d613d0a8c93b3a1ba97">LcpConfigSlotStatus::valid</a></div><div class="ttdeci">uint8_t valid</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00055">lcp_config_service.hpp:55</a></div></div>
+<div class="ttc" id="astructLcpConfigSlotStatus_html_acf9edbb141a6599a679fb183658806bb"><div class="ttname"><a href="structLcpConfigSlotStatus.html#acf9edbb141a6599a679fb183658806bb">LcpConfigSlotStatus::payload_crc32</a></div><div class="ttdeci">uint32_t payload_crc32</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8hpp_source.html#l00057">lcp_config_service.hpp:57</a></div></div>
+<div class="ttc" id="ax2x__config_8hpp_html_a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9"><div class="ttname"><a href="x2x__config_8hpp.html#a6af6c2c41b89ce58090a11bbe364e1bca0b2a65ff45a4a9228de1d77eb10118d9">X2X_CONFIG_OK</a></div><div class="ttdeci">@ X2X_CONFIG_OK</div><div class="ttdef"><b>Определения</b> <a href="x2x__config_8hpp_source.html#l00015">x2x_config.hpp:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_aea9893897cc10308ef9329a16217ee4.html">config</a></li><li class="navelem"><a href="lcp__config__service_8cpp.html">lcp_config_service.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/sam3x_uart_status.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__uart__status_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sam3x_uart_status.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Дополнительные неблокирующие операции состояния UART/USART.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="sam3x__uart_8hpp_source.html">sam3x_uart.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__device_8hpp_source.html">sam3x_device.hpp</a>&quot;</code><br />
+</div>
+<p><a href="sam3x__uart__status_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ab44a2ace7777bb87feaf2aaa43d79db4" id="r_ab44a2ace7777bb87feaf2aaa43d79db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab44a2ace7777bb87feaf2aaa43d79db4">hal_uart_clear_rx</a> (<a class="el" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:ab44a2ace7777bb87feaf2aaa43d79db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет все байты, доступные через программный RX-буфер HAL.  <br /></td></tr>
+<tr class="memitem:a5e6c4b4e76d8e0afd17efad24f62d8b2" id="r_a5e6c4b4e76d8e0afd17efad24f62d8b2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e6c4b4e76d8e0afd17efad24f62d8b2">hal_uart_tx_idle</a> (<a class="el" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:a5e6c4b4e76d8e0afd17efad24f62d8b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Неблокирующе читает аппаратный флаг TXEMPTY.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Дополнительные неблокирующие операции состояния UART/USART. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart__status_8cpp_source.html">sam3x_uart_status.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ab44a2ace7777bb87feaf2aaa43d79db4" name="ab44a2ace7777bb87feaf2aaa43d79db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44a2ace7777bb87feaf2aaa43d79db4">&#9670;&#160;</a></span>hal_uart_clear_rx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_uart_clear_rx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаляет все байты, доступные через программный RX-буфер HAL. </p>
+<p>Используется перед началом новой master-транзакции для удаления остатка предыдущего или повреждённого кадра. Аппаратный RX обслуживается ISR и последовательно попадает в этот буфер. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart__status_8cpp_source.html">sam3x_uart_status.cpp</a> строка <a class="el" href="sam3x__uart__status_8cpp_source.html#l00030">30</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00465">hal_uart_available()</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00477">hal_uart_read()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__x2x__port_8cpp_source.html#l00080">lcp_x2x_port_init()</a>.</p>
+
+</div>
+</div>
+<a id="a5e6c4b4e76d8e0afd17efad24f62d8b2" name="a5e6c4b4e76d8e0afd17efad24f62d8b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e6c4b4e76d8e0afd17efad24f62d8b2">&#9670;&#160;</a></span>hal_uart_tx_idle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t hal_uart_tx_idle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Неблокирующе читает аппаратный флаг TXEMPTY. </p>
+<p>Для пакетных протоколов вызывающий транспорт дополнительно должен учитывать время загрузки программного кольцевого буфера. X2X выполняет эту проверку в <span class="tt"><a class="el" href="lcp__x2x__port_8cpp.html" title="Реализация аппаратного транспорта X2X через UART0 ATSAM3X8E.">lcp_x2x_port.cpp</a></span>.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>1 при установленном TXEMPTY либо для неизвестного порта, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart__status_8cpp_source.html">sam3x_uart_status.cpp</a> строка <a class="el" href="sam3x__uart__status_8cpp_source.html#l00009">9</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8hpp_source.html#l00016">HAL_UART_PORT_0</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00017">HAL_UART_PORT_1</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00018">HAL_UART_PORT_2</a> и <a class="el" href="sam3x__uart_8hpp_source.html#l00019">HAL_UART_PORT_3</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__uart__status_8cpp.html">sam3x_uart_status.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

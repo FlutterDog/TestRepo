@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура FieldSensorPortState</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structFieldSensorPortState.html','','structFieldSensorPortState-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура FieldSensorPortState</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Runtime одного физического FieldSensor-порта.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="field__sensor__service_8hpp_source.html">app/field/field_sensor_service.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a04dd2049aa6dc812ac68de1470ddeb91" id="r_a04dd2049aa6dc812ac68de1470ddeb91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFieldSensorConfig.html">FieldSensorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04dd2049aa6dc812ac68de1470ddeb91">config</a></td></tr>
+<tr class="memitem:a96c00c32e761301b371346227128f150" id="r_a96c00c32e761301b371346227128f150"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96c00c32e761301b371346227128f150">connection_lost</a></td></tr>
+<tr class="memitem:a5a5d828c3559b832f1b4b37391c33bd1" id="r_a5a5d828c3559b832f1b4b37391c33bd1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a5d828c3559b832f1b4b37391c33bd1">consecutive_failures</a></td></tr>
+<tr class="memitem:ad7e7c66dd5188261b7acf4d3d8310536" id="r_ad7e7c66dd5188261b7acf4d3d8310536"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7e7c66dd5188261b7acf4d3d8310536">failed_poll_count</a></td></tr>
+<tr class="memitem:adbd2e7008879d90cea9a73a0ef46d941" id="r_adbd2e7008879d90cea9a73a0ef46d941"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbd2e7008879d90cea9a73a0ef46d941">last_exception_code</a></td></tr>
+<tr class="memitem:ac5ceb42884164b702da91cd04bfe216d" id="r_ac5ceb42884164b702da91cd04bfe216d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb">ModbusRtuResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5ceb42884164b702da91cd04bfe216d">last_result</a></td></tr>
+<tr class="memitem:a6d9bfc6ffeefddc27b5a9a7b4dcbda68" id="r_a6d9bfc6ffeefddc27b5a9a7b4dcbda68"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d9bfc6ffeefddc27b5a9a7b4dcbda68">last_update_ms</a></td></tr>
+<tr class="memitem:ae48c0f4561a3fbe81233b9e951a12061" id="r_ae48c0f4561a3fbe81233b9e951a12061"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structModbusRtuMaster.html">ModbusRtuMaster</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae48c0f4561a3fbe81233b9e951a12061">master</a></td></tr>
+<tr class="memitem:a4fe775cd7b7bc8c0fd6ef289d6263f00" id="r_a4fe775cd7b7bc8c0fd6ef289d6263f00"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fe775cd7b7bc8c0fd6ef289d6263f00">next_poll_ms</a></td></tr>
+<tr class="memitem:af89826505eb39df49f4c817e11426e26" id="r_af89826505eb39df49f4c817e11426e26"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af89826505eb39df49f4c817e11426e26">port_present</a></td></tr>
+<tr class="memitem:a8a2e7ef2883f15a7d4f425e75829c8c5" id="r_a8a2e7ef2883f15a7d4f425e75829c8c5"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a2e7ef2883f15a7d4f425e75829c8c5">registers</a> [<a class="el" href="field__sensor__service_8hpp.html#ac30f1cb7ad0cb09cb417c62eee9ee356">FIELD_SENSOR_REGISTER_COUNT</a>]</td></tr>
+<tr class="memitem:ad15ed1e9a8864fbea2300f44c6e9b502" id="r_ad15ed1e9a8864fbea2300f44c6e9b502"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad15ed1e9a8864fbea2300f44c6e9b502">request_active</a></td></tr>
+<tr class="memitem:a2858cb236d8188ed827bdd74f1dca81b" id="r_a2858cb236d8188ed827bdd74f1dca81b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2858cb236d8188ed827bdd74f1dca81b">successful_poll_count</a></td></tr>
+<tr class="memitem:ad97c47d2f11bc54ba45379e6b2354493" id="r_ad97c47d2f11bc54ba45379e6b2354493"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad97c47d2f11bc54ba45379e6b2354493">valid</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Runtime одного физического FieldSensor-порта. </p>
+<p>Каждый S1..S4 имеет собственный <a class="el" href="structModbusRtuMaster.html" title="Полное состояние одного независимого Modbus RTU master.">ModbusRtuMaster</a>, буфер, таймер и качество. Последние корректные <span class="tt"><a class="el" href="#a8a2e7ef2883f15a7d4f425e75829c8c5">registers</a></span> не обнуляются при ошибке. Использовать их разрешено только при <span class="tt"><a class="el" href="#ad97c47d2f11bc54ba45379e6b2354493">valid</a> != 0</span>; после пяти последовательных ошибок устанавливаются <span class="tt"><a class="el" href="#a96c00c32e761301b371346227128f150">connection_lost</a>=1</span> и <span class="tt"><a class="el" href="#ad97c47d2f11bc54ba45379e6b2354493">valid</a>=0</span>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00082">82</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a04dd2049aa6dc812ac68de1470ddeb91" name="a04dd2049aa6dc812ac68de1470ddeb91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04dd2049aa6dc812ac68de1470ddeb91">&#9670;&#160;</a></span>config</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFieldSensorConfig.html">FieldSensorConfig</a> FieldSensorPortState::config</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Применённая конфигурация прибора и UART. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00084">84</a></p>
+
+</div>
+</div>
+<a id="a96c00c32e761301b371346227128f150" name="a96c00c32e761301b371346227128f150"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c00c32e761301b371346227128f150">&#9670;&#160;</a></span>connection_lost</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FieldSensorPortState::connection_lost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>1 после порога последовательных ошибок. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00090">90</a></p>
+
+</div>
+</div>
+<a id="a5a5d828c3559b832f1b4b37391c33bd1" name="a5a5d828c3559b832f1b4b37391c33bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5d828c3559b832f1b4b37391c33bd1">&#9670;&#160;</a></span>consecutive_failures</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FieldSensorPortState::consecutive_failures</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ошибки после последнего успешного ответа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00091">91</a></p>
+
+</div>
+</div>
+<a id="ad7e7c66dd5188261b7acf4d3d8310536" name="ad7e7c66dd5188261b7acf4d3d8310536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7e7c66dd5188261b7acf4d3d8310536">&#9670;&#160;</a></span>failed_poll_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t FieldSensorPortState::failed_poll_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Накопительный счётчик ошибок/start failures. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00095">95</a></p>
+
+</div>
+</div>
+<a id="adbd2e7008879d90cea9a73a0ef46d941" name="adbd2e7008879d90cea9a73a0ef46d941"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbd2e7008879d90cea9a73a0ef46d941">&#9670;&#160;</a></span>last_exception_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FieldSensorPortState::last_exception_code</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Последний Modbus exception code. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00092">92</a></p>
+
+</div>
+</div>
+<a id="ac5ceb42884164b702da91cd04bfe216d" name="ac5ceb42884164b702da91cd04bfe216d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5ceb42884164b702da91cd04bfe216d">&#9670;&#160;</a></span>last_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="modbus__rtu__master_8hpp.html#a1e1e7e4ef6bba29ff75c94f9eb6286eb">ModbusRtuResult</a> FieldSensorPortState::last_result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Итог последней завершённой транзакции. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00093">93</a></p>
+
+</div>
+</div>
+<a id="a6d9bfc6ffeefddc27b5a9a7b4dcbda68" name="a6d9bfc6ffeefddc27b5a9a7b4dcbda68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d9bfc6ffeefddc27b5a9a7b4dcbda68">&#9670;&#160;</a></span>last_update_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t FieldSensorPortState::last_update_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d" title="Возвращает время работы прошивки в миллисекундах.">millis()</a> последнего корректного ответа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00096">96</a></p>
+
+</div>
+</div>
+<a id="ae48c0f4561a3fbe81233b9e951a12061" name="ae48c0f4561a3fbe81233b9e951a12061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae48c0f4561a3fbe81233b9e951a12061">&#9670;&#160;</a></span>master</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structModbusRtuMaster.html">ModbusRtuMaster</a> FieldSensorPortState::master</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Независимый protocol engine этого порта. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00085">85</a></p>
+
+</div>
+</div>
+<a id="a4fe775cd7b7bc8c0fd6ef289d6263f00" name="a4fe775cd7b7bc8c0fd6ef289d6263f00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe775cd7b7bc8c0fd6ef289d6263f00">&#9670;&#160;</a></span>next_poll_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t FieldSensorPortState::next_poll_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Абсолютный wrap-safe срок следующего запуска. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00097">97</a></p>
+
+<p class="reference">Используется в <a class="el" href="field__sensor__service_8cpp_source.html#l00267">field_sensor_service_resume()</a>.</p>
+
+</div>
+</div>
+<a id="af89826505eb39df49f4c817e11426e26" name="af89826505eb39df49f4c817e11426e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89826505eb39df49f4c817e11426e26">&#9670;&#160;</a></span>port_present</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FieldSensorPortState::port_present</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Физический transport обнаружен и доступен. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00087">87</a></p>
+
+</div>
+</div>
+<a id="a8a2e7ef2883f15a7d4f425e75829c8c5" name="a8a2e7ef2883f15a7d4f425e75829c8c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2e7ef2883f15a7d4f425e75829c8c5">&#9670;&#160;</a></span>registers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t FieldSensorPortState::registers[<a class="el" href="field__sensor__service_8hpp.html#ac30f1cb7ad0cb09cb417c62eee9ee356">FIELD_SENSOR_REGISTER_COUNT</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Последние корректные FC03 values. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00086">86</a></p>
+
+</div>
+</div>
+<a id="ad15ed1e9a8864fbea2300f44c6e9b502" name="ad15ed1e9a8864fbea2300f44c6e9b502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad15ed1e9a8864fbea2300f44c6e9b502">&#9670;&#160;</a></span>request_active</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FieldSensorPortState::request_active</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Запрос запущен и ещё не завершён. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00088">88</a></p>
+
+</div>
+</div>
+<a id="a2858cb236d8188ed827bdd74f1dca81b" name="a2858cb236d8188ed827bdd74f1dca81b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2858cb236d8188ed827bdd74f1dca81b">&#9670;&#160;</a></span>successful_poll_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t FieldSensorPortState::successful_poll_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Накопительный счётчик успешных ответов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00094">94</a></p>
+
+</div>
+</div>
+<a id="ad97c47d2f11bc54ba45379e6b2354493" name="ad97c47d2f11bc54ba45379e6b2354493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97c47d2f11bc54ba45379e6b2354493">&#9670;&#160;</a></span>valid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FieldSensorPortState::valid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>1, когда последние values имеют допустимое качество. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a> строка <a class="el" href="field__sensor__service_8hpp_source.html#l00089">89</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>app/field/<a class="el" href="field__sensor__service_8hpp_source.html">field_sensor_service.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structFieldSensorPortState.html">FieldSensorPortState</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

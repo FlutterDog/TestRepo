@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['adc_5fconverted_0',['ADC_Converted',['../namespaceanonymous__namespace_02app_8cpp_03.html#a5a5fa62011609938b340baa0dccb675f',1,'anonymous_namespace{app.cpp}']]],
+  ['addr_5fb_5fmask_1',['ADDR_B_MASK',['../namespaceanonymous__namespace_02lai__board_8cpp_03.html#aa1d53cd73bfd3b55c2607a7cbe609657',1,'anonymous_namespace{lai_board.cpp}']]],
+  ['addr_5fd_5fmask_2',['ADDR_D_MASK',['../namespaceanonymous__namespace_02lai__board_8cpp_03.html#a410f6a79c45a0dc2f8884e77313b6728',1,'anonymous_namespace{lai_board.cpp}']]],
+  ['address_5f_3',['address_',['../class_a_d_s1115.html#a2210526757a6911eddd82342d721aa59',1,'ADS1115']]],
+  ['ads1115_5fcomp_5fdisable_4',['ADS1115_COMP_DISABLE',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fdata_5frate_5fshift_5',['ADS1115_DATA_RATE_SHIFT',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fmax_5fchannel_6',['ADS1115_MAX_CHANNEL',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#ab9c5bc80df8079d57f8916e75f0828a0',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fmode_5fcontinuous_7',['ADS1115_MODE_CONTINUOUS',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fmode_5fsingle_5fshot_8',['ADS1115_MODE_SINGLE_SHOT',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a3c92ee379ff66efd7ca18f94319e4143',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fmux_5fshift_9',['ADS1115_MUX_SHIFT',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fos_5fready_10',['ADS1115_OS_READY',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a068d7e1c1f37e4117cfa5dbe8a318733',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fos_5fstart_11',['ADS1115_OS_START',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fpga_5fshift_12',['ADS1115_PGA_SHIFT',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5freg_5fconfig_13',['ADS1115_REG_CONFIG',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a233a02b1b80ccf3f741a3c03bbd23681',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5freg_5fconversion_14',['ADS1115_REG_CONVERSION',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a938bd2960efccd6aaf90963247caa243',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5fsingle_5fended_5fmux_5fbase_15',['ADS1115_SINGLE_ENDED_MUX_BASE',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads1115_5ftwi_5ffrequency_5fhz_16',['ADS1115_TWI_FREQUENCY_HZ',['../namespaceanonymous__namespace_02ads1115_8cpp_03.html#af0198035f5e2ba730ab031086678743f',1,'anonymous_namespace{ads1115.cpp}']]],
+  ['ads_5f1_17',['ADS_1',['../namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02',1,'anonymous_namespace{app.cpp}']]],
+  ['ads_5f2_18',['ADS_2',['../namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6',1,'anonymous_namespace{app.cpp}']]],
+  ['adsstate_19',['ADSstate',['../namespaceanonymous__namespace_02app_8cpp_03.html#a2dba617670e237caf040bd2aa23d8477',1,'anonymous_namespace{app.cpp}']]],
+  ['ai_5fmode_20',['AI_MODE',['../namespaceanonymous__namespace_02app_8cpp_03.html#a22c1e8364321253a6c8e22d2f39f01f7',1,'anonymous_namespace{app.cpp}']]],
+  ['aibuffer_21',['AIBuffer',['../namespaceanonymous__namespace_02app_8cpp_03.html#a3e30aadeb5695939672d322295648dd8',1,'anonymous_namespace{app.cpp}']]],
+  ['aidata_22',['AIData',['../namespaceanonymous__namespace_02app_8cpp_03.html#af51a82798556e6f29912fca2670b231d',1,'anonymous_namespace{app.cpp}']]],
+  ['aix_23',['AIX',['../namespaceanonymous__namespace_02app_8cpp_03.html#aedbfb72db88ec80e4c5c7a2257a8c8e7',1,'anonymous_namespace{app.cpp}']]]
+];

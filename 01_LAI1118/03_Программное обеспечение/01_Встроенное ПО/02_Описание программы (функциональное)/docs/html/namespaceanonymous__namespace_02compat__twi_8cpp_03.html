@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Пространство имен anonymous_namespace{compat_twi.cpp}</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespaceanonymous__namespace_02compat__twi_8cpp_03.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Пространство имен anonymous_namespace{compat_twi.cpp}</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a46c662c5d725799bb8f2fc070c709c64" id="r_a46c662c5d725799bb8f2fc070c709c64"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a> (void)</td></tr>
+<tr class="memdesc:a46c662c5d725799bb8f2fc070c709c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ожидает завершения текущей операции TWI.  <br /></td></tr>
+<tr class="memitem:afe32a6e9b5c8f7d78851245b744ea559" id="r_afe32a6e9b5c8f7d78851245b744ea559"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe32a6e9b5c8f7d78851245b744ea559">startCondition</a> (void)</td></tr>
+<tr class="memdesc:afe32a6e9b5c8f7d78851245b744ea559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует START или repeated START на шине TWI.  <br /></td></tr>
+<tr class="memitem:a3a3447e40e5c48f34bc456c93d11fcbd" id="r_a3a3447e40e5c48f34bc456c93d11fcbd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a3447e40e5c48f34bc456c93d11fcbd">stopCondition</a> (void)</td></tr>
+<tr class="memdesc:a3a3447e40e5c48f34bc456c93d11fcbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует STOP на шине TWI.  <br /></td></tr>
+<tr class="memitem:ac3d0caa3321b746725ad388a2df6c6fa" id="r_ac3d0caa3321b746725ad388a2df6c6fa"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d0caa3321b746725ad388a2df6c6fa">writeByte</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ac3d0caa3321b746725ad388a2df6c6fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт один байт данных.  <br /></td></tr>
+<tr class="memitem:ac4ee1f014d4c152ba99d83391e97d2df" id="r_ac4ee1f014d4c152ba99d83391e97d2df"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4ee1f014d4c152ba99d83391e97d2df">sendAddressWrite</a> (uint8_t address)</td></tr>
+<tr class="memdesc:ac4ee1f014d4c152ba99d83391e97d2df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт адрес ведомого устройства для операции записи.  <br /></td></tr>
+<tr class="memitem:aa1a2f34bcba2e8f4683ae8b867c57948" id="r_aa1a2f34bcba2e8f4683ae8b867c57948"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a2f34bcba2e8f4683ae8b867c57948">sendAddressRead</a> (uint8_t address)</td></tr>
+<tr class="memdesc:aa1a2f34bcba2e8f4683ae8b867c57948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт адрес ведомого устройства для операции чтения.  <br /></td></tr>
+<tr class="memitem:a336a8a70c4cc3d9f9efa9a573fc985ac" id="r_a336a8a70c4cc3d9f9efa9a573fc985ac"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a336a8a70c4cc3d9f9efa9a573fc985ac">readByteAck</a> (uint8_t *value)</td></tr>
+<tr class="memdesc:a336a8a70c4cc3d9f9efa9a573fc985ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает байт с подтверждением ACK.  <br /></td></tr>
+<tr class="memitem:aa163cb92bc70ef81170ac39325c65627" id="r_aa163cb92bc70ef81170ac39325c65627"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa163cb92bc70ef81170ac39325c65627">readByteNack</a> (uint8_t *value)</td></tr>
+<tr class="memdesc:aa163cb92bc70ef81170ac39325c65627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает байт без подтверждения ACK.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a94d899ba1ce265823c8f3530238fd00a" id="r_a94d899ba1ce265823c8f3530238fd00a"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94d899ba1ce265823c8f3530238fd00a">TWI_TIMEOUT</a> = 60000U</td></tr>
+<tr class="memdesc:a94d899ba1ce265823c8f3530238fd00a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Лимит ожидания установки флага TWINT.  <br /></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a336a8a70c4cc3d9f9efa9a573fc985ac" name="a336a8a70c4cc3d9f9efa9a573fc985ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a336a8a70c4cc3d9f9efa9a573fc985ac">&#9670;&#160;</a></span>readByteAck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::readByteAck </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Читает байт с подтверждением ACK. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Указатель для сохранения прочитанного байта.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — байт прочитан успешно; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00144">144</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  145</span>    {</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (value == 0)</div>
+<div class="line"><span class="lineno">  147</span>        {</div>
+<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  149</span>        }</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWEN) | _BV(TWEA));</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a>())</div>
+<div class="line"><span class="lineno">  154</span>        {</div>
+<div class="line"><span class="lineno">  155</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  156</span>        }</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">if</span> (TW_STATUS != TW_MR_DATA_ACK)</div>
+<div class="line"><span class="lineno">  159</span>        {</div>
+<div class="line"><span class="lineno">  160</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  161</span>        }</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>        *value = TWDR;</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  165</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02compat__twi_8cpp_03_html_a46c662c5d725799bb8f2fc070c709c64"><div class="ttname"><a href="#a46c662c5d725799bb8f2fc070c709c64">anonymous_namespace{compat_twi.cpp}::waitTwint</a></div><div class="ttdeci">static bool waitTwint(void)</div><div class="ttdoc">Ожидает завершения текущей операции TWI.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00034">compat_twi.cpp:34</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+<a id="aa163cb92bc70ef81170ac39325c65627" name="aa163cb92bc70ef81170ac39325c65627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa163cb92bc70ef81170ac39325c65627">&#9670;&#160;</a></span>readByteNack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::readByteNack </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Читает байт без подтверждения ACK. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Указатель для сохранения прочитанного байта.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — байт прочитан успешно; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00174">174</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>    {</div>
+<div class="line"><span class="lineno">  176</span>        <span class="keywordflow">if</span> (value == 0)</div>
+<div class="line"><span class="lineno">  177</span>        {</div>
+<div class="line"><span class="lineno">  178</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  179</span>        }</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWEN));</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a>())</div>
+<div class="line"><span class="lineno">  184</span>        {</div>
+<div class="line"><span class="lineno">  185</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  186</span>        }</div>
+<div class="line"><span class="lineno">  187</span> </div>
+<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">if</span> (TW_STATUS != TW_MR_DATA_NACK)</div>
+<div class="line"><span class="lineno">  189</span>        {</div>
+<div class="line"><span class="lineno">  190</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  191</span>        }</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>        *value = TWDR;</div>
+<div class="line"><span class="lineno">  194</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  195</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+<a id="aa1a2f34bcba2e8f4683ae8b867c57948" name="aa1a2f34bcba2e8f4683ae8b867c57948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a2f34bcba2e8f4683ae8b867c57948">&#9670;&#160;</a></span>sendAddressRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::sendAddressRead </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Передаёт адрес ведомого устройства для операции чтения. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Семибитный I2C-адрес устройства.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — адрес подтверждён; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00124">124</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  125</span>    {</div>
+<div class="line"><span class="lineno">  126</span>        TWDR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((address &lt;&lt; 1) | TW_READ);</div>
+<div class="line"><span class="lineno">  127</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWEN));</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a>())</div>
+<div class="line"><span class="lineno">  130</span>        {</div>
+<div class="line"><span class="lineno">  131</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  132</span>        }</div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">return</span> (TW_STATUS == TW_MR_SLA_ACK);</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+<a id="ac4ee1f014d4c152ba99d83391e97d2df" name="ac4ee1f014d4c152ba99d83391e97d2df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4ee1f014d4c152ba99d83391e97d2df">&#9670;&#160;</a></span>sendAddressWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::sendAddressWrite </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Передаёт адрес ведомого устройства для операции записи. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Семибитный I2C-адрес устройства.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — адрес подтверждён; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00104">104</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>    {</div>
+<div class="line"><span class="lineno">  106</span>        TWDR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((address &lt;&lt; 1) | TW_WRITE);</div>
+<div class="line"><span class="lineno">  107</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWEN));</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a>())</div>
+<div class="line"><span class="lineno">  110</span>        {</div>
+<div class="line"><span class="lineno">  111</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  112</span>        }</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> (TW_STATUS == TW_MT_SLA_ACK);</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+<a id="afe32a6e9b5c8f7d78851245b744ea559" name="afe32a6e9b5c8f7d78851245b744ea559"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe32a6e9b5c8f7d78851245b744ea559">&#9670;&#160;</a></span>startCondition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::startCondition </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует START или repeated START на шине TWI. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true — условие START сформировано успешно; false — ошибка или таймаут. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00056">56</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>    {</div>
+<div class="line"><span class="lineno">   58</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWSTA) | _BV(TWEN));</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a>())</div>
+<div class="line"><span class="lineno">   61</span>        {</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>        <span class="keyword">const</span> uint8_t status = TW_STATUS;</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> ((status == TW_START) || (status == TW_REP_START));</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+<a id="a3a3447e40e5c48f34bc456c93d11fcbd" name="a3a3447e40e5c48f34bc456c93d11fcbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3447e40e5c48f34bc456c93d11fcbd">&#9670;&#160;</a></span>stopCondition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{compat_twi.cpp}::stopCondition </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует STOP на шине TWI. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00072">72</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>    {</div>
+<div class="line"><span class="lineno">   74</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWEN) | _BV(TWSTO));</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a46c662c5d725799bb8f2fc070c709c64" name="a46c662c5d725799bb8f2fc070c709c64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c662c5d725799bb8f2fc070c709c64">&#9670;&#160;</a></span>waitTwint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::waitTwint </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ожидает завершения текущей операции TWI. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true — флаг TWINT установлен; false — истёк таймаут ожидания. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00034">34</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>        uint16_t timeout = <a class="code hl_variable" href="#a94d899ba1ce265823c8f3530238fd00a">TWI_TIMEOUT</a>;</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">while</span> ((TWCR &amp; _BV(TWINT)) == 0U)</div>
+<div class="line"><span class="lineno">   39</span>        {</div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (timeout == 0U)</div>
+<div class="line"><span class="lineno">   41</span>            {</div>
+<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   43</span>            }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>            --timeout;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02compat__twi_8cpp_03_html_a94d899ba1ce265823c8f3530238fd00a"><div class="ttname"><a href="#a94d899ba1ce265823c8f3530238fd00a">anonymous_namespace{compat_twi.cpp}::TWI_TIMEOUT</a></div><div class="ttdeci">static const uint16_t TWI_TIMEOUT</div><div class="ttdoc">Лимит ожидания установки флага TWINT.</div><div class="ttdef"><b>Определения</b> <a href="compat__twi_8cpp_source.html#l00027">compat_twi.cpp:27</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00027">TWI_TIMEOUT</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="compat__twi_8cpp_source.html#l00144">readByteAck()</a>, <a class="el" href="compat__twi_8cpp_source.html#l00174">readByteNack()</a>, <a class="el" href="compat__twi_8cpp_source.html#l00124">sendAddressRead()</a>, <a class="el" href="compat__twi_8cpp_source.html#l00104">sendAddressWrite()</a>, <a class="el" href="compat__twi_8cpp_source.html#l00056">startCondition()</a> и <a class="el" href="compat__twi_8cpp_source.html#l00084">writeByte()</a>.</p>
+
+</div>
+</div>
+<a id="ac3d0caa3321b746725ad388a2df6c6fa" name="ac3d0caa3321b746725ad388a2df6c6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d0caa3321b746725ad388a2df6c6fa">&#9670;&#160;</a></span>writeByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{compat_twi.cpp}::writeByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Передаёт один байт данных. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Передаваемый байт.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — байт подтверждён ведомым устройством; false — ошибка обмена. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00084">84</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>    {</div>
+<div class="line"><span class="lineno">   86</span>        TWDR = value;</div>
+<div class="line"><span class="lineno">   87</span>        TWCR = <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(_BV(TWINT) | _BV(TWEN));</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a46c662c5d725799bb8f2fc070c709c64">waitTwint</a>())</div>
+<div class="line"><span class="lineno">   90</span>        {</div>
+<div class="line"><span class="lineno">   91</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> (TW_STATUS == TW_MT_DATA_ACK);</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a94d899ba1ce265823c8f3530238fd00a" name="a94d899ba1ce265823c8f3530238fd00a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d899ba1ce265823c8f3530238fd00a">&#9670;&#160;</a></span>TWI_TIMEOUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t anonymous_namespace{compat_twi.cpp}::TWI_TIMEOUT = 60000U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Лимит ожидания установки флага TWINT. </p>
+<p>Значение задано в итерациях цикла ожидания. Таймаут защищает основной цикл программы от зависания при неисправности шины или отсутствии ответа ведомого устройства. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="compat__twi_8cpp_source.html">compat_twi.cpp</a> строка <a class="el" href="compat__twi_8cpp_source.html#l00027">27</a></p>
+
+<p class="reference">Используется в <a class="el" href="compat__twi_8cpp_source.html#l00034">waitTwint()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceanonymous__namespace_02compat__twi_8cpp_03.html">anonymous_namespace{compat_twi.cpp}</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

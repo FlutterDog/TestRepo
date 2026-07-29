@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл app/diagnostics/field_status.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('field__status_8cpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">field_status.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="field__status_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file field_status.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Реализация service console для FieldSensor S1..S4.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="field__status_8hpp.html">field_status.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__config__service_8hpp.html">../config/lcp_config_service.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="field__sensor__service_8hpp.html">../field/field_sensor_service.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="lcp__field__ports_8hpp.html">../../board/lcp_field_ports.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="platform_8hpp.html">../../platform/platform.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> print_port(<a class="code hl_enumeration" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a> port_id)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structFieldSensorPortState.html">FieldSensorPortState</a>&amp; port = <a class="code hl_function" href="field__sensor__service_8cpp.html#a0f22d1bc54e8f52bc23a4cc39ae543fa">field_sensor_service_port</a>(port_id);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a>&amp; serial = <a class="code hl_function" href="lcp__field__ports_8cpp.html#a57e7bfb9eabf1adfab2f5503dd565c04">lcp_field_port_config</a>(port_id);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">const</span> uint32_t now_ms = <a class="code hl_function" href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d">millis</a>();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a>(<a class="code hl_function" href="lcp__field__ports_8cpp.html#a49b656f7322622a9ac2209f2fa5d1f50">lcp_field_port_name</a>(port_id));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;role&quot;</span>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    SerialUSB.print(<a class="code hl_function" href="field__sensor__service_8cpp.html#a1a7e5d721542fc192fe257ef9daba232">field_sensor_role_text</a>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">config</a>.<a class="code hl_variable" href="structFieldSensorConfig.html#a2fc444621f13f69d0ca37d85b987836b">role</a>));</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;present&quot;</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    SerialUSB.print((port.<a class="code hl_variable" href="structFieldSensorPortState.html#af89826505eb39df49f4c817e11426e26">port_present</a> != 0U) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;serial&quot;</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(serial.<a class="code hl_variable" href="structLcpFieldPortConfig.html#afd429d00460fb8543fa11b659e73bab5">baudrate</a>));</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    SerialUSB.print(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    SerialUSB.print(<a class="code hl_function" href="diagnostic__output_8hpp.html#ae14f83449ef365323aeecbcd468d8d2d">diagnostic_uart_frame_text</a>(serial.<a class="code hl_variable" href="structLcpFieldPortConfig.html#afd29fdeaa3628b26eea65d57b2530383">frame</a>));</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;request_slave&quot;</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">config</a>.<a class="code hl_variable" href="structFieldSensorConfig.html#a72f52485de02ddbf41413879e2713e55">slave_address</a>));</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;function&quot;</span>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    SerialUSB.print(<span class="stringliteral">&quot;0x03, &quot;</span>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;start_register&quot;</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">config</a>.<a class="code hl_variable" href="structFieldSensorConfig.html#a99476a98c87f69aa822bd311f6cadd1b">start_register</a>));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;register_count&quot;</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">config</a>.<a class="code hl_variable" href="structFieldSensorConfig.html#aede82d3a9c97a152c6a91e68dd7949c6">register_count</a>));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;poll_period_ms&quot;</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">config</a>.<a class="code hl_variable" href="structFieldSensorConfig.html#a79e861dd0ebef2b346774de1c8fd5f0b">poll_period_ms</a>));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;timeout_ms&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">config</a>.<a class="code hl_variable" href="structFieldSensorConfig.html#a98bc5386622eb00ac084e9a1b182fc75">timeout_ms</a>));</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;connection&quot;</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    SerialUSB.print((port.<a class="code hl_variable" href="structFieldSensorPortState.html#a96c00c32e761301b371346227128f150">connection_lost</a> != 0U) ? <span class="stringliteral">&quot;lost&quot;</span> : <span class="stringliteral">&quot;online&quot;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;valid&quot;</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    SerialUSB.print((port.<a class="code hl_variable" href="structFieldSensorPortState.html#ad97c47d2f11bc54ba45379e6b2354493">valid</a> != 0U) ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;request&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    SerialUSB.print((port.<a class="code hl_variable" href="structFieldSensorPortState.html#ad15ed1e9a8864fbea2300f44c6e9b502">request_active</a> != 0U) ? <span class="stringliteral">&quot;busy&quot;</span> : <span class="stringliteral">&quot;idle&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;last_result&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    SerialUSB.print(<a class="code hl_function" href="modbus__rtu__master_8cpp.html#a09235e5831ef036ae961db02886a2895">modbus_rtu_result_text</a>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#ac5ceb42884164b702da91cd04bfe216d">last_result</a>));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;exception_code&quot;</span>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#adbd2e7008879d90cea9a73a0ef46d941">last_exception_code</a>));</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;register[0]&quot;</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a8a2e7ef2883f15a7d4f425e75829c8c5">registers</a>[0]));</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;register[1]&quot;</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a8a2e7ef2883f15a7d4f425e75829c8c5">registers</a>[1]));</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;success&quot;</span>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a2858cb236d8188ed827bdd74f1dca81b">successful_poll_count</a>));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;failed&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#ad7e7c66dd5188261b7acf4d3d8310536">failed_poll_count</a>));</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;consecutive_failures&quot;</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a5a5d828c3559b832f1b4b37391c33bd1">consecutive_failures</a>));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;uart_errors&quot;</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="lcp__field__ports_8cpp.html#a680ae2469fb74cfd75813bd15b723c61">lcp_field_port_error_count</a>(port_id)));</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;last_update_ms&quot;</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(port.<a class="code hl_variable" href="structFieldSensorPortState.html#a6d9bfc6ffeefddc27b5a9a7b4dcbda68">last_update_ms</a>));</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">if</span> (port.<a class="code hl_variable" href="structFieldSensorPortState.html#a6d9bfc6ffeefddc27b5a9a7b4dcbda68">last_update_ms</a> != 0U)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">const</span> uint32_t age_ms = now_ms - port.<a class="code hl_variable" href="structFieldSensorPortState.html#a6d9bfc6ffeefddc27b5a9a7b4dcbda68">last_update_ms</a>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;age_ms&quot;</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(age_ms));</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;age_human&quot;</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#a6ac45276c2a7af4783f42c18debdcbec">diagnostic_print_duration</a>(age_ms);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;age&quot;</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        SerialUSB.print(<span class="stringliteral">&quot;never&quot;</span>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="field__status_8cpp.html#a2e6b8d20affbaa8f831bbe2e038a4e0c">  120</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="field__status_8cpp.html#a2e6b8d20affbaa8f831bbe2e038a4e0c">field_status_print_report</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>{</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a>(<span class="stringliteral">&quot;FIELDSENSOR S1..S4&quot;</span>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;service&quot;</span>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    SerialUSB.print((<a class="code hl_function" href="field__sensor__service_8cpp.html#aad3294373a1d7f91bda717cc95d44fad">field_sensor_service_paused</a>() != 0U) ?</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                    <span class="stringliteral">&quot;paused&quot;</span> : <span class="stringliteral">&quot;running&quot;</span>);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;config_reload&quot;</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    SerialUSB.print((<a class="code hl_function" href="field__sensor__service_8cpp.html#a8679300a7d722738a2e0188cff55325b">field_sensor_service_config_reload_pending</a>() != 0U) ?</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                    <span class="stringliteral">&quot;pending&quot;</span> : <span class="stringliteral">&quot;idle&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;device_model&quot;</span>);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    SerialUSB.print(<span class="stringliteral">&quot;hardcoded baseline example\r\n&quot;</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;device_config_location&quot;</span>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    SerialUSB.print(<span class="stringliteral">&quot;field_sensor_service.cpp\r\n&quot;</span>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;serial_config_source&quot;</span>);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    SerialUSB.print(<a class="code hl_function" href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">lcp_config_source_text</a>(<a class="code hl_function" href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">lcp_config_service_source</a>()));</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    SerialUSB.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_function" href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a>(<span class="stringliteral">&quot;config_generation&quot;</span>);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    SerialUSB.print(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <a class="code hl_function" href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">lcp_config_service_generation</a>()));</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    SerialUSB.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">for</span> (uint8_t index = 0U;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>         index &lt; <a class="code hl_function" href="field__sensor__service_8cpp.html#ad2a2c6c1cf146b86870c4d0a595c7380">field_sensor_service_port_count</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>         ++index)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        print_port(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a><span class="keyword">&gt;</span>(index));</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
+</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="field__status_8cpp.html#aed83d947bd03269d64c0538009390da7">  154</a></span>uint8_t <a class="code hl_function" href="field__status_8cpp.html#aed83d947bd03269d64c0538009390da7">field_status_handle_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* command)</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>{</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">if</span> (command == 0)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    {</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">if</span> ((strcmp(command, <span class="stringliteral">&quot;field&quot;</span>) == 0) ||</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        (strcmp(command, <span class="stringliteral">&quot;field status&quot;</span>) == 0))</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <a class="code hl_function" href="field__status_8cpp.html#a2e6b8d20affbaa8f831bbe2e038a4e0c">field_status_print_report</a>();</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    }</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">if</span> (strcmp(command, <span class="stringliteral">&quot;field pause&quot;</span>) == 0)</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <a class="code hl_function" href="field__sensor__service_8cpp.html#a29de9be01c90990ab1589553d50d4692">field_sensor_service_pause</a>();</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        SerialUSB.print(<span class="stringliteral">&quot;FieldSensor pause requested\r\n&quot;</span>);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        SerialUSB.print(<span class="stringliteral">&quot;active requests may finish; no new requests start\r\n&quot;</span>);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    }</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">if</span> (strcmp(command, <span class="stringliteral">&quot;field resume&quot;</span>) == 0)</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    {</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <a class="code hl_function" href="field__sensor__service_8cpp.html#a83ef064f7f35b3d5e0a18eec3d0cee21">field_sensor_service_resume</a>();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        SerialUSB.print(<span class="stringliteral">&quot;FieldSensor polling = running\r\n&quot;</span>);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">if</span> (strcmp(command, <span class="stringliteral">&quot;field reload&quot;</span>) == 0)</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <a class="code hl_function" href="field__sensor__service_8cpp.html#ae0426263d48d47ec8a9bcf062ec673c5">field_sensor_service_request_config_reload</a>();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        SerialUSB.print(<span class="stringliteral">&quot;FieldSensor active configuration reload = pending\r\n&quot;</span>);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="keywordflow">return</span> 1U;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    }</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">return</span> 0U;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>}</div>
+</div>
+<div class="ttc" id="adiagnostic__output_8hpp_html"><div class="ttname"><a href="diagnostic__output_8hpp.html">diagnostic_output.hpp</a></div><div class="ttdoc">Общие функции форматирования USB service console.</div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_a6ac45276c2a7af4783f42c18debdcbec"><div class="ttname"><a href="diagnostic__output_8hpp.html#a6ac45276c2a7af4783f42c18debdcbec">diagnostic_print_duration</a></div><div class="ttdeci">void diagnostic_print_duration(uint32_t milliseconds)</div><div class="ttdoc">Печатает длительность в привычном виде D d HH:MM:SS.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00167">diagnostic_output.hpp:167</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_a98e20bd6f28d90b4dbb96fca4e745b16"><div class="ttname"><a href="diagnostic__output_8hpp.html#a98e20bd6f28d90b4dbb96fca4e745b16">diagnostic_print_section</a></div><div class="ttdeci">void diagnostic_print_section(const char *title)</div><div class="ttdoc">Печатает заголовок самостоятельной диагностической подсистемы.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00051">diagnostic_output.hpp:51</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_abd5ca920d141d5dcd55e7e476cda50a5"><div class="ttname"><a href="diagnostic__output_8hpp.html#abd5ca920d141d5dcd55e7e476cda50a5">diagnostic_print_assignment</a></div><div class="ttdeci">void diagnostic_print_assignment(const char *name)</div><div class="ttdoc">Печатает имя параметра и разделитель  = .</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00080">diagnostic_output.hpp:80</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_ad844b507f5b788115cf38879b2fea020"><div class="ttname"><a href="diagnostic__output_8hpp.html#ad844b507f5b788115cf38879b2fea020">diagnostic_print_group</a></div><div class="ttdeci">void diagnostic_print_group(const char *title)</div><div class="ttdoc">Печатает заголовок логической группы внутри одного отчёта.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00065">diagnostic_output.hpp:65</a></div></div>
+<div class="ttc" id="adiagnostic__output_8hpp_html_ae14f83449ef365323aeecbcd468d8d2d"><div class="ttname"><a href="diagnostic__output_8hpp.html#ae14f83449ef365323aeecbcd468d8d2d">diagnostic_uart_frame_text</a></div><div class="ttdeci">const char * diagnostic_uart_frame_text(HalUartFrame frame)</div><div class="ttdoc">Возвращает человекочитаемое имя формата UART.</div><div class="ttdef"><b>Определения</b> <a href="diagnostic__output_8hpp_source.html#l00110">diagnostic_output.hpp:110</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_a0f22d1bc54e8f52bc23a4cc39ae543fa"><div class="ttname"><a href="field__sensor__service_8cpp.html#a0f22d1bc54e8f52bc23a4cc39ae543fa">field_sensor_service_port</a></div><div class="ttdeci">const FieldSensorPortState &amp; field_sensor_service_port(LcpFieldPortId port_id)</div><div class="ttdoc">Возвращает runtime выбранного физического порта.</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00301">field_sensor_service.cpp:301</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_a1a7e5d721542fc192fe257ef9daba232"><div class="ttname"><a href="field__sensor__service_8cpp.html#a1a7e5d721542fc192fe257ef9daba232">field_sensor_role_text</a></div><div class="ttdeci">const char * field_sensor_role_text(FieldPortRole role)</div><div class="ttdoc">Возвращает строку роли порта.</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00311">field_sensor_service.cpp:311</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_a29de9be01c90990ab1589553d50d4692"><div class="ttname"><a href="field__sensor__service_8cpp.html#a29de9be01c90990ab1589553d50d4692">field_sensor_service_pause</a></div><div class="ttdeci">void field_sensor_service_pause(void)</div><div class="ttdoc">Запрещает новые запросы; уже активные транзакции завершаются штатно.</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00262">field_sensor_service.cpp:262</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_a83ef064f7f35b3d5e0a18eec3d0cee21"><div class="ttname"><a href="field__sensor__service_8cpp.html#a83ef064f7f35b3d5e0a18eec3d0cee21">field_sensor_service_resume</a></div><div class="ttdeci">void field_sensor_service_resume(void)</div><div class="ttdoc">Возобновляет опрос и немедленно планирует idle-порты.</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00267">field_sensor_service.cpp:267</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_a8679300a7d722738a2e0188cff55325b"><div class="ttname"><a href="field__sensor__service_8cpp.html#a8679300a7d722738a2e0188cff55325b">field_sensor_service_config_reload_pending</a></div><div class="ttdeci">uint8_t field_sensor_service_config_reload_pending(void)</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00291">field_sensor_service.cpp:291</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_aad3294373a1d7f91bda717cc95d44fad"><div class="ttname"><a href="field__sensor__service_8cpp.html#aad3294373a1d7f91bda717cc95d44fad">field_sensor_service_paused</a></div><div class="ttdeci">uint8_t field_sensor_service_paused(void)</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00281">field_sensor_service.cpp:281</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_ad2a2c6c1cf146b86870c4d0a595c7380"><div class="ttname"><a href="field__sensor__service_8cpp.html#ad2a2c6c1cf146b86870c4d0a595c7380">field_sensor_service_port_count</a></div><div class="ttdeci">uint8_t field_sensor_service_port_count(void)</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00306">field_sensor_service.cpp:306</a></div></div>
+<div class="ttc" id="afield__sensor__service_8cpp_html_ae0426263d48d47ec8a9bcf062ec673c5"><div class="ttname"><a href="field__sensor__service_8cpp.html#ae0426263d48d47ec8a9bcf062ec673c5">field_sensor_service_request_config_reload</a></div><div class="ttdeci">void field_sensor_service_request_config_reload(void)</div><div class="ttdoc">Запрашивает безопасное повторное чтение baud.TXT и Parity.TXT.</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8cpp_source.html#l00286">field_sensor_service.cpp:286</a></div></div>
+<div class="ttc" id="afield__sensor__service_8hpp_html"><div class="ttname"><a href="field__sensor__service_8hpp.html">field_sensor_service.hpp</a></div><div class="ttdoc">Демонстрационный Modbus RTU master на физических портах S1..S4.</div></div>
+<div class="ttc" id="afield__status_8cpp_html_a2e6b8d20affbaa8f831bbe2e038a4e0c"><div class="ttname"><a href="field__status_8cpp.html#a2e6b8d20affbaa8f831bbe2e038a4e0c">field_status_print_report</a></div><div class="ttdeci">void field_status_print_report(void)</div><div class="ttdoc">Печатает конфигурацию, значения, качество и счётчики S1..S4.</div><div class="ttdef"><b>Определения</b> <a href="#l00120">field_status.cpp:120</a></div></div>
+<div class="ttc" id="afield__status_8cpp_html_aed83d947bd03269d64c0538009390da7"><div class="ttname"><a href="field__status_8cpp.html#aed83d947bd03269d64c0538009390da7">field_status_handle_command</a></div><div class="ttdeci">uint8_t field_status_handle_command(const char *command)</div><div class="ttdoc">Обрабатывает семейство команд FieldSensor.</div><div class="ttdef"><b>Определения</b> <a href="#l00154">field_status.cpp:154</a></div></div>
+<div class="ttc" id="afield__status_8hpp_html"><div class="ttname"><a href="field__status_8hpp.html">field_status.hpp</a></div><div class="ttdoc">Service console для демонстрационного FieldSensor на S1..S4.</div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a4da8cdd14d781ba60f5cce22724d748d"><div class="ttname"><a href="lcp__config__service_8cpp.html#a4da8cdd14d781ba60f5cce22724d748d">lcp_config_source_text</a></div><div class="ttdeci">const char * lcp_config_source_text(LcpConfigSource source)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8cpp_source.html#l00730">lcp_config_service.cpp:730</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_a58ffd583a0dbd41d8e2dba711c2db163"><div class="ttname"><a href="lcp__config__service_8cpp.html#a58ffd583a0dbd41d8e2dba711c2db163">lcp_config_service_generation</a></div><div class="ttdeci">uint32_t lcp_config_service_generation(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8cpp_source.html#l00577">lcp_config_service.cpp:577</a></div></div>
+<div class="ttc" id="alcp__config__service_8cpp_html_ae18c9ed72f3f15ae3e4ad165d355f2c8"><div class="ttname"><a href="lcp__config__service_8cpp.html#ae18c9ed72f3f15ae3e4ad165d355f2c8">lcp_config_service_source</a></div><div class="ttdeci">LcpConfigSource lcp_config_service_source(void)</div><div class="ttdef"><b>Определения</b> <a href="lcp__config__service_8cpp_source.html#l00582">lcp_config_service.cpp:582</a></div></div>
+<div class="ttc" id="alcp__config__service_8hpp_html"><div class="ttname"><a href="lcp__config__service_8hpp.html">lcp_config_service.hpp</a></div><div class="ttdoc">Надёжное A/B-хранилище конфигурации во внутренней Flash ATSAM3X8E.</div></div>
+<div class="ttc" id="alcp__field__ports_8cpp_html_a49b656f7322622a9ac2209f2fa5d1f50"><div class="ttname"><a href="lcp__field__ports_8cpp.html#a49b656f7322622a9ac2209f2fa5d1f50">lcp_field_port_name</a></div><div class="ttdeci">const char * lcp_field_port_name(LcpFieldPortId port_id)</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8cpp_source.html#l00259">lcp_field_ports.cpp:259</a></div></div>
+<div class="ttc" id="alcp__field__ports_8cpp_html_a57e7bfb9eabf1adfab2f5503dd565c04"><div class="ttname"><a href="lcp__field__ports_8cpp.html#a57e7bfb9eabf1adfab2f5503dd565c04">lcp_field_port_config</a></div><div class="ttdeci">const LcpFieldPortConfig &amp; lcp_field_port_config(LcpFieldPortId port_id)</div><div class="ttdoc">Возвращает фактически применённые аппаратные параметры.</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8cpp_source.html#l00264">lcp_field_ports.cpp:264</a></div></div>
+<div class="ttc" id="alcp__field__ports_8cpp_html_a680ae2469fb74cfd75813bd15b723c61"><div class="ttname"><a href="lcp__field__ports_8cpp.html#a680ae2469fb74cfd75813bd15b723c61">lcp_field_port_error_count</a></div><div class="ttdeci">uint32_t lcp_field_port_error_count(LcpFieldPortId port_id)</div><div class="ttdoc">Возвращает накопительный счётчик аппаратных ошибок RX.</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8cpp_source.html#l00269">lcp_field_ports.cpp:269</a></div></div>
+<div class="ttc" id="alcp__field__ports_8hpp_html"><div class="ttname"><a href="lcp__field__ports_8hpp.html">lcp_field_ports.hpp</a></div><div class="ttdoc">Аппаратные Modbus RTU transports пользовательских портов S1..S4.</div></div>
+<div class="ttc" id="alcp__field__ports_8hpp_html_a903f26f067c7ad34f8fa3213f7b2da41"><div class="ttname"><a href="lcp__field__ports_8hpp.html#a903f26f067c7ad34f8fa3213f7b2da41">LcpFieldPortId</a></div><div class="ttdeci">LcpFieldPortId</div><div class="ttdoc">Стабильный идентификатор физического последовательного порта Lorentz.</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8hpp_source.html#l00014">lcp_field_ports.hpp:15</a></div></div>
+<div class="ttc" id="amodbus__rtu__master_8cpp_html_a09235e5831ef036ae961db02886a2895"><div class="ttname"><a href="modbus__rtu__master_8cpp.html#a09235e5831ef036ae961db02886a2895">modbus_rtu_result_text</a></div><div class="ttdeci">const char * modbus_rtu_result_text(ModbusRtuResult result)</div><div class="ttdef"><b>Определения</b> <a href="modbus__rtu__master_8cpp_source.html#l00442">modbus_rtu_master.cpp:442</a></div></div>
+<div class="ttc" id="aplatform_8hpp_html"><div class="ttname"><a href="platform_8hpp.html">platform.hpp</a></div><div class="ttdoc">Верхний платформенный интерфейс проекта.</div></div>
+<div class="ttc" id="aplatform_8hpp_html_acd8d13c328bebdf9eddea27ff9448c2d"><div class="ttname"><a href="platform_8hpp.html#acd8d13c328bebdf9eddea27ff9448c2d">millis</a></div><div class="ttdeci">uint32_t millis(void)</div><div class="ttdoc">Возвращает время работы прошивки в миллисекундах.</div><div class="ttdef"><b>Определения</b> <a href="platform__time_8cpp_source.html#l00074">platform_time.cpp:74</a></div></div>
+<div class="ttc" id="astructFieldSensorConfig_html_a2fc444621f13f69d0ca37d85b987836b"><div class="ttname"><a href="structFieldSensorConfig.html#a2fc444621f13f69d0ca37d85b987836b">FieldSensorConfig::role</a></div><div class="ttdeci">FieldPortRole role</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00065">field_sensor_service.hpp:65</a></div></div>
+<div class="ttc" id="astructFieldSensorConfig_html_a72f52485de02ddbf41413879e2713e55"><div class="ttname"><a href="structFieldSensorConfig.html#a72f52485de02ddbf41413879e2713e55">FieldSensorConfig::slave_address</a></div><div class="ttdeci">uint8_t slave_address</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00066">field_sensor_service.hpp:66</a></div></div>
+<div class="ttc" id="astructFieldSensorConfig_html_a79e861dd0ebef2b346774de1c8fd5f0b"><div class="ttname"><a href="structFieldSensorConfig.html#a79e861dd0ebef2b346774de1c8fd5f0b">FieldSensorConfig::poll_period_ms</a></div><div class="ttdeci">uint32_t poll_period_ms</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00069">field_sensor_service.hpp:69</a></div></div>
+<div class="ttc" id="astructFieldSensorConfig_html_a98bc5386622eb00ac084e9a1b182fc75"><div class="ttname"><a href="structFieldSensorConfig.html#a98bc5386622eb00ac084e9a1b182fc75">FieldSensorConfig::timeout_ms</a></div><div class="ttdeci">uint32_t timeout_ms</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00070">field_sensor_service.hpp:70</a></div></div>
+<div class="ttc" id="astructFieldSensorConfig_html_a99476a98c87f69aa822bd311f6cadd1b"><div class="ttname"><a href="structFieldSensorConfig.html#a99476a98c87f69aa822bd311f6cadd1b">FieldSensorConfig::start_register</a></div><div class="ttdeci">uint16_t start_register</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00067">field_sensor_service.hpp:67</a></div></div>
+<div class="ttc" id="astructFieldSensorConfig_html_aede82d3a9c97a152c6a91e68dd7949c6"><div class="ttname"><a href="structFieldSensorConfig.html#aede82d3a9c97a152c6a91e68dd7949c6">FieldSensorConfig::register_count</a></div><div class="ttdeci">uint16_t register_count</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00068">field_sensor_service.hpp:68</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html"><div class="ttname"><a href="structFieldSensorPortState.html">FieldSensorPortState</a></div><div class="ttdoc">Runtime одного физического FieldSensor-порта.</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00082">field_sensor_service.hpp:83</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_a04dd2049aa6dc812ac68de1470ddeb91"><div class="ttname"><a href="structFieldSensorPortState.html#a04dd2049aa6dc812ac68de1470ddeb91">FieldSensorPortState::config</a></div><div class="ttdeci">FieldSensorConfig config</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00084">field_sensor_service.hpp:84</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_a2858cb236d8188ed827bdd74f1dca81b"><div class="ttname"><a href="structFieldSensorPortState.html#a2858cb236d8188ed827bdd74f1dca81b">FieldSensorPortState::successful_poll_count</a></div><div class="ttdeci">uint32_t successful_poll_count</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00094">field_sensor_service.hpp:94</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_a5a5d828c3559b832f1b4b37391c33bd1"><div class="ttname"><a href="structFieldSensorPortState.html#a5a5d828c3559b832f1b4b37391c33bd1">FieldSensorPortState::consecutive_failures</a></div><div class="ttdeci">uint8_t consecutive_failures</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00091">field_sensor_service.hpp:91</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_a6d9bfc6ffeefddc27b5a9a7b4dcbda68"><div class="ttname"><a href="structFieldSensorPortState.html#a6d9bfc6ffeefddc27b5a9a7b4dcbda68">FieldSensorPortState::last_update_ms</a></div><div class="ttdeci">uint32_t last_update_ms</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00096">field_sensor_service.hpp:96</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_a8a2e7ef2883f15a7d4f425e75829c8c5"><div class="ttname"><a href="structFieldSensorPortState.html#a8a2e7ef2883f15a7d4f425e75829c8c5">FieldSensorPortState::registers</a></div><div class="ttdeci">uint16_t registers[FIELD_SENSOR_REGISTER_COUNT]</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00086">field_sensor_service.hpp:86</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_a96c00c32e761301b371346227128f150"><div class="ttname"><a href="structFieldSensorPortState.html#a96c00c32e761301b371346227128f150">FieldSensorPortState::connection_lost</a></div><div class="ttdeci">uint8_t connection_lost</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00090">field_sensor_service.hpp:90</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_ac5ceb42884164b702da91cd04bfe216d"><div class="ttname"><a href="structFieldSensorPortState.html#ac5ceb42884164b702da91cd04bfe216d">FieldSensorPortState::last_result</a></div><div class="ttdeci">ModbusRtuResult last_result</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00093">field_sensor_service.hpp:93</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_ad15ed1e9a8864fbea2300f44c6e9b502"><div class="ttname"><a href="structFieldSensorPortState.html#ad15ed1e9a8864fbea2300f44c6e9b502">FieldSensorPortState::request_active</a></div><div class="ttdeci">uint8_t request_active</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00088">field_sensor_service.hpp:88</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_ad7e7c66dd5188261b7acf4d3d8310536"><div class="ttname"><a href="structFieldSensorPortState.html#ad7e7c66dd5188261b7acf4d3d8310536">FieldSensorPortState::failed_poll_count</a></div><div class="ttdeci">uint32_t failed_poll_count</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00095">field_sensor_service.hpp:95</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_ad97c47d2f11bc54ba45379e6b2354493"><div class="ttname"><a href="structFieldSensorPortState.html#ad97c47d2f11bc54ba45379e6b2354493">FieldSensorPortState::valid</a></div><div class="ttdeci">uint8_t valid</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00089">field_sensor_service.hpp:89</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_adbd2e7008879d90cea9a73a0ef46d941"><div class="ttname"><a href="structFieldSensorPortState.html#adbd2e7008879d90cea9a73a0ef46d941">FieldSensorPortState::last_exception_code</a></div><div class="ttdeci">uint8_t last_exception_code</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00092">field_sensor_service.hpp:92</a></div></div>
+<div class="ttc" id="astructFieldSensorPortState_html_af89826505eb39df49f4c817e11426e26"><div class="ttname"><a href="structFieldSensorPortState.html#af89826505eb39df49f4c817e11426e26">FieldSensorPortState::port_present</a></div><div class="ttdeci">uint8_t port_present</div><div class="ttdef"><b>Определения</b> <a href="field__sensor__service_8hpp_source.html#l00087">field_sensor_service.hpp:87</a></div></div>
+<div class="ttc" id="astructLcpFieldPortConfig_html"><div class="ttname"><a href="structLcpFieldPortConfig.html">LcpFieldPortConfig</a></div><div class="ttdoc">Физические параметры одного пользовательского UART.</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8hpp_source.html#l00024">lcp_field_ports.hpp:25</a></div></div>
+<div class="ttc" id="astructLcpFieldPortConfig_html_afd29fdeaa3628b26eea65d57b2530383"><div class="ttname"><a href="structLcpFieldPortConfig.html#afd29fdeaa3628b26eea65d57b2530383">LcpFieldPortConfig::frame</a></div><div class="ttdeci">HalUartFrame frame</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8hpp_source.html#l00027">lcp_field_ports.hpp:27</a></div></div>
+<div class="ttc" id="astructLcpFieldPortConfig_html_afd429d00460fb8543fa11b659e73bab5"><div class="ttname"><a href="structLcpFieldPortConfig.html#afd429d00460fb8543fa11b659e73bab5">LcpFieldPortConfig::baudrate</a></div><div class="ttdeci">uint32_t baudrate</div><div class="ttdef"><b>Определения</b> <a href="lcp__field__ports_8hpp_source.html#l00026">lcp_field_ports.hpp:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="field__status_8cpp.html">field_status.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

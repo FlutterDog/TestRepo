@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Пространство имен anonymous_namespace{lai_board.cpp}</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespaceanonymous__namespace_02lai__board_8cpp_03.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Пространство имен anonymous_namespace{lai_board.cpp}</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a3a182fcf9d2fc0382903a3687bbbeefe" id="r_a3a182fcf9d2fc0382903a3687bbbeefe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a182fcf9d2fc0382903a3687bbbeefe">setPortBits</a> (volatile uint8_t &amp;port, uint8_t mask)</td></tr>
+<tr class="memdesc:a3a182fcf9d2fc0382903a3687bbbeefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает биты в регистре порта.  <br /></td></tr>
+<tr class="memitem:aabd8437352089e1efbce123e241fe5e4" id="r_aabd8437352089e1efbce123e241fe5e4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabd8437352089e1efbce123e241fe5e4">clearPortBits</a> (volatile uint8_t &amp;port, uint8_t mask)</td></tr>
+<tr class="memdesc:aabd8437352089e1efbce123e241fe5e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбрасывает биты в регистре порта.  <br /></td></tr>
+<tr class="memitem:ae3cb90dd060237750099982a31229e05" id="r_ae3cb90dd060237750099982a31229e05"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3cb90dd060237750099982a31229e05">isPinLow</a> (volatile uint8_t &amp;pinReg, uint8_t mask)</td></tr>
+<tr class="memdesc:ae3cb90dd060237750099982a31229e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет, находится ли входная линия в низком уровне.  <br /></td></tr>
+<tr class="memitem:aace07a681b14961a9e449f14b8c92d9a" id="r_aace07a681b14961a9e449f14b8c92d9a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aace07a681b14961a9e449f14b8c92d9a">selectLedRegister</a> (void)</td></tr>
+<tr class="memdesc:aace07a681b14961a9e449f14b8c92d9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Активирует выбор SPI-регистра светодиодов.  <br /></td></tr>
+<tr class="memitem:acb024c18735975a613348a17d22858f1" id="r_acb024c18735975a613348a17d22858f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb024c18735975a613348a17d22858f1">deselectLedRegister</a> (void)</td></tr>
+<tr class="memdesc:acb024c18735975a613348a17d22858f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деактивирует выбор SPI-регистра светодиодов.  <br /></td></tr>
+<tr class="memitem:ad06b3d70b8cfaee2a7cfc2a0431acaf7" id="r_ad06b3d70b8cfaee2a7cfc2a0431acaf7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad06b3d70b8cfaee2a7cfc2a0431acaf7">selectModeRegister</a> (void)</td></tr>
+<tr class="memdesc:ad06b3d70b8cfaee2a7cfc2a0431acaf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Активирует выбор SPI-регистра режимов аналоговых входов.  <br /></td></tr>
+<tr class="memitem:ad6e789fc5390c3b6054d7384924740b1" id="r_ad6e789fc5390c3b6054d7384924740b1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6e789fc5390c3b6054d7384924740b1">deselectModeRegister</a> (void)</td></tr>
+<tr class="memdesc:ad6e789fc5390c3b6054d7384924740b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деактивирует выбор SPI-регистра режимов аналоговых входов.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:aa0fdd35c8068c977697126ee5ff9f711" id="r_aa0fdd35c8068c977697126ee5ff9f711"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0fdd35c8068c977697126ee5ff9f711">RS485_DE_MASK</a> = _BV(PD2)</td></tr>
+<tr class="memdesc:aa0fdd35c8068c977697126ee5ff9f711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии управления направлением RS-485.  <br /></td></tr>
+<tr class="memitem:a99dc913293929162868bc95b84e68021" id="r_a99dc913293929162868bc95b84e68021"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99dc913293929162868bc95b84e68021">LED_SS_MASK</a> = _BV(PD3)</td></tr>
+<tr class="memdesc:a99dc913293929162868bc95b84e68021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии выбора SPI-регистра светодиодов.  <br /></td></tr>
+<tr class="memitem:ad4e2cab9b1b6e2ec3b9522a173ec8878" id="r_ad4e2cab9b1b6e2ec3b9522a173ec8878"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4e2cab9b1b6e2ec3b9522a173ec8878">MODE_SS_MASK</a> = _BV(PD4)</td></tr>
+<tr class="memdesc:ad4e2cab9b1b6e2ec3b9522a173ec8878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии выбора SPI-регистра режимов аналоговых входов.  <br /></td></tr>
+<tr class="memitem:a8a8261ad9d024dc0d71f1cd0becf238f" id="r_a8a8261ad9d024dc0d71f1cd0becf238f"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a8261ad9d024dc0d71f1cd0becf238f">SHIFT_ENABLE_MASK</a> = _BV(PD5)</td></tr>
+<tr class="memdesc:a8a8261ad9d024dc0d71f1cd0becf238f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска линии разрешения сдвиговых регистров.  <br /></td></tr>
+<tr class="memitem:a410f6a79c45a0dc2f8884e77313b6728" id="r_a410f6a79c45a0dc2f8884e77313b6728"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a410f6a79c45a0dc2f8884e77313b6728">ADDR_D_MASK</a> = static_cast&lt;uint8_t&gt;(_BV(PD6) | _BV(PD7))</td></tr>
+<tr class="memdesc:a410f6a79c45a0dc2f8884e77313b6728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска адресных входов на порту D.  <br /></td></tr>
+<tr class="memitem:aa1d53cd73bfd3b55c2607a7cbe609657" id="r_aa1d53cd73bfd3b55c2607a7cbe609657"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1d53cd73bfd3b55c2607a7cbe609657">ADDR_B_MASK</a> = static_cast&lt;uint8_t&gt;(_BV(PB0) | _BV(PB1) | _BV(PB2))</td></tr>
+<tr class="memdesc:aa1d53cd73bfd3b55c2607a7cbe609657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска адресных входов на порту B.  <br /></td></tr>
+<tr class="memitem:a0e9526e23de0a855f90a2d6a1a9abbfc" id="r_a0e9526e23de0a855f90a2d6a1a9abbfc"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e9526e23de0a855f90a2d6a1a9abbfc">STATUS_LED_MASK</a> = _BV(PC0)</td></tr>
+<tr class="memdesc:a0e9526e23de0a855f90a2d6a1a9abbfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска светодиода состояния связи.  <br /></td></tr>
+<tr class="memitem:a4b4c564c68c11601ced4626358cf486f" id="r_a4b4c564c68c11601ced4626358cf486f"><td class="memItemLeft" align="right" valign="top">static volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b4c564c68c11601ced4626358cf486f">s_rs485TransmitMode</a> = 0U</td></tr>
+<tr class="memdesc:a4b4c564c68c11601ced4626358cf486f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущее состояние направления RS-485.  <br /></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="aabd8437352089e1efbce123e241fe5e4" name="aabd8437352089e1efbce123e241fe5e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabd8437352089e1efbce123e241fe5e4">&#9670;&#160;</a></span>clearPortBits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{lai_board.cpp}::clearPortBits </td>
+          <td>(</td>
+          <td class="paramtype">volatile uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Сбрасывает биты в регистре порта. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Регистр PORTx. </td></tr>
+    <tr><td class="paramname">mask</td><td>Маска сбрасываемых битов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00070">70</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>        port &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~mask);</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="lai__board_8cpp_source.html#l00091">selectLedRegister()</a> и <a class="el" href="lai__board_8cpp_source.html#l00107">selectModeRegister()</a>.</p>
+
+</div>
+</div>
+<a id="acb024c18735975a613348a17d22858f1" name="acb024c18735975a613348a17d22858f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb024c18735975a613348a17d22858f1">&#9670;&#160;</a></span>deselectLedRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{lai_board.cpp}::deselectLedRegister </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Деактивирует выбор SPI-регистра светодиодов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00099">99</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span>    {</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_function" href="#a3a182fcf9d2fc0382903a3687bbbeefe">setPortBits</a>(PORTD, <a class="code hl_variable" href="#a99dc913293929162868bc95b84e68021">LED_SS_MASK</a>);</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02lai__board_8cpp_03_html_a3a182fcf9d2fc0382903a3687bbbeefe"><div class="ttname"><a href="#a3a182fcf9d2fc0382903a3687bbbeefe">anonymous_namespace{lai_board.cpp}::setPortBits</a></div><div class="ttdeci">static void setPortBits(volatile uint8_t &amp;port, uint8_t mask)</div><div class="ttdoc">Устанавливает биты в регистре порта.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00059">lai_board.cpp:59</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02lai__board_8cpp_03_html_a99dc913293929162868bc95b84e68021"><div class="ttname"><a href="#a99dc913293929162868bc95b84e68021">anonymous_namespace{lai_board.cpp}::LED_SS_MASK</a></div><div class="ttdeci">static const uint8_t LED_SS_MASK</div><div class="ttdoc">Маска линии выбора SPI-регистра светодиодов.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00018">lai_board.cpp:18</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="lai__board_8cpp_source.html#l00018">LED_SS_MASK</a> и <a class="el" href="lai__board_8cpp_source.html#l00059">setPortBits()</a>.</p>
+
+</div>
+</div>
+<a id="ad6e789fc5390c3b6054d7384924740b1" name="ad6e789fc5390c3b6054d7384924740b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6e789fc5390c3b6054d7384924740b1">&#9670;&#160;</a></span>deselectModeRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{lai_board.cpp}::deselectModeRegister </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Деактивирует выбор SPI-регистра режимов аналоговых входов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00115">115</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>    {</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_function" href="#a3a182fcf9d2fc0382903a3687bbbeefe">setPortBits</a>(PORTD, <a class="code hl_variable" href="#ad4e2cab9b1b6e2ec3b9522a173ec8878">MODE_SS_MASK</a>);</div>
+<div class="line"><span class="lineno">  118</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02lai__board_8cpp_03_html_ad4e2cab9b1b6e2ec3b9522a173ec8878"><div class="ttname"><a href="#ad4e2cab9b1b6e2ec3b9522a173ec8878">anonymous_namespace{lai_board.cpp}::MODE_SS_MASK</a></div><div class="ttdeci">static const uint8_t MODE_SS_MASK</div><div class="ttdoc">Маска линии выбора SPI-регистра режимов аналоговых входов.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00023">lai_board.cpp:23</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="lai__board_8cpp_source.html#l00023">MODE_SS_MASK</a> и <a class="el" href="lai__board_8cpp_source.html#l00059">setPortBits()</a>.</p>
+
+</div>
+</div>
+<a id="ae3cb90dd060237750099982a31229e05" name="ae3cb90dd060237750099982a31229e05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3cb90dd060237750099982a31229e05">&#9670;&#160;</a></span>isPinLow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool anonymous_namespace{lai_board.cpp}::isPinLow </td>
+          <td>(</td>
+          <td class="paramtype">volatile uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>pinReg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Проверяет, находится ли входная линия в низком уровне. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pinReg</td><td>Регистр PINx. </td></tr>
+    <tr><td class="paramname">mask</td><td>Маска проверяемого входа.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true — вход находится в низком уровне; false — вход находится в высоком уровне. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00083">83</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">return</span> ((pinReg &amp; mask) == 0U);</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aace07a681b14961a9e449f14b8c92d9a" name="aace07a681b14961a9e449f14b8c92d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace07a681b14961a9e449f14b8c92d9a">&#9670;&#160;</a></span>selectLedRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{lai_board.cpp}::selectLedRegister </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Активирует выбор SPI-регистра светодиодов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00091">91</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>    {</div>
+<div class="line"><span class="lineno">   93</span>        <a class="code hl_function" href="#aabd8437352089e1efbce123e241fe5e4">clearPortBits</a>(PORTD, <a class="code hl_variable" href="#a99dc913293929162868bc95b84e68021">LED_SS_MASK</a>);</div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02lai__board_8cpp_03_html_aabd8437352089e1efbce123e241fe5e4"><div class="ttname"><a href="#aabd8437352089e1efbce123e241fe5e4">anonymous_namespace{lai_board.cpp}::clearPortBits</a></div><div class="ttdeci">static void clearPortBits(volatile uint8_t &amp;port, uint8_t mask)</div><div class="ttdoc">Сбрасывает биты в регистре порта.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00070">lai_board.cpp:70</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="lai__board_8cpp_source.html#l00070">clearPortBits()</a> и <a class="el" href="lai__board_8cpp_source.html#l00018">LED_SS_MASK</a>.</p>
+
+</div>
+</div>
+<a id="ad06b3d70b8cfaee2a7cfc2a0431acaf7" name="ad06b3d70b8cfaee2a7cfc2a0431acaf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad06b3d70b8cfaee2a7cfc2a0431acaf7">&#9670;&#160;</a></span>selectModeRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{lai_board.cpp}::selectModeRegister </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Активирует выбор SPI-регистра режимов аналоговых входов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00107">107</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>    {</div>
+<div class="line"><span class="lineno">  109</span>        <a class="code hl_function" href="#aabd8437352089e1efbce123e241fe5e4">clearPortBits</a>(PORTD, <a class="code hl_variable" href="#ad4e2cab9b1b6e2ec3b9522a173ec8878">MODE_SS_MASK</a>);</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="lai__board_8cpp_source.html#l00070">clearPortBits()</a> и <a class="el" href="lai__board_8cpp_source.html#l00023">MODE_SS_MASK</a>.</p>
+
+</div>
+</div>
+<a id="a3a182fcf9d2fc0382903a3687bbbeefe" name="a3a182fcf9d2fc0382903a3687bbbeefe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a182fcf9d2fc0382903a3687bbbeefe">&#9670;&#160;</a></span>setPortBits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace{lai_board.cpp}::setPortBits </td>
+          <td>(</td>
+          <td class="paramtype">volatile uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает биты в регистре порта. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Регистр PORTx. </td></tr>
+    <tr><td class="paramname">mask</td><td>Маска устанавливаемых битов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00059">59</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>    {</div>
+<div class="line"><span class="lineno">   61</span>        port |= mask;</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="lai__board_8cpp_source.html#l00099">deselectLedRegister()</a> и <a class="el" href="lai__board_8cpp_source.html#l00115">deselectModeRegister()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="aa1d53cd73bfd3b55c2607a7cbe609657" name="aa1d53cd73bfd3b55c2607a7cbe609657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d53cd73bfd3b55c2607a7cbe609657">&#9670;&#160;</a></span>ADDR_B_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::ADDR_B_MASK = static_cast&lt;uint8_t&gt;(_BV(PB0) | _BV(PB1) | _BV(PB2))</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска адресных входов на порту B. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00038">38</a></p>
+
+</div>
+</div>
+<a id="a410f6a79c45a0dc2f8884e77313b6728" name="a410f6a79c45a0dc2f8884e77313b6728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a410f6a79c45a0dc2f8884e77313b6728">&#9670;&#160;</a></span>ADDR_D_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::ADDR_D_MASK = static_cast&lt;uint8_t&gt;(_BV(PD6) | _BV(PD7))</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска адресных входов на порту D. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00033">33</a></p>
+
+</div>
+</div>
+<a id="a99dc913293929162868bc95b84e68021" name="a99dc913293929162868bc95b84e68021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99dc913293929162868bc95b84e68021">&#9670;&#160;</a></span>LED_SS_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::LED_SS_MASK = _BV(PD3)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии выбора SPI-регистра светодиодов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00018">18</a></p>
+
+<p class="reference">Используется в <a class="el" href="lai__board_8cpp_source.html#l00099">deselectLedRegister()</a> и <a class="el" href="lai__board_8cpp_source.html#l00091">selectLedRegister()</a>.</p>
+
+</div>
+</div>
+<a id="ad4e2cab9b1b6e2ec3b9522a173ec8878" name="ad4e2cab9b1b6e2ec3b9522a173ec8878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e2cab9b1b6e2ec3b9522a173ec8878">&#9670;&#160;</a></span>MODE_SS_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::MODE_SS_MASK = _BV(PD4)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии выбора SPI-регистра режимов аналоговых входов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00023">23</a></p>
+
+<p class="reference">Используется в <a class="el" href="lai__board_8cpp_source.html#l00115">deselectModeRegister()</a> и <a class="el" href="lai__board_8cpp_source.html#l00107">selectModeRegister()</a>.</p>
+
+</div>
+</div>
+<a id="aa0fdd35c8068c977697126ee5ff9f711" name="aa0fdd35c8068c977697126ee5ff9f711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0fdd35c8068c977697126ee5ff9f711">&#9670;&#160;</a></span>RS485_DE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::RS485_DE_MASK = _BV(PD2)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии управления направлением RS-485. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00013">13</a></p>
+
+</div>
+</div>
+<a id="a4b4c564c68c11601ced4626358cf486f" name="a4b4c564c68c11601ced4626358cf486f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4c564c68c11601ced4626358cf486f">&#9670;&#160;</a></span>s_rs485TransmitMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t anonymous_namespace{lai_board.cpp}::s_rs485TransmitMode = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Текущее состояние направления RS-485. </p>
+<p>Ненулевое значение соответствует режиму передачи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00051">51</a></p>
+
+</div>
+</div>
+<a id="a8a8261ad9d024dc0d71f1cd0becf238f" name="a8a8261ad9d024dc0d71f1cd0becf238f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a8261ad9d024dc0d71f1cd0becf238f">&#9670;&#160;</a></span>SHIFT_ENABLE_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::SHIFT_ENABLE_MASK = _BV(PD5)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска линии разрешения сдвиговых регистров. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00028">28</a></p>
+
+</div>
+</div>
+<a id="a0e9526e23de0a855f90a2d6a1a9abbfc" name="a0e9526e23de0a855f90a2d6a1a9abbfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e9526e23de0a855f90a2d6a1a9abbfc">&#9670;&#160;</a></span>STATUS_LED_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t anonymous_namespace{lai_board.cpp}::STATUS_LED_MASK = _BV(PC0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маска светодиода состояния связи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00043">43</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceanonymous__namespace_02lai__board_8cpp_03.html">anonymous_namespace{lai_board.cpp}</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

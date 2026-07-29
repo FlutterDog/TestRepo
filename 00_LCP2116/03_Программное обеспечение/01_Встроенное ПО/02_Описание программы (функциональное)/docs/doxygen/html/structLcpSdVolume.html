@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура LcpSdVolume</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structLcpSdVolume.html','','structLcpSdVolume-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура LcpSdVolume</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:aa2c17f2837f1e2313136d6f4c5451f27" id="r_aa2c17f2837f1e2313136d6f4c5451f27"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2c17f2837f1e2313136d6f4c5451f27">card_type</a></td></tr>
+<tr class="memitem:a76e9f69beabdf6ece224c66ea8ea8d22" id="r_a76e9f69beabdf6ece224c66ea8ea8d22"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76e9f69beabdf6ece224c66ea8ea8d22">cluster_count</a></td></tr>
+<tr class="memitem:a6c9854ce446772b3d4b9ad61b01d3324" id="r_a6c9854ce446772b3d4b9ad61b01d3324"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c9854ce446772b3d4b9ad61b01d3324">data_start_lba</a></td></tr>
+<tr class="memitem:ab69b95fe4deabfedcb78e3bc03358bf3" id="r_ab69b95fe4deabfedcb78e3bc03358bf3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab69b95fe4deabfedcb78e3bc03358bf3">fat_count</a></td></tr>
+<tr class="memitem:aa20f0079ddacf02fca23074ab8db79ba" id="r_aa20f0079ddacf02fca23074ab8db79ba"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa20f0079ddacf02fca23074ab8db79ba">fat_size_sectors</a></td></tr>
+<tr class="memitem:a36a479ab1b17dbe91a197c537e233a54" id="r_a36a479ab1b17dbe91a197c537e233a54"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36a479ab1b17dbe91a197c537e233a54">fat_start_lba</a></td></tr>
+<tr class="memitem:a169907cb4f05603e0a63dd72720c7641" id="r_a169907cb4f05603e0a63dd72720c7641"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a169907cb4f05603e0a63dd72720c7641">fat_type</a></td></tr>
+<tr class="memitem:a668d803e2e37a7facd0fa300b86016b6" id="r_a668d803e2e37a7facd0fa300b86016b6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a668d803e2e37a7facd0fa300b86016b6">partition_lba</a></td></tr>
+<tr class="memitem:ab246bbcdee7ed75c95c2a1ea4d707a92" id="r_ab246bbcdee7ed75c95c2a1ea4d707a92"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab246bbcdee7ed75c95c2a1ea4d707a92">ready</a></td></tr>
+<tr class="memitem:a7f7268ccb4f51d3d36fee4553f7a4e6c" id="r_a7f7268ccb4f51d3d36fee4553f7a4e6c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f7268ccb4f51d3d36fee4553f7a4e6c">root_cluster</a></td></tr>
+<tr class="memitem:ae7cd88762ceae43afd22d4f4798ab761" id="r_ae7cd88762ceae43afd22d4f4798ab761"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7cd88762ceae43afd22d4f4798ab761">root_dir_lba</a></td></tr>
+<tr class="memitem:a9c50f6925cc8c39c777ee6b6ee1f8d67" id="r_a9c50f6925cc8c39c777ee6b6ee1f8d67"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c50f6925cc8c39c777ee6b6ee1f8d67">root_dir_sectors</a></td></tr>
+<tr class="memitem:ac7b01cf91dbb04845dedf2fb4fed3cf6" id="r_ac7b01cf91dbb04845dedf2fb4fed3cf6"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7b01cf91dbb04845dedf2fb4fed3cf6">root_entry_count</a></td></tr>
+<tr class="memitem:a3b00f1db37d158005ee3214cdafa50e6" id="r_a3b00f1db37d158005ee3214cdafa50e6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b00f1db37d158005ee3214cdafa50e6">sectors_per_cluster</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock">
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00040">40</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="aa2c17f2837f1e2313136d6f4c5451f27" name="aa2c17f2837f1e2313136d6f4c5451f27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2c17f2837f1e2313136d6f4c5451f27">&#9670;&#160;</a></span>card_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t LcpSdVolume::card_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00043">43</a></p>
+
+</div>
+</div>
+<a id="a76e9f69beabdf6ece224c66ea8ea8d22" name="a76e9f69beabdf6ece224c66ea8ea8d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76e9f69beabdf6ece224c66ea8ea8d22">&#9670;&#160;</a></span>cluster_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::cluster_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00056">56</a></p>
+
+</div>
+</div>
+<a id="a6c9854ce446772b3d4b9ad61b01d3324" name="a6c9854ce446772b3d4b9ad61b01d3324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c9854ce446772b3d4b9ad61b01d3324">&#9670;&#160;</a></span>data_start_lba</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::data_start_lba</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00054">54</a></p>
+
+</div>
+</div>
+<a id="ab69b95fe4deabfedcb78e3bc03358bf3" name="ab69b95fe4deabfedcb78e3bc03358bf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab69b95fe4deabfedcb78e3bc03358bf3">&#9670;&#160;</a></span>fat_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t LcpSdVolume::fat_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00046">46</a></p>
+
+</div>
+</div>
+<a id="aa20f0079ddacf02fca23074ab8db79ba" name="aa20f0079ddacf02fca23074ab8db79ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20f0079ddacf02fca23074ab8db79ba">&#9670;&#160;</a></span>fat_size_sectors</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::fat_size_sectors</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00051">51</a></p>
+
+</div>
+</div>
+<a id="a36a479ab1b17dbe91a197c537e233a54" name="a36a479ab1b17dbe91a197c537e233a54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36a479ab1b17dbe91a197c537e233a54">&#9670;&#160;</a></span>fat_start_lba</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::fat_start_lba</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00050">50</a></p>
+
+</div>
+</div>
+<a id="a169907cb4f05603e0a63dd72720c7641" name="a169907cb4f05603e0a63dd72720c7641"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a169907cb4f05603e0a63dd72720c7641">&#9670;&#160;</a></span>fat_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t LcpSdVolume::fat_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00044">44</a></p>
+
+</div>
+</div>
+<a id="a668d803e2e37a7facd0fa300b86016b6" name="a668d803e2e37a7facd0fa300b86016b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668d803e2e37a7facd0fa300b86016b6">&#9670;&#160;</a></span>partition_lba</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::partition_lba</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00049">49</a></p>
+
+</div>
+</div>
+<a id="ab246bbcdee7ed75c95c2a1ea4d707a92" name="ab246bbcdee7ed75c95c2a1ea4d707a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab246bbcdee7ed75c95c2a1ea4d707a92">&#9670;&#160;</a></span>ready</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t LcpSdVolume::ready</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00042">42</a></p>
+
+</div>
+</div>
+<a id="a7f7268ccb4f51d3d36fee4553f7a4e6c" name="a7f7268ccb4f51d3d36fee4553f7a4e6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7268ccb4f51d3d36fee4553f7a4e6c">&#9670;&#160;</a></span>root_cluster</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::root_cluster</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00055">55</a></p>
+
+</div>
+</div>
+<a id="ae7cd88762ceae43afd22d4f4798ab761" name="ae7cd88762ceae43afd22d4f4798ab761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7cd88762ceae43afd22d4f4798ab761">&#9670;&#160;</a></span>root_dir_lba</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::root_dir_lba</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00052">52</a></p>
+
+</div>
+</div>
+<a id="a9c50f6925cc8c39c777ee6b6ee1f8d67" name="a9c50f6925cc8c39c777ee6b6ee1f8d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c50f6925cc8c39c777ee6b6ee1f8d67">&#9670;&#160;</a></span>root_dir_sectors</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LcpSdVolume::root_dir_sectors</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a id="ac7b01cf91dbb04845dedf2fb4fed3cf6" name="ac7b01cf91dbb04845dedf2fb4fed3cf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b01cf91dbb04845dedf2fb4fed3cf6">&#9670;&#160;</a></span>root_entry_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t LcpSdVolume::root_entry_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00048">48</a></p>
+
+</div>
+</div>
+<a id="a3b00f1db37d158005ee3214cdafa50e6" name="a3b00f1db37d158005ee3214cdafa50e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b00f1db37d158005ee3214cdafa50e6">&#9670;&#160;</a></span>sectors_per_cluster</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t LcpSdVolume::sectors_per_cluster</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a> строка <a class="el" href="lcp__sd__storage_8cpp_source.html#l00045">45</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>libs/lcp_sd_storage/<a class="el" href="lcp__sd__storage_8cpp_source.html">lcp_sd_storage.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structLcpSdVolume.html">LcpSdVolume</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

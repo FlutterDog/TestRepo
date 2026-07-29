@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/ethernet/ethernet_network_config.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ethernet__network__config_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл ethernet_network_config.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Чтение канонической сетевой конфигурации двух W5500 из microSD.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="sd__config_8hpp_source.html">../diagnostics/sd_config.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="w5500__lite_8hpp_source.html">../../hal/w5500_lite.hpp</a>&quot;</code><br />
+</div>
+<p><a href="ethernet__network__config_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:EthernetNetworkConfigReport" id="r_EthernetNetworkConfigReport"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEthernetNetworkConfigReport.html">EthernetNetworkConfigReport</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Результаты независимого чтения файлов одного Ethernet-интерфейса.  <a href="structEthernetNetworkConfigReport.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a6bc1406503f2eb8cebd88acc0953e8c6" id="r_a6bc1406503f2eb8cebd88acc0953e8c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bc1406503f2eb8cebd88acc0953e8c6">ethernet_network_config_load</a> (<a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a> configs[<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0aef6de26ea1a0477fd67c5674a1e7c8d4">LCP_ETHERNET_COUNT</a>], <a class="el" href="structEthernetNetworkConfigReport.html">EthernetNetworkConfigReport</a> reports[<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0aef6de26ea1a0477fd67c5674a1e7c8d4">LCP_ETHERNET_COUNT</a>])</td></tr>
+<tr class="memdesc:a6bc1406503f2eb8cebd88acc0953e8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает только канонические файлы установленного проекта.  <br /></td></tr>
+<tr class="memitem:a36cb67a66baad806b12c5361d8eece20" id="r_a36cb67a66baad806b12c5361d8eece20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36cb67a66baad806b12c5361d8eece20">ethernet_network_config_prepare_reports</a> (<a class="el" href="structEthernetNetworkConfigReport.html">EthernetNetworkConfigReport</a> reports[<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0aef6de26ea1a0477fd67c5674a1e7c8d4">LCP_ETHERNET_COUNT</a>], <a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> initial_result)</td></tr>
+<tr class="memdesc:a36cb67a66baad806b12c5361d8eece20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует отчёты каноническими именами и единым состоянием.  <br /></td></tr>
+<tr class="memitem:a3052f3df2f6ee13f71e7d43798200cfa" id="r_a3052f3df2f6ee13f71e7d43798200cfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3052f3df2f6ee13f71e7d43798200cfa">ethernet_network_config_set_defaults</a> (<a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a> configs[<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0aef6de26ea1a0477fd67c5674a1e7c8d4">LCP_ETHERNET_COUNT</a>])</td></tr>
+<tr class="memdesc:a3052f3df2f6ee13f71e7d43798200cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заполняет безопасные значения по умолчанию для двух W5500.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Чтение канонической сетевой конфигурации двух W5500 из microSD. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__network__config_8hpp_source.html">ethernet_network_config.hpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a6bc1406503f2eb8cebd88acc0953e8c6" name="a6bc1406503f2eb8cebd88acc0953e8c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bc1406503f2eb8cebd88acc0953e8c6">&#9670;&#160;</a></span>ethernet_network_config_load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernet_network_config_load </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a></td>          <td class="paramname"><span class="paramname"><em>configs</em></span>[LCP_ETHERNET_COUNT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEthernetNetworkConfigReport.html">EthernetNetworkConfigReport</a></td>          <td class="paramname"><span class="paramname"><em>reports</em></span>[LCP_ETHERNET_COUNT]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загружает только канонические файлы установленного проекта. </p>
+<div class="fragment"><div class="line">ETH1: MAC.txt,  IP.txt,  SUBNET.txt,  GATE.txt</div>
+<div class="line">ETH2: MAC2.txt, IP2.txt, SUBNET2.txt, GATE2.txt</div>
+</div><!-- fragment --><p>Каждый файл применяется независимо. Ошибка одного параметра сохраняет его текущее значение, но не блокирует корректные файлы того же интерфейса. Псевдонимы и альтернативные имена намеренно не поддерживаются.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">configs</td><td>Текущие настройки; корректные файлы заменяют поля. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">reports</td><td>Отчёты ETH1 и ETH2. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__network__config_8cpp_source.html">ethernet_network_config.cpp</a> строка <a class="el" href="ethernet__network__config_8cpp_source.html#l00173">173</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="ethernet__network__config_8cpp_source.html#l00158">ethernet_network_config_prepare_reports()</a>, <a class="el" href="lcp__ethernet_8hpp_source.html#l00018">LCP_ETHERNET_COUNT</a> и <a class="el" href="sd__config_8hpp_source.html#l00031">SD_CONFIG_NOT_ATTEMPTED</a>.</p>
+
+</div>
+</div>
+<a id="a36cb67a66baad806b12c5361d8eece20" name="a36cb67a66baad806b12c5361d8eece20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36cb67a66baad806b12c5361d8eece20">&#9670;&#160;</a></span>ethernet_network_config_prepare_reports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernet_network_config_prepare_reports </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEthernetNetworkConfigReport.html">EthernetNetworkConfigReport</a></td>          <td class="paramname"><span class="paramname"><em>reports</em></span>[LCP_ETHERNET_COUNT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a></td>          <td class="paramname"><span class="paramname"><em>initial_result</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует отчёты каноническими именами и единым состоянием. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">reports</td><td>Отчёты ETH1 и ETH2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initial_result</td><td>Начальное состояние каждого из восьми файлов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__network__config_8cpp_source.html">ethernet_network_config.cpp</a> строка <a class="el" href="ethernet__network__config_8cpp_source.html#l00158">158</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8hpp_source.html#l00018">LCP_ETHERNET_COUNT</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="ethernet__network__config_8cpp_source.html#l00173">ethernet_network_config_load()</a>.</p>
+
+</div>
+</div>
+<a id="a3052f3df2f6ee13f71e7d43798200cfa" name="a3052f3df2f6ee13f71e7d43798200cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3052f3df2f6ee13f71e7d43798200cfa">&#9670;&#160;</a></span>ethernet_network_config_set_defaults()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ethernet_network_config_set_defaults </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a></td>          <td class="paramname"><span class="paramname"><em>configs</em></span>[LCP_ETHERNET_COUNT]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Заполняет безопасные значения по умолчанию для двух W5500. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">configs</td><td>Массив конфигураций ETH1 и ETH2. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="ethernet__network__config_8cpp_source.html">ethernet_network_config.cpp</a> строка <a class="el" href="ethernet__network__config_8cpp_source.html#l00133">133</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__ethernet_8hpp_source.html#l00016">LCP_ETHERNET_1</a>, <a class="el" href="lcp__ethernet_8hpp_source.html#l00017">LCP_ETHERNET_2</a> и <a class="el" href="lcp__ethernet_8hpp_source.html#l00018">LCP_ETHERNET_COUNT</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_047e6a9b50704b573e2fe46b4b7b199f.html">ethernet</a></li><li class="navelem"><a href="ethernet__network__config_8hpp.html">ethernet_network_config.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/sam3x_internal_flash.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__internal__flash_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sam3x_internal_flash.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Доступ к зарезервированной области внутренней Flash ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="sam3x__internal__flash_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:ad9062ff5ac0abb3b9aa8d3f957b2061d" id="r_ad9062ff5ac0abb3b9aa8d3f957b2061d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d">SAM3X_INTERNAL_FLASH_OK</a> = 0U
+, <a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061da610516966c91251dc8f23c94c8f48166">SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</a> = 1U
+, <a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061da114a4a21d9198deb382f24dea48ed4a5">SAM3X_INTERNAL_FLASH_OUT_OF_RANGE</a> = 2U
+, <a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061da359ee52a31d697d0280b820dae2f3d62">SAM3X_INTERNAL_FLASH_NOT_READY</a> = 3U
+, <br />
+&#160;&#160;<a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061dac773aee4d9033c50a96644ecc145697e">SAM3X_INTERNAL_FLASH_COMMAND_ERROR</a> = 4U
+, <a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061dab9a69a94453705693db2b4580e5c51dc">SAM3X_INTERNAL_FLASH_LOCK_ERROR</a> = 5U
+, <a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061da9e4a98829ab1576e6e49bc8f713adc79">SAM3X_INTERNAL_FLASH_VERIFY_ERROR</a> = 6U
+<br />
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac332ad8f80f8b16ef95751c8d175dc81" id="r_ac332ad8f80f8b16ef95751c8d175dc81"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac332ad8f80f8b16ef95751c8d175dc81">sam3x_internal_flash_config_end</a> (void)</td></tr>
+<tr class="memitem:aae9a3535adbc5901f3c95c5cc24896a7" id="r_aae9a3535adbc5901f3c95c5cc24896a7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae9a3535adbc5901f3c95c5cc24896a7">sam3x_internal_flash_config_size</a> (void)</td></tr>
+<tr class="memitem:a2adcb382322198bb47afde39f2caf0aa" id="r_a2adcb382322198bb47afde39f2caf0aa"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2adcb382322198bb47afde39f2caf0aa">sam3x_internal_flash_config_start</a> (void)</td></tr>
+<tr class="memitem:ae421d07fcf4176f36c1ce2b61d3b6a87" id="r_ae421d07fcf4176f36c1ce2b61d3b6a87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae421d07fcf4176f36c1ce2b61d3b6a87">sam3x_internal_flash_erase_write_page</a> (uintptr_t page_address, const uint8_t page[<a class="el" href="#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a>])</td></tr>
+<tr class="memdesc:ae421d07fcf4176f36c1ce2b61d3b6a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Стирает и записывает одну страницу Flash1, затем проверяет read-back.  <br /></td></tr>
+<tr class="memitem:addd2167dd70201c321f69fb076b20ff7" id="r_addd2167dd70201c321f69fb076b20ff7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addd2167dd70201c321f69fb076b20ff7">sam3x_internal_flash_read</a> (uintptr_t address, void *output, size_t length)</td></tr>
+<tr class="memdesc:addd2167dd70201c321f69fb076b20ff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает байты из memory-mapped Flash.  <br /></td></tr>
+<tr class="memitem:a36fa3d653c37aa0f54ea9ee6fda5d1f7" id="r_a36fa3d653c37aa0f54ea9ee6fda5d1f7"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36fa3d653c37aa0f54ea9ee6fda5d1f7">sam3x_internal_flash_result_text</a> (<a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> result)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:aacd3da7dd48ea887d2ce41158221d0d1" id="r_aacd3da7dd48ea887d2ce41158221d0d1"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacd3da7dd48ea887d2ce41158221d0d1">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a> = 256U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Доступ к зарезервированной области внутренней Flash ATSAM3X8E. </p>
+<p>Область задаётся linker script символами <span class="tt"><a class="el" href="sam3x__internal__flash_8cpp.html#ad6a7ca8eaff2409454c0c448fd395842">_config_flash_start</a></span> и <span class="tt"><a class="el" href="sam3x__internal__flash_8cpp.html#a478f67f2c03dc896216c8e4593787ef0">_config_flash_end</a></span>. Запись выполняется только полными страницами 256 байт. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8hpp_source.html">sam3x_internal_flash.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="ad9062ff5ac0abb3b9aa8d3f957b2061d" name="ad9062ff5ac0abb3b9aa8d3f957b2061d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">&#9670;&#160;</a></span>Sam3xInternalFlashResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d" name="ad9062ff5ac0abb3b9aa8d3f957b2061daa34e052dbbe46c6a65b74ea706c7282d"></a>SAM3X_INTERNAL_FLASH_OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061da610516966c91251dc8f23c94c8f48166" name="ad9062ff5ac0abb3b9aa8d3f957b2061da610516966c91251dc8f23c94c8f48166"></a>SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061da114a4a21d9198deb382f24dea48ed4a5" name="ad9062ff5ac0abb3b9aa8d3f957b2061da114a4a21d9198deb382f24dea48ed4a5"></a>SAM3X_INTERNAL_FLASH_OUT_OF_RANGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061da359ee52a31d697d0280b820dae2f3d62" name="ad9062ff5ac0abb3b9aa8d3f957b2061da359ee52a31d697d0280b820dae2f3d62"></a>SAM3X_INTERNAL_FLASH_NOT_READY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061dac773aee4d9033c50a96644ecc145697e" name="ad9062ff5ac0abb3b9aa8d3f957b2061dac773aee4d9033c50a96644ecc145697e"></a>SAM3X_INTERNAL_FLASH_COMMAND_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061dab9a69a94453705693db2b4580e5c51dc" name="ad9062ff5ac0abb3b9aa8d3f957b2061dab9a69a94453705693db2b4580e5c51dc"></a>SAM3X_INTERNAL_FLASH_LOCK_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9062ff5ac0abb3b9aa8d3f957b2061da9e4a98829ab1576e6e49bc8f713adc79" name="ad9062ff5ac0abb3b9aa8d3f957b2061da9e4a98829ab1576e6e49bc8f713adc79"></a>SAM3X_INTERNAL_FLASH_VERIFY_ERROR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8hpp_source.html">sam3x_internal_flash.hpp</a> строка <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ac332ad8f80f8b16ef95751c8d175dc81" name="ac332ad8f80f8b16ef95751c8d175dc81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac332ad8f80f8b16ef95751c8d175dc81">&#9670;&#160;</a></span>sam3x_internal_flash_config_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uintptr_t sam3x_internal_flash_config_end </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Адрес за последним байтом зарезервированной области. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8cpp_source.html">sam3x_internal_flash.cpp</a> строка <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00172">172</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__internal__flash_8cpp.html#a478f67f2c03dc896216c8e4593787ef0">_config_flash_end</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00177">sam3x_internal_flash_config_size()</a>.</p>
+
+</div>
+</div>
+<a id="aae9a3535adbc5901f3c95c5cc24896a7" name="aae9a3535adbc5901f3c95c5cc24896a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae9a3535adbc5901f3c95c5cc24896a7">&#9670;&#160;</a></span>sam3x_internal_flash_config_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sam3x_internal_flash_config_size </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер зарезервированной области в байтах. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8cpp_source.html">sam3x_internal_flash.cpp</a> строка <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00177">177</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00172">sam3x_internal_flash_config_end()</a> и <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00167">sam3x_internal_flash_config_start()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00513">lcp_config_usb::handle_put()</a> и <a class="el" href="lcp__config__service_8cpp_source.html#l00481">lcp_config_service_init()</a>.</p>
+
+</div>
+</div>
+<a id="a2adcb382322198bb47afde39f2caf0aa" name="a2adcb382322198bb47afde39f2caf0aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2adcb382322198bb47afde39f2caf0aa">&#9670;&#160;</a></span>sam3x_internal_flash_config_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uintptr_t sam3x_internal_flash_config_start </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Первый адрес зарезервированной области конфигурации. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8cpp_source.html">sam3x_internal_flash.cpp</a> строка <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00167">167</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__internal__flash_8cpp.html#ad6a7ca8eaff2409454c0c448fd395842">_config_flash_start</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>, <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00177">sam3x_internal_flash_config_size()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00191">lcp_config_usb::slot_base()</a>.</p>
+
+</div>
+</div>
+<a id="ae421d07fcf4176f36c1ce2b61d3b6a87" name="ae421d07fcf4176f36c1ce2b61d3b6a87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae421d07fcf4176f36c1ce2b61d3b6a87">&#9670;&#160;</a></span>sam3x_internal_flash_erase_write_page()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> sam3x_internal_flash_erase_write_page </td>
+          <td>(</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>page_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>page</em></span>[SAM3X_INTERNAL_FLASH_PAGE_SIZE]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Стирает и записывает одну страницу Flash1, затем проверяет read-back. </p>
+<p>Операция кратковременно запрещает interrupts. Исполнение команды и ожидание FRDY выполняются из SRAM, поэтому код приложения может находиться в любой части Flash, кроме зарезервированной linker-области. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8cpp_source.html">sam3x_internal_flash.cpp</a> строка <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00207">207</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00042">EEFC_FSR_FCMDE</a>, <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00046">EEFC_FSR_FLOCKE</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00022">SAM3X_INTERNAL_FLASH_COMMAND_ERROR</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00019">SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00023">SAM3X_INTERNAL_FLASH_LOCK_ERROR</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00021">SAM3X_INTERNAL_FLASH_NOT_READY</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00020">SAM3X_INTERNAL_FLASH_OUT_OF_RANGE</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00014">SAM3X_INTERNAL_FLASH_PAGE_SIZE</a> и <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00024">SAM3X_INTERNAL_FLASH_VERIFY_ERROR</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00367">lcp_config_usb::poll_writer()</a>.</p>
+
+</div>
+</div>
+<a id="addd2167dd70201c321f69fb076b20ff7" name="addd2167dd70201c321f69fb076b20ff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd2167dd70201c321f69fb076b20ff7">&#9670;&#160;</a></span>sam3x_internal_flash_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a> sam3x_internal_flash_read </td>
+          <td>(</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает байты из memory-mapped Flash. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8cpp_source.html">sam3x_internal_flash.cpp</a> строка <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00185">185</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00019">SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a> и <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00020">SAM3X_INTERNAL_FLASH_OUT_OF_RANGE</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00309">lcp_config_usb::verify_target_slot()</a>.</p>
+
+</div>
+</div>
+<a id="a36fa3d653c37aa0f54ea9ee6fda5d1f7" name="a36fa3d653c37aa0f54ea9ee6fda5d1f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36fa3d653c37aa0f54ea9ee6fda5d1f7">&#9670;&#160;</a></span>sam3x_internal_flash_result_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sam3x_internal_flash_result_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ad9062ff5ac0abb3b9aa8d3f957b2061d">Sam3xInternalFlashResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Строковое описание результата. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8cpp_source.html">sam3x_internal_flash.cpp</a> строка <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00263">263</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00022">SAM3X_INTERNAL_FLASH_COMMAND_ERROR</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00019">SAM3X_INTERNAL_FLASH_INVALID_ARGUMENT</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00023">SAM3X_INTERNAL_FLASH_LOCK_ERROR</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00021">SAM3X_INTERNAL_FLASH_NOT_READY</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00018">SAM3X_INTERNAL_FLASH_OK</a>, <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00020">SAM3X_INTERNAL_FLASH_OUT_OF_RANGE</a> и <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00024">SAM3X_INTERNAL_FLASH_VERIFY_ERROR</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="config__status_8cpp_source.html#l00346">config_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="aacd3da7dd48ea887d2ce41158221d0d1" name="aacd3da7dd48ea887d2ce41158221d0d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacd3da7dd48ea887d2ce41158221d0d1">&#9670;&#160;</a></span>SAM3X_INTERNAL_FLASH_PAGE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t SAM3X_INTERNAL_FLASH_PAGE_SIZE = 256U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__internal__flash_8hpp_source.html">sam3x_internal_flash.hpp</a> строка <a class="el" href="sam3x__internal__flash_8hpp_source.html#l00014">14</a></p>
+
+<p class="reference">Используется в <a class="el" href="sam3x__internal__flash_8cpp_source.html#l00207">sam3x_internal_flash_erase_write_page()</a> и <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00198">lcp_config_usb::slot_commit_page()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__internal__flash_8hpp.html">sam3x_internal_flash.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

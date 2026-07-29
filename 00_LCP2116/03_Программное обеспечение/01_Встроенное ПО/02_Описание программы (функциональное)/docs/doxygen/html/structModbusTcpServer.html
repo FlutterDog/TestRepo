@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Структура ModbusTcpServer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structModbusTcpServer.html','','structModbusTcpServer-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Структура ModbusTcpServer</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Потоковое состояние одного независимого TCP-соединения.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="modbus__tcp__server_8hpp_source.html">protocol/modbus_tcp/modbus_tcp_server.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a57da6a7848c4bcea9a63dd2de3a3ef6f" id="r_a57da6a7848c4bcea9a63dd2de3a3ef6f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57da6a7848c4bcea9a63dd2de3a3ef6f">exception_count</a></td></tr>
+<tr class="memitem:a2d7fee1f600a90ced2c06bebe4334449" id="r_a2d7fee1f600a90ced2c06bebe4334449"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d7fee1f600a90ced2c06bebe4334449">malformed_count</a></td></tr>
+<tr class="memitem:a01d4f191faffc17402ef0162b551842f" id="r_a01d4f191faffc17402ef0162b551842f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01d4f191faffc17402ef0162b551842f">request_count</a></td></tr>
+<tr class="memitem:ada7b1680a927408d34bfcc5fb610217c" id="r_ada7b1680a927408d34bfcc5fb610217c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada7b1680a927408d34bfcc5fb610217c">response_count</a></td></tr>
+<tr class="memitem:ae9c0c6f3a6914dec352fd05b43afa01d" id="r_ae9c0c6f3a6914dec352fd05b43afa01d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9c0c6f3a6914dec352fd05b43afa01d">rx_buffer</a> [<a class="el" href="modbus__tcp__server_8hpp.html#a9c1f868606590fc0fc1eb91d34a2b68a">MODBUS_TCP_ADU_CAPACITY</a>]</td></tr>
+<tr class="memitem:a95f537afb4394a486bc5ed3762ae6923" id="r_a95f537afb4394a486bc5ed3762ae6923"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95f537afb4394a486bc5ed3762ae6923">rx_length</a></td></tr>
+<tr class="memitem:a6f75c73a0ef7548d3955b70cb5faf5f3" id="r_a6f75c73a0ef7548d3955b70cb5faf5f3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f75c73a0ef7548d3955b70cb5faf5f3">tx_buffer</a> [<a class="el" href="modbus__tcp__server_8hpp.html#a9c1f868606590fc0fc1eb91d34a2b68a">MODBUS_TCP_ADU_CAPACITY</a>]</td></tr>
+<tr class="memitem:a74a0c37af7d5a2b6cfecb15019bf8595" id="r_a74a0c37af7d5a2b6cfecb15019bf8595"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74a0c37af7d5a2b6cfecb15019bf8595">tx_length</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Потоковое состояние одного независимого TCP-соединения. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00032">32</a></p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a57da6a7848c4bcea9a63dd2de3a3ef6f" name="a57da6a7848c4bcea9a63dd2de3a3ef6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57da6a7848c4bcea9a63dd2de3a3ef6f">&#9670;&#160;</a></span>exception_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusTcpServer::exception_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Сформированные Modbus exception-ответы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00040">40</a></p>
+
+</div>
+</div>
+<a id="a2d7fee1f600a90ced2c06bebe4334449" name="a2d7fee1f600a90ced2c06bebe4334449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d7fee1f600a90ced2c06bebe4334449">&#9670;&#160;</a></span>malformed_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusTcpServer::malformed_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Потерянные некорректные MBAP/переполненные потоки. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00041">41</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00076">modbus_tcp_server_append()</a> и <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a>.</p>
+
+</div>
+</div>
+<a id="a01d4f191faffc17402ef0162b551842f" name="a01d4f191faffc17402ef0162b551842f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01d4f191faffc17402ef0162b551842f">&#9670;&#160;</a></span>request_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusTcpServer::request_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Корректно выделенные из потока запросы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00038">38</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a>.</p>
+
+</div>
+</div>
+<a id="ada7b1680a927408d34bfcc5fb610217c" name="ada7b1680a927408d34bfcc5fb610217c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada7b1680a927408d34bfcc5fb610217c">&#9670;&#160;</a></span>response_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ModbusTcpServer::response_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Сформированные обычные и exception-ответы. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00039">39</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a>.</p>
+
+</div>
+</div>
+<a id="ae9c0c6f3a6914dec352fd05b43afa01d" name="ae9c0c6f3a6914dec352fd05b43afa01d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9c0c6f3a6914dec352fd05b43afa01d">&#9670;&#160;</a></span>rx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusTcpServer::rx_buffer[<a class="el" href="modbus__tcp__server_8hpp.html#a9c1f868606590fc0fc1eb91d34a2b68a">MODBUS_TCP_ADU_CAPACITY</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Накопленные TCP-байты. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00034">34</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00076">modbus_tcp_server_append()</a> и <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a>.</p>
+
+</div>
+</div>
+<a id="a95f537afb4394a486bc5ed3762ae6923" name="a95f537afb4394a486bc5ed3762ae6923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95f537afb4394a486bc5ed3762ae6923">&#9670;&#160;</a></span>rx_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusTcpServer::rx_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Число байтов в rx_buffer. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00035">35</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00076">modbus_tcp_server_append()</a> и <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a>.</p>
+
+</div>
+</div>
+<a id="a6f75c73a0ef7548d3955b70cb5faf5f3" name="a6f75c73a0ef7548d3955b70cb5faf5f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f75c73a0ef7548d3955b70cb5faf5f3">&#9670;&#160;</a></span>tx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ModbusTcpServer::tx_buffer[<a class="el" href="modbus__tcp__server_8hpp.html#a9c1f868606590fc0fc1eb91d34a2b68a">MODBUS_TCP_ADU_CAPACITY</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Последний сформированный ответ. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00036">36</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a> и <a class="el" href="modbus__tcp__server_8cpp_source.html#l00208">modbus_tcp_server_response()</a>.</p>
+
+</div>
+</div>
+<a id="a74a0c37af7d5a2b6cfecb15019bf8595" name="a74a0c37af7d5a2b6cfecb15019bf8595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74a0c37af7d5a2b6cfecb15019bf8595">&#9670;&#160;</a></span>tx_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ModbusTcpServer::tx_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Длина ответа; 0 означает отсутствие pending TX. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a> строка <a class="el" href="modbus__tcp__server_8hpp_source.html#l00037">37</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__tcp__server_8cpp_source.html#l00098">modbus_tcp_server_process()</a>, <a class="el" href="modbus__tcp__server_8cpp_source.html#l00213">modbus_tcp_server_response_length()</a> и <a class="el" href="modbus__tcp__server_8cpp_source.html#l00218">modbus_tcp_server_response_sent()</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>protocol/modbus_tcp/<a class="el" href="modbus__tcp__server_8hpp_source.html">modbus_tcp_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structModbusTcpServer.html">ModbusTcpServer</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл hal/sam3x_uart.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__uart_8hpp_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sam3x_uart.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sam3x__uart_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file sam3x_uart.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief HAL встроенных UART/USART ATSAM3X8E.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"></span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @brief Идентификатор встроенного последовательного порта.</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">   14</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23">   16</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23">HAL_UART_PORT_0</a> = 0,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b">   17</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b">HAL_UART_PORT_1</a> = 1,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb">   18</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb">HAL_UART_PORT_2</a> = 2,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574">   19</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574">HAL_UART_PORT_3</a> = 3,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32">   20</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32">HAL_UART_PORT_COUNT</a> = 4</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"></span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @brief Формат кадра UART/USART.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">   26</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec">   28</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec">HAL_UART_FRAME_8N1</a> = 0,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7">   29</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7">HAL_UART_FRAME_8O1</a> = 1,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575">   30</a></span>    <a class="code hl_enumvalue" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575">HAL_UART_FRAME_8E1</a> = 2</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> * @brief Настраивает порт на работу с RS-485 direction pin.</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * @param direction_pin Номер дискретной линии управления DE/RE.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * @param transmit_level Уровень, включающий передачу.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#a9fc0c6671220e653a2e6951621054a5a">hal_uart_set_rs485_direction_pin</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                                      uint32_t direction_pin,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                                      uint8_t transmit_level);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * @brief Инициализирует встроенный UART/USART.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * @param baudrate Скорость обмена.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> * @param frame Формат кадра.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#a63fa9d88f7c1d64ba46d60cb9d470470">hal_uart_begin</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id, uint32_t baudrate, <a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a> frame);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"></span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * @brief Останавливает встроенный UART/USART.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#acb5b2b17280ee3bac4f9876dacf5514a">hal_uart_end</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"> * @brief Возвращает количество принятых байтов в RX-буфере.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"> * @return Количество байтов.</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#a733abbee535c82f9a19be613f555ee59">hal_uart_available</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"></span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"> * @brief Читает один байт из RX-буфера.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"> * @return Байт 0..255 или -1 при пустом буфере.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">int</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#ae4cf4504ea7fed04990bcca4d9735e62">hal_uart_read</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"></span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"> * @brief Возвращает следующий байт RX-буфера без удаления.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"> * @return Байт 0..255 или -1 при пустом буфере.</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">int</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#a807660bdc98c0cf170034aa65cf4aba5">hal_uart_peek</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment"></span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"> * @brief Передаёт один байт.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> * @param value Передаваемый байт.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"> * @return 1 при постановке байта в передачу, 0 при полном TX-буфере.</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#a476ab980c05144d3b27ccec515b9d60d">hal_uart_write</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id, uint8_t value);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"></span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> * @brief Ожидает завершение передачи.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#aea0876bd77f8b893911ffd74810ddadb">hal_uart_flush</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"></span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"> * @brief Неблокирующе читает аппаратный флаг TXEMPTY.</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> * Для пакетных протоколов вызывающий транспорт дополнительно должен учитывать</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment"> * время загрузки программного кольцевого буфера. X2X выполняет эту проверку в</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"> * `lcp_x2x_port.cpp`.</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment"> * @return 1 при установленном TXEMPTY либо для неизвестного порта, иначе 0.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>uint8_t <a class="code hl_function" href="sam3x__uart_8hpp.html#a5e6c4b4e76d8e0afd17efad24f62d8b2">hal_uart_tx_idle</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment"></span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment"> * @brief Удаляет все байты, доступные через программный RX-буфер HAL.</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment"> * Используется перед началом новой master-транзакции для удаления остатка</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment"> * предыдущего или повреждённого кадра. Аппаратный RX обслуживается ISR и</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment"> * последовательно попадает в этот буфер.</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keywordtype">void</span> <a class="code hl_function" href="sam3x__uart_8hpp.html#ab44a2ace7777bb87feaf2aaa43d79db4">hal_uart_clear_rx</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment"></span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment"> * @brief Возвращает количество ошибок приёма.</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment"> * @param port_id Идентификатор порта.</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment"> * @return Количество ошибок OVRE/FRAME/PARE.</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>uint32_t <a class="code hl_function" href="sam3x__uart_8hpp.html#af43518a3b8713e9dd52de1cf9d14e40e">hal_uart_error_count</a>(<a class="code hl_enumeration" href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id);</div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a0d5f6a94d31d43b54532e3780db6a6ec"><div class="ttname"><a href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></div><div class="ttdeci">HalUartId</div><div class="ttdoc">Идентификатор встроенного последовательного порта.</div><div class="ttdef"><b>Определения</b> <a href="#l00014">sam3x_uart.hpp:15</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32"><div class="ttname"><a href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32">HAL_UART_PORT_COUNT</a></div><div class="ttdeci">@ HAL_UART_PORT_COUNT</div><div class="ttdef"><b>Определения</b> <a href="#l00020">sam3x_uart.hpp:20</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574"><div class="ttname"><a href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574">HAL_UART_PORT_3</a></div><div class="ttdeci">@ HAL_UART_PORT_3</div><div class="ttdef"><b>Определения</b> <a href="#l00019">sam3x_uart.hpp:19</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23"><div class="ttname"><a href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23">HAL_UART_PORT_0</a></div><div class="ttdeci">@ HAL_UART_PORT_0</div><div class="ttdef"><b>Определения</b> <a href="#l00016">sam3x_uart.hpp:16</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb"><div class="ttname"><a href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb">HAL_UART_PORT_2</a></div><div class="ttdeci">@ HAL_UART_PORT_2</div><div class="ttdef"><b>Определения</b> <a href="#l00018">sam3x_uart.hpp:18</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b"><div class="ttname"><a href="sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b">HAL_UART_PORT_1</a></div><div class="ttdeci">@ HAL_UART_PORT_1</div><div class="ttdef"><b>Определения</b> <a href="#l00017">sam3x_uart.hpp:17</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a43ea2cf83f47e89268d03060cd98b34e"><div class="ttname"><a href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></div><div class="ttdeci">HalUartFrame</div><div class="ttdoc">Формат кадра UART/USART.</div><div class="ttdef"><b>Определения</b> <a href="#l00026">sam3x_uart.hpp:27</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7"><div class="ttname"><a href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7">HAL_UART_FRAME_8O1</a></div><div class="ttdeci">@ HAL_UART_FRAME_8O1</div><div class="ttdef"><b>Определения</b> <a href="#l00029">sam3x_uart.hpp:29</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec"><div class="ttname"><a href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec">HAL_UART_FRAME_8N1</a></div><div class="ttdeci">@ HAL_UART_FRAME_8N1</div><div class="ttdef"><b>Определения</b> <a href="#l00028">sam3x_uart.hpp:28</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575"><div class="ttname"><a href="sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575">HAL_UART_FRAME_8E1</a></div><div class="ttdeci">@ HAL_UART_FRAME_8E1</div><div class="ttdef"><b>Определения</b> <a href="#l00030">sam3x_uart.hpp:30</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a476ab980c05144d3b27ccec515b9d60d"><div class="ttname"><a href="sam3x__uart_8hpp.html#a476ab980c05144d3b27ccec515b9d60d">hal_uart_write</a></div><div class="ttdeci">size_t hal_uart_write(HalUartId port_id, uint8_t value)</div><div class="ttdoc">Передаёт один байт.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00501">sam3x_uart.cpp:501</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a5e6c4b4e76d8e0afd17efad24f62d8b2"><div class="ttname"><a href="sam3x__uart_8hpp.html#a5e6c4b4e76d8e0afd17efad24f62d8b2">hal_uart_tx_idle</a></div><div class="ttdeci">uint8_t hal_uart_tx_idle(HalUartId port_id)</div><div class="ttdoc">Неблокирующе читает аппаратный флаг TXEMPTY.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart__status_8cpp_source.html#l00009">sam3x_uart_status.cpp:9</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a63fa9d88f7c1d64ba46d60cb9d470470"><div class="ttname"><a href="sam3x__uart_8hpp.html#a63fa9d88f7c1d64ba46d60cb9d470470">hal_uart_begin</a></div><div class="ttdeci">void hal_uart_begin(HalUartId port_id, uint32_t baudrate, HalUartFrame frame)</div><div class="ttdoc">Инициализирует встроенный UART/USART.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00394">sam3x_uart.cpp:394</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a733abbee535c82f9a19be613f555ee59"><div class="ttname"><a href="sam3x__uart_8hpp.html#a733abbee535c82f9a19be613f555ee59">hal_uart_available</a></div><div class="ttdeci">size_t hal_uart_available(HalUartId port_id)</div><div class="ttdoc">Возвращает количество принятых байтов в RX-буфере.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00465">sam3x_uart.cpp:465</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a807660bdc98c0cf170034aa65cf4aba5"><div class="ttname"><a href="sam3x__uart_8hpp.html#a807660bdc98c0cf170034aa65cf4aba5">hal_uart_peek</a></div><div class="ttdeci">int hal_uart_peek(HalUartId port_id)</div><div class="ttdoc">Возвращает следующий байт RX-буфера без удаления.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00489">sam3x_uart.cpp:489</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_a9fc0c6671220e653a2e6951621054a5a"><div class="ttname"><a href="sam3x__uart_8hpp.html#a9fc0c6671220e653a2e6951621054a5a">hal_uart_set_rs485_direction_pin</a></div><div class="ttdeci">void hal_uart_set_rs485_direction_pin(HalUartId port_id, uint32_t direction_pin, uint8_t transmit_level)</div><div class="ttdoc">Настраивает порт на работу с RS-485 direction pin.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00377">sam3x_uart.cpp:377</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_ab44a2ace7777bb87feaf2aaa43d79db4"><div class="ttname"><a href="sam3x__uart_8hpp.html#ab44a2ace7777bb87feaf2aaa43d79db4">hal_uart_clear_rx</a></div><div class="ttdeci">void hal_uart_clear_rx(HalUartId port_id)</div><div class="ttdoc">Удаляет все байты, доступные через программный RX-буфер HAL.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart__status_8cpp_source.html#l00030">sam3x_uart_status.cpp:30</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_acb5b2b17280ee3bac4f9876dacf5514a"><div class="ttname"><a href="sam3x__uart_8hpp.html#acb5b2b17280ee3bac4f9876dacf5514a">hal_uart_end</a></div><div class="ttdeci">void hal_uart_end(HalUartId port_id)</div><div class="ttdoc">Останавливает встроенный UART/USART.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00438">sam3x_uart.cpp:438</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_ae4cf4504ea7fed04990bcca4d9735e62"><div class="ttname"><a href="sam3x__uart_8hpp.html#ae4cf4504ea7fed04990bcca4d9735e62">hal_uart_read</a></div><div class="ttdeci">int hal_uart_read(HalUartId port_id)</div><div class="ttdoc">Читает один байт из RX-буфера.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00477">sam3x_uart.cpp:477</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_aea0876bd77f8b893911ffd74810ddadb"><div class="ttname"><a href="sam3x__uart_8hpp.html#aea0876bd77f8b893911ffd74810ddadb">hal_uart_flush</a></div><div class="ttdeci">void hal_uart_flush(HalUartId port_id)</div><div class="ttdoc">Ожидает завершение передачи.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00535">sam3x_uart.cpp:535</a></div></div>
+<div class="ttc" id="asam3x__uart_8hpp_html_af43518a3b8713e9dd52de1cf9d14e40e"><div class="ttname"><a href="sam3x__uart_8hpp.html#af43518a3b8713e9dd52de1cf9d14e40e">hal_uart_error_count</a></div><div class="ttdeci">uint32_t hal_uart_error_count(HalUartId port_id)</div><div class="ttdoc">Возвращает количество ошибок приёма.</div><div class="ttdef"><b>Определения</b> <a href="sam3x__uart_8cpp_source.html#l00567">sam3x_uart.cpp:567</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__uart_8hpp.html">sam3x_uart.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

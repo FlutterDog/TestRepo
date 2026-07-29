@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: LCP Basic Diagnostic Firmware 1.02.0</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">LCP Basic Diagnostic Firmware 1.02.0 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a></p>
+<p><b>Функциональное описание программы и справочник по исходному коду LCP2116</b></p>
+<p>Целевая платформа: <b>ATSAM3X8E / ARM Cortex-M3</b> <br  />
+ Операционная система: <b>FreeRTOS</b> <br  />
+ Проверенная версия firmware: <b>1.02.0</b></p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Назначение документации</h1>
+<p>Эта Doxygen-документация описывает внутреннюю программную архитектуру базовой прошивки контроллера LCP2116. Она предназначена для разработчика и инженера сопровождения, которому необходимо:</p>
+<ul>
+<li>найти реализацию конкретной подсистемы;</li>
+<li>понять публичный интерфейс модуля;</li>
+<li>проследить владение UART, SPI и другими аппаратными ресурсами;</li>
+<li>расширить X2X, FieldSensor или Modbus TCP без нарушения базовой архитектуры;</li>
+<li>проверить взаимосвязь конфигурации, runtime-сервисов и диагностики;</li>
+<li>сопровождать firmware после передачи проекта.</li>
+</ul>
+<p>Doxygen не заменяет пользовательское руководство контроллера и не является производственной тестовой утилитой. Проверка платы и формирование PASS/FAIL выполняются отдельным host-side приложением поверх интерфейсов firmware.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Статус версии</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Параметр  </th><th class="markdownTableHeadNone">Значение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Firmware  </td><td class="markdownTableBodyNone">LCP Basic Diagnostic Firmware  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Версия  </td><td class="markdownTableBodyNone">1.02.0  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Stage  </td><td class="markdownTableBodyNone">Release 1.02.0  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">MCU  </td><td class="markdownTableBodyNone">ATSAM3X8E  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Архитектура  </td><td class="markdownTableBodyNone">ARM Cortex-M3  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">RTOS  </td><td class="markdownTableBodyNone">FreeRTOS  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Проект  </td><td class="markdownTableBodyNone"><span class="tt">LCP_Basic.cppproj</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Проверенный tag  </td><td class="markdownTableBodyNone"><span class="tt">v1.02.0</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Проверенный firmware commit  </td><td class="markdownTableBodyNone"><span class="tt">be2071b2e307f4d76bafe63cc59804982a7552d8</span>  </td></tr>
+</table>
+<p>Документационные исправления после тега не изменяют бинарное поведение firmware 1.02.0. Любое функциональное изменение прошивки должно оформляться новой версией и отдельной регрессионной проверкой.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Как пользоваться HTML-справочником</h1>
+<p>Начинать следует с раздела <b>«Файлы»</b>. Для embedded C/C++ проекта это основной способ навигации: значительная часть интерфейсов реализована свободными функциями, а не классами.</p>
+<p>Рекомендуемый порядок:</p>
+<ol type="1">
+<li>открыть <span class="tt"><a class="el" href="main_8cpp.html" title="Точка входа baseline-прошивки LCP под управлением FreeRTOS.">main.cpp</a></span>;</li>
+<li>открыть <span class="tt"><a class="el" href="app_8hpp.html" title="Прикладной lifecycle и RTOS-метрики базовой прошивки LCP.">app/app.hpp</a></span> и <span class="tt"><a class="el" href="app_8cpp.html" title="Базовая прошивка Lorentz под управлением FreeRTOS.">app/app.cpp</a></span>;</li>
+<li>посмотреть конфигурацию в <span class="tt">app/config/</span>;</li>
+<li>посмотреть аппаратную привязку в <span class="tt">board/</span>;</li>
+<li>открыть требуемый HAL-драйвер в <span class="tt">hal/</span>;</li>
+<li>перейти к прикладному service в <span class="tt">app/</span>;</li>
+<li>использовать раздел <b>«Классы»</b> для структур runtime и C++-обёрток;</li>
+<li>использовать source browser для перехода от объявления к реализации.</li>
+</ol>
+<p>Основные точки входа:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Файл  </th><th class="markdownTableHeadNone">Назначение  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="main_8cpp.html" title="Точка входа baseline-прошивки LCP под управлением FreeRTOS.">main.cpp</a></span>  </td><td class="markdownTableBodyNone">запуск FreeRTOS и создание LCP task  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="app_8cpp.html" title="Базовая прошивка Lorentz под управлением FreeRTOS.">app/app.cpp</a></span>  </td><td class="markdownTableBodyNone">инициализация и основной неблокирующий цикл  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="diagnostic__console_8cpp.html" title="USB service console базовой прошивки Lorentz.">app/diagnostics/diagnostic_console.cpp</a></span>  </td><td class="markdownTableBodyNone">USB service console  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="lcp__config__service_8cpp.html" title="Реализация A/B-хранилища конфигурации LCP2116.">app/config/lcp_config_service.cpp</a></span>  </td><td class="markdownTableBodyNone">A/B-хранилище конфигурации  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="field__sensor__service_8cpp.html" title="Реализация демонстрационного Modbus RTU master для S1..S4.">app/field/field_sensor_service.cpp</a></span>  </td><td class="markdownTableBodyNone">четыре Modbus RTU master S1–S4  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="ethernet__modbus__service_8cpp.html" title="Реализация Modbus TCP server на ETH1 и ETH2.">app/ethernet/ethernet_modbus_service.cpp</a></span>  </td><td class="markdownTableBodyNone">два Modbus TCP server  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="x2x__service_8cpp.html" title="Реализация конфигурации и циклического опроса X2X.">app/x2x/x2x_service.cpp</a></span>  </td><td class="markdownTableBodyNone">master внутренней шины X2X  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">board/</span>  </td><td class="markdownTableBodyNone">соответствие логических интерфейсов аппаратным ресурсам  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">hal/</span>  </td><td class="markdownTableBodyNone">регистры ATSAM3X8E, SC16IS7xx и W5500  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">protocol/</span>  </td><td class="markdownTableBodyNone">повторно используемые Modbus RTU/TCP engines  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Структура исходного проекта</h1>
+<div class="fragment"><div class="line">.</div>
+<div class="line">├── Config/</div>
+<div class="line">│   └── FreeRTOSConfig.h</div>
+<div class="line">│</div>
+<div class="line">├── app/</div>
+<div class="line">│   ├── app.cpp</div>
+<div class="line">│   ├── app.hpp</div>
+<div class="line">│   ├── version.hpp</div>
+<div class="line">│   ├── config/</div>
+<div class="line">│   ├── diagnostics/</div>
+<div class="line">│   ├── ethernet/</div>
+<div class="line">│   ├── field/</div>
+<div class="line">│   └── x2x/</div>
+<div class="line">│       └── modules/</div>
+<div class="line">│</div>
+<div class="line">├── board/</div>
+<div class="line">│   ├── lcp_board.*</div>
+<div class="line">│   ├── lcp_battery.*</div>
+<div class="line">│   ├── lcp_ethernet.*</div>
+<div class="line">│   ├── lcp_field_ports.*</div>
+<div class="line">│   ├── lcp_rs485.*</div>
+<div class="line">│   ├── lcp_sc16is.*</div>
+<div class="line">│   ├── lcp_sd.*</div>
+<div class="line">│   ├── lcp_usb_identity.hpp</div>
+<div class="line">│   └── lcp_x2x_port.*</div>
+<div class="line">│</div>
+<div class="line">├── hal/</div>
+<div class="line">│   ├── sam3x_device.hpp</div>
+<div class="line">│   ├── sam3x_gpio.*</div>
+<div class="line">│   ├── sam3x_internal_flash.*</div>
+<div class="line">│   ├── sam3x_rtc.*</div>
+<div class="line">│   ├── sam3x_spi.*</div>
+<div class="line">│   ├── sam3x_tick.*</div>
+<div class="line">│   ├── sam3x_uart.*</div>
+<div class="line">│   ├── sam3x_watchdog.*</div>
+<div class="line">│   ├── sc16is7xx.*</div>
+<div class="line">│   └── w5500_lite.*</div>
+<div class="line">│</div>
+<div class="line">├── libs/</div>
+<div class="line">│   ├── lcp_crc32/</div>
+<div class="line">│   ├── lcp_sd_storage/</div>
+<div class="line">│   └── SAM_USB/                 excluded from public Doxygen</div>
+<div class="line">│</div>
+<div class="line">├── middleware/</div>
+<div class="line">│   └── FreeRTOS-Kernel/         excluded from public Doxygen</div>
+<div class="line">│</div>
+<div class="line">├── platform/</div>
+<div class="line">│   ├── platform.hpp</div>
+<div class="line">│   ├── binary_constants.hpp</div>
+<div class="line">│   ├── print.*</div>
+<div class="line">│   ├── serial_port.*</div>
+<div class="line">│   ├── spi.*</div>
+<div class="line">│   ├── platform_gpio.cpp</div>
+<div class="line">│   ├── platform_serial.cpp</div>
+<div class="line">│   ├── platform_spi.cpp</div>
+<div class="line">│   ├── platform_time.cpp</div>
+<div class="line">│   ├── newlib_stubs.c</div>
+<div class="line">│   └── syscalls.c</div>
+<div class="line">│</div>
+<div class="line">├── protocol/</div>
+<div class="line">│   ├── modbus_rtu/</div>
+<div class="line">│   └── modbus_tcp/</div>
+<div class="line">│</div>
+<div class="line">├── Device_Startup/              excluded from public Doxygen</div>
+<div class="line">├── main.cpp</div>
+<div class="line">└── LCP_Basic.cppproj</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Программные уровни</h1>
+<div class="fragment"><div class="line">HAL</div>
+<div class="line">    регистры MCU и физические аппаратные операции</div>
+<div class="line"> </div>
+<div class="line">board</div>
+<div class="line">    разводка и ресурсы конкретной платы LCP2116</div>
+<div class="line"> </div>
+<div class="line">platform</div>
+<div class="line">    общий API времени, GPIO, UART, SPI и форматированного вывода</div>
+<div class="line"> </div>
+<div class="line">protocol</div>
+<div class="line">    независимые Modbus RTU и Modbus TCP state machines</div>
+<div class="line"> </div>
+<div class="line">service</div>
+<div class="line">    применение transport и protocol для конкретной функции</div>
+<div class="line"> </div>
+<div class="line">diagnostics</div>
+<div class="line">    service console, состояние и команды управления</div>
+</div><!-- fragment --><p>Низкоуровневый модуль не должен знать прикладную карту данных. Например:</p>
+<ul>
+<li><span class="tt"><a class="el" href="structModbusRtuMaster.html" title="Полное состояние одного независимого Modbus RTU master.">ModbusRtuMaster</a></span> не знает модель внешнего прибора;</li>
+<li>W5500 HAL не знает карту FieldSensor;</li>
+<li>X2X-драйвер не читает microSD или Flash самостоятельно;</li>
+<li>консоль вызывает публичный API service и не изменяет private runtime напрямую.</li>
+</ul>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+Модель исполнения FreeRTOS</h1>
+<p>Firmware использует одну основную прикладную задачу LCP.</p>
+<div class="fragment"><div class="line">main.cpp</div>
+<div class="line">    -&gt; app_rtos_start()</div>
+<div class="line">        -&gt; LCP task</div>
+<div class="line">            -&gt; setup()</div>
+<div class="line">            -&gt; loop()</div>
+<div class="line">            -&gt; vTaskDelay(1 ms)</div>
+</div><!-- fragment --><p>Одна задача обеспечивает:</p>
+<ul>
+<li>однозначное владение UART и SPI;</li>
+<li>предсказуемый порядок обслуживания;</li>
+<li>отсутствие конкурирующего доступа к protocol objects;</li>
+<li>минимальное количество mutex и очередей;</li>
+<li>контролируемое использование памяти.</li>
+</ul>
+<p>Каждая длительная операция реализуется как неблокирующая state machine. Нельзя использовать busy-wait, длительный <span class="tt"><a class="el" href="platform_8hpp.html#a7f2dfce1046bdd2a2b753643726c2346" title="Выполняет задержку в миллисекундах.">delay()</a></span> или ожидание аппаратного события без timeout внутри основного цикла.</p>
+<p>Последовательность обслуживания включает:</p>
+<div class="fragment"><div class="line">PLC OK</div>
+<div class="line">USB machine configuration transport</div>
+<div class="line">USB text console</div>
+<div class="line">microSD</div>
+<div class="line">A/B configuration service</div>
+<div class="line">X2X</div>
+<div class="line">FieldSensor S1–S4</div>
+<div class="line">Ethernet ETH1/ETH2</div>
+<div class="line">X2X fallback echo</div>
+<div class="line">HMI diagnostic echo</div>
+<div class="line">battery</div>
+<div class="line">RTC</div>
+<div class="line">watchdog</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+Платформенная конфигурация</h1>
+<p>Нормализованная <span class="tt">LcpConfigBundle</span> schema-v1 содержит:</p>
+<ul>
+<li>baudrate и parity S1–S4;</li>
+<li>MAC, IP, subnet и gateway ETH1/ETH2;</li>
+<li>список до шести X2X-модулей;</li>
+<li>совместимые поля EIA;</li>
+<li>зарезервированные байты.</li>
+</ul>
+<p>Источники при запуске:</p>
+<div class="fragment"><div class="line">1. наиболее новый валидный A/B-слот внутренней Flash;</div>
+<div class="line">2. первоначальный полный импорт с microSD при пустой Flash;</div>
+<div class="line">3. встроенные runtime defaults.</div>
+</div><!-- fragment --><p>Внутренняя Flash использует два слота по 16 KiB. Новая запись выполняется в неактивный слот; commit page записывается последней. При потере питания незавершённая запись игнорируется, а предыдущее поколение сохраняется.</p>
+<p>Основные файлы:</p>
+<div class="fragment"><div class="line">app/config/lcp_config_bundle.*</div>
+<div class="line">app/config/lcp_config_service.*</div>
+<div class="line">hal/sam3x_internal_flash.*</div>
+<div class="line">libs/lcp_crc32/*</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+USB-интерфейсы</h1>
+<p>Один USB CDC-порт используется в двух режимах:</p>
+<div class="fragment"><div class="line">text mode</div>
+<div class="line">    service console</div>
+<div class="line"> </div>
+<div class="line">machine mode</div>
+<div class="line">    бинарный configuration protocol version 1</div>
+</div><!-- fragment --><p>Машинный кадр начинается с <span class="tt">00 4C 43 50</span>. Поддерживаются <span class="tt">HELLO</span>, <span class="tt">GET_CONFIG</span>, <span class="tt">VALIDATE_CONFIG</span>, <span class="tt">PUT_CONFIG</span>, <span class="tt">GET_STATUS</span>, <span class="tt">REBOOT</span> и <span class="tt">EXIT</span>.</p>
+<p>Reference Python utility находится в <span class="tt">tools/</span>, но не включается в Doxygen как часть firmware-кода. Она является примером host-side интеграции с опубликованным USB-протоколом.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+FieldSensor и Modbus RTU</h1>
+<p>S1–S4 работают как четыре независимых Modbus RTU master. Каждый порт имеет:</p>
+<ul>
+<li>собственный transport;</li>
+<li>собственный <span class="tt"><a class="el" href="structModbusRtuMaster.html" title="Полное состояние одного независимого Modbus RTU master.">ModbusRtuMaster</a></span>;</li>
+<li>RX/TX state machine;</li>
+<li>runtime quality;</li>
+<li>success/error counters;</li>
+<li>timeout и период опроса.</li>
+</ul>
+<p>Физическое соответствие:</p>
+<div class="fragment"><div class="line">S1 -&gt; SC16IS7xx</div>
+<div class="line">S2 -&gt; ATSAM3X8E UART1</div>
+<div class="line">S3 -&gt; ATSAM3X8E UART3</div>
+<div class="line">S4 -&gt; ATSAM3X8E UART2</div>
+</div><!-- fragment --><p>Универсальный protocol engine расположен в <span class="tt">protocol/modbus_rtu/</span>, а параметры демонстрационного прибора и обработка результата — в <span class="tt">app/field/</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+Ethernet и Modbus TCP</h1>
+<p>Контроллер содержит два независимых W5500. Каждый интерфейс имеет собственные:</p>
+<ul>
+<li>сетевые настройки;</li>
+<li>socket 0;</li>
+<li><span class="tt"><a class="el" href="structModbusTcpServer.html" title="Потоковое состояние одного независимого TCP-соединения.">ModbusTcpServer</a></span>;</li>
+<li>RX/TX buffers;</li>
+<li>диагностические счётчики.</li>
+</ul>
+<p>Baseline публикует одинаковую holding map FieldSensor на ETH1 и ETH2 через TCP port 502. W5500 transport находится в <span class="tt">hal/w5500_lite.*</span>, protocol engine — в <span class="tt">protocol/modbus_tcp/</span>, а прикладная карта — в <span class="tt">app/ethernet/</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+Внутренняя шина X2X</h1>
+<p>LCP2116 выполняет роль X2X master и последовательно обслуживает до шести внешних модулей.</p>
+<div class="fragment"><div class="line">active LcpConfigBundle</div>
+<div class="line">    -&gt; x2x_config</div>
+<div class="line">        -&gt; x2x_registry</div>
+<div class="line">            -&gt; x2x_catalog</div>
+<div class="line">                -&gt; x2x_service</div>
+<div class="line">                    -&gt; driver модуля</div>
+<div class="line">                        -&gt; ModbusRtuMaster</div>
+</div><!-- fragment --><p>Новый тип модуля обычно добавляется в:</p>
+<div class="fragment"><div class="line">app/x2x/x2x_types.hpp</div>
+<div class="line">app/x2x/modules/x2x_module_drivers.hpp</div>
+<div class="line">app/x2x/modules/x2x_&lt;module&gt;.cpp</div>
+<div class="line">app/x2x/x2x_catalog.cpp</div>
+<div class="line">LCP_Basic.cppproj</div>
+</div><!-- fragment --><p>Стабильные числовые ID являются частью внешнего формата и после публикации не должны переиспользоваться.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+Другие аппаратные сервисы</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+HMI</h2>
+<p>HMI — отдельный RS-485 интерфейс на SC16IS7xx. В baseline он принадлежит неблокирующему diagnostic echo service. Перед передачей HMI прикладному протоколу echo service необходимо отключить, сохранив единственного владельца порта.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+microSD</h2>
+<p>Поддерживаются FAT16/FAT32, корневой каталог и короткие имена FAT 8.3. Полный канонический конфигурационный комплект принимается только целиком.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+RTC и батарея</h2>
+<p>Используется внутренний RTC ATSAM3X8E и резервное питание VDDBU. Диагностика проверяет чтение, установку времени и состояние батареи.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+Watchdog</h2>
+<p>Аппаратный watchdog включён постоянно. Команда контролируемого теста прекращает подачу watchdog и должна приводить к ожидаемому hardware reset с последующим восстановлением USB CDC.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+Правила расширения</h1>
+<p>При добавлении нового service необходимо:</p>
+<ol type="1">
+<li>определить владельца физического интерфейса;</li>
+<li>отделить transport от protocol и прикладной логики;</li>
+<li>реализовать <span class="tt">init()</span> и короткий неблокирующий <span class="tt">poll()</span>;</li>
+<li>добавить timeout и явные коды результата;</li>
+<li>сохранить last-good data отдельно от quality;</li>
+<li>добавить профильную диагностику и команду консоли при необходимости;</li>
+<li>добавить исходный <span class="tt">.cpp</span> в <span class="tt">LCP_Basic.cppproj</span>;</li>
+<li>обновить Doxygen-комментарии и пользовательский README;</li>
+<li>собрать Debug и Release;</li>
+<li>выполнить регрессионную проверку затронутых интерфейсов.</li>
+</ol>
+<p>Изменение общего protocol layer требует проверки всех существующих его потребителей.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+Исключённые каталоги</h1>
+<p>Публичный HTML намеренно не включает:</p>
+<ul>
+<li><span class="tt">middleware/FreeRTOS-Kernel</span> — сторонний RTOS kernel;</li>
+<li><span class="tt">libs/SAM_USB</span> — platform support для USB CDC;</li>
+<li><span class="tt">Device_Startup</span> — startup и system-файлы ATSAM3X8E;</li>
+<li><span class="tt">tools</span> — host-side Python utility;</li>
+<li><span class="tt">sd_card</span> — пример внешнего конфигурационного комплекта;</li>
+<li>Debug/Release artifacts.</li>
+</ul>
+<p>Эти файлы остаются частью передаваемого проекта там, где это требуется для сборки или эксплуатации, но не смешиваются со справочником собственного кода LCP Basic.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+Генерация документации</h1>
+<p>Подготовка рабочей папки и команды запуска описаны на отдельной странице <span class="tt"><a class="el" href="DOXYGEN__COMMANDS_8md.html">DOXYGEN_COMMANDS.md</a></span>.</p>
+<p>Рекомендуемый запуск из <span class="tt">C:\DoxygenFolder</span>:</p>
+<div class="fragment"><div class="line">build_doxygen.bat</div>
+</div><!-- fragment --><p>Результат:</p>
+<div class="fragment"><div class="line">docs\doxygen\html\index.html</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

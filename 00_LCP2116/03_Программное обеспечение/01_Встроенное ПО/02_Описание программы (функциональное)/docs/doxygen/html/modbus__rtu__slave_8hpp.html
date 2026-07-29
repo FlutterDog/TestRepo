@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл protocol/modbus_rtu/modbus_rtu_slave.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('modbus__rtu__slave_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл modbus_rtu_slave.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Неблокирующий минимальный Modbus RTU slave для примеров Lorentz.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="modbus__rtu__master_8hpp_source.html">modbus_rtu_master.hpp</a>&quot;</code><br />
+</div>
+<p><a href="modbus__rtu__slave_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:ModbusRtuSlave" id="r_ModbusRtuSlave"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runtime минимального Modbus RTU slave.  <a href="structModbusRtuSlave.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a7d5c86bc158aaa4ea78781211c29a45f" id="r_a7d5c86bc158aaa4ea78781211c29a45f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d5c86bc158aaa4ea78781211c29a45f">ModbusRtuSlaveState</a> : uint8_t { <a class="el" href="#a7d5c86bc158aaa4ea78781211c29a45fae9978005a73b05767107ba64dec28269">MODBUS_RTU_SLAVE_RECEIVE</a> = 0U
+, <a class="el" href="#a7d5c86bc158aaa4ea78781211c29a45fa215f3c269a9b6695f0681588117c51b3">MODBUS_RTU_SLAVE_WAIT_TX</a> = 1U
+ }</td></tr>
+<tr class="memdesc:a7d5c86bc158aaa4ea78781211c29a45f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Внутреннее состояние неблокирующего slave.  <a href="#a7d5c86bc158aaa4ea78781211c29a45f">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:acc72645d283b9c8649827a4d738b3427" id="r_acc72645d283b9c8649827a4d738b3427"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc72645d283b9c8649827a4d738b3427">modbus_rtu_slave_init</a> (<a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a> &amp;slave, const <a class="el" href="structModbusRtuTransport.html">ModbusRtuTransport</a> &amp;transport, uint8_t slave_address, uint16_t *holding_registers, uint16_t holding_register_count, uint32_t interframe_gap_ms)</td></tr>
+<tr class="memdesc:acc72645d283b9c8649827a4d738b3427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует slave и привязывает карту holding-регистров.  <br /></td></tr>
+<tr class="memitem:a2239ba8d06ebcdc61f9889936eaef84a" id="r_a2239ba8d06ebcdc61f9889936eaef84a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2239ba8d06ebcdc61f9889936eaef84a">modbus_rtu_slave_poll</a> (<a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a> &amp;slave)</td></tr>
+<tr class="memdesc:a2239ba8d06ebcdc61f9889936eaef84a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет один неблокирующий шаг приёма или передачи.  <br /></td></tr>
+<tr class="memitem:a8d0ee927279fbe01bf5ac052a29ab4ab" id="r_a8d0ee927279fbe01bf5ac052a29ab4ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d0ee927279fbe01bf5ac052a29ab4ab">modbus_rtu_slave_reset</a> (<a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a> &amp;slave)</td></tr>
+<tr class="memdesc:a8d0ee927279fbe01bf5ac052a29ab4ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбрасывает незавершённый кадр, сохраняя конфигурацию и счётчики.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:ae2ceaea468a58159799dd65792657c1b" id="r_ae2ceaea468a58159799dd65792657c1b"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2ceaea468a58159799dd65792657c1b">MODBUS_RTU_SLAVE_RX_CAPACITY</a> = 64U</td></tr>
+<tr class="memitem:a8a1f5d458f285ed230957c26bffc303b" id="r_a8a1f5d458f285ed230957c26bffc303b"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a1f5d458f285ed230957c26bffc303b">MODBUS_RTU_SLAVE_TX_CAPACITY</a> = 64U</td></tr>
+<tr class="memitem:a6d30f9f5be0d7fc068b82f0053927e3a" id="r_a6d30f9f5be0d7fc068b82f0053927e3a"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d30f9f5be0d7fc068b82f0053927e3a">MODBUS_RTU_SLAVE_TX_TIMEOUT_MS</a> = 1000U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Неблокирующий минимальный Modbus RTU slave для примеров Lorentz. </p>
+<p>Реализация предназначена как ясный reusable-пример альтернативной роли одного S1..S4. Один физический half-duplex UART нельзя одновременно передать этому slave и <a class="el" href="structModbusRtuMaster.html" title="Полное состояние одного независимого Modbus RTU master.">ModbusRtuMaster</a>. Baseline поддерживает только FC03. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8hpp_source.html">modbus_rtu_slave.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a7d5c86bc158aaa4ea78781211c29a45f" name="a7d5c86bc158aaa4ea78781211c29a45f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d5c86bc158aaa4ea78781211c29a45f">&#9670;&#160;</a></span>ModbusRtuSlaveState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a7d5c86bc158aaa4ea78781211c29a45f">ModbusRtuSlaveState</a> : uint8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Внутреннее состояние неблокирующего slave. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a7d5c86bc158aaa4ea78781211c29a45fae9978005a73b05767107ba64dec28269" name="a7d5c86bc158aaa4ea78781211c29a45fae9978005a73b05767107ba64dec28269"></a>MODBUS_RTU_SLAVE_RECEIVE&#160;</td><td class="fielddoc"><p>Приём запроса и ожидание межкадровой паузы. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d5c86bc158aaa4ea78781211c29a45fa215f3c269a9b6695f0681588117c51b3" name="a7d5c86bc158aaa4ea78781211c29a45fa215f3c269a9b6695f0681588117c51b3"></a>MODBUS_RTU_SLAVE_WAIT_TX&#160;</td><td class="fielddoc"><p>Ответ принят transport и физически передаётся. </p>
+</td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8hpp_source.html">modbus_rtu_slave.hpp</a> строка <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00026">26</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="acc72645d283b9c8649827a4d738b3427" name="acc72645d283b9c8649827a4d738b3427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc72645d283b9c8649827a4d738b3427">&#9670;&#160;</a></span>modbus_rtu_slave_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void modbus_rtu_slave_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>slave</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structModbusRtuTransport.html">ModbusRtuTransport</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>transport</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>holding_registers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>holding_register_count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>interframe_gap_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует slave и привязывает карту holding-регистров. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">slave</td><td>Объект slave. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>Transport со сроком жизни не меньше slave. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">slave_address</td><td>Адрес 1..247; broadcast 0 не поддерживается. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">holding_registers</td><td>Карта, читаемая при FC03. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">holding_register_count</td><td>Число доступных регистров. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">interframe_gap_ms</td><td>Пауза, определяющая завершение неполного кадра. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8cpp_source.html">modbus_rtu_slave.cpp</a> строка <a class="el" href="modbus__rtu__slave_8cpp_source.html#l00182">182</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="modbus__rtu__master_8hpp_source.html#l00052">ModbusRtuTransport::clear_rx</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00044">ModbusRtuSlave::holding_register_count</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00043">ModbusRtuSlave::holding_registers</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00050">ModbusRtuSlave::interframe_gap_ms</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00048">ModbusRtuSlave::last_rx_ms</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00028">MODBUS_RTU_SLAVE_RECEIVE</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00042">ModbusRtuSlave::slave_address</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00045">ModbusRtuSlave::state</a> и <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00041">ModbusRtuSlave::transport</a>.</p>
+
+</div>
+</div>
+<a id="a2239ba8d06ebcdc61f9889936eaef84a" name="a2239ba8d06ebcdc61f9889936eaef84a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2239ba8d06ebcdc61f9889936eaef84a">&#9670;&#160;</a></span>modbus_rtu_slave_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void modbus_rtu_slave_poll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>slave</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет один неблокирующий шаг приёма или передачи. </p>
+<p>Цикл RX ограничен доступными байтами и статической ёмкостью. Функция не ждёт новый байт и должна вызываться регулярно из прикладного service poll. Состояние WAIT_TX автоматически завершается ошибкой через MODBUS_RTU_SLAVE_TX_TIMEOUT_MS, если transport не сообщает tx_idle. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8cpp_source.html">modbus_rtu_slave.cpp</a> строка <a class="el" href="modbus__rtu__slave_8cpp_source.html#l00218">218</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="modbus__rtu__master_8hpp_source.html#l00049">ModbusRtuTransport::available</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00053">ModbusRtuSlave::error_count</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00044">ModbusRtuSlave::holding_register_count</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00043">ModbusRtuSlave::holding_registers</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00050">ModbusRtuSlave::interframe_gap_ms</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00048">ModbusRtuSlave::last_rx_ms</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="modbus__rtu__slave_8cpp_source.html#l00204">modbus_rtu_slave_reset()</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00017">MODBUS_RTU_SLAVE_RX_CAPACITY</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00029">MODBUS_RTU_SLAVE_WAIT_TX</a>, <a class="el" href="modbus__rtu__master_8hpp_source.html#l00050">ModbusRtuTransport::read</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00054">ModbusRtuSlave::rx_buffer</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00046">ModbusRtuSlave::rx_length</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00042">ModbusRtuSlave::slave_address</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00045">ModbusRtuSlave::state</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00041">ModbusRtuSlave::transport</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00049">ModbusRtuSlave::tx_deadline_ms</a> и <a class="el" href="modbus__rtu__master_8hpp_source.html#l00051">ModbusRtuTransport::tx_idle</a>.</p>
+
+</div>
+</div>
+<a id="a8d0ee927279fbe01bf5ac052a29ab4ab" name="a8d0ee927279fbe01bf5ac052a29ab4ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d0ee927279fbe01bf5ac052a29ab4ab">&#9670;&#160;</a></span>modbus_rtu_slave_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void modbus_rtu_slave_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structModbusRtuSlave.html">ModbusRtuSlave</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>slave</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сбрасывает незавершённый кадр, сохраняя конфигурацию и счётчики. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8cpp_source.html">modbus_rtu_slave.cpp</a> строка <a class="el" href="modbus__rtu__slave_8cpp_source.html#l00204">204</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="modbus__rtu__master_8hpp_source.html#l00052">ModbusRtuTransport::clear_rx</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00048">ModbusRtuSlave::last_rx_ms</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00028">MODBUS_RTU_SLAVE_RECEIVE</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00046">ModbusRtuSlave::rx_length</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00045">ModbusRtuSlave::state</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00041">ModbusRtuSlave::transport</a>, <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00049">ModbusRtuSlave::tx_deadline_ms</a> и <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00047">ModbusRtuSlave::tx_length</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__slave_8cpp_source.html#l00218">modbus_rtu_slave_poll()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="ae2ceaea468a58159799dd65792657c1b" name="ae2ceaea468a58159799dd65792657c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ceaea468a58159799dd65792657c1b">&#9670;&#160;</a></span>MODBUS_RTU_SLAVE_RX_CAPACITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t MODBUS_RTU_SLAVE_RX_CAPACITY = 64U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Максимальный размер входного RTU-кадра минимального slave. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8hpp_source.html">modbus_rtu_slave.hpp</a> строка <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00017">17</a></p>
+
+<p class="reference">Используется в <a class="el" href="modbus__rtu__slave_8cpp_source.html#l00218">modbus_rtu_slave_poll()</a>.</p>
+
+</div>
+</div>
+<a id="a8a1f5d458f285ed230957c26bffc303b" name="a8a1f5d458f285ed230957c26bffc303b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1f5d458f285ed230957c26bffc303b">&#9670;&#160;</a></span>MODBUS_RTU_SLAVE_TX_CAPACITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t MODBUS_RTU_SLAVE_TX_CAPACITY = 64U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Максимальный размер выходного RTU-кадра минимального slave. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8hpp_source.html">modbus_rtu_slave.hpp</a> строка <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00020">20</a></p>
+
+</div>
+</div>
+<a id="a6d30f9f5be0d7fc068b82f0053927e3a" name="a6d30f9f5be0d7fc068b82f0053927e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d30f9f5be0d7fc068b82f0053927e3a">&#9670;&#160;</a></span>MODBUS_RTU_SLAVE_TX_TIMEOUT_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t MODBUS_RTU_SLAVE_TX_TIMEOUT_MS = 1000U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Максимальное ожидание физического окончания ответа. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="modbus__rtu__slave_8hpp_source.html">modbus_rtu_slave.hpp</a> строка <a class="el" href="modbus__rtu__slave_8hpp_source.html#l00023">23</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_bfdb423cc3a608048b1264d49bcca462.html">protocol</a></li><li class="navelem"><a href="dir_dad4f0e99a7a7df2afffcb51bb2d05a8.html">modbus_rtu</a></li><li class="navelem"><a href="modbus__rtu__slave_8hpp.html">modbus_rtu_slave.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

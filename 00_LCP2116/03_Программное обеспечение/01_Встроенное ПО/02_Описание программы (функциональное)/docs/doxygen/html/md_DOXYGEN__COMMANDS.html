@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Генерация Doxygen для LCP Basic 1.02.0</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_DOXYGEN__COMMANDS.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Генерация Doxygen для LCP Basic 1.02.0 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md35"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+1. Подготовка рабочей папки</h1>
+<p>Рабочая папка:</p>
+<div class="fragment"><div class="line">C:\DoxygenFolder</div>
+</div><!-- fragment --><p>В неё необходимо скопировать <b>содержимое</b> каталога:</p>
+<div class="fragment"><div class="line">TestRepo\00_LCP2116\RTOS\</div>
+</div><!-- fragment --><p>То есть <span class="tt"><a class="el" href="main_8cpp.html" title="Точка входа baseline-прошивки LCP под управлением FreeRTOS.">main.cpp</a></span>, <span class="tt">Config</span>, <span class="tt">app</span>, <span class="tt">board</span>, <span class="tt">hal</span>, <span class="tt">libs</span>, <span class="tt">middleware</span>, <span class="tt">platform</span>, <span class="tt">protocol</span>, <span class="tt">tools</span> и остальные файлы должны находиться прямо в <span class="tt">C:\DoxygenFolder</span>, без дополнительного уровня <span class="tt">RTOS</span>.</p>
+<p>Затем из каталога:</p>
+<div class="fragment"><div class="line">TestRepo\00_LCP2116\02_Описание программы (функциональное)\</div>
+</div><!-- fragment --><p>скопировать в тот же корень четыре файла:</p>
+<div class="fragment"><div class="line">README.md</div>
+<div class="line">Doxyfile</div>
+<div class="line">build_doxygen.bat</div>
+<div class="line">DOXYGEN_COMMANDS.md</div>
+</div><!-- fragment --><p>Ожидаемая структура:</p>
+<div class="fragment"><div class="line">C:\DoxygenFolder\</div>
+<div class="line">├── Config\</div>
+<div class="line">├── app\</div>
+<div class="line">├── board\</div>
+<div class="line">├── hal\</div>
+<div class="line">├── libs\</div>
+<div class="line">├── middleware\</div>
+<div class="line">├── platform\</div>
+<div class="line">├── protocol\</div>
+<div class="line">├── tools\</div>
+<div class="line">├── README.md</div>
+<div class="line">├── DOXYGEN_COMMANDS.md</div>
+<div class="line">├── Doxyfile</div>
+<div class="line">├── build_doxygen.bat</div>
+<div class="line">└── main.cpp</div>
+</div><!-- fragment --><p><span class="tt">Device_Startup</span>, <span class="tt">middleware\FreeRTOS-Kernel</span> и <span class="tt">libs\SAM_USB</span> могут находиться в рабочей копии, но исключены из публичной Doxygen-документации как startup и сторонний/platform support код.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+2. Проверка Doxygen</h1>
+<p>Открыть <span class="tt">cmd.exe</span> и выполнить:</p>
+<div class="fragment"><div class="line">cd /d C:\DoxygenFolder</div>
+<div class="line">where doxygen</div>
+<div class="line">doxygen --version</div>
+</div><!-- fragment --><p>Если <span class="tt">doxygen.exe</span> установлен, но не найден, временно добавить типовой путь:</p>
+<div class="fragment"><div class="line">set &quot;PATH=C:\Program Files\doxygen\bin;%PATH%&quot;</div>
+<div class="line">where doxygen</div>
+<div class="line">doxygen --version</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+3. Рекомендуемый запуск</h1>
+<div class="fragment"><div class="line">cd /d C:\DoxygenFolder</div>
+<div class="line">build_doxygen.bat</div>
+</div><!-- fragment --><p>Скрипт:</p>
+<ul>
+<li>проверяет полноту структуры LCP Basic 1.02.0;</li>
+<li>проверяет доступность <span class="tt">doxygen.exe</span>;</li>
+<li>удаляет старую папку результата;</li>
+<li>запускает Doxygen с логом;</li>
+<li>проверяет наличие <span class="tt">index.html</span>;</li>
+<li>открывает созданное руководство в браузере.</li>
+</ul>
+<p>Результат:</p>
+<div class="fragment"><div class="line">C:\DoxygenFolder\docs\doxygen\html\index.html</div>
+</div><!-- fragment --><p>Логи:</p>
+<div class="fragment"><div class="line">C:\DoxygenFolder\docs\doxygen\doxygen_build.log</div>
+<div class="line">C:\DoxygenFolder\docs\doxygen\doxygen_warnings.log</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+4. Ручной запуск без bat-файла</h1>
+<div class="fragment"><div class="line">cd /d C:\DoxygenFolder</div>
+<div class="line">if exist docs\doxygen rmdir /s /q docs\doxygen</div>
+<div class="line">mkdir docs\doxygen</div>
+<div class="line">doxygen Doxyfile &gt; docs\doxygen\doxygen_build.log 2&gt;&amp;1</div>
+</div><!-- fragment --><p>После успешного завершения:</p>
+<div class="fragment"><div class="line">start &quot;&quot; &quot;docs\doxygen\html\index.html&quot;</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+5. Проверка результата</h1>
+<p>В созданном HTML должны отображаться:</p>
+<ul>
+<li>версия проекта <span class="tt">1.02.0</span>;</li>
+<li>главная страница LCP Basic;</li>
+<li>каталоги <span class="tt">app</span>, <span class="tt">board</span>, <span class="tt">hal</span>, <span class="tt">platform</span>, <span class="tt">protocol</span>;</li>
+<li>библиотеки <span class="tt"><a class="el" href="lcp__crc32_8cpp.html#a5bd774e3454a43dce037c7b5aa1fcb99" title="Вычисляет CRC-32/ISO-HDLC (polynomial 0xEDB88320).">lcp_crc32</a></span> и <span class="tt">lcp_sd_storage</span>;</li>
+<li>исходный код через раздел «Файлы»;</li>
+<li>структуры и публичные функции подсистем конфигурации, X2X, FieldSensor, Modbus RTU/TCP, Ethernet, RTC, watchdog и service console.</li>
+</ul>
+<p>Каталоги <span class="tt">middleware\FreeRTOS-Kernel</span>, <span class="tt">libs\SAM_USB</span> и <span class="tt">Device_Startup</span> в публичном дереве файлов отображаться не должны. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

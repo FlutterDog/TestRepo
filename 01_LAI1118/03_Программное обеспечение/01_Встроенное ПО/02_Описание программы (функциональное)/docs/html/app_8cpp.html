@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Файл app/app.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('app_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл app.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Прикладная логика модуля LAI.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="app_8hpp_source.html">app.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lai__board_8hpp_source.html">lai_board.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a>&quot;</code><br />
+<code>#include &lt;avr/io.h&gt;</code><br />
+<code>#include &lt;avr/interrupt.h&gt;</code><br />
+<code>#include &lt;avr/eeprom.h&gt;</code><br />
+<code>#include &lt;avr/wdt.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_i_g_a_s__mb_8h_source.html">../Libs/IGAS_mb.h</a>&quot;</code><br />
+</div>
+<p><a href="app_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Пространства имен</h2></td></tr>
+<tr class="memitem:anonymous_5Fnamespace_7Bapp_2Ecpp_7D" id="r_anonymous_5Fnamespace_7Bapp_2Ecpp_7D"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html">anonymous_namespace{app.cpp}</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a56542d1dfd8504b022817bbf2177dc14" id="r_a56542d1dfd8504b022817bbf2177dc14"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a56542d1dfd8504b022817bbf2177dc14">anonymous_namespace{app.cpp}::BootEntryPtr</a>) (void)</td></tr>
+<tr class="memdesc:a56542d1dfd8504b022817bbf2177dc14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тип указателя на точку входа загрузчика.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:aa14eddb17e6a18b3159c050e376fc5de" id="r_aa14eddb17e6a18b3159c050e376fc5de"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa14eddb17e6a18b3159c050e376fc5de">anonymous_namespace{app.cpp}::ChannelState</a> { <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa14eddb17e6a18b3159c050e376fc5deaa7cea1fc8de796a445375398055c014e">anonymous_namespace{app.cpp}::inActive</a> = 0
+, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa14eddb17e6a18b3159c050e376fc5dea6ea4fbd673fdff528a89eead1bb3a040">anonymous_namespace{app.cpp}::waitStart</a> = 1
+, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa14eddb17e6a18b3159c050e376fc5deae243c56d018c5091475a5055a2a88f31">anonymous_namespace{app.cpp}::Active</a> = 2
+ }</td></tr>
+<tr class="memdesc:aa14eddb17e6a18b3159c050e376fc5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние обработки импульса по аналоговому каналу.  <a href="namespaceanonymous__namespace_02app_8cpp_03.html#aa14eddb17e6a18b3159c050e376fc5de">Подробнее...</a><br /></td></tr>
+<tr class="memitem:aa6209870a8bf6f4e5abcd29dd9dd7e05" id="r_aa6209870a8bf6f4e5abcd29dd9dd7e05"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05">anonymous_namespace{app.cpp}::AdcChipId</a> { <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05a2d3ad3e09e46ed545a8f87d84f66fc52">anonymous_namespace{app.cpp}::AIC_1</a> = 0
+, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05afc8dd140a2dad286128b4d61f7ca66a2">anonymous_namespace{app.cpp}::AIC_2</a> = 1
+ }</td></tr>
+<tr class="memdesc:aa6209870a8bf6f4e5abcd29dd9dd7e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор микросхемы <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <a href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05">Подробнее...</a><br /></td></tr>
+<tr class="memitem:ae97ac62814f2edd63732af9f0e526e32" id="r_ae97ac62814f2edd63732af9f0e526e32"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32">anonymous_namespace{app.cpp}::AdsState</a> { <br />
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32ad501923f751d486a5575c50d36e29212">anonymous_namespace{app.cpp}::requestAI</a> = 0
+, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32a5ee252e2c089a97ff6e06e7f9c192fed">anonymous_namespace{app.cpp}::delayADC</a> = 1
+, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32afbb7c4caa2167100d754e8909ea54ab2">anonymous_namespace{app.cpp}::checkAIReady</a> = 2
+, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32adc719ec80b0fd170679d18a8846f633f">anonymous_namespace{app.cpp}::getAIx</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32a63d911d09586c3423e228d38c6e081f8">anonymous_namespace{app.cpp}::calcOutput</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:ae97ac62814f2edd63732af9f0e526e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние автомата чтения <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <a href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a6a76be89ee23dd73567d07bdc0ce509d" id="r_a6a76be89ee23dd73567d07bdc0ce509d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a6a76be89ee23dd73567d07bdc0ce509d">anonymous_namespace{app.cpp}::modbusProceed</a> (int16_t *regs, int16_t startAddr, int16_t regCount, int16_t value)</td></tr>
+<tr class="memdesc:a6a76be89ee23dd73567d07bdc0ce509d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Делегат доступа к карте Holding-регистров Modbus.  <br /></td></tr>
+<tr class="memitem:a2dfa6fb9b1a5df4c25ea8e732a84cd30" id="r_a2dfa6fb9b1a5df4c25ea8e732a84cd30"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2dfa6fb9b1a5df4c25ea8e732a84cd30">anonymous_namespace{app.cpp}::eepromReadByte</a> (uint16_t address)</td></tr>
+<tr class="memdesc:a2dfa6fb9b1a5df4c25ea8e732a84cd30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает байт из EEPROM.  <br /></td></tr>
+<tr class="memitem:a7f980139248fa966c8b1d8ae4198df32" id="r_a7f980139248fa966c8b1d8ae4198df32"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7f980139248fa966c8b1d8ae4198df32">anonymous_namespace{app.cpp}::eepromUpdateByte</a> (uint16_t address, uint8_t value)</td></tr>
+<tr class="memdesc:a7f980139248fa966c8b1d8ae4198df32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обновляет байт в EEPROM.  <br /></td></tr>
+<tr class="memitem:aef294fb733432cd2acf7dd82d55bef99" id="r_aef294fb733432cd2acf7dd82d55bef99"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aef294fb733432cd2acf7dd82d55bef99">anonymous_namespace{app.cpp}::eepromReadInt</a> (uint16_t address)</td></tr>
+<tr class="memdesc:aef294fb733432cd2acf7dd82d55bef99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает шестнадцатибитное знаковое значение из EEPROM.  <br /></td></tr>
+<tr class="memitem:a95701d207a84bb55703232471ecde2bc" id="r_a95701d207a84bb55703232471ecde2bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a95701d207a84bb55703232471ecde2bc">anonymous_namespace{app.cpp}::eepromUpdateInt</a> (uint16_t address, int16_t value)</td></tr>
+<tr class="memdesc:a95701d207a84bb55703232471ecde2bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обновляет шестнадцатибитное знаковое значение в EEPROM.  <br /></td></tr>
+<tr class="memitem:a92a64a6e8485f03a8957e2d891cce955" id="r_a92a64a6e8485f03a8957e2d891cce955"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a92a64a6e8485f03a8957e2d891cce955">anonymous_namespace{app.cpp}::eepromReadFloat</a> (uint16_t address, float defaultValue)</td></tr>
+<tr class="memdesc:a92a64a6e8485f03a8957e2d891cce955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает значение float из EEPROM.  <br /></td></tr>
+<tr class="memitem:a915c3090a26c8aca24162b4bb22f59bd" id="r_a915c3090a26c8aca24162b4bb22f59bd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a915c3090a26c8aca24162b4bb22f59bd">anonymous_namespace{app.cpp}::eepromUpdateFloatRegisterPart</a> (uint16_t address, uint16_t raw)</td></tr>
+<tr class="memdesc:a915c3090a26c8aca24162b4bb22f59bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обновляет один шестнадцатибитный фрагмент EEPROM-представления float.  <br /></td></tr>
+<tr class="memitem:ac613b208e69db5438bd46575a3607179" id="r_ac613b208e69db5438bd46575a3607179"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ac613b208e69db5438bd46575a3607179">anonymous_namespace{app.cpp}::convertFloat</a> (float value, uint8_t order)</td></tr>
+<tr class="memdesc:ac613b208e69db5438bd46575a3607179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает один Modbus-регистр из IEEE-754 значения float.  <br /></td></tr>
+<tr class="memitem:a781f900ee676503142dfdb746fb9b7d6" id="r_a781f900ee676503142dfdb746fb9b7d6"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a781f900ee676503142dfdb746fb9b7d6">anonymous_namespace{app.cpp}::floatRegisterByPair</a> (float value, uint16_t firstRegister, uint16_t registerAddr)</td></tr>
+<tr class="memdesc:a781f900ee676503142dfdb746fb9b7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает слово float-значения по адресу регистра пары.  <br /></td></tr>
+<tr class="memitem:abba9c01bf3730a0acdae6cfbf8e8e485" id="r_abba9c01bf3730a0acdae6cfbf8e8e485"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#abba9c01bf3730a0acdae6cfbf8e8e485">anonymous_namespace{app.cpp}::absInt16ToInt16</a> (int16_t value)</td></tr>
+<tr class="memdesc:abba9c01bf3730a0acdae6cfbf8e8e485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает модуль значения int16_t с защитой от переполнения.  <br /></td></tr>
+<tr class="memitem:a01c1d775ba66f52fb62afb4792e64db4" id="r_a01c1d775ba66f52fb62afb4792e64db4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a01c1d775ba66f52fb62afb4792e64db4">anonymous_namespace{app.cpp}::calculateCalibration</a> (uint8_t channel)</td></tr>
+<tr class="memdesc:a01c1d775ba66f52fb62afb4792e64db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рассчитывает коэффициенты линейной калибровки канала.  <br /></td></tr>
+<tr class="memitem:a11f92bc567e04159a405fcbdf3def586" id="r_a11f92bc567e04159a405fcbdf3def586"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a11f92bc567e04159a405fcbdf3def586">anonymous_namespace{app.cpp}::calibrToEEPROM</a> (uint8_t channel)</td></tr>
+<tr class="memdesc:a11f92bc567e04159a405fcbdf3def586"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет калибровочные точки канала в EEPROM.  <br /></td></tr>
+<tr class="memitem:a673cfb9ff50cdba788b6224481b8c341" id="r_a673cfb9ff50cdba788b6224481b8c341"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a673cfb9ff50cdba788b6224481b8c341">anonymous_namespace{app.cpp}::calibrFromEEPROM</a> (uint8_t channel)</td></tr>
+<tr class="memdesc:a673cfb9ff50cdba788b6224481b8c341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает калибровочные точки канала из EEPROM.  <br /></td></tr>
+<tr class="memitem:a8cb0c78a23ab75fd030bbce00653c9f1" id="r_a8cb0c78a23ab75fd030bbce00653c9f1"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a8cb0c78a23ab75fd030bbce00653c9f1">anonymous_namespace{app.cpp}::sensorToConcentration</a> (uint8_t channel, int16_t value)</td></tr>
+<tr class="memdesc:a8cb0c78a23ab75fd030bbce00653c9f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пересчитывает код АЦП в калиброванное значение канала.  <br /></td></tr>
+<tr class="memitem:a9aa19bf2c29f6dbfce6da2dda9273309" id="r_a9aa19bf2c29f6dbfce6da2dda9273309"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a9aa19bf2c29f6dbfce6da2dda9273309">anonymous_namespace{app.cpp}::forceWatchdogReset</a> (void)</td></tr>
+<tr class="memdesc:a9aa19bf2c29f6dbfce6da2dda9273309"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет программную перезагрузку через watchdog.  <br /></td></tr>
+<tr class="memitem:a0c39caea18a7287bf0143646c6fb4502" id="r_a0c39caea18a7287bf0143646c6fb4502"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a0c39caea18a7287bf0143646c6fb4502">anonymous_namespace{app.cpp}::jumpToBootloader</a> (void)</td></tr>
+<tr class="memdesc:a0c39caea18a7287bf0143646c6fb4502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет переход в загрузчик.  <br /></td></tr>
+<tr class="memitem:a7b017df7fecc4463e7bac803434359a7" id="r_a7b017df7fecc4463e7bac803434359a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7b017df7fecc4463e7bac803434359a7">anonymous_namespace{app.cpp}::loop100Task</a> (void)</td></tr>
+<tr class="memdesc:a7b017df7fecc4463e7bac803434359a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет быструю сервисную задачу приложения.  <br /></td></tr>
+<tr class="memitem:ab101352453d749e8a8a76ee2daffe360" id="r_ab101352453d749e8a8a76ee2daffe360"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ab101352453d749e8a8a76ee2daffe360">anonymous_namespace{app.cpp}::loop500Task</a> (void)</td></tr>
+<tr class="memdesc:ab101352453d749e8a8a76ee2daffe360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет задачу контроля связи и индикации состояния.  <br /></td></tr>
+<tr class="memitem:a80babd62d669906fc0961f4951738246" id="r_a80babd62d669906fc0961f4951738246"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a80babd62d669906fc0961f4951738246">anonymous_namespace{app.cpp}::initCommunication</a> (void)</td></tr>
+<tr class="memdesc:a80babd62d669906fc0961f4951738246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует интерфейсы обмена.  <br /></td></tr>
+<tr class="memitem:aa9984be3fb4ed1ab49ad95123d76ab87" id="r_aa9984be3fb4ed1ab49ad95123d76ab87"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa9984be3fb4ed1ab49ad95123d76ab87">anonymous_namespace{app.cpp}::processMotorCurrent</a> (void)</td></tr>
+<tr class="memdesc:aa9984be3fb4ed1ab49ad95123d76ab87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает фиксацию максимального значения по каналам.  <br /></td></tr>
+<tr class="memitem:a496cfe2d59f09c01091fc5e043afd581" id="r_a496cfe2d59f09c01091fc5e043afd581"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a496cfe2d59f09c01091fc5e043afd581">anonymous_namespace{app.cpp}::handleConversion</a> (uint8_t chipID)</td></tr>
+<tr class="memdesc:a496cfe2d59f09c01091fc5e043afd581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обслуживает автомат чтения одного <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:afd8cfe045e27d60d65f2dc95ddc50450" id="r_afd8cfe045e27d60d65f2dc95ddc50450"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#afd8cfe045e27d60d65f2dc95ddc50450">anonymous_namespace{app.cpp}::accessRegister</a> (uint16_t registerAddr, bool writeReg, int16_t value)</td></tr>
+<tr class="memdesc:afd8cfe045e27d60d65f2dc95ddc50450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает доступ к одному Holding-регистру.  <br /></td></tr>
+<tr class="memitem:a7dfd9b79bc5a37d7df40207afbc5431f" id="r_a7dfd9b79bc5a37d7df40207afbc5431f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dfd9b79bc5a37d7df40207afbc5431f">setup</a> (void)</td></tr>
+<tr class="memdesc:a7dfd9b79bc5a37d7df40207afbc5431f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет однократную инициализацию приложения.  <br /></td></tr>
+<tr class="memitem:a0b33edabd7f1c4e4a0bf32c67269be2f" id="r_a0b33edabd7f1c4e4a0bf32c67269be2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b33edabd7f1c4e4a0bf32c67269be2f">loop</a> (void)</td></tr>
+<tr class="memdesc:a0b33edabd7f1c4e4a0bf32c67269be2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет основной циклический обработчик приложения.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a7199d159347cb90b801840d95bed6144" id="r_a7199d159347cb90b801840d95bed6144"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7199d159347cb90b801840d95bed6144">anonymous_namespace{app.cpp}::MODBUS_BAUDRATE</a> = 9600UL</td></tr>
+<tr class="memdesc:a7199d159347cb90b801840d95bed6144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Скорость обмена Modbus RTU, бод.  <br /></td></tr>
+<tr class="memitem:a3ef47f0df377b9cd402abd0a12d22f84" id="r_a3ef47f0df377b9cd402abd0a12d22f84"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a3ef47f0df377b9cd402abd0a12d22f84">anonymous_namespace{app.cpp}::MODBUS_REGISTER_LIMIT</a> = 2001U</td></tr>
+<tr class="memdesc:a3ef47f0df377b9cd402abd0a12d22f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Верхняя исключающая граница адресного пространства Holding-регистров.  <br /></td></tr>
+<tr class="memitem:a2e4a485499409b0d7910375c7346729a" id="r_a2e4a485499409b0d7910375c7346729a"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">anonymous_namespace{app.cpp}::NUM_CHANNELS</a> = 8U</td></tr>
+<tr class="memdesc:a2e4a485499409b0d7910375c7346729a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Количество аналоговых каналов модуля.  <br /></td></tr>
+<tr class="memitem:a56ffa7085ca0f83b1df9601db0e3ce59" id="r_a56ffa7085ca0f83b1df9601db0e3ce59"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a56ffa7085ca0f83b1df9601db0e3ce59">anonymous_namespace{app.cpp}::FIRMWARE_DEF</a> = 101U</td></tr>
+<tr class="memdesc:a56ffa7085ca0f83b1df9601db0e3ce59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Версия встроенного программного обеспечения.  <br /></td></tr>
+<tr class="memitem:a1e16ac02af773752d5324a301a40a50a" id="r_a1e16ac02af773752d5324a301a40a50a"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a1e16ac02af773752d5324a301a40a50a">anonymous_namespace{app.cpp}::LOOP_100_MS</a> = 100UL</td></tr>
+<tr class="memdesc:a1e16ac02af773752d5324a301a40a50a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Период выполнения быстрой сервисной задачи, мс.  <br /></td></tr>
+<tr class="memitem:a7144b8988c48a764c909d1dd1a9bcb4d" id="r_a7144b8988c48a764c909d1dd1a9bcb4d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7144b8988c48a764c909d1dd1a9bcb4d">anonymous_namespace{app.cpp}::LOOP_500_MS</a> = 500UL</td></tr>
+<tr class="memdesc:a7144b8988c48a764c909d1dd1a9bcb4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Период выполнения задачи индикации связи, мс.  <br /></td></tr>
+<tr class="memitem:ace58f5f22969363dc3ac0f689c2f6d69" id="r_ace58f5f22969363dc3ac0f689c2f6d69"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ace58f5f22969363dc3ac0f689c2f6d69">anonymous_namespace{app.cpp}::CONNECTION_TIMEOUT_MS</a> = 10000UL</td></tr>
+<tr class="memdesc:ace58f5f22969363dc3ac0f689c2f6d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Таймаут отсутствия Modbus-обмена, мс.  <br /></td></tr>
+<tr class="memitem:adecd1abb676aa3ce13d6e6bcfcebf04f" id="r_adecd1abb676aa3ce13d6e6bcfcebf04f"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#adecd1abb676aa3ce13d6e6bcfcebf04f">anonymous_namespace{app.cpp}::STOP_DELAY_MS</a> = 5000UL</td></tr>
+<tr class="memdesc:adecd1abb676aa3ce13d6e6bcfcebf04f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Задержка фиксации окончания импульса тока, мс.  <br /></td></tr>
+<tr class="memitem:aca416409b54b8d70c89c7cdc8f5cf6f9" id="r_aca416409b54b8d70c89c7cdc8f5cf6f9"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aca416409b54b8d70c89c7cdc8f5cf6f9">anonymous_namespace{app.cpp}::BOOTLOADER_JUMP_DELAY_MS</a> = 50UL</td></tr>
+<tr class="memdesc:aca416409b54b8d70c89c7cdc8f5cf6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Задержка перед переходом в загрузчик после принятия команды, мс.  <br /></td></tr>
+<tr class="memitem:ade1fe78123d0a2f5338c9903983f2356" id="r_ade1fe78123d0a2f5338c9903983f2356"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ade1fe78123d0a2f5338c9903983f2356">anonymous_namespace{app.cpp}::BOOT_START_ADDR_BYTES</a> = 0x7000U</td></tr>
+<tr class="memdesc:ade1fe78123d0a2f5338c9903983f2356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Стартовый адрес загрузчика в байтах.  <br /></td></tr>
+<tr class="memitem:adf4e00ec8b9882540a8ec35cb34eebd1" id="r_adf4e00ec8b9882540a8ec35cb34eebd1"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf4e00ec8b9882540a8ec35cb34eebd1">anonymous_namespace{app.cpp}::BOOT_START_ADDR_WORDS</a></td></tr>
+<tr class="memdesc:adf4e00ec8b9882540a8ec35cb34eebd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Стартовый адрес загрузчика в словах команд AVR.  <br /></td></tr>
+<tr class="memitem:a96b06cc9ed325c5434e0d2f13a0f3608" id="r_a96b06cc9ed325c5434e0d2f13a0f3608"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a96b06cc9ed325c5434e0d2f13a0f3608">anonymous_namespace{app.cpp}::EEPROM_SERIAL_NUMBER_ADDR</a> = 72U</td></tr>
+<tr class="memdesc:a96b06cc9ed325c5434e0d2f13a0f3608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес серийного номера в EEPROM.  <br /></td></tr>
+<tr class="memitem:a47fba5ed2eb6a15f5a6237b24b0784de" id="r_a47fba5ed2eb6a15f5a6237b24b0784de"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a47fba5ed2eb6a15f5a6237b24b0784de">anonymous_namespace{app.cpp}::EEPROM_MODBUS_ADDRESS_ADDR</a> = 100U</td></tr>
+<tr class="memdesc:a47fba5ed2eb6a15f5a6237b24b0784de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес Modbus-адреса устройства в EEPROM.  <br /></td></tr>
+<tr class="memitem:ae8044ca917465ba1c9e50160306ac0e4" id="r_ae8044ca917465ba1c9e50160306ac0e4"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae8044ca917465ba1c9e50160306ac0e4">anonymous_namespace{app.cpp}::EEPROM_MOTOR_STOP_THRESHOLD_ADDR</a> = 110U</td></tr>
+<tr class="memdesc:ae8044ca917465ba1c9e50160306ac0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес порога фиксации максимального тока в EEPROM.  <br /></td></tr>
+<tr class="memitem:a4beadcdb407e7b6fb9d24d1d61c54b58" id="r_a4beadcdb407e7b6fb9d24d1d61c54b58"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a4beadcdb407e7b6fb9d24d1d61c54b58">anonymous_namespace{app.cpp}::EEPROM_AI_MODE_ADDR</a> = 115U</td></tr>
+<tr class="memdesc:a4beadcdb407e7b6fb9d24d1d61c54b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес режима аналоговых входов в EEPROM.  <br /></td></tr>
+<tr class="memitem:a052bfc5d8e9d5cef1878914873151171" id="r_a052bfc5d8e9d5cef1878914873151171"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a052bfc5d8e9d5cef1878914873151171">anonymous_namespace{app.cpp}::EEPROM_CALIBRATION_START</a> = 3U</td></tr>
+<tr class="memdesc:a052bfc5d8e9d5cef1878914873151171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Базовое смещение области калибровочных параметров в EEPROM.  <br /></td></tr>
+<tr class="memitem:a929c7a04df06db90c7a47bdf5b2efc51" id="r_a929c7a04df06db90c7a47bdf5b2efc51"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a929c7a04df06db90c7a47bdf5b2efc51">anonymous_namespace{app.cpp}::EEPROM_CALIBRATION_SHIFT</a> = 8U</td></tr>
+<tr class="memdesc:a929c7a04df06db90c7a47bdf5b2efc51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Размер EEPROM-блока калибровки одного канала, байт.  <br /></td></tr>
+<tr class="memitem:a4e588b9397c4fe4265c7bf6b3844ec8c" id="r_a4e588b9397c4fe4265c7bf6b3844ec8c"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a4e588b9397c4fe4265c7bf6b3844ec8c">anonymous_namespace{app.cpp}::EEPROM_START_ADDRESS</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a4e588b9397c4fe4265c7bf6b3844ec8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Начальные адреса EEPROM-блоков калибровки каналов.  <br /></td></tr>
+<tr class="memitem:addb43a4f52e1e83f490217fce4000c6e" id="r_addb43a4f52e1e83f490217fce4000c6e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_i_g_a_s__mb__485.html">IGAS_mb_485</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#addb43a4f52e1e83f490217fce4000c6e">anonymous_namespace{app.cpp}::IGAS_mb_X</a></td></tr>
+<tr class="memdesc:addb43a4f52e1e83f490217fce4000c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Объект ведомого устройства Modbus RTU.  <br /></td></tr>
+<tr class="memitem:adf8eaae1c256265688a3d924b4535c02" id="r_adf8eaae1c256265688a3d924b4535c02"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_a_d_s1115.html">ADS1115</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">anonymous_namespace{app.cpp}::ADS_1</a> (0x49U)</td></tr>
+<tr class="memdesc:adf8eaae1c256265688a3d924b4535c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Первый преобразователь <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:ae34d0f98fffb148b72516fe3b49988a6" id="r_ae34d0f98fffb148b72516fe3b49988a6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_a_d_s1115.html">ADS1115</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">anonymous_namespace{app.cpp}::ADS_2</a> (0x48U)</td></tr>
+<tr class="memdesc:ae34d0f98fffb148b72516fe3b49988a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Второй преобразователь <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a7a13f4dcf6282f6667a774b9d542b34e" id="r_a7a13f4dcf6282f6667a774b9d542b34e"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7a13f4dcf6282f6667a774b9d542b34e">anonymous_namespace{app.cpp}::slaveAddr</a> = 0U</td></tr>
+<tr class="memdesc:a7a13f4dcf6282f6667a774b9d542b34e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущий Modbus-адрес устройства.  <br /></td></tr>
+<tr class="memitem:ab167b65afe42dc3148ca96dbff585c7a" id="r_ab167b65afe42dc3148ca96dbff585c7a"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ab167b65afe42dc3148ca96dbff585c7a">anonymous_namespace{app.cpp}::pinCode</a> = 0U</td></tr>
+<tr class="memdesc:ab167b65afe42dc3148ca96dbff585c7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг разрешения записи защищённых параметров.  <br /></td></tr>
+<tr class="memitem:af2d86e95aa7d01597a7c5b33a44da86c" id="r_af2d86e95aa7d01597a7c5b33a44da86c"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#af2d86e95aa7d01597a7c5b33a44da86c">anonymous_namespace{app.cpp}::rebootRequested</a> = 0U</td></tr>
+<tr class="memdesc:af2d86e95aa7d01597a7c5b33a44da86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг запроса программной перезагрузки.  <br /></td></tr>
+<tr class="memitem:a795230a053edcf3470767857f25e480d" id="r_a795230a053edcf3470767857f25e480d"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">anonymous_namespace{app.cpp}::currentTime</a> = 0UL</td></tr>
+<tr class="memdesc:a795230a053edcf3470767857f25e480d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущее системное время, мс.  <br /></td></tr>
+<tr class="memitem:a6e5e324a86ff540963181c5b1b6f87e2" id="r_a6e5e324a86ff540963181c5b1b6f87e2"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a6e5e324a86ff540963181c5b1b6f87e2">anonymous_namespace{app.cpp}::resetWDtimer</a> = 0UL</td></tr>
+<tr class="memdesc:a6e5e324a86ff540963181c5b1b6f87e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время последнего корректного Modbus-обмена.  <br /></td></tr>
+<tr class="memitem:ad64a50843ebb7fb2d9cf33ea35bc5801" id="r_ad64a50843ebb7fb2d9cf33ea35bc5801"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ad64a50843ebb7fb2d9cf33ea35bc5801">anonymous_namespace{app.cpp}::loop100StartTime</a> = 0UL</td></tr>
+<tr class="memdesc:ad64a50843ebb7fb2d9cf33ea35bc5801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время последнего выполнения быстрой сервисной задачи.  <br /></td></tr>
+<tr class="memitem:a21b3e5dc4413a3e643fddc2f9cb7b9f4" id="r_a21b3e5dc4413a3e643fddc2f9cb7b9f4"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a21b3e5dc4413a3e643fddc2f9cb7b9f4">anonymous_namespace{app.cpp}::loop500StartTime</a> = 0UL</td></tr>
+<tr class="memdesc:a21b3e5dc4413a3e643fddc2f9cb7b9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время последнего выполнения задачи индикации.  <br /></td></tr>
+<tr class="memitem:a733a3247a4bb73c2ba404c4e62284c3c" id="r_a733a3247a4bb73c2ba404c4e62284c3c"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a733a3247a4bb73c2ba404c4e62284c3c">anonymous_namespace{app.cpp}::bootloaderRequestTime</a> = 0UL</td></tr>
+<tr class="memdesc:a733a3247a4bb73c2ba404c4e62284c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время получения запроса на переход в загрузчик.  <br /></td></tr>
+<tr class="memitem:a86f63ff5f422c7030b3e1b1c203927b9" id="r_a86f63ff5f422c7030b3e1b1c203927b9"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a86f63ff5f422c7030b3e1b1c203927b9">anonymous_namespace{app.cpp}::x2xState</a> = 0U</td></tr>
+<tr class="memdesc:a86f63ff5f422c7030b3e1b1c203927b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг состояния связи по Modbus.  <br /></td></tr>
+<tr class="memitem:a19d1a21055e99fdfd6452d36ab1be502" id="r_a19d1a21055e99fdfd6452d36ab1be502"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a19d1a21055e99fdfd6452d36ab1be502">anonymous_namespace{app.cpp}::MOTOR_STOP_THRESHOLD</a> = 0.5F</td></tr>
+<tr class="memdesc:a19d1a21055e99fdfd6452d36ab1be502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Порог фиксации максимального значения по каналу.  <br /></td></tr>
+<tr class="memitem:a06acfd390f531770de2af6fa25b71acd" id="r_a06acfd390f531770de2af6fa25b71acd"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a06acfd390f531770de2af6fa25b71acd">anonymous_namespace{app.cpp}::gasConcentrationY</a> [2U *<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a06acfd390f531770de2af6fa25b71acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Калибровочные значения Y для каналов.  <br /></td></tr>
+<tr class="memitem:a5b0d1a3fde76302f3db94a47f6e44393" id="r_a5b0d1a3fde76302f3db94a47f6e44393"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a5b0d1a3fde76302f3db94a47f6e44393">anonymous_namespace{app.cpp}::sensorAnalogX</a> [2U *<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a5b0d1a3fde76302f3db94a47f6e44393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Калибровочные значения X для каналов.  <br /></td></tr>
+<tr class="memitem:ab1ea619718bc57ea73e87c278d5ff2bb" id="r_ab1ea619718bc57ea73e87c278d5ff2bb"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ab1ea619718bc57ea73e87c278d5ff2bb">anonymous_namespace{app.cpp}::k</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:ab1ea619718bc57ea73e87c278d5ff2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Коэффициенты наклона калибровочных прямых.  <br /></td></tr>
+<tr class="memitem:ab1591a8d1504790fe37d7123783083db" id="r_ab1591a8d1504790fe37d7123783083db"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ab1591a8d1504790fe37d7123783083db">anonymous_namespace{app.cpp}::b</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:ab1591a8d1504790fe37d7123783083db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Смещения калибровочных прямых.  <br /></td></tr>
+<tr class="memitem:af51a82798556e6f29912fca2670b231d" id="r_af51a82798556e6f29912fca2670b231d"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#af51a82798556e6f29912fca2670b231d">anonymous_namespace{app.cpp}::AIData</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:af51a82798556e6f29912fca2670b231d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сырые значения аналоговых каналов и битовая маска состояния.  <br /></td></tr>
+<tr class="memitem:a22c1e8364321253a6c8e22d2f39f01f7" id="r_a22c1e8364321253a6c8e22d2f39f01f7"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a22c1e8364321253a6c8e22d2f39f01f7">anonymous_namespace{app.cpp}::AI_MODE</a> = 0xFFU</td></tr>
+<tr class="memdesc:a22c1e8364321253a6c8e22d2f39f01f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска режимов аналоговых входов.  <br /></td></tr>
+<tr class="memitem:a810708a5d11e14d06cdead51fd8d064a" id="r_a810708a5d11e14d06cdead51fd8d064a"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a810708a5d11e14d06cdead51fd8d064a">anonymous_namespace{app.cpp}::channelActive</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a810708a5d11e14d06cdead51fd8d064a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояния обработки импульсов по каналам.  <br /></td></tr>
+<tr class="memitem:ac1847c61fa3e5691f82d52106989f89d" id="r_ac1847c61fa3e5691f82d52106989f89d"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ac1847c61fa3e5691f82d52106989f89d">anonymous_namespace{app.cpp}::maxCurrArray</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:ac1847c61fa3e5691f82d52106989f89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Зафиксированные максимальные значения по каналам.  <br /></td></tr>
+<tr class="memitem:a491784b65d30c80ee81f013d11b17c19" id="r_a491784b65d30c80ee81f013d11b17c19"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a491784b65d30c80ee81f013d11b17c19">anonymous_namespace{app.cpp}::buffer</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a491784b65d30c80ee81f013d11b17c19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущие максимальные значения активных импульсов.  <br /></td></tr>
+<tr class="memitem:a515d0d200b2050e3788b8bc32eeaed55" id="r_a515d0d200b2050e3788b8bc32eeaed55"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a515d0d200b2050e3788b8bc32eeaed55">anonymous_namespace{app.cpp}::stopTimers</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a515d0d200b2050e3788b8bc32eeaed55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Таймеры обработки активных импульсов по каналам.  <br /></td></tr>
+<tr class="memitem:a5a5fa62011609938b340baa0dccb675f" id="r_a5a5fa62011609938b340baa0dccb675f"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a5a5fa62011609938b340baa0dccb675f">anonymous_namespace{app.cpp}::ADC_Converted</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:a5a5fa62011609938b340baa0dccb675f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Калиброванные значения аналоговых каналов.  <br /></td></tr>
+<tr class="memitem:aef4a68fa5a40528a079c997618c36921" id="r_aef4a68fa5a40528a079c997618c36921"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aef4a68fa5a40528a079c997618c36921">anonymous_namespace{app.cpp}::ledData</a> [<a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>+1U]</td></tr>
+<tr class="memdesc:aef4a68fa5a40528a079c997618c36921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер перестановки каналов для регистра индикации.  <br /></td></tr>
+<tr class="memitem:a3e30aadeb5695939672d322295648dd8" id="r_a3e30aadeb5695939672d322295648dd8"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a3e30aadeb5695939672d322295648dd8">anonymous_namespace{app.cpp}::AIBuffer</a> = 0U</td></tr>
+<tr class="memdesc:a3e30aadeb5695939672d322295648dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Последнее переданное значение регистра индикации.  <br /></td></tr>
+<tr class="memitem:a2dba617670e237caf040bd2aa23d8477" id="r_a2dba617670e237caf040bd2aa23d8477"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2dba617670e237caf040bd2aa23d8477">anonymous_namespace{app.cpp}::ADSstate</a> [2] = { <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32ad501923f751d486a5575c50d36e29212">requestAI</a>, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae97ac62814f2edd63732af9f0e526e32ad501923f751d486a5575c50d36e29212">requestAI</a> }</td></tr>
+<tr class="memdesc:a2dba617670e237caf040bd2aa23d8477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояния автоматов чтения <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:aedbfb72db88ec80e4c5c7a2257a8c8e7" id="r_aedbfb72db88ec80e4c5c7a2257a8c8e7"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#aedbfb72db88ec80e4c5c7a2257a8c8e7">anonymous_namespace{app.cpp}::AIX</a> [2] = { 0U, 0U }</td></tr>
+<tr class="memdesc:aedbfb72db88ec80e4c5c7a2257a8c8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущие номера каналов для чтения <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a76a17fc55e149b26107cf5000b20245e" id="r_a76a17fc55e149b26107cf5000b20245e"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#a76a17fc55e149b26107cf5000b20245e">anonymous_namespace{app.cpp}::startAItime</a> [2] = { 0UL, 0UL }</td></tr>
+<tr class="memdesc:a76a17fc55e149b26107cf5000b20245e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время запуска текущих преобразований <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Прикладная логика модуля LAI. </p>
+<p>Модуль выполняет:</p><ul>
+<li>инициализацию аппаратных ресурсов платы LAI;</li>
+<li>настройку интерфейсов RS-485, SPI и I2C;</li>
+<li>чтение восьми аналоговых каналов через два преобразователя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>;</li>
+<li>управление регистрами индикации и режимов аналоговых входов;</li>
+<li>расчёт калиброванных значений аналоговых каналов;</li>
+<li>фиксацию максимальных значений по каналам;</li>
+<li>обслуживание карты Holding-регистров Modbus RTU;</li>
+<li>сохранение параметров в EEPROM;</li>
+<li>программную перезагрузку;</li>
+<li>отложенный переход в загрузчик. </li>
+</ul>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a0b33edabd7f1c4e4a0bf32c67269be2f" name="a0b33edabd7f1c4e4a0bf32c67269be2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b33edabd7f1c4e4a0bf32c67269be2f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет основной циклический обработчик приложения. </p>
+<p>Функция вызывается непрерывно из главного цикла программы. Внутри обслуживаются Modbus RTU, аналоговые входы, диагностика, индикация, сохранение параметров и отложенные сервисные операции. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l01253">1253</a></p>
+<div class="fragment"><div class="line"><span class="lineno"> 1254</span>{</div>
+<div class="line"><span class="lineno"> 1255</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">currentTime</a> = <a class="code hl_function" href="namespacehal.html#aedc926311c95144acd208036100d0acb">millis</a>();</div>
+<div class="line"><span class="lineno"> 1256</span> </div>
+<div class="line"><span class="lineno"> 1257</span>    <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7b017df7fecc4463e7bac803434359a7">loop100Task</a>();</div>
+<div class="line"><span class="lineno"> 1258</span>    <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#ab101352453d749e8a8a76ee2daffe360">loop500Task</a>();</div>
+<div class="line"><span class="lineno"> 1259</span> </div>
+<div class="line"><span class="lineno"> 1260</span>    (void)<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#addb43a4f52e1e83f490217fce4000c6e">IGAS_mb_X</a>.<a class="code hl_function" href="class_i_g_a_s__mb__485.html#a921eb474cd74770d5dcb0953a9433bc2">update</a>();</div>
+<div class="line"><span class="lineno"> 1261</span> </div>
+<div class="line"><span class="lineno"> 1262</span>    <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a496cfe2d59f09c01091fc5e043afd581">handleConversion</a>(<a class="code hl_enumvalue" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05a2d3ad3e09e46ed545a8f87d84f66fc52">AIC_1</a>);</div>
+<div class="line"><span class="lineno"> 1263</span>    <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a496cfe2d59f09c01091fc5e043afd581">handleConversion</a>(<a class="code hl_enumvalue" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05afc8dd140a2dad286128b4d61f7ca66a2">AIC_2</a>);</div>
+<div class="line"><span class="lineno"> 1264</span> </div>
+<div class="line"><span class="lineno"> 1265</span>    <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#aa9984be3fb4ed1ab49ad95123d76ab87">processMotorCurrent</a>();</div>
+<div class="line"><span class="lineno"> 1266</span> </div>
+<div class="line"><span class="lineno"> 1267</span>    wdt_reset();</div>
+<div class="line"><span class="lineno"> 1268</span>}</div>
+<div class="ttc" id="aclass_i_g_a_s__mb__485_html_a921eb474cd74770d5dcb0953a9433bc2"><div class="ttname"><a href="class_i_g_a_s__mb__485.html#a921eb474cd74770d5dcb0953a9433bc2">IGAS_mb_485::update</a></div><div class="ttdeci">uint8_t update(void)</div><div class="ttdoc">Обрабатывает входящие запросы Modbus RTU.</div><div class="ttdef"><b>Определения</b> <a href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb.cpp:101</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a496cfe2d59f09c01091fc5e043afd581"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a496cfe2d59f09c01091fc5e043afd581">anonymous_namespace{app.cpp}::handleConversion</a></div><div class="ttdeci">static void handleConversion(uint8_t chipID)</div><div class="ttdoc">Обслуживает автомат чтения одного ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00859">app.cpp:859</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a795230a053edcf3470767857f25e480d"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">anonymous_namespace{app.cpp}::currentTime</a></div><div class="ttdeci">static uint32_t currentTime</div><div class="ttdoc">Текущее системное время, мс.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00237">app.cpp:237</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a7b017df7fecc4463e7bac803434359a7"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a7b017df7fecc4463e7bac803434359a7">anonymous_namespace{app.cpp}::loop100Task</a></div><div class="ttdeci">static void loop100Task(void)</div><div class="ttdoc">Выполняет быструю сервисную задачу приложения.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00721">app.cpp:721</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_aa6209870a8bf6f4e5abcd29dd9dd7e05a2d3ad3e09e46ed545a8f87d84f66fc52"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05a2d3ad3e09e46ed545a8f87d84f66fc52">anonymous_namespace{app.cpp}::AIC_1</a></div><div class="ttdeci">@ AIC_1</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00180">app.cpp:180</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_aa6209870a8bf6f4e5abcd29dd9dd7e05afc8dd140a2dad286128b4d61f7ca66a2"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#aa6209870a8bf6f4e5abcd29dd9dd7e05afc8dd140a2dad286128b4d61f7ca66a2">anonymous_namespace{app.cpp}::AIC_2</a></div><div class="ttdeci">@ AIC_2</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00181">app.cpp:181</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_aa9984be3fb4ed1ab49ad95123d76ab87"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#aa9984be3fb4ed1ab49ad95123d76ab87">anonymous_namespace{app.cpp}::processMotorCurrent</a></div><div class="ttdeci">static void processMotorCurrent(void)</div><div class="ttdoc">Обрабатывает фиксацию максимального значения по каналам.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00795">app.cpp:795</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_ab101352453d749e8a8a76ee2daffe360"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#ab101352453d749e8a8a76ee2daffe360">anonymous_namespace{app.cpp}::loop500Task</a></div><div class="ttdeci">static void loop500Task(void)</div><div class="ttdoc">Выполняет задачу контроля связи и индикации состояния.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00752">app.cpp:752</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_addb43a4f52e1e83f490217fce4000c6e"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#addb43a4f52e1e83f490217fce4000c6e">anonymous_namespace{app.cpp}::IGAS_mb_X</a></div><div class="ttdeci">static IGAS_mb_485 IGAS_mb_X</div><div class="ttdoc">Объект ведомого устройства Modbus RTU.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00203">app.cpp:203</a></div></div>
+<div class="ttc" id="anamespacehal_html_aedc926311c95144acd208036100d0acb"><div class="ttname"><a href="namespacehal.html#aedc926311c95144acd208036100d0acb">hal::millis</a></div><div class="ttdeci">uint32_t millis(void)</div><div class="ttdoc">Возвращает количество миллисекунд с момента запуска тикера.</div><div class="ttdef"><b>Определения</b> <a href="compat__tick_8cpp_source.html#l00119">compat_tick.cpp:119</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="app_8cpp_source.html#l00180">anonymous_namespace{app.cpp}::AIC_1</a>, <a class="el" href="app_8cpp_source.html#l00181">anonymous_namespace{app.cpp}::AIC_2</a>, <a class="el" href="app_8cpp_source.html#l00237">anonymous_namespace{app.cpp}::currentTime</a>, <a class="el" href="app_8cpp_source.html#l00859">anonymous_namespace{app.cpp}::handleConversion()</a>, <a class="el" href="app_8cpp_source.html#l00203">anonymous_namespace{app.cpp}::IGAS_mb_X</a>, <a class="el" href="app_8cpp_source.html#l00721">anonymous_namespace{app.cpp}::loop100Task()</a>, <a class="el" href="app_8cpp_source.html#l00752">anonymous_namespace{app.cpp}::loop500Task()</a>, <a class="el" href="app_8cpp_source.html#l00795">anonymous_namespace{app.cpp}::processMotorCurrent()</a> и <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="main_8cpp_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+<a id="a7dfd9b79bc5a37d7df40207afbc5431f" name="a7dfd9b79bc5a37d7df40207afbc5431f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfd9b79bc5a37d7df40207afbc5431f">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет однократную инициализацию приложения. </p>
+<p>Функция вызывается один раз после старта микроконтроллера. Внутри выполняется настройка аппаратного слоя платы, интерфейсов обмена, прикладных параметров, Modbus RTU и начальных состояний модуля. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l01195">1195</a></p>
+<div class="fragment"><div class="line"><span class="lineno"> 1196</span>{</div>
+<div class="line"><span class="lineno"> 1197</span>    wdt_reset();</div>
+<div class="line"><span class="lineno"> 1198</span>    MCUSR &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~_BV(WDRF));</div>
+<div class="line"><span class="lineno"> 1199</span> </div>
+<div class="line"><span class="lineno"> 1200</span>    wdt_disable();</div>
+<div class="line"><span class="lineno"> 1201</span>    wdt_enable(WDTO_4S);</div>
+<div class="line"><span class="lineno"> 1202</span> </div>
+<div class="line"><span class="lineno"> 1203</span>    <a class="code hl_function" href="namespacehal.html#abf5c47094f48aebe05b9f51f6726692c">delay</a>(20UL);</div>
+<div class="line"><span class="lineno"> 1204</span> </div>
+<div class="line"><span class="lineno"> 1205</span>    <a class="code hl_function" href="namespacelai__board.html#a8bc454671e204e9f263953a2db0c677a">lai_board::initIo</a>();</div>
+<div class="line"><span class="lineno"> 1206</span> </div>
+<div class="line"><span class="lineno"> 1207</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7a13f4dcf6282f6667a774b9d542b34e">slaveAddr</a> = <a class="code hl_function" href="namespacelai__board.html#aaea284408e5b53f213b912d8ed30abe0">lai_board::readSlaveAddress</a>();</div>
+<div class="line"><span class="lineno"> 1208</span> </div>
+<div class="line"><span class="lineno"> 1209</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7a13f4dcf6282f6667a774b9d542b34e">slaveAddr</a> == 0U)</div>
+<div class="line"><span class="lineno"> 1210</span>    {</div>
+<div class="line"><span class="lineno"> 1211</span>        <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a7a13f4dcf6282f6667a774b9d542b34e">slaveAddr</a> = 1U;</div>
+<div class="line"><span class="lineno"> 1212</span>    }</div>
+<div class="line"><span class="lineno"> 1213</span> </div>
+<div class="line"><span class="lineno"> 1214</span>    <a class="code hl_function" href="namespacehal.html#abf5c47094f48aebe05b9f51f6726692c">delay</a>(20UL);</div>
+<div class="line"><span class="lineno"> 1215</span> </div>
+<div class="line"><span class="lineno"> 1216</span>    <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a80babd62d669906fc0961f4951738246">initCommunication</a>();</div>
+<div class="line"><span class="lineno"> 1217</span> </div>
+<div class="line"><span class="lineno"> 1218</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">currentTime</a> = <a class="code hl_function" href="namespacehal.html#aedc926311c95144acd208036100d0acb">millis</a>();</div>
+<div class="line"><span class="lineno"> 1219</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a6e5e324a86ff540963181c5b1b6f87e2">resetWDtimer</a> = <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">currentTime</a>;</div>
+<div class="line"><span class="lineno"> 1220</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#ad64a50843ebb7fb2d9cf33ea35bc5801">loop100StartTime</a> = <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">currentTime</a>;</div>
+<div class="line"><span class="lineno"> 1221</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a21b3e5dc4413a3e643fddc2f9cb7b9f4">loop500StartTime</a> = <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a795230a053edcf3470767857f25e480d">currentTime</a>;</div>
+<div class="line"><span class="lineno"> 1222</span> </div>
+<div class="line"><span class="lineno"> 1223</span>    (void)<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">ADS_1</a>.<a class="code hl_function" href="class_a_d_s1115.html#aef105c96b8f0f74d369818d7148812b3">begin</a>();</div>
+<div class="line"><span class="lineno"> 1224</span>    (void)<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">ADS_2</a>.<a class="code hl_function" href="class_a_d_s1115.html#aef105c96b8f0f74d369818d7148812b3">begin</a>();</div>
+<div class="line"><span class="lineno"> 1225</span> </div>
+<div class="line"><span class="lineno"> 1226</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">ADS_1</a>.<a class="code hl_function" href="class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1">setGain</a>(0U);</div>
+<div class="line"><span class="lineno"> 1227</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">ADS_2</a>.<a class="code hl_function" href="class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1">setGain</a>(0U);</div>
+<div class="line"><span class="lineno"> 1228</span> </div>
+<div class="line"><span class="lineno"> 1229</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">ADS_1</a>.<a class="code hl_function" href="class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125">setMode</a>(1U);</div>
+<div class="line"><span class="lineno"> 1230</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">ADS_2</a>.<a class="code hl_function" href="class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125">setMode</a>(1U);</div>
+<div class="line"><span class="lineno"> 1231</span> </div>
+<div class="line"><span class="lineno"> 1232</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">ADS_1</a>.<a class="code hl_function" href="class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c">setDataRate</a>(7U);</div>
+<div class="line"><span class="lineno"> 1233</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">ADS_2</a>.<a class="code hl_function" href="class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c">setDataRate</a>(7U);</div>
+<div class="line"><span class="lineno"> 1234</span> </div>
+<div class="line"><span class="lineno"> 1235</span>    <a class="code hl_function" href="namespacelai__board.html#a82c7a929eb68ee126c0b3155c5bb5fcb">lai_board::writeLedRegister</a>(0U);</div>
+<div class="line"><span class="lineno"> 1236</span> </div>
+<div class="line"><span class="lineno"> 1237</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a22c1e8364321253a6c8e22d2f39f01f7">AI_MODE</a> = <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2dfa6fb9b1a5df4c25ea8e732a84cd30">eepromReadByte</a>(<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a4beadcdb407e7b6fb9d24d1d61c54b58">EEPROM_AI_MODE_ADDR</a>);</div>
+<div class="line"><span class="lineno"> 1238</span>    <a class="code hl_function" href="namespacelai__board.html#ae81a910b01027604c1bbf4ede13b6577">lai_board::writeModeRegister</a>(<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a22c1e8364321253a6c8e22d2f39f01f7">AI_MODE</a>);</div>
+<div class="line"><span class="lineno"> 1239</span> </div>
+<div class="line"><span class="lineno"> 1240</span>    <a class="code hl_function" href="namespacelai__board.html#a61d7f35e99686a23772b6fa7ae1bf0de">lai_board::setShiftEnable</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno"> 1241</span> </div>
+<div class="line"><span class="lineno"> 1242</span>    <span class="keywordflow">for</span> (uint8_t i = 1U; i &lt;= <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">NUM_CHANNELS</a>; ++i)</div>
+<div class="line"><span class="lineno"> 1243</span>    {</div>
+<div class="line"><span class="lineno"> 1244</span>        <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a673cfb9ff50cdba788b6224481b8c341">calibrFromEEPROM</a>(i);</div>
+<div class="line"><span class="lineno"> 1245</span>    }</div>
+<div class="line"><span class="lineno"> 1246</span> </div>
+<div class="line"><span class="lineno"> 1247</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#a19d1a21055e99fdfd6452d36ab1be502">MOTOR_STOP_THRESHOLD</a> =</div>
+<div class="line"><span class="lineno"> 1248</span>        <a class="code hl_function" href="namespaceanonymous__namespace_02app_8cpp_03.html#a92a64a6e8485f03a8957e2d891cce955">eepromReadFloat</a>(<a class="code hl_variable" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae8044ca917465ba1c9e50160306ac0e4">EEPROM_MOTOR_STOP_THRESHOLD_ADDR</a>, 0.5F);</div>
+<div class="line"><span class="lineno"> 1249</span> </div>
+<div class="line"><span class="lineno"> 1250</span>    wdt_reset();</div>
+<div class="line"><span class="lineno"> 1251</span>}</div>
+<div class="ttc" id="aclass_a_d_s1115_html_a16262eb02b1f77cb0edf9afe537b42b1"><div class="ttname"><a href="class_a_d_s1115.html#a16262eb02b1f77cb0edf9afe537b42b1">ADS1115::setGain</a></div><div class="ttdeci">void setGain(uint8_t gain)</div><div class="ttdoc">Устанавливает диапазон входного усилителя ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00126">ads1115.cpp:126</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_a74300917c84ffefb1127d335617cf125"><div class="ttname"><a href="class_a_d_s1115.html#a74300917c84ffefb1127d335617cf125">ADS1115::setMode</a></div><div class="ttdeci">void setMode(uint8_t mode)</div><div class="ttdoc">Устанавливает режим работы преобразователя.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00131">ads1115.cpp:131</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_aa979696ef5a7d1ed20715ede55b1e36c"><div class="ttname"><a href="class_a_d_s1115.html#aa979696ef5a7d1ed20715ede55b1e36c">ADS1115::setDataRate</a></div><div class="ttdeci">void setDataRate(uint8_t dataRate)</div><div class="ttdoc">Устанавливает скорость преобразования ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00136">ads1115.cpp:136</a></div></div>
+<div class="ttc" id="aclass_a_d_s1115_html_aef105c96b8f0f74d369818d7148812b3"><div class="ttname"><a href="class_a_d_s1115.html#aef105c96b8f0f74d369818d7148812b3">ADS1115::begin</a></div><div class="ttdeci">bool begin(void)</div><div class="ttdoc">Инициализирует интерфейс обмена с ADS1115.</div><div class="ttdef"><b>Определения</b> <a href="ads1115_8cpp_source.html#l00120">ads1115.cpp:120</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a19d1a21055e99fdfd6452d36ab1be502"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a19d1a21055e99fdfd6452d36ab1be502">anonymous_namespace{app.cpp}::MOTOR_STOP_THRESHOLD</a></div><div class="ttdeci">static float MOTOR_STOP_THRESHOLD</div><div class="ttdoc">Порог фиксации максимального значения по каналу.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00267">app.cpp:267</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a21b3e5dc4413a3e643fddc2f9cb7b9f4"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a21b3e5dc4413a3e643fddc2f9cb7b9f4">anonymous_namespace{app.cpp}::loop500StartTime</a></div><div class="ttdeci">static uint32_t loop500StartTime</div><div class="ttdoc">Время последнего выполнения задачи индикации.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00252">app.cpp:252</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a22c1e8364321253a6c8e22d2f39f01f7"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a22c1e8364321253a6c8e22d2f39f01f7">anonymous_namespace{app.cpp}::AI_MODE</a></div><div class="ttdeci">static uint8_t AI_MODE</div><div class="ttdoc">Маска режимов аналоговых входов.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00301">app.cpp:301</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a2dfa6fb9b1a5df4c25ea8e732a84cd30"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a2dfa6fb9b1a5df4c25ea8e732a84cd30">anonymous_namespace{app.cpp}::eepromReadByte</a></div><div class="ttdeci">static uint8_t eepromReadByte(uint16_t address)</div><div class="ttdoc">Читает байт из EEPROM.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00378">app.cpp:378</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a2e4a485499409b0d7910375c7346729a"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a2e4a485499409b0d7910375c7346729a">anonymous_namespace{app.cpp}::NUM_CHANNELS</a></div><div class="ttdeci">static const uint8_t NUM_CHANNELS</div><div class="ttdoc">Количество аналоговых каналов модуля.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00055">app.cpp:55</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a4beadcdb407e7b6fb9d24d1d61c54b58"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a4beadcdb407e7b6fb9d24d1d61c54b58">anonymous_namespace{app.cpp}::EEPROM_AI_MODE_ADDR</a></div><div class="ttdeci">static const uint16_t EEPROM_AI_MODE_ADDR</div><div class="ttdoc">Адрес режима аналоговых входов в EEPROM.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00129">app.cpp:129</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a673cfb9ff50cdba788b6224481b8c341"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a673cfb9ff50cdba788b6224481b8c341">anonymous_namespace{app.cpp}::calibrFromEEPROM</a></div><div class="ttdeci">static void calibrFromEEPROM(uint8_t channel)</div><div class="ttdoc">Загружает калибровочные точки канала из EEPROM.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00623">app.cpp:623</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a6e5e324a86ff540963181c5b1b6f87e2"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a6e5e324a86ff540963181c5b1b6f87e2">anonymous_namespace{app.cpp}::resetWDtimer</a></div><div class="ttdeci">static uint32_t resetWDtimer</div><div class="ttdoc">Время последнего корректного Modbus-обмена.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00242">app.cpp:242</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a7a13f4dcf6282f6667a774b9d542b34e"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a7a13f4dcf6282f6667a774b9d542b34e">anonymous_namespace{app.cpp}::slaveAddr</a></div><div class="ttdeci">static uint8_t slaveAddr</div><div class="ttdoc">Текущий Modbus-адрес устройства.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00222">app.cpp:222</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a80babd62d669906fc0961f4951738246"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a80babd62d669906fc0961f4951738246">anonymous_namespace{app.cpp}::initCommunication</a></div><div class="ttdeci">static void initCommunication(void)</div><div class="ttdoc">Инициализирует интерфейсы обмена.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00783">app.cpp:783</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_a92a64a6e8485f03a8957e2d891cce955"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#a92a64a6e8485f03a8957e2d891cce955">anonymous_namespace{app.cpp}::eepromReadFloat</a></div><div class="ttdeci">static float eepromReadFloat(uint16_t address, float defaultValue)</div><div class="ttdoc">Читает значение float из EEPROM.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00434">app.cpp:434</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_ad64a50843ebb7fb2d9cf33ea35bc5801"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#ad64a50843ebb7fb2d9cf33ea35bc5801">anonymous_namespace{app.cpp}::loop100StartTime</a></div><div class="ttdeci">static uint32_t loop100StartTime</div><div class="ttdoc">Время последнего выполнения быстрой сервисной задачи.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00247">app.cpp:247</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_adf8eaae1c256265688a3d924b4535c02"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">anonymous_namespace{app.cpp}::ADS_1</a></div><div class="ttdeci">static ADS1115 ADS_1(0x49U)</div><div class="ttdoc">Первый преобразователь ADS1115.</div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_ae34d0f98fffb148b72516fe3b49988a6"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">anonymous_namespace{app.cpp}::ADS_2</a></div><div class="ttdeci">static ADS1115 ADS_2(0x48U)</div><div class="ttdoc">Второй преобразователь ADS1115.</div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02app_8cpp_03_html_ae8044ca917465ba1c9e50160306ac0e4"><div class="ttname"><a href="namespaceanonymous__namespace_02app_8cpp_03.html#ae8044ca917465ba1c9e50160306ac0e4">anonymous_namespace{app.cpp}::EEPROM_MOTOR_STOP_THRESHOLD_ADDR</a></div><div class="ttdeci">static const uint16_t EEPROM_MOTOR_STOP_THRESHOLD_ADDR</div><div class="ttdoc">Адрес порога фиксации максимального тока в EEPROM.</div><div class="ttdef"><b>Определения</b> <a href="app_8cpp_source.html#l00124">app.cpp:124</a></div></div>
+<div class="ttc" id="anamespacehal_html_abf5c47094f48aebe05b9f51f6726692c"><div class="ttname"><a href="namespacehal.html#abf5c47094f48aebe05b9f51f6726692c">hal::delay</a></div><div class="ttdeci">void delay(uint32_t ms)</div><div class="ttdoc">Выполняет блокирующую задержку в миллисекундах.</div><div class="ttdef"><b>Определения</b> <a href="compat__tick_8cpp_source.html#l00133">compat_tick.cpp:133</a></div></div>
+<div class="ttc" id="anamespacelai__board_html_a61d7f35e99686a23772b6fa7ae1bf0de"><div class="ttname"><a href="namespacelai__board.html#a61d7f35e99686a23772b6fa7ae1bf0de">lai_board::setShiftEnable</a></div><div class="ttdeci">void setShiftEnable(bool enabled)</div><div class="ttdoc">Управляет линией разрешения сдвиговых регистров.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00229">lai_board.cpp:229</a></div></div>
+<div class="ttc" id="anamespacelai__board_html_a82c7a929eb68ee126c0b3155c5bb5fcb"><div class="ttname"><a href="namespacelai__board.html#a82c7a929eb68ee126c0b3155c5bb5fcb">lai_board::writeLedRegister</a></div><div class="ttdeci">void writeLedRegister(uint8_t value)</div><div class="ttdoc">Записывает байт в SPI-регистр светодиодов.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00241">lai_board.cpp:241</a></div></div>
+<div class="ttc" id="anamespacelai__board_html_a8bc454671e204e9f263953a2db0c677a"><div class="ttname"><a href="namespacelai__board.html#a8bc454671e204e9f263953a2db0c677a">lai_board::initIo</a></div><div class="ttdeci">void initIo(void)</div><div class="ttdoc">Инициализирует линии GPIO платы LAI.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00123">lai_board.cpp:123</a></div></div>
+<div class="ttc" id="anamespacelai__board_html_aaea284408e5b53f213b912d8ed30abe0"><div class="ttname"><a href="namespacelai__board.html#aaea284408e5b53f213b912d8ed30abe0">lai_board::readSlaveAddress</a></div><div class="ttdeci">uint8_t readSlaveAddress(void)</div><div class="ttdoc">Считывает аппаратный адрес платы.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00163">lai_board.cpp:163</a></div></div>
+<div class="ttc" id="anamespacelai__board_html_ae81a910b01027604c1bbf4ede13b6577"><div class="ttname"><a href="namespacelai__board.html#ae81a910b01027604c1bbf4ede13b6577">lai_board::writeModeRegister</a></div><div class="ttdeci">void writeModeRegister(uint8_t value)</div><div class="ttdoc">Записывает байт в SPI-регистр режимов аналоговых входов.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00248">lai_board.cpp:248</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#adf8eaae1c256265688a3d924b4535c02">anonymous_namespace{app.cpp}::ADS_1</a>, <a class="el" href="namespaceanonymous__namespace_02app_8cpp_03.html#ae34d0f98fffb148b72516fe3b49988a6">anonymous_namespace{app.cpp}::ADS_2</a>, <a class="el" href="app_8cpp_source.html#l00301">anonymous_namespace{app.cpp}::AI_MODE</a>, <a class="el" href="ads1115_8cpp_source.html#l00120">ADS1115::begin()</a>, <a class="el" href="app_8cpp_source.html#l00623">anonymous_namespace{app.cpp}::calibrFromEEPROM()</a>, <a class="el" href="app_8cpp_source.html#l00237">anonymous_namespace{app.cpp}::currentTime</a>, <a class="el" href="app_8cpp_source.html#l00129">anonymous_namespace{app.cpp}::EEPROM_AI_MODE_ADDR</a>, <a class="el" href="app_8cpp_source.html#l00124">anonymous_namespace{app.cpp}::EEPROM_MOTOR_STOP_THRESHOLD_ADDR</a>, <a class="el" href="app_8cpp_source.html#l00378">anonymous_namespace{app.cpp}::eepromReadByte()</a>, <a class="el" href="app_8cpp_source.html#l00434">anonymous_namespace{app.cpp}::eepromReadFloat()</a>, <a class="el" href="app_8cpp_source.html#l00783">anonymous_namespace{app.cpp}::initCommunication()</a>, <a class="el" href="lai__board_8cpp_source.html#l00123">lai_board::initIo()</a>, <a class="el" href="app_8cpp_source.html#l00247">anonymous_namespace{app.cpp}::loop100StartTime</a>, <a class="el" href="app_8cpp_source.html#l00252">anonymous_namespace{app.cpp}::loop500StartTime</a>, <a class="el" href="app_8cpp_source.html#l00267">anonymous_namespace{app.cpp}::MOTOR_STOP_THRESHOLD</a>, <a class="el" href="app_8cpp_source.html#l00055">anonymous_namespace{app.cpp}::NUM_CHANNELS</a>, <a class="el" href="lai__board_8cpp_source.html#l00163">lai_board::readSlaveAddress()</a>, <a class="el" href="app_8cpp_source.html#l00242">anonymous_namespace{app.cpp}::resetWDtimer</a>, <a class="el" href="ads1115_8cpp_source.html#l00136">ADS1115::setDataRate()</a>, <a class="el" href="ads1115_8cpp_source.html#l00126">ADS1115::setGain()</a>, <a class="el" href="ads1115_8cpp_source.html#l00131">ADS1115::setMode()</a>, <a class="el" href="lai__board_8cpp_source.html#l00229">lai_board::setShiftEnable()</a>, <a class="el" href="app_8cpp_source.html#l00222">anonymous_namespace{app.cpp}::slaveAddr</a>, <a class="el" href="lai__board_8cpp_source.html#l00241">lai_board::writeLedRegister()</a> и <a class="el" href="lai__board_8cpp_source.html#l00248">lai_board::writeModeRegister()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="main_8cpp_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="app_8cpp.html">app.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

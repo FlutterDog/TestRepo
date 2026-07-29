@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Файл app/ads1115.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('ads1115_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл ads1115.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация драйвера аналого-цифрового преобразователя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="ads1115_8hpp_source.html">ads1115.hpp</a>&quot;</code><br />
+</div>
+<p><a href="ads1115_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Пространства имен</h2></td></tr>
+<tr class="memitem:hal" id="r_hal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html">hal</a></td></tr>
+<tr class="memitem:anonymous_5Fnamespace_7Bads1115_2Ecpp_7D" id="r_anonymous_5Fnamespace_7Bads1115_2Ecpp_7D"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html">anonymous_namespace{ads1115.cpp}</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a3d73c0755ea07147d9a69a96863f5caa" id="r_a3d73c0755ea07147d9a69a96863f5caa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a3d73c0755ea07147d9a69a96863f5caa">hal::twi_init</a> (uint32_t scl_hz)</td></tr>
+<tr class="memdesc:a3d73c0755ea07147d9a69a96863f5caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует аппаратный интерфейс I2C.  <br /></td></tr>
+<tr class="memitem:ab20137c6563e255ae4de17d12bd7550c" id="r_ab20137c6563e255ae4de17d12bd7550c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#ab20137c6563e255ae4de17d12bd7550c">hal::twi_write_reg16</a> (uint8_t address, uint8_t reg, uint16_t value)</td></tr>
+<tr class="memdesc:ab20137c6563e255ae4de17d12bd7550c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает шестнадцатиразрядный регистр I2C-устройства.  <br /></td></tr>
+<tr class="memitem:a7d9634f41994e820eb6470cb27275f4b" id="r_a7d9634f41994e820eb6470cb27275f4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehal.html#a7d9634f41994e820eb6470cb27275f4b">hal::twi_read_reg16</a> (uint8_t address, uint8_t reg, uint16_t *value)</td></tr>
+<tr class="memdesc:a7d9634f41994e820eb6470cb27275f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает шестнадцатиразрядный регистр I2C-устройства.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:af0198035f5e2ba730ab031086678743f" id="r_af0198035f5e2ba730ab031086678743f"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#af0198035f5e2ba730ab031086678743f">anonymous_namespace{ads1115.cpp}::ADS1115_TWI_FREQUENCY_HZ</a> = 400000UL</td></tr>
+<tr class="memdesc:af0198035f5e2ba730ab031086678743f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рабочая частота шины I2C для обмена с <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a938bd2960efccd6aaf90963247caa243" id="r_a938bd2960efccd6aaf90963247caa243"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a938bd2960efccd6aaf90963247caa243">anonymous_namespace{ads1115.cpp}::ADS1115_REG_CONVERSION</a> = 0x00U</td></tr>
+<tr class="memdesc:a938bd2960efccd6aaf90963247caa243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес регистра результата преобразования.  <br /></td></tr>
+<tr class="memitem:a233a02b1b80ccf3f741a3c03bbd23681" id="r_a233a02b1b80ccf3f741a3c03bbd23681"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a233a02b1b80ccf3f741a3c03bbd23681">anonymous_namespace{ads1115.cpp}::ADS1115_REG_CONFIG</a> = 0x01U</td></tr>
+<tr class="memdesc:a233a02b1b80ccf3f741a3c03bbd23681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес конфигурационного регистра.  <br /></td></tr>
+<tr class="memitem:a974fd1a2cac8ccbafdc3178388de28e2" id="r_a974fd1a2cac8ccbafdc3178388de28e2"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a974fd1a2cac8ccbafdc3178388de28e2">anonymous_namespace{ads1115.cpp}::ADS1115_OS_START</a> = 0x8000U</td></tr>
+<tr class="memdesc:a974fd1a2cac8ccbafdc3178388de28e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Бит запуска одиночного преобразования.  <br /></td></tr>
+<tr class="memitem:a068d7e1c1f37e4117cfa5dbe8a318733" id="r_a068d7e1c1f37e4117cfa5dbe8a318733"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a068d7e1c1f37e4117cfa5dbe8a318733">anonymous_namespace{ads1115.cpp}::ADS1115_OS_READY</a> = 0x8000U</td></tr>
+<tr class="memdesc:a068d7e1c1f37e4117cfa5dbe8a318733"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маска бита готовности результата.  <br /></td></tr>
+<tr class="memitem:a936cb81d7196a78ddadcd661c1881cf0" id="r_a936cb81d7196a78ddadcd661c1881cf0"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a936cb81d7196a78ddadcd661c1881cf0">anonymous_namespace{ads1115.cpp}::ADS1115_MODE_CONTINUOUS</a> = 0x0000U</td></tr>
+<tr class="memdesc:a936cb81d7196a78ddadcd661c1881cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Код непрерывного режима преобразования.  <br /></td></tr>
+<tr class="memitem:a3c92ee379ff66efd7ca18f94319e4143" id="r_a3c92ee379ff66efd7ca18f94319e4143"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a3c92ee379ff66efd7ca18f94319e4143">anonymous_namespace{ads1115.cpp}::ADS1115_MODE_SINGLE_SHOT</a> = 0x0100U</td></tr>
+<tr class="memdesc:a3c92ee379ff66efd7ca18f94319e4143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Код одиночного режима преобразования.  <br /></td></tr>
+<tr class="memitem:afca67c6002943d62f3eb8fd87005650c" id="r_afca67c6002943d62f3eb8fd87005650c"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#afca67c6002943d62f3eb8fd87005650c">anonymous_namespace{ads1115.cpp}::ADS1115_COMP_DISABLE</a> = 0x0003U</td></tr>
+<tr class="memdesc:afca67c6002943d62f3eb8fd87005650c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Код отключения компаратора <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+<tr class="memitem:a2d2cfceed1b2002510bfe30466c3eff1" id="r_a2d2cfceed1b2002510bfe30466c3eff1"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a2d2cfceed1b2002510bfe30466c3eff1">anonymous_namespace{ads1115.cpp}::ADS1115_MUX_SHIFT</a> = 12U</td></tr>
+<tr class="memdesc:a2d2cfceed1b2002510bfe30466c3eff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Смещение поля MUX в конфигурационном регистре.  <br /></td></tr>
+<tr class="memitem:ad6d1a5654e9aa46a984cf8d841f17e05" id="r_ad6d1a5654e9aa46a984cf8d841f17e05"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ad6d1a5654e9aa46a984cf8d841f17e05">anonymous_namespace{ads1115.cpp}::ADS1115_PGA_SHIFT</a> = 9U</td></tr>
+<tr class="memdesc:ad6d1a5654e9aa46a984cf8d841f17e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Смещение поля PGA в конфигурационном регистре.  <br /></td></tr>
+<tr class="memitem:a6887b9296a48f1ea0eee67116d5294bd" id="r_a6887b9296a48f1ea0eee67116d5294bd"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a6887b9296a48f1ea0eee67116d5294bd">anonymous_namespace{ads1115.cpp}::ADS1115_DATA_RATE_SHIFT</a> = 5U</td></tr>
+<tr class="memdesc:a6887b9296a48f1ea0eee67116d5294bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Смещение поля DR в конфигурационном регистре.  <br /></td></tr>
+<tr class="memitem:a1c675bd52f9625c5268ff956fe42e676" id="r_a1c675bd52f9625c5268ff956fe42e676"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#a1c675bd52f9625c5268ff956fe42e676">anonymous_namespace{ads1115.cpp}::ADS1115_SINGLE_ENDED_MUX_BASE</a> = 0x04U</td></tr>
+<tr class="memdesc:a1c675bd52f9625c5268ff956fe42e676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Базовый код single-ended канала AIN0.  <br /></td></tr>
+<tr class="memitem:ab9c5bc80df8079d57f8916e75f0828a0" id="r_ab9c5bc80df8079d57f8916e75f0828a0"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ads1115_8cpp_03.html#ab9c5bc80df8079d57f8916e75f0828a0">anonymous_namespace{ads1115.cpp}::ADS1115_MAX_CHANNEL</a> = 3U</td></tr>
+<tr class="memdesc:ab9c5bc80df8079d57f8916e75f0828a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальный номер single-ended канала <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация драйвера аналого-цифрового преобразователя <a class="el" href="class_a_d_s1115.html" title="Драйвер микросхемы ADS1115.">ADS1115</a>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="ads1115_8cpp_source.html">ads1115.cpp</a></p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="ads1115_8cpp.html">ads1115.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

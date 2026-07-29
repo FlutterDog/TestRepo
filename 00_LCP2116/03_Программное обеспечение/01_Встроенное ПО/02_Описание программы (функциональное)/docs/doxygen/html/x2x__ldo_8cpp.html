@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/x2x/modules/x2x_ldo.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('x2x__ldo_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл x2x_ldo.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Драйвер опроса и управления релейным модулем LDO1118 по X2X.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="x2x__module__drivers_8hpp_source.html">x2x_module_drivers.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__module__common_8hpp_source.html">x2x_module_common.hpp</a>&quot;</code><br />
+</div>
+<p><a href="x2x__ldo_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a0cc11c4761fd22dc24875e629aaf3362" id="r_a0cc11c4761fd22dc24875e629aaf3362"><td class="memItemLeft" align="right" valign="top"><a class="el" href="x2x__module_8hpp.html#a985f94d26c1523fb0cee86f55e380258">X2XModulePollResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cc11c4761fd22dc24875e629aaf3362">x2x_module_poll_ldo1118</a> (<a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *device, <a class="el" href="structX2XModuleContext.html">X2XModuleContext</a> &amp;context)</td></tr>
+<tr class="memdesc:a0cc11c4761fd22dc24875e629aaf3362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback неблокирующего опроса конкретного типа модуля.     <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Драйвер опроса и управления релейным модулем LDO1118 по X2X. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__ldo_8cpp_source.html">x2x_ldo.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a0cc11c4761fd22dc24875e629aaf3362" name="a0cc11c4761fd22dc24875e629aaf3362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cc11c4761fd22dc24875e629aaf3362">&#9670;&#160;</a></span>x2x_module_poll_ldo1118()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="x2x__module_8hpp.html#a985f94d26c1523fb0cee86f55e380258">X2XModulePollResult</a> x2x_module_poll_ldo1118 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structX2XDeviceHeader.html">X2XDeviceHeader</a> *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structX2XModuleContext.html">X2XModuleContext</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>context</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback неблокирующего опроса конкретного типа модуля.    </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">device</td><td>Заголовок и данные конкретного экземпляра. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">context</td><td>Общие ресурсы X2X-сервиса. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Состояние цикла из <a class="el" href="x2x__module_8hpp.html#a985f94d26c1523fb0cee86f55e380258" title="Результат одного вызова неблокирующего драйвера модуля.">X2XModulePollResult</a>.    </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="x2x__ldo_8cpp_source.html">x2x_ldo.cpp</a> строка <a class="el" href="x2x__ldo_8cpp_source.html#l00018">18</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="x2x__module_8hpp_source.html#l00048">X2XModuleContext::master</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00437">modbus_rtu_master_exception_code()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00265">modbus_rtu_master_ready()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00246">modbus_rtu_master_reset()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00432">modbus_rtu_master_result()</a>, <a class="el" href="modbus__rtu__master_8cpp_source.html#l00318">modbus_rtu_master_start_write_multiple()</a>, <a class="el" href="modbus__rtu__master_8hpp_source.html#l00059">MODBUS_RTU_RESULT_BUSY</a>, <a class="el" href="modbus__rtu__master_8hpp_source.html#l00060">MODBUS_RTU_RESULT_OK</a>, <a class="el" href="x2x__module_8hpp_source.html#l00053">X2XModuleContext::now_ms</a>, <a class="el" href="x2x__types_8hpp_source.html#l00099">X2XLdo1118::output_value</a>, <a class="el" href="x2x__module_8hpp_source.html#l00049">X2XModuleContext::runtime</a>, <a class="el" href="x2x__types_8hpp_source.html#l00067">X2XDeviceHeader::slave_address</a>, <a class="el" href="x2x__module_8hpp_source.html#l00039">X2XModuleRuntime::state</a>, <a class="el" href="x2x__types_8hpp_source.html#l00065">X2XDeviceHeader::type</a>, <a class="el" href="x2x__types_8hpp_source.html#l00038">X2X_DEVICE_LDO1118</a>, <a class="el" href="x2x__module__common_8hpp_source.html#l00014">X2X_MODBUS_TRANSACTION_TIMEOUT_MS</a>, <a class="el" href="x2x__module__common_8cpp_source.html#l00028">x2x_module_mark_failure()</a>, <a class="el" href="x2x__module__common_8cpp_source.html#l00018">x2x_module_mark_success()</a>, <a class="el" href="x2x__module_8hpp_source.html#l00027">X2X_MODULE_POLL_CYCLE_COMPLETE</a> и <a class="el" href="x2x__module_8hpp_source.html#l00026">X2X_MODULE_POLL_IN_PROGRESS</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_e05296bbe1f2b3edfa4799f2a210e301.html">x2x</a></li><li class="navelem"><a href="dir_19a2c0e7565c640e2a13a40c03c1349a.html">modules</a></li><li class="navelem"><a href="x2x__ldo_8cpp.html">x2x_ldo.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

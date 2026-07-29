@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAI1118 Rev2 Firmware: Пространство имен lai_board</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LAI1118 Rev2 Firmware
+   </div>
+   <div id="projectbrief">Документация встроенного программного обеспечения модуля LAI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespacelai__board.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Пространство имен lai_board</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Функции аппаратного доступа платы LAI1118 rev2.  
+<a href="#details">Подробнее...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a8bc454671e204e9f263953a2db0c677a" id="r_a8bc454671e204e9f263953a2db0c677a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bc454671e204e9f263953a2db0c677a">initIo</a> (void)</td></tr>
+<tr class="memdesc:a8bc454671e204e9f263953a2db0c677a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует линии GPIO платы LAI.  <br /></td></tr>
+<tr class="memitem:aaea284408e5b53f213b912d8ed30abe0" id="r_aaea284408e5b53f213b912d8ed30abe0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaea284408e5b53f213b912d8ed30abe0">readSlaveAddress</a> (void)</td></tr>
+<tr class="memdesc:aaea284408e5b53f213b912d8ed30abe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считывает аппаратный адрес платы.  <br /></td></tr>
+<tr class="memitem:a3fa4ca0becb7757b4966c1d671352a3e" id="r_a3fa4ca0becb7757b4966c1d671352a3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fa4ca0becb7757b4966c1d671352a3e">statusLedWrite</a> (bool state)</td></tr>
+<tr class="memdesc:a3fa4ca0becb7757b4966c1d671352a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает состояние светодиода связи.  <br /></td></tr>
+<tr class="memitem:a5eecc03743472c6f01ed5efde4e7d98d" id="r_a5eecc03743472c6f01ed5efde4e7d98d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5eecc03743472c6f01ed5efde4e7d98d">statusLedToggle</a> (void)</td></tr>
+<tr class="memdesc:a5eecc03743472c6f01ed5efde4e7d98d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переключает состояние светодиода связи.  <br /></td></tr>
+<tr class="memitem:a53b1aa874733960d27cb019dddbe8650" id="r_a53b1aa874733960d27cb019dddbe8650"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53b1aa874733960d27cb019dddbe8650">rs485TransmitMode</a> (void)</td></tr>
+<tr class="memdesc:a53b1aa874733960d27cb019dddbe8650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переводит RS-485-трансивер в режим передачи.  <br /></td></tr>
+<tr class="memitem:a5342f3dba93e64cf84a82eb9b6a64b28" id="r_a5342f3dba93e64cf84a82eb9b6a64b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5342f3dba93e64cf84a82eb9b6a64b28">rs485ReceiveMode</a> (void)</td></tr>
+<tr class="memdesc:a5342f3dba93e64cf84a82eb9b6a64b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переводит RS-485-трансивер в режим приёма.  <br /></td></tr>
+<tr class="memitem:a2615162d750753ef2e777b8ed651df52" id="r_a2615162d750753ef2e777b8ed651df52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2615162d750753ef2e777b8ed651df52">rs485IsTransmitMode</a> (void)</td></tr>
+<tr class="memdesc:a2615162d750753ef2e777b8ed651df52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текущий режим RS-485-трансивера.  <br /></td></tr>
+<tr class="memitem:a61d7f35e99686a23772b6fa7ae1bf0de" id="r_a61d7f35e99686a23772b6fa7ae1bf0de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61d7f35e99686a23772b6fa7ae1bf0de">setShiftEnable</a> (bool enabled)</td></tr>
+<tr class="memdesc:a61d7f35e99686a23772b6fa7ae1bf0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Управляет линией разрешения сдвиговых регистров.  <br /></td></tr>
+<tr class="memitem:a82c7a929eb68ee126c0b3155c5bb5fcb" id="r_a82c7a929eb68ee126c0b3155c5bb5fcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82c7a929eb68ee126c0b3155c5bb5fcb">writeLedRegister</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a82c7a929eb68ee126c0b3155c5bb5fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает байт в SPI-регистр светодиодов.  <br /></td></tr>
+<tr class="memitem:ae81a910b01027604c1bbf4ede13b6577" id="r_ae81a910b01027604c1bbf4ede13b6577"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae81a910b01027604c1bbf4ede13b6577">writeModeRegister</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ae81a910b01027604c1bbf4ede13b6577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает байт в SPI-регистр режимов аналоговых входов.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Функции аппаратного доступа платы LAI1118 rev2. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a8bc454671e204e9f263953a2db0c677a" name="a8bc454671e204e9f263953a2db0c677a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bc454671e204e9f263953a2db0c677a">&#9670;&#160;</a></span>initIo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::initIo </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует линии GPIO платы LAI. </p>
+<p>Функция настраивает линии RS-485, выбор SPI-регистров, разрешение сдвиговых регистров, адресные входы с внутренними подтяжками и светодиод состояния связи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00123">123</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  124</span>    {</div>
+<div class="line"><span class="lineno">  125</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  126</span><span class="comment">         * PD2 — управление направлением RS-485.</span></div>
+<div class="line"><span class="lineno">  127</span><span class="comment">         * PD3 — выбор SPI-регистра светодиодов.</span></div>
+<div class="line"><span class="lineno">  128</span><span class="comment">         * PD4 — выбор SPI-регистра режимов аналоговых входов.</span></div>
+<div class="line"><span class="lineno">  129</span><span class="comment">         * PD5 — разрешение сдвиговых регистров.</span></div>
+<div class="line"><span class="lineno">  130</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  131</span>        DDRD |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  132</span>            RS485_DE_MASK |</div>
+<div class="line"><span class="lineno">  133</span>            LED_SS_MASK |</div>
+<div class="line"><span class="lineno">  134</span>            MODE_SS_MASK |</div>
+<div class="line"><span class="lineno">  135</span>            SHIFT_ENABLE_MASK</div>
+<div class="line"><span class="lineno">  136</span>        );</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>        clearPortBits(PORTD, RS485_DE_MASK);</div>
+<div class="line"><span class="lineno">  139</span>        setPortBits(PORTD, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(LED_SS_MASK | MODE_SS_MASK | SHIFT_ENABLE_MASK));</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  142</span><span class="comment">         * PD6, PD7 — адресные входы с внутренней подтяжкой.</span></div>
+<div class="line"><span class="lineno">  143</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  144</span>        DDRD &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~ADDR_D_MASK);</div>
+<div class="line"><span class="lineno">  145</span>        setPortBits(PORTD, ADDR_D_MASK);</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  148</span><span class="comment">         * PB0, PB1, PB2 — адресные входы с внутренней подтяжкой.</span></div>
+<div class="line"><span class="lineno">  149</span><span class="comment">         * PB2 после чтения аппаратного адреса используется как линия SPI SS.</span></div>
+<div class="line"><span class="lineno">  150</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  151</span>        DDRB &amp;= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(~ADDR_B_MASK);</div>
+<div class="line"><span class="lineno">  152</span>        setPortBits(PORTB, ADDR_B_MASK);</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  155</span><span class="comment">         * PC0 — светодиод состояния связи.</span></div>
+<div class="line"><span class="lineno">  156</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  157</span>        DDRC |= STATUS_LED_MASK;</div>
+<div class="line"><span class="lineno">  158</span>        clearPortBits(PORTC, STATUS_LED_MASK);</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>        s_rs485TransmitMode = 0U;</div>
+<div class="line"><span class="lineno">  161</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="aaea284408e5b53f213b912d8ed30abe0" name="aaea284408e5b53f213b912d8ed30abe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaea284408e5b53f213b912d8ed30abe0">&#9670;&#160;</a></span>readSlaveAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t lai_board::readSlaveAddress </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считывает аппаратный адрес платы. </p>
+<p>Адрес формируется по пяти адресным входам ADDR0...ADDR4. Вход с низким уровнем считается установленным битом адреса.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение аппаратного адреса в диапазоне 0...31. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00163">163</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>    {</div>
+<div class="line"><span class="lineno">  165</span>        uint8_t address = 0U;</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">if</span> (isPinLow(PIND, _BV(PD6)))</div>
+<div class="line"><span class="lineno">  168</span>        {</div>
+<div class="line"><span class="lineno">  169</span>            address |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(1U &lt;&lt; 0);</div>
+<div class="line"><span class="lineno">  170</span>        }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">if</span> (isPinLow(PIND, _BV(PD7)))</div>
+<div class="line"><span class="lineno">  173</span>        {</div>
+<div class="line"><span class="lineno">  174</span>            address |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(1U &lt;&lt; 1);</div>
+<div class="line"><span class="lineno">  175</span>        }</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceanonymous__namespace_02lai__board_8cpp_03.html#ae3cb90dd060237750099982a31229e05">isPinLow</a>(PINB, _BV(PB0)))</div>
+<div class="line"><span class="lineno">  178</span>        {</div>
+<div class="line"><span class="lineno">  179</span>            address |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(1U &lt;&lt; 2);</div>
+<div class="line"><span class="lineno">  180</span>        }</div>
+<div class="line"><span class="lineno">  181</span> </div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceanonymous__namespace_02lai__board_8cpp_03.html#ae3cb90dd060237750099982a31229e05">isPinLow</a>(PINB, _BV(PB1)))</div>
+<div class="line"><span class="lineno">  183</span>        {</div>
+<div class="line"><span class="lineno">  184</span>            address |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(1U &lt;&lt; 3);</div>
+<div class="line"><span class="lineno">  185</span>        }</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceanonymous__namespace_02lai__board_8cpp_03.html#ae3cb90dd060237750099982a31229e05">isPinLow</a>(PINB, _BV(PB2)))</div>
+<div class="line"><span class="lineno">  188</span>        {</div>
+<div class="line"><span class="lineno">  189</span>            address |= <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(1U &lt;&lt; 4);</div>
+<div class="line"><span class="lineno">  190</span>        }</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>        <span class="keywordflow">return</span> address;</div>
+<div class="line"><span class="lineno">  193</span>    }</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02lai__board_8cpp_03_html_ae3cb90dd060237750099982a31229e05"><div class="ttname"><a href="namespaceanonymous__namespace_02lai__board_8cpp_03.html#ae3cb90dd060237750099982a31229e05">anonymous_namespace{lai_board.cpp}::isPinLow</a></div><div class="ttdeci">static bool isPinLow(volatile uint8_t &amp;pinReg, uint8_t mask)</div><div class="ttdoc">Проверяет, находится ли входная линия в низком уровне.</div><div class="ttdef"><b>Определения</b> <a href="lai__board_8cpp_source.html#l00083">lai_board.cpp:83</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="a2615162d750753ef2e777b8ed651df52" name="a2615162d750753ef2e777b8ed651df52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2615162d750753ef2e777b8ed651df52">&#9670;&#160;</a></span>rs485IsTransmitMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool lai_board::rs485IsTransmitMode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает текущий режим RS-485-трансивера. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true — включён режим передачи; false — включён режим приёма. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00224">224</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  225</span>    {</div>
+<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">return</span> (s_rs485TransmitMode != 0U);</div>
+<div class="line"><span class="lineno">  227</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00101">IGAS_mb_485::update()</a>.</p>
+
+</div>
+</div>
+<a id="a5342f3dba93e64cf84a82eb9b6a64b28" name="a5342f3dba93e64cf84a82eb9b6a64b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5342f3dba93e64cf84a82eb9b6a64b28">&#9670;&#160;</a></span>rs485ReceiveMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::rs485ReceiveMode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переводит RS-485-трансивер в режим приёма. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00218">218</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  219</span>    {</div>
+<div class="line"><span class="lineno">  220</span>        clearPortBits(PORTD, RS485_DE_MASK);</div>
+<div class="line"><span class="lineno">  221</span>        s_rs485TransmitMode = 0U;</div>
+<div class="line"><span class="lineno">  222</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00037">anonymous_namespace{IGAS_mb.cpp}::rs485TxCompleteCallback()</a>.</p>
+
+</div>
+</div>
+<a id="a53b1aa874733960d27cb019dddbe8650" name="a53b1aa874733960d27cb019dddbe8650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53b1aa874733960d27cb019dddbe8650">&#9670;&#160;</a></span>rs485TransmitMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::rs485TransmitMode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переводит RS-485-трансивер в режим передачи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00212">212</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  213</span>    {</div>
+<div class="line"><span class="lineno">  214</span>        setPortBits(PORTD, RS485_DE_MASK);</div>
+<div class="line"><span class="lineno">  215</span>        s_rs485TransmitMode = 1U;</div>
+<div class="line"><span class="lineno">  216</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="_i_g_a_s__mb_8cpp_source.html#l00321">IGAS_mb_485::send()</a>.</p>
+
+</div>
+</div>
+<a id="a61d7f35e99686a23772b6fa7ae1bf0de" name="a61d7f35e99686a23772b6fa7ae1bf0de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61d7f35e99686a23772b6fa7ae1bf0de">&#9670;&#160;</a></span>setShiftEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::setShiftEnable </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Управляет линией разрешения сдвиговых регистров. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>true — установить высокий уровень; false — установить низкий уровень. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00229">229</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  230</span>    {</div>
+<div class="line"><span class="lineno">  231</span>        <span class="keywordflow">if</span> (enabled)</div>
+<div class="line"><span class="lineno">  232</span>        {</div>
+<div class="line"><span class="lineno">  233</span>            setPortBits(PORTD, SHIFT_ENABLE_MASK);</div>
+<div class="line"><span class="lineno">  234</span>        }</div>
+<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  236</span>        {</div>
+<div class="line"><span class="lineno">  237</span>            clearPortBits(PORTD, SHIFT_ENABLE_MASK);</div>
+<div class="line"><span class="lineno">  238</span>        }</div>
+<div class="line"><span class="lineno">  239</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="a5eecc03743472c6f01ed5efde4e7d98d" name="a5eecc03743472c6f01ed5efde4e7d98d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eecc03743472c6f01ed5efde4e7d98d">&#9670;&#160;</a></span>statusLedToggle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::statusLedToggle </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Переключает состояние светодиода связи. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00207">207</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>    {</div>
+<div class="line"><span class="lineno">  209</span>        PORTC ^= STATUS_LED_MASK;</div>
+<div class="line"><span class="lineno">  210</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00752">anonymous_namespace{app.cpp}::loop500Task()</a>.</p>
+
+</div>
+</div>
+<a id="a3fa4ca0becb7757b4966c1d671352a3e" name="a3fa4ca0becb7757b4966c1d671352a3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa4ca0becb7757b4966c1d671352a3e">&#9670;&#160;</a></span>statusLedWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::statusLedWrite </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает состояние светодиода связи. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>true — включить светодиод; false — выключить. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00195">195</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>    {</div>
+<div class="line"><span class="lineno">  197</span>        <span class="keywordflow">if</span> (state)</div>
+<div class="line"><span class="lineno">  198</span>        {</div>
+<div class="line"><span class="lineno">  199</span>            setPortBits(PORTC, STATUS_LED_MASK);</div>
+<div class="line"><span class="lineno">  200</span>        }</div>
+<div class="line"><span class="lineno">  201</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  202</span>        {</div>
+<div class="line"><span class="lineno">  203</span>            clearPortBits(PORTC, STATUS_LED_MASK);</div>
+<div class="line"><span class="lineno">  204</span>        }</div>
+<div class="line"><span class="lineno">  205</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l01157">anonymous_namespace{app.cpp}::modbusProceed()</a>.</p>
+
+</div>
+</div>
+<a id="a82c7a929eb68ee126c0b3155c5bb5fcb" name="a82c7a929eb68ee126c0b3155c5bb5fcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c7a929eb68ee126c0b3155c5bb5fcb">&#9670;&#160;</a></span>writeLedRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::writeLedRegister </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает байт в SPI-регистр светодиодов. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Значение, передаваемое в регистр светодиодов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00241">241</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  242</span>    {</div>
+<div class="line"><span class="lineno">  243</span>        selectLedRegister();</div>
+<div class="line"><span class="lineno">  244</span>        (void)<a class="code hl_function" href="namespacehal.html#a5db22b5d9f6a05e7d007dbce812d4370">hal::spi_txrx</a>(value);</div>
+<div class="line"><span class="lineno">  245</span>        deselectLedRegister();</div>
+<div class="line"><span class="lineno">  246</span>    }</div>
+<div class="ttc" id="anamespacehal_html_a5db22b5d9f6a05e7d007dbce812d4370"><div class="ttname"><a href="namespacehal.html#a5db22b5d9f6a05e7d007dbce812d4370">hal::spi_txrx</a></div><div class="ttdeci">uint8_t spi_txrx(uint8_t value)</div><div class="ttdef"><b>Определения</b> <a href="compat__spi_8cpp_source.html#l00043">compat_spi.cpp:43</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__spi_8cpp_source.html#l00043">hal::spi_txrx()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00859">anonymous_namespace{app.cpp}::handleConversion()</a> и <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+<a id="ae81a910b01027604c1bbf4ede13b6577" name="ae81a910b01027604c1bbf4ede13b6577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae81a910b01027604c1bbf4ede13b6577">&#9670;&#160;</a></span>writeModeRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lai_board::writeModeRegister </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает байт в SPI-регистр режимов аналоговых входов. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Маска режимов аналоговых входов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="lai__board_8cpp_source.html">lai_board.cpp</a> строка <a class="el" href="lai__board_8cpp_source.html#l00248">248</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  249</span>    {</div>
+<div class="line"><span class="lineno">  250</span>        selectModeRegister();</div>
+<div class="line"><span class="lineno">  251</span>        (void)<a class="code hl_function" href="namespacehal.html#a5db22b5d9f6a05e7d007dbce812d4370">hal::spi_txrx</a>(value);</div>
+<div class="line"><span class="lineno">  252</span>        deselectModeRegister();</div>
+<div class="line"><span class="lineno">  253</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="compat__spi_8cpp_source.html#l00043">hal::spi_txrx()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00974">anonymous_namespace{app.cpp}::accessRegister()</a> и <a class="el" href="app_8cpp_source.html#l01195">setup()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespacelai__board.html">lai_board</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

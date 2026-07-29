@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/diagnostics/sd_card_test.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sd__card__test_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sd_card_test.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Диагностика card-detect, mount и базовых операций microSD.  
+<a href="#details">Подробнее...</a></p>
+
+<p><a href="sd__card__test_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac83a4003fd8ac0a453a10f0b67a84dd5" id="r_ac83a4003fd8ac0a453a10f0b67a84dd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac83a4003fd8ac0a453a10f0b67a84dd5">sd_card_test_init</a> (void)</td></tr>
+<tr class="memdesc:ac83a4003fd8ac0a453a10f0b67a84dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Настраивает CS/detect/LED и запускает первую проверку карты.  <br /></td></tr>
+<tr class="memitem:acc62b6add2a045997349e3487d946399" id="r_acc62b6add2a045997349e3487d946399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc62b6add2a045997349e3487d946399">sd_card_test_poll</a> (void)</td></tr>
+<tr class="memdesc:acc62b6add2a045997349e3487d946399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет debounce detect и ограниченный по частоте повтор mount.  <br /></td></tr>
+<tr class="memitem:aa0a023d57c246bb56db55e04cafacdd1" id="r_aa0a023d57c246bb56db55e04cafacdd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0a023d57c246bb56db55e04cafacdd1">sd_card_test_print_report</a> (void)</td></tr>
+<tr class="memdesc:aa0a023d57c246bb56db55e04cafacdd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает detect, mount result, FAT type и наличие SDTEST.TXT.  <br /></td></tr>
+<tr class="memitem:a1792214d7747e121941575cfc81f285c" id="r_a1792214d7747e121941575cfc81f285c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1792214d7747e121941575cfc81f285c">sd_card_test_run_file_test</a> (void)</td></tr>
+<tr class="memdesc:a1792214d7747e121941575cfc81f285c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Синхронно записывает контрольные числа в SDTEST.TXT и читает обратно.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Диагностика card-detect, mount и базовых операций microSD. </p>
+<p>Обычный poll не пишет на карту. Запись выполняется только явной командой <span class="tt">sd test</span>, которая перезаписывает отдельный файл SDTEST.TXT и не затрагивает X2X.TXT, baud.TXT, Parity.TXT или Ethernet-конфигурацию. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__card__test_8hpp_source.html">sd_card_test.hpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ac83a4003fd8ac0a453a10f0b67a84dd5" name="ac83a4003fd8ac0a453a10f0b67a84dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac83a4003fd8ac0a453a10f0b67a84dd5">&#9670;&#160;</a></span>sd_card_test_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sd_card_test_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Настраивает CS/detect/LED и запускает первую проверку карты. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__card__test_8cpp_source.html">sd_card_test.cpp</a> строка <a class="el" href="sd__card__test_8cpp_source.html#l00061">61</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__sd_8cpp_source.html#l00049">lcp_sd_card_inserted()</a>, <a class="el" href="lcp__sd_8cpp_source.html#l00078">lcp_sd_deselect()</a>, <a class="el" href="lcp__sd_8cpp_source.html#l00022">lcp_sd_init_pins()</a>, <a class="el" href="lcp__sd_8cpp_source.html#l00061">lcp_sd_set_ok_led()</a>, <a class="el" href="lcp__sd__storage_8hpp_source.html#l00030">LCP_SD_STORAGE_NOT_READY</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a> и <a class="el" href="sd__card__test_8cpp_source.html#l00078">sd_card_test_poll()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00159">setup()</a>.</p>
+
+</div>
+</div>
+<a id="acc62b6add2a045997349e3487d946399" name="acc62b6add2a045997349e3487d946399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc62b6add2a045997349e3487d946399">&#9670;&#160;</a></span>sd_card_test_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sd_card_test_poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет debounce detect и ограниченный по частоте повтор mount. </p>
+<p>Вызов не ждёт появления карты. После извлечения готовность FAT сбрасывается, а после установки инициализация повторяется не чаще заданного retry period. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__card__test_8cpp_source.html">sd_card_test.cpp</a> строка <a class="el" href="sd__card__test_8cpp_source.html#l00078">78</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__sd_8cpp_source.html#l00061">lcp_sd_set_ok_led()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00904">lcp_sd_storage_begin()</a>, <a class="el" href="lcp__sd__storage_8hpp_source.html#l00018">LCP_SD_STORAGE_OK</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage_ready()</a> и <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a>, <a class="el" href="sd__card__test_8cpp_source.html#l00061">sd_card_test_init()</a> и <a class="el" href="sd__card__test_8cpp_source.html#l00147">sd_card_test_run_file_test()</a>.</p>
+
+</div>
+</div>
+<a id="aa0a023d57c246bb56db55e04cafacdd1" name="aa0a023d57c246bb56db55e04cafacdd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a023d57c246bb56db55e04cafacdd1">&#9670;&#160;</a></span>sd_card_test_print_report()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sd_card_test_print_report </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печатает detect, mount result, FAT type и наличие SDTEST.TXT. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__card__test_8cpp_source.html">sd_card_test.cpp</a> строка <a class="el" href="sd__card__test_8cpp_source.html#l00108">108</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="diagnostic__output_8hpp_source.html#l00065">diagnostic_print_group()</a>, <a class="el" href="diagnostic__output_8hpp_source.html#l00051">diagnostic_print_section()</a>, <a class="el" href="lcp__sd_8cpp_source.html#l00044">lcp_sd_detect_raw()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00986">lcp_sd_storage_exists()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l01194">lcp_sd_storage_fat_type()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage_ready()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00938">lcp_sd_storage_result_text()</a> и <a class="el" href="lcp__sd__storage_8cpp_source.html#l01199">lcp_sd_storage_sectors_per_cluster()</a>.</p>
+
+</div>
+</div>
+<a id="a1792214d7747e121941575cfc81f285c" name="a1792214d7747e121941575cfc81f285c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1792214d7747e121941575cfc81f285c">&#9670;&#160;</a></span>sd_card_test_run_file_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sd_card_test_run_file_test </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Синхронно записывает контрольные числа в SDTEST.TXT и читает обратно. </p>
+<p>Это сервисная операция для ручного запуска; не вызывайте её из cyclic poll. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sd__card__test_8cpp_source.html">sd_card_test.cpp</a> строка <a class="el" href="sd__card__test_8cpp_source.html#l00147">147</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="diagnostic__output_8hpp_source.html#l00035">diagnostic_print_banner()</a>, <a class="el" href="lcp__sd__storage_8cpp_source.html#l00933">lcp_sd_storage_ready()</a>, <a class="el" href="sd__card__test_8cpp_source.html#l00078">sd_card_test_poll()</a>, <a class="el" href="sd__config_8cpp_source.html#l00449">sd_config_load_int16()</a>, <a class="el" href="sd__config_8hpp_source.html#l00020">SD_CONFIG_OK</a>, <a class="el" href="sd__config_8cpp_source.html#l00541">sd_config_result_text()</a> и <a class="el" href="sd__config_8cpp_source.html#l00473">sd_config_save_int16()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="sd__card__test_8hpp.html">sd_card_test.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

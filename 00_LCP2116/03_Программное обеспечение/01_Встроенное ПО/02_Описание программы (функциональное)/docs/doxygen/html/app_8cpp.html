@@ -1,0 +1,853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/app.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('app_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл app.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Базовая прошивка Lorentz под управлением FreeRTOS.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="app_8hpp_source.html">app.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__board_8hpp_source.html">../board/lcp_board.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__rs485_8hpp_source.html">../board/lcp_rs485.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../platform/platform.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__watchdog_8hpp_source.html">../hal/sam3x_watchdog.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__config__service_8hpp_source.html">config/lcp_config_service.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__config__usb__transport_8hpp_source.html">config/lcp_config_usb_transport.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="rs485__echo__test_8hpp_source.html">diagnostics/rs485_echo_test.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sc16is__echo__test_8hpp_source.html">diagnostics/sc16is_echo_test.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="diagnostic__console_8hpp_source.html">diagnostics/diagnostic_console.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sd__card__test_8hpp_source.html">diagnostics/sd_card_test.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="battery__status_8hpp_source.html">diagnostics/battery_status.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="rtc__status_8hpp_source.html">diagnostics/rtc_status.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="watchdog__status_8hpp_source.html">diagnostics/watchdog_status.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ethernet__modbus__service_8hpp_source.html">ethernet/ethernet_modbus_service.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="field__sensor__service_8hpp_source.html">field/field_sensor_service.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x2x__service_8hpp_source.html">x2x/x2x_service.hpp</a>&quot;</code><br />
+<code>#include &quot;FreeRTOS.h&quot;</code><br />
+<code>#include &quot;task.h&quot;</code><br />
+</div>
+<p><a href="app_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a52fb56fc46783fb49239b9f7f17101c7" id="r_a52fb56fc46783fb49239b9f7f17101c7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52fb56fc46783fb49239b9f7f17101c7">app_ram_c_heap_reserved_bytes</a> (void)</td></tr>
+<tr class="memitem:a23ae6bf1c3395f5d9e3649c5a0baaee2" id="r_a23ae6bf1c3395f5d9e3649c5a0baaee2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23ae6bf1c3395f5d9e3649c5a0baaee2">app_ram_linker_unassigned_bytes</a> (void)</td></tr>
+<tr class="memitem:aeeca94d92e9d321ea76657c06f389c0c" id="r_aeeca94d92e9d321ea76657c06f389c0c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeca94d92e9d321ea76657c06f389c0c">app_ram_startup_stack_bytes</a> (void)</td></tr>
+<tr class="memitem:a86f908e4fa35d12f4e73c331f7982fc4" id="r_a86f908e4fa35d12f4e73c331f7982fc4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86f908e4fa35d12f4e73c331f7982fc4">app_ram_static_bss_bytes</a> (void)</td></tr>
+<tr class="memitem:addd697776d82cd6ba4a80ccf4e2d62c7" id="r_addd697776d82cd6ba4a80ccf4e2d62c7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addd697776d82cd6ba4a80ccf4e2d62c7">app_ram_static_data_bytes</a> (void)</td></tr>
+<tr class="memitem:a28c07811b5c1bb2d03835f08e7f2c40c" id="r_a28c07811b5c1bb2d03835f08e7f2c40c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28c07811b5c1bb2d03835f08e7f2c40c">app_ram_total_bytes</a> (void)</td></tr>
+<tr class="memitem:adb5a83712c27b221f343edbb5d4705ea" id="r_adb5a83712c27b221f343edbb5d4705ea"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb5a83712c27b221f343edbb5d4705ea">app_rtos_free_heap_bytes</a> (void)</td></tr>
+<tr class="memitem:acf83312952d0f013edac5b2d45996b08" id="r_acf83312952d0f013edac5b2d45996b08"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf83312952d0f013edac5b2d45996b08">app_rtos_heap_total_bytes</a> (void)</td></tr>
+<tr class="memitem:a2662b3520cf75cb220d574fb61bfb938" id="r_a2662b3520cf75cb220d574fb61bfb938"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2662b3520cf75cb220d574fb61bfb938">app_rtos_lcp_stack_free_words</a> (void)</td></tr>
+<tr class="memdesc:a2662b3520cf75cb220d574fb61bfb938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает stack high-water mark LCP task.  <br /></td></tr>
+<tr class="memitem:a81ac7a84115f43fc9cbe753ff10e72c8" id="r_a81ac7a84115f43fc9cbe753ff10e72c8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81ac7a84115f43fc9cbe753ff10e72c8">app_rtos_lcp_stack_total_bytes</a> (void)</td></tr>
+<tr class="memitem:a735461642e76a53e0a2f454c48a4fdb6" id="r_a735461642e76a53e0a2f454c48a4fdb6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a735461642e76a53e0a2f454c48a4fdb6">app_rtos_lcp_stack_total_words</a> (void)</td></tr>
+<tr class="memitem:a7626a438b9a1303bd87a6addad2c0cc9" id="r_a7626a438b9a1303bd87a6addad2c0cc9"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7626a438b9a1303bd87a6addad2c0cc9">app_rtos_minimum_ever_free_heap_bytes</a> (void)</td></tr>
+<tr class="memitem:a3f8068e6c996d84ddd11b3a7d738d38b" id="r_a3f8068e6c996d84ddd11b3a7d738d38b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f8068e6c996d84ddd11b3a7d738d38b">app_rtos_scheduler_running</a> (void)</td></tr>
+<tr class="memitem:abecb8de9744b728dfd247efdec1f2019" id="r_abecb8de9744b728dfd247efdec1f2019"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abecb8de9744b728dfd247efdec1f2019">app_rtos_start</a> (void)</td></tr>
+<tr class="memdesc:abecb8de9744b728dfd247efdec1f2019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт LCP task и запускает FreeRTOS scheduler.  <br /></td></tr>
+<tr class="memitem:a2963a54e48e139887d4f6fd0d4f91c89" id="r_a2963a54e48e139887d4f6fd0d4f91c89"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2963a54e48e139887d4f6fd0d4f91c89">app_rtos_tick_count</a> (void)</td></tr>
+<tr class="memitem:a0b33edabd7f1c4e4a0bf32c67269be2f" id="r_a0b33edabd7f1c4e4a0bf32c67269be2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b33edabd7f1c4e4a0bf32c67269be2f">loop</a> (void)</td></tr>
+<tr class="memdesc:a0b33edabd7f1c4e4a0bf32c67269be2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет один неблокирующий проход всех baseline-services.  <br /></td></tr>
+<tr class="memitem:a7dfd9b79bc5a37d7df40207afbc5431f" id="r_a7dfd9b79bc5a37d7df40207afbc5431f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dfd9b79bc5a37d7df40207afbc5431f">setup</a> (void)</td></tr>
+<tr class="memdesc:a7dfd9b79bc5a37d7df40207afbc5431f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Однократно инициализирует board, services и service console.  <br /></td></tr>
+<tr class="memitem:ab7e5c95cf72a3f819bc4462a7fb62ca3" id="r_ab7e5c95cf72a3f819bc4462a7fb62ca3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7e5c95cf72a3f819bc4462a7fb62ca3">vApplicationMallocFailedHook</a> (void)</td></tr>
+<tr class="memitem:a0bb16dcdae89a861aa9dac02f5c9c8e0" id="r_a0bb16dcdae89a861aa9dac02f5c9c8e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bb16dcdae89a861aa9dac02f5c9c8e0">vApplicationStackOverflowHook</a> (TaskHandle_t task, char *task_name)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a80465c665ff50120f6ae44fba5d82ed5" id="r_a80465c665ff50120f6ae44fba5d82ed5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80465c665ff50120f6ae44fba5d82ed5">_ebss</a></td></tr>
+<tr class="memitem:a8d8fc1d37ff94e8fe3e2c82855c5738e" id="r_a8d8fc1d37ff94e8fe3e2c82855c5738e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d8fc1d37ff94e8fe3e2c82855c5738e">_eheap</a></td></tr>
+<tr class="memitem:af683e0889cfdbbc2934ca077b243f8e6" id="r_af683e0889cfdbbc2934ca077b243f8e6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af683e0889cfdbbc2934ca077b243f8e6">_end</a></td></tr>
+<tr class="memitem:af994b42c9029498703361306e2c4d1e9" id="r_af994b42c9029498703361306e2c4d1e9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af994b42c9029498703361306e2c4d1e9">_erelocate</a></td></tr>
+<tr class="memitem:a00a887563f8cd5cd0a4b882b81bbcd34" id="r_a00a887563f8cd5cd0a4b882b81bbcd34"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00a887563f8cd5cd0a4b882b81bbcd34">_estack</a></td></tr>
+<tr class="memitem:aa497471bcd1f8a811587073f919e1866" id="r_aa497471bcd1f8a811587073f919e1866"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa497471bcd1f8a811587073f919e1866">_ram_end_</a></td></tr>
+<tr class="memitem:a1eb3c43d884c4f3a2c4f7b8d95f3d35a" id="r_a1eb3c43d884c4f3a2c4f7b8d95f3d35a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eb3c43d884c4f3a2c4f7b8d95f3d35a">_sbss</a></td></tr>
+<tr class="memitem:aa89dc89aa254b41c99fa16531143c007" id="r_aa89dc89aa254b41c99fa16531143c007"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa89dc89aa254b41c99fa16531143c007">_sheap</a></td></tr>
+<tr class="memitem:a4dcbc2e4241b5a5cc5bc3181ac2dbad3" id="r_a4dcbc2e4241b5a5cc5bc3181ac2dbad3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dcbc2e4241b5a5cc5bc3181ac2dbad3">_srelocate</a></td></tr>
+<tr class="memitem:ac60c4cbb708f551b2088b13812cda8b7" id="r_ac60c4cbb708f551b2088b13812cda8b7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac60c4cbb708f551b2088b13812cda8b7">_sstack</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Базовая прошивка Lorentz под управлением FreeRTOS. </p>
+<p>Приложение обслуживает внутреннее хранилище конфигурации, X2X, четыре FieldSensor master, два Modbus TCP server, microSD, RTC, watchdog, USB service console и машинный USB-транспорт конфигурации в одной задаче. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a52fb56fc46783fb49239b9f7f17101c7" name="a52fb56fc46783fb49239b9f7f17101c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52fb56fc46783fb49239b9f7f17101c7">&#9670;&#160;</a></span>app_ram_c_heap_reserved_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_ram_c_heap_reserved_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер C-library heap, зарезервированный linker script. Он не равен FreeRTOS heap_4 и в baseline не используется для task allocation. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00351">351</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="#a8d8fc1d37ff94e8fe3e2c82855c5738e">_eheap</a> и <a class="el" href="#aa89dc89aa254b41c99fa16531143c007">_sheap</a>.</p>
+
+</div>
+</div>
+<a id="a23ae6bf1c3395f5d9e3649c5a0baaee2" name="a23ae6bf1c3395f5d9e3649c5a0baaee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ae6bf1c3395f5d9e3649c5a0baaee2">&#9670;&#160;</a></span>app_ram_linker_unassigned_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_ram_linker_unassigned_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Хвост SRAM от linker symbol <span class="tt"><a class="el" href="#af683e0889cfdbbc2934ca077b243f8e6">_end</a></span> до физического конца памяти. Это диагностическая оценка неразмеченного linker-пространства, а не heap_4. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00356">356</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="#af683e0889cfdbbc2934ca077b243f8e6">_end</a> и <a class="el" href="#aa497471bcd1f8a811587073f919e1866">_ram_end_</a>.</p>
+
+</div>
+</div>
+<a id="aeeca94d92e9d321ea76657c06f389c0c" name="aeeca94d92e9d321ea76657c06f389c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeca94d92e9d321ea76657c06f389c0c">&#9670;&#160;</a></span>app_ram_startup_stack_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_ram_startup_stack_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер startup stack, зарезервированный linker script. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00346">346</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="#a00a887563f8cd5cd0a4b882b81bbcd34">_estack</a> и <a class="el" href="#ac60c4cbb708f551b2088b13812cda8b7">_sstack</a>.</p>
+
+</div>
+</div>
+<a id="a86f908e4fa35d12f4e73c331f7982fc4" name="a86f908e4fa35d12f4e73c331f7982fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f908e4fa35d12f4e73c331f7982fc4">&#9670;&#160;</a></span>app_ram_static_bss_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_ram_static_bss_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер linker-секции <span class="tt">.bss</span> в SRAM. </dd></dl>
+<dl class="section note"><dt>Заметки</dt><dd>Включает статический массив FreeRTOS heap_4 и прикладные zero-init buffers. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00341">341</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="#a80465c665ff50120f6ae44fba5d82ed5">_ebss</a> и <a class="el" href="#a1eb3c43d884c4f3a2c4f7b8d95f3d35a">_sbss</a>.</p>
+
+</div>
+</div>
+<a id="addd697776d82cd6ba4a80ccf4e2d62c7" name="addd697776d82cd6ba4a80ccf4e2d62c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd697776d82cd6ba4a80ccf4e2d62c7">&#9670;&#160;</a></span>app_ram_static_data_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_ram_static_data_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер linker-секции <span class="tt">.data</span> в SRAM. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00336">336</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="#af994b42c9029498703361306e2c4d1e9">_erelocate</a> и <a class="el" href="#a4dcbc2e4241b5a5cc5bc3181ac2dbad3">_srelocate</a>.</p>
+
+</div>
+</div>
+<a id="a28c07811b5c1bb2d03835f08e7f2c40c" name="a28c07811b5c1bb2d03835f08e7f2c40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28c07811b5c1bb2d03835f08e7f2c40c">&#9670;&#160;</a></span>app_ram_total_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_ram_total_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Полный адресный диапазон внутренней SRAM ATSAM3X8E в байтах. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00327">327</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="#aa497471bcd1f8a811587073f919e1866">_ram_end_</a>.</p>
+
+</div>
+</div>
+<a id="adb5a83712c27b221f343edbb5d4705ea" name="adb5a83712c27b221f343edbb5d4705ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb5a83712c27b221f343edbb5d4705ea">&#9670;&#160;</a></span>app_rtos_free_heap_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_free_heap_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Текущий свободный heap_4 в байтах. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00297">297</a></p>
+
+</div>
+</div>
+<a id="acf83312952d0f013edac5b2d45996b08" name="acf83312952d0f013edac5b2d45996b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf83312952d0f013edac5b2d45996b08">&#9670;&#160;</a></span>app_rtos_heap_total_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_heap_total_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер массива heap_4 в байтах (<span class="tt"><a class="el" href="FreeRTOSConfig_8h.html#a9f213227674effff0122a75d94d87938">configTOTAL_HEAP_SIZE</a></span>). </dd></dl>
+<dl class="section note"><dt>Заметки</dt><dd>Этот массив уже входит в <span class="tt">.bss</span>; не прибавляйте его к SRAM повторно. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00292">292</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="FreeRTOSConfig_8h_source.html#l00048">configTOTAL_HEAP_SIZE</a>.</p>
+
+</div>
+</div>
+<a id="a2662b3520cf75cb220d574fb61bfb938" name="a2662b3520cf75cb220d574fb61bfb938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2662b3520cf75cb220d574fb61bfb938">&#9670;&#160;</a></span>app_rtos_lcp_stack_free_words()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_lcp_stack_free_words </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает stack high-water mark LCP task. </p>
+<p>Это минимальный свободный остаток за всё время, а не текущий свободный стек. На Cortex-M3 один StackType_t равен четырём байтам.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>Минимальный свободный остаток в StackType_t words либо 0 до создания task. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00317">317</a></p>
+
+</div>
+</div>
+<a id="a81ac7a84115f43fc9cbe753ff10e72c8" name="a81ac7a84115f43fc9cbe753ff10e72c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81ac7a84115f43fc9cbe753ff10e72c8">&#9670;&#160;</a></span>app_rtos_lcp_stack_total_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_lcp_stack_total_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер стека LCP task в байтах. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00312">312</a></p>
+
+</div>
+</div>
+<a id="a735461642e76a53e0a2f454c48a4fdb6" name="a735461642e76a53e0a2f454c48a4fdb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a735461642e76a53e0a2f454c48a4fdb6">&#9670;&#160;</a></span>app_rtos_lcp_stack_total_words()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_lcp_stack_total_words </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Размер стека LCP task в StackType_t words. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00307">307</a></p>
+
+</div>
+</div>
+<a id="a7626a438b9a1303bd87a6addad2c0cc9" name="a7626a438b9a1303bd87a6addad2c0cc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7626a438b9a1303bd87a6addad2c0cc9">&#9670;&#160;</a></span>app_rtos_minimum_ever_free_heap_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_minimum_ever_free_heap_bytes </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Минимальный свободный heap_4 с момента старта в байтах. Это high-water metric; занято на пике = total - minimum ever free. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00302">302</a></p>
+
+</div>
+</div>
+<a id="a3f8068e6c996d84ddd11b3a7d738d38b" name="a3f8068e6c996d84ddd11b3a7d738d38b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8068e6c996d84ddd11b3a7d738d38b">&#9670;&#160;</a></span>app_rtos_scheduler_running()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t app_rtos_scheduler_running </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>1, если scheduler находится в TASK_SCHEDULER_RUNNING. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00282">282</a></p>
+
+</div>
+</div>
+<a id="abecb8de9744b728dfd247efdec1f2019" name="abecb8de9744b728dfd247efdec1f2019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abecb8de9744b728dfd247efdec1f2019">&#9670;&#160;</a></span>app_rtos_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_rtos_start </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт LCP task и запускает FreeRTOS scheduler. </p>
+<p>При штатном запуске не возвращается. Возврат scheduler означает фатальную ошибку запуска; реализация переводит MCU в fail-stop с запрещёнными IRQ. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00260">260</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="FreeRTOSConfig_8h_source.html#l00078">configASSERT</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="main_8cpp_source.html#l00011">main()</a>.</p>
+
+</div>
+</div>
+<a id="a2963a54e48e139887d4f6fd0d4f91c89" name="a2963a54e48e139887d4f6fd0d4f91c89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2963a54e48e139887d4f6fd0d4f91c89">&#9670;&#160;</a></span>app_rtos_tick_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_rtos_tick_count </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Текущее число тиков FreeRTOS с 32-битным переполнением. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00287">287</a></p>
+
+</div>
+</div>
+<a id="a0b33edabd7f1c4e4a0bf32c67269be2f" name="a0b33edabd7f1c4e4a0bf32c67269be2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b33edabd7f1c4e4a0bf32c67269be2f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет один неблокирующий проход всех baseline-services. </p>
+<p>Новый сервис должен получить короткий <span class="tt">*_poll()</span> в логически подходящем месте. Длительная операция хранит state между вызовами, а не выполняет busy-wait внутри <a class="el" href="app_8hpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" title="Выполняет один неблокирующий проход всех baseline-services.">loop()</a>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00201">201</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00816">lcp_config_usb::active()</a>, <a class="el" href="battery__status_8cpp_source.html#l00047">battery_status_poll()</a>, <a class="el" href="diagnostic__console_8cpp_source.html#l00640">diagnostic_console_poll()</a>, <a class="el" href="platform__gpio_8cpp_source.html#l00031">digitalWrite()</a>, <a class="el" href="ethernet__modbus__service_8cpp_source.html#l00260">ethernet_modbus_service_poll()</a>, <a class="el" href="field__sensor__service_8cpp_source.html#l00241">field_sensor_service_poll()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00821">lcp_config_usb::flash_busy()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00532">lcp_config_service_poll()</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00828">lcp_config_usb::poll()</a>, <a class="el" href="rs485__echo__test_8cpp_source.html#l00144">rs485_echo_test_poll()</a>, <a class="el" href="rs485__echo__test_8cpp_source.html#l00157">rs485_echo_test_set_x2x_enabled()</a>, <a class="el" href="rtc__status_8cpp_source.html#l00259">rtc_status_poll()</a>, <a class="el" href="sc16is__echo__test_8cpp_source.html#l00194">sc16is_echo_test_poll()</a>, <a class="el" href="sd__card__test_8cpp_source.html#l00078">sd_card_test_poll()</a>, <a class="el" href="watchdog__status_8cpp_source.html#l00047">watchdog_status_poll()</a>, <a class="el" href="x2x__service_8cpp_source.html#l00296">x2x_service_owns_port()</a> и <a class="el" href="x2x__service_8cpp_source.html#l00200">x2x_service_poll()</a>.</p>
+
+</div>
+</div>
+<a id="a7dfd9b79bc5a37d7df40207afbc5431f" name="a7dfd9b79bc5a37d7df40207afbc5431f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfd9b79bc5a37d7df40207afbc5431f">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Однократно инициализирует board, services и service console. </p>
+<p>Порядок важен: сначала GPIO/transport, затем microSD и потребители конфигурации, после них диагностика/watchdog. Функция вызывается внутри LCP task после старта планировщика. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00159">159</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="battery__status_8cpp_source.html#l00037">battery_status_init()</a>, <a class="el" href="diagnostic__console_8cpp_source.html#l00632">diagnostic_console_init()</a>, <a class="el" href="platform__gpio_8cpp_source.html#l00031">digitalWrite()</a>, <a class="el" href="lcp__config__usb__transport_8hpp_source.html#l00807">lcp_config_usb::init()</a>, <a class="el" href="lcp__board_8cpp_source.html#l00008">lcp_board_init_gpio()</a>, <a class="el" href="lcp__config__service_8cpp_source.html#l00481">lcp_config_service_init()</a>, <a class="el" href="lcp__rs485_8cpp_source.html#l00011">lcp_rs485_init_builtin_ports()</a>, <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="platform__gpio_8cpp_source.html#l00011">pinMode()</a>, <a class="el" href="rs485__echo__test_8cpp_source.html#l00137">rs485_echo_test_init()</a>, <a class="el" href="rtc__status_8cpp_source.html#l00253">rtc_status_init()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00090">sam3x_watchdog_boot_recovery_from_watchdog_reset()</a>, <a class="el" href="sc16is__echo__test_8cpp_source.html#l00180">sc16is_echo_test_init()</a>, <a class="el" href="sd__card__test_8cpp_source.html#l00061">sd_card_test_init()</a>, <a class="el" href="platform__spi_8cpp_source.html#l00008">SPI</a> и <a class="el" href="watchdog__status_8cpp_source.html#l00028">watchdog_status_init()</a>.</p>
+
+</div>
+</div>
+<a id="ab7e5c95cf72a3f819bc4462a7fb62ca3" name="ab7e5c95cf72a3f819bc4462a7fb62ca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7e5c95cf72a3f819bc4462a7fb62ca3">&#9670;&#160;</a></span>vApplicationMallocFailedHook()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vApplicationMallocFailedHook </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00366">366</a></p>
+
+</div>
+</div>
+<a id="a0bb16dcdae89a861aa9dac02f5c9c8e0" name="a0bb16dcdae89a861aa9dac02f5c9c8e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb16dcdae89a861aa9dac02f5c9c8e0">&#9670;&#160;</a></span>vApplicationStackOverflowHook()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vApplicationStackOverflowHook </td>
+          <td>(</td>
+          <td class="paramtype">TaskHandle_t</td>          <td class="paramname"><span class="paramname"><em>task</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>task_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="app_8cpp_source.html">app.cpp</a> строка <a class="el" href="app_8cpp_source.html#l00371">371</a></p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a80465c665ff50120f6ae44fba5d82ed5" name="a80465c665ff50120f6ae44fba5d82ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80465c665ff50120f6ae44fba5d82ed5">&#9670;&#160;</a></span>_ebss</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _ebss</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00341">app_ram_static_bss_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="a8d8fc1d37ff94e8fe3e2c82855c5738e" name="a8d8fc1d37ff94e8fe3e2c82855c5738e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d8fc1d37ff94e8fe3e2c82855c5738e">&#9670;&#160;</a></span>_eheap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _eheap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00351">app_ram_c_heap_reserved_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="af683e0889cfdbbc2934ca077b243f8e6" name="af683e0889cfdbbc2934ca077b243f8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af683e0889cfdbbc2934ca077b243f8e6">&#9670;&#160;</a></span>_end</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _end</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="syscalls_8c_source.html#l00025">_sbrk()</a> и <a class="el" href="app_8cpp_source.html#l00356">app_ram_linker_unassigned_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="af994b42c9029498703361306e2c4d1e9" name="af994b42c9029498703361306e2c4d1e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af994b42c9029498703361306e2c4d1e9">&#9670;&#160;</a></span>_erelocate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _erelocate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00336">app_ram_static_data_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="a00a887563f8cd5cd0a4b882b81bbcd34" name="a00a887563f8cd5cd0a4b882b81bbcd34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00a887563f8cd5cd0a4b882b81bbcd34">&#9670;&#160;</a></span>_estack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _estack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00346">app_ram_startup_stack_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="aa497471bcd1f8a811587073f919e1866" name="aa497471bcd1f8a811587073f919e1866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa497471bcd1f8a811587073f919e1866">&#9670;&#160;</a></span>_ram_end_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _ram_end_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00356">app_ram_linker_unassigned_bytes()</a> и <a class="el" href="app_8cpp_source.html#l00327">app_ram_total_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="a1eb3c43d884c4f3a2c4f7b8d95f3d35a" name="a1eb3c43d884c4f3a2c4f7b8d95f3d35a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb3c43d884c4f3a2c4f7b8d95f3d35a">&#9670;&#160;</a></span>_sbss</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _sbss</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00341">app_ram_static_bss_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="aa89dc89aa254b41c99fa16531143c007" name="aa89dc89aa254b41c99fa16531143c007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa89dc89aa254b41c99fa16531143c007">&#9670;&#160;</a></span>_sheap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _sheap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00351">app_ram_c_heap_reserved_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="a4dcbc2e4241b5a5cc5bc3181ac2dbad3" name="a4dcbc2e4241b5a5cc5bc3181ac2dbad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dcbc2e4241b5a5cc5bc3181ac2dbad3">&#9670;&#160;</a></span>_srelocate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _srelocate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00336">app_ram_static_data_bytes()</a>.</p>
+
+</div>
+</div>
+<a id="ac60c4cbb708f551b2088b13812cda8b7" name="ac60c4cbb708f551b2088b13812cda8b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac60c4cbb708f551b2088b13812cda8b7">&#9670;&#160;</a></span>_sstack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _sstack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00346">app_ram_startup_stack_bytes()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="app_8cpp.html">app.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

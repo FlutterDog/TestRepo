@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл app/diagnostics/watchdog_status.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('watchdog__status_8cpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл watchdog_status.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Диагностика watchdog-таймера ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="watchdog__status_8hpp_source.html">watchdog_status.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="diagnostic__output_8hpp_source.html">diagnostic_output.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__watchdog_8hpp_source.html">../../hal/sam3x_watchdog.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../../platform/platform.hpp</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="watchdog__status_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:afb2fb7b0a416b244d150a84bba32a03f" id="r_afb2fb7b0a416b244d150a84bba32a03f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb2fb7b0a416b244d150a84bba32a03f">watchdog_status_handle_command</a> (const char *command)</td></tr>
+<tr class="memdesc:afb2fb7b0a416b244d150a84bba32a03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает <span class="tt">watchdog</span>, <span class="tt">watchdog feed</span> и <span class="tt">watchdog test reset</span>.  <br /></td></tr>
+<tr class="memitem:afe06f365f6d26834c882c4004a85c91e" id="r_afe06f365f6d26834c882c4004a85c91e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe06f365f6d26834c882c4004a85c91e">watchdog_status_init</a> (void)</td></tr>
+<tr class="memdesc:afe06f365f6d26834c882c4004a85c91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Фиксирует reset cause, увеличивает boot counter и включает watchdog.  <br /></td></tr>
+<tr class="memitem:a7e2bf983b7aaa1d4bfcaffeb46487252" id="r_a7e2bf983b7aaa1d4bfcaffeb46487252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e2bf983b7aaa1d4bfcaffeb46487252">watchdog_status_poll</a> (void)</td></tr>
+<tr class="memdesc:a7e2bf983b7aaa1d4bfcaffeb46487252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Периодически перезапускает watchdog, если reset-test не вооружён.  <br /></td></tr>
+<tr class="memitem:ad434c06ec465f0b5c2a9daf722a54372" id="r_ad434c06ec465f0b5c2a9daf722a54372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad434c06ec465f0b5c2a9daf722a54372">watchdog_status_print_report</a> (void)</td></tr>
+<tr class="memdesc:ad434c06ec465f0b5c2a9daf722a54372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает runtime, last reset, boot counter и raw-регистры.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Диагностика watchdog-таймера ATSAM3X8E. </p>
+<p>Нормальный режим перезапускает watchdog из <a class="el" href="#a7e2bf983b7aaa1d4bfcaffeb46487252" title="Периодически перезапускает watchdog, если reset-test не вооружён.">watchdog_status_poll()</a>. Команда <span class="tt">watchdog test reset</span> намеренно прекращает feed; это контролируемый тест аппаратного reset, а не зависание. Новые тестовые режимы должны работать через флаги и poll(), без бесконечных циклов. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="watchdog__status_8cpp_source.html">watchdog_status.cpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="afb2fb7b0a416b244d150a84bba32a03f" name="afb2fb7b0a416b244d150a84bba32a03f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2fb7b0a416b244d150a84bba32a03f">&#9670;&#160;</a></span>watchdog_status_handle_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t watchdog_status_handle_command </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обрабатывает <span class="tt">watchdog</span>, <span class="tt">watchdog feed</span> и <span class="tt">watchdog test reset</span>. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>Нормализованная строка нижнего регистра без CR/LF. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 для распознанной watchdog-команды, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="watchdog__status_8cpp_source.html">watchdog_status.cpp</a> строка <a class="el" href="watchdog__status_8cpp_source.html#l00118">118</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00230">sam3x_watchdog_restart()</a> и <a class="el" href="watchdog__status_8cpp_source.html#l00063">watchdog_status_print_report()</a>.</p>
+
+</div>
+</div>
+<a id="afe06f365f6d26834c882c4004a85c91e" name="afe06f365f6d26834c882c4004a85c91e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe06f365f6d26834c882c4004a85c91e">&#9670;&#160;</a></span>watchdog_status_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void watchdog_status_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Фиксирует reset cause, увеличивает boot counter и включает watchdog. </p>
+<p>Параметры timeout/feed заданы в <a class="el" href="watchdog__status_8cpp.html" title="Диагностика watchdog-таймера ATSAM3X8E.">watchdog_status.cpp</a>. При их изменении период feed должен оставаться существенно меньше timeout. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="watchdog__status_8cpp_source.html">watchdog_status.cpp</a> строка <a class="el" href="watchdog__status_8cpp_source.html#l00028">28</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00127">sam3x_watchdog_capture_boot_status()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00177">sam3x_watchdog_enable()</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00172">sam3x_watchdog_increment_boot_count()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00159">setup()</a>.</p>
+
+</div>
+</div>
+<a id="a7e2bf983b7aaa1d4bfcaffeb46487252" name="a7e2bf983b7aaa1d4bfcaffeb46487252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e2bf983b7aaa1d4bfcaffeb46487252">&#9670;&#160;</a></span>watchdog_status_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void watchdog_status_poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Периодически перезапускает watchdog, если reset-test не вооружён. </p>
+<p>Функцию нельзя удалять из app loop. Она не содержит ожиданий и выполняет аппаратный restart только по истечении feed period. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="watchdog__status_8cpp_source.html">watchdog_status.cpp</a> строка <a class="el" href="watchdog__status_8cpp_source.html#l00047">47</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__time_8cpp_source.html#l00074">millis()</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00230">sam3x_watchdog_restart()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="app_8cpp_source.html#l00201">loop()</a>.</p>
+
+</div>
+</div>
+<a id="ad434c06ec465f0b5c2a9daf722a54372" name="ad434c06ec465f0b5c2a9daf722a54372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad434c06ec465f0b5c2a9daf722a54372">&#9670;&#160;</a></span>watchdog_status_print_report()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void watchdog_status_print_report </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печатает runtime, last reset, boot counter и raw-регистры. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="watchdog__status_8cpp_source.html">watchdog_status.cpp</a> строка <a class="el" href="watchdog__status_8cpp_source.html#l00063">63</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="diagnostic__output_8hpp_source.html#l00080">diagnostic_print_assignment()</a>, <a class="el" href="diagnostic__output_8hpp_source.html#l00065">diagnostic_print_group()</a>, <a class="el" href="diagnostic__output_8hpp_source.html#l00051">diagnostic_print_section()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00167">sam3x_watchdog_boot_count()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00235">sam3x_watchdog_enabled()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00133">sam3x_watchdog_last_reset_type()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00240">sam3x_watchdog_mode_register()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00162">sam3x_watchdog_recovery_performed()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00250">sam3x_watchdog_reset_status_register()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00138">sam3x_watchdog_reset_type_text()</a>, <a class="el" href="sam3x__watchdog_8cpp_source.html#l00245">sam3x_watchdog_status_register()</a> и <a class="el" href="sam3x__watchdog_8cpp_source.html#l00255">sam3x_watchdog_timeout_ms()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="watchdog__status_8cpp_source.html#l00118">watchdog_status_handle_command()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="watchdog__status_8cpp.html">watchdog_status.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/w5500_lite.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('w5500__lite_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл w5500_lite.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Минимальный polling HAL W5500 для одного TCP server socket.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="lcp__ethernet_8hpp_source.html">../board/lcp_ethernet.hpp</a>&quot;</code><br />
+</div>
+<p><a href="w5500__lite_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:W5500IpAddress" id="r_W5500IpAddress"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structW5500IpAddress.html">W5500IpAddress</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IPv4-адрес в сетевом порядке октетов.  <a href="structW5500IpAddress.html#details">Подробнее...</a><br /></td></tr>
+<tr class="memitem:W5500MacAddress" id="r_W5500MacAddress"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structW5500MacAddress.html">W5500MacAddress</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">48-битный MAC-адрес.  <a href="structW5500MacAddress.html#details">Подробнее...</a><br /></td></tr>
+<tr class="memitem:W5500NetworkConfig" id="r_W5500NetworkConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Полный набор статических сетевых параметров одного W5500.  <a href="structW5500NetworkConfig.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a503cd73a839531859347bfee7115bf3b" id="r_a503cd73a839531859347bfee7115bf3b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a503cd73a839531859347bfee7115bf3b">w5500_lite_begin</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id, const <a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a> &amp;config)</td></tr>
+<tr class="memdesc:a503cd73a839531859347bfee7115bf3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет reset W5500 и применяет статические сетевые параметры.  <br /></td></tr>
+<tr class="memitem:abdecff0ab033709a7a573130affb18af" id="r_abdecff0ab033709a7a573130affb18af"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdecff0ab033709a7a573130affb18af">w5500_lite_link_up</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memitem:a22e299da2e70bb5b5fadc2f7efc88b29" id="r_a22e299da2e70bb5b5fadc2f7efc88b29"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22e299da2e70bb5b5fadc2f7efc88b29">w5500_lite_phy_status</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:a22e299da2e70bb5b5fadc2f7efc88b29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает регистр PHYCFGR выбранного W5500.  <br /></td></tr>
+<tr class="memitem:a5db04a88db9ed0352228168288e8312a" id="r_a5db04a88db9ed0352228168288e8312a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5db04a88db9ed0352228168288e8312a">w5500_lite_tcp_server_begin</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id, uint16_t port)</td></tr>
+<tr class="memdesc:a5db04a88db9ed0352228168288e8312a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Открывает socket 0 в режиме TCP LISTEN.  <br /></td></tr>
+<tr class="memitem:a0a2ab922ecfe87dbd627c7a43d90a947" id="r_a0a2ab922ecfe87dbd627c7a43d90a947"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a2ab922ecfe87dbd627c7a43d90a947">w5500_lite_tcp_server_receive</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id, uint16_t port, uint8_t *buffer, uint16_t capacity)</td></tr>
+<tr class="memdesc:a0a2ab922ecfe87dbd627c7a43d90a947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Поддерживает состояние socket 0 и принимает доступные TCP-байты.  <br /></td></tr>
+<tr class="memitem:a5be60fc6b8d267661d154c3b1f45c045" id="r_a5be60fc6b8d267661d154c3b1f45c045"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5be60fc6b8d267661d154c3b1f45c045">w5500_lite_tcp_server_send</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id, const uint8_t *buffer, uint16_t length)</td></tr>
+<tr class="memdesc:a5be60fc6b8d267661d154c3b1f45c045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ставит в TX-буфер один целый TCP-фрагмент.  <br /></td></tr>
+<tr class="memitem:ac57ca676d4fa65d80681481fd7b64f83" id="r_ac57ca676d4fa65d80681481fd7b64f83"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac57ca676d4fa65d80681481fd7b64f83">w5500_lite_tcp_server_status</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:ac57ca676d4fa65d80681481fd7b64f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает аппаратный SN_SR socket 0.  <br /></td></tr>
+<tr class="memitem:a41110c37304288fe8beb816b61d24aed" id="r_a41110c37304288fe8beb816b61d24aed"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41110c37304288fe8beb816b61d24aed">w5500_lite_version</a> (<a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a> ethernet_id)</td></tr>
+<tr class="memdesc:a41110c37304288fe8beb816b61d24aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает VERSIONR выбранного W5500.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Минимальный polling HAL W5500 для одного TCP server socket. </p>
+<p>Реализация не выделяет динамическую память и обслуживает socket 0 каждого W5500. Протокольная обработка Modbus TCP находится уровнем выше. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8hpp_source.html">w5500_lite.hpp</a></p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a503cd73a839531859347bfee7115bf3b" name="a503cd73a839531859347bfee7115bf3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a503cd73a839531859347bfee7115bf3b">&#9670;&#160;</a></span>w5500_lite_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t w5500_lite_begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structW5500NetworkConfig.html">W5500NetworkConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет reset W5500 и применяет статические сетевые параметры. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ethernet_id</td><td>ETH1 или ETH2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">config</td><td>MAC, IP, gateway и subnet. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1, если VERSIONR равен 0x04, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00364">364</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="platform__time_8cpp_source.html#l00084">delay()</a>, <a class="el" href="w5500__lite_8hpp_source.html#l00033">W5500NetworkConfig::gateway</a>, <a class="el" href="w5500__lite_8hpp_source.html#l00032">W5500NetworkConfig::ip</a>, <a class="el" href="lcp__ethernet_8cpp_source.html#l00098">lcp_ethernet_reset()</a>, <a class="el" href="w5500__lite_8hpp_source.html#l00031">W5500NetworkConfig::mac</a>, <a class="el" href="w5500__lite_8hpp_source.html#l00019">W5500IpAddress::octet</a>, <a class="el" href="w5500__lite_8hpp_source.html#l00025">W5500MacAddress::octet</a>, <a class="el" href="platform__spi_8cpp_source.html#l00008">SPI</a>, <a class="el" href="w5500__lite_8hpp_source.html#l00034">W5500NetworkConfig::subnet</a> и <a class="el" href="w5500__lite_8cpp_source.html#l00402">w5500_lite_version()</a>.</p>
+
+</div>
+</div>
+<a id="abdecff0ab033709a7a573130affb18af" name="abdecff0ab033709a7a573130affb18af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdecff0ab033709a7a573130affb18af">&#9670;&#160;</a></span>w5500_lite_link_up()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t w5500_lite_link_up </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>1 при активном физическом Ethernet link, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00414">414</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="w5500__lite_8cpp_source.html#l00408">w5500_lite_phy_status()</a>.</p>
+
+</div>
+</div>
+<a id="a22e299da2e70bb5b5fadc2f7efc88b29" name="a22e299da2e70bb5b5fadc2f7efc88b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22e299da2e70bb5b5fadc2f7efc88b29">&#9670;&#160;</a></span>w5500_lite_phy_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t w5500_lite_phy_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает регистр PHYCFGR выбранного W5500. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00408">408</a></p>
+
+<p class="reference">Используется в <a class="el" href="w5500__lite_8cpp_source.html#l00414">w5500_lite_link_up()</a>.</p>
+
+</div>
+</div>
+<a id="a5db04a88db9ed0352228168288e8312a" name="a5db04a88db9ed0352228168288e8312a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5db04a88db9ed0352228168288e8312a">&#9670;&#160;</a></span>w5500_lite_tcp_server_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void w5500_lite_tcp_server_begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Открывает socket 0 в режиме TCP LISTEN. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ethernet_id</td><td>ETH1 или ETH2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Локальный TCP-порт в host byte order. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00420">420</a></p>
+
+</div>
+</div>
+<a id="a0a2ab922ecfe87dbd627c7a43d90a947" name="a0a2ab922ecfe87dbd627c7a43d90a947"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a2ab922ecfe87dbd627c7a43d90a947">&#9670;&#160;</a></span>w5500_lite_tcp_server_receive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t w5500_lite_tcp_server_receive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Поддерживает состояние socket 0 и принимает доступные TCP-байты. </p>
+<p>CLOSED и CLOSE_WAIT автоматически переводятся через OPEN в LISTEN.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ethernet_id</td><td>ETH1 или ETH2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Локальный TCP-порт. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Буфер приёма. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capacity</td><td>Размер буфера в байтах. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество принятых байтов. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00430">430</a></p>
+
+</div>
+</div>
+<a id="a5be60fc6b8d267661d154c3b1f45c045" name="a5be60fc6b8d267661d154c3b1f45c045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5be60fc6b8d267661d154c3b1f45c045">&#9670;&#160;</a></span>w5500_lite_tcp_server_send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t w5500_lite_tcp_server_send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ставит в TX-буфер один целый TCP-фрагмент. </p>
+<p>Функция использует all-or-nothing контракт: при недостаточном свободном месте не передаёт частичный Modbus TCP ADU и возвращает 0.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ethernet_id</td><td>ETH1 или ETH2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>Передаваемые байты. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Требуемая длина. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd><span class="tt">length</span> при успешной постановке в очередь, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00448">448</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="w5500__lite_8cpp_source.html#l00464">w5500_lite_tcp_server_status()</a>.</p>
+
+</div>
+</div>
+<a id="ac57ca676d4fa65d80681481fd7b64f83" name="ac57ca676d4fa65d80681481fd7b64f83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac57ca676d4fa65d80681481fd7b64f83">&#9670;&#160;</a></span>w5500_lite_tcp_server_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t w5500_lite_tcp_server_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает аппаратный SN_SR socket 0. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00464">464</a></p>
+
+<p class="reference">Используется в <a class="el" href="w5500__lite_8cpp_source.html#l00448">w5500_lite_tcp_server_send()</a>.</p>
+
+</div>
+</div>
+<a id="a41110c37304288fe8beb816b61d24aed" name="a41110c37304288fe8beb816b61d24aed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41110c37304288fe8beb816b61d24aed">&#9670;&#160;</a></span>w5500_lite_version()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t w5500_lite_version </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lcp__ethernet_8hpp.html#aa2e322920ba28ad99e8137025c2d8ef0">LcpEthernetId</a></td>          <td class="paramname"><span class="paramname"><em>ethernet_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает VERSIONR выбранного W5500. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="w5500__lite_8cpp_source.html">w5500_lite.cpp</a> строка <a class="el" href="w5500__lite_8cpp_source.html#l00402">402</a></p>
+
+<p class="reference">Используется в <a class="el" href="w5500__lite_8cpp_source.html#l00364">w5500_lite_begin()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="w5500__lite_8hpp.html">w5500_lite.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

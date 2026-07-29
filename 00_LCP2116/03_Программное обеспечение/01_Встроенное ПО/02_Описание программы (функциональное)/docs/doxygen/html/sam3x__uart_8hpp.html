@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл hal/sam3x_uart.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;1.02.0</span>
+   </div>
+   <div id="projectbrief">Базовая прошивка и программная архитектура контроллера LCP2116</div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__uart_8hpp.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Поиск',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sam3x_uart.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HAL встроенных UART/USART ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="sam3x__uart_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a43ea2cf83f47e89268d03060cd98b34e" id="r_a43ea2cf83f47e89268d03060cd98b34e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a> { <a class="el" href="#a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec">HAL_UART_FRAME_8N1</a> = 0
+, <a class="el" href="#a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7">HAL_UART_FRAME_8O1</a> = 1
+, <a class="el" href="#a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575">HAL_UART_FRAME_8E1</a> = 2
+ }</td></tr>
+<tr class="memdesc:a43ea2cf83f47e89268d03060cd98b34e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формат кадра UART/USART.  <a href="#a43ea2cf83f47e89268d03060cd98b34e">Подробнее...</a><br /></td></tr>
+<tr class="memitem:a0d5f6a94d31d43b54532e3780db6a6ec" id="r_a0d5f6a94d31d43b54532e3780db6a6ec"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> { <br />
+&#160;&#160;<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23">HAL_UART_PORT_0</a> = 0
+, <a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b">HAL_UART_PORT_1</a> = 1
+, <a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb">HAL_UART_PORT_2</a> = 2
+, <a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574">HAL_UART_PORT_3</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32">HAL_UART_PORT_COUNT</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a0d5f6a94d31d43b54532e3780db6a6ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Идентификатор встроенного последовательного порта.  <a href="#a0d5f6a94d31d43b54532e3780db6a6ec">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a733abbee535c82f9a19be613f555ee59" id="r_a733abbee535c82f9a19be613f555ee59"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a733abbee535c82f9a19be613f555ee59">hal_uart_available</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:a733abbee535c82f9a19be613f555ee59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество принятых байтов в RX-буфере.  <br /></td></tr>
+<tr class="memitem:a63fa9d88f7c1d64ba46d60cb9d470470" id="r_a63fa9d88f7c1d64ba46d60cb9d470470"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63fa9d88f7c1d64ba46d60cb9d470470">hal_uart_begin</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id, uint32_t baudrate, <a class="el" href="#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a> frame)</td></tr>
+<tr class="memdesc:a63fa9d88f7c1d64ba46d60cb9d470470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует встроенный UART/USART.  <br /></td></tr>
+<tr class="memitem:ab44a2ace7777bb87feaf2aaa43d79db4" id="r_ab44a2ace7777bb87feaf2aaa43d79db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab44a2ace7777bb87feaf2aaa43d79db4">hal_uart_clear_rx</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:ab44a2ace7777bb87feaf2aaa43d79db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет все байты, доступные через программный RX-буфер HAL.  <br /></td></tr>
+<tr class="memitem:acb5b2b17280ee3bac4f9876dacf5514a" id="r_acb5b2b17280ee3bac4f9876dacf5514a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb5b2b17280ee3bac4f9876dacf5514a">hal_uart_end</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:acb5b2b17280ee3bac4f9876dacf5514a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Останавливает встроенный UART/USART.  <br /></td></tr>
+<tr class="memitem:af43518a3b8713e9dd52de1cf9d14e40e" id="r_af43518a3b8713e9dd52de1cf9d14e40e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af43518a3b8713e9dd52de1cf9d14e40e">hal_uart_error_count</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:af43518a3b8713e9dd52de1cf9d14e40e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество ошибок приёма.  <br /></td></tr>
+<tr class="memitem:aea0876bd77f8b893911ffd74810ddadb" id="r_aea0876bd77f8b893911ffd74810ddadb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea0876bd77f8b893911ffd74810ddadb">hal_uart_flush</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:aea0876bd77f8b893911ffd74810ddadb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ожидает завершение передачи.  <br /></td></tr>
+<tr class="memitem:a807660bdc98c0cf170034aa65cf4aba5" id="r_a807660bdc98c0cf170034aa65cf4aba5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a807660bdc98c0cf170034aa65cf4aba5">hal_uart_peek</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:a807660bdc98c0cf170034aa65cf4aba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает следующий байт RX-буфера без удаления.  <br /></td></tr>
+<tr class="memitem:ae4cf4504ea7fed04990bcca4d9735e62" id="r_ae4cf4504ea7fed04990bcca4d9735e62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4cf4504ea7fed04990bcca4d9735e62">hal_uart_read</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:ae4cf4504ea7fed04990bcca4d9735e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает один байт из RX-буфера.  <br /></td></tr>
+<tr class="memitem:a9fc0c6671220e653a2e6951621054a5a" id="r_a9fc0c6671220e653a2e6951621054a5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fc0c6671220e653a2e6951621054a5a">hal_uart_set_rs485_direction_pin</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id, uint32_t direction_pin, uint8_t transmit_level)</td></tr>
+<tr class="memdesc:a9fc0c6671220e653a2e6951621054a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Настраивает порт на работу с RS-485 direction pin.  <br /></td></tr>
+<tr class="memitem:a5e6c4b4e76d8e0afd17efad24f62d8b2" id="r_a5e6c4b4e76d8e0afd17efad24f62d8b2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e6c4b4e76d8e0afd17efad24f62d8b2">hal_uart_tx_idle</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id)</td></tr>
+<tr class="memdesc:a5e6c4b4e76d8e0afd17efad24f62d8b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Неблокирующе читает аппаратный флаг TXEMPTY.  <br /></td></tr>
+<tr class="memitem:a476ab980c05144d3b27ccec515b9d60d" id="r_a476ab980c05144d3b27ccec515b9d60d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a476ab980c05144d3b27ccec515b9d60d">hal_uart_write</a> (<a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a> port_id, uint8_t value)</td></tr>
+<tr class="memdesc:a476ab980c05144d3b27ccec515b9d60d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт один байт.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>HAL встроенных UART/USART ATSAM3X8E. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8hpp_source.html">sam3x_uart.hpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a43ea2cf83f47e89268d03060cd98b34e" name="a43ea2cf83f47e89268d03060cd98b34e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43ea2cf83f47e89268d03060cd98b34e">&#9670;&#160;</a></span>HalUartFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Формат кадра UART/USART. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec" name="a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec"></a>HAL_UART_FRAME_8N1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7" name="a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7"></a>HAL_UART_FRAME_8O1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575" name="a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575"></a>HAL_UART_FRAME_8E1&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8hpp_source.html">sam3x_uart.hpp</a> строка <a class="el" href="sam3x__uart_8hpp_source.html#l00026">26</a></p>
+
+</div>
+</div>
+<a id="a0d5f6a94d31d43b54532e3780db6a6ec" name="a0d5f6a94d31d43b54532e3780db6a6ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d5f6a94d31d43b54532e3780db6a6ec">&#9670;&#160;</a></span>HalUartId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Идентификатор встроенного последовательного порта. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23" name="a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23"></a>HAL_UART_PORT_0&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b" name="a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b"></a>HAL_UART_PORT_1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb" name="a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb"></a>HAL_UART_PORT_2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574" name="a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574"></a>HAL_UART_PORT_3&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32" name="a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32"></a>HAL_UART_PORT_COUNT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8hpp_source.html">sam3x_uart.hpp</a> строка <a class="el" href="sam3x__uart_8hpp_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a733abbee535c82f9a19be613f555ee59" name="a733abbee535c82f9a19be613f555ee59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a733abbee535c82f9a19be613f555ee59">&#9670;&#160;</a></span>hal_uart_available()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t hal_uart_available </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает количество принятых байтов в RX-буфере. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество байтов. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00465">465</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00210">hal_uart_ring_available()</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00034">HalUartPort::rx</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00033">SerialPort::available()</a> и <a class="el" href="sam3x__uart__status_8cpp_source.html#l00030">hal_uart_clear_rx()</a>.</p>
+
+</div>
+</div>
+<a id="a63fa9d88f7c1d64ba46d60cb9d470470" name="a63fa9d88f7c1d64ba46d60cb9d470470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63fa9d88f7c1d64ba46d60cb9d470470">&#9670;&#160;</a></span>hal_uart_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_uart_begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>baudrate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a43ea2cf83f47e89268d03060cd98b34e">HalUartFrame</a></td>          <td class="paramname"><span class="paramname"><em>frame</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует встроенный UART/USART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта. </td></tr>
+    <tr><td class="paramname">baudrate</td><td>Скорость обмена. </td></tr>
+    <tr><td class="paramname">frame</td><td>Формат кадра. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00394">394</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00042">HalUartPort::error_count</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00254">hal_uart_configure_pins()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00058">hal_uart_enable_peripheral_clock()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00215">hal_uart_mode_from_frame()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00161">hal_uart_ring_reset()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00141">hal_uart_set_receive()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00230">hal_usart_mode_from_frame()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00037">HalUartPort::initialized</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00030">HalUartPort::irq</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00032">HalUartPort::is_usart</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00031">HalUartPort::peripheral_id</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00034">HalUartPort::rx</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00035">HalUartPort::tx</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00028">HalUartPort::uart</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00029">HalUartPort::usart</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00021">SerialPort::begin()</a>, <a class="el" href="lcp__field__ports_8cpp_source.html#l00194">lcp_field_ports_init()</a> и <a class="el" href="lcp__x2x__port_8cpp_source.html#l00080">lcp_x2x_port_init()</a>.</p>
+
+</div>
+</div>
+<a id="ab44a2ace7777bb87feaf2aaa43d79db4" name="ab44a2ace7777bb87feaf2aaa43d79db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44a2ace7777bb87feaf2aaa43d79db4">&#9670;&#160;</a></span>hal_uart_clear_rx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_uart_clear_rx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаляет все байты, доступные через программный RX-буфер HAL. </p>
+<p>Используется перед началом новой master-транзакции для удаления остатка предыдущего или повреждённого кадра. Аппаратный RX обслуживается ISR и последовательно попадает в этот буфер. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart__status_8cpp_source.html">sam3x_uart_status.cpp</a> строка <a class="el" href="sam3x__uart__status_8cpp_source.html#l00030">30</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00465">hal_uart_available()</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00477">hal_uart_read()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__x2x__port_8cpp_source.html#l00080">lcp_x2x_port_init()</a>.</p>
+
+</div>
+</div>
+<a id="acb5b2b17280ee3bac4f9876dacf5514a" name="acb5b2b17280ee3bac4f9876dacf5514a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb5b2b17280ee3bac4f9876dacf5514a">&#9670;&#160;</a></span>hal_uart_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_uart_end </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Останавливает встроенный UART/USART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00438">438</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00535">hal_uart_flush()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00141">hal_uart_set_receive()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00037">HalUartPort::initialized</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00030">HalUartPort::irq</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00032">HalUartPort::is_usart</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00028">HalUartPort::uart</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00029">HalUartPort::usart</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00027">SerialPort::end()</a>.</p>
+
+</div>
+</div>
+<a id="af43518a3b8713e9dd52de1cf9d14e40e" name="af43518a3b8713e9dd52de1cf9d14e40e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af43518a3b8713e9dd52de1cf9d14e40e">&#9670;&#160;</a></span>hal_uart_error_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t hal_uart_error_count </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает количество ошибок приёма. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество ошибок OVRE/FRAME/PARE. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00567">567</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00042">HalUartPort::error_count</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00085">SerialPort::errorCount()</a>, <a class="el" href="lcp__field__ports_8cpp_source.html#l00269">lcp_field_port_error_count()</a> и <a class="el" href="lcp__x2x__port_8cpp_source.html#l00097">lcp_x2x_port_error_count()</a>.</p>
+
+</div>
+</div>
+<a id="aea0876bd77f8b893911ffd74810ddadb" name="aea0876bd77f8b893911ffd74810ddadb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0876bd77f8b893911ffd74810ddadb">&#9670;&#160;</a></span>hal_uart_flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_uart_flush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ожидает завершение передачи. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00535">535</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00053">hal_uart_cpu_relax()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00014">HalUartRingBuffer::head</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00032">HalUartPort::is_usart</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00015">HalUartRingBuffer::tail</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00035">HalUartPort::tx</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00028">HalUartPort::uart</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00029">HalUartPort::usart</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00048">SerialPort::flush()</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00438">hal_uart_end()</a>.</p>
+
+</div>
+</div>
+<a id="a807660bdc98c0cf170034aa65cf4aba5" name="a807660bdc98c0cf170034aa65cf4aba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a807660bdc98c0cf170034aa65cf4aba5">&#9670;&#160;</a></span>hal_uart_peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hal_uart_peek </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает следующий байт RX-буфера без удаления. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Байт 0..255 или -1 при пустом буфере. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00489">489</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00200">hal_uart_ring_peek()</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00034">HalUartPort::rx</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00043">SerialPort::peek()</a>.</p>
+
+</div>
+</div>
+<a id="ae4cf4504ea7fed04990bcca4d9735e62" name="ae4cf4504ea7fed04990bcca4d9735e62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4cf4504ea7fed04990bcca4d9735e62">&#9670;&#160;</a></span>hal_uart_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hal_uart_read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает один байт из RX-буфера. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Байт 0..255 или -1 при пустом буфере. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00477">477</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00187">hal_uart_ring_pop()</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00034">HalUartPort::rx</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="sam3x__uart__status_8cpp_source.html#l00030">hal_uart_clear_rx()</a> и <a class="el" href="serial__port_8cpp_source.html#l00038">SerialPort::read()</a>.</p>
+
+</div>
+</div>
+<a id="a9fc0c6671220e653a2e6951621054a5a" name="a9fc0c6671220e653a2e6951621054a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc0c6671220e653a2e6951621054a5a">&#9670;&#160;</a></span>hal_uart_set_rs485_direction_pin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_uart_set_rs485_direction_pin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>direction_pin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>transmit_level</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Настраивает порт на работу с RS-485 direction pin. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта. </td></tr>
+    <tr><td class="paramname">direction_pin</td><td>Номер дискретной линии управления DE/RE. </td></tr>
+    <tr><td class="paramname">transmit_level</td><td>Уровень, включающий передачу. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00377">377</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00040">HalUartPort::direction</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00089">hal_uart_configure_output_pin()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00103">hal_uart_gpio_from_pin()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00141">hal_uart_set_receive()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00021">HalGpioLine::port</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00038">HalUartPort::rs485_enabled</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00039">HalUartPort::transmit_level</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="lcp__rs485_8cpp_source.html#l00011">lcp_rs485_init_builtin_ports()</a> и <a class="el" href="lcp__x2x__port_8cpp_source.html#l00080">lcp_x2x_port_init()</a>.</p>
+
+</div>
+</div>
+<a id="a5e6c4b4e76d8e0afd17efad24f62d8b2" name="a5e6c4b4e76d8e0afd17efad24f62d8b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e6c4b4e76d8e0afd17efad24f62d8b2">&#9670;&#160;</a></span>hal_uart_tx_idle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t hal_uart_tx_idle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Неблокирующе читает аппаратный флаг TXEMPTY. </p>
+<p>Для пакетных протоколов вызывающий транспорт дополнительно должен учитывать время загрузки программного кольцевого буфера. X2X выполняет эту проверку в <span class="tt"><a class="el" href="lcp__x2x__port_8cpp.html" title="Реализация аппаратного транспорта X2X через UART0 ATSAM3X8E.">lcp_x2x_port.cpp</a></span>.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>1 при установленном TXEMPTY либо для неизвестного порта, иначе 0. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart__status_8cpp_source.html">sam3x_uart_status.cpp</a> строка <a class="el" href="sam3x__uart__status_8cpp_source.html#l00009">9</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8hpp_source.html#l00016">HAL_UART_PORT_0</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00017">HAL_UART_PORT_1</a>, <a class="el" href="sam3x__uart_8hpp_source.html#l00018">HAL_UART_PORT_2</a> и <a class="el" href="sam3x__uart_8hpp_source.html#l00019">HAL_UART_PORT_3</a>.</p>
+
+</div>
+</div>
+<a id="a476ab980c05144d3b27ccec515b9d60d" name="a476ab980c05144d3b27ccec515b9d60d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a476ab980c05144d3b27ccec515b9d60d">&#9670;&#160;</a></span>hal_uart_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t hal_uart_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a0d5f6a94d31d43b54532e3780db6a6ec">HalUartId</a></td>          <td class="paramname"><span class="paramname"><em>port_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт один байт. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port_id</td><td>Идентификатор порта. </td></tr>
+    <tr><td class="paramname">value</td><td>Передаваемый байт.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 при постановке байта в передачу, 0 при полном TX-буфере. </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="sam3x__uart_8cpp_source.html">sam3x_uart.cpp</a> строка <a class="el" href="sam3x__uart_8cpp_source.html#l00501">501</a></p>
+
+<p class="reference">Перекрестные ссылки <a class="el" href="sam3x__uart_8cpp_source.html#l00279">hal_uart_get_port()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00172">hal_uart_ring_push()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00151">hal_uart_set_transmit()</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00037">HalUartPort::initialized</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00032">HalUartPort::is_usart</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00035">HalUartPort::tx</a>, <a class="el" href="sam3x__uart_8cpp_source.html#l00028">HalUartPort::uart</a> и <a class="el" href="sam3x__uart_8cpp_source.html#l00029">HalUartPort::usart</a>.</p>
+
+<p class="reference">Используется в <a class="el" href="serial__port_8cpp_source.html#l00063">SerialPort::write()</a> и <a class="el" href="serial__port_8cpp_source.html#l00053">SerialPort::write()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__uart_8hpp.html">sam3x_uart.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>
