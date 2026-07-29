@@ -1,9 +1,9 @@
 name: LCP2116 Doxygen audit
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/update-lcp2116-doxygen-report
+      - main
     paths:
       - .github/workflows/lcp2116-doxygen-audit.yml
 
@@ -84,7 +84,6 @@ jobs:
               if doxygen_blocks == 0:
                   no_doxygen_blocks.append(rel)
 
-          # Run the historical configuration exactly as stored.
           current = subprocess.run(
               ['doxygen', 'Doxyfile'],
               cwd=stage,
@@ -98,7 +97,6 @@ jobs:
           current_warnings = current_warning_path.read_text(encoding='utf-8', errors='replace') if current_warning_path.exists() else ''
           (docs / 'audit_current_warnings.log').write_text(current_warnings, encoding='utf-8')
 
-          # Build a strict audit configuration. The appended values override old values.
           strict_doxyfile = stage / 'Doxyfile.strict'
           strict_text = (stage / 'Doxyfile').read_text(encoding='utf-8-sig')
           strict_text += r'''
@@ -208,8 +206,6 @@ QUIET                  = NO
           report.append('')
 
           (docs / 'AUDIT_RESULTS.md').write_text('\n'.join(report) + '\n', encoding='utf-8')
-
-          # Do not retain generated HTML in the repository.
           shutil.rmtree(stage / 'docs', ignore_errors=True)
 
       - name: Commit audit report
