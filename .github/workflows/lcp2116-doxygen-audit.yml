@@ -1,0 +1,226 @@
+name: LCP2116 Doxygen audit
+
+on:
+  push:
+    branches:
+      - agent/update-lcp2116-doxygen-report
+    paths:
+      - .github/workflows/lcp2116-doxygen-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out working branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/update-lcp2116-doxygen-report
+
+      - name: Install Doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen
+          doxygen --version
+
+      - name: Prepare local-layout staging tree
+        shell: bash
+        run: |
+          rm -rf /tmp/lcp_doxygen_stage
+          mkdir -p /tmp/lcp_doxygen_stage
+          cp -a '00_LCP2116/RTOS/.' /tmp/lcp_doxygen_stage/
+          cp '00_LCP2116/02_Описание программы (функциональное)/Doxyfile' /tmp/lcp_doxygen_stage/Doxyfile
+          cp '00_LCP2116/02_Описание программы (функциональное)/README.md' /tmp/lcp_doxygen_stage/README.md
+
+      - name: Audit source comments and run Doxygen
+        shell: python
+        run: |
+          from __future__ import annotations
+
+          import re
+          import shutil
+          import subprocess
+          from pathlib import Path
+
+          repo = Path.cwd()
+          source = repo / '00_LCP2116' / 'RTOS'
+          docs = repo / '00_LCP2116' / '02_Описание программы (функциональное)'
+          stage = Path('/tmp/lcp_doxygen_stage')
+
+          included_roots = [
+              source / 'app',
+              source / 'board',
+              source / 'hal',
+              source / 'platform',
+              source / 'protocol',
+              source / 'libs' / 'lcp_crc32',
+              source / 'libs' / 'lcp_sd_storage',
+          ]
+          explicit_files = [source / 'main.cpp', source / 'Config' / 'FreeRTOSConfig.h']
+          extensions = {'.c', '.cpp', '.h', '.hpp'}
+
+          files: list[Path] = []
+          for root in included_roots:
+              if root.exists():
+                  files.extend(p for p in root.rglob('*') if p.is_file() and p.suffix.lower() in extensions)
+          files.extend(p for p in explicit_files if p.exists())
+          files = sorted(set(files))
+
+          missing_file_doc: list[str] = []
+          no_doxygen_blocks: list[str] = []
+          file_rows: list[tuple[str, bool, int]] = []
+
+          for path in files:
+              text = path.read_text(encoding='utf-8-sig', errors='replace')
+              first = '\n'.join(text.splitlines()[:60])
+              has_file_doc = bool(re.search(r'[@\\]file\b', first))
+              doxygen_blocks = len(re.findall(r'/\*\*|///|//!', text))
+              rel = path.relative_to(source).as_posix()
+              file_rows.append((rel, has_file_doc, doxygen_blocks))
+              if not has_file_doc:
+                  missing_file_doc.append(rel)
+              if doxygen_blocks == 0:
+                  no_doxygen_blocks.append(rel)
+
+          # Run the historical configuration exactly as stored.
+          current = subprocess.run(
+              ['doxygen', 'Doxyfile'],
+              cwd=stage,
+              text=True,
+              stdout=subprocess.PIPE,
+              stderr=subprocess.STDOUT,
+              check=False,
+          )
+          (docs / 'audit_current_stdout.log').write_text(current.stdout, encoding='utf-8')
+          current_warning_path = stage / 'doxygen_warnings.log'
+          current_warnings = current_warning_path.read_text(encoding='utf-8', errors='replace') if current_warning_path.exists() else ''
+          (docs / 'audit_current_warnings.log').write_text(current_warnings, encoding='utf-8')
+
+          # Build a strict audit configuration. The appended values override old values.
+          strict_doxyfile = stage / 'Doxyfile.strict'
+          strict_text = (stage / 'Doxyfile').read_text(encoding='utf-8-sig')
+          strict_text += r'''
+
+# Strict audit overrides
+PROJECT_NUMBER         = "1.02.0"
+INPUT                  = README.md \
+                         main.cpp \
+                         app \
+                         board \
+                         hal \
+                         platform \
+                         protocol \
+                         libs/lcp_crc32 \
+                         libs/lcp_sd_storage \
+                         Config/FreeRTOSConfig.h
+INCLUDE_PATH           = app \
+                         app/config \
+                         app/diagnostics \
+                         app/ethernet \
+                         app/field \
+                         app/x2x \
+                         app/x2x/modules \
+                         board \
+                         hal \
+                         platform \
+                         protocol/modbus_rtu \
+                         protocol/modbus_tcp \
+                         libs/lcp_crc32 \
+                         libs/lcp_sd_storage \
+                         Config
+OUTPUT_DIRECTORY       = docs/doxygen_strict
+GENERATE_HTML          = NO
+GENERATE_LATEX         = NO
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = YES
+WARN_AS_ERROR          = NO
+WARN_LOGFILE           = strict_warnings.log
+QUIET                  = NO
+'''
+          strict_doxyfile.write_text(strict_text, encoding='utf-8')
+
+          strict = subprocess.run(
+              ['doxygen', strict_doxyfile.name],
+              cwd=stage,
+              text=True,
+              stdout=subprocess.PIPE,
+              stderr=subprocess.STDOUT,
+              check=False,
+          )
+          (docs / 'audit_strict_stdout.log').write_text(strict.stdout, encoding='utf-8')
+          strict_warning_path = stage / 'strict_warnings.log'
+          strict_warnings = strict_warning_path.read_text(encoding='utf-8', errors='replace') if strict_warning_path.exists() else ''
+          (docs / 'audit_strict_warnings.log').write_text(strict_warnings, encoding='utf-8')
+
+          def nonempty_line_count(text: str) -> int:
+              return sum(1 for line in text.splitlines() if line.strip())
+
+          report: list[str] = []
+          report.append('# LCP2116 Doxygen audit')
+          report.append('')
+          report.append('Generated automatically on the working branch.')
+          report.append('')
+          report.append('## Scope')
+          report.append('')
+          report.append(f'- First-party source files checked: **{len(files)}**')
+          report.append('- Included: `app`, `board`, `hal`, `platform`, `protocol`, `libs/lcp_crc32`, `libs/lcp_sd_storage`, `main.cpp`, `Config/FreeRTOSConfig.h`.')
+          report.append('- Excluded as third-party/platform support: `middleware/FreeRTOS-Kernel`, `libs/SAM_USB`, `Device_Startup`.')
+          report.append('')
+          report.append('## File-level documentation')
+          report.append('')
+          report.append(f'- Files without `@file`: **{len(missing_file_doc)}**')
+          report.append(f'- Files without any Doxygen block: **{len(no_doxygen_blocks)}**')
+          report.append('')
+          report.append('### Files without `@file`')
+          report.append('')
+          report.extend(f'- `{name}`' for name in missing_file_doc)
+          if not missing_file_doc:
+              report.append('- None')
+          report.append('')
+          report.append('### Files without any Doxygen block')
+          report.append('')
+          report.extend(f'- `{name}`' for name in no_doxygen_blocks)
+          if not no_doxygen_blocks:
+              report.append('- None')
+          report.append('')
+          report.append('## Doxygen execution')
+          report.append('')
+          report.append(f'- Current Doxyfile exit code: **{current.returncode}**')
+          report.append(f'- Current warning lines: **{nonempty_line_count(current_warnings)}**')
+          report.append(f'- Strict audit exit code: **{strict.returncode}**')
+          report.append(f'- Strict warning lines: **{nonempty_line_count(strict_warnings)}**')
+          report.append('')
+          report.append('## Per-file Doxygen-block count')
+          report.append('')
+          report.append('| File | `@file` | Doxygen blocks |')
+          report.append('|---|:---:|---:|')
+          for rel, has_file_doc, blocks in file_rows:
+              report.append(f'| `{rel}` | {"yes" if has_file_doc else "no"} | {blocks} |')
+          report.append('')
+          report.append('## Strict warnings')
+          report.append('')
+          report.append('```text')
+          report.extend(strict_warnings.splitlines()[:1000])
+          report.append('```')
+          report.append('')
+
+          (docs / 'AUDIT_RESULTS.md').write_text('\n'.join(report) + '\n', encoding='utf-8')
+
+          # Do not retain generated HTML in the repository.
+          shutil.rmtree(stage / 'docs', ignore_errors=True)
+
+      - name: Commit audit report
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '00_LCP2116/02_Описание программы (функциональное)/AUDIT_RESULTS.md' \
+                  '00_LCP2116/02_Описание программы (функциональное)/audit_current_stdout.log' \
+                  '00_LCP2116/02_Описание программы (функциональное)/audit_current_warnings.log' \
+                  '00_LCP2116/02_Описание программы (функциональное)/audit_strict_stdout.log' \
+                  '00_LCP2116/02_Описание программы (функциональное)/audit_strict_warnings.log'
+          git commit -m 'Add LCP2116 Doxygen audit report'
+          git push origin HEAD:agent/update-lcp2116-doxygen-report
