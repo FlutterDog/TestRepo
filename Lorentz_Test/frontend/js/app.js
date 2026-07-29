@@ -1,11 +1,63 @@
 "use strict";
 
+const form = document.getElementById("station-form");
+const stationMessage = document.getElementById("station-message");
+const saveButton = document.getElementById("save-station");
+
+async function requestJson(url, options = {}) {
+  const response = await fetch(url, options);
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const detail = typeof body.detail === "string" ? body.detail : JSON.stringify(body.detail || body);
+    throw new Error(detail || `HTTP ${response.status}`);
+  }
+  return body;
+}
+
+function setMessage(text, ok) {
+  stationMessage.textContent = text;
+  stationMessage.className = `message ${ok ? "pass" : "fail"}`;
+}
+
+function nullable(value) {
+  const text = value.trim();
+  return text === "" ? null : text;
+}
+
+function fillForm(config) {
+  for (const [key, value] of Object.entries(config)) {
+    const control = form.elements.namedItem(key);
+    if (!control) continue;
+    if (control.type === "checkbox") control.checked = Boolean(value);
+    else control.value = value ?? "";
+  }
+}
+
+function readForm() {
+  const data = new FormData(form);
+  return {
+    station_name: data.get("station_name"),
+    lcp_port: nullable(String(data.get("lcp_port") || "")),
+    s1_endpoint: nullable(String(data.get("s1_endpoint") || "")),
+    s2_endpoint: nullable(String(data.get("s2_endpoint") || "")),
+    s3_endpoint: nullable(String(data.get("s3_endpoint") || "")),
+    s4_endpoint: nullable(String(data.get("s4_endpoint") || "")),
+    hmi_endpoint: nullable(String(data.get("hmi_endpoint") || "")),
+    x2x_endpoint: nullable(String(data.get("x2x_endpoint") || "")),
+    eth1_ip: data.get("eth1_ip"),
+    eth2_ip: data.get("eth2_ip"),
+    shared_hmi_x2x_adapter: form.elements.shared_hmi_x2x_adapter.checked,
+    post_test_action: data.get("post_test_action"),
+    expected_firmware_version: data.get("expected_firmware_version"),
+    serial_baudrate: Number(data.get("serial_baudrate")),
+    serial_timeout_seconds: Number(data.get("serial_timeout_seconds")),
+  };
+}
+
 async function checkBackend() {
   const badge = document.getElementById("backend-status");
   try {
-    const response = await fetch("/api/health");
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    const data = await requestJson("/api/health");
     badge.textContent = `BACKEND ${data.version}`;
     badge.className = "status pass";
   } catch (error) {
@@ -14,4 +66,31 @@ async function checkBackend() {
   }
 }
 
+async function loadStation() {
+  try {
+    fillForm(await requestJson("/api/station"));
+  } catch (error) {
+    setMessage(`Не удалось загрузить настройки: ${error.message}`, false);
+  }
+}
+
+async function saveStation() {
+  saveButton.disabled = true;
+  try {
+    const config = await requestJson("/api/station", {
+      method: "PUT",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(readForm()),
+    });
+    fillForm(config);
+    setMessage("Настройки стенда сохранены.", true);
+  } catch (error) {
+    setMessage(`Ошибка сохранения: ${error.message}`, false);
+  } finally {
+    saveButton.disabled = false;
+  }
+}
+
+saveButton.addEventListener("click", saveStation);
 checkBackend();
+loadStation();

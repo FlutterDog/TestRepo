@@ -16,8 +16,40 @@
   </header>
   <main>
     <section class="card">
-      <h2>Первый этап</h2>
-      <p>Каркас приложения запущен. Настройка стенда и тест LCP будут добавлены следующими коммитами.</p>
+      <div class="section-heading">
+        <div>
+          <h2>Настройка стенда</h2>
+          <p>Порты и адреса не зашиваются в программу и сохраняются локально.</p>
+        </div>
+        <button id="save-station" type="button">Сохранить</button>
+      </div>
+      <form id="station-form" class="form-grid">
+        <label>Имя станции<input name="station_name" required maxlength="80"></label>
+        <label>USB LCP<input name="lcp_port" placeholder="COM5"></label>
+        <label>S1 endpoint<input name="s1_endpoint" placeholder="COM10 или tcp://host:port"></label>
+        <label>S2 endpoint<input name="s2_endpoint"></label>
+        <label>S3 endpoint<input name="s3_endpoint"></label>
+        <label>S4 endpoint<input name="s4_endpoint"></label>
+        <label>HMI endpoint<input name="hmi_endpoint"></label>
+        <label>X2X endpoint<input name="x2x_endpoint"></label>
+        <label>ETH1 IP<input name="eth1_ip" required></label>
+        <label>ETH2 IP<input name="eth2_ip" required></label>
+        <label>Ожидаемая firmware<input name="expected_firmware_version" required></label>
+        <label>USB baudrate<input name="serial_baudrate" type="number" min="300" max="1000000"></label>
+        <label>USB timeout, s<input name="serial_timeout_seconds" type="number" min="0.05" max="30" step="0.05"></label>
+        <label>После теста
+          <select name="post_test_action">
+            <option value="restore_original">Вернуть исходную конфигурацию</option>
+            <option value="clear_to_runtime_defaults">Очистить Flash и оставить runtime defaults</option>
+            <option value="keep_test_configuration">Оставить тестовую конфигурацию</option>
+          </select>
+        </label>
+        <label class="checkbox-row">
+          <input name="shared_hmi_x2x_adapter" type="checkbox">
+          Один адаптер для HMI и X2X
+        </label>
+      </form>
+      <p id="station-message" class="message" aria-live="polite"></p>
     </section>
   </main>
   <script src="/static/js/app.js"></script>
