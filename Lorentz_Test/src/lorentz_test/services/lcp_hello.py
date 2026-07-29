@@ -65,6 +65,7 @@ def run_lcp_hello(
             serial_number=request.serial_number,
             operator=request.operator,
             port="",
+            expected_firmware_version=station.expected_firmware_version,
             error="LCP USB port is not configured",
         )
 
@@ -86,6 +87,7 @@ def run_lcp_hello(
             serial_number=request.serial_number,
             operator=request.operator,
             port=port,
+            expected_firmware_version=station.expected_firmware_version,
             hello=HelloPayload(**hello.to_dict()),
             checks=checks,
         )
@@ -98,6 +100,7 @@ def run_lcp_hello(
             serial_number=request.serial_number,
             operator=request.operator,
             port=port,
+            expected_firmware_version=station.expected_firmware_version,
             error=f"{type(exc).__name__}: {exc}",
         )
     finally:

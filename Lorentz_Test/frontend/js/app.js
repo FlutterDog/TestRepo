@@ -138,9 +138,10 @@ function renderHello(result) {
     `<li><strong>${check.status}</strong> ${check.name}: ${check.actual} (ожидалось ${check.expected})</li>`
   ).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${result.error}</p>` : "";
-  const firmware = `<p>${result.firmware_note}. Проверка firmware v1.02.0 будет отдельным шагом через диагностическую консоль.</p>`;
+  const firmware = `<p>${result.firmware_note}. Ожидается firmware ${result.expected_firmware_version}; её проверка будет отдельным шагом через диагностическую консоль.</p>`;
+  const report = result.report_file ? `<p><strong>JSON:</strong> ${result.report_file}</p>` : "";
   helloResult.className = `test-result ${css}`;
-  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}`;
+  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${report}`;
 }
 
 async function runHello() {

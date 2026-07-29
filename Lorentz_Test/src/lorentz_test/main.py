@@ -15,6 +15,7 @@ from lorentz_test.models.serial import SerialPortInfo
 from lorentz_test.models.station import StationConfig
 from lorentz_test.models.tests import LcpHelloRequest, LcpHelloResult
 from lorentz_test.paths import frontend_dir
+from lorentz_test.reporting.json_report import report_writer
 from lorentz_test.serial_ports import list_serial_ports
 from lorentz_test.services.lcp_hello import run_lcp_hello
 from lorentz_test.station_store import station_store
@@ -44,7 +45,12 @@ def test_lcp_hello(request: LcpHelloRequest) -> LcpHelloResult:
         station = station_store.load()
     except RuntimeError as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
-    return run_lcp_hello(request, station)
+    result = run_lcp_hello(request, station)
+    try:
+        report_writer.save_lcp_hello(result)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return result
 
 
 @app.get("/api/station", response_model=StationConfig)

@@ -24,3 +24,14 @@ Open `http://127.0.0.1:8765` when the browser does not open automatically.
 ## Scope exclusions
 
 PNX, DM91 and density meters are not part of this project stage.
+
+## Implemented MVP slice
+
+- persistent station configuration in `runtime/station.json`;
+- Windows COM-port enumeration with VID/PID metadata;
+- LCP binary USB framing and CRC32 validation;
+- robust HELLO retries for Windows `usbser.sys`;
+- PASS/FAIL evaluation for protocol v1, schema v1, 104-byte bundle and capabilities;
+- atomic JSON report files in `reports/`.
+
+`HELLO` does not contain the human-readable firmware version. Firmware `1.02.0` will be verified in the next diagnostic-console step rather than inferred from protocol fields.
