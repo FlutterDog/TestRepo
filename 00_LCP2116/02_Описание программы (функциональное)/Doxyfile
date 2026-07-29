@@ -1,23 +1,31 @@
-# Doxyfile for LCP Basic Diagnostic Firmware
-# Рабочий каталог: корень проекта, например C:\DoxygenFolder
+# Doxyfile for LCP Basic Diagnostic Firmware 1.02.0
+#
+# Рабочий каталог: корень подготовленной копии проекта, например:
+# C:\DoxygenFolder
+#
+# В корне должны находиться README.md, DOXYGEN_COMMANDS.md, main.cpp,
+# Config/, app/, board/, hal/, platform/, protocol/ и libs/.
 
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "LCP Basic Diagnostic Firmware"
-PROJECT_BRIEF          = "Базовая диагностическая прошивка контроллера LCP"
-PROJECT_NUMBER         = "0.16.3"
+PROJECT_BRIEF          = "Базовая прошивка и программная архитектура контроллера LCP2116"
+PROJECT_NUMBER         = "1.02.0"
 OUTPUT_LANGUAGE        = Russian
 
 OUTPUT_DIRECTORY       = docs/doxygen
 CREATE_SUBDIRS         = NO
 ALLOW_UNICODE_NAMES    = YES
-OUTPUT_TEXT_DIRECTION  = None
 
 INPUT                  = README.md \
+                         DOXYGEN_COMMANDS.md \
                          main.cpp \
+                         Config/FreeRTOSConfig.h \
                          app \
                          board \
                          hal \
                          platform \
+                         protocol \
+                         libs/lcp_crc32 \
                          libs/lcp_sd_storage
 
 INPUT_ENCODING         = UTF-8
@@ -26,23 +34,31 @@ FILE_PATTERNS          = *.cpp \
                          *.c \
                          *.h \
                          *.md
-
 RECURSIVE              = YES
 
-EXCLUDE                = libs/SAM_USB \
+# В публичную документацию входят только собственные модули LCP Basic.
+# FreeRTOS Kernel, SAM_USB и startup-файлы являются внешним/platform support кодом.
+EXCLUDE                = middleware/FreeRTOS-Kernel \
+                         libs/SAM_USB \
                          Device_Startup \
+                         tools \
+                         sd_card \
                          docs/doxygen \
                          Debug \
                          Release \
                          .vs
 
-EXCLUDE_PATTERNS       = */.vs/* \
+EXCLUDE_PATTERNS       = */middleware/FreeRTOS-Kernel/* \
+                         */libs/SAM_USB/* \
+                         */Device_Startup/* \
+                         */tools/* \
+                         */sd_card/* \
+                         */docs/doxygen/* \
                          */Debug/* \
                          */Release/* \
                          */build/* \
-                         */docs/doxygen/* \
-                         */libs/SAM_USB/* \
-                         */Device_Startup/* \
+                         */.vs/* \
+                         */__pycache__/* \
                          *.atsuo \
                          *.user \
                          *.suo
@@ -56,15 +72,16 @@ EXTRACT_PRIVATE        = NO
 EXTRACT_PRIV_VIRTUAL   = NO
 EXTRACT_PACKAGE        = NO
 EXTRACT_STATIC         = YES
-EXTRACT_LOCAL_CLASSES  = NO
+EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_LOCAL_METHODS  = NO
 HIDE_UNDOC_MEMBERS     = NO
 HIDE_UNDOC_CLASSES     = NO
 INTERNAL_DOCS          = NO
 
 CASE_SENSE_NAMES       = YES
-FULL_PATH_NAMES        = NO
-STRIP_FROM_PATH        =
+FULL_PATH_NAMES        = YES
+STRIP_FROM_PATH        = .
+STRIP_FROM_INC_PATH    = .
 SHORT_NAMES            = NO
 JAVADOC_AUTOBRIEF      = NO
 QT_AUTOBRIEF           = NO
@@ -74,18 +91,45 @@ OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
 OPTIMIZE_OUTPUT_VHDL   = NO
-EXTENSION_MAPPING      =
+
+SHOW_INCLUDE_FILES     = YES
+SHOW_GROUPED_MEMB_INC  = YES
+SHOW_USED_FILES        = YES
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+ALPHABETICAL_INDEX     = YES
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+SORT_BY_SCOPE_NAME     = NO
+
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+VERBATIM_HEADERS       = YES
 
 ENABLE_PREPROCESSING   = YES
 MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
 SEARCH_INCLUDES        = YES
 
-INCLUDE_PATH           = app \
+# INCLUDE_PATH не является рекурсивным, поэтому перечислены все каталоги,
+# содержащие собственные публичные заголовки проекта.
+INCLUDE_PATH           = Config \
+                         app \
+                         app/config \
                          app/diagnostics \
+                         app/ethernet \
+                         app/field \
+                         app/x2x \
+                         app/x2x/modules \
                          board \
                          hal \
                          platform \
+                         protocol/modbus_rtu \
+                         protocol/modbus_tcp \
+                         libs/lcp_crc32 \
                          libs/lcp_sd_storage
 
 PREDEFINED             = __SAM3X8E__=1 \
@@ -109,15 +153,20 @@ GENERATE_HTML          = YES
 HTML_OUTPUT            = html
 HTML_FILE_EXTENSION    = .html
 HTML_COLORSTYLE        = LIGHT
+HTML_DYNAMIC_MENUS     = YES
 GENERATE_TREEVIEW      = YES
 DISABLE_INDEX          = NO
-FULL_SIDEBAR           = NO
+FULL_SIDEBAR           = YES
+SEARCHENGINE            = YES
 
 GENERATE_LATEX         = NO
 GENERATE_XML           = NO
 GENERATE_RTF           = NO
 GENERATE_MAN           = NO
+GENERATE_DOCBOOK       = NO
 
+# Graphviz не требуется: документация должна собираться после установки
+# только Doxygen. При необходимости диаграммы можно включить позднее.
 HAVE_DOT               = NO
 CALL_GRAPH             = NO
 CALLER_GRAPH           = NO
@@ -128,6 +177,7 @@ WARN_IF_UNDOCUMENTED   = NO
 WARN_IF_DOC_ERROR      = YES
 WARN_NO_PARAMDOC       = NO
 WARN_AS_ERROR          = NO
-WARN_LOGFILE           = doxygen_warnings.log
+WARN_FORMAT            = "$file:$line: $text"
+WARN_LOGFILE           = docs/doxygen/doxygen_warnings.log
 
 QUIET                  = NO
