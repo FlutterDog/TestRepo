@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['hal_5fgpio_5finput_0',['HAL_GPIO_INPUT',['../sam3x__gpio_8hpp.html#af725cf464e16140c2be59e1cf303ff97af69cb3b5075cad32cf53b0f472d95ccb',1,'sam3x_gpio.hpp']]],
+  ['hal_5fgpio_5finput_5fpullup_1',['HAL_GPIO_INPUT_PULLUP',['../sam3x__gpio_8hpp.html#af725cf464e16140c2be59e1cf303ff97ac80ebc216b24f5816b9232ee92ebf267',1,'sam3x_gpio.hpp']]],
+  ['hal_5fgpio_5foutput_2',['HAL_GPIO_OUTPUT',['../sam3x__gpio_8hpp.html#af725cf464e16140c2be59e1cf303ff97a74f85581f38ac6b00f5df19bd29f480e',1,'sam3x_gpio.hpp']]],
+  ['hal_5fspi_5flsb_5ffirst_3',['HAL_SPI_LSB_FIRST',['../sam3x__spi_8hpp.html#ac6c67ba8213cc3e4a6bc13bbbec02515a8cf8527a6bbbc3d34cf1d7e25f087e7b',1,'sam3x_spi.hpp']]],
+  ['hal_5fspi_5fmode_5f0_4',['HAL_SPI_MODE_0',['../sam3x__spi_8hpp.html#abb5dc69e8d36c8f759ffe2c7ac9e38daa7b8e39920c225cedd92b3a6693f7ce9c',1,'sam3x_spi.hpp']]],
+  ['hal_5fspi_5fmode_5f1_5',['HAL_SPI_MODE_1',['../sam3x__spi_8hpp.html#abb5dc69e8d36c8f759ffe2c7ac9e38daa417c31967ab9d2715365eedda2cc4f36',1,'sam3x_spi.hpp']]],
+  ['hal_5fspi_5fmode_5f2_6',['HAL_SPI_MODE_2',['../sam3x__spi_8hpp.html#abb5dc69e8d36c8f759ffe2c7ac9e38daa2d5c82e6b2d7445d8d7de314a4a28694',1,'sam3x_spi.hpp']]],
+  ['hal_5fspi_5fmode_5f3_7',['HAL_SPI_MODE_3',['../sam3x__spi_8hpp.html#abb5dc69e8d36c8f759ffe2c7ac9e38daa2b3b9d7e3dd5cb0fa96364f789ee00db',1,'sam3x_spi.hpp']]],
+  ['hal_5fspi_5fmsb_5ffirst_8',['HAL_SPI_MSB_FIRST',['../sam3x__spi_8hpp.html#ac6c67ba8213cc3e4a6bc13bbbec02515ac38d3aa17c8d77ea5ae2aee841a82c71',1,'sam3x_spi.hpp']]],
+  ['hal_5fuart_5fframe_5f8e1_9',['HAL_UART_FRAME_8E1',['../sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34eac53bcc0a35174ee90953a1118da4a575',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fframe_5f8n1_10',['HAL_UART_FRAME_8N1',['../sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea8fedf3f32094c4812d84949af2fe9dec',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fframe_5f8o1_11',['HAL_UART_FRAME_8O1',['../sam3x__uart_8hpp.html#a43ea2cf83f47e89268d03060cd98b34ea7c55bc1fca667ad634695c40159147d7',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fport_5f0_12',['HAL_UART_PORT_0',['../sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca69c75d166f856757e52a7c8865f48b23',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fport_5f1_13',['HAL_UART_PORT_1',['../sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac57ef7b5bc32338d5db39f624ab9656b',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fport_5f2_14',['HAL_UART_PORT_2',['../sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6ecac4ff43476074e74b488a432220601acb',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fport_5f3_15',['HAL_UART_PORT_3',['../sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca54a89dc12ce0a83dc5b997ab5e4f3574',1,'sam3x_uart.hpp']]],
+  ['hal_5fuart_5fport_5fcount_16',['HAL_UART_PORT_COUNT',['../sam3x__uart_8hpp.html#a0d5f6a94d31d43b54532e3780db6a6eca2074ae90c11681741ac4df84014fff32',1,'sam3x_uart.hpp']]]
+];

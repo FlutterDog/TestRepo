@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Класс SPIClass</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSPIClass.html','','classSPIClass-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс SPIClass</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Платформенный SPI master.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="spi_8hpp_source.html">spi.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a50c3dcd98bab69db9d3d0ea1b5f463b2" id="r_a50c3dcd98bab69db9d3d0ea1b5f463b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50c3dcd98bab69db9d3d0ea1b5f463b2">SPIClass</a> ()</td></tr>
+<tr class="memdesc:a50c3dcd98bab69db9d3d0ea1b5f463b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт объект SPI master.  <br /></td></tr>
+<tr class="memitem:a95193d135059e061214bb5348cda14fa" id="r_a95193d135059e061214bb5348cda14fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95193d135059e061214bb5348cda14fa">begin</a> (void)</td></tr>
+<tr class="memdesc:a95193d135059e061214bb5348cda14fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует SPI master.  <br /></td></tr>
+<tr class="memitem:a4e6b1133b5a5e817013c688c275aeaa4" id="r_a4e6b1133b5a5e817013c688c275aeaa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e6b1133b5a5e817013c688c275aeaa4">end</a> (void)</td></tr>
+<tr class="memdesc:a4e6b1133b5a5e817013c688c275aeaa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Останавливает SPI master.  <br /></td></tr>
+<tr class="memitem:ab6d1a13df577912cf435bd6ded8ca10b" id="r_ab6d1a13df577912cf435bd6ded8ca10b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6d1a13df577912cf435bd6ded8ca10b">beginTransaction</a> (const <a class="el" href="classSPISettings.html">SPISettings</a> &amp;settings)</td></tr>
+<tr class="memdesc:ab6d1a13df577912cf435bd6ded8ca10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Начинает SPI-транзакцию с указанными параметрами.  <br /></td></tr>
+<tr class="memitem:aab416c5231b189391e13983fe93041c3" id="r_aab416c5231b189391e13983fe93041c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab416c5231b189391e13983fe93041c3">endTransaction</a> (void)</td></tr>
+<tr class="memdesc:aab416c5231b189391e13983fe93041c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Завершает SPI-транзакцию.  <br /></td></tr>
+<tr class="memitem:ac08c6d07206e3f91cdb6d5dff1065ce2" id="r_ac08c6d07206e3f91cdb6d5dff1065ce2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac08c6d07206e3f91cdb6d5dff1065ce2">transfer</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ac08c6d07206e3f91cdb6d5dff1065ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт и принимает один байт.  <br /></td></tr>
+<tr class="memitem:a6d58d772c5afcd1d4fd186d2d7dff37d" id="r_a6d58d772c5afcd1d4fd186d2d7dff37d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d58d772c5afcd1d4fd186d2d7dff37d">transfer16</a> (uint16_t value)</td></tr>
+<tr class="memdesc:a6d58d772c5afcd1d4fd186d2d7dff37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт и принимает шестнадцатиразрядное слово.  <br /></td></tr>
+<tr class="memitem:afbaf68f48281072293d24be236d5a502" id="r_afbaf68f48281072293d24be236d5a502"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbaf68f48281072293d24be236d5a502">transfer</a> (void *buffer, size_t size)</td></tr>
+<tr class="memdesc:afbaf68f48281072293d24be236d5a502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет обмен массивом байтов на месте.  <br /></td></tr>
+<tr class="memitem:a4bddb209f5f73375c62cf94760ea51d9" id="r_a4bddb209f5f73375c62cf94760ea51d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bddb209f5f73375c62cf94760ea51d9">setClockDivider</a> (uint8_t divider)</td></tr>
+<tr class="memdesc:a4bddb209f5f73375c62cf94760ea51d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает делитель частоты SPI для последующих транзакций.  <br /></td></tr>
+<tr class="memitem:a16b555f98802f57d4b96e2b67e226770" id="r_a16b555f98802f57d4b96e2b67e226770"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16b555f98802f57d4b96e2b67e226770">setBitOrder</a> (uint8_t bit_order)</td></tr>
+<tr class="memdesc:a16b555f98802f57d4b96e2b67e226770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает порядок битов для последующих транзакций.  <br /></td></tr>
+<tr class="memitem:af8459087ba702985e97fb2e5619c2600" id="r_af8459087ba702985e97fb2e5619c2600"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8459087ba702985e97fb2e5619c2600">setDataMode</a> (uint8_t data_mode)</td></tr>
+<tr class="memdesc:af8459087ba702985e97fb2e5619c2600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает режим SPI для последующих транзакций.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Платформенный SPI master. </p>
+<p>Класс управляет SPI0 микроконтроллера. Линии Chip Select управляются прикладным кодом через GPIO. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a50c3dcd98bab69db9d3d0ea1b5f463b2" name="a50c3dcd98bab69db9d3d0ea1b5f463b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c3dcd98bab69db9d3d0ea1b5f463b2">&#9670;&#160;</a></span>SPIClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SPIClass::SPIClass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт объект SPI master. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="a95193d135059e061214bb5348cda14fa" name="a95193d135059e061214bb5348cda14fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95193d135059e061214bb5348cda14fa">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::begin </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует SPI master. </p>
+
+</div>
+</div>
+<a id="ab6d1a13df577912cf435bd6ded8ca10b" name="ab6d1a13df577912cf435bd6ded8ca10b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6d1a13df577912cf435bd6ded8ca10b">&#9670;&#160;</a></span>beginTransaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::beginTransaction </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSPISettings.html">SPISettings</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>settings</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Начинает SPI-транзакцию с указанными параметрами. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">settings</td><td>Настройки транзакции. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4e6b1133b5a5e817013c688c275aeaa4" name="a4e6b1133b5a5e817013c688c275aeaa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e6b1133b5a5e817013c688c275aeaa4">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::end </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Останавливает SPI master. </p>
+
+</div>
+</div>
+<a id="aab416c5231b189391e13983fe93041c3" name="aab416c5231b189391e13983fe93041c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab416c5231b189391e13983fe93041c3">&#9670;&#160;</a></span>endTransaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::endTransaction </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Завершает SPI-транзакцию. </p>
+
+</div>
+</div>
+<a id="a16b555f98802f57d4b96e2b67e226770" name="a16b555f98802f57d4b96e2b67e226770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16b555f98802f57d4b96e2b67e226770">&#9670;&#160;</a></span>setBitOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::setBitOrder </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>bit_order</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает порядок битов для последующих транзакций. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bit_order</td><td>Порядок битов: <span class="tt"><a class="el" href="spi_8hpp.html#a16633868ed4f526784287835aad20588">MSBFIRST</a></span> или <span class="tt"><a class="el" href="spi_8hpp.html#ae450c1aad72ff2b94d890f0afd9aec7c">LSBFIRST</a></span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4bddb209f5f73375c62cf94760ea51d9" name="a4bddb209f5f73375c62cf94760ea51d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bddb209f5f73375c62cf94760ea51d9">&#9670;&#160;</a></span>setClockDivider()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::setClockDivider </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>divider</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает делитель частоты SPI для последующих транзакций. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">divider</td><td>Делитель <span class="tt">SPI_CLOCK_DIVx</span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af8459087ba702985e97fb2e5619c2600" name="af8459087ba702985e97fb2e5619c2600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8459087ba702985e97fb2e5619c2600">&#9670;&#160;</a></span>setDataMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::setDataMode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>data_mode</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает режим SPI для последующих транзакций. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data_mode</td><td>Режим SPI: <span class="tt"><a class="el" href="spi_8hpp.html#a147c11cf451e9f0d5af17083a974cea8">SPI_MODE0</a></span>..<span class="tt"><a class="el" href="spi_8hpp.html#ad2af4958f8a89ebf366d97f09fcab921">SPI_MODE3</a></span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac08c6d07206e3f91cdb6d5dff1065ce2" name="ac08c6d07206e3f91cdb6d5dff1065ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac08c6d07206e3f91cdb6d5dff1065ce2">&#9670;&#160;</a></span>transfer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SPIClass::transfer </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт и принимает один байт. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Передаваемый байт.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Принятый байт. </dd></dl>
+
+</div>
+</div>
+<a id="afbaf68f48281072293d24be236d5a502" name="afbaf68f48281072293d24be236d5a502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbaf68f48281072293d24be236d5a502">&#9670;&#160;</a></span>transfer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SPIClass::transfer </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выполняет обмен массивом байтов на месте. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>Буфер передачи и приёма. </td></tr>
+    <tr><td class="paramname">size</td><td>Количество байтов. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6d58d772c5afcd1d4fd186d2d7dff37d" name="a6d58d772c5afcd1d4fd186d2d7dff37d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d58d772c5afcd1d4fd186d2d7dff37d">&#9670;&#160;</a></span>transfer16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t SPIClass::transfer16 </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт и принимает шестнадцатиразрядное слово. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Передаваемое слово.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Принятое слово. </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="spi_8hpp_source.html">spi.hpp</a></li>
+<li><a class="el" href="spi_8cpp.html">spi.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classSPIClass.html">SPIClass</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

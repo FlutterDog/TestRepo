@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл sc16is_echo_test.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sc16is__echo__test_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sc16is_echo_test.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация echo-test внешних UART SC16IS7xx.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="sc16is__echo__test_8hpp_source.html">sc16is_echo_test.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__sc16is_8hpp_source.html">../../board/lcp_sc16is.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sc16is7xx_8hpp_source.html">../../hal/sc16is7xx.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="platform_8hpp_source.html">../../platform/platform.hpp</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a9025b0b76e349abc5983aab4a54a01b7" id="r_a9025b0b76e349abc5983aab4a54a01b7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9025b0b76e349abc5983aab4a54a01b7">sc16is_echo_add_port</a> (const <a class="el" href="structLcpSc16isPort.html">LcpSc16isPort</a> &amp;port, const char *name)</td></tr>
+<tr class="memitem:a158d131a81477f72cb036548f7830ddc" id="r_a158d131a81477f72cb036548f7830ddc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a158d131a81477f72cb036548f7830ddc">sc16is_echo_drop_frame</a> (Sc16isEchoPort &amp;port, uint32_t now_ms)</td></tr>
+<tr class="memitem:a75a6c911740286625d12b8fb93593570" id="r_a75a6c911740286625d12b8fb93593570"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75a6c911740286625d12b8fb93593570">sc16is_echo_accept_rx</a> (Sc16isEchoPort &amp;port, uint32_t now_ms)</td></tr>
+<tr class="memitem:a3dadd807c22ee7f1b647e6b4cc892de0" id="r_a3dadd807c22ee7f1b647e6b4cc892de0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dadd807c22ee7f1b647e6b4cc892de0">sc16is_echo_arm_response_if_frame_complete</a> (Sc16isEchoPort &amp;port, uint32_t now_ms)</td></tr>
+<tr class="memitem:a299045c0c9ba5d1dd81556e8dfc08585" id="r_a299045c0c9ba5d1dd81556e8dfc08585"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a299045c0c9ba5d1dd81556e8dfc08585">sc16is_echo_send_if_response_due</a> (Sc16isEchoPort &amp;port, uint32_t now_ms)</td></tr>
+<tr class="memitem:a85aa98b92bb199f8414af72f4140335b" id="r_a85aa98b92bb199f8414af72f4140335b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85aa98b92bb199f8414af72f4140335b">sc16is_echo_test_init</a> (void)</td></tr>
+<tr class="memdesc:a85aa98b92bb199f8414af72f4140335b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует диагностический echo-test внешних UART.  <br /></td></tr>
+<tr class="memitem:a929b157dee403ab176473f4ab85b628f" id="r_a929b157dee403ab176473f4ab85b628f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a929b157dee403ab176473f4ab85b628f">sc16is_echo_test_poll</a> (void)</td></tr>
+<tr class="memdesc:a929b157dee403ab176473f4ab85b628f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обслуживает echo-test внешних UART.  <br /></td></tr>
+<tr class="memitem:a37e072b8d1c711a7c5915ec9d21f4f86" id="r_a37e072b8d1c711a7c5915ec9d21f4f86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37e072b8d1c711a7c5915ec9d21f4f86">sc16is_echo_test_print_report_once</a> (void)</td></tr>
+<tr class="memdesc:a37e072b8d1c711a7c5915ec9d21f4f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает отчёт автоопределения один раз после открытия USB-порта.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a1ec8da69dbf3056b07e09f9097cbf468" id="r_a1ec8da69dbf3056b07e09f9097cbf468"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ec8da69dbf3056b07e09f9097cbf468">SC16IS_ECHO_BAUDRATE</a> = 9600U</td></tr>
+<tr class="memitem:af44286a5d9e178d9ad0e24b193841d32" id="r_af44286a5d9e178d9ad0e24b193841d32"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af44286a5d9e178d9ad0e24b193841d32">SC16IS_INTERFRAME_GAP_MS</a> = 5U</td></tr>
+<tr class="memitem:a266602b3bfcc2a2a91d2f8e3d3f790be" id="r_a266602b3bfcc2a2a91d2f8e3d3f790be"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a266602b3bfcc2a2a91d2f8e3d3f790be">SC16IS_RESPONSE_DELAY_MS</a> = 10U</td></tr>
+<tr class="memitem:a4554c7d526a67fa0246f325a8b802f03" id="r_a4554c7d526a67fa0246f325a8b802f03"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4554c7d526a67fa0246f325a8b802f03">SC16IS_MAX_RX_BYTES_PER_POLL</a> = 16U</td></tr>
+<tr class="memitem:acdda9422d6edf408f452671fc636be78" id="r_acdda9422d6edf408f452671fc636be78"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdda9422d6edf408f452671fc636be78">SC16IS_ECHO_BUFFER_SIZE</a> = 128U</td></tr>
+<tr class="memitem:afaef0376ea05c2f026495087fe9ae902" id="r_afaef0376ea05c2f026495087fe9ae902"><td class="memItemLeft" align="right" valign="top">static Sc16isEchoPort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaef0376ea05c2f026495087fe9ae902">g_sc16is_echo_ports</a> [3]</td></tr>
+<tr class="memitem:a59e72b34f38932919cbb6a1be3cf6d57" id="r_a59e72b34f38932919cbb6a1be3cf6d57"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59e72b34f38932919cbb6a1be3cf6d57">g_sc16is_echo_port_count</a> = 0U</td></tr>
+<tr class="memitem:a162eb8ff4d35de180402aec5ce056061" id="r_a162eb8ff4d35de180402aec5ce056061"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a162eb8ff4d35de180402aec5ce056061">g_probe_report_printed</a> = 0U</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация echo-test внешних UART SC16IS7xx. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a75a6c911740286625d12b8fb93593570" name="a75a6c911740286625d12b8fb93593570"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75a6c911740286625d12b8fb93593570">&#9670;&#160;</a></span>sc16is_echo_accept_rx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_accept_rx </td>
+          <td>(</td>
+          <td class="paramtype">Sc16isEchoPort &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>now_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9025b0b76e349abc5983aab4a54a01b7" name="a9025b0b76e349abc5983aab4a54a01b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9025b0b76e349abc5983aab4a54a01b7">&#9670;&#160;</a></span>sc16is_echo_add_port()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_add_port </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLcpSc16isPort.html">LcpSc16isPort</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3dadd807c22ee7f1b647e6b4cc892de0" name="a3dadd807c22ee7f1b647e6b4cc892de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dadd807c22ee7f1b647e6b4cc892de0">&#9670;&#160;</a></span>sc16is_echo_arm_response_if_frame_complete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_arm_response_if_frame_complete </td>
+          <td>(</td>
+          <td class="paramtype">Sc16isEchoPort &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>now_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a158d131a81477f72cb036548f7830ddc" name="a158d131a81477f72cb036548f7830ddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a158d131a81477f72cb036548f7830ddc">&#9670;&#160;</a></span>sc16is_echo_drop_frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_drop_frame </td>
+          <td>(</td>
+          <td class="paramtype">Sc16isEchoPort &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>now_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a299045c0c9ba5d1dd81556e8dfc08585" name="a299045c0c9ba5d1dd81556e8dfc08585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a299045c0c9ba5d1dd81556e8dfc08585">&#9670;&#160;</a></span>sc16is_echo_send_if_response_due()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_send_if_response_due </td>
+          <td>(</td>
+          <td class="paramtype">Sc16isEchoPort &amp;</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>now_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85aa98b92bb199f8414af72f4140335b" name="a85aa98b92bb199f8414af72f4140335b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85aa98b92bb199f8414af72f4140335b">&#9670;&#160;</a></span>sc16is_echo_test_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_test_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует диагностический echo-test внешних UART. </p>
+
+</div>
+</div>
+<a id="a929b157dee403ab176473f4ab85b628f" name="a929b157dee403ab176473f4ab85b628f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a929b157dee403ab176473f4ab85b628f">&#9670;&#160;</a></span>sc16is_echo_test_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_test_poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обслуживает echo-test внешних UART. </p>
+
+</div>
+</div>
+<a id="a37e072b8d1c711a7c5915ec9d21f4f86" name="a37e072b8d1c711a7c5915ec9d21f4f86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e072b8d1c711a7c5915ec9d21f4f86">&#9670;&#160;</a></span>sc16is_echo_test_print_report_once()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sc16is_echo_test_print_report_once </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печатает отчёт автоопределения один раз после открытия USB-порта. </p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a162eb8ff4d35de180402aec5ce056061" name="a162eb8ff4d35de180402aec5ce056061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a162eb8ff4d35de180402aec5ce056061">&#9670;&#160;</a></span>g_probe_report_printed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t g_probe_report_printed = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59e72b34f38932919cbb6a1be3cf6d57" name="a59e72b34f38932919cbb6a1be3cf6d57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59e72b34f38932919cbb6a1be3cf6d57">&#9670;&#160;</a></span>g_sc16is_echo_port_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t g_sc16is_echo_port_count = 0U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afaef0376ea05c2f026495087fe9ae902" name="afaef0376ea05c2f026495087fe9ae902"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaef0376ea05c2f026495087fe9ae902">&#9670;&#160;</a></span>g_sc16is_echo_ports</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sc16isEchoPort g_sc16is_echo_ports[3]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ec8da69dbf3056b07e09f9097cbf468" name="a1ec8da69dbf3056b07e09f9097cbf468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec8da69dbf3056b07e09f9097cbf468">&#9670;&#160;</a></span>SC16IS_ECHO_BAUDRATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t SC16IS_ECHO_BAUDRATE = 9600U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdda9422d6edf408f452671fc636be78" name="acdda9422d6edf408f452671fc636be78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdda9422d6edf408f452671fc636be78">&#9670;&#160;</a></span>SC16IS_ECHO_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t SC16IS_ECHO_BUFFER_SIZE = 128U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af44286a5d9e178d9ad0e24b193841d32" name="af44286a5d9e178d9ad0e24b193841d32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af44286a5d9e178d9ad0e24b193841d32">&#9670;&#160;</a></span>SC16IS_INTERFRAME_GAP_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t SC16IS_INTERFRAME_GAP_MS = 5U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4554c7d526a67fa0246f325a8b802f03" name="a4554c7d526a67fa0246f325a8b802f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4554c7d526a67fa0246f325a8b802f03">&#9670;&#160;</a></span>SC16IS_MAX_RX_BYTES_PER_POLL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t SC16IS_MAX_RX_BYTES_PER_POLL = 16U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a266602b3bfcc2a2a91d2f8e3d3f790be" name="a266602b3bfcc2a2a91d2f8e3d3f790be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a266602b3bfcc2a2a91d2f8e3d3f790be">&#9670;&#160;</a></span>SC16IS_RESPONSE_DELAY_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t SC16IS_RESPONSE_DELAY_MS = 10U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="sc16is__echo__test_8cpp.html">sc16is_echo_test.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

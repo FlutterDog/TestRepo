@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл lcp_sd_storage.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__sd__storage_8hpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcp_sd_storage.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcp__sd__storage_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">   15</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32">   17</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32">LCP_SD_STORAGE_OK</a> = 0,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932">   18</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932">LCP_SD_STORAGE_NO_CARD</a> = 1,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822">   19</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822">LCP_SD_STORAGE_CARD_INIT_FAILED</a> = 2,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b">   20</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b">LCP_SD_STORAGE_VOLUME_UNSUPPORTED</a> = 3,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f">   21</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f">LCP_SD_STORAGE_FILE_NOT_FOUND</a> = 4,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77">   22</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77">LCP_SD_STORAGE_FILE_OPEN_FAILED</a> = 5,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639">   23</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639">LCP_SD_STORAGE_FILE_EXISTS_ERROR</a> = 6,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1">   24</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1">LCP_SD_STORAGE_DIRECTORY_FULL</a> = 7,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946">   25</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946">LCP_SD_STORAGE_NO_FREE_CLUSTER</a> = 8,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c">   26</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c">LCP_SD_STORAGE_READ_FAILED</a> = 9,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db">   27</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db">LCP_SD_STORAGE_WRITE_FAILED</a> = 10,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2">   28</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2">LCP_SD_STORAGE_INVALID_NAME</a> = 11,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5">   29</a></span>    <a class="code hl_enumvalue" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5">LCP_SD_STORAGE_NOT_READY</a> = 12</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html">   35</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a6df7a70718a26f45f3e9ca6910b44220">   37</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a6df7a70718a26f45f3e9ca6910b44220">first_cluster</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254">   38</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254">current_cluster</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763">   39</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763">current_cluster_index</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#ac44412016e3df495556fc8382ba58c41">   40</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#ac44412016e3df495556fc8382ba58c41">file_size</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a2fa749318ce5c2174b90dcae79ef3242">   41</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a2fa749318ce5c2174b90dcae79ef3242">position</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a98b03ca1c4b17d46fd771ae0aa1b0c59">   42</a></span>    uint32_t <a class="code hl_variable" href="structLcpSdReadFile.html#a98b03ca1c4b17d46fd771ae0aa1b0c59">loaded_sector_lba</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a4d002429a6fba93a72e5761327c86d57">   43</a></span>    uint8_t <a class="code hl_variable" href="structLcpSdReadFile.html#a4d002429a6fba93a72e5761327c86d57">sector_loaded</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structLcpSdReadFile.html#a8ff7f764117efe835cf5c47bc44b33ca">   44</a></span>    uint8_t <a class="code hl_variable" href="structLcpSdReadFile.html#a8ff7f764117efe835cf5c47bc44b33ca">sector</a>[512];</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a40c613c4e2bab85000541a08b6883f54">lcp_sd_storage_begin</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a568577ad07b12f89dec826cebd4736f1">lcp_sd_storage_reset</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#aa565f9519b5454bce9c360a9cf65d6e5">lcp_sd_storage_ready</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a09b680cf52f089aec58e9bb19e4adfff">lcp_sd_storage_result_text</a>(<a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> result);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a0b03bab6b5e79b73d043c1a9ac668184">lcp_sd_storage_exists</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a64ef6f8162a8504a54114ed6213eae65">lcp_sd_storage_open_read</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name, <a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a>* file);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">int</span> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#ae397c10353ca985d4b6cdd74e3033fa0">lcp_sd_storage_read_byte</a>(<a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a>* file);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a733bf3da34c3e2aa96609d86aa3d3cd2">lcp_sd_storage_close_read</a>(<a class="code hl_struct" href="structLcpSdReadFile.html">LcpSdReadFile</a>* file);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><a class="code hl_enumeration" href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a> <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a23dc23fe8e1467edd153cab22478a90c">lcp_sd_storage_write_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name, <span class="keyword">const</span> uint8_t* data, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#a4e7d932e06f89076e5274207590d01b2">lcp_sd_storage_fat_type</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>uint8_t <a class="code hl_function" href="lcp__sd__storage_8hpp.html#af3d952cb49058b95d8f84929a2e11496">lcp_sd_storage_sectors_per_cluster</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a09b680cf52f089aec58e9bb19e4adfff"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a09b680cf52f089aec58e9bb19e4adfff">lcp_sd_storage_result_text</a></div><div class="ttdeci">const char * lcp_sd_storage_result_text(LcpSdStorageResult result)</div><div class="ttdoc">Возвращает текстовое описание результата.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:938</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a0b03bab6b5e79b73d043c1a9ac668184"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a0b03bab6b5e79b73d043c1a9ac668184">lcp_sd_storage_exists</a></div><div class="ttdeci">uint8_t lcp_sd_storage_exists(const char *file_name)</div><div class="ttdoc">Проверяет наличие файла в корневом каталоге.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:986</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a23dc23fe8e1467edd153cab22478a90c"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a23dc23fe8e1467edd153cab22478a90c">lcp_sd_storage_write_file</a></div><div class="ttdeci">LcpSdStorageResult lcp_sd_storage_write_file(const char *file_name, const uint8_t *data, size_t length)</div><div class="ttdoc">Записывает файл в корневой каталог с заменой существующего файла.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:1113</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a40c613c4e2bab85000541a08b6883f54"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a40c613c4e2bab85000541a08b6883f54">lcp_sd_storage_begin</a></div><div class="ttdeci">LcpSdStorageResult lcp_sd_storage_begin(void)</div><div class="ttdoc">Инициализирует карту и монтирует FAT16/FAT32.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:904</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a4e7d932e06f89076e5274207590d01b2"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a4e7d932e06f89076e5274207590d01b2">lcp_sd_storage_fat_type</a></div><div class="ttdeci">uint8_t lcp_sd_storage_fat_type(void)</div><div class="ttdoc">Возвращает тип FAT: 16 или 32.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:1194</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a568577ad07b12f89dec826cebd4736f1"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a568577ad07b12f89dec826cebd4736f1">lcp_sd_storage_reset</a></div><div class="ttdeci">void lcp_sd_storage_reset(void)</div><div class="ttdoc">Сбрасывает состояние готовности файловой системы.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:928</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a64ef6f8162a8504a54114ed6213eae65"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a64ef6f8162a8504a54114ed6213eae65">lcp_sd_storage_open_read</a></div><div class="ttdeci">LcpSdStorageResult lcp_sd_storage_open_read(const char *file_name, LcpSdReadFile *file)</div><div class="ttdoc">Открывает файл из корневого каталога для чтения.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:1010</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a733bf3da34c3e2aa96609d86aa3d3cd2"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a733bf3da34c3e2aa96609d86aa3d3cd2">lcp_sd_storage_close_read</a></div><div class="ttdeci">void lcp_sd_storage_close_read(LcpSdReadFile *file)</div><div class="ttdoc">Закрывает файл чтения.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:1105</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392">LcpSdStorageResult</a></div><div class="ttdeci">LcpSdStorageResult</div><div class="ttdoc">Результат операции с microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:16</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a093531b7ee8deeba2b0437a94c265fc2">LCP_SD_STORAGE_INVALID_NAME</a></div><div class="ttdeci">@ LCP_SD_STORAGE_INVALID_NAME</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:28</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a2aae5146968b971a947444e4e645382c">LCP_SD_STORAGE_READ_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_READ_FAILED</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:26</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a56ae7db61ffaf77ad6ef981572beded5">LCP_SD_STORAGE_NOT_READY</a></div><div class="ttdeci">@ LCP_SD_STORAGE_NOT_READY</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:29</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5cba1d22cb5bc2982f6f163324a048d1">LCP_SD_STORAGE_DIRECTORY_FULL</a></div><div class="ttdeci">@ LCP_SD_STORAGE_DIRECTORY_FULL</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:24</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a5d7456ab8f92b53558120c495d122822">LCP_SD_STORAGE_CARD_INIT_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_CARD_INIT_FAILED</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:19</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a79d8b6730ddae43fa19fbdc314f9788f">LCP_SD_STORAGE_FILE_NOT_FOUND</a></div><div class="ttdeci">@ LCP_SD_STORAGE_FILE_NOT_FOUND</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:21</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a800f133d395963c8f289cafdfa1039db">LCP_SD_STORAGE_WRITE_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_WRITE_FAILED</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:27</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392a92f2b2b24e3da38acc23b044db95bb32">LCP_SD_STORAGE_OK</a></div><div class="ttdeci">@ LCP_SD_STORAGE_OK</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:17</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab262f817f94a33196c65fbd62485d932">LCP_SD_STORAGE_NO_CARD</a></div><div class="ttdeci">@ LCP_SD_STORAGE_NO_CARD</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:18</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ab90c727939f0965875320025a2bbd00b">LCP_SD_STORAGE_VOLUME_UNSUPPORTED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_VOLUME_UNSUPPORTED</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:20</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abaa61c880023832ed05c5f7b65d08639">LCP_SD_STORAGE_FILE_EXISTS_ERROR</a></div><div class="ttdeci">@ LCP_SD_STORAGE_FILE_EXISTS_ERROR</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:23</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392abb1a5b1b4e822d3141c6fc45adf67946">LCP_SD_STORAGE_NO_FREE_CLUSTER</a></div><div class="ttdeci">@ LCP_SD_STORAGE_NO_FREE_CLUSTER</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:25</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#a865fc5f4cca5ef6e916354ec77f1e392ad040bda4486442d25b4f645e58cfdb77">LCP_SD_STORAGE_FILE_OPEN_FAILED</a></div><div class="ttdeci">@ LCP_SD_STORAGE_FILE_OPEN_FAILED</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:22</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_aa565f9519b5454bce9c360a9cf65d6e5"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#aa565f9519b5454bce9c360a9cf65d6e5">lcp_sd_storage_ready</a></div><div class="ttdeci">uint8_t lcp_sd_storage_ready(void)</div><div class="ttdoc">Возвращает признак готовности файловой системы.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:933</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_ae397c10353ca985d4b6cdd74e3033fa0"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#ae397c10353ca985d4b6cdd74e3033fa0">lcp_sd_storage_read_byte</a></div><div class="ttdeci">int lcp_sd_storage_read_byte(LcpSdReadFile *file)</div><div class="ttdoc">Читает один байт из открытого файла.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:1050</div></div>
+<div class="ttc" id="alcp__sd__storage_8hpp_html_af3d952cb49058b95d8f84929a2e11496"><div class="ttname"><a href="lcp__sd__storage_8hpp.html#af3d952cb49058b95d8f84929a2e11496">lcp_sd_storage_sectors_per_cluster</a></div><div class="ttdeci">uint8_t lcp_sd_storage_sectors_per_cluster(void)</div><div class="ttdoc">Возвращает количество секторов в кластере.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.cpp:1199</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html"><div class="ttname"><a href="structLcpSdReadFile.html">LcpSdReadFile</a></div><div class="ttdoc">Открытый файл для последовательного чтения.</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:36</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a2fa749318ce5c2174b90dcae79ef3242"><div class="ttname"><a href="structLcpSdReadFile.html#a2fa749318ce5c2174b90dcae79ef3242">LcpSdReadFile::position</a></div><div class="ttdeci">uint32_t position</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:41</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a4590af4c184b5d51a91161b23c34d254"><div class="ttname"><a href="structLcpSdReadFile.html#a4590af4c184b5d51a91161b23c34d254">LcpSdReadFile::current_cluster</a></div><div class="ttdeci">uint32_t current_cluster</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:38</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a4d002429a6fba93a72e5761327c86d57"><div class="ttname"><a href="structLcpSdReadFile.html#a4d002429a6fba93a72e5761327c86d57">LcpSdReadFile::sector_loaded</a></div><div class="ttdeci">uint8_t sector_loaded</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:43</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a6df7a70718a26f45f3e9ca6910b44220"><div class="ttname"><a href="structLcpSdReadFile.html#a6df7a70718a26f45f3e9ca6910b44220">LcpSdReadFile::first_cluster</a></div><div class="ttdeci">uint32_t first_cluster</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:37</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a8ff7f764117efe835cf5c47bc44b33ca"><div class="ttname"><a href="structLcpSdReadFile.html#a8ff7f764117efe835cf5c47bc44b33ca">LcpSdReadFile::sector</a></div><div class="ttdeci">uint8_t sector[512]</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:44</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_a98b03ca1c4b17d46fd771ae0aa1b0c59"><div class="ttname"><a href="structLcpSdReadFile.html#a98b03ca1c4b17d46fd771ae0aa1b0c59">LcpSdReadFile::loaded_sector_lba</a></div><div class="ttdeci">uint32_t loaded_sector_lba</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:42</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_ac44412016e3df495556fc8382ba58c41"><div class="ttname"><a href="structLcpSdReadFile.html#ac44412016e3df495556fc8382ba58c41">LcpSdReadFile::file_size</a></div><div class="ttdeci">uint32_t file_size</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:40</div></div>
+<div class="ttc" id="astructLcpSdReadFile_html_ae9dfa3d49d356f7973c5da28573c6763"><div class="ttname"><a href="structLcpSdReadFile.html#ae9dfa3d49d356f7973c5da28573c6763">LcpSdReadFile::current_cluster_index</a></div><div class="ttdeci">uint32_t current_cluster_index</div><div class="ttdef"><b>Определения</b> lcp_sd_storage.hpp:39</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a href="dir_735c9715a8b93e0edb02fbe1da90273b.html">lcp_sd_storage</a></li><li class="navelem"><a href="lcp__sd__storage_8hpp.html">lcp_sd_storage.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

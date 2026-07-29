@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл newlib_stubs.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('newlib__stubs_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл newlib_stubs.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Минимальные системные заглушки newlib для bare-metal сборки.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;errno.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:abc96bd69b58b2deaddb484478d911c1b" id="r_abc96bd69b58b2deaddb484478d911c1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc96bd69b58b2deaddb484478d911c1b">_exit</a> (int status)</td></tr>
+<tr class="memdesc:abc96bd69b58b2deaddb484478d911c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Завершение процесса для bare-metal среды.  <br /></td></tr>
+<tr class="memitem:a945e539df8e0f66d3c73c533fe1968ee" id="r_a945e539df8e0f66d3c73c533fe1968ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a945e539df8e0f66d3c73c533fe1968ee">_getpid</a> (void)</td></tr>
+<tr class="memdesc:a945e539df8e0f66d3c73c533fe1968ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает идентификатор процесса для newlib.  <br /></td></tr>
+<tr class="memitem:a062a5101199c3128edd5170f2575bb10" id="r_a062a5101199c3128edd5170f2575bb10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a062a5101199c3128edd5170f2575bb10">_kill</a> (int pid, int sig)</td></tr>
+<tr class="memdesc:a062a5101199c3128edd5170f2575bb10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заглушка отправки сигнала процессу.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Минимальные системные заглушки newlib для bare-metal сборки. </p>
+<p>Файл закрывает POSIX-вызовы, которые требуются стандартной библиотеке C при использовании abort(), signal() и части stdio-кода. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="abc96bd69b58b2deaddb484478d911c1b" name="abc96bd69b58b2deaddb484478d911c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc96bd69b58b2deaddb484478d911c1b">&#9670;&#160;</a></span>_exit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _exit </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Завершение процесса для bare-metal среды. </p>
+<p>В микроконтроллере нет операционной системы и процесса, который можно завершить. Вызов переводит выполнение в бесконечный цикл.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>Код завершения. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a945e539df8e0f66d3c73c533fe1968ee" name="a945e539df8e0f66d3c73c533fe1968ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a945e539df8e0f66d3c73c533fe1968ee">&#9670;&#160;</a></span>_getpid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _getpid </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает идентификатор процесса для newlib. </p>
+<p>В bare-metal среде используется фиксированный идентификатор.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>Фиксированный идентификатор процесса. </dd></dl>
+
+</div>
+</div>
+<a id="a062a5101199c3128edd5170f2575bb10" name="a062a5101199c3128edd5170f2575bb10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a062a5101199c3128edd5170f2575bb10">&#9670;&#160;</a></span>_kill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _kill </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>pid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sig</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Заглушка отправки сигнала процессу. </p>
+<p>В bare-metal среде сигналы процессов не поддерживаются.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>Идентификатор процесса. </td></tr>
+    <tr><td class="paramname">sig</td><td>Номер сигнала.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Всегда возвращает ошибку. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_c5a52a81292cf9a5167198f4f346d6d9.html">platform</a></li><li class="navelem"><a href="newlib__stubs_8c.html">newlib_stubs.c</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

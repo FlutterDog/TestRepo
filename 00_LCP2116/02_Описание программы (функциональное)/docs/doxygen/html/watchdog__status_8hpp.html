@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл watchdog_status.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('watchdog__status_8hpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл watchdog_status.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Диагностика watchdog-таймера ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="watchdog__status_8hpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:afe06f365f6d26834c882c4004a85c91e" id="r_afe06f365f6d26834c882c4004a85c91e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe06f365f6d26834c882c4004a85c91e">watchdog_status_init</a> (void)</td></tr>
+<tr class="memdesc:afe06f365f6d26834c882c4004a85c91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует watchdog-диагностику и включает watchdog.  <br /></td></tr>
+<tr class="memitem:a7e2bf983b7aaa1d4bfcaffeb46487252" id="r_a7e2bf983b7aaa1d4bfcaffeb46487252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e2bf983b7aaa1d4bfcaffeb46487252">watchdog_status_poll</a> (void)</td></tr>
+<tr class="memdesc:a7e2bf983b7aaa1d4bfcaffeb46487252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обслуживает watchdog.  <br /></td></tr>
+<tr class="memitem:ad434c06ec465f0b5c2a9daf722a54372" id="r_ad434c06ec465f0b5c2a9daf722a54372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad434c06ec465f0b5c2a9daf722a54372">watchdog_status_print_report</a> (void)</td></tr>
+<tr class="memdesc:ad434c06ec465f0b5c2a9daf722a54372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печатает отчёт watchdog в USB service console.  <br /></td></tr>
+<tr class="memitem:afb2fb7b0a416b244d150a84bba32a03f" id="r_afb2fb7b0a416b244d150a84bba32a03f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb2fb7b0a416b244d150a84bba32a03f">watchdog_status_handle_command</a> (const char *command)</td></tr>
+<tr class="memdesc:afb2fb7b0a416b244d150a84bba32a03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обрабатывает команду watchdog.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Диагностика watchdog-таймера ATSAM3X8E. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="afb2fb7b0a416b244d150a84bba32a03f" name="afb2fb7b0a416b244d150a84bba32a03f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2fb7b0a416b244d150a84bba32a03f">&#9670;&#160;</a></span>watchdog_status_handle_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t watchdog_status_handle_command </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обрабатывает команду watchdog. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>Командная строка без завершающего перевода строки.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если команда обработана. </dd></dl>
+
+</div>
+</div>
+<a id="afe06f365f6d26834c882c4004a85c91e" name="afe06f365f6d26834c882c4004a85c91e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe06f365f6d26834c882c4004a85c91e">&#9670;&#160;</a></span>watchdog_status_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void watchdog_status_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует watchdog-диагностику и включает watchdog. </p>
+
+</div>
+</div>
+<a id="a7e2bf983b7aaa1d4bfcaffeb46487252" name="a7e2bf983b7aaa1d4bfcaffeb46487252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e2bf983b7aaa1d4bfcaffeb46487252">&#9670;&#160;</a></span>watchdog_status_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void watchdog_status_poll </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обслуживает watchdog. </p>
+
+</div>
+</div>
+<a id="ad434c06ec465f0b5c2a9daf722a54372" name="ad434c06ec465f0b5c2a9daf722a54372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad434c06ec465f0b5c2a9daf722a54372">&#9670;&#160;</a></span>watchdog_status_print_report()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void watchdog_status_print_report </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печатает отчёт watchdog в USB service console. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="watchdog__status_8hpp.html">watchdog_status.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл sd_card_test.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sd__card__test_8hpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sd_card_test.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sd__card__test_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keywordtype">void</span> <a class="code hl_function" href="sd__card__test_8hpp.html#ac83a4003fd8ac0a453a10f0b67a84dd5">sd_card_test_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">void</span> <a class="code hl_function" href="sd__card__test_8hpp.html#acc62b6add2a045997349e3487d946399">sd_card_test_poll</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> <a class="code hl_function" href="sd__card__test_8hpp.html#aa0a023d57c246bb56db55e04cafacdd1">sd_card_test_print_report</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">void</span> <a class="code hl_function" href="sd__card__test_8hpp.html#a1792214d7747e121941575cfc81f285c">sd_card_test_run_file_test</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="asd__card__test_8hpp_html_a1792214d7747e121941575cfc81f285c"><div class="ttname"><a href="sd__card__test_8hpp.html#a1792214d7747e121941575cfc81f285c">sd_card_test_run_file_test</a></div><div class="ttdeci">void sd_card_test_run_file_test(void)</div><div class="ttdoc">Выполняет тест записи и чтения конфигурационного файла.</div><div class="ttdef"><b>Определения</b> sd_card_test.cpp:134</div></div>
+<div class="ttc" id="asd__card__test_8hpp_html_aa0a023d57c246bb56db55e04cafacdd1"><div class="ttname"><a href="sd__card__test_8hpp.html#aa0a023d57c246bb56db55e04cafacdd1">sd_card_test_print_report</a></div><div class="ttdeci">void sd_card_test_print_report(void)</div><div class="ttdoc">Печатает отчёт microSD в USB service console.</div><div class="ttdef"><b>Определения</b> sd_card_test.cpp:95</div></div>
+<div class="ttc" id="asd__card__test_8hpp_html_ac83a4003fd8ac0a453a10f0b67a84dd5"><div class="ttname"><a href="sd__card__test_8hpp.html#ac83a4003fd8ac0a453a10f0b67a84dd5">sd_card_test_init</a></div><div class="ttdeci">void sd_card_test_init(void)</div><div class="ttdoc">Инициализирует диагностический модуль microSD.</div><div class="ttdef"><b>Определения</b> sd_card_test.cpp:49</div></div>
+<div class="ttc" id="asd__card__test_8hpp_html_acc62b6add2a045997349e3487d946399"><div class="ttname"><a href="sd__card__test_8hpp.html#acc62b6add2a045997349e3487d946399">sd_card_test_poll</a></div><div class="ttdeci">void sd_card_test_poll(void)</div><div class="ttdoc">Обслуживает состояние microSD без блокирующего ожидания.</div><div class="ttdef"><b>Определения</b> sd_card_test.cpp:66</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="sd__card__test_8hpp.html">sd_card_test.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

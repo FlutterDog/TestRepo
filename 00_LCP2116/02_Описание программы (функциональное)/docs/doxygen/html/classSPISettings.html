@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Класс SPISettings</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classSPISettings.html','','classSPISettings-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс SPISettings</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Настройки SPI-транзакции.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="spi_8hpp_source.html">spi.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a2d0d3c88f1b433594e4887194e1df9ee" id="r_a2d0d3c88f1b433594e4887194e1df9ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d0d3c88f1b433594e4887194e1df9ee">SPISettings</a> ()</td></tr>
+<tr class="memdesc:a2d0d3c88f1b433594e4887194e1df9ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт настройки SPI по умолчанию.  <br /></td></tr>
+<tr class="memitem:a556a89eef9cdd4d4a0040633de11b7a1" id="r_a556a89eef9cdd4d4a0040633de11b7a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a556a89eef9cdd4d4a0040633de11b7a1">SPISettings</a> (uint32_t <a class="el" href="#a8cb47ea8ac11f96562bf8a3cdf0b671a">clock_hz</a>, uint8_t <a class="el" href="#aac85bae80133591bc34109309ff127a3">bit_order</a>, uint8_t <a class="el" href="#a8ebd123bdb9f9e56a2a86ae31bedbe4c">data_mode</a>)</td></tr>
+<tr class="memdesc:a556a89eef9cdd4d4a0040633de11b7a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт настройки SPI.  <br /></td></tr>
+<tr class="memitem:a8cb47ea8ac11f96562bf8a3cdf0b671a" id="r_a8cb47ea8ac11f96562bf8a3cdf0b671a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cb47ea8ac11f96562bf8a3cdf0b671a">clock_hz</a> (void) const</td></tr>
+<tr class="memdesc:a8cb47ea8ac11f96562bf8a3cdf0b671a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает частоту SPI.  <br /></td></tr>
+<tr class="memitem:aac85bae80133591bc34109309ff127a3" id="r_aac85bae80133591bc34109309ff127a3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac85bae80133591bc34109309ff127a3">bit_order</a> (void) const</td></tr>
+<tr class="memdesc:aac85bae80133591bc34109309ff127a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает порядок битов.  <br /></td></tr>
+<tr class="memitem:a8ebd123bdb9f9e56a2a86ae31bedbe4c" id="r_a8ebd123bdb9f9e56a2a86ae31bedbe4c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ebd123bdb9f9e56a2a86ae31bedbe4c">data_mode</a> (void) const</td></tr>
+<tr class="memdesc:a8ebd123bdb9f9e56a2a86ae31bedbe4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает режим SPI.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Настройки SPI-транзакции. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a2d0d3c88f1b433594e4887194e1df9ee" name="a2d0d3c88f1b433594e4887194e1df9ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d0d3c88f1b433594e4887194e1df9ee">&#9670;&#160;</a></span>SPISettings() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SPISettings::SPISettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт настройки SPI по умолчанию. </p>
+
+</div>
+</div>
+<a id="a556a89eef9cdd4d4a0040633de11b7a1" name="a556a89eef9cdd4d4a0040633de11b7a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556a89eef9cdd4d4a0040633de11b7a1">&#9670;&#160;</a></span>SPISettings() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SPISettings::SPISettings </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>clock_hz</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>bit_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>data_mode</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт настройки SPI. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clock_hz</td><td>Частота SPI в Hz. </td></tr>
+    <tr><td class="paramname">bit_order</td><td>Порядок битов: <span class="tt"><a class="el" href="spi_8hpp.html#a16633868ed4f526784287835aad20588">MSBFIRST</a></span> или <span class="tt"><a class="el" href="spi_8hpp.html#ae450c1aad72ff2b94d890f0afd9aec7c">LSBFIRST</a></span>. </td></tr>
+    <tr><td class="paramname">data_mode</td><td>Режим SPI: <span class="tt"><a class="el" href="spi_8hpp.html#a147c11cf451e9f0d5af17083a974cea8">SPI_MODE0</a></span>..<span class="tt"><a class="el" href="spi_8hpp.html#ad2af4958f8a89ebf366d97f09fcab921">SPI_MODE3</a></span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="aac85bae80133591bc34109309ff127a3" name="aac85bae80133591bc34109309ff127a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac85bae80133591bc34109309ff127a3">&#9670;&#160;</a></span>bit_order()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SPISettings::bit_order </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает порядок битов. </p>
+
+</div>
+</div>
+<a id="a8cb47ea8ac11f96562bf8a3cdf0b671a" name="a8cb47ea8ac11f96562bf8a3cdf0b671a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cb47ea8ac11f96562bf8a3cdf0b671a">&#9670;&#160;</a></span>clock_hz()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t SPISettings::clock_hz </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает частоту SPI. </p>
+
+</div>
+</div>
+<a id="a8ebd123bdb9f9e56a2a86ae31bedbe4c" name="a8ebd123bdb9f9e56a2a86ae31bedbe4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebd123bdb9f9e56a2a86ae31bedbe4c">&#9670;&#160;</a></span>data_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SPISettings::data_mode </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает режим SPI. </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="spi_8hpp_source.html">spi.hpp</a></li>
+<li><a class="el" href="spi_8cpp.html">spi.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classSPISettings.html">SPISettings</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

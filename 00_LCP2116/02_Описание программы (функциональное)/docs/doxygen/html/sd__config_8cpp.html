@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл sd_config.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sd__config_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sd_config.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Чтение и запись числовых конфигурационных файлов с microSD.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="sd__config_8hpp_source.html">sd_config.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcp__sd__storage_8hpp_source.html">../../libs/lcp_sd_storage/lcp_sd_storage.hpp</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a2a8e3d9b56a4f93ce8bff073e988499b" id="r_a2a8e3d9b56a4f93ce8bff073e988499b"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a8e3d9b56a4f93ce8bff073e988499b">is_space</a> (char value)</td></tr>
+<tr class="memitem:a9622b87b3293d762d94db84cbec33e3d" id="r_a9622b87b3293d762d94db84cbec33e3d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9622b87b3293d762d94db84cbec33e3d">strip_comment_and_trim</a> (char *line)</td></tr>
+<tr class="memitem:ae2df32e8e732c2bcd913a885a5cb49e6" id="r_ae2df32e8e732c2bcd913a885a5cb49e6"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2df32e8e732c2bcd913a885a5cb49e6">parse_int16</a> (const char *text, int16_t *value)</td></tr>
+<tr class="memitem:adca7f4a9e5d639723c8b7fe1fd02030e" id="r_adca7f4a9e5d639723c8b7fe1fd02030e"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adca7f4a9e5d639723c8b7fe1fd02030e">read_logical_line</a> (<a class="el" href="structLcpSdReadFile.html">LcpSdReadFile</a> *file, char *line, uint16_t capacity, uint8_t *line_too_long)</td></tr>
+<tr class="memitem:aa64c3c823a8800f4b00098e6e0361e27" id="r_aa64c3c823a8800f4b00098e6e0361e27"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa64c3c823a8800f4b00098e6e0361e27">append_char</a> (uint8_t *buffer, uint16_t *position, uint16_t capacity, char value)</td></tr>
+<tr class="memitem:a9d595ed863b63d751e3d18e17b27188a" id="r_a9d595ed863b63d751e3d18e17b27188a"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d595ed863b63d751e3d18e17b27188a">append_uint</a> (uint8_t *buffer, uint16_t *position, uint16_t capacity, uint16_t value)</td></tr>
+<tr class="memitem:a08aa6dce0b932cb7859e77811997186c" id="r_a08aa6dce0b932cb7859e77811997186c"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08aa6dce0b932cb7859e77811997186c">append_int16</a> (uint8_t *buffer, uint16_t *position, uint16_t capacity, int16_t value)</td></tr>
+<tr class="memitem:a37a68bfd10d0c097de995005b3b9ad1d" id="r_a37a68bfd10d0c097de995005b3b9ad1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a68bfd10d0c097de995005b3b9ad1d">sd_config_load_int16</a> (const char *file_name, int16_t *output, size_t capacity, uint8_t *loaded_count)</td></tr>
+<tr class="memdesc:a37a68bfd10d0c097de995005b3b9ad1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает int16-конфигурацию из файла.  <br /></td></tr>
+<tr class="memitem:a6fb5daebb8165f2fe212a88a5029820e" id="r_a6fb5daebb8165f2fe212a88a5029820e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb5daebb8165f2fe212a88a5029820e">sd_config_save_int16</a> (const char *file_name, const int16_t *input, uint8_t size)</td></tr>
+<tr class="memdesc:a6fb5daebb8165f2fe212a88a5029820e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет int16-конфигурацию в файл.  <br /></td></tr>
+<tr class="memitem:a0b058a59d0df9cf91e47649a9c199303" id="r_a0b058a59d0df9cf91e47649a9c199303"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b058a59d0df9cf91e47649a9c199303">sd_config_result_text</a> (<a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> result)</td></tr>
+<tr class="memdesc:a0b058a59d0df9cf91e47649a9c199303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текстовое описание результата.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a164b7c26cda27419a67b8026a8eac3f3" id="r_a164b7c26cda27419a67b8026a8eac3f3"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a164b7c26cda27419a67b8026a8eac3f3">SD_CONFIG_LINE_BUFFER_SIZE</a> = 64U</td></tr>
+<tr class="memitem:a06f5deea61e39028e1f3d254cade22a9" id="r_a06f5deea61e39028e1f3d254cade22a9"><td class="memItemLeft" align="right" valign="top">static const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06f5deea61e39028e1f3d254cade22a9">SD_CONFIG_WRITE_BUFFER_SIZE</a> = 1024U</td></tr>
+<tr class="memitem:a3e278d618b211beb1e3c917cc247adec" id="r_a3e278d618b211beb1e3c917cc247adec"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e278d618b211beb1e3c917cc247adec">g_line_buffer</a> [<a class="el" href="#a164b7c26cda27419a67b8026a8eac3f3">SD_CONFIG_LINE_BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:aa796457767d4887132c87de2c873b8f8" id="r_aa796457767d4887132c87de2c873b8f8"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa796457767d4887132c87de2c873b8f8">g_write_buffer</a> [<a class="el" href="#a06f5deea61e39028e1f3d254cade22a9">SD_CONFIG_WRITE_BUFFER_SIZE</a>]</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Чтение и запись числовых конфигурационных файлов с microSD. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="aa64c3c823a8800f4b00098e6e0361e27" name="aa64c3c823a8800f4b00098e6e0361e27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa64c3c823a8800f4b00098e6e0361e27">&#9670;&#160;</a></span>append_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t append_char </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08aa6dce0b932cb7859e77811997186c" name="a08aa6dce0b932cb7859e77811997186c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08aa6dce0b932cb7859e77811997186c">&#9670;&#160;</a></span>append_int16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t append_int16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d595ed863b63d751e3d18e17b27188a" name="a9d595ed863b63d751e3d18e17b27188a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d595ed863b63d751e3d18e17b27188a">&#9670;&#160;</a></span>append_uint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t append_uint </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a8e3d9b56a4f93ce8bff073e988499b" name="a2a8e3d9b56a4f93ce8bff073e988499b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8e3d9b56a4f93ce8bff073e988499b">&#9670;&#160;</a></span>is_space()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t is_space </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2df32e8e732c2bcd913a885a5cb49e6" name="ae2df32e8e732c2bcd913a885a5cb49e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2df32e8e732c2bcd913a885a5cb49e6">&#9670;&#160;</a></span>parse_int16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t parse_int16 </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adca7f4a9e5d639723c8b7fe1fd02030e" name="adca7f4a9e5d639723c8b7fe1fd02030e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adca7f4a9e5d639723c8b7fe1fd02030e">&#9670;&#160;</a></span>read_logical_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t read_logical_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLcpSdReadFile.html">LcpSdReadFile</a> *</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>line_too_long</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37a68bfd10d0c097de995005b3b9ad1d" name="a37a68bfd10d0c097de995005b3b9ad1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a68bfd10d0c097de995005b3b9ad1d">&#9670;&#160;</a></span>sd_config_load_int16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> sd_config_load_int16 </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>loaded_count</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загружает int16-конфигурацию из файла. </p>
+<p>Формат файла: строка 1 — количество значений; строки 2..N — числовые значения; комментарий начинается с //.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_name</td><td>Имя файла в формате 8.3. </td></tr>
+    <tr><td class="paramname">output</td><td>Буфер результата. output[0] получает количество значений. </td></tr>
+    <tr><td class="paramname">capacity</td><td>Количество элементов в output. </td></tr>
+    <tr><td class="paramname">loaded_count</td><td>Количество загруженных значений без output[0].</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код результата. </dd></dl>
+
+</div>
+</div>
+<a id="a0b058a59d0df9cf91e47649a9c199303" name="a0b058a59d0df9cf91e47649a9c199303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b058a59d0df9cf91e47649a9c199303">&#9670;&#160;</a></span>sd_config_result_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sd_config_result_text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает текстовое описание результата. </p>
+
+</div>
+</div>
+<a id="a6fb5daebb8165f2fe212a88a5029820e" name="a6fb5daebb8165f2fe212a88a5029820e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fb5daebb8165f2fe212a88a5029820e">&#9670;&#160;</a></span>sd_config_save_int16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="sd__config_8hpp.html#a37dbffa40dde27774769332802ffe4cc">SdConfigResult</a> sd_config_save_int16 </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int16_t *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохраняет int16-конфигурацию в файл. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_name</td><td>Имя файла в формате 8.3. </td></tr>
+    <tr><td class="paramname">input</td><td>Буфер, значения берутся из input[1..size]. </td></tr>
+    <tr><td class="paramname">size</td><td>Количество сохраняемых значений.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код результата. </dd></dl>
+
+</div>
+</div>
+<a id="a9622b87b3293d762d94db84cbec33e3d" name="a9622b87b3293d762d94db84cbec33e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9622b87b3293d762d94db84cbec33e3d">&#9670;&#160;</a></span>strip_comment_and_trim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void strip_comment_and_trim </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>line</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a3e278d618b211beb1e3c917cc247adec" name="a3e278d618b211beb1e3c917cc247adec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e278d618b211beb1e3c917cc247adec">&#9670;&#160;</a></span>g_line_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char g_line_buffer[<a class="el" href="#a164b7c26cda27419a67b8026a8eac3f3">SD_CONFIG_LINE_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa796457767d4887132c87de2c873b8f8" name="aa796457767d4887132c87de2c873b8f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa796457767d4887132c87de2c873b8f8">&#9670;&#160;</a></span>g_write_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t g_write_buffer[<a class="el" href="#a06f5deea61e39028e1f3d254cade22a9">SD_CONFIG_WRITE_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a164b7c26cda27419a67b8026a8eac3f3" name="a164b7c26cda27419a67b8026a8eac3f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a164b7c26cda27419a67b8026a8eac3f3">&#9670;&#160;</a></span>SD_CONFIG_LINE_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t SD_CONFIG_LINE_BUFFER_SIZE = 64U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06f5deea61e39028e1f3d254cade22a9" name="a06f5deea61e39028e1f3d254cade22a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f5deea61e39028e1f3d254cade22a9">&#9670;&#160;</a></span>SD_CONFIG_WRITE_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t SD_CONFIG_WRITE_BUFFER_SIZE = 1024U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a href="dir_6bc8a428acb757e72a7f932eb1b66e96.html">diagnostics</a></li><li class="navelem"><a href="sd__config_8cpp.html">sd_config.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

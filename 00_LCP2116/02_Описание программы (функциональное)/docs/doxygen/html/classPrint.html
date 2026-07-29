@@ -1,0 +1,600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Класс Print</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classPrint.html','','classPrint-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс Print<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Базовый класс потокового вывода.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="print_8hpp_source.html">print.hpp</a>&gt;</code></p>
+
+<p>Производные классы:<a class="el" href="classSerialPort.html">SerialPort</a>.</p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:abc6ea5fd3d477d9465a57421ccd00ba4" id="r_abc6ea5fd3d477d9465a57421ccd00ba4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc6ea5fd3d477d9465a57421ccd00ba4">~Print</a> ()</td></tr>
+<tr class="memdesc:abc6ea5fd3d477d9465a57421ccd00ba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Разрушает объект потокового вывода.  <br /></td></tr>
+<tr class="memitem:a8ba36ba319e605f13f9cd604d14a8711" id="r_a8ba36ba319e605f13f9cd604d14a8711"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ba36ba319e605f13f9cd604d14a8711">write</a> (uint8_t value)=0</td></tr>
+<tr class="memdesc:a8ba36ba319e605f13f9cd604d14a8711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт один байт в поток.  <br /></td></tr>
+<tr class="memitem:adb025c84a85ffd625016e3b708f1e6c9" id="r_adb025c84a85ffd625016e3b708f1e6c9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb025c84a85ffd625016e3b708f1e6c9">write</a> (const char *text)</td></tr>
+<tr class="memdesc:adb025c84a85ffd625016e3b708f1e6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт строку в поток.  <br /></td></tr>
+<tr class="memitem:ad98d820df11e2697be1e4b1ea30b4a23" id="r_ad98d820df11e2697be1e4b1ea30b4a23"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad98d820df11e2697be1e4b1ea30b4a23">write</a> (const uint8_t *buffer, size_t size)</td></tr>
+<tr class="memdesc:ad98d820df11e2697be1e4b1ea30b4a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт массив байтов в поток.  <br /></td></tr>
+<tr class="memitem:ab40a140fd5773557b56448994de18003" id="r_ab40a140fd5773557b56448994de18003"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab40a140fd5773557b56448994de18003">print</a> (const char *text)</td></tr>
+<tr class="memitem:a4cdbe809ce95db9d3bf306e575562973" id="r_a4cdbe809ce95db9d3bf306e575562973"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cdbe809ce95db9d3bf306e575562973">print</a> (char value)</td></tr>
+<tr class="memitem:a4427b9a5081a76e3e36ae08d7f135437" id="r_a4427b9a5081a76e3e36ae08d7f135437"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4427b9a5081a76e3e36ae08d7f135437">print</a> (unsigned char value, int base=10)</td></tr>
+<tr class="memitem:a1eaa2b44bdaa1e5efe5ca978ab27b19f" id="r_a1eaa2b44bdaa1e5efe5ca978ab27b19f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eaa2b44bdaa1e5efe5ca978ab27b19f">print</a> (int value, int base=10)</td></tr>
+<tr class="memitem:a4575a60441e963d38ee9696004c736d2" id="r_a4575a60441e963d38ee9696004c736d2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4575a60441e963d38ee9696004c736d2">print</a> (unsigned int value, int base=10)</td></tr>
+<tr class="memitem:a8182d967673ccba0a34d6e989738fa32" id="r_a8182d967673ccba0a34d6e989738fa32"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8182d967673ccba0a34d6e989738fa32">print</a> (long value, int base=10)</td></tr>
+<tr class="memitem:a60da0d5dc369a207b408aec5b49d78b3" id="r_a60da0d5dc369a207b408aec5b49d78b3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60da0d5dc369a207b408aec5b49d78b3">print</a> (unsigned long value, int base=10)</td></tr>
+<tr class="memitem:ae6ab7e4b1ff9dfc261018b37a33c571d" id="r_ae6ab7e4b1ff9dfc261018b37a33c571d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ab7e4b1ff9dfc261018b37a33c571d">print</a> (double value, int digits=2)</td></tr>
+<tr class="memitem:a169b128f9e22f0c15883768f580541a2" id="r_a169b128f9e22f0c15883768f580541a2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a169b128f9e22f0c15883768f580541a2">println</a> (void)</td></tr>
+<tr class="memitem:adbacb3f5c0a340fd587ade02f32fd026" id="r_adbacb3f5c0a340fd587ade02f32fd026"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbacb3f5c0a340fd587ade02f32fd026">println</a> (const char *text)</td></tr>
+<tr class="memitem:a80fdd92db4b396062586bcb3e08d3835" id="r_a80fdd92db4b396062586bcb3e08d3835"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80fdd92db4b396062586bcb3e08d3835">println</a> (char value)</td></tr>
+<tr class="memitem:a4ff08299838b862040f23d44d681b206" id="r_a4ff08299838b862040f23d44d681b206"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ff08299838b862040f23d44d681b206">println</a> (unsigned char value, int base=10)</td></tr>
+<tr class="memitem:a6dad6af7aea869e12843ac28f63d4ed7" id="r_a6dad6af7aea869e12843ac28f63d4ed7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dad6af7aea869e12843ac28f63d4ed7">println</a> (int value, int base=10)</td></tr>
+<tr class="memitem:add25a22d4b01d204ca82a2e69e166b6d" id="r_add25a22d4b01d204ca82a2e69e166b6d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add25a22d4b01d204ca82a2e69e166b6d">println</a> (unsigned int value, int base=10)</td></tr>
+<tr class="memitem:afc877a9aa0f340294156472d7efbe597" id="r_afc877a9aa0f340294156472d7efbe597"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc877a9aa0f340294156472d7efbe597">println</a> (long value, int base=10)</td></tr>
+<tr class="memitem:abd1aa5da06f688e04fa962e40fbc6893" id="r_abd1aa5da06f688e04fa962e40fbc6893"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1aa5da06f688e04fa962e40fbc6893">println</a> (unsigned long value, int base=10)</td></tr>
+<tr class="memitem:a50222044ead4f5d30374fbb32278f4e7" id="r_a50222044ead4f5d30374fbb32278f4e7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50222044ead4f5d30374fbb32278f4e7">println</a> (double value, int digits=2)</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Базовый класс потокового вывода. </p>
+<p>Класс задаёт единый интерфейс <span class="tt"><a class="el" href="#a8ba36ba319e605f13f9cd604d14a8711" title="Передаёт один байт в поток.">write()</a></span>, <span class="tt"><a class="el" href="#ab40a140fd5773557b56448994de18003">print()</a></span> и <span class="tt"><a class="el" href="#a169b128f9e22f0c15883768f580541a2">println()</a></span> для последовательных портов и служебных потоков проекта. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="abc6ea5fd3d477d9465a57421ccd00ba4" name="abc6ea5fd3d477d9465a57421ccd00ba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc6ea5fd3d477d9465a57421ccd00ba4">&#9670;&#160;</a></span>~Print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Print::~Print </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Разрушает объект потокового вывода. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="a4cdbe809ce95db9d3bf306e575562973" name="a4cdbe809ce95db9d3bf306e575562973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cdbe809ce95db9d3bf306e575562973">&#9670;&#160;</a></span>print() <span class="overload">[1/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab40a140fd5773557b56448994de18003" name="ab40a140fd5773557b56448994de18003"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab40a140fd5773557b56448994de18003">&#9670;&#160;</a></span>print() <span class="overload">[2/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6ab7e4b1ff9dfc261018b37a33c571d" name="ae6ab7e4b1ff9dfc261018b37a33c571d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ab7e4b1ff9dfc261018b37a33c571d">&#9670;&#160;</a></span>print() <span class="overload">[3/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>digits</em></span><span class="paramdefsep"> = </span><span class="paramdefval">2</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1eaa2b44bdaa1e5efe5ca978ab27b19f" name="a1eaa2b44bdaa1e5efe5ca978ab27b19f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eaa2b44bdaa1e5efe5ca978ab27b19f">&#9670;&#160;</a></span>print() <span class="overload">[4/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8182d967673ccba0a34d6e989738fa32" name="a8182d967673ccba0a34d6e989738fa32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8182d967673ccba0a34d6e989738fa32">&#9670;&#160;</a></span>print() <span class="overload">[5/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">long</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4427b9a5081a76e3e36ae08d7f135437" name="a4427b9a5081a76e3e36ae08d7f135437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4427b9a5081a76e3e36ae08d7f135437">&#9670;&#160;</a></span>print() <span class="overload">[6/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4575a60441e963d38ee9696004c736d2" name="a4575a60441e963d38ee9696004c736d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4575a60441e963d38ee9696004c736d2">&#9670;&#160;</a></span>print() <span class="overload">[7/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60da0d5dc369a207b408aec5b49d78b3" name="a60da0d5dc369a207b408aec5b49d78b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60da0d5dc369a207b408aec5b49d78b3">&#9670;&#160;</a></span>print() <span class="overload">[8/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::print </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80fdd92db4b396062586bcb3e08d3835" name="a80fdd92db4b396062586bcb3e08d3835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80fdd92db4b396062586bcb3e08d3835">&#9670;&#160;</a></span>println() <span class="overload">[1/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbacb3f5c0a340fd587ade02f32fd026" name="adbacb3f5c0a340fd587ade02f32fd026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbacb3f5c0a340fd587ade02f32fd026">&#9670;&#160;</a></span>println() <span class="overload">[2/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50222044ead4f5d30374fbb32278f4e7" name="a50222044ead4f5d30374fbb32278f4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50222044ead4f5d30374fbb32278f4e7">&#9670;&#160;</a></span>println() <span class="overload">[3/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>digits</em></span><span class="paramdefsep"> = </span><span class="paramdefval">2</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6dad6af7aea869e12843ac28f63d4ed7" name="a6dad6af7aea869e12843ac28f63d4ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dad6af7aea869e12843ac28f63d4ed7">&#9670;&#160;</a></span>println() <span class="overload">[4/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc877a9aa0f340294156472d7efbe597" name="afc877a9aa0f340294156472d7efbe597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc877a9aa0f340294156472d7efbe597">&#9670;&#160;</a></span>println() <span class="overload">[5/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">long</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ff08299838b862040f23d44d681b206" name="a4ff08299838b862040f23d44d681b206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ff08299838b862040f23d44d681b206">&#9670;&#160;</a></span>println() <span class="overload">[6/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add25a22d4b01d204ca82a2e69e166b6d" name="add25a22d4b01d204ca82a2e69e166b6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add25a22d4b01d204ca82a2e69e166b6d">&#9670;&#160;</a></span>println() <span class="overload">[7/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd1aa5da06f688e04fa962e40fbc6893" name="abd1aa5da06f688e04fa962e40fbc6893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd1aa5da06f688e04fa962e40fbc6893">&#9670;&#160;</a></span>println() <span class="overload">[8/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>base</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a169b128f9e22f0c15883768f580541a2" name="a169b128f9e22f0c15883768f580541a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a169b128f9e22f0c15883768f580541a2">&#9670;&#160;</a></span>println() <span class="overload">[9/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::println </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb025c84a85ffd625016e3b708f1e6c9" name="adb025c84a85ffd625016e3b708f1e6c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb025c84a85ffd625016e3b708f1e6c9">&#9670;&#160;</a></span>write() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::write </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт строку в поток. </p>
+
+</div>
+</div>
+<a id="ad98d820df11e2697be1e4b1ea30b4a23" name="ad98d820df11e2697be1e4b1ea30b4a23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad98d820df11e2697be1e4b1ea30b4a23">&#9670;&#160;</a></span>write() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Print::write </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт массив байтов в поток. </p>
+
+</div>
+</div>
+<a id="a8ba36ba319e605f13f9cd604d14a8711" name="a8ba36ba319e605f13f9cd604d14a8711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba36ba319e605f13f9cd604d14a8711">&#9670;&#160;</a></span>write() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t Print::write </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Передаёт один байт в поток. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Передаваемый байт.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество переданных байтов. </dd></dl>
+
+<p>Замещается в <a class="el" href="classSerialPort.html#aa088f9592bcec7b8c7090dfa3fb84aef">SerialPort</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="print_8hpp_source.html">print.hpp</a></li>
+<li><a class="el" href="print_8cpp.html">print.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classPrint.html">Print</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

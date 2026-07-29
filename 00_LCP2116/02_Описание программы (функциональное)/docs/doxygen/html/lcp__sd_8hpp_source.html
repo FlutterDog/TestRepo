@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл lcp_sd.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__sd_8hpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcp_sd.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcp__sd_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="lcp__sd_8hpp.html#a1ca7d1e13180bb6f9e2cbdd66b7b5cb8">   14</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint32_t <a class="code hl_variable" href="lcp__sd_8hpp.html#a1ca7d1e13180bb6f9e2cbdd66b7b5cb8">LCP_SD_CS_PIN</a> = 23U;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="lcp__sd_8hpp.html#af1a499334f2274438a5047f13efb448b">   19</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint32_t <a class="code hl_variable" href="lcp__sd_8hpp.html#af1a499334f2274438a5047f13efb448b">LCP_SD_DETECT_PIN</a> = 25U;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="lcp__sd_8hpp.html#ade471a97865053d1fc45bb9523b26459">   24</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint32_t <a class="code hl_variable" href="lcp__sd_8hpp.html#ade471a97865053d1fc45bb9523b26459">LCP_SD_OK_PIN</a> = 41U;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="lcp__sd_8hpp.html#ad21263de9bf645fd1b48fca0afd16442">   31</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="lcp__sd_8hpp.html#ad21263de9bf645fd1b48fca0afd16442">LCP_SD_DETECT_ACTIVE_LOW</a> = 0U;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd_8hpp.html#ad249923ad32653106ef20f9d6541f21e">lcp_sd_init_pins</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>uint8_t <a class="code hl_function" href="lcp__sd_8hpp.html#a7144cea555b87ac30a56b63fa0a3965c">lcp_sd_detect_raw</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>uint8_t <a class="code hl_function" href="lcp__sd_8hpp.html#a9a064dd389d902ea04aac7d9237e719c">lcp_sd_card_inserted</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd_8hpp.html#ab81027569f9e0f6b3f058cc2ecf95316">lcp_sd_set_ok_led</a>(uint8_t enabled);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd_8hpp.html#a578db14dc120f99dee3a2e82cb54a5c7">lcp_sd_select</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__sd_8hpp.html#a80a980fe1455f43baf76e0337f436b61">lcp_sd_deselect</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="alcp__sd_8hpp_html_a1ca7d1e13180bb6f9e2cbdd66b7b5cb8"><div class="ttname"><a href="lcp__sd_8hpp.html#a1ca7d1e13180bb6f9e2cbdd66b7b5cb8">LCP_SD_CS_PIN</a></div><div class="ttdeci">static const uint32_t LCP_SD_CS_PIN</div><div class="ttdoc">Линия CS microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd.hpp:14</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_a578db14dc120f99dee3a2e82cb54a5c7"><div class="ttname"><a href="lcp__sd_8hpp.html#a578db14dc120f99dee3a2e82cb54a5c7">lcp_sd_select</a></div><div class="ttdeci">void lcp_sd_select(void)</div><div class="ttdoc">Активирует CS microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd.cpp:73</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_a7144cea555b87ac30a56b63fa0a3965c"><div class="ttname"><a href="lcp__sd_8hpp.html#a7144cea555b87ac30a56b63fa0a3965c">lcp_sd_detect_raw</a></div><div class="ttdeci">uint8_t lcp_sd_detect_raw(void)</div><div class="ttdoc">Возвращает сырой уровень SD_Detect.</div><div class="ttdef"><b>Определения</b> lcp_sd.cpp:44</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_a80a980fe1455f43baf76e0337f436b61"><div class="ttname"><a href="lcp__sd_8hpp.html#a80a980fe1455f43baf76e0337f436b61">lcp_sd_deselect</a></div><div class="ttdeci">void lcp_sd_deselect(void)</div><div class="ttdoc">Деактивирует CS microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd.cpp:78</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_a9a064dd389d902ea04aac7d9237e719c"><div class="ttname"><a href="lcp__sd_8hpp.html#a9a064dd389d902ea04aac7d9237e719c">lcp_sd_card_inserted</a></div><div class="ttdeci">uint8_t lcp_sd_card_inserted(void)</div><div class="ttdoc">Возвращает признак установленной карты по аппаратному детектору.</div><div class="ttdef"><b>Определения</b> lcp_sd.cpp:49</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_ab81027569f9e0f6b3f058cc2ecf95316"><div class="ttname"><a href="lcp__sd_8hpp.html#ab81027569f9e0f6b3f058cc2ecf95316">lcp_sd_set_ok_led</a></div><div class="ttdeci">void lcp_sd_set_ok_led(uint8_t enabled)</div><div class="ttdoc">Управляет индикатором готовности microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd.cpp:61</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_ad21263de9bf645fd1b48fca0afd16442"><div class="ttname"><a href="lcp__sd_8hpp.html#ad21263de9bf645fd1b48fca0afd16442">LCP_SD_DETECT_ACTIVE_LOW</a></div><div class="ttdeci">static const uint8_t LCP_SD_DETECT_ACTIVE_LOW</div><div class="ttdoc">Активный уровень детектора установленной карты.</div><div class="ttdef"><b>Определения</b> lcp_sd.hpp:31</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_ad249923ad32653106ef20f9d6541f21e"><div class="ttname"><a href="lcp__sd_8hpp.html#ad249923ad32653106ef20f9d6541f21e">lcp_sd_init_pins</a></div><div class="ttdeci">void lcp_sd_init_pins(void)</div><div class="ttdoc">Инициализирует GPIO microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd.cpp:22</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_ade471a97865053d1fc45bb9523b26459"><div class="ttname"><a href="lcp__sd_8hpp.html#ade471a97865053d1fc45bb9523b26459">LCP_SD_OK_PIN</a></div><div class="ttdeci">static const uint32_t LCP_SD_OK_PIN</div><div class="ttdoc">Линия индикации готовности microSD.</div><div class="ttdef"><b>Определения</b> lcp_sd.hpp:24</div></div>
+<div class="ttc" id="alcp__sd_8hpp_html_af1a499334f2274438a5047f13efb448b"><div class="ttname"><a href="lcp__sd_8hpp.html#af1a499334f2274438a5047f13efb448b">LCP_SD_DETECT_PIN</a></div><div class="ttdeci">static const uint32_t LCP_SD_DETECT_PIN</div><div class="ttdoc">Линия аппаратного детектора карты.</div><div class="ttdef"><b>Определения</b> lcp_sd.hpp:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a href="lcp__sd_8hpp.html">lcp_sd.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

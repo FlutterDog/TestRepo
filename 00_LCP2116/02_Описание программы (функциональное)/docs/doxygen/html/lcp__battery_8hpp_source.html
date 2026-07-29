@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Исходный файл lcp_battery.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('lcp__battery_8hpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcp_battery.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcp__battery_8hpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="lcp__battery_8hpp.html#a5e46370c9cef14478c85baa83d103b09">   14</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint32_t <a class="code hl_variable" href="lcp__battery_8hpp.html#a5e46370c9cef14478c85baa83d103b09">LCP_BACKUP_BATTERY_STATUS_PIN</a> = 50U;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="lcp__battery_8hpp.html#a7162840b254b10bdfcf4ca25ecb11025">   19</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint16_t <a class="code hl_variable" href="lcp__battery_8hpp.html#a7162840b254b10bdfcf4ca25ecb11025">LCP_BACKUP_BATTERY_THRESHOLD_MV</a> = 2200U;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="lcp__battery_8hpp.html#a93b2b5fa09a7d25f924d0c0a2b0924dc">   26</a></span><span class="keyword">static</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="lcp__battery_8hpp.html#a93b2b5fa09a7d25f924d0c0a2b0924dc">LCP_BACKUP_BATTERY_OK_ACTIVE_HIGH</a> = 1U;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcp__battery_8hpp.html#a78892755d99cf1ae976bd43e18341f0f">lcp_battery_init_pins</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>uint8_t <a class="code hl_function" href="lcp__battery_8hpp.html#a9a901ce7816c63c340e91eae15616b4e">lcp_battery_raw</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>uint8_t <a class="code hl_function" href="lcp__battery_8hpp.html#af053275681ed4df1fc6cbcec21b82407">lcp_battery_ok</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="alcp__battery_8hpp_html_a5e46370c9cef14478c85baa83d103b09"><div class="ttname"><a href="lcp__battery_8hpp.html#a5e46370c9cef14478c85baa83d103b09">LCP_BACKUP_BATTERY_STATUS_PIN</a></div><div class="ttdeci">static const uint32_t LCP_BACKUP_BATTERY_STATUS_PIN</div><div class="ttdoc">Цифровой вход результата компаратора резервной батареи.</div><div class="ttdef"><b>Определения</b> lcp_battery.hpp:14</div></div>
+<div class="ttc" id="alcp__battery_8hpp_html_a7162840b254b10bdfcf4ca25ecb11025"><div class="ttname"><a href="lcp__battery_8hpp.html#a7162840b254b10bdfcf4ca25ecb11025">LCP_BACKUP_BATTERY_THRESHOLD_MV</a></div><div class="ttdeci">static const uint16_t LCP_BACKUP_BATTERY_THRESHOLD_MV</div><div class="ttdoc">Порог компаратора резервной батареи, мВ.</div><div class="ttdef"><b>Определения</b> lcp_battery.hpp:19</div></div>
+<div class="ttc" id="alcp__battery_8hpp_html_a78892755d99cf1ae976bd43e18341f0f"><div class="ttname"><a href="lcp__battery_8hpp.html#a78892755d99cf1ae976bd43e18341f0f">lcp_battery_init_pins</a></div><div class="ttdeci">void lcp_battery_init_pins(void)</div><div class="ttdoc">Инициализирует цифровой вход контроля резервной батареи.</div><div class="ttdef"><b>Определения</b> lcp_battery.cpp:10</div></div>
+<div class="ttc" id="alcp__battery_8hpp_html_a93b2b5fa09a7d25f924d0c0a2b0924dc"><div class="ttname"><a href="lcp__battery_8hpp.html#a93b2b5fa09a7d25f924d0c0a2b0924dc">LCP_BACKUP_BATTERY_OK_ACTIVE_HIGH</a></div><div class="ttdeci">static const uint8_t LCP_BACKUP_BATTERY_OK_ACTIVE_HIGH</div><div class="ttdoc">Активный уровень статуса исправной батареи.</div><div class="ttdef"><b>Определения</b> lcp_battery.hpp:26</div></div>
+<div class="ttc" id="alcp__battery_8hpp_html_a9a901ce7816c63c340e91eae15616b4e"><div class="ttname"><a href="lcp__battery_8hpp.html#a9a901ce7816c63c340e91eae15616b4e">lcp_battery_raw</a></div><div class="ttdeci">uint8_t lcp_battery_raw(void)</div><div class="ttdoc">Возвращает сырой уровень входа контроля резервной батареи.</div><div class="ttdef"><b>Определения</b> lcp_battery.cpp:20</div></div>
+<div class="ttc" id="alcp__battery_8hpp_html_af053275681ed4df1fc6cbcec21b82407"><div class="ttname"><a href="lcp__battery_8hpp.html#af053275681ed4df1fc6cbcec21b82407">lcp_battery_ok</a></div><div class="ttdeci">uint8_t lcp_battery_ok(void)</div><div class="ttdoc">Возвращает признак исправной резервной батареи.</div><div class="ttdef"><b>Определения</b> lcp_battery.cpp:25</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a href="lcp__battery_8hpp.html">lcp_battery.hpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

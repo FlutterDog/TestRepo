@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LCP Basic Diagnostic Firmware: Файл sam3x_spi.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">LCP Basic Diagnostic Firmware<span id="projectnumber">&#160;0.16.3</span>
+   </div>
+   <div id="projectbrief">Базовая диагностическая прошивка контроллера LCP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sam3x__spi_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл sam3x_spi.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация HAL SPI для ATSAM3X8E.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="sam3x__spi_8hpp_source.html">sam3x_spi.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sam3x__device_8hpp_source.html">sam3x_device.hpp</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a961a9cb3251423c8f9cd265b8ddf0638" id="r_a961a9cb3251423c8f9cd265b8ddf0638"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a961a9cb3251423c8f9cd265b8ddf0638">hal_enable_peripheral_clock</a> (uint32_t peripheral_id)</td></tr>
+<tr class="memitem:a8ca20e4bcd799a367663118ddaa96c99" id="r_a8ca20e4bcd799a367663118ddaa96c99"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ca20e4bcd799a367663118ddaa96c99">hal_spi_configure_pin</a> (Pio *port, uint32_t mask, uint32_t pio_id, uint8_t peripheral_b)</td></tr>
+<tr class="memitem:a36b9a8860d509e24d61aa23601160033" id="r_a36b9a8860d509e24d61aa23601160033"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36b9a8860d509e24d61aa23601160033">hal_spi_get_divisor</a> (uint32_t clock_hz)</td></tr>
+<tr class="memitem:acebc0992376ef8b0cc29aea7f6e71e68" id="r_acebc0992376ef8b0cc29aea7f6e71e68"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acebc0992376ef8b0cc29aea7f6e71e68">hal_spi_get_mode_bits</a> (<a class="el" href="sam3x__spi_8hpp.html#abb5dc69e8d36c8f759ffe2c7ac9e38da">HalSpiMode</a> mode)</td></tr>
+<tr class="memitem:a1078c2aa3cbd8846ae664009da985e31" id="r_a1078c2aa3cbd8846ae664009da985e31"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1078c2aa3cbd8846ae664009da985e31">hal_spi_flush_rx</a> (void)</td></tr>
+<tr class="memitem:ae158d14416ad5d73d87a35382b39c33d" id="r_ae158d14416ad5d73d87a35382b39c33d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae158d14416ad5d73d87a35382b39c33d">hal_spi_begin</a> (void)</td></tr>
+<tr class="memdesc:ae158d14416ad5d73d87a35382b39c33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует SPI0 в режиме master.  <br /></td></tr>
+<tr class="memitem:a192f6bb88f63a5c155d4361dd6e4c0ce" id="r_a192f6bb88f63a5c155d4361dd6e4c0ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192f6bb88f63a5c155d4361dd6e4c0ce">hal_spi_end</a> (void)</td></tr>
+<tr class="memdesc:a192f6bb88f63a5c155d4361dd6e4c0ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отключает SPI0.  <br /></td></tr>
+<tr class="memitem:ae42cd31c585babd2cb68cfb94fc63345" id="r_ae42cd31c585babd2cb68cfb94fc63345"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae42cd31c585babd2cb68cfb94fc63345">hal_spi_configure</a> (const <a class="el" href="structHalSpiConfig.html">HalSpiConfig</a> &amp;config)</td></tr>
+<tr class="memdesc:ae42cd31c585babd2cb68cfb94fc63345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Применяет конфигурацию SPI0.  <br /></td></tr>
+<tr class="memitem:ab9ea8c8184cfd7bf617de61fb0955b0a" id="r_ab9ea8c8184cfd7bf617de61fb0955b0a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9ea8c8184cfd7bf617de61fb0955b0a">hal_spi_transfer</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ab9ea8c8184cfd7bf617de61fb0955b0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт и принимает один байт по SPI0.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a038226baa7220f358879fd6707464a01" id="r_a038226baa7220f358879fd6707464a01"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a038226baa7220f358879fd6707464a01">HAL_SPI_DEFAULT_CLOCK_HZ</a> = 4000000U</td></tr>
+<tr class="memitem:aeda8a1aee277f1c190d9c6876bd07139" id="r_aeda8a1aee277f1c190d9c6876bd07139"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeda8a1aee277f1c190d9c6876bd07139">HAL_SPI_PCS_VALUE</a> = 0x0EU</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Реализация HAL SPI для ATSAM3X8E. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a961a9cb3251423c8f9cd265b8ddf0638" name="a961a9cb3251423c8f9cd265b8ddf0638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a961a9cb3251423c8f9cd265b8ddf0638">&#9670;&#160;</a></span>hal_enable_peripheral_clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_enable_peripheral_clock </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>peripheral_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae158d14416ad5d73d87a35382b39c33d" name="ae158d14416ad5d73d87a35382b39c33d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae158d14416ad5d73d87a35382b39c33d">&#9670;&#160;</a></span>hal_spi_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_spi_begin </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует SPI0 в режиме master. </p>
+<p>Функция настраивает линии MISO, MOSI и SCK на периферийную функцию SPI0. Линии Chip Select управляются прикладным кодом через GPIO. </p>
+
+</div>
+</div>
+<a id="ae42cd31c585babd2cb68cfb94fc63345" name="ae42cd31c585babd2cb68cfb94fc63345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42cd31c585babd2cb68cfb94fc63345">&#9670;&#160;</a></span>hal_spi_configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_spi_configure </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHalSpiConfig.html">HalSpiConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Применяет конфигурацию SPI0. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Конфигурация частоты, порядка битов и режима SPI. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8ca20e4bcd799a367663118ddaa96c99" name="a8ca20e4bcd799a367663118ddaa96c99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca20e4bcd799a367663118ddaa96c99">&#9670;&#160;</a></span>hal_spi_configure_pin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_spi_configure_pin </td>
+          <td>(</td>
+          <td class="paramtype">Pio *</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>pio_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>peripheral_b</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a192f6bb88f63a5c155d4361dd6e4c0ce" name="a192f6bb88f63a5c155d4361dd6e4c0ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192f6bb88f63a5c155d4361dd6e4c0ce">&#9670;&#160;</a></span>hal_spi_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_spi_end </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Отключает SPI0. </p>
+
+</div>
+</div>
+<a id="a1078c2aa3cbd8846ae664009da985e31" name="a1078c2aa3cbd8846ae664009da985e31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1078c2aa3cbd8846ae664009da985e31">&#9670;&#160;</a></span>hal_spi_flush_rx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hal_spi_flush_rx </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36b9a8860d509e24d61aa23601160033" name="a36b9a8860d509e24d61aa23601160033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36b9a8860d509e24d61aa23601160033">&#9670;&#160;</a></span>hal_spi_get_divisor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t hal_spi_get_divisor </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>clock_hz</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acebc0992376ef8b0cc29aea7f6e71e68" name="acebc0992376ef8b0cc29aea7f6e71e68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acebc0992376ef8b0cc29aea7f6e71e68">&#9670;&#160;</a></span>hal_spi_get_mode_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t hal_spi_get_mode_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sam3x__spi_8hpp.html#abb5dc69e8d36c8f759ffe2c7ac9e38da">HalSpiMode</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9ea8c8184cfd7bf617de61fb0955b0a" name="ab9ea8c8184cfd7bf617de61fb0955b0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ea8c8184cfd7bf617de61fb0955b0a">&#9670;&#160;</a></span>hal_spi_transfer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t hal_spi_transfer </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт и принимает один байт по SPI0. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Передаваемый байт. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Принятый байт. </dd></dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a038226baa7220f358879fd6707464a01" name="a038226baa7220f358879fd6707464a01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a038226baa7220f358879fd6707464a01">&#9670;&#160;</a></span>HAL_SPI_DEFAULT_CLOCK_HZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t HAL_SPI_DEFAULT_CLOCK_HZ = 4000000U</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeda8a1aee277f1c190d9c6876bd07139" name="aeda8a1aee277f1c190d9c6876bd07139"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeda8a1aee277f1c190d9c6876bd07139">&#9670;&#160;</a></span>HAL_SPI_PCS_VALUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t HAL_SPI_PCS_VALUE = 0x0EU</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_52c912f73dac9c4c0e442232e1b2bd80.html">hal</a></li><li class="navelem"><a href="sam3x__spi_8cpp.html">sam3x_spi.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>
