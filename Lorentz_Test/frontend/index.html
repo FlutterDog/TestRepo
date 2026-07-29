@@ -21,17 +21,17 @@
           <h2>Настройка стенда</h2>
           <p>Порты и адреса не зашиваются в программу и сохраняются локально.</p>
         </div>
-        <button id="save-station" type="button">Сохранить</button>
+        <div class="button-row"><button id="refresh-ports" class="secondary" type="button">Обновить COM</button><button id="save-station" type="button">Сохранить</button></div>
       </div>
       <form id="station-form" class="form-grid">
         <label>Имя станции<input name="station_name" required maxlength="80"></label>
-        <label>USB LCP<input name="lcp_port" placeholder="COM5"></label>
-        <label>S1 endpoint<input name="s1_endpoint" placeholder="COM10 или tcp://host:port"></label>
-        <label>S2 endpoint<input name="s2_endpoint"></label>
-        <label>S3 endpoint<input name="s3_endpoint"></label>
-        <label>S4 endpoint<input name="s4_endpoint"></label>
-        <label>HMI endpoint<input name="hmi_endpoint"></label>
-        <label>X2X endpoint<input name="x2x_endpoint"></label>
+        <label>USB LCP<input name="lcp_port" list="serial-ports" placeholder="COM5"></label>
+        <label>S1 endpoint<input name="s1_endpoint" list="serial-ports" placeholder="COM10 или tcp://host:port"></label>
+        <label>S2 endpoint<input name="s2_endpoint" list="serial-ports"></label>
+        <label>S3 endpoint<input name="s3_endpoint" list="serial-ports"></label>
+        <label>S4 endpoint<input name="s4_endpoint" list="serial-ports"></label>
+        <label>HMI endpoint<input name="hmi_endpoint" list="serial-ports"></label>
+        <label>X2X endpoint<input name="x2x_endpoint" list="serial-ports"></label>
         <label>ETH1 IP<input name="eth1_ip" required></label>
         <label>ETH2 IP<input name="eth2_ip" required></label>
         <label>Ожидаемая firmware<input name="expected_firmware_version" required></label>
@@ -49,6 +49,8 @@
           Один адаптер для HMI и X2X
         </label>
       </form>
+      <datalist id="serial-ports"></datalist>
+      <div id="ports-summary" class="ports-summary"></div>
       <p id="station-message" class="message" aria-live="polite"></p>
     </section>
   </main>

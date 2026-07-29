@@ -11,8 +11,10 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from lorentz_test import __version__
+from lorentz_test.models.serial import SerialPortInfo
 from lorentz_test.models.station import StationConfig
 from lorentz_test.paths import frontend_dir
+from lorentz_test.serial_ports import list_serial_ports
 from lorentz_test.station_store import station_store
 
 APP_HOST = "127.0.0.1"
@@ -24,6 +26,14 @@ app = FastAPI(title="Lorentz Test", version=__version__)
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok", "version": __version__}
+
+
+@app.get("/api/ports", response_model=list[SerialPortInfo])
+def get_ports() -> list[SerialPortInfo]:
+    try:
+        return list_serial_ports()
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @app.get("/api/station", response_model=StationConfig)

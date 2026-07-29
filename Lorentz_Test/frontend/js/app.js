@@ -3,6 +3,9 @@
 const form = document.getElementById("station-form");
 const stationMessage = document.getElementById("station-message");
 const saveButton = document.getElementById("save-station");
+const refreshPortsButton = document.getElementById("refresh-ports");
+const serialPortsList = document.getElementById("serial-ports");
+const portsSummary = document.getElementById("ports-summary");
 
 async function requestJson(url, options = {}) {
   const response = await fetch(url, options);
@@ -54,6 +57,35 @@ function readForm() {
   };
 }
 
+async function loadPorts() {
+  refreshPortsButton.disabled = true;
+  portsSummary.textContent = "Поиск последовательных портов…";
+  try {
+    const ports = await requestJson("/api/ports");
+    serialPortsList.replaceChildren(...ports.map((port) => {
+      const option = document.createElement("option");
+      option.value = port.device;
+      option.label = port.description || port.hwid;
+      return option;
+    }));
+    if (ports.length === 0) {
+      portsSummary.textContent = "Последовательные порты не обнаружены.";
+      return;
+    }
+    portsSummary.innerHTML = ports.map((port) => {
+      const hint = port.lcp_candidate ? ' <span class="port-candidate">возможный LCP</span>' : "";
+      const identity = port.vid !== null && port.pid !== null
+        ? `VID:PID ${port.vid.toString(16).padStart(4, "0").toUpperCase()}:${port.pid.toString(16).padStart(4, "0").toUpperCase()}`
+        : port.hwid;
+      return `<div class="port-item"><strong>${port.device}</strong> — ${port.description || "без описания"}; ${identity}${hint}</div>`;
+    }).join("");
+  } catch (error) {
+    portsSummary.textContent = `Ошибка перечисления COM-портов: ${error.message}`;
+  } finally {
+    refreshPortsButton.disabled = false;
+  }
+}
+
 async function checkBackend() {
   const badge = document.getElementById("backend-status");
   try {
@@ -92,5 +124,7 @@ async function saveStation() {
 }
 
 saveButton.addEventListener("click", saveStation);
+refreshPortsButton.addEventListener("click", loadPorts);
 checkBackend();
 loadStation();
+loadPorts();

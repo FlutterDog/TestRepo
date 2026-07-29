@@ -40,3 +40,9 @@ button:disabled { cursor: wait; opacity: .65; }
   .form-grid { grid-template-columns: 1fr; }
   .section-heading { align-items: stretch; flex-direction: column; }
 }
+.button-row { display: flex; gap: 10px; }
+button.secondary { background: #e5ebf0; color: #324250; }
+.ports-summary { margin-top: 16px; color: #536171; font-size: 13px; }
+.port-item { padding: 5px 0; border-bottom: 1px solid #edf0f3; }
+.port-item strong { color: #25313d; }
+.port-candidate { color: #176b36; font-weight: 700; }
