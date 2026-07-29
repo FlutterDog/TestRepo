@@ -1,0 +1,23 @@
+:root {
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  color: #17202a;
+  background: #eef1f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background: #fff;
+  border-bottom: 1px solid #d7dde3;
+}
+h1, h2, p { margin-top: 0; }
+.topbar p { margin-bottom: 0; color: #637080; }
+main { max-width: 1100px; margin: 28px auto; padding: 0 20px; }
+.card { background: #fff; border: 1px solid #d7dde3; border-radius: 10px; padding: 24px; }
+.status { padding: 7px 11px; border-radius: 999px; font-weight: 700; font-size: 12px; }
+.status.waiting { background: #e9edf1; color: #56616d; }
+.status.pass { background: #dff5e6; color: #176b36; }
+.status.fail { background: #fde4e1; color: #9a241b; }
