@@ -128,3 +128,49 @@ refreshPortsButton.addEventListener("click", loadPorts);
 checkBackend();
 loadStation();
 loadPorts();
+
+const runHelloButton = document.getElementById("run-hello");
+const helloResult = document.getElementById("hello-result");
+
+function renderHello(result) {
+  const css = result.result === "PASS" ? "pass" : "fail";
+  const details = result.checks.map((check) =>
+    `<li><strong>${check.status}</strong> ${check.name}: ${check.actual} (ожидалось ${check.expected})</li>`
+  ).join("");
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${result.error}</p>` : "";
+  const firmware = `<p>${result.firmware_note}. Проверка firmware v1.02.0 будет отдельным шагом через диагностическую консоль.</p>`;
+  helloResult.className = `test-result ${css}`;
+  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}`;
+}
+
+async function runHello() {
+  const serialNumber = document.getElementById("device-serial").value.trim();
+  const operator = document.getElementById("operator-name").value.trim();
+  if (!serialNumber || !operator) {
+    helloResult.className = "test-result fail";
+    helloResult.textContent = "Введите серийный номер и имя оператора.";
+    return;
+  }
+  runHelloButton.disabled = true;
+  helloResult.className = "test-result running";
+  helloResult.textContent = "RUNNING — открытие USB и ожидание ответа HELLO…";
+  try {
+    const result = await requestJson("/api/tests/lcp/hello", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        serial_number: serialNumber,
+        operator,
+        port: nullable(String(form.elements.lcp_port.value || "")),
+      }),
+    });
+    renderHello(result);
+  } catch (error) {
+    helloResult.className = "test-result fail";
+    helloResult.textContent = `FAIL — ${error.message}`;
+  } finally {
+    runHelloButton.disabled = false;
+  }
+}
+
+runHelloButton.addEventListener("click", runHello);

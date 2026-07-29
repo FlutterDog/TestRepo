@@ -53,6 +53,21 @@
       <div id="ports-summary" class="ports-summary"></div>
       <p id="station-message" class="message" aria-live="polite"></p>
     </section>
+
+    <section class="card test-card">
+      <div class="section-heading">
+        <div>
+          <h2>Проверка USB HELLO</h2>
+          <p>Проверяется бинарный протокол, schema, размер bundle и возможности transport.</p>
+        </div>
+        <button id="run-hello" type="button">Начать проверку</button>
+      </div>
+      <div class="form-grid compact">
+        <label>Серийный номер<input id="device-serial" required placeholder="LCP-000001"></label>
+        <label>Оператор<input id="operator-name" required></label>
+      </div>
+      <div id="hello-result" class="test-result waiting">WAITING</div>
+    </section>
   </main>
   <script src="/static/js/app.js"></script>
 </body>
