@@ -1,5 +1,4 @@
 import struct
-from types import SimpleNamespace
 
 from lorentz_test.models.station import StationConfig
 from lorentz_test.models.tests import ConfirmedTestRequest, TestStatus
