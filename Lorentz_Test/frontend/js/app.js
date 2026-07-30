@@ -213,8 +213,17 @@ async function runHello() {
   }
 }
 
+function renderEndpointAccess(item) {
+  const endpoint = item.endpoint || "не настроен";
+  return `<li class="endpoint-${String(item.status).toLowerCase()}"><strong>${escapeHtml(item.status)}</strong> ${escapeHtml(item.name)} [${escapeHtml(endpoint)}]: ${escapeHtml(item.detail)}</li>`;
+}
+
 function renderDiagnostics(result) {
   const css = result.result === "PASS" ? "pass" : "fail";
+  const endpoints = (result.endpoint_access || []).map(renderEndpointAccess).join("");
+  const endpointBlock = endpoints
+    ? `<h3>Доступ к endpoint стенда</h3><ul class="check-list endpoint-list">${endpoints}</ul>`
+    : "";
   const commands = result.commands.map((item) => {
     const checks = (item.checks || []).map(renderCheck).join("");
     const error = item.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(item.error)}</p>` : "";
@@ -232,7 +241,7 @@ function renderDiagnostics(result) {
   const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
   diagnosticsResult.className = `test-result ${css}`;
   diagnosticsResult.dataset.kind = "result";
-  diagnosticsResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${commands ? `<ul class="check-list command-list">${commands}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
+  diagnosticsResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${endpointBlock}${commands ? `<ul class="check-list command-list">${commands}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
 }
 
 async function runDiagnostics() {
@@ -243,7 +252,7 @@ async function runDiagnostics() {
     return;
   }
   runDiagnosticsButton.disabled = true;
-  setResult(diagnosticsResult, "RUNNING — чтение и оценка диагностических разделов…", "running", "running");
+  setResult(diagnosticsResult, "RUNNING — проверка endpoint и чтение диагностических разделов…", "running", "running");
   try {
     renderDiagnostics(await requestJson("/api/tests/lcp/diagnostics", {
       method: "POST",
