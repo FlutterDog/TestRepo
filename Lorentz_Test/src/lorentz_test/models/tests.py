@@ -65,3 +65,36 @@ class LcpHelloResult(BaseModel):
     firmware_raw_output: str | None = None
     error: str | None = None
     report_file: str | None = None
+
+
+class DiagnosticCommandResult(BaseModel):
+    command_id: str
+    command: str
+    title: str
+    status: TestStatus
+    duration_ms: int
+    parsed_values: dict[str, str] = Field(default_factory=dict)
+    raw_output: str | None = None
+    error: str | None = None
+
+
+class LcpDiagnosticsResult(BaseModel):
+    utility_version: str = "0.3.0"
+    test_profile_version: str = "lcp2116-diagnostic-snapshot-v1"
+    test_id: str = "lcp_diagnostic_snapshot"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    evaluation_mode: str = "capture_only"
+    commands: list[DiagnosticCommandResult] = Field(default_factory=list)
+    note: str = (
+        "PASS означает успешное получение ответа команды. Семантические аппаратные "
+        "критерии будут применены после подтверждения реальных диагностических данных."
+    )
+    error: str | None = None
+    report_file: str | None = None
