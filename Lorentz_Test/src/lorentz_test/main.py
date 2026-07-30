@@ -14,23 +14,36 @@ from lorentz_test import __version__
 from lorentz_test.models.serial import SerialPortInfo
 from lorentz_test.models.station import StationConfig
 from lorentz_test.models.tests import (
+    LcpActiveEthernetResult,
     LcpActiveRs485Result,
+    LcpActiveServicesResult,
     LcpDiagnosticsResult,
     LcpHelloRequest,
     LcpHelloResult,
+    LcpHmiResult,
 )
 from lorentz_test.paths import frontend_dir
 from lorentz_test.reporting.json_report import report_writer
 from lorentz_test.serial_ports import list_serial_ports
+from lorentz_test.services.lcp_active_ethernet import run_lcp_active_ethernet
 from lorentz_test.services.lcp_active_rs485 import run_lcp_active_rs485
+from lorentz_test.services.lcp_active_services import run_lcp_active_services
 from lorentz_test.services.lcp_diagnostics import run_lcp_diagnostic_snapshot
 from lorentz_test.services.lcp_hello import run_lcp_hello
+from lorentz_test.services.lcp_hmi import run_lcp_hmi_echo
 from lorentz_test.station_store import station_store
 
 APP_HOST = "127.0.0.1"
 APP_PORT = 8765
 
 app = FastAPI(title="Lorentz Test", version=__version__)
+
+
+def _load_station() -> StationConfig:
+    try:
+        return station_store.load()
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @app.get("/api/health")
@@ -48,11 +61,7 @@ def get_ports() -> list[SerialPortInfo]:
 
 @app.post("/api/tests/lcp/hello", response_model=LcpHelloResult)
 def test_lcp_hello(request: LcpHelloRequest) -> LcpHelloResult:
-    try:
-        station = station_store.load()
-    except RuntimeError as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
-    result = run_lcp_hello(request, station)
+    result = run_lcp_hello(request, _load_station())
     try:
         report_writer.save_lcp_hello(result)
     except RuntimeError as exc:
@@ -62,11 +71,7 @@ def test_lcp_hello(request: LcpHelloRequest) -> LcpHelloResult:
 
 @app.post("/api/tests/lcp/diagnostics", response_model=LcpDiagnosticsResult)
 def test_lcp_diagnostics(request: LcpHelloRequest) -> LcpDiagnosticsResult:
-    try:
-        station = station_store.load()
-    except RuntimeError as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
-    result = run_lcp_diagnostic_snapshot(request, station)
+    result = run_lcp_diagnostic_snapshot(request, _load_station())
     try:
         report_writer.save_lcp_diagnostics(result)
     except RuntimeError as exc:
@@ -76,11 +81,7 @@ def test_lcp_diagnostics(request: LcpHelloRequest) -> LcpDiagnosticsResult:
 
 @app.post("/api/tests/lcp/active-rs485", response_model=LcpActiveRs485Result)
 def test_lcp_active_rs485(request: LcpHelloRequest) -> LcpActiveRs485Result:
-    try:
-        station = station_store.load()
-    except RuntimeError as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
-    result = run_lcp_active_rs485(request, station)
+    result = run_lcp_active_rs485(request, _load_station())
     try:
         report_writer.save_lcp_active_rs485(result)
     except RuntimeError as exc:
@@ -88,12 +89,39 @@ def test_lcp_active_rs485(request: LcpHelloRequest) -> LcpActiveRs485Result:
     return result
 
 
-@app.get("/api/station", response_model=StationConfig)
-def get_station() -> StationConfig:
+@app.post("/api/tests/lcp/active-ethernet", response_model=LcpActiveEthernetResult)
+def test_lcp_active_ethernet(request: LcpHelloRequest) -> LcpActiveEthernetResult:
+    result = run_lcp_active_ethernet(request, _load_station())
     try:
-        return station_store.load()
+        report_writer.save_lcp_active_ethernet(result)
     except RuntimeError as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return result
+
+
+@app.post("/api/tests/lcp/active-services", response_model=LcpActiveServicesResult)
+def test_lcp_active_services(request: LcpHelloRequest) -> LcpActiveServicesResult:
+    result = run_lcp_active_services(request, _load_station())
+    try:
+        report_writer.save_lcp_active_services(result)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return result
+
+
+@app.post("/api/tests/lcp/hmi", response_model=LcpHmiResult)
+def test_lcp_hmi(request: LcpHelloRequest) -> LcpHmiResult:
+    result = run_lcp_hmi_echo(request, _load_station())
+    try:
+        report_writer.save_lcp_hmi(result)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return result
+
+
+@app.get("/api/station", response_model=StationConfig)
+def get_station() -> StationConfig:
+    return _load_station()
 
 
 @app.put("/api/station", response_model=StationConfig)
