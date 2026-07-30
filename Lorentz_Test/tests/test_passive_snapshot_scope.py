@@ -15,3 +15,17 @@ def test_passive_snapshot_skips_absolute_rtc_time_check() -> None:
     assert adjusted[0].status == Status.SKIPPED
     assert "active RTC synchronization" in adjusted[0].expected
     assert "passive snapshot only" in adjusted[0].actual
+
+
+def test_passive_snapshot_skips_x2x_module_communication() -> None:
+    checks = [
+        CheckResult(
+            name="x2x_module_1",
+            expected="online",
+            actual="connection=lost, error=timeout",
+            status=Status.FAIL,
+        )
+    ]
+    adjusted = _passive_snapshot_checks("x2x", checks)
+    assert adjusted[0].status == Status.SKIPPED
+    assert "host X2X slave emulator" in adjusted[0].expected
