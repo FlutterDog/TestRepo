@@ -106,7 +106,7 @@ def prepare_rtc_retention(
         rtc_raw = console.execute("rtc")
         rtc_at_prepare = _datetime(rtc_raw, "Current date and time")
         battery_raw = console.execute("battery")
-        battery = DiagnosticReport(battery_raw).one("debounced_state", section=None)
+        battery = DiagnosticReport(battery_raw).one("debounced_state")
         if rtc_at_prepare is None:
             raise RuntimeError("RTC did not return a valid date/time after synchronization")
 
