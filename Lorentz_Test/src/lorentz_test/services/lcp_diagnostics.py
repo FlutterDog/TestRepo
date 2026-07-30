@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 
 from lorentz_test.models.station import StationConfig
 from lorentz_test.models.tests import (
+    CheckResult,
     DiagnosticCommandResult,
     DiagnosticParsedValue,
     LcpDiagnosticsResult,
@@ -41,6 +42,43 @@ _DIAGNOSTIC_COMMANDS: tuple[tuple[str, str, str], ...] = (
 )
 
 
+def _status_from_checks(checks: list[CheckResult]) -> TestStatus:
+    if any(item.status == TestStatus.FAIL for item in checks):
+        return TestStatus.FAIL
+    if any(item.status == TestStatus.PASS for item in checks):
+        return TestStatus.PASS
+    return TestStatus.SKIPPED
+
+
+def _passive_snapshot_checks(
+    command_id: str,
+    checks: list[CheckResult],
+) -> list[CheckResult]:
+    """Keep external fixture checks out of a passive USB-only snapshot.
+
+    The diagnostic command reports what the LCP has observed, but this utility has
+    not opened the configured S1-S4 endpoints and has not started Modbus slaves.
+    Therefore an LCP timeout cannot yet be attributed to the controller.
+    """
+    if command_id != "field":
+        return checks
+
+    adjusted: list[CheckResult] = []
+    for check in checks:
+        if check.name.endswith("_external_modbus"):
+            adjusted.append(
+                CheckResult(
+                    name=check.name,
+                    expected="active external Modbus test",
+                    actual=f"passive snapshot only; LCP reports {check.actual}",
+                    status=TestStatus.SKIPPED,
+                )
+            )
+        else:
+            adjusted.append(check)
+    return adjusted
+
+
 def _capture_command(
     console: LcpDiagnosticConsole,
     station: StationConfig,
@@ -56,11 +94,13 @@ def _capture_command(
             raise RuntimeError("firmware rejected the diagnostic command")
 
         parsed_entries = parse_diagnostic_output(raw_output)
-        status, checks = evaluate_diagnostic_command(
+        _, checks = evaluate_diagnostic_command(
             command_id,
             raw_output,
             station,
         )
+        checks = _passive_snapshot_checks(command_id, checks)
+        status = _status_from_checks(checks)
         return DiagnosticCommandResult(
             command_id=command_id,
             command=command,
