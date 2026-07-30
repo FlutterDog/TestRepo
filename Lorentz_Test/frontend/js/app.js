@@ -131,6 +131,21 @@ loadPorts();
 
 const runHelloButton = document.getElementById("run-hello");
 const helloResult = document.getElementById("hello-result");
+const deviceSerialInput = document.getElementById("device-serial");
+const operatorInput = document.getElementById("operator-name");
+const lcpPortInput = form.elements.namedItem("lcp_port");
+
+function setHelloResult(text, cssClass, kind = "result") {
+  helloResult.className = `test-result ${cssClass}`;
+  helloResult.textContent = text;
+  helloResult.dataset.kind = kind;
+}
+
+function clearHelloValidation() {
+  if (helloResult.dataset.kind === "validation") {
+    setHelloResult("WAITING", "waiting", "waiting");
+  }
+}
 
 function renderHello(result) {
   const css = result.result === "PASS" ? "pass" : "fail";
@@ -141,37 +156,58 @@ function renderHello(result) {
   const firmware = `<p>${result.firmware_note}. Ожидается firmware ${result.expected_firmware_version}; её проверка будет отдельным шагом через диагностическую консоль.</p>`;
   const report = result.report_file ? `<p><strong>JSON:</strong> ${result.report_file}</p>` : "";
   helloResult.className = `test-result ${css}`;
-  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${report}`;
+  helloResult.dataset.kind = "result";
+  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port || "порт не задан"}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${report}`;
 }
 
 async function runHello() {
-  const serialNumber = document.getElementById("device-serial").value.trim();
-  const operator = document.getElementById("operator-name").value.trim();
-  if (!serialNumber || !operator) {
-    helloResult.className = "test-result fail";
-    helloResult.textContent = "Введите серийный номер и имя оператора.";
+  const serialNumber = deviceSerialInput.value.trim();
+  const operatorName = operatorInput.value.trim();
+  const port = nullable(String(lcpPortInput?.value || ""));
+  const missingFields = [];
+
+  if (!serialNumber) missingFields.push("серийный номер");
+  if (!operatorName) missingFields.push("имя оператора");
+
+  if (missingFields.length > 0) {
+    setHelloResult(`Заполните: ${missingFields.join(" и ")}.`, "fail", "validation");
+    (serialNumber ? operatorInput : deviceSerialInput).focus();
     return;
   }
+
+  if (!port) {
+    setHelloResult(
+      "Выберите USB-порт LCP в настройках стенда. Для проверки HELLO порты S1–S4, HMI, X2X и Ethernet пока не требуются.",
+      "fail",
+      "validation",
+    );
+    lcpPortInput?.focus();
+    return;
+  }
+
   runHelloButton.disabled = true;
-  helloResult.className = "test-result running";
-  helloResult.textContent = "RUNNING — открытие USB и ожидание ответа HELLO…";
+  setHelloResult("RUNNING — открытие USB и ожидание ответа HELLO…", "running", "running");
   try {
     const result = await requestJson("/api/tests/lcp/hello", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
         serial_number: serialNumber,
-        operator,
-        port: nullable(String(form.elements.lcp_port.value || "")),
+        operator: operatorName,
+        port,
       }),
     });
     renderHello(result);
   } catch (error) {
-    helloResult.className = "test-result fail";
-    helloResult.textContent = `FAIL — ${error.message}`;
+    setHelloResult(`FAIL — ${error.message}`, "fail", "result");
   } finally {
     runHelloButton.disabled = false;
   }
 }
+
+[deviceSerialInput, operatorInput, lcpPortInput].forEach((control) => {
+  control?.addEventListener("input", clearHelloValidation);
+  control?.addEventListener("change", clearHelloValidation);
+});
 
 runHelloButton.addEventListener("click", runHello);
