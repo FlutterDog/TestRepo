@@ -38,6 +38,7 @@ PNX, DM91 and density meters are not part of this project stage.
 - non-destructive diagnostics for RTOS, Flash A/B, FieldSensor, RS-485, SC16IS, X2X, Ethernet, SD, battery, RTC and watchdog;
 - structured parser that preserves repeated keys from separate diagnostic sections;
 - semantic PASS/FAIL/SKIPPED checks for the confirmed LCP Basic 1.02.0 output format;
-- atomic JSON report files in `reports/`, including raw and structured diagnostic data.
+- station endpoint preflight with `AVAILABLE`, `BUSY`, `NOT_FOUND`, `UNREACHABLE`, `UNSUPPORTED` and `SKIPPED` states;
+- atomic JSON report files in `reports/`, including endpoint access, raw and structured diagnostic data.
 
-Diagnostic status is based on report content. Configured X2X modules must be online and the RTC must agree with the PC clock within five minutes. External S1-S4 and Ethernet communication checks remain SKIPPED until their fixtures are configured; internal UART and controller checks still run.
+The passive USB diagnostic snapshot evaluates internal LCP state. It does not start external Modbus RTU slaves on S1-S4 and does not synchronize the RTC; those checks are therefore `SKIPPED` until their dedicated active test stages run. A configured X2X module is evaluated from the LCP runtime report and must be online. Endpoint acquisition problems such as a COM port held by Modbus Poll are reported separately as station errors and do not by themselves mark the LCP hardware as failed.
