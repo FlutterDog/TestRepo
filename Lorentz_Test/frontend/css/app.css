@@ -55,3 +55,12 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .test-result.fail { background: #fff0ee; color: #9a241b; }
 .check-list { margin: 12px 0 0; padding-left: 20px; }
 .check-list li { margin: 5px 0; }
+.check-list.nested { margin: 7px 0 10px; }
+.command-list { padding-left: 0; list-style: none; }
+.diagnostic-command { padding: 9px 0; border-bottom: 1px solid rgba(80, 90, 100, .18); }
+.diagnostic-command:last-child { border-bottom: 0; }
+.command-pass > div > strong, .check-pass strong { color: #176b36; }
+.command-fail > div > strong, .check-fail strong, .capture-fail { color: #9a241b; }
+.command-skipped > div > strong, .check-skipped strong { color: #725711; }
+.check-skipped { opacity: .85; }
+.capture-fail { margin-left: 8px; font-weight: 700; }
