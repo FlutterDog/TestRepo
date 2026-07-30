@@ -60,7 +60,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.6.1"
+    utility_version: str = "0.7.0"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -109,7 +109,7 @@ class DiagnosticCommandResult(BaseModel):
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.6.1"
+    utility_version: str = "0.7.0"
     test_profile_version: str = "lcp2116-diagnostic-semantic-v1.2"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
@@ -153,7 +153,7 @@ class ActiveInterfaceResult(BaseModel):
 
 
 class LcpActiveRs485Result(BaseModel):
-    utility_version: str = "0.6.1"
+    utility_version: str = "0.7.0"
     test_profile_version: str = "lcp2116-active-rs485-v1.1"
     test_id: str = "lcp_active_rs485"
     device_type: str = "LCP2116"
@@ -173,5 +173,104 @@ class LcpActiveRs485Result(BaseModel):
         "Python сам владеет fixture COM-портами и отвечает как Modbus RTU slave. "
         "FIXTURE_ERROR означает проблему стенда до проверки DUT."
     )
+    error: str | None = None
+    report_file: str | None = None
+
+
+class EthernetInterfaceResult(BaseModel):
+    name: str
+    target_ip: str
+    source_ip: str | None = None
+    status: TestStatus
+    link_before: str | None = None
+    link_after: str | None = None
+    socket_connected: bool = False
+    transaction_id: int | None = None
+    unit_id: int = 1
+    registers: list[int] = Field(default_factory=list)
+    before_requests: int | None = None
+    after_requests: int | None = None
+    before_responses: int | None = None
+    after_responses: int | None = None
+    before_transport_errors: int | None = None
+    after_transport_errors: int | None = None
+    duration_ms: int = 0
+    detail: str
+
+
+class LcpActiveEthernetResult(BaseModel):
+    utility_version: str = "0.7.0"
+    test_profile_version: str = "lcp2116-active-ethernet-v1"
+    test_id: str = "lcp_active_ethernet"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    interfaces: list[EthernetInterfaceResult] = Field(default_factory=list)
+    eth_before_raw: str | None = None
+    eth_after_raw: str | None = None
+    note: str = (
+        "FIXTURE_ERROR означает отсутствие link, маршрута или доступного сетевого интерфейса ПК. "
+        "FAIL используется только после установленного TCP-соединения и некорректного ответа DUT."
+    )
+    error: str | None = None
+    report_file: str | None = None
+
+
+class ActiveStepResult(BaseModel):
+    name: str
+    status: TestStatus
+    duration_ms: int
+    detail: str
+    checks: list[CheckResult] = Field(default_factory=list)
+    raw_before: str | None = None
+    raw_action: str | None = None
+    raw_after: str | None = None
+
+
+class LcpActiveServicesResult(BaseModel):
+    utility_version: str = "0.7.0"
+    test_profile_version: str = "lcp2116-active-services-v1"
+    test_id: str = "lcp_active_services"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    steps: list[ActiveStepResult] = Field(default_factory=list)
+    note: str = (
+        "Тест безопасно выполняет GET_CONFIG/VALIDATE_CONFIG без записи Flash, "
+        "SDTEST.TXT write/read, синхронизацию RTC и короткую RTOS stability-проверку."
+    )
+    error: str | None = None
+    report_file: str | None = None
+
+
+class LcpHmiResult(BaseModel):
+    utility_version: str = "0.7.0"
+    test_profile_version: str = "lcp2116-hmi-echo-v1"
+    test_id: str = "lcp_hmi_echo"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    endpoint: str | None = None
+    serial: str = "9600 8N1"
+    frames_sent: int = 0
+    frames_received: int = 0
+    expected_frames_hex: list[str] = Field(default_factory=list)
+    actual_frames_hex: list[str] = Field(default_factory=list)
+    detail: str
     error: str | None = None
     report_file: str | None = None
