@@ -15,10 +15,10 @@ from lorentz_test.models.tests import (
     TestStatus,
 )
 from lorentz_test.protocols.lcp_console import FirmwareIdentity, LcpDiagnosticConsole
-from lorentz_test.protocols.lcp_usb import HelloInfo, LcpUsbClient, SerialPort
+from lorentz_test.protocols.lcp_usb import HelloInfo, LcpUsbClient
 
 ClientFactory = Callable[..., LcpUsbClient]
-ConsoleFactory = Callable[[SerialPort], LcpDiagnosticConsole]
+ConsoleFactory = Callable[..., LcpDiagnosticConsole]
 _REQUIRED_CAPABILITIES = 0x0000000F
 _EXPECTED_FIRMWARE_NAME = "LCP Basic Diagnostic Firmware"
 _EXPECTED_TARGET = "ATSAM3X8E"
@@ -88,7 +88,7 @@ def run_lcp_hello(
     station: StationConfig,
     *,
     client_factory: ClientFactory = LcpUsbClient,
-    console_factory: ConsoleFactory = LcpDiagnosticConsole,
+    console_factory: ConsoleFactory = LcpDiagnosticConsole.open_port,
 ) -> LcpHelloResult:
     port = request.port or station.lcp_port
     started_at = datetime.now(timezone.utc)
@@ -108,6 +108,7 @@ def run_lcp_hello(
         )
 
     client: LcpUsbClient | None = None
+    console: LcpDiagnosticConsole | None = None
     hello_payload: HelloPayload | None = None
     checks: list[CheckResult] = []
     identity: FirmwareIdentity | None = None
@@ -122,8 +123,18 @@ def run_lcp_hello(
         hello_payload = HelloPayload(**hello.to_dict())
         checks.extend(_evaluate_hello(hello))
 
+        # EXIT is acknowledged before the firmware releases the binary parser.
+        # Closing and reopening CDC forces a clean SerialUSB open-state transition
+        # and prevents the first text command from being consumed by that parser.
         client.exit_binary_session()
-        console = console_factory(client.transport)
+        client.close()
+        client = None
+
+        console = console_factory(
+            port,
+            baudrate=station.serial_baudrate,
+            timeout=station.serial_timeout_seconds,
+        )
         identity = console.read_firmware_identity()
         checks.extend(_evaluate_firmware(identity, station.expected_firmware_version))
 
@@ -172,5 +183,7 @@ def run_lcp_hello(
             error=f"{type(exc).__name__}: {exc}",
         )
     finally:
+        if console is not None:
+            console.close()
         if client is not None:
             client.close()
