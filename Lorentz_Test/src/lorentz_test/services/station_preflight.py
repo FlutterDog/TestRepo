@@ -39,6 +39,16 @@ def _serial_error_status(message: str) -> EndpointAccessStatus:
     return EndpointAccessStatus.ERROR
 
 
+def _serial_detail(status: EndpointAccessStatus, raw_error: str) -> str:
+    if status == EndpointAccessStatus.BUSY:
+        prefix = "ошибка стенда: порт занят другим процессом или доступ запрещён"
+    elif status == EndpointAccessStatus.NOT_FOUND:
+        prefix = "ошибка стенда: последовательный порт не найден"
+    else:
+        prefix = "ошибка стенда при открытии последовательного порта"
+    return f"{prefix}; {raw_error}"
+
+
 def _probe_serial(
     name: str,
     endpoint: str,
@@ -57,15 +67,16 @@ def _probe_serial(
             name=name,
             endpoint=endpoint,
             status=EndpointAccessStatus.AVAILABLE,
-            detail="serial endpoint opened and released",
+            detail="endpoint стенда доступен; порт открыт и освобождён",
         )
     except (serial.SerialException, OSError) as exc:
-        detail = f"{type(exc).__name__}: {exc}"
+        raw_error = f"{type(exc).__name__}: {exc}"
+        status = _serial_error_status(raw_error)
         return EndpointAccessResult(
             name=name,
             endpoint=endpoint,
-            status=_serial_error_status(detail),
-            detail=detail,
+            status=status,
+            detail=_serial_detail(status, raw_error),
         )
     finally:
         close = getattr(handle, "close", None)
@@ -84,7 +95,7 @@ def _probe_tcp(
             name=name,
             endpoint=endpoint,
             status=EndpointAccessStatus.UNSUPPORTED,
-            detail="expected tcp://host:port",
+            detail="ошибка настройки стенда: ожидается tcp://host:port",
         )
     try:
         with closing(tcp_connector((parsed.hostname, parsed.port), timeout=0.75)):
@@ -93,14 +104,14 @@ def _probe_tcp(
             name=name,
             endpoint=endpoint,
             status=EndpointAccessStatus.AVAILABLE,
-            detail="TCP endpoint accepted a connection",
+            detail="endpoint стенда доступен; TCP-соединение установлено и закрыто",
         )
     except OSError as exc:
         return EndpointAccessResult(
             name=name,
             endpoint=endpoint,
             status=EndpointAccessStatus.UNREACHABLE,
-            detail=f"{type(exc).__name__}: {exc}",
+            detail=f"ошибка стенда: TCP endpoint недоступен; {type(exc).__name__}: {exc}",
         )
 
 
@@ -117,7 +128,7 @@ def probe_endpoint_access(
             name=name,
             endpoint=None,
             status=EndpointAccessStatus.SKIPPED,
-            detail="endpoint not configured",
+            detail="endpoint не настроен",
         )
 
     normalized = endpoint.strip()
@@ -130,7 +141,7 @@ def probe_endpoint_access(
         name=name,
         endpoint=normalized,
         status=EndpointAccessStatus.UNSUPPORTED,
-        detail="supported endpoint formats: COMx or tcp://host:port",
+        detail="ошибка настройки стенда: поддерживаются COMx и tcp://host:port",
     )
 
 
