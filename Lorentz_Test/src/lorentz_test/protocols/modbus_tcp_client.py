@@ -8,7 +8,15 @@ from dataclasses import dataclass
 
 
 class ModbusTcpError(RuntimeError):
-    """Transport or protocol failure during one Modbus TCP transaction."""
+    """Base error for one Modbus TCP transaction."""
+
+
+class ModbusTcpTransportError(ModbusTcpError):
+    """The host could not establish or maintain the TCP exchange."""
+
+
+class ModbusTcpProtocolError(ModbusTcpError):
+    """A connected peer returned a malformed or unexpected Modbus response."""
 
 
 @dataclass(frozen=True)
@@ -23,7 +31,9 @@ def _recv_exact(sock: socket.socket, size: int) -> bytes:
     while len(data) < size:
         chunk = sock.recv(size - len(data))
         if not chunk:
-            raise ModbusTcpError(f"connection closed after {len(data)} of {size} bytes")
+            raise ModbusTcpProtocolError(
+                f"connection closed after {len(data)} of {size} bytes"
+            )
         data.extend(chunk)
     return bytes(data)
 
@@ -64,42 +74,44 @@ def read_holding_registers(
         mbap = _recv_exact(sock, 7)
         rx_transaction, protocol_id, length, rx_unit = struct.unpack(">HHHB", mbap)
         if rx_transaction != transaction_id:
-            raise ModbusTcpError(
+            raise ModbusTcpProtocolError(
                 f"transaction id {rx_transaction} != expected {transaction_id}"
             )
         if protocol_id != 0:
-            raise ModbusTcpError(f"protocol id {protocol_id} != 0")
+            raise ModbusTcpProtocolError(f"protocol id {protocol_id} != 0")
         if rx_unit != unit_id:
-            raise ModbusTcpError(f"unit id {rx_unit} != expected {unit_id}")
+            raise ModbusTcpProtocolError(f"unit id {rx_unit} != expected {unit_id}")
         if length < 3 or length > 254:
-            raise ModbusTcpError(f"invalid MBAP length {length}")
+            raise ModbusTcpProtocolError(f"invalid MBAP length {length}")
 
         response_pdu = _recv_exact(sock, length - 1)
         function = response_pdu[0]
         if function == (0x03 | 0x80):
             if len(response_pdu) != 2:
-                raise ModbusTcpError("malformed Modbus exception response")
-            raise ModbusTcpError(f"device returned Modbus exception {response_pdu[1]}")
+                raise ModbusTcpProtocolError("malformed Modbus exception response")
+            raise ModbusTcpProtocolError(
+                f"device returned Modbus exception {response_pdu[1]}"
+            )
         if function != 0x03:
-            raise ModbusTcpError(f"function 0x{function:02X} != 0x03")
+            raise ModbusTcpProtocolError(f"function 0x{function:02X} != 0x03")
         if len(response_pdu) < 2:
-            raise ModbusTcpError("truncated FC03 response")
+            raise ModbusTcpProtocolError("truncated FC03 response")
 
         byte_count = response_pdu[1]
         expected_bytes = register_count * 2
         if byte_count != expected_bytes:
-            raise ModbusTcpError(
+            raise ModbusTcpProtocolError(
                 f"byte count {byte_count} != expected {expected_bytes}"
             )
         if len(response_pdu) != 2 + byte_count:
-            raise ModbusTcpError(
+            raise ModbusTcpProtocolError(
                 f"PDU length {len(response_pdu)} != expected {2 + byte_count}"
             )
 
         registers = list(struct.unpack(f">{register_count}H", response_pdu[2:]))
         return ModbusTcpReadResult(transaction_id, unit_id, registers)
     except (OSError, socket.timeout) as exc:
-        raise ModbusTcpError(str(exc)) from exc
+        raise ModbusTcpTransportError(str(exc)) from exc
     finally:
         try:
             sock.close()
