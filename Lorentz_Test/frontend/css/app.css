@@ -64,3 +64,11 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .command-skipped > div > strong, .check-skipped strong { color: #725711; }
 .check-skipped { opacity: .85; }
 .capture-fail { margin-left: 8px; font-weight: 700; }
+.endpoint-list { margin-bottom: 18px; }
+.endpoint-available strong { color: #176b36; }
+.endpoint-busy strong,
+.endpoint-not_found strong,
+.endpoint-unreachable strong,
+.endpoint-unsupported strong,
+.endpoint-error strong { color: #9a241b; }
+.endpoint-skipped strong { color: #725711; }
