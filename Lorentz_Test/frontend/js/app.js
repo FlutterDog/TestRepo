@@ -17,6 +17,11 @@ async function requestJson(url, options = {}) {
   return body;
 }
 
+function escapeHtml(value) {
+  const map = {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"};
+  return String(value ?? "").replace(/[&<>"']/g, (character) => map[character]);
+}
+
 function setMessage(text, ok) {
   stationMessage.textContent = text;
   stationMessage.className = `message ${ok ? "pass" : "fail"}`;
@@ -77,7 +82,7 @@ async function loadPorts() {
       const identity = port.vid !== null && port.pid !== null
         ? `VID:PID ${port.vid.toString(16).padStart(4, "0").toUpperCase()}:${port.pid.toString(16).padStart(4, "0").toUpperCase()}`
         : port.hwid;
-      return `<div class="port-item"><strong>${port.device}</strong> — ${port.description || "без описания"}; ${identity}${hint}</div>`;
+      return `<div class="port-item"><strong>${escapeHtml(port.device)}</strong> — ${escapeHtml(port.description || "без описания")}; ${escapeHtml(identity)}${hint}</div>`;
     }).join("");
   } catch (error) {
     portsSummary.textContent = `Ошибка перечисления COM-портов: ${error.message}`;
@@ -167,20 +172,23 @@ function requestPayload(identity) {
   });
 }
 
+function renderCheck(check) {
+  const css = `check-${String(check.status).toLowerCase()}`;
+  return `<li class="${css}"><strong>${escapeHtml(check.status)}</strong> ${escapeHtml(check.name)}: ${escapeHtml(check.actual)} (ожидалось ${escapeHtml(check.expected)})</li>`;
+}
+
 function renderHello(result) {
   const css = result.result === "PASS" ? "pass" : "fail";
-  const details = result.checks.map((check) =>
-    `<li><strong>${check.status}</strong> ${check.name}: ${check.actual} (ожидалось ${check.expected})</li>`
-  ).join("");
-  const error = result.error ? `<p><strong>Ошибка:</strong> ${result.error}</p>` : "";
+  const details = result.checks.map(renderCheck).join("");
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
   const firmware = result.firmware_version
-    ? `<p><strong>Firmware:</strong> ${result.firmware_name}, ${result.firmware_stage}, ${result.firmware_target}.</p>`
+    ? `<p><strong>Firmware:</strong> ${escapeHtml(result.firmware_name)}, ${escapeHtml(result.firmware_stage)}, ${escapeHtml(result.firmware_target)}.</p>`
     : "";
-  const note = result.firmware_note ? `<p>${result.firmware_note}</p>` : "";
-  const report = result.report_file ? `<p><strong>JSON:</strong> ${result.report_file}</p>` : "";
+  const note = result.firmware_note ? `<p>${escapeHtml(result.firmware_note)}</p>` : "";
+  const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
   helloResult.className = `test-result ${css}`;
   helloResult.dataset.kind = "result";
-  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port || "порт не задан"}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${note}${report}`;
+  helloResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${note}${report}`;
 }
 
 async function runHello() {
@@ -208,14 +216,23 @@ async function runHello() {
 function renderDiagnostics(result) {
   const css = result.result === "PASS" ? "pass" : "fail";
   const commands = result.commands.map((item) => {
-    const extra = item.error ? ` — ${item.error}` : "";
-    return `<li><strong>${item.status}</strong> ${item.title} [${item.command}], ${item.duration_ms} ms${extra}</li>`;
+    const checks = (item.checks || []).map(renderCheck).join("");
+    const error = item.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(item.error)}</p>` : "";
+    const capture = item.capture_status !== "PASS"
+      ? `<span class="capture-fail">capture=${escapeHtml(item.capture_status)}</span>`
+      : "";
+    return `
+      <li class="diagnostic-command command-${String(item.status).toLowerCase()}">
+        <div><strong>${escapeHtml(item.status)}</strong> ${escapeHtml(item.title)} [${escapeHtml(item.command)}], ${escapeHtml(item.duration_ms)} ms ${capture}</div>
+        ${error}
+        ${checks ? `<ul class="check-list nested">${checks}</ul>` : ""}
+      </li>`;
   }).join("");
-  const error = result.error ? `<p><strong>Ошибка:</strong> ${result.error}</p>` : "";
-  const report = result.report_file ? `<p><strong>JSON:</strong> ${result.report_file}</p>` : "";
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
+  const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
   diagnosticsResult.className = `test-result ${css}`;
   diagnosticsResult.dataset.kind = "result";
-  diagnosticsResult.innerHTML = `<strong>${result.result}</strong> — ${result.port || "порт не задан"}, ${result.duration_ms} ms${error}${commands ? `<ul class="check-list">${commands}</ul>` : ""}<p>${result.note}</p>${report}`;
+  diagnosticsResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${commands ? `<ul class="check-list command-list">${commands}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
 }
 
 async function runDiagnostics() {
@@ -226,7 +243,7 @@ async function runDiagnostics() {
     return;
   }
   runDiagnosticsButton.disabled = true;
-  setResult(diagnosticsResult, "RUNNING — чтение диагностических разделов…", "running", "running");
+  setResult(diagnosticsResult, "RUNNING — чтение и оценка диагностических разделов…", "running", "running");
   try {
     renderDiagnostics(await requestJson("/api/tests/lcp/diagnostics", {
       method: "POST",
