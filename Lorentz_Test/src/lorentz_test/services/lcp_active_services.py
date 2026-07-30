@@ -15,10 +15,7 @@ from lorentz_test.models.tests import (
     LcpHelloRequest,
     TestStatus,
 )
-from lorentz_test.protocols.lcp_console import (
-    LcpDiagnosticConsole,
-    parse_key_value_output,
-)
+from lorentz_test.protocols.lcp_console import LcpDiagnosticConsole
 from lorentz_test.protocols.lcp_diagnostic_parser import DiagnosticReport
 from lorentz_test.protocols.lcp_usb import (
     COMMAND_GET_CONFIG,
@@ -176,46 +173,21 @@ def _run_sd(console: LcpDiagnosticConsole) -> ActiveStepResult:
         before = console.execute("sd")
         action = console.execute("sd test")
         after = console.execute("sd")
-        values = parse_key_value_output(action)
+        action_values = DiagnosticReport(action)
         after_values = DiagnosticReport(after)
+        write_result = action_values.one("write_result")
+        read_result = action_values.one("read_result")
+        loaded_count = action_values.one("loaded_count")
+        data_match = action_values.one("data_match")
+        result = action_values.one("result")
         exists_after = after_values.one("sdtest.txt_exists", group="Filesystem")
         checks = [
-            _check(
-                "sd_write",
-                "ok",
-                values.get("write_result", "missing"),
-                values.get("write_result", "").casefold() == "ok",
-            ),
-            _check(
-                "sd_read",
-                "ok",
-                values.get("read_result", "missing"),
-                values.get("read_result", "").casefold() == "ok",
-            ),
-            _check(
-                "sd_loaded_count",
-                "3",
-                values.get("loaded_count", "missing"),
-                values.get("loaded_count") == "3",
-            ),
-            _check(
-                "sd_data_match",
-                "yes",
-                values.get("data_match", "missing"),
-                values.get("data_match", "").casefold() == "yes",
-            ),
-            _check(
-                "sd_result",
-                "OK",
-                values.get("result", "missing"),
-                values.get("result", "").casefold() == "ok",
-            ),
-            _check(
-                "sd_file_exists_after",
-                "yes",
-                exists_after or "missing",
-                exists_after == "yes",
-            ),
+            _check("sd_write", "ok", write_result or "missing", (write_result or "").casefold() == "ok"),
+            _check("sd_read", "ok", read_result or "missing", (read_result or "").casefold() == "ok"),
+            _check("sd_loaded_count", "3", loaded_count or "missing", loaded_count == "3"),
+            _check("sd_data_match", "yes", data_match or "missing", (data_match or "").casefold() == "yes"),
+            _check("sd_result", "OK", result or "missing", (result or "").casefold() == "ok"),
+            _check("sd_file_exists_after", "yes", exists_after or "missing", exists_after == "yes"),
         ]
         passed = all(item.status == TestStatus.PASS for item in checks)
         return ActiveStepResult(
