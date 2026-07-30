@@ -10,6 +10,8 @@ const flashResult = document.getElementById("flash-ab-result");
 const watchdogResult = document.getElementById("watchdog-result");
 const retentionResult = document.getElementById("rtc-retention-result");
 
+let retentionCountdownTimer = null;
+
 function confirmedPayload(identity, confirmation) {
   return JSON.stringify({
     serial_number: identity.serialNumber,
@@ -39,12 +41,42 @@ function renderAdvanced(element, result, extra = "") {
   element.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${extra}${steps ? `<ul class="check-list command-list">${steps}</ul>` : ""}${result.note ? `<p>${escapeHtml(result.note)}</p>` : ""}${reportLine(result)}`;
 }
 
+function exactConfirmation(input, expected, element) {
+  const actual = input.value.trim();
+  if (actual === expected) return actual;
+  setResult(element, `Введите подтверждение точно: ${expected}`, "fail", "validation");
+  input.focus();
+  input.select();
+  return null;
+}
+
+function startRetentionCountdown(seconds = 30) {
+  if (retentionCountdownTimer !== null) clearInterval(retentionCountdownTimer);
+  const readyAt = Date.now() + (seconds * 1000);
+  runRetentionVerifyButton.disabled = true;
+
+  const update = () => {
+    const remaining = Math.max(0, Math.ceil((readyAt - Date.now()) / 1000));
+    if (remaining <= 0) {
+      clearInterval(retentionCountdownTimer);
+      retentionCountdownTimer = null;
+      runRetentionVerifyButton.disabled = false;
+      runRetentionVerifyButton.textContent = "2. Проверить";
+      return;
+    }
+    runRetentionVerifyButton.textContent = `2. Проверить (${remaining} с)`;
+  };
+
+  update();
+  retentionCountdownTimer = window.setInterval(update, 250);
+}
+
 async function runConfirmed(button, element, url, confirmation, runningText, renderExtra) {
   const identity = testIdentity();
   if (identity.error) {
     setResult(element, identity.error, "fail", "validation");
     identity.focus?.focus();
-    return;
+    return null;
   }
   button.disabled = true;
   setResult(element, runningText, "running", "running");
@@ -55,15 +87,18 @@ async function runConfirmed(button, element, url, confirmation, runningText, ren
       body: confirmedPayload(identity, confirmation),
     });
     renderAdvanced(element, result, renderExtra ? renderExtra(result) : "");
+    return result;
   } catch (error) {
     setResult(element, `FAIL — ${error.message}`, "fail", "result");
+    return null;
   } finally {
     button.disabled = false;
   }
 }
 
 runFlashButton.addEventListener("click", () => {
-  const confirmation = flashConfirmationInput.value.trim();
+  const confirmation = exactConfirmation(flashConfirmationInput, "FLASH A/B", flashResult);
+  if (confirmation === null) return;
   runConfirmed(
     runFlashButton,
     flashResult,
@@ -75,7 +110,12 @@ runFlashButton.addEventListener("click", () => {
 });
 
 runWatchdogButton.addEventListener("click", () => {
-  const confirmation = watchdogConfirmationInput.value.trim();
+  const confirmation = exactConfirmation(
+    watchdogConfirmationInput,
+    "WATCHDOG RESET",
+    watchdogResult,
+  );
+  if (confirmation === null) return;
   runConfirmed(
     runWatchdogButton,
     watchdogResult,
@@ -86,15 +126,16 @@ runWatchdogButton.addEventListener("click", () => {
   );
 });
 
-runRetentionPrepareButton.addEventListener("click", () => {
-  runConfirmed(
+runRetentionPrepareButton.addEventListener("click", async () => {
+  const result = await runConfirmed(
     runRetentionPrepareButton,
     retentionResult,
     "/api/tests/lcp/rtc-retention/prepare",
     "RTC RETENTION PREPARE",
     "RUNNING — синхронизация RTC и сохранение baseline…",
-    (result) => `<p>phase=${escapeHtml(result.phase)}; state=${escapeHtml(result.state_file || "none")}; boot_count=${escapeHtml(result.before_boot_count)}; battery=${escapeHtml(result.battery_state)}</p>`,
+    (value) => `<p>phase=${escapeHtml(value.phase)}; state=${escapeHtml(value.state_file || "none")}; boot_count=${escapeHtml(value.before_boot_count)}; battery=${escapeHtml(value.battery_state)}</p>`,
   );
+  if (result?.result === "PASS") startRetentionCountdown(30);
 });
 
 runRetentionVerifyButton.addEventListener("click", () => {
