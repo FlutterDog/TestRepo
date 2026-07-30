@@ -35,9 +35,9 @@ PNX, DM91 and density meters are not part of this project stage.
 - binary `EXIT` transition back to the text diagnostic console;
 - firmware identity verification through the `version` command;
 - validation of firmware name, version `1.02.0`, release stage and ATSAM3X8E target;
-- non-destructive diagnostic snapshot for RTOS, Flash A/B, FieldSensor, RS-485, SC16IS, X2X, Ethernet, SD, battery, RTC and watchdog;
-- atomic JSON report files in `reports/`, including raw diagnostic output.
+- non-destructive diagnostics for RTOS, Flash A/B, FieldSensor, RS-485, SC16IS, X2X, Ethernet, SD, battery, RTC and watchdog;
+- structured parser that preserves repeated keys from separate diagnostic sections;
+- semantic PASS/FAIL/SKIPPED checks for the confirmed LCP Basic 1.02.0 output format;
+- atomic JSON report files in `reports/`, including raw and structured diagnostic data.
 
-The diagnostic snapshot currently uses `capture_only` evaluation: PASS means that the command returned a report and the raw output was stored. Hardware-specific semantic thresholds are added only after the first real-device snapshot confirms the actual values and formatting.
-
-External S1-S4, HMI and Ethernet fixtures are not required for USB identity or diagnostic capture. Their physical tests will be independent stages with explicit PASS, FAIL or SKIPPED status.
+Diagnostic status is based on report content. Configured X2X modules must be online and the RTC must agree with the PC clock within five minutes. External S1-S4 and Ethernet communication checks remain SKIPPED until their fixtures are configured; internal UART and controller checks still run.
