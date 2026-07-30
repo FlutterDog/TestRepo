@@ -16,6 +16,16 @@ class TestStatus(str, Enum):
     SKIPPED = "SKIPPED"
 
 
+class EndpointAccessStatus(str, Enum):
+    AVAILABLE = "AVAILABLE"
+    BUSY = "BUSY"
+    NOT_FOUND = "NOT_FOUND"
+    UNREACHABLE = "UNREACHABLE"
+    UNSUPPORTED = "UNSUPPORTED"
+    ERROR = "ERROR"
+    SKIPPED = "SKIPPED"
+
+
 class LcpHelloRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
@@ -31,6 +41,13 @@ class CheckResult(BaseModel):
     status: TestStatus
 
 
+class EndpointAccessResult(BaseModel):
+    name: str
+    endpoint: str | None = None
+    status: EndpointAccessStatus
+    detail: str
+
+
 class HelloPayload(BaseModel):
     protocol_version: int
     schema_version: int
@@ -42,7 +59,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.4.1"
+    utility_version: str = "0.5.0"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -91,7 +108,7 @@ class DiagnosticCommandResult(BaseModel):
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.4.1"
+    utility_version: str = "0.5.0"
     test_profile_version: str = "lcp2116-diagnostic-semantic-v1.1"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
@@ -103,6 +120,7 @@ class LcpDiagnosticsResult(BaseModel):
     operator: str
     port: str
     evaluation_mode: str = "semantic_v1.1"
+    endpoint_access: list[EndpointAccessResult] = Field(default_factory=list)
     commands: list[DiagnosticCommandResult] = Field(default_factory=list)
     note: str = (
         "Статус команды учитывает внутреннюю диагностику LCP. Внешние S1–S4 и "
