@@ -70,6 +70,7 @@ class SerialTransportError(RuntimeError):
 
 class SerialPort(Protocol):
     is_open: bool
+    timeout: float | None
 
     def read(self, size: int = 1) -> bytes: ...
     def write(self, data: bytes) -> int: ...
@@ -206,6 +207,12 @@ class LcpUsbClient:
         self._serial_factory = serial_factory or _open_pyserial
         self.serial: SerialPort | None = None
         self._request_id = 1
+        self._binary_session_active = False
+
+    @property
+    def transport(self) -> SerialPort:
+        """Return the currently opened CDC transport without transferring ownership."""
+        return self._require_serial()
 
     def connect(self) -> None:
         deadline = time.monotonic() + self.open_retry_seconds
@@ -213,6 +220,7 @@ class LcpUsbClient:
         while time.monotonic() < deadline:
             try:
                 self.serial = self._serial_factory(self.port, self.baudrate, self.timeout)
+                self._binary_session_active = False
                 time.sleep(self.open_settle_seconds)
                 self.serial.reset_input_buffer()
                 self.serial.reset_output_buffer()
@@ -225,17 +233,26 @@ class LcpUsbClient:
             f"cannot open {self.port}: {last_error or 'open timeout'}"
         ) from last_error
 
+    def exit_binary_session(self) -> Frame | None:
+        """Return the shared USB CDC port from the binary protocol to text console."""
+        if self.serial is None or not self._binary_session_active:
+            return None
+        frame = self.request(COMMAND_EXIT, accepted={STATUS_OK}, timeout=0.5)
+        self._binary_session_active = False
+        return frame
+
     def close(self) -> None:
         if self.serial is None:
             return
         try:
-            self.request(COMMAND_EXIT, accepted={STATUS_OK}, timeout=0.5)
+            self.exit_binary_session()
         except Exception:
             pass
         self._raw_close()
 
     def _raw_close(self) -> None:
         serial_port, self.serial = self.serial, None
+        self._binary_session_active = False
         if serial_port is None:
             return
         try:
@@ -312,6 +329,8 @@ class LcpUsbClient:
     ) -> Frame:
         serial_port = self._require_serial()
         request_id = self._next_request_id()
+        if command != COMMAND_EXIT:
+            self._binary_session_active = True
         try:
             serial_port.write(build_frame(command, request_id, payload))
             serial_port.flush()
@@ -330,6 +349,8 @@ class LcpUsbClient:
             if accepted is not None and frame.status not in accepted:
                 text = STATUS_TEXT.get(frame.status, f"status {frame.status}")
                 raise ProtocolError(f"device returned {text}")
+            if command == COMMAND_EXIT:
+                self._binary_session_active = False
             return frame
 
     def hello_once(self) -> HelloInfo:
