@@ -12,8 +12,11 @@ from lorentz_test.models.tests import (
     LcpActiveRs485Result,
     LcpActiveServicesResult,
     LcpDiagnosticsResult,
+    LcpFlashAbResult,
     LcpHelloResult,
     LcpHmiResult,
+    LcpRtcRetentionResult,
+    LcpWatchdogResetResult,
 )
 from lorentz_test.paths import reports_dir
 
@@ -75,6 +78,15 @@ class JsonReportWriter:
 
     def save_lcp_hmi(self, result: LcpHmiResult) -> Path:
         return self._save(result, "HMI_ECHO")
+
+    def save_lcp_flash_ab(self, result: LcpFlashAbResult) -> Path:
+        return self._save(result, "FLASH_AB")
+
+    def save_lcp_watchdog(self, result: LcpWatchdogResetResult) -> Path:
+        return self._save(result, "WATCHDOG_RESET")
+
+    def save_lcp_rtc_retention(self, result: LcpRtcRetentionResult) -> Path:
+        return self._save(result, f"RTC_RETENTION_{result.phase}")
 
 
 report_writer = JsonReportWriter()
