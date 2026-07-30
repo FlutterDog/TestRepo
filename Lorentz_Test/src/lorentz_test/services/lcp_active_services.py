@@ -71,10 +71,12 @@ def _overall_status(steps: list[ActiveStepResult]) -> TestStatus:
 
 
 def _parse_rtc_datetime(raw: str, *, full_report: bool) -> datetime | None:
-    if full_report:
-        value = DiagnosticReport(raw).one("datetime", group="Current date and time")
-    else:
-        value = DiagnosticReport(raw).one("datetime", section="RTC TIME")
+    report = DiagnosticReport(raw)
+    value = (
+        report.one("datetime", group="Current date and time")
+        if full_report
+        else report.one("datetime")
+    )
     if not value or value == "unavailable":
         return None
     try:
@@ -114,12 +116,32 @@ def _run_config_validation(
             second = client.request(COMMAND_GET_CONFIG, accepted={STATUS_OK})
 
         checks = [
-            _check("hello_schema", "1 / bundle 104", f"{hello.schema_version} / {hello.bundle_size}", hello.schema_version == 1 and hello.bundle_size == 104),
+            _check(
+                "hello_schema",
+                "1 / bundle 104",
+                f"{hello.schema_version} / {hello.bundle_size}",
+                hello.schema_version == 1 and hello.bundle_size == 104,
+            ),
             _check("get_config_length", "124", len(first.payload), len(first.payload) == 124),
-            _check("bundle_schema", "1 / 104", f"{schema} / {bundle_size}", schema == 1 and bundle_size == 104),
-            _check("bundle_crc", f"0x{stored_crc:08X}", f"0x{calculated_crc:08X}", stored_crc == calculated_crc),
+            _check(
+                "bundle_schema",
+                "1 / 104",
+                f"{schema} / {bundle_size}",
+                schema == 1 and bundle_size == 104,
+            ),
+            _check(
+                "bundle_crc",
+                f"0x{stored_crc:08X}",
+                f"0x{calculated_crc:08X}",
+                stored_crc == calculated_crc,
+            ),
             _check("validate_config", "STATUS_OK", "STATUS_OK", True),
-            _check("read_back_unchanged", "identical GET_CONFIG payload", "identical" if second.payload == first.payload else "changed", second.payload == first.payload),
+            _check(
+                "read_back_unchanged",
+                "identical GET_CONFIG payload",
+                "identical" if second.payload == first.payload else "changed",
+                second.payload == first.payload,
+            ),
         ]
         passed = all(item.status == TestStatus.PASS for item in checks)
         return ActiveStepResult(
@@ -156,20 +178,54 @@ def _run_sd(console: LcpDiagnosticConsole) -> ActiveStepResult:
         after = console.execute("sd")
         values = parse_key_value_output(action)
         after_values = DiagnosticReport(after)
+        exists_after = after_values.one("sdtest.txt_exists", group="Filesystem")
         checks = [
-            _check("sd_write", "ok", values.get("write_result", "missing"), values.get("write_result", "").casefold() == "ok"),
-            _check("sd_read", "ok", values.get("read_result", "missing"), values.get("read_result", "").casefold() == "ok"),
-            _check("sd_loaded_count", "3", values.get("loaded_count", "missing"), values.get("loaded_count") == "3"),
-            _check("sd_data_match", "yes", values.get("data_match", "missing"), values.get("data_match", "").casefold() == "yes"),
-            _check("sd_result", "OK", values.get("result", "missing"), values.get("result", "").casefold() == "ok"),
-            _check("sd_file_exists_after", "yes", after_values.one("sdtest.txt_exists", group="Filesystem") or "missing", after_values.one("sdtest.txt_exists", group="Filesystem") == "yes"),
+            _check(
+                "sd_write",
+                "ok",
+                values.get("write_result", "missing"),
+                values.get("write_result", "").casefold() == "ok",
+            ),
+            _check(
+                "sd_read",
+                "ok",
+                values.get("read_result", "missing"),
+                values.get("read_result", "").casefold() == "ok",
+            ),
+            _check(
+                "sd_loaded_count",
+                "3",
+                values.get("loaded_count", "missing"),
+                values.get("loaded_count") == "3",
+            ),
+            _check(
+                "sd_data_match",
+                "yes",
+                values.get("data_match", "missing"),
+                values.get("data_match", "").casefold() == "yes",
+            ),
+            _check(
+                "sd_result",
+                "OK",
+                values.get("result", "missing"),
+                values.get("result", "").casefold() == "ok",
+            ),
+            _check(
+                "sd_file_exists_after",
+                "yes",
+                exists_after or "missing",
+                exists_after == "yes",
+            ),
         ]
         passed = all(item.status == TestStatus.PASS for item in checks)
         return ActiveStepResult(
             name="microSD write/read",
             status=TestStatus.PASS if passed else TestStatus.FAIL,
             duration_ms=round((time.monotonic() - started) * 1000),
-            detail="firmware overwrote and read back only SDTEST.TXT; configuration files were not modified",
+            detail=(
+                "firmware overwrote and read back only SDTEST.TXT; "
+                "configuration files were not modified"
+            ),
             checks=checks,
             raw_before=before,
             raw_action=action,
@@ -190,7 +246,8 @@ def _run_rtc(console: LcpDiagnosticConsole, sleep: Callable[[float], None]) -> A
         requested = datetime.now().replace(microsecond=0) + timedelta(seconds=1)
         command = f"rtc set {requested:%Y-%m-%d %H:%M:%S}"
         action = console.execute(command)
-        action_values = parse_key_value_output(action)
+        action_report = DiagnosticReport(action)
+        start_result = action_report.one("update_start_result")
         sleep(0.6)
         first_raw = console.execute("rtc")
         first_report = DiagnosticReport(first_raw)
@@ -200,18 +257,35 @@ def _run_rtc(console: LcpDiagnosticConsole, sleep: Callable[[float], None]) -> A
         second_time = _parse_rtc_datetime(second_raw, full_report=False)
         now = datetime.now().replace(microsecond=0)
 
-        start_ok = action_values.get("rtc update_start_result", "").casefold() == "ok"
-        update_idle = first_report.one("update_state", group="Clock and update state") == "idle"
-        update_ok = first_report.one("update_result", group="Clock and update state") == "ok"
+        start_ok = (start_result or "").casefold() == "ok"
+        update_state = first_report.one("update_state", group="Clock and update state")
+        update_result = first_report.one("update_result", group="Clock and update state")
+        update_idle = update_state == "idle"
+        update_ok = update_result == "ok"
         first_delta = abs((first_time - requested).total_seconds()) if first_time else 10**9
         advance = (second_time - first_time).total_seconds() if first_time and second_time else -1
         pc_delta = abs((second_time - now).total_seconds()) if second_time else 10**9
         checks = [
-            _check("rtc_update_start", "ok", action_values.get("rtc update_start_result", "missing"), start_ok),
-            _check("rtc_update_complete", "state=idle, result=ok", f"state={first_report.one('update_state', group='Clock and update state')}, result={first_report.one('update_result', group='Clock and update state')}", update_idle and update_ok),
-            _check("rtc_set_read_back", "difference <= 3 s", f"difference={first_delta:.0f} s", first_delta <= 3),
+            _check("rtc_update_start", "ok", start_result or "missing", start_ok),
+            _check(
+                "rtc_update_complete",
+                "state=idle, result=ok",
+                f"state={update_state}, result={update_result}",
+                update_idle and update_ok,
+            ),
+            _check(
+                "rtc_set_read_back",
+                "difference <= 3 s",
+                f"difference={first_delta:.0f} s",
+                first_delta <= 3,
+            ),
             _check("rtc_advances", "2..6 s", f"advance={advance:.0f} s", 2 <= advance <= 6),
-            _check("rtc_matches_pc", "difference <= 5 s", f"difference={pc_delta:.0f} s", pc_delta <= 5),
+            _check(
+                "rtc_matches_pc",
+                "difference <= 5 s",
+                f"difference={pc_delta:.0f} s",
+                pc_delta <= 5,
+            ),
         ]
         passed = all(item.status == TestStatus.PASS for item in checks)
         return ActiveStepResult(
@@ -247,10 +321,16 @@ def _run_rtos(console: LcpDiagnosticConsole, sleep: Callable[[float], None]) -> 
         uptime_after = _int(after.one("uptime_ms", group="Runtime"))
         heap_percent = _percent(after.one("minimum_ever_free_bytes", group="FreeRTOS heap_4"))
         stack_percent = _percent(after.one("minimum_free_bytes", group="LCP task stack"))
+        scheduler = after.one("scheduler", group="Runtime")
         checks = [
-            _check("rtos_scheduler", "running", after.one("scheduler", group="Runtime") or "missing", after.one("scheduler", group="Runtime") == "running"),
+            _check("rtos_scheduler", "running", scheduler or "missing", scheduler == "running"),
             _check("rtos_tick_progress", "> 0", tick_after - tick_before, tick_after > tick_before),
-            _check("rtos_uptime_progress", ">= 1500 ms", uptime_after - uptime_before, uptime_after - uptime_before >= 1500),
+            _check(
+                "rtos_uptime_progress",
+                ">= 1500 ms",
+                uptime_after - uptime_before,
+                uptime_after - uptime_before >= 1500,
+            ),
             _check("heap_minimum_free", ">= 10%", f"{heap_percent:.1f}%", heap_percent >= 10.0),
             _check("stack_minimum_free", ">= 10%", f"{stack_percent:.1f}%", stack_percent >= 10.0),
         ]
