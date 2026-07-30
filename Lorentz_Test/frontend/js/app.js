@@ -153,11 +153,14 @@ function renderHello(result) {
     `<li><strong>${check.status}</strong> ${check.name}: ${check.actual} (ожидалось ${check.expected})</li>`
   ).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${result.error}</p>` : "";
-  const firmware = `<p>${result.firmware_note}. Ожидается firmware ${result.expected_firmware_version}; её проверка будет отдельным шагом через диагностическую консоль.</p>`;
+  const firmware = result.firmware_version
+    ? `<p><strong>Firmware:</strong> ${result.firmware_name}, ${result.firmware_stage}, ${result.firmware_target}.</p>`
+    : "";
+  const note = result.firmware_note ? `<p>${result.firmware_note}</p>` : "";
   const report = result.report_file ? `<p><strong>JSON:</strong> ${result.report_file}</p>` : "";
   helloResult.className = `test-result ${css}`;
   helloResult.dataset.kind = "result";
-  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port || "порт не задан"}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${report}`;
+  helloResult.innerHTML = `<strong>${result.result}</strong> — ${result.port || "порт не задан"}, ${result.duration_ms} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${note}${report}`;
 }
 
 async function runHello() {
@@ -177,7 +180,7 @@ async function runHello() {
 
   if (!port) {
     setHelloResult(
-      "Выберите USB-порт LCP в настройках стенда. Для проверки HELLO порты S1–S4, HMI, X2X и Ethernet пока не требуются.",
+      "Выберите USB-порт LCP в настройках стенда. Для этой проверки порты S1–S4, HMI, X2X и Ethernet пока не требуются.",
       "fail",
       "validation",
     );
@@ -186,7 +189,11 @@ async function runHello() {
   }
 
   runHelloButton.disabled = true;
-  setHelloResult("RUNNING — открытие USB и ожидание ответа HELLO…", "running", "running");
+  setHelloResult(
+    "RUNNING — проверка бинарного USB и чтение версии firmware…",
+    "running",
+    "running",
+  );
   try {
     const result = await requestJson("/api/tests/lcp/hello", {
       method: "POST",
