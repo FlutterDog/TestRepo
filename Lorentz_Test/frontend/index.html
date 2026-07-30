@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.6.0">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.6.1">
 </head>
 <body>
   <header class="topbar">
@@ -89,10 +89,10 @@
         </div>
         <button id="run-active-rs485" type="button">Запустить активный тест</button>
       </div>
-      <p><strong>Перед запуском закройте Modbus Poll.</strong> Занятый или отсутствующий COM даёт FIXTURE_ERROR, а не отказ LCP.</p>
+      <p><strong>Перед запуском закройте Modbus Poll.</strong> Занятый, отсутствующий или неправильно назначенный COM даёт FIXTURE_ERROR, а не отказ LCP.</p>
       <div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js?v=0.6.0"></script>
+  <script src="/static/js/app.js?v=0.6.1"></script>
 </body>
 </html>
