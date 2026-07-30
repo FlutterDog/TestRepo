@@ -25,20 +25,36 @@ Open `http://127.0.0.1:8765` when the browser does not open automatically.
 
 PNX, DM91 and density meters are not part of this project stage.
 
-## Implemented MVP slice
+## Implemented release 0.6.0
 
 - persistent station configuration in `runtime/station.json`;
 - Windows COM-port enumeration with VID/PID metadata;
 - LCP binary USB framing and CRC32 validation;
 - robust HELLO retries for Windows `usbser.sys`;
-- PASS/FAIL evaluation for protocol v1, schema v1, 104-byte bundle and capabilities;
 - binary `EXIT` transition back to the text diagnostic console;
 - firmware identity verification through the `version` command;
-- validation of firmware name, version `1.02.0`, release stage and ATSAM3X8E target;
-- non-destructive diagnostics for RTOS, Flash A/B, FieldSensor, RS-485, SC16IS, X2X, Ethernet, SD, battery, RTC and watchdog;
+- passive diagnostics for RTOS, Flash A/B, UART, SC16IS, X2X master, Ethernet, SD, battery, RTC and watchdog;
 - structured parser that preserves repeated keys from separate diagnostic sections;
-- semantic PASS/FAIL/SKIPPED checks for the confirmed LCP Basic 1.02.0 output format;
 - station endpoint preflight with `AVAILABLE`, `BUSY`, `NOT_FOUND`, `UNREACHABLE`, `UNSUPPORTED` and `SKIPPED` states;
-- atomic JSON report files in `reports/`, including endpoint access, raw and structured diagnostic data.
+- host-side Modbus RTU slave engine with CRC16, FC03 and FC06 support;
+- four independent active FieldSensor fixture slaves for S1-S4;
+- active `LCT1114_2` X2X emulator for one configured module;
+- deterministic S1-S4 register patterns and post-test verification through the LCP `field` report;
+- X2X main block emulation for registers `0..93` plus waveform flag register `850`;
+- separate `FIXTURE_ERROR` status when a COM port cannot be acquired;
+- atomic JSON reports in `reports/`, including raw before/after diagnostics and observed RTU requests.
 
-The passive USB diagnostic snapshot evaluates internal LCP state. It does not start external Modbus RTU slaves on S1-S4 and does not synchronize the RTC; those checks are therefore `SKIPPED` until their dedicated active test stages run. A configured X2X module is evaluated from the LCP runtime report and must be online. Endpoint acquisition problems such as a COM port held by Modbus Poll are reported separately as station errors and do not by themselves mark the LCP hardware as failed.
+## Active RS-485 fixture
+
+Close Modbus Poll and any serial terminals before starting the active test. Python must be the only owner of the configured fixture COM ports.
+
+S1-S4 use four independent host slaves. The utility reads each port's current baud/parity from the LCP diagnostic report, starts slave address `1`, answers FC03 register `0`, count `2`, and verifies that LCP reports the unique values for that port.
+
+The current X2X active profile supports one configured `LCT1114_2` module. The host emulator answers the chunked FC03 reads for registers `0..93` and returns zero from register `850`, so waveform transfer remains inactive. Other module types are reported as `SKIPPED` until their emulator profile is implemented.
+
+A passive diagnostic timeout is not a DUT failure because no host slave is active. An active test can produce:
+
+- `PASS`: Python received requests, sent responses, and LCP confirmed the expected data;
+- `FIXTURE_ERROR`: Python could not acquire the configured COM port;
+- `FAIL`: the fixture port was acquired, but the complete LCP-to-slave communication path did not pass;
+- `SKIPPED`: no endpoint is configured or the module profile is not yet supported.
