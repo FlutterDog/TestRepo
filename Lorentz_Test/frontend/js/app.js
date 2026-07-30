@@ -54,6 +54,10 @@ function readForm() {
     x2x_endpoint: nullable(String(data.get("x2x_endpoint") || "")),
     eth1_ip: data.get("eth1_ip"),
     eth2_ip: data.get("eth2_ip"),
+    eth1_source_ip: nullable(String(data.get("eth1_source_ip") || "")),
+    eth2_source_ip: nullable(String(data.get("eth2_source_ip") || "")),
+    eth1_test_enabled: form.elements.eth1_test_enabled.checked,
+    eth2_test_enabled: form.elements.eth2_test_enabled.checked,
     shared_hmi_x2x_adapter: form.elements.shared_hmi_x2x_adapter.checked,
     post_test_action: data.get("post_test_action"),
     expected_firmware_version: data.get("expected_firmware_version"),
@@ -136,10 +140,16 @@ loadPorts();
 
 const runHelloButton = document.getElementById("run-hello");
 const runDiagnosticsButton = document.getElementById("run-diagnostics");
-const runActiveButton = document.getElementById("run-active-rs485");
+const runActiveRs485Button = document.getElementById("run-active-rs485");
+const runActiveEthernetButton = document.getElementById("run-active-ethernet");
+const runActiveServicesButton = document.getElementById("run-active-services");
+const runHmiButton = document.getElementById("run-hmi");
 const helloResult = document.getElementById("hello-result");
 const diagnosticsResult = document.getElementById("diagnostics-result");
-const activeResult = document.getElementById("active-rs485-result");
+const activeRs485Result = document.getElementById("active-rs485-result");
+const activeEthernetResult = document.getElementById("active-ethernet-result");
+const activeServicesResult = document.getElementById("active-services-result");
+const hmiResult = document.getElementById("hmi-result");
 const deviceSerialInput = document.getElementById("device-serial");
 const operatorInput = document.getElementById("operator-name");
 const lcpPortInput = form.elements.namedItem("lcp_port");
@@ -186,6 +196,10 @@ function renderCheck(check) {
   return `<li class="${css}"><strong>${escapeHtml(check.status)}</strong> ${escapeHtml(check.name)}: ${escapeHtml(check.actual)} (ожидалось ${escapeHtml(check.expected)})</li>`;
 }
 
+function reportLine(result) {
+  return result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
+}
+
 function renderHello(result) {
   const details = result.checks.map(renderCheck).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
@@ -193,10 +207,9 @@ function renderHello(result) {
     ? `<p><strong>Firmware:</strong> ${escapeHtml(result.firmware_name)}, ${escapeHtml(result.firmware_stage)}, ${escapeHtml(result.firmware_target)}.</p>`
     : "";
   const note = result.firmware_note ? `<p>${escapeHtml(result.firmware_note)}</p>` : "";
-  const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
   helloResult.className = `test-result ${resultCss(result.result)}`;
   helloResult.dataset.kind = "result";
-  helloResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${note}${report}`;
+  helloResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${note}${reportLine(result)}`;
 }
 
 async function runHello() {
@@ -245,10 +258,9 @@ function renderDiagnostics(result) {
       </li>`;
   }).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
-  const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
   diagnosticsResult.className = `test-result ${resultCss(result.result)}`;
   diagnosticsResult.dataset.kind = "result";
-  diagnosticsResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${endpointBlock}${commands ? `<ul class="check-list command-list">${commands}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
+  diagnosticsResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${endpointBlock}${commands ? `<ul class="check-list command-list">${commands}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${reportLine(result)}`;
 }
 
 async function runDiagnostics() {
@@ -273,7 +285,7 @@ async function runDiagnostics() {
   }
 }
 
-function renderActive(result) {
+function renderActiveRs485(result) {
   const interfaces = (result.interfaces || []).map((item) => {
     const endpoint = item.endpoint || "не настроен";
     const values = item.expected_values?.length
@@ -290,36 +302,140 @@ function renderActive(result) {
       </li>`;
   }).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
-  const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
-  activeResult.className = `test-result ${resultCss(result.result)}`;
-  activeResult.dataset.kind = "result";
-  activeResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${interfaces ? `<ul class="check-list command-list">${interfaces}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
+  activeRs485Result.className = `test-result ${resultCss(result.result)}`;
+  activeRs485Result.dataset.kind = "result";
+  activeRs485Result.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${interfaces ? `<ul class="check-list command-list">${interfaces}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${reportLine(result)}`;
 }
 
 async function runActiveRs485() {
   const identity = testIdentity();
   if (identity.error) {
-    setResult(activeResult, identity.error, "fail", "validation");
+    setResult(activeRs485Result, identity.error, "fail", "validation");
     identity.focus?.focus();
     return;
   }
-  runActiveButton.disabled = true;
-  setResult(activeResult, "RUNNING — Python запускает slave S1–S4/X2X и ждёт опрос LCP…", "running", "running");
+  runActiveRs485Button.disabled = true;
+  setResult(activeRs485Result, "RUNNING — Python запускает slave S1–S4/X2X и ждёт опрос LCP…", "running", "running");
   try {
-    renderActive(await requestJson("/api/tests/lcp/active-rs485", {
+    renderActiveRs485(await requestJson("/api/tests/lcp/active-rs485", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: requestPayload(identity),
     }));
   } catch (error) {
-    setResult(activeResult, `FAIL — ${error.message}`, "fail", "result");
+    setResult(activeRs485Result, `FAIL — ${error.message}`, "fail", "result");
   } finally {
-    runActiveButton.disabled = false;
+    runActiveRs485Button.disabled = false;
+  }
+}
+
+function renderActiveEthernet(result) {
+  const interfaces = (result.interfaces || []).map((item) => `
+    <li class="diagnostic-command command-${String(item.status).toLowerCase()}">
+      <div><strong>${escapeHtml(item.status)}</strong> ${escapeHtml(item.name)} [${escapeHtml(item.target_ip)}:502] source=${escapeHtml(item.source_ip || "auto")}, ${escapeHtml(item.duration_ms)} ms</div>
+      <div>${escapeHtml(item.detail)}</div>
+      ${item.registers?.length ? `<div>holding 0..11: ${escapeHtml(JSON.stringify(item.registers))}</div>` : ""}
+    </li>`).join("");
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
+  activeEthernetResult.className = `test-result ${resultCss(result.result)}`;
+  activeEthernetResult.dataset.kind = "result";
+  activeEthernetResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${interfaces ? `<ul class="check-list command-list">${interfaces}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${reportLine(result)}`;
+}
+
+async function runActiveEthernet() {
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(activeEthernetResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
+    return;
+  }
+  runActiveEthernetButton.disabled = true;
+  setResult(activeEthernetResult, "RUNNING — Modbus TCP FC03 для ETH1/ETH2…", "running", "running");
+  try {
+    renderActiveEthernet(await requestJson("/api/tests/lcp/active-ethernet", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: requestPayload(identity),
+    }));
+  } catch (error) {
+    setResult(activeEthernetResult, `FAIL — ${error.message}`, "fail", "result");
+  } finally {
+    runActiveEthernetButton.disabled = false;
+  }
+}
+
+function renderActiveServices(result) {
+  const steps = (result.steps || []).map((step) => {
+    const checks = (step.checks || []).map(renderCheck).join("");
+    return `
+      <li class="diagnostic-command command-${String(step.status).toLowerCase()}">
+        <div><strong>${escapeHtml(step.status)}</strong> ${escapeHtml(step.name)}, ${escapeHtml(step.duration_ms)} ms</div>
+        <div>${escapeHtml(step.detail)}</div>
+        ${checks ? `<ul class="check-list nested">${checks}</ul>` : ""}
+      </li>`;
+  }).join("");
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
+  activeServicesResult.className = `test-result ${resultCss(result.result)}`;
+  activeServicesResult.dataset.kind = "result";
+  activeServicesResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${steps ? `<ul class="check-list command-list">${steps}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${reportLine(result)}`;
+}
+
+async function runActiveServices() {
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(activeServicesResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
+    return;
+  }
+  runActiveServicesButton.disabled = true;
+  setResult(activeServicesResult, "RUNNING — config validate, SD, RTC и RTOS…", "running", "running");
+  try {
+    renderActiveServices(await requestJson("/api/tests/lcp/active-services", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: requestPayload(identity),
+    }));
+  } catch (error) {
+    setResult(activeServicesResult, `FAIL — ${error.message}`, "fail", "result");
+  } finally {
+    runActiveServicesButton.disabled = false;
+  }
+}
+
+function renderHmi(result) {
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
+  const frames = result.expected_frames_hex?.length
+    ? `<p>frames sent=${escapeHtml(result.frames_sent)}, received=${escapeHtml(result.frames_received)}</p>`
+    : "";
+  hmiResult.className = `test-result ${resultCss(result.result)}`;
+  hmiResult.dataset.kind = "result";
+  hmiResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.endpoint || "endpoint не задан")}, ${escapeHtml(result.duration_ms)} ms${error}<p>${escapeHtml(result.detail)}</p>${frames}${reportLine(result)}`;
+}
+
+async function runHmi() {
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(hmiResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
+    return;
+  }
+  runHmiButton.disabled = true;
+  setResult(hmiResult, "RUNNING — три HMI echo-кадра…", "running", "running");
+  try {
+    renderHmi(await requestJson("/api/tests/lcp/hmi", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: requestPayload(identity),
+    }));
+  } catch (error) {
+    setResult(hmiResult, `FAIL — ${error.message}`, "fail", "result");
+  } finally {
+    runHmiButton.disabled = false;
   }
 }
 
 function clearValidation() {
-  [helloResult, diagnosticsResult, activeResult].forEach((element) => {
+  [helloResult, diagnosticsResult, activeRs485Result, activeEthernetResult, activeServicesResult, hmiResult].forEach((element) => {
     if (element.dataset.kind === "validation") setResult(element, "WAITING", "waiting", "waiting");
   });
 }
@@ -331,4 +447,7 @@ function clearValidation() {
 
 runHelloButton.addEventListener("click", runHello);
 runDiagnosticsButton.addEventListener("click", runDiagnostics);
-runActiveButton.addEventListener("click", runActiveRs485);
+runActiveRs485Button.addEventListener("click", runActiveRs485);
+runActiveEthernetButton.addEventListener("click", runActiveEthernet);
+runActiveServicesButton.addEventListener("click", runActiveServices);
+runHmiButton.addEventListener("click", runHmi);
