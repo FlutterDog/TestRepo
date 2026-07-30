@@ -13,10 +13,11 @@ from fastapi.staticfiles import StaticFiles
 from lorentz_test import __version__
 from lorentz_test.models.serial import SerialPortInfo
 from lorentz_test.models.station import StationConfig
-from lorentz_test.models.tests import LcpHelloRequest, LcpHelloResult
+from lorentz_test.models.tests import LcpDiagnosticsResult, LcpHelloRequest, LcpHelloResult
 from lorentz_test.paths import frontend_dir
 from lorentz_test.reporting.json_report import report_writer
 from lorentz_test.serial_ports import list_serial_ports
+from lorentz_test.services.lcp_diagnostics import run_lcp_diagnostic_snapshot
 from lorentz_test.services.lcp_hello import run_lcp_hello
 from lorentz_test.station_store import station_store
 
@@ -48,6 +49,20 @@ def test_lcp_hello(request: LcpHelloRequest) -> LcpHelloResult:
     result = run_lcp_hello(request, station)
     try:
         report_writer.save_lcp_hello(result)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return result
+
+
+@app.post("/api/tests/lcp/diagnostics", response_model=LcpDiagnosticsResult)
+def test_lcp_diagnostics(request: LcpHelloRequest) -> LcpDiagnosticsResult:
+    try:
+        station = station_store.load()
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    result = run_lcp_diagnostic_snapshot(request, station)
+    try:
+        report_writer.save_lcp_diagnostics(result)
     except RuntimeError as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
     return result
