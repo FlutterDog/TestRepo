@@ -42,9 +42,9 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.1.0"
-    test_profile_version: str = "lcp2116-usb-hello-v1"
-    test_id: str = "lcp_usb_hello"
+    utility_version: str = "0.2.0"
+    test_profile_version: str = "lcp2116-usb-identity-v1"
+    test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
     result: TestStatus
     started_at: datetime
@@ -56,8 +56,12 @@ class LcpHelloResult(BaseModel):
     hello: HelloPayload | None = None
     checks: list[CheckResult] = Field(default_factory=list)
     expected_firmware_version: str = "1.02.0"
+    firmware_name: str | None = None
     firmware_version: str | None = None
+    firmware_stage: str | None = None
+    firmware_target: str | None = None
     firmware_version_verified: bool = False
-    firmware_note: str = "HELLO does not return the human-readable firmware version"
+    firmware_note: str = "Версия firmware читается через диагностическую консоль USB."
+    firmware_raw_output: str | None = None
     error: str | None = None
     report_file: str | None = None
