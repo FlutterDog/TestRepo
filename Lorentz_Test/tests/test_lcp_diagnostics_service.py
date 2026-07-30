@@ -128,13 +128,26 @@ def test_diagnostic_snapshot_evaluates_all_commands() -> None:
         console_opener=FakeConsole.open_port,
     )
     assert result.result == Status.PASS
-    assert result.evaluation_mode == "semantic_v1"
+    assert result.evaluation_mode == "semantic_v1.1"
     assert len(result.commands) == 11
     assert all(item.capture_status == Status.PASS for item in result.commands)
     assert all(item.status == Status.PASS for item in result.commands)
     field = next(item for item in result.commands if item.command_id == "field")
     assert any(check.status == Status.SKIPPED for check in field.checks)
     assert "Runtime.scheduler" in result.commands[0].parsed_values
+
+
+def test_passive_snapshot_skips_configured_external_s_ports() -> None:
+    result = run_lcp_diagnostic_snapshot(
+        LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM7"),
+        StationConfig(s1_endpoint="COM11", s2_endpoint="COM12", s3_endpoint="COM13"),
+        console_opener=FakeConsole.open_port,
+    )
+    field = next(item for item in result.commands if item.command_id == "field")
+    external = [check for check in field.checks if check.name.endswith("_external_modbus")]
+    assert len(external) == 4
+    assert all(check.status == Status.SKIPPED for check in external)
+    assert all("passive snapshot only" in check.actual for check in external)
 
 
 def test_diagnostic_snapshot_continues_after_one_command_failure() -> None:
