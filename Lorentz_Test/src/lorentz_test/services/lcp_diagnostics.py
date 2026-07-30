@@ -54,23 +54,24 @@ def _passive_snapshot_checks(
     command_id: str,
     checks: list[CheckResult],
 ) -> list[CheckResult]:
-    """Keep external fixture checks out of a passive USB-only snapshot.
-
-    The diagnostic command reports what the LCP has observed, but this utility has
-    not opened the configured S1-S4 endpoints and has not started Modbus slaves.
-    Therefore an LCP timeout cannot yet be attributed to the controller.
-    """
-    if command_id != "field":
-        return checks
-
+    """Keep active fixture and synchronization checks out of a passive snapshot."""
     adjusted: list[CheckResult] = []
     for check in checks:
-        if check.name.endswith("_external_modbus"):
+        if command_id == "field" and check.name.endswith("_external_modbus"):
             adjusted.append(
                 CheckResult(
                     name=check.name,
                     expected="active external Modbus test",
                     actual=f"passive snapshot only; LCP reports {check.actual}",
+                    status=TestStatus.SKIPPED,
+                )
+            )
+        elif command_id == "rtc" and check.name == "rtc_time_matches_pc":
+            adjusted.append(
+                CheckResult(
+                    name=check.name,
+                    expected="active RTC synchronization and retention test",
+                    actual=f"passive snapshot only; RTC reports {check.actual}",
                     status=TestStatus.SKIPPED,
                 )
             )
