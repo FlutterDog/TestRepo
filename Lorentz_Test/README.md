@@ -25,7 +25,9 @@ Open `http://127.0.0.1:8765` when the browser does not open automatically.
 
 PNX, DM91 and density meters are not part of this project stage.
 
-## Implemented release 0.6.0
+## Implemented release 0.7.0
+
+### Identity and passive diagnostics
 
 - persistent station configuration in `runtime/station.json`;
 - Windows COM-port enumeration with VID/PID metadata;
@@ -34,27 +36,68 @@ PNX, DM91 and density meters are not part of this project stage.
 - binary `EXIT` transition back to the text diagnostic console;
 - firmware identity verification through the `version` command;
 - passive diagnostics for RTOS, Flash A/B, UART, SC16IS, X2X master, Ethernet, SD, battery, RTC and watchdog;
-- structured parser that preserves repeated keys from separate diagnostic sections;
-- station endpoint preflight with `AVAILABLE`, `BUSY`, `NOT_FOUND`, `UNREACHABLE`, `UNSUPPORTED` and `SKIPPED` states;
+- structured diagnostic parser that preserves repeated keys from separate sections;
+- station endpoint preflight with `AVAILABLE`, `BUSY`, `NOT_FOUND`, `UNREACHABLE`, `UNSUPPORTED` and `SKIPPED` states.
+
+### Active RS-485 fixture
+
 - host-side Modbus RTU slave engine with CRC16, FC03 and FC06 support;
-- four independent active FieldSensor fixture slaves for S1-S4;
+- four independent FieldSensor fixture slaves for S1-S4;
 - active `LCT1114_2` X2X emulator for one configured module;
-- deterministic S1-S4 register patterns and post-test verification through the LCP `field` report;
+- deterministic S1-S4 register patterns and verification through the LCP `field` report;
 - X2X main block emulation for registers `0..93` plus waveform flag register `850`;
-- separate `FIXTURE_ERROR` status when a COM port cannot be acquired;
-- atomic JSON reports in `reports/`, including raw before/after diagnostics and observed RTU requests.
+- automatic detection of crossed fixture COM assignments;
+- separate `FIXTURE_ERROR` status for busy, absent, inaccessible or incorrectly mapped fixture endpoints.
 
-## Active RS-485 fixture
+Close Modbus Poll and serial terminals before active RS-485 tests. Python must be the only owner of the configured fixture ports.
 
-Close Modbus Poll and any serial terminals before starting the active test. Python must be the only owner of the configured fixture COM ports.
+### Active Ethernet
 
-S1-S4 use four independent host slaves. The utility reads each port's current baud/parity from the LCP diagnostic report, starts slave address `1`, answers FC03 register `0`, count `2`, and verifies that LCP reports the unique values for that port.
+Each enabled port is tested independently:
 
-The current X2X active profile supports one configured `LCT1114_2` module. The host emulator answers the chunked FC03 reads for registers `0..93` and returns zero from register `850`, so waveform transfer remains inactive. Other module types are reported as `SKIPPED` until their emulator profile is implemented.
+1. read the LCP `eth` report;
+2. require the configured DUT IP to match the active firmware IP;
+3. require physical link up;
+4. optionally bind the client socket to the configured PC source IP;
+5. connect to TCP port 502;
+6. issue Modbus TCP FC03 for holding registers `0..11`;
+7. validate MBAP transaction ID, protocol ID, unit ID, length, function and byte count;
+8. read the LCP `eth` report again and confirm increased request/response counters with no new transport errors.
 
-A passive diagnostic timeout is not a DUT failure because no host slave is active. An active test can produce:
+A missing link, route, source adapter or firewall path is `FIXTURE_ERROR`. A malformed response after TCP connection is `FAIL`.
 
-- `PASS`: Python received requests, sent responses, and LCP confirmed the expected data;
-- `FIXTURE_ERROR`: Python could not acquire the configured COM port;
-- `FAIL`: the fixture port was acquired, but the complete LCP-to-slave communication path did not pass;
-- `SKIPPED`: no endpoint is configured or the module profile is not yet supported.
+### Active internal services
+
+The safe service test performs:
+
+- binary `GET_CONFIG`;
+- schema, length and CRC32 verification;
+- `VALIDATE_CONFIG` of the unchanged active bundle;
+- a second `GET_CONFIG` and byte-for-byte comparison;
+- no `PUT_CONFIG`, no Flash write and no reboot;
+- `sd test`, which overwrites and reads back only `SDTEST.TXT`;
+- RTC synchronization from the PC, read-back and a three-second tick check;
+- two RTOS snapshots with tick/uptime progression and heap/stack reserve checks.
+
+### HMI echo
+
+The HMI test opens the configured fixture endpoint at `9600 8N1`, sends three frames of different sizes and contents, and requires exact echo from the firmware diagnostic HMI service. Local COM ports and raw serial-server endpoints in `tcp://host:port` form are supported.
+
+## Result classification
+
+- `PASS`: the complete tested path passed;
+- `FIXTURE_ERROR`: the host fixture, cable, mapping, network route or endpoint ownership prevents DUT evaluation;
+- `FAIL`: the fixture path was established but the DUT response or internal result was incorrect;
+- `SKIPPED`: the interface is disabled, not configured or not supported by the current emulator profile.
+
+## Reports
+
+Every module writes an atomic JSON report to `reports/`:
+
+- `DIAGNOSTICS`;
+- `ACTIVE_RS485`;
+- `ACTIVE_ETHERNET`;
+- `ACTIVE_SERVICES`;
+- `HMI_ECHO`.
+
+Reports include raw before/after diagnostics, parsed checks, fixture counters and exact error classification.
