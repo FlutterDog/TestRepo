@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.5.0">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.6.0">
 </head>
 <body>
   <header class="topbar">
@@ -19,19 +19,19 @@
       <div class="section-heading">
         <div>
           <h2>Настройка стенда</h2>
-          <p>Порты и адреса не зашиваются в программу и сохраняются локально.</p>
+          <p>Порты и адреса сохраняются локально. Перед активным тестом Modbus Poll и терминалы должны быть закрыты.</p>
         </div>
         <div class="button-row"><button id="refresh-ports" class="secondary" type="button">Обновить COM</button><button id="save-station" type="button">Сохранить</button></div>
       </div>
       <form id="station-form" class="form-grid">
         <label>Имя станции<input name="station_name" required maxlength="80"></label>
         <label>USB LCP<input name="lcp_port" list="serial-ports" placeholder="COM5"></label>
-        <label>S1 endpoint<input name="s1_endpoint" list="serial-ports" placeholder="COM10 или tcp://host:port"></label>
+        <label>S1 endpoint<input name="s1_endpoint" list="serial-ports" placeholder="COM11"></label>
         <label>S2 endpoint<input name="s2_endpoint" list="serial-ports"></label>
         <label>S3 endpoint<input name="s3_endpoint" list="serial-ports"></label>
         <label>S4 endpoint<input name="s4_endpoint" list="serial-ports"></label>
         <label>HMI endpoint<input name="hmi_endpoint" list="serial-ports"></label>
-        <label>X2X endpoint<input name="x2x_endpoint" list="serial-ports"></label>
+        <label>X2X endpoint<input name="x2x_endpoint" list="serial-ports" placeholder="COM15"></label>
         <label>ETH1 IP<input name="eth1_ip" required></label>
         <label>ETH2 IP<input name="eth2_ip" required></label>
         <label>Ожидаемая firmware<input name="expected_firmware_version" required></label>
@@ -58,7 +58,7 @@
       <div class="section-heading">
         <div>
           <h2>Проверка USB и firmware</h2>
-          <p>Проверяются бинарный HELLO, параметры transport и версия firmware через диагностическую консоль.</p>
+          <p>Проверяются бинарный HELLO, transport и версия firmware.</p>
         </div>
         <button id="run-hello" type="button">Начать проверку</button>
       </div>
@@ -72,15 +72,27 @@
     <section class="card test-card">
       <div class="section-heading">
         <div>
-          <h2>Диагностическая проверка</h2>
-          <p>Проверяются доступность endpoint стенда, RTOS, Flash A/B, UART, X2X, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p>
+          <h2>Пассивная диагностика</h2>
+          <p>Проверяются внутренние RTOS, Flash, UART, X2X master, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p>
         </div>
         <button id="run-diagnostics" type="button">Проверить диагностику</button>
       </div>
-      <p>Занятый COM показывается как ошибка стенда. Пассивный USB-снимок не выполняет внешний Modbus-тест S1–S4 и не синхронизирует RTC.</p>
+      <p>Внешний обмен S1–S4 и X2X module communication здесь не оцениваются: программа ещё не запускает slave.</p>
       <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
+
+    <section class="card test-card active-card">
+      <div class="section-heading">
+        <div>
+          <h2>Активный тест S1–S4 и X2X</h2>
+          <p>Python захватывает указанные COM-порты, запускает Modbus RTU slave и проверяет, что LCP получил тестовые данные.</p>
+        </div>
+        <button id="run-active-rs485" type="button">Запустить активный тест</button>
+      </div>
+      <p><strong>Перед запуском закройте Modbus Poll.</strong> Занятый или отсутствующий COM даёт FIXTURE_ERROR, а не отказ LCP.</p>
+      <div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
   </main>
-  <script src="/static/js/app.js?v=0.5.0"></script>
+  <script src="/static/js/app.js?v=0.6.0"></script>
 </body>
 </html>
