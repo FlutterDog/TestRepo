@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import time
 from datetime import datetime, timedelta, timezone
@@ -22,6 +23,7 @@ from lorentz_test.protocols.lcp_diagnostic_parser import DiagnosticReport
 
 
 _STATE_FILE = "rtc_retention_state.json"
+_MINIMUM_POWER_OFF_SECONDS = 30.0
 
 
 def _state_path() -> Path:
@@ -193,6 +195,29 @@ def verify_rtc_retention(
         rtc_at_prepare = datetime.fromisoformat(state["rtc_at_prepare"])
         before_boot = int(state["before_boot_count"])
 
+        now = datetime.now().replace(microsecond=0)
+        elapsed_pc = (now - prepared_at).total_seconds()
+        result.prepared_at = prepared_at
+        result.elapsed_pc_seconds = elapsed_pc
+        result.before_boot_count = before_boot
+
+        if elapsed_pc < _MINIMUM_POWER_OFF_SECONDS:
+            remaining = math.ceil(_MINIMUM_POWER_OFF_SECONDS - elapsed_pc)
+            result.result = TestStatus.SKIPPED
+            result.steps.append(
+                ActiveStepResult(
+                    name="Wait for RTC retention interval",
+                    status=TestStatus.SKIPPED,
+                    duration_ms=round((time.monotonic() - started) * 1000),
+                    detail=(
+                        f"PREPARE baseline is valid, but VERIFY was started after only "
+                        f"{elapsed_pc:.1f}s. Disconnect USB and main power, wait at least "
+                        f"{remaining}s more, restore power and run VERIFY again."
+                    ),
+                )
+            )
+            return result
+
         console = LcpDiagnosticConsole.open_port(
             result.port,
             baudrate=station.serial_baudrate,
@@ -207,23 +232,28 @@ def verify_rtc_retention(
         if rtc_now is None:
             raise RuntimeError("RTC is unreadable after power restoration")
 
-        now = datetime.now().replace(microsecond=0)
-        elapsed_pc = (now - prepared_at).total_seconds()
         elapsed_rtc = (rtc_now - rtc_at_prepare).total_seconds()
         error_seconds = abs(elapsed_rtc - elapsed_pc)
         checks = [
-            _check("minimum_power_off_interval", ">= 30 s", f"{elapsed_pc:.0f} s", elapsed_pc >= 30),
+            _check(
+                "minimum_power_off_interval",
+                ">= 30 s",
+                f"{elapsed_pc:.0f} s",
+                elapsed_pc >= _MINIMUM_POWER_OFF_SECONDS,
+            ),
             _check("boot_count_increment", f"> {before_boot}", after_boot, after_boot > before_boot),
-            _check("rtc_elapsed_time", "difference from PC <= 10 s", f"error={error_seconds:.1f} s", error_seconds <= 10),
+            _check(
+                "rtc_elapsed_time",
+                "difference from PC <= 10 s",
+                f"error={error_seconds:.1f} s",
+                error_seconds <= 10,
+            ),
             _check("battery_comparator", "ok", battery or "missing", battery == "ok"),
         ]
         passed = all(item.status == TestStatus.PASS for item in checks)
         result.result = TestStatus.PASS if passed else TestStatus.FAIL
-        result.prepared_at = prepared_at
-        result.elapsed_pc_seconds = elapsed_pc
         result.elapsed_rtc_seconds = elapsed_rtc
         result.retention_error_seconds = error_seconds
-        result.before_boot_count = before_boot
         result.after_boot_count = after_boot
         result.battery_state = battery
         result.steps.append(
