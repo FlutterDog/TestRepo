@@ -62,9 +62,12 @@ fat_type=FAT32, SDTEST.TXT_exists=yes
 """
         if command == "sd test":
             return """
+============================================================
+MICROSD FILE TEST
+============================================================
+test_file=SDTEST.TXT, action=overwrite then read back
 write_result=ok
-read_result=ok
-loaded_count=3
+read_result=ok, loaded_count=3
 data_match=yes
 result=OK
 """
