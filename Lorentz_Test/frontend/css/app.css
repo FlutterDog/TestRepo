@@ -54,6 +54,7 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .test-result.running { background: #fff6dd; color: #725711; }
 .test-result.pass { background: #e9f8ee; color: #176b36; }
 .test-result.fail { background: #fff0ee; color: #9a241b; }
+.test-result.fixture-error { background: #fff4e5; color: #9a4b00; }
 .check-list { margin: 12px 0 0; padding-left: 20px; }
 .check-list li { margin: 5px 0; }
 .check-list.nested { margin: 7px 0 10px; }
@@ -63,7 +64,9 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .command-pass > div > strong, .check-pass strong { color: #176b36; }
 .command-fail > div > strong, .check-fail strong, .capture-fail { color: #9a241b; }
 .command-fixture_error > div > strong, .check-fixture_error strong { color: #b05a00; }
-.command-skipped > div > strong, .check-skipped strong { color: #725711; }
+.command-skipped > div > strong, .check-skipped strong,
+.command-incomplete > div > strong, .command-waiting > div > strong { color: #725711; }
+.command-running > div > strong { color: #725711; }
 .check-skipped { opacity: .85; }
 .capture-fail { margin-left: 8px; font-weight: 700; }
 .endpoint-list { margin-bottom: 18px; }
@@ -74,3 +77,9 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .endpoint-unsupported strong,
 .endpoint-error strong { color: #9a241b; }
 .endpoint-skipped strong { color: #725711; }
+.full-test-card { border: 2px solid #245f8f; box-shadow: 0 8px 24px rgba(36, 95, 143, .10); }
+.full-test-card .primary-large { min-width: 250px; padding: 14px 22px; font-size: 16px; }
+.full-test-note { margin: 16px 0 0; color: #536171; }
+.test-group-title { margin: 34px 0 10px; color: #324250; }
+.full-run-list { margin-top: 14px; }
+.full-run-report { margin-top: 4px; color: inherit; font-size: 12px; overflow-wrap: anywhere; opacity: .85; }
