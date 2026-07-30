@@ -42,7 +42,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.4.0"
+    utility_version: str = "0.4.1"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -91,8 +91,8 @@ class DiagnosticCommandResult(BaseModel):
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.4.0"
-    test_profile_version: str = "lcp2116-diagnostic-semantic-v1"
+    utility_version: str = "0.4.1"
+    test_profile_version: str = "lcp2116-diagnostic-semantic-v1.1"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
     result: TestStatus
@@ -102,11 +102,11 @@ class LcpDiagnosticsResult(BaseModel):
     serial_number: str
     operator: str
     port: str
-    evaluation_mode: str = "semantic_v1"
+    evaluation_mode: str = "semantic_v1.1"
     commands: list[DiagnosticCommandResult] = Field(default_factory=list)
     note: str = (
-        "Статус команды учитывает содержание диагностического ответа. "
-        "Неподключённые внешние части стенда отмечаются SKIPPED."
+        "Статус команды учитывает внутреннюю диагностику LCP. Внешние S1–S4 "
+        "в пассивном снимке отмечаются SKIPPED до активного теста стенда."
     )
     error: str | None = None
     report_file: str | None = None
