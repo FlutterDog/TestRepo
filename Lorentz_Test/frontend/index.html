@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0-p1">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0-p2">
 </head>
 <body>
   <header class="topbar">
@@ -43,21 +43,40 @@
       <p id="station-message" class="message" aria-live="polite"></p>
     </section>
 
+    <section class="card test-card full-test-card">
+      <div class="section-heading">
+        <div>
+          <h2>Полная проверка LCP2116</h2>
+          <p>Одна кнопка последовательно запускает все штатные безопасные тесты и формирует единый итог.</p>
+        </div>
+        <button id="run-full-test" class="primary-large" type="button">Запустить полную проверку</button>
+      </div>
+      <div class="form-grid compact">
+        <label>Серийный номер<input id="device-serial" required placeholder="LCP-000001"></label>
+        <label>Оператор<input id="operator-name" required></label>
+      </div>
+      <p class="full-test-note"><strong>Включено:</strong> USB/firmware, диагностика, RS-485/X2X, Ethernet, config/microSD/RTC/RTOS и HMI. Flash A/B, watchdog reset и RTC retention запускаются отдельно из-за записи, reboot или снятия питания.</p>
+      <div id="full-test-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <h2 class="test-group-title">Отдельные тесты и отладка</h2>
+
     <section class="card test-card">
-      <div class="section-heading"><div><h2>Проверка USB и firmware</h2><p>Бинарный HELLO, transport и версия firmware.</p></div><button id="run-hello" type="button">Начать проверку</button></div>
-      <div class="form-grid compact"><label>Серийный номер<input id="device-serial" required placeholder="LCP-000001"></label><label>Оператор<input id="operator-name" required></label></div>
+      <div class="section-heading"><div><h2>Проверка USB и firmware</h2><p>Бинарный HELLO, transport и версия firmware.</p></div><button id="run-hello" type="button">Проверить отдельно</button></div>
       <div id="hello-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
     <section class="card test-card">
-      <div class="section-heading"><div><h2>Пассивная диагностика</h2><p>RTOS, Flash, UART, X2X master, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p></div><button id="run-diagnostics" type="button">Проверить диагностику</button></div>
+      <div class="section-heading"><div><h2>Пассивная диагностика</h2><p>RTOS, Flash, UART, X2X master, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p></div><button id="run-diagnostics" type="button">Проверить отдельно</button></div>
       <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
-    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный тест S1–S4 и X2X</h2><p>Python запускает Modbus RTU slaves и проверяет приём уникальных данных.</p></div><button id="run-active-rs485" type="button">Запустить RS-485</button></div><div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
-    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный Ethernet</h2><p>Modbus TCP FC03 registers 0…11 и counters W5500.</p></div><button id="run-active-ethernet" type="button">Проверить Ethernet</button></div><div id="active-ethernet-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
-    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активные внутренние сервисы</h2><p>GET_CONFIG/VALIDATE_CONFIG без Flash write, SD write/read, RTC sync и RTOS stability.</p></div><button id="run-active-services" type="button">Проверить сервисы</button></div><div id="active-services-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
-    <section class="card test-card active-card"><div class="section-heading"><div><h2>HMI echo</h2><p>Три кадра через HMI endpoint 9600 8N1.</p></div><button id="run-hmi" type="button">Проверить HMI</button></div><div id="hmi-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный тест S1–S4 и X2X</h2><p>Python запускает Modbus RTU slaves и проверяет приём уникальных данных.</p></div><button id="run-active-rs485" type="button">Проверить отдельно</button></div><div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный Ethernet</h2><p>Modbus TCP FC03 registers 0…11 и counters W5500.</p></div><button id="run-active-ethernet" type="button">Проверить отдельно</button></div><div id="active-ethernet-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активные внутренние сервисы</h2><p>GET_CONFIG/VALIDATE_CONFIG без Flash write, SD write/read, RTC sync и RTOS stability.</p></div><button id="run-active-services" type="button">Проверить отдельно</button></div><div id="active-services-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>HMI echo</h2><p>Три кадра через HMI endpoint 9600 8N1.</p></div><button id="run-hmi" type="button">Проверить отдельно</button></div><div id="hmi-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+
+    <h2 class="test-group-title">Подтверждаемые и ручные тесты</h2>
 
     <section class="card test-card active-card">
       <div class="section-heading"><div><h2>Flash A/B с восстановлением</h2><p>Временная запись тестового bundle, reboot, проверка alternate slot и возврат исходного bundle.</p></div><button id="run-flash-ab" type="button">Проверить Flash A/B</button></div>
@@ -74,11 +93,12 @@
 
     <section class="card test-card active-card">
       <div class="section-heading"><div><h2>RTC retention от батареи</h2><p>Двухэтапный тест с полным снятием USB и основного питания.</p></div><div class="button-row"><button id="run-rtc-retention-prepare" type="button">1. Подготовить</button><button id="run-rtc-retention-verify" type="button">2. Проверить</button></div></div>
-      <p>После PREPARE отключите USB и основное питание минимум на 30 секунд, затем включите LCP и нажмите VERIFY. Ранний VERIFY теперь остаётся SKIPPED и не стирает baseline.</p>
+      <p>После PREPARE отключите USB и основное питание минимум на 30 секунд, затем включите LCP и нажмите VERIFY. Ранний VERIFY остаётся SKIPPED и не стирает baseline.</p>
       <div id="rtc-retention-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js?v=0.8.0-p1"></script>
-  <script src="/static/js/advanced.js?v=0.8.0-p1"></script>
+  <script src="/static/js/app.js?v=0.8.0-p2"></script>
+  <script src="/static/js/full_run.js?v=0.8.0-p2"></script>
+  <script src="/static/js/advanced.js?v=0.8.0-p2"></script>
 </body>
 </html>
