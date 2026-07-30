@@ -35,6 +35,10 @@ class LcpHelloRequest(BaseModel):
     port: str | None = None
 
 
+class ConfirmedTestRequest(LcpHelloRequest):
+    confirmation: str = Field(min_length=1, max_length=40)
+
+
 class CheckResult(BaseModel):
     name: str
     expected: str
@@ -60,7 +64,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.7.0"
+    utility_version: str = "0.8.0"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -109,7 +113,7 @@ class DiagnosticCommandResult(BaseModel):
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.7.0"
+    utility_version: str = "0.8.0"
     test_profile_version: str = "lcp2116-diagnostic-semantic-v1.2"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
@@ -153,7 +157,7 @@ class ActiveInterfaceResult(BaseModel):
 
 
 class LcpActiveRs485Result(BaseModel):
-    utility_version: str = "0.7.0"
+    utility_version: str = "0.8.0"
     test_profile_version: str = "lcp2116-active-rs485-v1.1"
     test_id: str = "lcp_active_rs485"
     device_type: str = "LCP2116"
@@ -199,7 +203,7 @@ class EthernetInterfaceResult(BaseModel):
 
 
 class LcpActiveEthernetResult(BaseModel):
-    utility_version: str = "0.7.0"
+    utility_version: str = "0.8.0"
     test_profile_version: str = "lcp2116-active-ethernet-v1"
     test_id: str = "lcp_active_ethernet"
     device_type: str = "LCP2116"
@@ -233,7 +237,7 @@ class ActiveStepResult(BaseModel):
 
 
 class LcpActiveServicesResult(BaseModel):
-    utility_version: str = "0.7.0"
+    utility_version: str = "0.8.0"
     test_profile_version: str = "lcp2116-active-services-v1"
     test_id: str = "lcp_active_services"
     device_type: str = "LCP2116"
@@ -254,7 +258,7 @@ class LcpActiveServicesResult(BaseModel):
 
 
 class LcpHmiResult(BaseModel):
-    utility_version: str = "0.7.0"
+    utility_version: str = "0.8.0"
     test_profile_version: str = "lcp2116-hmi-echo-v1"
     test_id: str = "lcp_hmi_echo"
     device_type: str = "LCP2116"
@@ -272,5 +276,90 @@ class LcpHmiResult(BaseModel):
     expected_frames_hex: list[str] = Field(default_factory=list)
     actual_frames_hex: list[str] = Field(default_factory=list)
     detail: str
+    error: str | None = None
+    report_file: str | None = None
+
+
+class LcpFlashAbResult(BaseModel):
+    utility_version: str = "0.8.0"
+    test_profile_version: str = "lcp2116-flash-ab-restore-v1"
+    test_id: str = "lcp_flash_ab_restore"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    reconnected_port: str | None = None
+    backup_file: str | None = None
+    original_slot: int | None = None
+    test_slot: int | None = None
+    restored_slot: int | None = None
+    original_crc32: str | None = None
+    test_crc32: str | None = None
+    restored: bool = False
+    recovery_required: bool = False
+    steps: list[ActiveStepResult] = Field(default_factory=list)
+    note: str = (
+        "Тест временно изменяет S4 baudrate в конфигурационном bundle, проверяет A/B commit "
+        "после reboot и автоматически восстанавливает исходный bundle."
+    )
+    error: str | None = None
+    report_file: str | None = None
+
+
+class LcpWatchdogResetResult(BaseModel):
+    utility_version: str = "0.8.0"
+    test_profile_version: str = "lcp2116-watchdog-reset-v1"
+    test_id: str = "lcp_watchdog_reset"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    reconnected_port: str | None = None
+    before_boot_count: int | None = None
+    after_boot_count: int | None = None
+    reset_type: str | None = None
+    recovery_performed: str | None = None
+    steps: list[ActiveStepResult] = Field(default_factory=list)
+    before_raw: str | None = None
+    arm_raw: str | None = None
+    after_raw: str | None = None
+    error: str | None = None
+    report_file: str | None = None
+
+
+class LcpRtcRetentionResult(BaseModel):
+    utility_version: str = "0.8.0"
+    test_profile_version: str = "lcp2116-rtc-retention-v1"
+    test_id: str = "lcp_rtc_retention"
+    device_type: str = "LCP2116"
+    phase: str
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    state_file: str | None = None
+    prepared_at: datetime | None = None
+    elapsed_pc_seconds: float | None = None
+    elapsed_rtc_seconds: float | None = None
+    retention_error_seconds: float | None = None
+    before_boot_count: int | None = None
+    after_boot_count: int | None = None
+    battery_state: str | None = None
+    steps: list[ActiveStepResult] = Field(default_factory=list)
+    note: str = (
+        "PREPARE синхронизирует RTC и сохраняет исходное состояние. VERIFY после полного "
+        "отключения USB и основного питания проверяет ход RTC и увеличение boot_count."
+    )
     error: str | None = None
     report_file: str | None = None
