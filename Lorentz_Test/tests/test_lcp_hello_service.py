@@ -6,11 +6,13 @@ from lorentz_test.services.lcp_hello import run_lcp_hello
 
 
 class FakeClient:
+    instances: list["FakeClient"] = []
+
     def __init__(self, port: str, **_: object) -> None:
         self.port = port
         self.closed = False
         self.exited = False
-        self.transport = object()
+        self.__class__.instances.append(self)
 
     def hello(self) -> HelloInfo:
         return HelloInfo(1, 1, 104, 160, 0x0F, 1, 24)
@@ -24,9 +26,15 @@ class FakeClient:
 
 class FakeConsole:
     version = "1.02.0"
+    instances: list["FakeConsole"] = []
 
-    def __init__(self, _: object) -> None:
-        pass
+    def __init__(self, port: str, **_: object) -> None:
+        self.port = port
+        self.closed = False
+        self.__class__.instances.append(self)
+
+    def close(self) -> None:
+        self.closed = True
 
     def read_firmware_identity(self) -> FirmwareIdentity:
         return FirmwareIdentity(
@@ -48,6 +56,8 @@ class WrongVersionConsole(FakeConsole):
 
 
 def test_lcp_identity_passes_reference_profile() -> None:
+    FakeClient.instances.clear()
+    FakeConsole.instances.clear()
     result = run_lcp_hello(
         LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM7"),
         StationConfig(),
@@ -59,6 +69,10 @@ def test_lcp_identity_passes_reference_profile() -> None:
     assert result.firmware_version == "1.02.0"
     assert result.firmware_version_verified is True
     assert len(result.checks) == 11
+    assert FakeClient.instances[-1].exited is True
+    assert FakeClient.instances[-1].closed is True
+    assert FakeConsole.instances[-1].port == "COM7"
+    assert FakeConsole.instances[-1].closed is True
 
 
 def test_lcp_identity_fails_wrong_firmware_version() -> None:
