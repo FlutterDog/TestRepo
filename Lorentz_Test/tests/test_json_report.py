@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 
-from lorentz_test.models.tests import LcpHelloResult, TestStatus as Status
+from lorentz_test.models.tests import LcpDiagnosticsResult, LcpHelloResult, TestStatus as Status
 from lorentz_test.reporting.json_report import JsonReportWriter
 
 
@@ -23,3 +23,19 @@ def test_json_report_is_saved_atomically(tmp_path: Path) -> None:
     assert '"result": "PASS"' in text
     assert '"serial_number": "LCP/001"' in text
     assert not path.with_suffix(".json.tmp").exists()
+
+
+def test_diagnostic_report_has_distinct_filename(tmp_path: Path) -> None:
+    result = LcpDiagnosticsResult(
+        result=Status.PASS,
+        started_at=datetime(2026, 7, 30, 14, 0, tzinfo=timezone.utc),
+        duration_ms=100,
+        station_name="Station A",
+        serial_number="LCP/001",
+        operator="Operator",
+        port="COM7",
+    )
+    path = JsonReportWriter(tmp_path).save_lcp_diagnostics(result)
+    assert path.name == "LCP2116_LCP_001_20260730_140000_DIAGNOSTICS_PASS.json"
+    assert path.exists()
+    assert '"evaluation_mode": "capture_only"' in path.read_text(encoding="utf-8")
