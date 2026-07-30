@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lorentz-test"
-version = "0.6.0"
+version = "0.6.1"
 description = "Local production and service test utility for Lorentz controllers and modules"
 readme = "README.md"
 requires-python = ">=3.11"
