@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.3.0">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.4.0">
 </head>
 <body>
   <header class="topbar">
@@ -72,15 +72,15 @@
     <section class="card test-card">
       <div class="section-heading">
         <div>
-          <h2>Диагностический снимок</h2>
-          <p>Считываются RTOS, Flash A/B, S1–S4, RS-485, SC16IS, X2X, Ethernet, SD, battery, RTC и watchdog.</p>
+          <h2>Диагностическая проверка</h2>
+          <p>Проверяются RTOS, Flash A/B, UART, X2X, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p>
         </div>
-        <button id="run-diagnostics" type="button">Снять диагностику</button>
+        <button id="run-diagnostics" type="button">Проверить диагностику</button>
       </div>
-      <p>На этом шаге PASS означает, что команда выполнена и её сырой ответ сохранён. Аппаратные пороги будут добавлены после первого реального снимка.</p>
+      <p>Неподключённые внешние части стенда отмечаются SKIPPED. Настроенный, но не отвечающий X2X-модуль и неверное время RTC дают FAIL.</p>
       <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js?v=0.3.0"></script>
+  <script src="/static/js/app.js?v=0.4.0"></script>
 </body>
 </html>
