@@ -1,5 +1,5 @@
 import struct
-from datetime import datetime
+from datetime import datetime, timedelta
 from types import SimpleNamespace
 
 from lorentz_test.models.station import StationConfig
@@ -83,7 +83,7 @@ datetime={value:%Y-%m-%d %H:%M:%S}
 """
         if command == "time":
             assert self.rtc_requested is not None
-            value = self.rtc_requested.replace(second=(self.rtc_requested.second + 3) % 60)
+            value = self.rtc_requested + timedelta(seconds=3)
             return f"[ RTC TIME ]\ndatetime={value:%Y-%m-%d %H:%M:%S}\n"
         if command == "rtos":
             self.rtos_calls += 1
