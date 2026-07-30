@@ -32,6 +32,9 @@ PNX, DM91 and density meters are not part of this project stage.
 - LCP binary USB framing and CRC32 validation;
 - robust HELLO retries for Windows `usbser.sys`;
 - PASS/FAIL evaluation for protocol v1, schema v1, 104-byte bundle and capabilities;
-- atomic JSON report files in `reports/`.
+- binary `EXIT` transition back to the text diagnostic console on the same COM port;
+- firmware identity verification through the `version` command;
+- validation of firmware name, version `1.02.0`, release stage and ATSAM3X8E target;
+- atomic JSON report files in `reports/`, including raw diagnostic output.
 
-`HELLO` does not contain the human-readable firmware version. Firmware `1.02.0` will be verified in the next diagnostic-console step rather than inferred from protocol fields.
+Ports S1-S4, HMI, X2X and Ethernet are not required for the current USB identity test. They will be added as independent test stages with explicit PASS, FAIL or SKIPPED status.
