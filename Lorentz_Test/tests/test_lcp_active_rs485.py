@@ -97,7 +97,10 @@ class FakeServer:
             self.stats.responses_sent = 4
         else:
             addresses = [0, 16, 32, 48, 64, 80, 850]
-            self.stats.requests = [RtuRequest(1, 0x03, address, 1 if address == 850 else 16) for address in addresses]
+            self.stats.requests = [
+                RtuRequest(1, 0x03, address, 1 if address == 850 else 16)
+                for address in addresses
+            ]
             self.stats.requests_received = 7
             self.stats.responses_sent = 7
         self.instances.append(self)
@@ -149,3 +152,94 @@ def test_busy_fixture_port_is_not_reported_as_dut_fail() -> None:
     s1 = next(item for item in result.interfaces if item.name == "S1")
     assert s1.status == TestStatus.FIXTURE_ERROR
     assert "Ошибка стенда" in s1.detail
+
+
+FIELD_BEFORE_CROSS = """
+[ FIELDSENSOR S1..S4 ]
+-- S1 --
+serial = 9600 8N1
+request_slave = 1
+connection = lost, valid = no
+last_result = timeout
+register[0] = 0, register[1] = 0
+success = 0
+-- S2 --
+serial = 9600 8N1
+request_slave = 1
+connection = lost, valid = no
+last_result = timeout
+register[0] = 0, register[1] = 0
+success = 0
+"""
+
+FIELD_AFTER_CROSS = """
+[ FIELDSENSOR S1..S4 ]
+-- S1 --
+serial = 9600 8N1
+request_slave = 1
+connection = lost, valid = no
+last_result = timeout
+register[0] = 0, register[1] = 0
+success = 0
+-- S2 --
+serial = 9600 8N1
+request_slave = 1
+connection = online, valid = yes
+last_result = ok
+register[0] = 4353, register[1] = 4354
+success = 5
+"""
+
+X2X_NONE = """
+[ X2X MODULE BUS ]
+-- Runtime --
+module_count = 0
+"""
+
+
+class CrosswiredConsole(FakeConsole):
+    def execute(self, command: str) -> str:
+        self.counts[command] = self.counts.get(command, 0) + 1
+        if command == "field":
+            return FIELD_BEFORE_CROSS if self.counts[command] == 1 else FIELD_AFTER_CROSS
+        if command == "rs485":
+            return RS485
+        if command == "x2x":
+            return X2X_NONE
+        raise AssertionError(command)
+
+
+class CrosswiredServer(FakeServer):
+    def __init__(self, **kwargs: object) -> None:
+        self.port = str(kwargs["port"])
+        self.stats = RtuSlaveStats()
+        self.started = False
+        self.stopped = False
+        if self.port == "COM11":
+            self.stats.requests = [RtuRequest(1, 0x03, 0, 2)]
+            self.stats.requests_received = 5
+            self.stats.responses_sent = 5
+        self.instances.append(self)
+
+
+def test_crosswired_field_endpoint_is_fixture_error_with_actual_target() -> None:
+    CrosswiredServer.instances.clear()
+    result = run_lcp_active_rs485(
+        LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM10"),
+        StationConfig(
+            lcp_port="COM10",
+            s1_endpoint="COM11",
+            s2_endpoint="COM12",
+        ),
+        console_opener=CrosswiredConsole.open_port,
+        server_factory=CrosswiredServer,
+        sleep=lambda _: None,
+    )
+    assert result.result == TestStatus.FIXTURE_ERROR
+    s1 = next(item for item in result.interfaces if item.name == "S1")
+    s2 = next(item for item in result.interfaces if item.name == "S2")
+    assert s1.status == TestStatus.FIXTURE_ERROR
+    assert "COM11" in s1.detail
+    assert "LCP-порт S2" in s1.detail
+    assert s2.status == TestStatus.FIXTURE_ERROR
+    assert "не получено ни одного запроса" in s2.detail
