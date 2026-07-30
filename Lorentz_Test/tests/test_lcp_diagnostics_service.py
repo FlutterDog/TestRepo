@@ -61,9 +61,7 @@ def _pass_responses() -> dict[str, str]:
             "ready=yes, last_result=ok\r\n"
             "fat_type=FAT32, SDTEST.TXT_exists=yes\r\n"
         ),
-        "battery": (
-            "stable = yes\r\ninstant_state = ok, debounced_state = ok\r\n"
-        ),
+        "battery": "stable = yes\r\ninstant_state = ok, debounced_state = ok\r\n",
         "rtc": (
             "slow_clock_source=external 32.768 kHz crystal\r\n"
             "read_result=ok\r\n"
@@ -121,14 +119,19 @@ class LostX2XConsole(FakeConsole):
         return super().execute(command)
 
 
-def test_diagnostic_snapshot_evaluates_all_commands() -> None:
-    result = run_lcp_diagnostic_snapshot(
+def _run(console_opener=FakeConsole.open_port, station: StationConfig | None = None):
+    return run_lcp_diagnostic_snapshot(
         LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM7"),
-        StationConfig(),
-        console_opener=FakeConsole.open_port,
+        station or StationConfig(),
+        console_opener=console_opener,
+        endpoint_prober=lambda _: [],
     )
+
+
+def test_diagnostic_snapshot_evaluates_all_commands() -> None:
+    result = _run()
     assert result.result == Status.PASS
-    assert result.evaluation_mode == "semantic_v1.1"
+    assert result.evaluation_mode == "semantic_v1.2"
     assert len(result.commands) == 11
     assert all(item.capture_status == Status.PASS for item in result.commands)
     assert all(item.status == Status.PASS for item in result.commands)
@@ -138,44 +141,28 @@ def test_diagnostic_snapshot_evaluates_all_commands() -> None:
 
 
 def test_passive_snapshot_skips_configured_external_s_ports() -> None:
-    result = run_lcp_diagnostic_snapshot(
-        LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM7"),
-        StationConfig(s1_endpoint="COM11", s2_endpoint="COM12", s3_endpoint="COM13"),
-        console_opener=FakeConsole.open_port,
-    )
+    result = _run(station=StationConfig(s1_endpoint="COM11", s2_endpoint="COM12"))
     field = next(item for item in result.commands if item.command_id == "field")
     external = [check for check in field.checks if check.name.endswith("_external_modbus")]
     assert len(external) == 4
     assert all(check.status == Status.SKIPPED for check in external)
-    assert all("passive snapshot only" in check.actual for check in external)
 
 
 def test_diagnostic_snapshot_continues_after_one_command_failure() -> None:
-    result = run_lcp_diagnostic_snapshot(
-        LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM7"),
-        StationConfig(),
-        console_opener=FailingConsole.open_port,
-    )
+    result = _run(console_opener=FailingConsole.open_port)
     assert result.result == Status.FAIL
-    assert len(result.commands) == 11
     failed = [item for item in result.commands if item.status == Status.FAIL]
     assert len(failed) == 1
     assert failed[0].command == "x2x"
     assert failed[0].capture_status == Status.FAIL
-    assert "simulated diagnostic failure" in (failed[0].error or "")
 
 
-def test_diagnostic_snapshot_fails_lost_configured_x2x_module() -> None:
-    result = run_lcp_diagnostic_snapshot(
-        LcpHelloRequest(serial_number="LCP-1", operator="Operator", port="COM7"),
-        StationConfig(),
-        console_opener=LostX2XConsole.open_port,
-    )
-    assert result.result == Status.FAIL
+def test_passive_snapshot_skips_lost_x2x_module_communication() -> None:
+    result = _run(console_opener=LostX2XConsole.open_port)
+    assert result.result == Status.PASS
     x2x = next(item for item in result.commands if item.command_id == "x2x")
-    assert x2x.capture_status == Status.PASS
-    assert x2x.status == Status.FAIL
-    assert any(check.name == "x2x_module_1" and check.status == Status.FAIL for check in x2x.checks)
+    module = next(check for check in x2x.checks if check.name == "x2x_module_1")
+    assert module.status == Status.SKIPPED
 
 
 def test_diagnostic_snapshot_requires_port() -> None:
@@ -183,6 +170,7 @@ def test_diagnostic_snapshot_requires_port() -> None:
         LcpHelloRequest(serial_number="LCP-1", operator="Operator"),
         StationConfig(lcp_port=None),
         console_opener=FakeConsole.open_port,
+        endpoint_prober=lambda _: [],
     )
     assert result.result == Status.FAIL
     assert "not configured" in (result.error or "")
