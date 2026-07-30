@@ -130,21 +130,41 @@ loadStation();
 loadPorts();
 
 const runHelloButton = document.getElementById("run-hello");
+const runDiagnosticsButton = document.getElementById("run-diagnostics");
 const helloResult = document.getElementById("hello-result");
+const diagnosticsResult = document.getElementById("diagnostics-result");
 const deviceSerialInput = document.getElementById("device-serial");
 const operatorInput = document.getElementById("operator-name");
 const lcpPortInput = form.elements.namedItem("lcp_port");
 
-function setHelloResult(text, cssClass, kind = "result") {
-  helloResult.className = `test-result ${cssClass}`;
-  helloResult.textContent = text;
-  helloResult.dataset.kind = kind;
+function setResult(element, text, cssClass, kind = "result") {
+  element.className = `test-result ${cssClass}`;
+  element.textContent = text;
+  element.dataset.kind = kind;
 }
 
-function clearHelloValidation() {
-  if (helloResult.dataset.kind === "validation") {
-    setHelloResult("WAITING", "waiting", "waiting");
+function testIdentity() {
+  const serialNumber = deviceSerialInput.value.trim();
+  const operatorName = operatorInput.value.trim();
+  const port = nullable(String(lcpPortInput?.value || ""));
+  const missingFields = [];
+  if (!serialNumber) missingFields.push("серийный номер");
+  if (!operatorName) missingFields.push("имя оператора");
+  if (missingFields.length > 0) {
+    return {error: `Заполните: ${missingFields.join(" и ")}.`, focus: serialNumber ? operatorInput : deviceSerialInput};
   }
+  if (!port) {
+    return {error: "Выберите USB-порт LCP в настройках стенда.", focus: lcpPortInput};
+  }
+  return {serialNumber, operatorName, port};
+}
+
+function requestPayload(identity) {
+  return JSON.stringify({
+    serial_number: identity.serialNumber,
+    operator: identity.operatorName,
+    port: identity.port,
+  });
 }
 
 function renderHello(result) {
@@ -164,57 +184,72 @@ function renderHello(result) {
 }
 
 async function runHello() {
-  const serialNumber = deviceSerialInput.value.trim();
-  const operatorName = operatorInput.value.trim();
-  const port = nullable(String(lcpPortInput?.value || ""));
-  const missingFields = [];
-
-  if (!serialNumber) missingFields.push("серийный номер");
-  if (!operatorName) missingFields.push("имя оператора");
-
-  if (missingFields.length > 0) {
-    setHelloResult(`Заполните: ${missingFields.join(" и ")}.`, "fail", "validation");
-    (serialNumber ? operatorInput : deviceSerialInput).focus();
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(helloResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
     return;
   }
-
-  if (!port) {
-    setHelloResult(
-      "Выберите USB-порт LCP в настройках стенда. Для этой проверки порты S1–S4, HMI, X2X и Ethernet пока не требуются.",
-      "fail",
-      "validation",
-    );
-    lcpPortInput?.focus();
-    return;
-  }
-
   runHelloButton.disabled = true;
-  setHelloResult(
-    "RUNNING — проверка бинарного USB и чтение версии firmware…",
-    "running",
-    "running",
-  );
+  setResult(helloResult, "RUNNING — проверка бинарного USB и чтение версии firmware…", "running", "running");
   try {
-    const result = await requestJson("/api/tests/lcp/hello", {
+    renderHello(await requestJson("/api/tests/lcp/hello", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        serial_number: serialNumber,
-        operator: operatorName,
-        port,
-      }),
-    });
-    renderHello(result);
+      body: requestPayload(identity),
+    }));
   } catch (error) {
-    setHelloResult(`FAIL — ${error.message}`, "fail", "result");
+    setResult(helloResult, `FAIL — ${error.message}`, "fail", "result");
   } finally {
     runHelloButton.disabled = false;
   }
 }
 
+function renderDiagnostics(result) {
+  const css = result.result === "PASS" ? "pass" : "fail";
+  const commands = result.commands.map((item) => {
+    const extra = item.error ? ` — ${item.error}` : "";
+    return `<li><strong>${item.status}</strong> ${item.title} [${item.command}], ${item.duration_ms} ms${extra}</li>`;
+  }).join("");
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${result.error}</p>` : "";
+  const report = result.report_file ? `<p><strong>JSON:</strong> ${result.report_file}</p>` : "";
+  diagnosticsResult.className = `test-result ${css}`;
+  diagnosticsResult.dataset.kind = "result";
+  diagnosticsResult.innerHTML = `<strong>${result.result}</strong> — ${result.port || "порт не задан"}, ${result.duration_ms} ms${error}${commands ? `<ul class="check-list">${commands}</ul>` : ""}<p>${result.note}</p>${report}`;
+}
+
+async function runDiagnostics() {
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(diagnosticsResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
+    return;
+  }
+  runDiagnosticsButton.disabled = true;
+  setResult(diagnosticsResult, "RUNNING — чтение диагностических разделов…", "running", "running");
+  try {
+    renderDiagnostics(await requestJson("/api/tests/lcp/diagnostics", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: requestPayload(identity),
+    }));
+  } catch (error) {
+    setResult(diagnosticsResult, `FAIL — ${error.message}`, "fail", "result");
+  } finally {
+    runDiagnosticsButton.disabled = false;
+  }
+}
+
+function clearValidation() {
+  [helloResult, diagnosticsResult].forEach((element) => {
+    if (element.dataset.kind === "validation") setResult(element, "WAITING", "waiting", "waiting");
+  });
+}
+
 [deviceSerialInput, operatorInput, lcpPortInput].forEach((control) => {
-  control?.addEventListener("input", clearHelloValidation);
-  control?.addEventListener("change", clearHelloValidation);
+  control?.addEventListener("input", clearValidation);
+  control?.addEventListener("change", clearValidation);
 });
 
 runHelloButton.addEventListener("click", runHello);
+runDiagnosticsButton.addEventListener("click", runDiagnostics);
