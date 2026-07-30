@@ -5,11 +5,21 @@ from __future__ import annotations
 import os
 import re
 from pathlib import Path
+from typing import Protocol
 
-from lorentz_test.models.tests import LcpHelloResult
+from lorentz_test.models.tests import LcpDiagnosticsResult, LcpHelloResult
 from lorentz_test.paths import reports_dir
 
 _SAFE_FILENAME = re.compile(r"[^A-Za-z0-9._-]+")
+
+
+class ReportModel(Protocol):
+    serial_number: str
+    started_at: object
+    result: object
+    report_file: str | None
+
+    def model_dump_json(self, *, indent: int) -> str: ...
 
 
 def _safe_component(value: str, fallback: str) -> str:
@@ -21,11 +31,13 @@ class JsonReportWriter:
     def __init__(self, directory: Path | None = None) -> None:
         self.directory = directory or reports_dir()
 
-    def save_lcp_hello(self, result: LcpHelloResult) -> Path:
+    def _save(self, result: ReportModel, suffix: str = "") -> Path:
         self.directory.mkdir(parents=True, exist_ok=True)
         serial_number = _safe_component(result.serial_number, "unknown_serial")
         timestamp = result.started_at.strftime("%Y%m%d_%H%M%S")
-        filename = f"LCP2116_{serial_number}_{timestamp}_{result.result.value}.json"
+        status = result.result.value
+        middle = f"_{suffix}" if suffix else ""
+        filename = f"LCP2116_{serial_number}_{timestamp}{middle}_{status}.json"
         target = self.directory / filename
         temporary = target.with_suffix(target.suffix + ".tmp")
 
@@ -38,6 +50,12 @@ class JsonReportWriter:
             result.report_file = None
             raise RuntimeError(f"cannot save JSON report: {exc}") from exc
         return target
+
+    def save_lcp_hello(self, result: LcpHelloResult) -> Path:
+        return self._save(result)
+
+    def save_lcp_diagnostics(self, result: LcpDiagnosticsResult) -> Path:
+        return self._save(result, "DIAGNOSTICS")
 
 
 report_writer = JsonReportWriter()
