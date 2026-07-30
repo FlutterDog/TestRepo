@@ -69,6 +69,15 @@ def _passive_snapshot_checks(
                     status=TestStatus.SKIPPED,
                 )
             )
+        elif command_id == "x2x" and check.name.startswith("x2x_module_") and check.name != "x2x_module_registry_count":
+            adjusted.append(
+                CheckResult(
+                    name=check.name,
+                    expected="active host X2X slave emulator test",
+                    actual=f"passive snapshot only; LCP reports {check.actual}",
+                    status=TestStatus.SKIPPED,
+                )
+            )
         elif command_id == "rtc" and check.name == "rtc_time_matches_pc":
             adjusted.append(
                 CheckResult(
@@ -139,7 +148,7 @@ def run_lcp_diagnostic_snapshot(
     console_opener: ConsoleOpener = LcpDiagnosticConsole.open_port,
     endpoint_prober: EndpointProber = probe_station_endpoints,
 ) -> LcpDiagnosticsResult:
-    """Capture reports and apply the semantic profile for LCP Basic 1.02.0."""
+    """Capture reports and apply the passive semantic profile for LCP Basic 1.02.0."""
     port = request.port or station.lcp_port
     started_at = datetime.now(timezone.utc)
     started = time.monotonic()
