@@ -1,4 +1,4 @@
-"""Execution of the first real LCP2116 hardware test."""
+"""Execution of the first real LCP2116 hardware identity test."""
 
 from __future__ import annotations
 
@@ -14,10 +14,14 @@ from lorentz_test.models.tests import (
     LcpHelloResult,
     TestStatus,
 )
-from lorentz_test.protocols.lcp_usb import HelloInfo, LcpUsbClient
+from lorentz_test.protocols.lcp_console import FirmwareIdentity, LcpDiagnosticConsole
+from lorentz_test.protocols.lcp_usb import HelloInfo, LcpUsbClient, SerialPort
 
 ClientFactory = Callable[..., LcpUsbClient]
+ConsoleFactory = Callable[[SerialPort], LcpDiagnosticConsole]
 _REQUIRED_CAPABILITIES = 0x0000000F
+_EXPECTED_FIRMWARE_NAME = "LCP Basic Diagnostic Firmware"
+_EXPECTED_TARGET = "ATSAM3X8E"
 
 
 def _check(name: str, expected: object, actual: object, passed: bool) -> CheckResult:
@@ -46,11 +50,45 @@ def _evaluate_hello(hello: HelloInfo) -> list[CheckResult]:
     ]
 
 
+def _evaluate_firmware(
+    identity: FirmwareIdentity,
+    expected_version: str,
+) -> list[CheckResult]:
+    expected_stage = f"Release {expected_version}"
+    return [
+        _check(
+            "firmware_name",
+            _EXPECTED_FIRMWARE_NAME,
+            identity.name,
+            identity.name == _EXPECTED_FIRMWARE_NAME,
+        ),
+        _check(
+            "firmware_version",
+            expected_version,
+            identity.version,
+            identity.version == expected_version,
+        ),
+        _check(
+            "firmware_stage",
+            expected_stage,
+            identity.stage,
+            identity.stage == expected_stage,
+        ),
+        _check(
+            "firmware_target",
+            _EXPECTED_TARGET,
+            identity.target,
+            identity.target == _EXPECTED_TARGET,
+        ),
+    ]
+
+
 def run_lcp_hello(
     request: LcpHelloRequest,
     station: StationConfig,
     *,
     client_factory: ClientFactory = LcpUsbClient,
+    console_factory: ConsoleFactory = LcpDiagnosticConsole,
 ) -> LcpHelloResult:
     port = request.port or station.lcp_port
     started_at = datetime.now(timezone.utc)
@@ -70,6 +108,10 @@ def run_lcp_hello(
         )
 
     client: LcpUsbClient | None = None
+    hello_payload: HelloPayload | None = None
+    checks: list[CheckResult] = []
+    identity: FirmwareIdentity | None = None
+
     try:
         client = client_factory(
             port,
@@ -77,8 +119,19 @@ def run_lcp_hello(
             timeout=station.serial_timeout_seconds,
         )
         hello = client.hello()
-        checks = _evaluate_hello(hello)
-        status = TestStatus.PASS if all(item.status == TestStatus.PASS for item in checks) else TestStatus.FAIL
+        hello_payload = HelloPayload(**hello.to_dict())
+        checks.extend(_evaluate_hello(hello))
+
+        client.exit_binary_session()
+        console = console_factory(client.transport)
+        identity = console.read_firmware_identity()
+        checks.extend(_evaluate_firmware(identity, station.expected_firmware_version))
+
+        status = (
+            TestStatus.PASS
+            if all(item.status == TestStatus.PASS for item in checks)
+            else TestStatus.FAIL
+        )
         return LcpHelloResult(
             result=status,
             started_at=started_at,
@@ -87,9 +140,16 @@ def run_lcp_hello(
             serial_number=request.serial_number,
             operator=request.operator,
             port=port,
-            expected_firmware_version=station.expected_firmware_version,
-            hello=HelloPayload(**hello.to_dict()),
+            hello=hello_payload,
             checks=checks,
+            expected_firmware_version=station.expected_firmware_version,
+            firmware_name=identity.name,
+            firmware_version=identity.version,
+            firmware_stage=identity.stage,
+            firmware_target=identity.target,
+            firmware_version_verified=(identity.version == station.expected_firmware_version),
+            firmware_note="Версия firmware подтверждена командой version диагностической консоли.",
+            firmware_raw_output=identity.raw_output,
         )
     except Exception as exc:
         return LcpHelloResult(
@@ -100,7 +160,15 @@ def run_lcp_hello(
             serial_number=request.serial_number,
             operator=request.operator,
             port=port,
+            hello=hello_payload,
+            checks=checks,
             expected_firmware_version=station.expected_firmware_version,
+            firmware_name=identity.name if identity is not None else None,
+            firmware_version=identity.version if identity is not None else None,
+            firmware_stage=identity.stage if identity is not None else None,
+            firmware_target=identity.target if identity is not None else None,
+            firmware_version_verified=False,
+            firmware_raw_output=identity.raw_output if identity is not None else None,
             error=f"{type(exc).__name__}: {exc}",
         )
     finally:
