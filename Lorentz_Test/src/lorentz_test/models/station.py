@@ -29,6 +29,10 @@ class StationConfig(BaseModel):
     x2x_endpoint: str | None = None
     eth1_ip: IPv4Address = IPv4Address("192.168.1.1")
     eth2_ip: IPv4Address = IPv4Address("192.168.1.2")
+    eth1_source_ip: IPv4Address | None = None
+    eth2_source_ip: IPv4Address | None = None
+    eth1_test_enabled: bool = True
+    eth2_test_enabled: bool = True
     shared_hmi_x2x_adapter: bool = True
     post_test_action: PostTestAction = PostTestAction.CLEAR_TO_RUNTIME_DEFAULTS
     expected_firmware_version: str = Field(default="1.02.0", min_length=1, max_length=32)
