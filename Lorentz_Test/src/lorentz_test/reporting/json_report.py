@@ -8,9 +8,12 @@ from pathlib import Path
 from typing import Protocol
 
 from lorentz_test.models.tests import (
+    LcpActiveEthernetResult,
     LcpActiveRs485Result,
+    LcpActiveServicesResult,
     LcpDiagnosticsResult,
     LcpHelloResult,
+    LcpHmiResult,
 )
 from lorentz_test.paths import reports_dir
 
@@ -63,6 +66,15 @@ class JsonReportWriter:
 
     def save_lcp_active_rs485(self, result: LcpActiveRs485Result) -> Path:
         return self._save(result, "ACTIVE_RS485")
+
+    def save_lcp_active_ethernet(self, result: LcpActiveEthernetResult) -> Path:
+        return self._save(result, "ACTIVE_ETHERNET")
+
+    def save_lcp_active_services(self, result: LcpActiveServicesResult) -> Path:
+        return self._save(result, "ACTIVE_SERVICES")
+
+    def save_lcp_hmi(self, result: LcpHmiResult) -> Path:
+        return self._save(result, "HMI_ECHO")
 
 
 report_writer = JsonReportWriter()
