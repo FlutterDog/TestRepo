@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0-p1">
 </head>
 <body>
   <header class="topbar">
@@ -61,24 +61,24 @@
 
     <section class="card test-card active-card">
       <div class="section-heading"><div><h2>Flash A/B с восстановлением</h2><p>Временная запись тестового bundle, reboot, проверка alternate slot и возврат исходного bundle.</p></div><button id="run-flash-ab" type="button">Проверить Flash A/B</button></div>
-      <label>Подтверждение<input id="flash-confirmation" placeholder="FLASH A/B"></label>
+      <label>Подтверждение<input id="flash-confirmation" required autocomplete="off" spellcheck="false" placeholder="введите: FLASH A/B"></label>
       <p><strong>Тест изменяет конфигурационную Flash.</strong> До записи создаётся recovery JSON; при ошибке выполняется автоматическое восстановление.</p>
       <div id="flash-ab-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
     <section class="card test-card active-card">
       <div class="section-heading"><div><h2>Watchdog reset</h2><p>Остановка feed, аппаратный reset, USB reconnect и проверка recovery.</p></div><button id="run-watchdog-reset" type="button">Проверить watchdog</button></div>
-      <label>Подтверждение<input id="watchdog-confirmation" placeholder="WATCHDOG RESET"></label>
+      <label>Подтверждение<input id="watchdog-confirmation" required autocomplete="off" spellcheck="false" placeholder="введите: WATCHDOG RESET"></label>
       <div id="watchdog-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
     <section class="card test-card active-card">
       <div class="section-heading"><div><h2>RTC retention от батареи</h2><p>Двухэтапный тест с полным снятием USB и основного питания.</p></div><div class="button-row"><button id="run-rtc-retention-prepare" type="button">1. Подготовить</button><button id="run-rtc-retention-verify" type="button">2. Проверить</button></div></div>
-      <p>После PREPARE отключите USB и основное питание минимум на 30 секунд, затем включите LCP и нажмите VERIFY.</p>
+      <p>После PREPARE отключите USB и основное питание минимум на 30 секунд, затем включите LCP и нажмите VERIFY. Ранний VERIFY теперь остаётся SKIPPED и не стирает baseline.</p>
       <div id="rtc-retention-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js?v=0.8.0"></script>
-  <script src="/static/js/advanced.js?v=0.8.0"></script>
+  <script src="/static/js/app.js?v=0.8.0-p1"></script>
+  <script src="/static/js/advanced.js?v=0.8.0-p1"></script>
 </body>
 </html>
