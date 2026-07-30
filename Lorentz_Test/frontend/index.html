@@ -54,25 +54,10 @@
       <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
-    <section class="card test-card active-card">
-      <div class="section-heading"><div><h2>Активный тест S1–S4 и X2X</h2><p>Python запускает Modbus RTU slaves и проверяет приём уникальных данных.</p></div><button id="run-active-rs485" type="button">Запустить RS-485</button></div>
-      <div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div>
-    </section>
-
-    <section class="card test-card active-card">
-      <div class="section-heading"><div><h2>Активный Ethernet</h2><p>Modbus TCP FC03 registers 0…11 и counters W5500.</p></div><button id="run-active-ethernet" type="button">Проверить Ethernet</button></div>
-      <div id="active-ethernet-result" class="test-result waiting" data-kind="waiting">WAITING</div>
-    </section>
-
-    <section class="card test-card active-card">
-      <div class="section-heading"><div><h2>Активные внутренние сервисы</h2><p>GET_CONFIG/VALIDATE_CONFIG без Flash write, SD write/read, RTC sync и RTOS stability.</p></div><button id="run-active-services" type="button">Проверить сервисы</button></div>
-      <div id="active-services-result" class="test-result waiting" data-kind="waiting">WAITING</div>
-    </section>
-
-    <section class="card test-card active-card">
-      <div class="section-heading"><div><h2>HMI echo</h2><p>Три кадра через HMI endpoint 9600 8N1.</p></div><button id="run-hmi" type="button">Проверить HMI</button></div>
-      <div id="hmi-result" class="test-result waiting" data-kind="waiting">WAITING</div>
-    </section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный тест S1–S4 и X2X</h2><p>Python запускает Modbus RTU slaves и проверяет приём уникальных данных.</p></div><button id="run-active-rs485" type="button">Запустить RS-485</button></div><div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный Ethernet</h2><p>Modbus TCP FC03 registers 0…11 и counters W5500.</p></div><button id="run-active-ethernet" type="button">Проверить Ethernet</button></div><div id="active-ethernet-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активные внутренние сервисы</h2><p>GET_CONFIG/VALIDATE_CONFIG без Flash write, SD write/read, RTC sync и RTOS stability.</p></div><button id="run-active-services" type="button">Проверить сервисы</button></div><div id="active-services-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>HMI echo</h2><p>Три кадра через HMI endpoint 9600 8N1.</p></div><button id="run-hmi" type="button">Проверить HMI</button></div><div id="hmi-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
 
     <section class="card test-card active-card">
       <div class="section-heading"><div><h2>Flash A/B с восстановлением</h2><p>Временная запись тестового bundle, reboot, проверка alternate slot и возврат исходного bundle.</p></div><button id="run-flash-ab" type="button">Проверить Flash A/B</button></div>
@@ -94,5 +79,6 @@
     </section>
   </main>
   <script src="/static/js/app.js?v=0.8.0"></script>
+  <script src="/static/js/advanced.js?v=0.8.0"></script>
 </body>
 </html>
