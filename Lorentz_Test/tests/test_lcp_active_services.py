@@ -80,7 +80,7 @@ result=OK
             return f"""
 [ LOCAL RTC ]
 -- Clock and update state --
-update_state=idle, update_result=ok
+update_state=done, update_result=ok
 -- Current date and time --
 datetime={value:%Y-%m-%d %H:%M:%S}
 """
