@@ -136,8 +136,10 @@ loadPorts();
 
 const runHelloButton = document.getElementById("run-hello");
 const runDiagnosticsButton = document.getElementById("run-diagnostics");
+const runActiveButton = document.getElementById("run-active-rs485");
 const helloResult = document.getElementById("hello-result");
 const diagnosticsResult = document.getElementById("diagnostics-result");
+const activeResult = document.getElementById("active-rs485-result");
 const deviceSerialInput = document.getElementById("device-serial");
 const operatorInput = document.getElementById("operator-name");
 const lcpPortInput = form.elements.namedItem("lcp_port");
@@ -146,6 +148,13 @@ function setResult(element, text, cssClass, kind = "result") {
   element.className = `test-result ${cssClass}`;
   element.textContent = text;
   element.dataset.kind = kind;
+}
+
+function resultCss(status) {
+  if (status === "PASS") return "pass";
+  if (status === "RUNNING") return "running";
+  if (status === "SKIPPED") return "waiting";
+  return "fail";
 }
 
 function testIdentity() {
@@ -178,7 +187,6 @@ function renderCheck(check) {
 }
 
 function renderHello(result) {
-  const css = result.result === "PASS" ? "pass" : "fail";
   const details = result.checks.map(renderCheck).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
   const firmware = result.firmware_version
@@ -186,7 +194,7 @@ function renderHello(result) {
     : "";
   const note = result.firmware_note ? `<p>${escapeHtml(result.firmware_note)}</p>` : "";
   const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
-  helloResult.className = `test-result ${css}`;
+  helloResult.className = `test-result ${resultCss(result.result)}`;
   helloResult.dataset.kind = "result";
   helloResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${details ? `<ul class="check-list">${details}</ul>` : ""}${firmware}${note}${report}`;
 }
@@ -199,7 +207,7 @@ async function runHello() {
     return;
   }
   runHelloButton.disabled = true;
-  setResult(helloResult, "RUNNING — проверка бинарного USB и чтение версии firmware…", "running", "running");
+  setResult(helloResult, "RUNNING — проверка бинарного USB и firmware…", "running", "running");
   try {
     renderHello(await requestJson("/api/tests/lcp/hello", {
       method: "POST",
@@ -219,7 +227,6 @@ function renderEndpointAccess(item) {
 }
 
 function renderDiagnostics(result) {
-  const css = result.result === "PASS" ? "pass" : "fail";
   const endpoints = (result.endpoint_access || []).map(renderEndpointAccess).join("");
   const endpointBlock = endpoints
     ? `<h3>Доступ к endpoint стенда</h3><ul class="check-list endpoint-list">${endpoints}</ul>`
@@ -239,7 +246,7 @@ function renderDiagnostics(result) {
   }).join("");
   const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
   const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
-  diagnosticsResult.className = `test-result ${css}`;
+  diagnosticsResult.className = `test-result ${resultCss(result.result)}`;
   diagnosticsResult.dataset.kind = "result";
   diagnosticsResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${endpointBlock}${commands ? `<ul class="check-list command-list">${commands}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
 }
@@ -252,7 +259,7 @@ async function runDiagnostics() {
     return;
   }
   runDiagnosticsButton.disabled = true;
-  setResult(diagnosticsResult, "RUNNING — проверка endpoint и чтение диагностических разделов…", "running", "running");
+  setResult(diagnosticsResult, "RUNNING — пассивная диагностика…", "running", "running");
   try {
     renderDiagnostics(await requestJson("/api/tests/lcp/diagnostics", {
       method: "POST",
@@ -266,8 +273,53 @@ async function runDiagnostics() {
   }
 }
 
+function renderActive(result) {
+  const interfaces = (result.interfaces || []).map((item) => {
+    const endpoint = item.endpoint || "не настроен";
+    const values = item.expected_values?.length
+      ? `<div>values: expected=${escapeHtml(JSON.stringify(item.expected_values))}, actual=${escapeHtml(JSON.stringify(item.actual_values || []))}</div>`
+      : "";
+    const requests = item.observed_requests?.length
+      ? `<div>requests: ${escapeHtml(item.observed_requests.join(", "))}</div>`
+      : "";
+    return `
+      <li class="diagnostic-command command-${String(item.status).toLowerCase()}">
+        <div><strong>${escapeHtml(item.status)}</strong> ${escapeHtml(item.name)} [${escapeHtml(endpoint)}], ${escapeHtml(item.serial || "serial unknown")}</div>
+        <div>${escapeHtml(item.detail)}</div>
+        ${values}${requests}
+      </li>`;
+  }).join("");
+  const error = result.error ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>` : "";
+  const report = result.report_file ? `<p><strong>JSON:</strong> ${escapeHtml(result.report_file)}</p>` : "";
+  activeResult.className = `test-result ${resultCss(result.result)}`;
+  activeResult.dataset.kind = "result";
+  activeResult.innerHTML = `<strong>${escapeHtml(result.result)}</strong> — ${escapeHtml(result.port || "порт не задан")}, ${escapeHtml(result.duration_ms)} ms${error}${interfaces ? `<ul class="check-list command-list">${interfaces}</ul>` : ""}<p>${escapeHtml(result.note)}</p>${report}`;
+}
+
+async function runActiveRs485() {
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(activeResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
+    return;
+  }
+  runActiveButton.disabled = true;
+  setResult(activeResult, "RUNNING — Python запускает slave S1–S4/X2X и ждёт опрос LCP…", "running", "running");
+  try {
+    renderActive(await requestJson("/api/tests/lcp/active-rs485", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: requestPayload(identity),
+    }));
+  } catch (error) {
+    setResult(activeResult, `FAIL — ${error.message}`, "fail", "result");
+  } finally {
+    runActiveButton.disabled = false;
+  }
+}
+
 function clearValidation() {
-  [helloResult, diagnosticsResult].forEach((element) => {
+  [helloResult, diagnosticsResult, activeResult].forEach((element) => {
     if (element.dataset.kind === "validation") setResult(element, "WAITING", "waiting", "waiting");
   });
 }
@@ -279,3 +331,4 @@ function clearValidation() {
 
 runHelloButton.addEventListener("click", runHello);
 runDiagnosticsButton.addEventListener("click", runDiagnostics);
+runActiveButton.addEventListener("click", runActiveRs485);
