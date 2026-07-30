@@ -13,6 +13,7 @@ class TestStatus(str, Enum):
     RUNNING = "RUNNING"
     PASS = "PASS"
     FAIL = "FAIL"
+    FIXTURE_ERROR = "FIXTURE_ERROR"
     SKIPPED = "SKIPPED"
 
 
@@ -59,7 +60,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.5.0"
+    utility_version: str = "0.6.0"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -108,8 +109,8 @@ class DiagnosticCommandResult(BaseModel):
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.5.0"
-    test_profile_version: str = "lcp2116-diagnostic-semantic-v1.1"
+    utility_version: str = "0.6.0"
+    test_profile_version: str = "lcp2116-diagnostic-semantic-v1.2"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
     result: TestStatus
@@ -119,12 +120,56 @@ class LcpDiagnosticsResult(BaseModel):
     serial_number: str
     operator: str
     port: str
-    evaluation_mode: str = "semantic_v1.1"
+    evaluation_mode: str = "semantic_v1.2"
     endpoint_access: list[EndpointAccessResult] = Field(default_factory=list)
     commands: list[DiagnosticCommandResult] = Field(default_factory=list)
     note: str = (
-        "Статус команды учитывает внутреннюю диагностику LCP. Внешние S1–S4 и "
-        "абсолютное время RTC в пассивном снимке отмечаются SKIPPED до активных тестов."
+        "Статус команды учитывает внутреннюю диагностику LCP. Внешние S1–S4, "
+        "X2X module communication и абсолютное время RTC в пассивном снимке "
+        "отмечаются SKIPPED до активных тестов."
+    )
+    error: str | None = None
+    report_file: str | None = None
+
+
+class ActiveInterfaceResult(BaseModel):
+    name: str
+    endpoint: str | None = None
+    role: str
+    serial: str | None = None
+    status: TestStatus
+    requests_received: int = 0
+    responses_sent: int = 0
+    crc_errors: int = 0
+    protocol_errors: int = 0
+    before_success: int | None = None
+    after_success: int | None = None
+    expected_values: list[int] = Field(default_factory=list)
+    actual_values: list[int] = Field(default_factory=list)
+    observed_requests: list[str] = Field(default_factory=list)
+    detail: str
+
+
+class LcpActiveRs485Result(BaseModel):
+    utility_version: str = "0.6.0"
+    test_profile_version: str = "lcp2116-active-rs485-v1"
+    test_id: str = "lcp_active_rs485"
+    device_type: str = "LCP2116"
+    result: TestStatus
+    started_at: datetime
+    duration_ms: int
+    station_name: str
+    serial_number: str
+    operator: str
+    port: str
+    interfaces: list[ActiveInterfaceResult] = Field(default_factory=list)
+    field_before_raw: str | None = None
+    field_after_raw: str | None = None
+    x2x_before_raw: str | None = None
+    x2x_after_raw: str | None = None
+    note: str = (
+        "Python сам владеет fixture COM-портами и отвечает как Modbus RTU slave. "
+        "FIXTURE_ERROR означает проблему стенда до проверки DUT."
     )
     error: str | None = None
     report_file: str | None = None
