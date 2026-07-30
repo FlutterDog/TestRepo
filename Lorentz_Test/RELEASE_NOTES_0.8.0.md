@@ -2,6 +2,17 @@
 
 Modular LCP2116 test suite for LCP Basic Firmware 1.02.0.
 
+## Operator workflow
+
+- prominent one-click **Full LCP2116 test** button;
+- automatically saves current station settings;
+- runs USB identity, passive diagnostics, active RS-485/X2X, Ethernet, safe internal services and HMI sequentially;
+- continues through all routine stages and displays one overall `PASS`, `FAIL`, `FIXTURE_ERROR` or `INCOMPLETE` result;
+- retains separate module buttons below for targeted diagnostics and reruns;
+- Flash A/B, watchdog reset and RTC retention remain separate because they write Flash, reset the DUT or require manual power removal.
+
+Each routine module still writes its own detailed JSON report. The full-test card provides the operator summary and references those report paths.
+
 ## New safe modules
 
 - strict active ETH1/ETH2 Modbus TCP FC03 test;
