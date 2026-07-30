@@ -142,6 +142,8 @@ class ActiveInterfaceResult(BaseModel):
     responses_sent: int = 0
     crc_errors: int = 0
     protocol_errors: int = 0
+    io_errors: int = 0
+    fixture_last_error: str | None = None
     before_success: int | None = None
     after_success: int | None = None
     expected_values: list[int] = Field(default_factory=list)
