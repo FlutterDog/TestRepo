@@ -7,7 +7,11 @@ import re
 from pathlib import Path
 from typing import Protocol
 
-from lorentz_test.models.tests import LcpDiagnosticsResult, LcpHelloResult
+from lorentz_test.models.tests import (
+    LcpActiveRs485Result,
+    LcpDiagnosticsResult,
+    LcpHelloResult,
+)
 from lorentz_test.paths import reports_dir
 
 _SAFE_FILENAME = re.compile(r"[^A-Za-z0-9._-]+")
@@ -56,6 +60,9 @@ class JsonReportWriter:
 
     def save_lcp_diagnostics(self, result: LcpDiagnosticsResult) -> Path:
         return self._save(result, "DIAGNOSTICS")
+
+    def save_lcp_active_rs485(self, result: LcpActiveRs485Result) -> Path:
+        return self._save(result, "ACTIVE_RS485")
 
 
 report_writer = JsonReportWriter()
