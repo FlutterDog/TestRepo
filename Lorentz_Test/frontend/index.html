@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.1.1">
 </head>
 <body>
   <header class="topbar">
@@ -58,17 +58,17 @@
       <div class="section-heading">
         <div>
           <h2>Проверка USB HELLO</h2>
-          <p>Проверяется бинарный протокол, schema, размер bundle и возможности transport.</p>
+          <p>Сейчас требуется только USB-порт LCP. Остальные интерфейсы стенда будут нужны на следующих этапах.</p>
         </div>
         <button id="run-hello" type="button">Начать проверку</button>
       </div>
       <div class="form-grid compact">
         <label>Серийный номер<input id="device-serial" required placeholder="LCP-000001"></label>
-        <label>Оператор<input id="operator-name" required></label>
+        <label>Оператор<input id="operator-name" required placeholder="Имя оператора"></label>
       </div>
-      <div id="hello-result" class="test-result waiting">WAITING</div>
+      <div id="hello-result" class="test-result waiting" data-kind="waiting" aria-live="polite">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js"></script>
+  <script src="/static/js/app.js?v=0.1.1"></script>
 </body>
 </html>
