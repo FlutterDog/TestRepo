@@ -8,6 +8,8 @@ class FakeSerial:
     def __init__(self, responses: bytes | list[bytes]) -> None:
         self.timeout = 2.0
         self.responses = [responses] if isinstance(responses, bytes) else list(responses)
+        self.current_response = b""
+        self.command_index = 0
         self.written = b""
         self.input_reset_count = 0
         self.output_reset_count = 0
@@ -15,12 +17,18 @@ class FakeSerial:
 
     def reset_input_buffer(self) -> None:
         self.input_reset_count += 1
+        self.current_response = b""
 
     def reset_output_buffer(self) -> None:
         self.output_reset_count += 1
 
     def write(self, data: bytes) -> int:
         self.written += data
+        if self.command_index < len(self.responses):
+            self.current_response = self.responses[self.command_index]
+        else:
+            self.current_response = b""
+        self.command_index += 1
         return len(data)
 
     def flush(self) -> None:
@@ -30,14 +38,8 @@ class FakeSerial:
         self.is_open = False
 
     def read(self, _: int = 1) -> bytes:
-        if not self.responses:
-            return b""
-        response = self.responses[0]
-        if response:
-            self.responses[0] = b""
-            return response
-        self.responses.pop(0)
-        return b""
+        response, self.current_response = self.current_response, b""
+        return response
 
 
 def test_parse_key_value_output_ignores_banners_and_order() -> None:
