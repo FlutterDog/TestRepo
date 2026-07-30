@@ -22,6 +22,7 @@ ConsoleFactory = Callable[..., LcpDiagnosticConsole]
 _REQUIRED_CAPABILITIES = 0x0000000F
 _EXPECTED_FIRMWARE_NAME = "LCP Basic Diagnostic Firmware"
 _EXPECTED_TARGET = "ATSAM3X8E"
+_CDC_CLOSE_SETTLE_SECONDS = 0.30
 
 
 def _check(name: str, expected: object, actual: object, passed: bool) -> CheckResult:
@@ -129,6 +130,7 @@ def run_lcp_hello(
         client.exit_binary_session()
         client.close()
         client = None
+        time.sleep(_CDC_CLOSE_SETTLE_SECONDS)
 
         console = console_factory(
             port,
