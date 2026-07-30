@@ -47,6 +47,7 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .port-item strong { color: #25313d; }
 .port-candidate { color: #176b36; font-weight: 700; }
 .test-card { margin-top: 22px; }
+.active-card { border-color: #9db7cd; }
 .form-grid.compact { margin-top: 12px; }
 .test-result { margin-top: 18px; padding: 16px; border-radius: 8px; border: 1px solid #d7dde3; }
 .test-result.waiting { background: #f4f6f8; color: #56616d; }
@@ -61,6 +62,7 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .diagnostic-command:last-child { border-bottom: 0; }
 .command-pass > div > strong, .check-pass strong { color: #176b36; }
 .command-fail > div > strong, .check-fail strong, .capture-fail { color: #9a241b; }
+.command-fixture_error > div > strong, .check-fixture_error strong { color: #b05a00; }
 .command-skipped > div > strong, .check-skipped strong { color: #725711; }
 .check-skipped { opacity: .85; }
 .capture-fail { margin-left: 8px; font-weight: 700; }
