@@ -232,7 +232,7 @@ def _run_rtc(console: LcpDiagnosticConsole, sleep: Callable[[float], None]) -> A
         start_ok = (start_result or "").casefold() == "ok"
         update_state = first_report.one("update_state", group="Clock and update state")
         update_result = first_report.one("update_result", group="Clock and update state")
-        update_idle = update_state == "idle"
+        update_done = update_state == "done"
         update_ok = update_result == "ok"
         first_delta = abs((first_time - requested).total_seconds()) if first_time else 10**9
         advance = (second_time - first_time).total_seconds() if first_time and second_time else -1
@@ -241,9 +241,9 @@ def _run_rtc(console: LcpDiagnosticConsole, sleep: Callable[[float], None]) -> A
             _check("rtc_update_start", "ok", start_result or "missing", start_ok),
             _check(
                 "rtc_update_complete",
-                "state=idle, result=ok",
+                "state=done, result=ok",
                 f"state={update_state}, result={update_result}",
-                update_idle and update_ok,
+                update_done and update_ok,
             ),
             _check(
                 "rtc_set_read_back",
