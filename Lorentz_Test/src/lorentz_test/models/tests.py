@@ -60,7 +60,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.6.0"
+    utility_version: str = "0.6.1"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -109,7 +109,7 @@ class DiagnosticCommandResult(BaseModel):
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.6.0"
+    utility_version: str = "0.6.1"
     test_profile_version: str = "lcp2116-diagnostic-semantic-v1.2"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
@@ -153,8 +153,8 @@ class ActiveInterfaceResult(BaseModel):
 
 
 class LcpActiveRs485Result(BaseModel):
-    utility_version: str = "0.6.0"
-    test_profile_version: str = "lcp2116-active-rs485-v1"
+    utility_version: str = "0.6.1"
+    test_profile_version: str = "lcp2116-active-rs485-v1.1"
     test_id: str = "lcp_active_rs485"
     device_type: str = "LCP2116"
     result: TestStatus
