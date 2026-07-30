@@ -5,6 +5,7 @@ from __future__ import annotations
 import dataclasses
 import re
 import time
+from collections.abc import Callable
 from typing import Any
 
 from lorentz_test.protocols.lcp_usb import SerialPort
@@ -38,8 +39,25 @@ def parse_key_value_output(text: str) -> dict[str, str]:
     return values
 
 
+def _open_pyserial(port: str, baudrate: int, timeout: float) -> SerialPort:
+    try:
+        import serial
+
+        return serial.Serial(
+            port=port,
+            baudrate=baudrate,
+            timeout=timeout,
+            write_timeout=timeout,
+        )
+    except Exception as exc:
+        raise DiagnosticConsoleError(f"cannot open diagnostic console on {port}: {exc}") from exc
+
+
+SerialFactory = Callable[[str, int, float], SerialPort]
+
+
 class LcpDiagnosticConsole:
-    """Run short commands on an already opened LCP USB CDC transport."""
+    """Run short commands on an LCP USB CDC text console."""
 
     def __init__(
         self,
@@ -47,23 +65,77 @@ class LcpDiagnosticConsole:
         *,
         command_timeout_seconds: float = 2.0,
         quiet_seconds: float = 0.15,
-        session_settle_seconds: float = 0.05,
+        session_settle_seconds: float = 0.10,
+        command_attempts: int = 3,
+        retry_delay_seconds: float = 0.25,
         maximum_response_bytes: int = 8192,
+        owns_transport: bool = False,
     ) -> None:
+        if command_attempts < 1:
+            raise ValueError("command_attempts must be at least 1")
         self.transport = transport
         self.command_timeout_seconds = command_timeout_seconds
         self.quiet_seconds = quiet_seconds
         self.session_settle_seconds = session_settle_seconds
+        self.command_attempts = command_attempts
+        self.retry_delay_seconds = retry_delay_seconds
         self.maximum_response_bytes = maximum_response_bytes
+        self.owns_transport = owns_transport
 
-    def execute(self, command: str) -> str:
-        normalized = command.strip()
-        if not normalized:
-            raise ValueError("diagnostic command must not be empty")
-        if len(normalized) > 63:
-            raise ValueError("diagnostic command exceeds firmware limit of 63 characters")
+    @classmethod
+    def open_port(
+        cls,
+        port: str,
+        *,
+        baudrate: int = 115200,
+        timeout: float = 2.0,
+        open_retry_seconds: float = 8.0,
+        open_settle_seconds: float = 0.50,
+        retry_delay_seconds: float = 0.25,
+        serial_factory: SerialFactory | None = None,
+    ) -> "LcpDiagnosticConsole":
+        """Open CDC again after the binary session has released the port."""
+        factory = serial_factory or _open_pyserial
+        deadline = time.monotonic() + open_retry_seconds
+        last_error: Exception | None = None
 
-        time.sleep(self.session_settle_seconds)
+        while time.monotonic() < deadline:
+            transport: SerialPort | None = None
+            try:
+                transport = factory(port, baudrate, timeout)
+                time.sleep(open_settle_seconds)
+                transport.reset_input_buffer()
+                transport.reset_output_buffer()
+                return cls(
+                    transport,
+                    command_timeout_seconds=timeout,
+                    retry_delay_seconds=retry_delay_seconds,
+                    owns_transport=True,
+                )
+            except Exception as exc:
+                last_error = exc
+                if transport is not None:
+                    try:
+                        if transport.is_open:
+                            transport.close()
+                    except Exception:
+                        pass
+                time.sleep(retry_delay_seconds)
+
+        raise DiagnosticConsoleError(
+            f"cannot reopen {port} for diagnostic console: {last_error or 'open timeout'}"
+        ) from last_error
+
+    def close(self) -> None:
+        if not self.owns_transport:
+            return
+        try:
+            if self.transport.is_open:
+                self.transport.close()
+        except Exception:
+            pass
+
+    def _execute_once(self, normalized: str) -> bytes:
         self.transport.reset_input_buffer()
 
         try:
@@ -111,12 +183,27 @@ class LcpDiagnosticConsole:
                 except Exception:
                     pass
 
-        if not output:
-            raise DiagnosticConsoleError(
-                f"no response to diagnostic command {normalized!r}"
-            )
+        return bytes(output)
 
-        return output.decode("utf-8", errors="replace").replace("\x00", "")
+    def execute(self, command: str) -> str:
+        normalized = command.strip()
+        if not normalized:
+            raise ValueError("diagnostic command must not be empty")
+        if len(normalized) > 63:
+            raise ValueError("diagnostic command exceeds firmware limit of 63 characters")
+
+        time.sleep(self.session_settle_seconds)
+        for attempt in range(1, self.command_attempts + 1):
+            output = self._execute_once(normalized)
+            if output:
+                return output.decode("utf-8", errors="replace").replace("\x00", "")
+            if attempt < self.command_attempts:
+                time.sleep(self.retry_delay_seconds)
+
+        raise DiagnosticConsoleError(
+            f"no response to diagnostic command {normalized!r} after "
+            f"{self.command_attempts} attempts"
+        )
 
     def read_firmware_identity(self) -> FirmwareIdentity:
         raw_output = self.execute("version")
