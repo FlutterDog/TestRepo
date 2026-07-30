@@ -42,7 +42,7 @@ class HelloPayload(BaseModel):
 
 
 class LcpHelloResult(BaseModel):
-    utility_version: str = "0.3.0"
+    utility_version: str = "0.4.0"
     test_profile_version: str = "lcp2116-usb-identity-v1"
     test_id: str = "lcp_usb_identity"
     device_type: str = "LCP2116"
@@ -67,20 +67,32 @@ class LcpHelloResult(BaseModel):
     report_file: str | None = None
 
 
+class DiagnosticParsedValue(BaseModel):
+    section: str | None = None
+    group: str | None = None
+    scope: str | None = None
+    key: str
+    value: str
+    line_number: int
+
+
 class DiagnosticCommandResult(BaseModel):
     command_id: str
     command: str
     title: str
+    capture_status: TestStatus = TestStatus.PASS
     status: TestStatus
     duration_ms: int
+    checks: list[CheckResult] = Field(default_factory=list)
     parsed_values: dict[str, str] = Field(default_factory=dict)
+    parsed_entries: list[DiagnosticParsedValue] = Field(default_factory=list)
     raw_output: str | None = None
     error: str | None = None
 
 
 class LcpDiagnosticsResult(BaseModel):
-    utility_version: str = "0.3.0"
-    test_profile_version: str = "lcp2116-diagnostic-snapshot-v1"
+    utility_version: str = "0.4.0"
+    test_profile_version: str = "lcp2116-diagnostic-semantic-v1"
     test_id: str = "lcp_diagnostic_snapshot"
     device_type: str = "LCP2116"
     result: TestStatus
@@ -90,11 +102,11 @@ class LcpDiagnosticsResult(BaseModel):
     serial_number: str
     operator: str
     port: str
-    evaluation_mode: str = "capture_only"
+    evaluation_mode: str = "semantic_v1"
     commands: list[DiagnosticCommandResult] = Field(default_factory=list)
     note: str = (
-        "PASS означает успешное получение ответа команды. Семантические аппаратные "
-        "критерии будут применены после подтверждения реальных диагностических данных."
+        "Статус команды учитывает содержание диагностического ответа. "
+        "Неподключённые внешние части стенда отмечаются SKIPPED."
     )
     error: str | None = None
     report_file: str | None = None
