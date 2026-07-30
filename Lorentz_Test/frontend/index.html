@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.4.1">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.5.0">
 </head>
 <body>
   <header class="topbar">
@@ -73,14 +73,14 @@
       <div class="section-heading">
         <div>
           <h2>Диагностическая проверка</h2>
-          <p>Проверяются RTOS, Flash A/B, UART, X2X, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p>
+          <p>Проверяются доступность endpoint стенда, RTOS, Flash A/B, UART, X2X, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p>
         </div>
         <button id="run-diagnostics" type="button">Проверить диагностику</button>
       </div>
-      <p>Пассивный USB-снимок не открывает S1–S4 и не синхронизирует RTC. Эти проверки отмечаются SKIPPED до отдельных активных тестов стенда.</p>
+      <p>Занятый COM показывается как ошибка стенда. Пассивный USB-снимок не выполняет внешний Modbus-тест S1–S4 и не синхронизирует RTC.</p>
       <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js?v=0.4.1"></script>
+  <script src="/static/js/app.js?v=0.5.0"></script>
 </body>
 </html>
