@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.6.1">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.7.0">
 </head>
 <body>
   <header class="topbar">
@@ -19,7 +19,7 @@
       <div class="section-heading">
         <div>
           <h2>Настройка стенда</h2>
-          <p>Порты и адреса сохраняются локально. Перед активным тестом Modbus Poll и терминалы должны быть закрыты.</p>
+          <p>Порты и адреса сохраняются локально. Перед активными serial-тестами Modbus Poll и терминалы должны быть закрыты.</p>
         </div>
         <div class="button-row"><button id="refresh-ports" class="secondary" type="button">Обновить COM</button><button id="save-station" type="button">Сохранить</button></div>
       </div>
@@ -32,8 +32,12 @@
         <label>S4 endpoint<input name="s4_endpoint" list="serial-ports"></label>
         <label>HMI endpoint<input name="hmi_endpoint" list="serial-ports"></label>
         <label>X2X endpoint<input name="x2x_endpoint" list="serial-ports" placeholder="COM15"></label>
-        <label>ETH1 IP<input name="eth1_ip" required></label>
-        <label>ETH2 IP<input name="eth2_ip" required></label>
+        <label>ETH1 DUT IP<input name="eth1_ip" required></label>
+        <label>ETH1 source IP ПК<input name="eth1_source_ip" placeholder="пусто = системный маршрут"></label>
+        <label>ETH2 DUT IP<input name="eth2_ip" required></label>
+        <label>ETH2 source IP ПК<input name="eth2_source_ip" placeholder="пусто = системный маршрут"></label>
+        <label class="checkbox-row"><input name="eth1_test_enabled" type="checkbox">Проверять ETH1</label>
+        <label class="checkbox-row"><input name="eth2_test_enabled" type="checkbox">Проверять ETH2</label>
         <label>Ожидаемая firmware<input name="expected_firmware_version" required></label>
         <label>USB baudrate<input name="serial_baudrate" type="number" min="300" max="1000000"></label>
         <label>USB timeout, s<input name="serial_timeout_seconds" type="number" min="0.05" max="30" step="0.05"></label>
@@ -77,7 +81,7 @@
         </div>
         <button id="run-diagnostics" type="button">Проверить диагностику</button>
       </div>
-      <p>Внешний обмен S1–S4 и X2X module communication здесь не оцениваются: программа ещё не запускает slave.</p>
+      <p>Внешний обмен оценивается отдельными активными тестами.</p>
       <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
@@ -85,14 +89,49 @@
       <div class="section-heading">
         <div>
           <h2>Активный тест S1–S4 и X2X</h2>
-          <p>Python захватывает указанные COM-порты, запускает Modbus RTU slave и проверяет, что LCP получил тестовые данные.</p>
+          <p>Python запускает Modbus RTU slave и проверяет приём уникальных данных контроллером.</p>
         </div>
-        <button id="run-active-rs485" type="button">Запустить активный тест</button>
+        <button id="run-active-rs485" type="button">Запустить RS-485</button>
       </div>
-      <p><strong>Перед запуском закройте Modbus Poll.</strong> Занятый, отсутствующий или неправильно назначенный COM даёт FIXTURE_ERROR, а не отказ LCP.</p>
+      <p><strong>Перед запуском закройте Modbus Poll.</strong> Ошибки кабелей и привязки COM классифицируются как FIXTURE_ERROR.</p>
       <div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
+
+    <section class="card test-card active-card">
+      <div class="section-heading">
+        <div>
+          <h2>Активный Ethernet</h2>
+          <p>Для ETH1/ETH2 выполняется Modbus TCP FC03 чтение holding registers 0…11 и проверка counters W5500.</p>
+        </div>
+        <button id="run-active-ethernet" type="button">Проверить Ethernet</button>
+      </div>
+      <p>При нескольких сетевых адаптерах задайте source IP ПК. Link down или отсутствие маршрута дают FIXTURE_ERROR.</p>
+      <div id="active-ethernet-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <section class="card test-card active-card">
+      <div class="section-heading">
+        <div>
+          <h2>Активные внутренние сервисы</h2>
+          <p>GET_CONFIG/VALIDATE_CONFIG без записи Flash, microSD write/read, RTC sync и короткая RTOS stability-проверка.</p>
+        </div>
+        <button id="run-active-services" type="button">Проверить сервисы</button>
+      </div>
+      <p>Команда устанавливает текущее время RTC и перезаписывает только служебный файл SDTEST.TXT.</p>
+      <div id="active-services-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <section class="card test-card active-card">
+      <div class="section-heading">
+        <div>
+          <h2>HMI echo</h2>
+          <p>Три кадра передаются через HMI endpoint на 9600 8N1 и должны вернуться без изменений.</p>
+        </div>
+        <button id="run-hmi" type="button">Проверить HMI</button>
+      </div>
+      <div id="hmi-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
   </main>
-  <script src="/static/js/app.js?v=0.6.1"></script>
+  <script src="/static/js/app.js?v=0.7.0"></script>
 </body>
 </html>
