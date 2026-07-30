@@ -38,4 +38,4 @@ def test_diagnostic_report_has_distinct_filename(tmp_path: Path) -> None:
     path = JsonReportWriter(tmp_path).save_lcp_diagnostics(result)
     assert path.name == "LCP2116_LCP_001_20260730_140000_DIAGNOSTICS_PASS.json"
     assert path.exists()
-    assert '"evaluation_mode": "semantic_v1"' in path.read_text(encoding="utf-8")
+    assert '"evaluation_mode": "semantic_v1.1"' in path.read_text(encoding="utf-8")
