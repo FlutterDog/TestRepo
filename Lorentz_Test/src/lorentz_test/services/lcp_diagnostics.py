@@ -24,6 +24,7 @@ from lorentz_test.protocols.lcp_diagnostic_parser import (
 from lorentz_test.services.lcp_diagnostic_evaluation import (
     evaluate_diagnostic_command,
 )
+from lorentz_test.services.station_preflight import probe_station_endpoints
 
 ConsoleOpener = Callable[..., LcpDiagnosticConsole]
 
@@ -152,6 +153,7 @@ def run_lcp_diagnostic_snapshot(
             error="LCP USB port is not configured",
         )
 
+    endpoint_access = probe_station_endpoints(station)
     console: LcpDiagnosticConsole | None = None
     commands: list[DiagnosticCommandResult] = []
     try:
@@ -184,6 +186,7 @@ def run_lcp_diagnostic_snapshot(
             serial_number=request.serial_number,
             operator=request.operator,
             port=port,
+            endpoint_access=endpoint_access,
             commands=commands,
         )
     except Exception as exc:
@@ -195,6 +198,7 @@ def run_lcp_diagnostic_snapshot(
             serial_number=request.serial_number,
             operator=request.operator,
             port=port,
+            endpoint_access=endpoint_access,
             commands=commands,
             error=f"{type(exc).__name__}: {exc}",
         )
