@@ -12,6 +12,7 @@ from lorentz_test.models.tests import (
     CheckResult,
     DiagnosticCommandResult,
     DiagnosticParsedValue,
+    EndpointAccessResult,
     LcpDiagnosticsResult,
     LcpHelloRequest,
     TestStatus,
@@ -27,6 +28,7 @@ from lorentz_test.services.lcp_diagnostic_evaluation import (
 from lorentz_test.services.station_preflight import probe_station_endpoints
 
 ConsoleOpener = Callable[..., LcpDiagnosticConsole]
+EndpointProber = Callable[[StationConfig], list[EndpointAccessResult]]
 
 _DIAGNOSTIC_COMMANDS: tuple[tuple[str, str, str], ...] = (
     ("rtos", "RTOS и память", "rtos"),
@@ -135,6 +137,7 @@ def run_lcp_diagnostic_snapshot(
     station: StationConfig,
     *,
     console_opener: ConsoleOpener = LcpDiagnosticConsole.open_port,
+    endpoint_prober: EndpointProber = probe_station_endpoints,
 ) -> LcpDiagnosticsResult:
     """Capture reports and apply the semantic profile for LCP Basic 1.02.0."""
     port = request.port or station.lcp_port
@@ -153,7 +156,7 @@ def run_lcp_diagnostic_snapshot(
             error="LCP USB port is not configured",
         )
 
-    endpoint_access = probe_station_endpoints(station)
+    endpoint_access = endpoint_prober(station)
     console: LcpDiagnosticConsole | None = None
     commands: list[DiagnosticCommandResult] = []
     try:
