@@ -105,8 +105,8 @@ class LcpDiagnosticsResult(BaseModel):
     evaluation_mode: str = "semantic_v1.1"
     commands: list[DiagnosticCommandResult] = Field(default_factory=list)
     note: str = (
-        "Статус команды учитывает внутреннюю диагностику LCP. Внешние S1–S4 "
-        "в пассивном снимке отмечаются SKIPPED до активного теста стенда."
+        "Статус команды учитывает внутреннюю диагностику LCP. Внешние S1–S4 и "
+        "абсолютное время RTC в пассивном снимке отмечаются SKIPPED до активных тестов."
     )
     error: str | None = None
     report_file: str | None = None
