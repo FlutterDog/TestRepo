@@ -11,6 +11,7 @@ import serial
 
 RegisterProvider = Callable[[int, int], list[int] | None]
 WriteHandler = Callable[[int, int], bool]
+SerialOpener = Callable[..., object]
 
 
 def modbus_crc16(data: bytes) -> int:
@@ -33,6 +34,12 @@ def frame_crc_valid(frame: bytes) -> bool:
         return False
     expected = frame[-2] | (frame[-1] << 8)
     return modbus_crc16(frame[:-2]) == expected
+
+
+def open_serial_endpoint(*, port: str, **kwargs: object) -> object:
+    """Open a local COM port or a raw TCP serial-server endpoint."""
+    endpoint = f"socket://{port[6:]}" if port.casefold().startswith("tcp://") else port
+    return serial.serial_for_url(endpoint, **kwargs)
 
 
 @dataclasses.dataclass
@@ -105,7 +112,7 @@ def build_response(
 
 
 class RtuSlaveServer:
-    """Background serial RTU slave. The port is acquired synchronously in start()."""
+    """Background RTU slave. The serial or TCP endpoint is acquired in start()."""
 
     def __init__(
         self,
@@ -117,7 +124,7 @@ class RtuSlaveServer:
         slave_address: int,
         register_provider: RegisterProvider,
         write_handler: WriteHandler | None = None,
-        serial_opener: Callable[..., serial.Serial] = serial.Serial,
+        serial_opener: SerialOpener = open_serial_endpoint,
     ) -> None:
         self.port = port
         self.baudrate = baudrate
@@ -128,7 +135,7 @@ class RtuSlaveServer:
         self.write_handler = write_handler
         self.serial_opener = serial_opener
         self.stats = RtuSlaveStats()
-        self._serial: serial.Serial | None = None
+        self._serial: object | None = None
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
 
