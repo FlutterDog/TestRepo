@@ -27,12 +27,19 @@ PNX, DM91 and density meters are not part of this project stage.
 
 ## Implemented release 0.8.0
 
-### Sequential full verification
+### Persistent sequential full verification
 
-The main operator action sends one request to:
+The production workflow creates an asynchronous backend session:
 
 ```text
-POST /api/tests/lcp/full
+POST /api/tests/lcp/full/start
+```
+
+The response contains a unique `run_id`. The frontend reads live progress through:
+
+```text
+GET /api/tests/lcp/full/{run_id}
+GET /api/tests/lcp/full/current
 ```
 
 The backend owns the complete safe sequence:
@@ -44,8 +51,19 @@ The backend owns the complete safe sequence:
 5. configuration transport, microSD, RTC and RTOS;
 6. HMI echo.
 
-Each stage writes its detailed module JSON immediately. The backend then writes one aggregate report containing:
+Current lifecycle and stage transitions are written atomically to:
 
+```text
+runtime/full_test_run.json
+```
+
+Closing or refreshing the browser does not stop the test. The current run and its result are restored after `Ctrl+F5`. A backend process restart during `WAITING` or `RUNNING` marks that run as `ERROR`; the interrupted result is not treated as valid.
+
+Each completed stage writes its detailed module JSON immediately. The backend then writes one aggregate report containing:
+
+- unique `run_id`;
+- backend, frontend and firmware versions;
+- complete station configuration snapshot;
 - raw and effective status of every stage;
 - paths to all module reports;
 - a fixed 14-point hardware verification matrix;
@@ -53,6 +71,26 @@ Each stage writes its detailed module JSON immediately. The backend then writes 
 - names of pending and failed hardware points.
 
 A critical USB/firmware failure blocks dependent stages and records them as `SKIPPED` instead of producing cascading false failures.
+
+The synchronous compatibility route remains available for cached older frontends:
+
+```text
+POST /api/tests/lcp/full
+```
+
+### Exclusive hardware ownership
+
+All hardware-changing or hardware-accessing POST operations share one process-wide backend mutex.
+
+This prevents:
+
+- two full tests from running simultaneously;
+- a separate test from opening the same COM port during a full run;
+- Flash A/B, watchdog or RTC-retention operations from overlapping another hardware test;
+- station settings from changing during a running test;
+- conflicts caused by a second browser tab.
+
+A conflicting request returns HTTP `409` and identifies the current hardware owner. The lock is released after success, runner exception, report error or run-state persistence error.
 
 ### Identity and passive diagnostics
 
@@ -74,6 +112,16 @@ A critical USB/firmware failure blocks dependent stages and records them as `SKI
 - local COM and `tcp://host:port` fixture endpoints.
 
 Close Modbus Poll and serial terminals before active serial tests. Python must be the only owner of configured fixture endpoints.
+
+### Shared HMI/X2X adapter
+
+HMI and X2X may use the same endpoint only when:
+
+- `shared_hmi_x2x_adapter=true`;
+- both endpoint fields are populated;
+- both fields refer to the same endpoint.
+
+X2X still conflicts with USB and S1-S4 endpoints. With one physically movable HMI/X2X adapter, the full run tests X2X and records HMI as `SKIPPED/INCOMPLETE` with an instruction to move the adapter and execute HMI separately. With two separate endpoints, HMI runs automatically.
 
 ### Active Ethernet
 
