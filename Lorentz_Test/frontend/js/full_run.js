@@ -33,10 +33,25 @@ function hardwareStatusCss(status) {
 }
 
 function setHardwareControlsLocked(locked) {
-  document.querySelectorAll('button[id^="run-"]').forEach((button) => {
-    button.disabled = locked;
-  });
-  saveButton.disabled = locked;
+  const controls = [
+    ...document.querySelectorAll('button[id^="run-"]'),
+    saveButton,
+  ];
+  for (const control of controls) {
+    if (locked) {
+      if (control.dataset.fullRunLockActive !== "1") {
+        control.dataset.fullRunPreviousDisabled = control.disabled ? "1" : "0";
+        control.dataset.fullRunLockActive = "1";
+      }
+      control.disabled = true;
+      continue;
+    }
+    if (control.dataset.fullRunLockActive === "1") {
+      control.disabled = control.dataset.fullRunPreviousDisabled === "1";
+      delete control.dataset.fullRunPreviousDisabled;
+      delete control.dataset.fullRunLockActive;
+    }
+  }
 }
 
 function renderRoutineProgress(stage) {
