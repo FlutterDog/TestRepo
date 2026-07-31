@@ -83,3 +83,7 @@ button.secondary { background: #e5ebf0; color: #324250; }
 .test-group-title { margin: 34px 0 10px; color: #324250; }
 .full-run-list { margin-top: 14px; }
 .full-run-report { margin-top: 4px; color: inherit; font-size: 12px; overflow-wrap: anywhere; opacity: .85; }
+.run-progress { height: 9px; margin: 12px 0 16px; overflow: hidden; border-radius: 999px; background: rgba(86, 97, 109, .18); }
+.run-progress > div { height: 100%; border-radius: inherit; background: currentColor; transition: width .25s ease; }
+.current-stage { padding-left: 10px; border-left: 4px solid currentColor; }
+.hardware-group { margin-left: 6px; font-size: 12px; opacity: .75; }
