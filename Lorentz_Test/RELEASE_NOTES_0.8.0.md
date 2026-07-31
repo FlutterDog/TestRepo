@@ -12,7 +12,7 @@ The production path now uses an asynchronous test session:
 - `GET /api/tests/lcp/full/{run_id}` provides live progress for polling;
 - the current lifecycle and every stage transition are written atomically to `runtime/full_test_run.json`;
 - closing or refreshing the browser does not stop the hardware verification;
-- a backend restart during a running session converts that session to `ERROR` instead of leaving a false permanent `RUNNING` state;
+- a backend restart while a session is `WAITING` or `RUNNING` converts that session to `ERROR` instead of leaving a false permanent active state;
 - every module report is saved immediately after its stage;
 - a final `FULL_TEST` JSON aggregates stage results, report paths, versions, `run_id`, the complete station snapshot and a 14-point hardware matrix;
 - aggregate statuses are `PASS`, `FAIL`, `FIXTURE_ERROR` and `INCOMPLETE`;
@@ -38,6 +38,16 @@ A process-wide backend mutex protects the DUT and fixture resources:
 
 This protection is enforced by the backend and therefore also applies to another browser tab.
 
+## Shared HMI/X2X adapter
+
+Endpoint ownership now permits HMI and X2X to share one endpoint only when:
+
+- `shared_hmi_x2x_adapter=true`;
+- both endpoint fields are populated;
+- both fields refer to the same endpoint.
+
+X2X still participates in conflict validation against USB and S1-S4. When HMI and X2X share one physically movable adapter, the automatic full run completes X2X and records HMI as `SKIPPED/INCOMPLETE` with an instruction to move the adapter and run HMI separately. With separate endpoints, HMI remains part of the automatic sequence.
+
 ## Operator workflow
 
 - prominent one-click **Full LCP2116 test** button;
@@ -48,6 +58,7 @@ This protection is enforced by the backend and therefore also applies to another
 - updates the six lower diagnostic cards from the same run without repeating hardware tests;
 - displays the hardware matrix and aggregate JSON path;
 - retains separate module buttons for targeted diagnostics and reruns;
+- restores each button to its pre-run disabled/enabled state;
 - Flash A/B, watchdog reset and RTC retention remain separate because they write Flash, reset the DUT or require manual power removal.
 
 Frontend build for this controller is `0.8.0-p6`.
@@ -93,12 +104,18 @@ The first LCP2116 executions confirmed USB identity, passive diagnostics, active
 
 ## Validation status
 
-The initial Windows run completed with `50 passed`. The RTC pending-state patch added one test, aggregate full-test orchestration added four tests and the persistent run controller adds four tests for concurrent exclusion, progress persistence/refresh recovery, interrupted-backend recovery and exception-safe lock release.
+The initial Windows run completed with `50 passed`. Additional coverage now includes:
+
+- RTC premature VERIFY state;
+- aggregate full-test ordering, result aggregation, prerequisite blocking and JSON naming;
+- concurrent exclusion, progress persistence, refresh recovery, interrupted WAITING/RUNNING recovery and exception-safe lock release;
+- precise shared HMI/X2X ownership validation;
+- automatic HMI behavior for shared and separate adapters.
 
 Expected next Windows result:
 
 ```text
-59 passed, 1 warning
+64 passed, 1 warning
 ```
 
 The remaining warning is the external Starlette/httpx deprecation warning. Hardware execution remains required for correctly mapped FieldSensor ports, Ethernet, HMI, Flash A/B, watchdog reset and RTC retention after a real power cycle.
