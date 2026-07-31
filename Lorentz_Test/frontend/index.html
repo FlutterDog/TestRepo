@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lorentz Test</title>
-  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0-p5">
+  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0-p6">
 </head>
 <body>
   <header class="topbar">
     <div><h1>Lorentz Test</h1><p>Локальная утилита проверки LCP2116</p></div>
     <div class="button-row">
-      <span class="status pass">FRONTEND 0.8.0-p5</span>
+      <span class="status pass">FRONTEND 0.8.0-p6</span>
       <span id="backend-status" class="status waiting">BACKEND</span>
     </div>
   </header>
@@ -50,7 +50,7 @@
       <div class="section-heading">
         <div>
           <h2>Полная последовательная проверка LCP2116</h2>
-          <p>Один backend-запрос выполняет штатные безопасные тесты и формирует единый FULL_TEST JSON с аппаратной матрицей.</p>
+          <p>Backend создаёт отдельную тестовую сессию, выполняет штатные безопасные тесты и формирует единый FULL_TEST JSON с аппаратной матрицей.</p>
         </div>
         <button id="run-full-test" class="primary-large" type="button">Запустить полную проверку</button>
       </div>
@@ -58,7 +58,7 @@
         <label>Серийный номер<input id="device-serial" required placeholder="LCP-000001"></label>
         <label>Оператор<input id="operator-name" required></label>
       </div>
-      <p class="full-test-note"><strong>Включено:</strong> USB/firmware, диагностика, RS-485/X2X, Ethernet, config/microSD/RTC/RTOS и HMI. При критическом отказе USB зависимые этапы отмечаются SKIPPED. Flash A/B, watchdog reset и RTC retention запускаются отдельно.</p>
+      <p class="full-test-note"><strong>Включено:</strong> USB/firmware, диагностика, RS-485/X2X, Ethernet, config/microSD/RTC/RTOS и HMI. Прогон продолжается после обновления или закрытия вкладки. Flash A/B, watchdog reset и RTC retention запускаются отдельно.</p>
       <div id="full-test-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
 
@@ -100,8 +100,8 @@
       <div id="rtc-retention-result" class="test-result waiting" data-kind="waiting">WAITING</div>
     </section>
   </main>
-  <script src="/static/js/app.js?v=0.8.0-p5"></script>
-  <script src="/static/js/full_run.js?v=0.8.0-p5"></script>
-  <script src="/static/js/advanced.js?v=0.8.0-p5"></script>
+  <script src="/static/js/app.js?v=0.8.0-p6"></script>
+  <script src="/static/js/full_run.js?v=0.8.0-p6"></script>
+  <script src="/static/js/advanced.js?v=0.8.0-p6"></script>
 </body>
 </html>
