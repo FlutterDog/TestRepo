@@ -27,6 +27,33 @@ PNX, DM91 and density meters are not part of this project stage.
 
 ## Implemented release 0.8.0
 
+### Sequential full verification
+
+The main operator action sends one request to:
+
+```text
+POST /api/tests/lcp/full
+```
+
+The backend owns the complete safe sequence:
+
+1. USB identity and firmware;
+2. passive diagnostics;
+3. active S1-S4 and X2X;
+4. active ETH1/ETH2;
+5. configuration transport, microSD, RTC and RTOS;
+6. HMI echo.
+
+Each stage writes its detailed module JSON immediately. The backend then writes one aggregate report containing:
+
+- raw and effective status of every stage;
+- paths to all module reports;
+- a fixed 14-point hardware verification matrix;
+- evaluated, pending, fixture-error and failed point counts;
+- names of pending and failed hardware points.
+
+A critical USB/firmware failure blocks dependent stages and records them as `SKIPPED` instead of producing cascading false failures.
+
 ### Identity and passive diagnostics
 
 - persistent station configuration in `runtime/station.json`;
@@ -105,15 +132,17 @@ A successful retention test proves operation through the tested power-off interv
 
 ## Result classification
 
-- `PASS`: the complete tested path passed;
-- `FIXTURE_ERROR`: the host fixture, cable, mapping, route or endpoint ownership prevents DUT evaluation;
+- `PASS`: every required configured hardware point was evaluated and passed;
+- `INCOMPLETE`: no DUT failure was confirmed, but at least one point was disabled, unconfigured or skipped;
+- `FIXTURE_ERROR`: the host fixture, cable, mapping, route, report storage or endpoint ownership prevents complete DUT evaluation;
 - `FAIL`: the fixture path was established but the DUT response or internal result was incorrect;
-- `SKIPPED`: the interface is disabled, not configured, unsupported or lacks exact confirmation.
+- `SKIPPED`: an individual interface or stage is disabled, not configured, blocked, unsupported or lacks exact confirmation.
 
 ## Reports
 
 Atomic JSON reports are written to `reports/` with suffixes:
 
+- `FULL_TEST`;
 - `DIAGNOSTICS`;
 - `ACTIVE_RS485`;
 - `ACTIVE_ETHERNET`;
@@ -122,5 +151,11 @@ Atomic JSON reports are written to `reports/` with suffixes:
 - `FLASH_AB`;
 - `WATCHDOG_RESET`;
 - `RTC_RETENTION_PREPARE` and `RTC_RETENTION_VERIFY`.
+
+Aggregate report format:
+
+```text
+LCP2116_<serial>_<timestamp>_FULL_TEST_<status>.json
+```
 
 Flash A/B also creates a separate `FLASH_RECOVERY.json` before the first write.
