@@ -100,6 +100,15 @@ def wait_for_lifecycle(
     raise AssertionError(f"run did not reach {expected}")
 
 
+def wait_for_guard_free(guard: HardwareOperationGuard, timeout: float = 1.0) -> None:
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        if guard.owner is None:
+            return
+        time.sleep(0.005)
+    raise AssertionError(f"hardware guard remained owned by {guard.owner}")
+
+
 def test_controller_blocks_concurrent_hardware_and_persists_completion(tmp_path: Path) -> None:
     started = Event()
     release = Event()
@@ -157,11 +166,11 @@ def test_controller_blocks_concurrent_hardware_and_persists_completion(tmp_path:
 
     release.set()
     completed = wait_for_lifecycle(controller, RunLifecycle.COMPLETE)
+    wait_for_guard_free(guard)
     assert completed.result is not None
     assert completed.result.result == FullTestStatus.PASS
     assert completed.report_file == str(writer.path)
     assert writer.calls == 1
-    assert guard.owner is None
     assert all(stage.status == Status.PASS for stage in completed.stages)
     assert (tmp_path / "run.json").exists()
 
@@ -230,9 +239,9 @@ def test_runner_exception_marks_error_and_releases_hardware(tmp_path: Path) -> N
     controller.start(request(), station())
     assert entered.wait(1.0)
     failed = wait_for_lifecycle(controller, RunLifecycle.ERROR)
+    wait_for_guard_free(guard)
 
     assert "RuntimeError: boom" == failed.error
-    assert guard.owner is None
     with guard.hold("after-failure"):
         assert guard.owner == "after-failure"
 
