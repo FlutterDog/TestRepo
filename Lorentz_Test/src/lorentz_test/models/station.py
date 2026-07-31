@@ -47,10 +47,19 @@ class StationConfig(BaseModel):
             if value:
                 endpoints.append((name, value.casefold()))
 
-        if self.hmi_endpoint:
-            endpoints.append(("hmi_endpoint", self.hmi_endpoint.casefold()))
-        if self.x2x_endpoint and not self.shared_hmi_x2x_adapter:
-            endpoints.append(("x2x_endpoint", self.x2x_endpoint.casefold()))
+        hmi = self.hmi_endpoint.casefold() if self.hmi_endpoint else None
+        x2x = self.x2x_endpoint.casefold() if self.x2x_endpoint else None
+        shared_same_endpoint = bool(
+            self.shared_hmi_x2x_adapter
+            and hmi is not None
+            and x2x is not None
+            and hmi == x2x
+        )
+
+        if hmi:
+            endpoints.append(("hmi_endpoint", hmi))
+        if x2x and not shared_same_endpoint:
+            endpoints.append(("x2x_endpoint", x2x))
 
         owners: dict[str, str] = {}
         for name, endpoint in endpoints:
