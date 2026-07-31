@@ -16,7 +16,7 @@ from lorentz_test.models.full_test import (
     LcpFullTestResult,
 )
 from lorentz_test.models.station import StationConfig
-from lorentz_test.models.tests import LcpHelloRequest, TestStatus
+from lorentz_test.models.tests import LcpHelloRequest, LcpHmiResult, TestStatus
 from lorentz_test.reporting.json_report import report_writer
 from lorentz_test.services.lcp_active_ethernet import run_lcp_active_ethernet
 from lorentz_test.services.lcp_active_rs485 import run_lcp_active_rs485
@@ -51,6 +51,32 @@ _STAGE_META = (
 
 def full_test_stage_definitions() -> tuple[tuple[str, str], ...]:
     return tuple((key, title) for key, title, _ in _STAGE_META)
+
+
+def run_hmi_for_full_test(
+    request: LcpHelloRequest,
+    station: StationConfig,
+    runner: Runner = run_lcp_hmi_echo,
+) -> LcpHmiResult:
+    hmi = station.hmi_endpoint.casefold() if station.hmi_endpoint else None
+    x2x = station.x2x_endpoint.casefold() if station.x2x_endpoint else None
+    if station.shared_hmi_x2x_adapter and hmi and x2x and hmi == x2x:
+        return LcpHmiResult(
+            result=TestStatus.SKIPPED,
+            started_at=datetime.now(timezone.utc),
+            duration_ms=0,
+            station_name=station.station_name,
+            serial_number=request.serial_number,
+            operator=request.operator,
+            port=request.port or station.lcp_port or "",
+            endpoint=station.hmi_endpoint,
+            detail=(
+                "HMI и X2X используют один физически переставляемый адаптер. "
+                "Автоматический HMI этап пропущен: переставьте адаптер на HMI "
+                "и запустите отдельный HMI echo тест."
+            ),
+        )
+    return runner(request, station)
 
 
 def _to_full_status(status: TestStatus) -> FullTestStatus:
@@ -451,13 +477,16 @@ def run_lcp_full_test(
     results: dict[str, Any] = {}
     resolved_run_id = run_id or uuid4().hex
 
+    def full_hmi_runner(req: LcpHelloRequest, cfg: StationConfig) -> LcpHmiResult:
+        return run_hmi_for_full_test(req, cfg, hmi_runner)
+
     runners: dict[str, Runner] = {
         "hello": hello_runner,
         "diagnostics": diagnostics_runner,
         "rs485": rs485_runner,
         "ethernet": ethernet_runner,
         "services": services_runner,
-        "hmi": hmi_runner,
+        "hmi": full_hmi_runner,
     }
 
     for index, (key, title, saver_name) in enumerate(_STAGE_META, start=1):
