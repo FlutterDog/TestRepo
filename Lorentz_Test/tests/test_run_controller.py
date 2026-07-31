@@ -186,25 +186,30 @@ def test_controller_blocks_concurrent_hardware_and_persists_completion(tmp_path:
     assert restored.result is not None
 
 
-def test_interrupted_running_state_is_recovered_as_error(tmp_path: Path) -> None:
+@pytest.mark.parametrize("lifecycle", [RunLifecycle.WAITING, RunLifecycle.RUNNING])
+def test_interrupted_session_is_recovered_as_error(
+    tmp_path: Path,
+    lifecycle: RunLifecycle,
+) -> None:
     now = datetime.now(timezone.utc)
+    stage_status = Status.RUNNING if lifecycle == RunLifecycle.RUNNING else Status.WAITING
     state = FullTestRunState(
         run_id="interrupted",
-        lifecycle=RunLifecycle.RUNNING,
+        lifecycle=lifecycle,
         created_at=now,
         updated_at=now,
-        started_at=now,
+        started_at=now if lifecycle == RunLifecycle.RUNNING else None,
         request=request(),
         station_snapshot=station().model_dump(mode="json"),
-        current_stage_key="rs485",
-        current_stage_title="RS-485",
-        current_stage_index=3,
+        current_stage_key="rs485" if lifecycle == RunLifecycle.RUNNING else None,
+        current_stage_title="RS-485" if lifecycle == RunLifecycle.RUNNING else None,
+        current_stage_index=3 if lifecycle == RunLifecycle.RUNNING else 0,
         stages=[
             RunStageProgress(
                 key="rs485",
                 title="RS-485",
-                status=Status.RUNNING,
-                started_at=now,
+                status=stage_status,
+                started_at=now if lifecycle == RunLifecycle.RUNNING else None,
             )
         ],
     )
@@ -217,8 +222,11 @@ def test_interrupted_running_state_is_recovered_as_error(tmp_path: Path) -> None
     assert recovered.lifecycle == RunLifecycle.ERROR
     assert recovered.completed_at is not None
     assert recovered.current_stage_key is None
-    assert recovered.stages[0].status == Status.FIXTURE_ERROR
-    assert "остановлен" in (recovered.error or "")
+    if lifecycle == RunLifecycle.RUNNING:
+        assert recovered.stages[0].status == Status.FIXTURE_ERROR
+    else:
+        assert recovered.stages[0].status == Status.WAITING
+    assert lifecycle.value in (recovered.error or "")
 
 
 def test_runner_exception_marks_error_and_releases_hardware(tmp_path: Path) -> None:
