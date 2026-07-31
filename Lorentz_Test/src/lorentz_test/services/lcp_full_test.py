@@ -6,6 +6,7 @@ import time
 from collections.abc import Callable
 from datetime import datetime, timezone
 from typing import Any, Protocol
+from uuid import uuid4
 
 from lorentz_test.models.full_test import (
     FullTestStageResult,
@@ -26,6 +27,7 @@ from lorentz_test.services.lcp_hmi import run_lcp_hmi_echo
 
 
 Runner = Callable[[LcpHelloRequest, StationConfig], Any]
+ProgressCallback = Callable[[str, int, str, str, FullTestStageResult | None], None]
 
 
 class FullTestReportWriter(Protocol):
@@ -45,6 +47,10 @@ _STAGE_META = (
     ("services", "Config, microSD, RTC и RTOS", "save_lcp_active_services"),
     ("hmi", "HMI echo", "save_lcp_hmi"),
 )
+
+
+def full_test_stage_definitions() -> tuple[tuple[str, str], ...]:
+    return tuple((key, title) for key, title, _ in _STAGE_META)
 
 
 def _to_full_status(status: TestStatus) -> FullTestStatus:
@@ -428,6 +434,8 @@ def run_lcp_full_test(
     request: LcpHelloRequest,
     station: StationConfig,
     *,
+    run_id: str | None = None,
+    progress_callback: ProgressCallback | None = None,
     hello_runner: Runner = run_lcp_hello,
     diagnostics_runner: Runner = run_lcp_diagnostic_snapshot,
     rs485_runner: Runner = run_lcp_active_rs485,
@@ -441,6 +449,7 @@ def run_lcp_full_test(
     started = time.monotonic()
     stages: list[FullTestStageResult] = []
     results: dict[str, Any] = {}
+    resolved_run_id = run_id or uuid4().hex
 
     runners: dict[str, Runner] = {
         "hello": hello_runner,
@@ -451,10 +460,16 @@ def run_lcp_full_test(
         "hmi": hmi_runner,
     }
 
-    for index, (key, title, saver_name) in enumerate(_STAGE_META):
-        if index > 0 and stages[0].effective_result != FullTestStatus.PASS:
-            stages.append(_blocked_stage(key, title, "USB и firmware"))
+    for index, (key, title, saver_name) in enumerate(_STAGE_META, start=1):
+        if index > 1 and stages[0].effective_result != FullTestStatus.PASS:
+            stage = _blocked_stage(key, title, "USB и firmware")
+            stages.append(stage)
+            if progress_callback:
+                progress_callback("completed", index, key, title, stage)
             continue
+
+        if progress_callback:
+            progress_callback("started", index, key, title, None)
 
         stage, result = _execute_stage(
             key,
@@ -468,16 +483,24 @@ def run_lcp_full_test(
         stages.append(stage)
         if result is not None:
             results[key] = result
+        if progress_callback:
+            progress_callback("completed", index, key, title, stage)
 
     hardware = _build_hardware_points(station, stages, results)
+    completed_at = datetime.now(timezone.utc)
+    hello_result = results.get("hello")
     return LcpFullTestResult(
+        run_id=resolved_run_id,
         result=_overall(stages),
         started_at=started_at,
+        completed_at=completed_at,
         duration_ms=round((time.monotonic() - started) * 1000),
         station_name=station.station_name,
+        station_snapshot=station.model_dump(mode="json"),
         serial_number=request.serial_number,
         operator=request.operator,
         port=request.port or station.lcp_port or "",
+        firmware_version=getattr(hello_result, "firmware_version", None),
         stages=stages,
         hardware=hardware,
         summary=_summary(hardware),
