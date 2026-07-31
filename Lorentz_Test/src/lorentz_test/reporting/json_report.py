@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from typing import Protocol
 
+from lorentz_test.models.full_test import LcpFullTestResult
 from lorentz_test.models.tests import (
     LcpActiveEthernetResult,
     LcpActiveRs485Result,
@@ -60,6 +61,9 @@ class JsonReportWriter:
             result.report_file = None
             raise RuntimeError(f"cannot save JSON report: {exc}") from exc
         return target
+
+    def save_lcp_full_test(self, result: LcpFullTestResult) -> Path:
+        return self._save(result, "FULL_TEST")
 
     def save_lcp_hello(self, result: LcpHelloResult) -> Path:
         return self._save(result)
