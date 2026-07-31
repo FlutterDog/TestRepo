@@ -106,14 +106,18 @@ class FullTestRunController:
             return None
 
     def _recover_interrupted_state(self) -> None:
-        if self._state is None or self._state.lifecycle != RunLifecycle.RUNNING:
+        if self._state is None or self._state.lifecycle not in {
+            RunLifecycle.WAITING,
+            RunLifecycle.RUNNING,
+        }:
             return
         now = datetime.now(timezone.utc)
+        interrupted_lifecycle = self._state.lifecycle.value
         self._state.lifecycle = RunLifecycle.ERROR
         self._state.updated_at = now
         self._state.completed_at = now
         self._state.error = (
-            "Backend был остановлен во время аппаратной проверки. "
+            f"Backend был остановлен при состоянии {interrupted_lifecycle}. "
             "Результат этого прогона недействителен; запустите проверку заново."
         )
         for stage in self._state.stages:
