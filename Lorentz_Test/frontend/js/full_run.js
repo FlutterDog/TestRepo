@@ -2,15 +2,7 @@
 
 const runFullTestButton = document.getElementById("run-full-test");
 const fullTestResult = document.getElementById("full-test-result");
-
-const routineTestButtons = [
-  runHelloButton,
-  runDiagnosticsButton,
-  runActiveRs485Button,
-  runActiveEthernetButton,
-  runActiveServicesButton,
-  runHmiButton,
-];
+const FULL_RUN_POLL_MS = 500;
 
 const routineStageTargets = {
   hello: helloResult,
@@ -21,10 +13,14 @@ const routineStageTargets = {
   hmi: hmiResult,
 };
 
+let activeFullRunId = null;
+let fullRunPollTimer = null;
+let fullRunPollToken = 0;
+
 function fullStatusCss(status) {
   if (status === "PASS") return "pass";
   if (status === "FIXTURE_ERROR") return "fixture-error";
-  if (status === "INCOMPLETE" || status === "SKIPPED") return "waiting";
+  if (status === "INCOMPLETE" || status === "SKIPPED" || status === "WAITING") return "waiting";
   if (status === "RUNNING") return "running";
   return "fail";
 }
@@ -36,15 +32,40 @@ function hardwareStatusCss(status) {
   return "skipped";
 }
 
-function setRoutineCardsRunning() {
-  for (const element of Object.values(routineStageTargets)) {
-    setResult(
-      element,
-      "RUNNING — выполняется в составе полной последовательной проверки…",
-      "running",
-      "running",
-    );
-  }
+function setHardwareControlsLocked(locked) {
+  document.querySelectorAll('button[id^="run-"]').forEach((button) => {
+    button.disabled = locked;
+  });
+  saveButton.disabled = locked;
+}
+
+function renderRoutineProgress(stage) {
+  const element = routineStageTargets[stage.key];
+  if (!element) return;
+
+  const status = stage.effective_result || stage.status || "WAITING";
+  const report = stage.report_file
+    ? `<p><strong>JSON:</strong> ${escapeHtml(stage.report_file)}</p>`
+    : "";
+  const blocked = stage.blocked_by
+    ? `<p><strong>Заблокировано этапом:</strong> ${escapeHtml(stage.blocked_by)}</p>`
+    : "";
+  const duration = stage.duration_ms !== null && stage.duration_ms !== undefined
+    ? `, ${escapeHtml(stage.duration_ms)} ms`
+    : "";
+  let detail = stage.detail || "Ожидает запуска в последовательности";
+  if (stage.status === "RUNNING") detail = "Выполняется в составе полной проверки";
+
+  element.className = `test-result ${fullStatusCss(status)}`;
+  element.dataset.kind = stage.status === "RUNNING" ? "running" : "result";
+  element.innerHTML = `
+    <strong>${escapeHtml(status)}</strong>${duration}
+    <p>${escapeHtml(detail)}</p>
+    ${blocked}${report}`;
+}
+
+function renderRunStageCards(state) {
+  for (const stage of state.stages || []) renderRoutineProgress(stage);
 }
 
 function renderRoutineStageSummary(stage) {
@@ -66,10 +87,10 @@ function renderRoutineStageSummary(stage) {
     ? `<p><strong>JSON:</strong> ${escapeHtml(stage.report_file)}</p>`
     : "";
 
-  element.className = `test-result ${fullStatusCss(rawStatus)}`;
+  element.className = `test-result ${fullStatusCss(effectiveStatus)}`;
   element.dataset.kind = "result";
   element.innerHTML = `
-    <strong>${escapeHtml(rawStatus)}</strong>
+    <strong>${escapeHtml(effectiveStatus)}</strong>
     — выполнено в составе полной проверки, ${escapeHtml(stage.duration_ms)} ms
     <p>${escapeHtml(stage.detail || "Результат этапа получен.")}</p>
     ${effective}${blocked}${error}${report}`;
@@ -139,13 +160,16 @@ function renderFullTest(result) {
   const report = result.report_file
     ? `<p><strong>Агрегированный JSON:</strong> ${escapeHtml(result.report_file)}</p>`
     : "";
+  const runMetadata = `
+    <p><strong>Run ID:</strong> ${escapeHtml(result.run_id || "не указан")}</p>
+    <p><strong>Версии:</strong> frontend ${escapeHtml(result.frontend_build || "unknown")}, backend ${escapeHtml(result.utility_version || "unknown")}, firmware ${escapeHtml(result.firmware_version || "unknown")}</p>`;
 
   fullTestResult.className = `test-result ${fullStatusCss(result.result)}`;
   fullTestResult.dataset.kind = "result";
   fullTestResult.innerHTML = `
     <strong>${escapeHtml(result.result)}</strong>
     — ${escapeHtml(result.duration_ms)} ms
-    ${error}
+    ${error}${runMetadata}
     <p>
       Аппаратные точки: ${escapeHtml(summary.evaluated_points || 0)}/${escapeHtml(summary.total_points || 0)} оценены;
       PASS=${escapeHtml(summary.passed_points || 0)},
@@ -161,6 +185,107 @@ function renderFullTest(result) {
     <p>${escapeHtml(result.note || "")}</p>`;
 }
 
+function renderRunningState(state) {
+  const stages = (state.stages || []).map((stage, index) => {
+    const status = stage.effective_result || stage.status;
+    const current = stage.key === state.current_stage_key ? " current-stage" : "";
+    const detail = stage.detail ? `<div>${escapeHtml(stage.detail)}</div>` : "";
+    return `
+      <li class="diagnostic-command command-${String(status).toLowerCase()}${current}">
+        <div><strong>${escapeHtml(status)}</strong> ${escapeHtml(index + 1)}. ${escapeHtml(stage.title)}</div>
+        ${detail}
+      </li>`;
+  }).join("");
+  const current = state.current_stage_title || "подготовка";
+  const progress = Math.max(0, Math.min(100, Math.round((state.current_stage_index / state.total_stages) * 100)));
+
+  fullTestResult.className = "test-result running";
+  fullTestResult.dataset.kind = "running";
+  fullTestResult.innerHTML = `
+    <strong>${escapeHtml(state.lifecycle)}</strong>
+    — этап ${escapeHtml(state.current_stage_index)}/${escapeHtml(state.total_stages)}: ${escapeHtml(current)}
+    <p><strong>Run ID:</strong> ${escapeHtml(state.run_id)}</p>
+    <div class="run-progress"><div style="width:${progress}%"></div></div>
+    <ul class="check-list command-list full-run-list">${stages}</ul>
+    <p>Прогон выполняется backend и продолжится при обновлении или закрытии вкладки.</p>`;
+  renderRunStageCards(state);
+}
+
+function renderRunError(state) {
+  fullTestResult.className = "test-result fail";
+  fullTestResult.dataset.kind = "result";
+  fullTestResult.innerHTML = `
+    <strong>ERROR</strong>
+    <p><strong>Run ID:</strong> ${escapeHtml(state.run_id)}</p>
+    <p>${escapeHtml(state.error || "Неизвестная ошибка backend-сессии")}</p>`;
+  renderRunStageCards(state);
+}
+
+function renderRunState(state) {
+  if (!state) return;
+  activeFullRunId = state.run_id;
+  if (state.lifecycle === "COMPLETE" && state.result) {
+    renderFullTest(state.result);
+    renderRoutineStageSummaries(state.result);
+    setHardwareControlsLocked(false);
+    activeFullRunId = null;
+    return;
+  }
+  if (state.lifecycle === "ERROR") {
+    renderRunError(state);
+    setHardwareControlsLocked(false);
+    activeFullRunId = null;
+    return;
+  }
+  setHardwareControlsLocked(true);
+  renderRunningState(state);
+}
+
+function stopFullRunPolling() {
+  fullRunPollToken += 1;
+  if (fullRunPollTimer !== null) {
+    clearTimeout(fullRunPollTimer);
+    fullRunPollTimer = null;
+  }
+}
+
+async function pollFullRun(runId, token) {
+  if (token !== fullRunPollToken) return;
+  try {
+    const state = await requestJson(`/api/tests/lcp/full/${encodeURIComponent(runId)}`);
+    if (token !== fullRunPollToken) return;
+    renderRunState(state);
+    if (state.lifecycle === "WAITING" || state.lifecycle === "RUNNING") {
+      fullRunPollTimer = setTimeout(() => pollFullRun(runId, token), FULL_RUN_POLL_MS);
+    }
+  } catch (error) {
+    if (token !== fullRunPollToken) return;
+    setResult(fullTestResult, `Ошибка чтения состояния прогона — ${error.message}`, "fail", "result");
+    setHardwareControlsLocked(false);
+    activeFullRunId = null;
+  }
+}
+
+function startFullRunPolling(runId) {
+  stopFullRunPolling();
+  activeFullRunId = runId;
+  const token = fullRunPollToken;
+  pollFullRun(runId, token);
+}
+
+async function restoreFullTestRun() {
+  try {
+    const state = await requestJson("/api/tests/lcp/full/current");
+    if (!state) return;
+    renderRunState(state);
+    if (state.lifecycle === "WAITING" || state.lifecycle === "RUNNING") {
+      startFullRunPolling(state.run_id);
+    }
+  } catch (error) {
+    setResult(fullTestResult, `Не удалось восстановить состояние прогона — ${error.message}`, "fail", "result");
+  }
+}
+
 async function runFullTest() {
   const identity = testIdentity();
   if (identity.error) {
@@ -169,12 +294,11 @@ async function runFullTest() {
     return;
   }
 
-  runFullTestButton.disabled = true;
-  routineTestButtons.forEach((button) => { button.disabled = true; });
-  setRoutineCardsRunning();
+  stopFullRunPolling();
+  setHardwareControlsLocked(true);
   setResult(
     fullTestResult,
-    "RUNNING — backend последовательно выполняет USB, диагностику, RS-485/X2X, Ethernet, внутренние сервисы и HMI…",
+    "WAITING — сохранение настроек и создание backend-сессии…",
     "running",
     "running",
   );
@@ -188,29 +312,18 @@ async function runFullTest() {
     fillForm(config);
     setMessage("Настройки стенда сохранены перед полной проверкой.", true);
 
-    const result = await requestJson("/api/tests/lcp/full", {
+    const state = await requestJson("/api/tests/lcp/full/start", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: requestPayload(identity),
     });
-    renderFullTest(result);
-    renderRoutineStageSummaries(result);
+    renderRunState(state);
+    startFullRunPolling(state.run_id);
   } catch (error) {
     setResult(fullTestResult, `FAIL — ${error.message}`, "fail", "result");
-    for (const element of Object.values(routineStageTargets)) {
-      if (element.dataset.kind === "running") {
-        setResult(
-          element,
-          `FAIL — полная проверка завершилась ошибкой API: ${error.message}`,
-          "fail",
-          "result",
-        );
-      }
-    }
-  } finally {
-    runFullTestButton.disabled = false;
-    routineTestButtons.forEach((button) => { button.disabled = false; });
+    setHardwareControlsLocked(false);
   }
 }
 
 runFullTestButton.addEventListener("click", runFullTest);
+restoreFullTestRun();
