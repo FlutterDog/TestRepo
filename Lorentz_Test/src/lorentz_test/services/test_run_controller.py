@@ -7,7 +7,7 @@ import threading
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Callable, Iterator, Protocol
+from typing import Callable, Iterator, Protocol
 from uuid import uuid4
 
 from lorentz_test.models.full_test import FullTestStageResult, LcpFullTestResult
@@ -185,7 +185,18 @@ class FullTestRunController:
                 daemon=True,
             )
             thread.start()
-        except Exception:
+        except Exception as exc:
+            failed = datetime.now(timezone.utc)
+            with self._state_lock:
+                if self._state is not None and self._state.run_id == run_id:
+                    self._state.lifecycle = RunLifecycle.ERROR
+                    self._state.updated_at = failed
+                    self._state.completed_at = failed
+                    self._state.error = f"{type(exc).__name__}: {exc}"
+                    try:
+                        self._persist_locked()
+                    except RuntimeError:
+                        pass
             self.guard.release(owner)
             raise
         return self.current() or state
@@ -197,26 +208,25 @@ class FullTestRunController:
         request: LcpHelloRequest,
         station: StationConfig,
     ) -> None:
-        now = datetime.now(timezone.utc)
-        with self._state_lock:
-            if self._state is None or self._state.run_id != run_id:
-                self.guard.release(owner)
-                return
-            self._state.lifecycle = RunLifecycle.RUNNING
-            self._state.started_at = now
-            self._state.updated_at = now
-            self._persist_locked()
-
-        def progress(
-            event: str,
-            index: int,
-            key: str,
-            title: str,
-            stage: FullTestStageResult | None,
-        ) -> None:
-            self._update_progress(run_id, event, index, key, title, stage)
-
         try:
+            now = datetime.now(timezone.utc)
+            with self._state_lock:
+                if self._state is None or self._state.run_id != run_id:
+                    return
+                self._state.lifecycle = RunLifecycle.RUNNING
+                self._state.started_at = now
+                self._state.updated_at = now
+                self._persist_locked()
+
+            def progress(
+                event: str,
+                index: int,
+                key: str,
+                title: str,
+                stage: FullTestStageResult | None,
+            ) -> None:
+                self._update_progress(run_id, event, index, key, title, stage)
+
             result = self.runner(
                 request,
                 station,
