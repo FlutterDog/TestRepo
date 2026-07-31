@@ -12,86 +12,6 @@ const routineTestButtons = [
   runHmiButton,
 ];
 
-const routineStages = [
-  {
-    key: "hello",
-    title: "USB и firmware",
-    url: "/api/tests/lcp/hello",
-    element: helloResult,
-    render: renderHello,
-    running: "RUNNING — проверка бинарного USB и firmware…",
-  },
-  {
-    key: "diagnostics",
-    title: "Пассивная диагностика",
-    url: "/api/tests/lcp/diagnostics",
-    element: diagnosticsResult,
-    render: renderDiagnostics,
-    running: "RUNNING — пассивная диагностика…",
-  },
-  {
-    key: "rs485",
-    title: "RS-485 S1–S4 и X2X",
-    url: "/api/tests/lcp/active-rs485",
-    element: activeRs485Result,
-    render: renderActiveRs485,
-    running: "RUNNING — Python запускает slave S1–S4/X2X и ждёт опрос LCP…",
-  },
-  {
-    key: "ethernet",
-    title: "Ethernet ETH1/ETH2",
-    url: "/api/tests/lcp/active-ethernet",
-    element: activeEthernetResult,
-    render: renderActiveEthernet,
-    running: "RUNNING — Modbus TCP FC03 для ETH1/ETH2…",
-  },
-  {
-    key: "services",
-    title: "Config, microSD, RTC и RTOS",
-    url: "/api/tests/lcp/active-services",
-    element: activeServicesResult,
-    render: renderActiveServices,
-    running: "RUNNING — config validate, SD, RTC и RTOS…",
-  },
-  {
-    key: "hmi",
-    title: "HMI echo",
-    url: "/api/tests/lcp/hmi",
-    element: hmiResult,
-    render: renderHmi,
-    running: "RUNNING — три HMI echo-кадра…",
-  },
-];
-
-function nestedStatuses(stage, result) {
-  if (stage.key === "rs485" || stage.key === "ethernet") {
-    return (result.interfaces || []).map((item) => item.status);
-  }
-  if (stage.key === "services") {
-    return (result.steps || []).map((item) => item.status);
-  }
-  return [];
-}
-
-function effectiveRoutineStatus(stage, result) {
-  const top = result.result || "FAIL";
-  if (top === "FAIL" || top === "FIXTURE_ERROR" || top === "SKIPPED") return top;
-
-  const nested = nestedStatuses(stage, result);
-  if (nested.includes("FAIL")) return "FAIL";
-  if (nested.includes("FIXTURE_ERROR")) return "FIXTURE_ERROR";
-  if (nested.includes("SKIPPED")) return "INCOMPLETE";
-  return top;
-}
-
-function overallRoutineStatus(items) {
-  const statuses = items.map((item) => item.status);
-  if (statuses.includes("FAIL")) return "FAIL";
-  if (statuses.includes("FIXTURE_ERROR")) return "FIXTURE_ERROR";
-  if (statuses.includes("INCOMPLETE") || statuses.includes("SKIPPED")) return "INCOMPLETE";
-  return statuses.length > 0 && statuses.every((status) => status === "PASS") ? "PASS" : "FAIL";
-}
-
 function fullStatusCss(status) {
   if (status === "PASS") return "pass";
   if (status === "FIXTURE_ERROR") return "fixture-error";
@@ -100,58 +20,79 @@ function fullStatusCss(status) {
   return "fail";
 }
 
-function renderFullRun(items, overall, durationMs, currentTitle = null) {
-  const rows = routineStages.map((stage) => {
-    const item = items.find((candidate) => candidate.key === stage.key);
-    const status = item?.status || (currentTitle === stage.title ? "RUNNING" : "WAITING");
-    const detail = item?.result?.report_file
-      ? `<div class="full-run-report">${escapeHtml(item.result.report_file)}</div>`
-      : item?.error
-        ? `<div>${escapeHtml(item.error)}</div>`
-        : "";
+function hardwareStatusCss(status) {
+  if (status === "PASS") return "pass";
+  if (status === "FAIL") return "fail";
+  if (status === "FIXTURE_ERROR") return "fixture_error";
+  return "skipped";
+}
+
+function renderFullTest(result) {
+  const stages = (result.stages || []).map((stage) => {
+    const report = stage.report_file
+      ? `<div class="full-run-report">${escapeHtml(stage.report_file)}</div>`
+      : "";
+    const blocked = stage.blocked_by
+      ? `<div>blocked by: ${escapeHtml(stage.blocked_by)}</div>`
+      : "";
+    const error = stage.error
+      ? `<div><strong>Ошибка:</strong> ${escapeHtml(stage.error)}</div>`
+      : "";
     return `
-      <li class="diagnostic-command command-${String(status).toLowerCase()}">
-        <div><strong>${escapeHtml(status)}</strong> ${escapeHtml(stage.title)}</div>
-        ${detail}
+      <li class="diagnostic-command command-${String(stage.effective_result).toLowerCase()}">
+        <div>
+          <strong>${escapeHtml(stage.effective_result)}</strong>
+          ${escapeHtml(stage.title)}
+          — raw=${escapeHtml(stage.raw_result)}, ${escapeHtml(stage.duration_ms)} ms
+        </div>
+        <div>${escapeHtml(stage.detail)}</div>
+        ${blocked}${error}${report}
       </li>`;
   }).join("");
 
-  const suffix = overall === "RUNNING" && currentTitle
-    ? ` — сейчас: ${escapeHtml(currentTitle)}`
-    : ` — ${escapeHtml(durationMs)} ms`;
-  const explanation = overall === "INCOMPLETE"
-    ? "Часть интерфейсов не настроена или была пропущена. Проверенные части не дали DUT FAIL."
-    : overall === "FIXTURE_ERROR"
-      ? "Контроллер полностью не оценён из-за ошибки стенда, подключения или настройки endpoint."
-      : "";
+  const hardware = (result.hardware || []).map((point) => `
+    <li class="diagnostic-command command-${hardwareStatusCss(point.result)}">
+      <div>
+        <strong>${escapeHtml(point.result)}</strong>
+        ${escapeHtml(point.title)}
+        <span class="hardware-group">[${escapeHtml(point.group)}]</span>
+      </div>
+      <div>${escapeHtml(point.detail)}</div>
+    </li>`).join("");
 
-  fullTestResult.className = `test-result ${fullStatusCss(overall)}`;
+  const summary = result.summary || {};
+  const pending = summary.pending_points?.length
+    ? `<p><strong>Не завершено:</strong> ${escapeHtml(summary.pending_points.join(", "))}</p>`
+    : "";
+  const failed = summary.failed_point_names?.length
+    ? `<p><strong>DUT FAIL:</strong> ${escapeHtml(summary.failed_point_names.join(", "))}</p>`
+    : "";
+  const error = result.error
+    ? `<p><strong>Ошибка:</strong> ${escapeHtml(result.error)}</p>`
+    : "";
+  const report = result.report_file
+    ? `<p><strong>Агрегированный JSON:</strong> ${escapeHtml(result.report_file)}</p>`
+    : "";
+
+  fullTestResult.className = `test-result ${fullStatusCss(result.result)}`;
   fullTestResult.dataset.kind = "result";
   fullTestResult.innerHTML = `
-    <strong>${escapeHtml(overall)}</strong>${suffix}
-    ${explanation ? `<p>${escapeHtml(explanation)}</p>` : ""}
-    <ul class="check-list command-list full-run-list">${rows}</ul>`;
-}
-
-async function runRoutineStage(stage, identity) {
-  setResult(stage.element, stage.running, "running", "running");
-  try {
-    const result = await requestJson(stage.url, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: requestPayload(identity),
-    });
-    stage.render(result);
-    return {key: stage.key, status: effectiveRoutineStatus(stage, result), result};
-  } catch (error) {
-    setResult(stage.element, `FAIL — ${error.message}`, "fail", "result");
-    return {
-      key: stage.key,
-      status: "FAIL",
-      result: null,
-      error: error.message,
-    };
-  }
+    <strong>${escapeHtml(result.result)}</strong>
+    — ${escapeHtml(result.duration_ms)} ms
+    ${error}
+    <p>
+      Аппаратные точки: ${escapeHtml(summary.evaluated_points || 0)}/${escapeHtml(summary.total_points || 0)} оценены;
+      PASS=${escapeHtml(summary.passed_points || 0)},
+      FAIL=${escapeHtml(summary.failed_points || 0)},
+      FIXTURE_ERROR=${escapeHtml(summary.fixture_error_points || 0)},
+      SKIPPED=${escapeHtml(summary.skipped_points || 0)}.
+    </p>
+    ${pending}${failed}${report}
+    <h3>Последовательность проверки</h3>
+    <ul class="check-list command-list full-run-list">${stages}</ul>
+    <h3>Аппаратная матрица</h3>
+    <ul class="check-list command-list hardware-list">${hardware}</ul>
+    <p>${escapeHtml(result.note || "")}</p>`;
 }
 
 async function runFullTest() {
@@ -164,9 +105,12 @@ async function runFullTest() {
 
   runFullTestButton.disabled = true;
   routineTestButtons.forEach((button) => { button.disabled = true; });
-  const started = performance.now();
-  const items = [];
-  renderFullRun(items, "RUNNING", 0, "сохранение настроек стенда");
+  setResult(
+    fullTestResult,
+    "RUNNING — backend последовательно выполняет USB, диагностику, RS-485/X2X, Ethernet, внутренние сервисы и HMI…",
+    "running",
+    "running",
+  );
 
   try {
     const config = await requestJson("/api/station", {
@@ -177,14 +121,12 @@ async function runFullTest() {
     fillForm(config);
     setMessage("Настройки стенда сохранены перед полной проверкой.", true);
 
-    for (const stage of routineStages) {
-      renderFullRun(items, "RUNNING", Math.round(performance.now() - started), stage.title);
-      const item = await runRoutineStage(stage, identity);
-      items.push(item);
-      renderFullRun(items, "RUNNING", Math.round(performance.now() - started));
-    }
-
-    renderFullRun(items, overallRoutineStatus(items), Math.round(performance.now() - started));
+    const result = await requestJson("/api/tests/lcp/full", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: requestPayload(identity),
+    });
+    renderFullTest(result);
   } catch (error) {
     setResult(fullTestResult, `FAIL — ${error.message}`, "fail", "result");
   } finally {
