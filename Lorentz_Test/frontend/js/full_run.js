@@ -12,6 +12,15 @@ const routineTestButtons = [
   runHmiButton,
 ];
 
+const routineStageTargets = {
+  hello: helloResult,
+  diagnostics: diagnosticsResult,
+  rs485: activeRs485Result,
+  ethernet: activeEthernetResult,
+  services: activeServicesResult,
+  hmi: hmiResult,
+};
+
 function fullStatusCss(status) {
   if (status === "PASS") return "pass";
   if (status === "FIXTURE_ERROR") return "fixture-error";
@@ -25,6 +34,63 @@ function hardwareStatusCss(status) {
   if (status === "FAIL") return "fail";
   if (status === "FIXTURE_ERROR") return "fixture_error";
   return "skipped";
+}
+
+function setRoutineCardsRunning() {
+  for (const element of Object.values(routineStageTargets)) {
+    setResult(
+      element,
+      "RUNNING — выполняется в составе полной последовательной проверки…",
+      "running",
+      "running",
+    );
+  }
+}
+
+function renderRoutineStageSummary(stage) {
+  const element = routineStageTargets[stage.key];
+  if (!element) return;
+
+  const rawStatus = stage.raw_result || "SKIPPED";
+  const effectiveStatus = stage.effective_result || rawStatus;
+  const effective = effectiveStatus !== rawStatus
+    ? `<p><strong>Итог этапа:</strong> ${escapeHtml(effectiveStatus)}</p>`
+    : "";
+  const blocked = stage.blocked_by
+    ? `<p><strong>Заблокировано этапом:</strong> ${escapeHtml(stage.blocked_by)}</p>`
+    : "";
+  const error = stage.error
+    ? `<p><strong>Ошибка:</strong> ${escapeHtml(stage.error)}</p>`
+    : "";
+  const report = stage.report_file
+    ? `<p><strong>JSON:</strong> ${escapeHtml(stage.report_file)}</p>`
+    : "";
+
+  element.className = `test-result ${fullStatusCss(rawStatus)}`;
+  element.dataset.kind = "result";
+  element.innerHTML = `
+    <strong>${escapeHtml(rawStatus)}</strong>
+    — выполнено в составе полной проверки, ${escapeHtml(stage.duration_ms)} ms
+    <p>${escapeHtml(stage.detail || "Результат этапа получен.")}</p>
+    ${effective}${blocked}${error}${report}`;
+}
+
+function renderRoutineStageSummaries(result) {
+  const rendered = new Set();
+  for (const stage of result.stages || []) {
+    renderRoutineStageSummary(stage);
+    rendered.add(stage.key);
+  }
+
+  for (const [key, element] of Object.entries(routineStageTargets)) {
+    if (rendered.has(key)) continue;
+    setResult(
+      element,
+      "SKIPPED — backend не вернул результат этого этапа.",
+      "waiting",
+      "result",
+    );
+  }
 }
 
 function renderFullTest(result) {
@@ -105,6 +171,7 @@ async function runFullTest() {
 
   runFullTestButton.disabled = true;
   routineTestButtons.forEach((button) => { button.disabled = true; });
+  setRoutineCardsRunning();
   setResult(
     fullTestResult,
     "RUNNING — backend последовательно выполняет USB, диагностику, RS-485/X2X, Ethernet, внутренние сервисы и HMI…",
@@ -127,8 +194,19 @@ async function runFullTest() {
       body: requestPayload(identity),
     });
     renderFullTest(result);
+    renderRoutineStageSummaries(result);
   } catch (error) {
     setResult(fullTestResult, `FAIL — ${error.message}`, "fail", "result");
+    for (const element of Object.values(routineStageTargets)) {
+      if (element.dataset.kind === "running") {
+        setResult(
+          element,
+          `FAIL — полная проверка завершилась ошибкой API: ${error.message}`,
+          "fail",
+          "result",
+        );
+      }
+    }
   } finally {
     runFullTestButton.disabled = false;
     routineTestButtons.forEach((button) => { button.disabled = false; });
