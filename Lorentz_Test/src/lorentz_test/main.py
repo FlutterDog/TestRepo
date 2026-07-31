@@ -11,6 +11,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from lorentz_test import __version__
+from lorentz_test.models.full_test import LcpFullTestResult
 from lorentz_test.models.serial import SerialPortInfo
 from lorentz_test.models.station import StationConfig
 from lorentz_test.models.tests import (
@@ -34,6 +35,7 @@ from lorentz_test.services.lcp_active_rs485 import run_lcp_active_rs485
 from lorentz_test.services.lcp_active_services import run_lcp_active_services
 from lorentz_test.services.lcp_diagnostics import run_lcp_diagnostic_snapshot
 from lorentz_test.services.lcp_flash_ab import run_lcp_flash_ab
+from lorentz_test.services.lcp_full_test import run_lcp_full_test
 from lorentz_test.services.lcp_hello import run_lcp_hello
 from lorentz_test.services.lcp_hmi import run_lcp_hmi_echo
 from lorentz_test.services.lcp_rtc_retention import (
@@ -74,6 +76,14 @@ def get_ports() -> list[SerialPortInfo]:
         return list_serial_ports()
     except RuntimeError as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.post("/api/tests/lcp/full", response_model=LcpFullTestResult)
+def test_lcp_full(request: LcpHelloRequest) -> LcpFullTestResult:
+    station = _load_station()
+    result = run_lcp_full_test(request, station)
+    _save_report(report_writer.save_lcp_full_test, result)
+    return result
 
 
 @app.post("/api/tests/lcp/hello", response_model=LcpHelloResult)
