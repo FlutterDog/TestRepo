@@ -8,6 +8,7 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from lorentz_test import __version__
 from lorentz_test.models.tests import TestStatus
 
 
@@ -56,8 +57,8 @@ class FullTestSummary(BaseModel):
 
 
 class LcpFullTestResult(BaseModel):
-    utility_version: str = "0.8.0"
-    frontend_build: str = "0.8.0-p6"
+    utility_version: str = __version__
+    frontend_build: str = "0.9.0-p2"
     test_profile_version: str = "lcp2116-full-sequential-v1.1"
     test_id: str = "lcp_full_sequential"
     device_type: str = "LCP2116"
