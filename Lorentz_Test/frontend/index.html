@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lorentz Test</title>
+  <link rel="stylesheet" href="/static/css/app.css?v=0.8.0-p6">
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Lorentz Test</h1><p>Локальная утилита проверки LCP2116</p></div>
+    <div class="button-row">
+      <span class="status pass">FRONTEND 0.8.0-p6</span>
+      <span id="backend-status" class="status waiting">BACKEND</span>
+    </div>
+  </header>
+  <main>
+    <section class="card">
+      <div class="section-heading">
+        <div><h2>Настройка стенда</h2><p>Порты и адреса сохраняются локально. Перед active serial-тестами закройте Modbus Poll и терминалы.</p></div>
+        <div class="button-row"><button id="refresh-ports" class="secondary" type="button">Обновить COM</button><button id="save-station" type="button">Сохранить</button></div>
+      </div>
+      <form id="station-form" class="form-grid">
+        <label>Имя станции<input name="station_name" required maxlength="80"></label>
+        <label>USB LCP<input name="lcp_port" list="serial-ports" placeholder="COM5"></label>
+        <label>S1 endpoint<input name="s1_endpoint" list="serial-ports"></label>
+        <label>S2 endpoint<input name="s2_endpoint" list="serial-ports"></label>
+        <label>S3 endpoint<input name="s3_endpoint" list="serial-ports"></label>
+        <label>S4 endpoint<input name="s4_endpoint" list="serial-ports"></label>
+        <label>HMI endpoint<input name="hmi_endpoint" list="serial-ports"></label>
+        <label>X2X endpoint<input name="x2x_endpoint" list="serial-ports"></label>
+        <label>ETH1 DUT IP<input name="eth1_ip" required></label>
+        <label>ETH1 source IP ПК<input name="eth1_source_ip" placeholder="пусто = системный маршрут"></label>
+        <label>ETH2 DUT IP<input name="eth2_ip" required></label>
+        <label>ETH2 source IP ПК<input name="eth2_source_ip" placeholder="пусто = системный маршрут"></label>
+        <label class="checkbox-row"><input name="eth1_test_enabled" type="checkbox">Проверять ETH1</label>
+        <label class="checkbox-row"><input name="eth2_test_enabled" type="checkbox">Проверять ETH2</label>
+        <label>Ожидаемая firmware<input name="expected_firmware_version" required></label>
+        <label>USB baudrate<input name="serial_baudrate" type="number" min="300" max="1000000"></label>
+        <label>USB timeout, s<input name="serial_timeout_seconds" type="number" min="0.05" max="30" step="0.05"></label>
+        <label>После теста<select name="post_test_action"><option value="restore_original">Вернуть исходную конфигурацию</option><option value="clear_to_runtime_defaults">Очистить Flash и оставить runtime defaults</option><option value="keep_test_configuration">Оставить тестовую конфигурацию</option></select></label>
+        <label class="checkbox-row"><input name="shared_hmi_x2x_adapter" type="checkbox">Один адаптер для HMI и X2X</label>
+      </form>
+      <datalist id="serial-ports"></datalist>
+      <div id="ports-summary" class="ports-summary"></div>
+      <p id="station-message" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="card test-card full-test-card">
+      <div class="section-heading">
+        <div>
+          <h2>Полная последовательная проверка LCP2116</h2>
+          <p>Backend создаёт отдельную тестовую сессию, выполняет штатные безопасные тесты и формирует единый FULL_TEST JSON с аппаратной матрицей.</p>
+        </div>
+        <button id="run-full-test" class="primary-large" type="button">Запустить полную проверку</button>
+      </div>
+      <div class="form-grid compact">
+        <label>Серийный номер<input id="device-serial" required placeholder="LCP-000001"></label>
+        <label>Оператор<input id="operator-name" required></label>
+      </div>
+      <p class="full-test-note"><strong>Включено:</strong> USB/firmware, диагностика, RS-485/X2X, Ethernet, config/microSD/RTC/RTOS и HMI. Прогон продолжается после обновления или закрытия вкладки. Flash A/B, watchdog reset и RTC retention запускаются отдельно.</p>
+      <div id="full-test-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <h2 class="test-group-title">Отдельные тесты и отладка</h2>
+
+    <section class="card test-card">
+      <div class="section-heading"><div><h2>Проверка USB и firmware</h2><p>Бинарный HELLO, transport и версия firmware.</p></div><button id="run-hello" type="button">Проверить отдельно</button></div>
+      <div id="hello-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <section class="card test-card">
+      <div class="section-heading"><div><h2>Пассивная диагностика</h2><p>RTOS, Flash, UART, X2X master, Ethernet-контроллеры, SD, battery, RTC и watchdog.</p></div><button id="run-diagnostics" type="button">Проверить отдельно</button></div>
+      <div id="diagnostics-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный тест S1–S4 и X2X</h2><p>Python запускает Modbus RTU slaves и проверяет приём уникальных данных.</p></div><button id="run-active-rs485" type="button">Проверить отдельно</button></div><div id="active-rs485-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активный Ethernet</h2><p>Modbus TCP FC03 registers 0…11 и counters W5500.</p></div><button id="run-active-ethernet" type="button">Проверить отдельно</button></div><div id="active-ethernet-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>Активные внутренние сервисы</h2><p>GET_CONFIG/VALIDATE_CONFIG без Flash write, SD write/read, RTC sync и RTOS stability.</p></div><button id="run-active-services" type="button">Проверить отдельно</button></div><div id="active-services-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+    <section class="card test-card active-card"><div class="section-heading"><div><h2>HMI echo</h2><p>Три кадра через HMI endpoint 9600 8N1.</p></div><button id="run-hmi" type="button">Проверить отдельно</button></div><div id="hmi-result" class="test-result waiting" data-kind="waiting">WAITING</div></section>
+
+    <h2 class="test-group-title">Подтверждаемые и ручные тесты</h2>
+
+    <section class="card test-card active-card">
+      <div class="section-heading"><div><h2>Flash A/B с восстановлением</h2><p>Временная запись тестового bundle, reboot, проверка alternate slot и возврат исходного bundle.</p></div><button id="run-flash-ab" type="button">Проверить Flash A/B</button></div>
+      <label>Подтверждение<input id="flash-confirmation" required autocomplete="off" spellcheck="false" placeholder="введите: FLASH A/B"></label>
+      <p><strong>Тест изменяет конфигурационную Flash.</strong> До записи создаётся recovery JSON; при ошибке выполняется автоматическое восстановление.</p>
+      <div id="flash-ab-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <section class="card test-card active-card">
+      <div class="section-heading"><div><h2>Watchdog reset</h2><p>Остановка feed, аппаратный reset, USB reconnect и проверка recovery.</p></div><button id="run-watchdog-reset" type="button">Проверить watchdog</button></div>
+      <label>Подтверждение<input id="watchdog-confirmation" required autocomplete="off" spellcheck="false" placeholder="введите: WATCHDOG RESET"></label>
+      <div id="watchdog-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+
+    <section class="card test-card active-card">
+      <div class="section-heading"><div><h2>RTC retention от батареи</h2><p>Двухэтапный тест с полным снятием USB и основного питания.</p></div><div class="button-row"><button id="run-rtc-retention-prepare" type="button">1. Подготовить</button><button id="run-rtc-retention-verify" type="button">2. Проверить</button></div></div>
+      <p>После PREPARE отключите USB и основное питание минимум на 30 секунд, затем включите LCP и нажмите VERIFY. Ранний VERIFY остаётся SKIPPED и не стирает baseline.</p>
+      <div id="rtc-retention-result" class="test-result waiting" data-kind="waiting">WAITING</div>
+    </section>
+  </main>
+  <script src="/static/js/app.js?v=0.8.0-p6"></script>
+  <script src="/static/js/full_run.js?v=0.8.0-p6"></script>
+  <script src="/static/js/advanced.js?v=0.8.0-p6"></script>
+</body>
+</html>
