@@ -100,6 +100,7 @@ async function gateFullTestWithPrecheck(event) {
   }
 
   const previousDisabled = fullTestGateButton.disabled;
+  let launched = false;
   fullTestGateButton.disabled = true;
   try {
     const result = await executePrecheck(identity);
@@ -114,11 +115,12 @@ async function gateFullTestWithPrecheck(event) {
     }
     fullTestPrecheckApproved = true;
     fullTestGateButton.disabled = false;
+    launched = true;
     fullTestGateButton.click();
   } catch (error) {
     setResult(fullTestResult, `NOT STARTED — ${error.message}`, "fail", "validation");
   } finally {
-    if (!fullTestPrecheckApproved) fullTestGateButton.disabled = previousDisabled;
+    if (!launched) fullTestGateButton.disabled = previousDisabled;
   }
 }
 
