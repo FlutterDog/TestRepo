@@ -1,121 +1,86 @@
-# Lorentz Test 0.8.0 RC
+# Lorentz Test 0.8.0
 
-Modular LCP2116 test suite for LCP Basic Firmware 1.02.0.
+Released on 2026-08-04 for LCP Basic Diagnostic Firmware 1.02.0.
+
+## Release status
+
+Version 0.8.0 is the hardware-validated baseline of the local LCP2116 production and service test utility. The firmware is unchanged at 1.02.0.
+
+Validated on physical controller `LCP_8_16`:
+
+- USB binary protocol, diagnostic console and firmware identity;
+- internal RTOS, SRAM, Flash, UART, Ethernet-controller, microSD, battery, RTC and watchdog diagnostics;
+- active FieldSensor S1 through a host Modbus RTU slave emulator;
+- active X2X through an LCT1114_2 emulator;
+- active ETH1 Modbus TCP FC03 over the complete S1 -> LCP -> Ethernet data path;
+- HMI exact byte echo;
+- safe configuration transport, microSD write/read, RTC synchronization and RTOS progression;
+- Flash A/B alternate-slot write, reboot, exact read-back and automatic restoration of the original bundle;
+- watchdog hardware reset, USB reconnect and recovery reset;
+- RTC retention after complete removal of USB and main power.
+
+The final post-reset full run completed with 10 configured hardware points passed, zero DUT failures and zero fixture errors. S2, S3, S4 and ETH2 were intentionally left unconfigured because those fixture channels were not available; their test paths remain in the released utility.
 
 ## Persistent backend full-test orchestration
 
-The production path now uses an asynchronous test session:
+The production path uses an asynchronous test session:
 
 - `POST /api/tests/lcp/full/start` creates a unique `run_id` and returns immediately;
-- the backend owns USB identity, passive diagnostics, active RS-485/X2X, Ethernet, safe internal services and HMI in a deterministic sequence;
+- the backend executes USB identity, passive diagnostics, active RS-485/X2X, Ethernet, safe internal services and HMI in a deterministic sequence;
 - `GET /api/tests/lcp/full/current` restores the last session after a page refresh;
 - `GET /api/tests/lcp/full/{run_id}` provides live progress for polling;
-- the current lifecycle and every stage transition are written atomically to `runtime/full_test_run.json`;
+- lifecycle and stage transitions are written atomically to `runtime/full_test_run.json`;
 - closing or refreshing the browser does not stop the hardware verification;
-- a backend restart while a session is `WAITING` or `RUNNING` converts that session to `ERROR` instead of leaving a false permanent active state;
-- every module report is saved immediately after its stage;
-- a final `FULL_TEST` JSON aggregates stage results, report paths, versions, `run_id`, the complete station snapshot and a 14-point hardware matrix;
+- an interrupted `WAITING` or `RUNNING` session becomes `ERROR` after backend restart;
+- every module report is saved immediately;
+- the final `FULL_TEST` JSON contains stage reports, versions, `run_id`, station snapshot and a 14-point hardware matrix;
 - aggregate statuses are `PASS`, `FAIL`, `FIXTURE_ERROR` and `INCOMPLETE`;
-- a critical USB/firmware failure blocks dependent stages and marks them `SKIPPED` instead of producing cascading false failures.
+- critical USB/firmware failure blocks dependent stages as `SKIPPED` instead of creating cascading false failures.
 
-The pre-session synchronous `POST /api/tests/lcp/full` route remains available only for compatibility with cached frontend builds.
-
-The aggregate filename is:
-
-```text
-LCP2116_<serial>_<timestamp>_FULL_TEST_<status>.json
-```
+The legacy synchronous `POST /api/tests/lcp/full` route remains only for cached frontend compatibility.
 
 ## Exclusive hardware ownership
 
-A process-wide backend mutex protects the DUT and fixture resources:
+A process-wide backend mutex protects DUT and fixture resources:
 
-- a second full run is rejected with HTTP `409`;
-- separate USB, diagnostics, RS-485, Ethernet, services and HMI requests cannot overlap a full run;
+- concurrent full runs are rejected with HTTP `409`;
+- individual tests cannot overlap a full run;
 - Flash A/B, watchdog reset and RTC retention use the same lock;
-- station settings cannot be changed while a hardware operation is running;
-- the lock is released after success, report failure, runner exception or progress-state persistence failure.
-
-This protection is enforced by the backend and therefore also applies to another browser tab.
-
-## Shared HMI/X2X adapter
-
-Endpoint ownership now permits HMI and X2X to share one endpoint only when:
-
-- `shared_hmi_x2x_adapter=true`;
-- both endpoint fields are populated;
-- both fields refer to the same endpoint.
-
-X2X still participates in conflict validation against USB and S1-S4. When HMI and X2X share one physically movable adapter, the automatic full run completes X2X and records HMI as `SKIPPED/INCOMPLETE` with an instruction to move the adapter and run HMI separately. With separate endpoints, HMI remains part of the automatic sequence.
+- station settings cannot change during a hardware operation;
+- lock release is guaranteed after success, report failure, runner exception or progress-state persistence failure.
 
 ## Operator workflow
 
-- prominent one-click **Full LCP2116 test** button;
-- automatically saves current station settings;
-- creates one persistent backend session;
-- shows the real current stage as `WAITING -> RUNNING -> result`;
-- restores progress and the final result after `Ctrl+F5`;
-- updates the six lower diagnostic cards from the same run without repeating hardware tests;
-- displays the hardware matrix and aggregate JSON path;
-- retains separate module buttons for targeted diagnostics and reruns;
-- restores each button to its pre-run disabled/enabled state;
-- Flash A/B, watchdog reset and RTC retention remain separate because they write Flash, reset the DUT or require manual power removal.
+- one-click full LCP2116 test;
+- automatic station-settings save;
+- persistent backend session with live stage progress;
+- recovery after `Ctrl+F5`;
+- individual diagnostic cards populated from the same run without repeating tests;
+- aggregate hardware matrix and JSON path;
+- separate engineering buttons for targeted reruns;
+- separate confirmed Flash A/B and watchdog tests;
+- two-phase RTC retention workflow.
 
-Frontend build for this controller is `0.8.0-p6`.
-
-## Safe modules
-
-- strict active ETH1/ETH2 Modbus TCP FC03 test;
-- optional PC source-IP binding;
-- safe `GET_CONFIG -> VALIDATE_CONFIG -> GET_CONFIG` test without Flash write;
-- microSD `SDTEST.TXT` write/read check;
-- RTC synchronization and tick check;
-- short RTOS progression/reserve check;
-- HMI exact echo test;
-- four independent FieldSensor Modbus RTU slaves;
-- LCT1114_2 X2X emulator.
-
-## Confirmed modules
-
-- Flash A/B alternate-slot commit, reboot, exact read-back and automatic original-bundle restore;
-- recovery JSON written before the first Flash mutation;
-- watchdog hardware reset, CDC reconnect and firmware recovery verification;
-- two-phase RTC battery-retention workflow with a complete manual power removal.
+Frontend build: `0.8.0-p6`.
 
 ## Confirmation strings
 
 - `FLASH A/B`
 - `WATCHDOG RESET`
 
-RTC retention uses explicit PREPARE and VERIFY buttons and sends internal phase confirmations automatically.
+## Validation evidence
 
-## First hardware feedback patches
+Hardware evidence from the final sequence:
 
-The first LCP2116 executions confirmed USB identity, passive diagnostics, active X2X, configuration validation, microSD write/read, RTC synchronization and RTOS progression. The feedback patches:
+- Flash A/B: original slot 1 -> test slot 2 -> restored slot 1, original CRC `0x270AB171`, `restored=true`, `recovery_required=false`;
+- watchdog: boot count 5 -> 6, USB reconnected on COM10, recovery performed, watchdog re-enabled;
+- RTC retention: boot count 6 -> 7, approximately 3972 seconds elapsed, RTC/PC difference 2 seconds, battery comparator `ok`;
+- final full run: 10/10 configured points PASS, 0 FAIL, 0 FIXTURE_ERROR, 4 intentionally SKIPPED.
 
-- accept firmware RTC terminal state `done` with result `ok`;
-- validate Flash and watchdog confirmation text in the browser before sending the request;
-- add a 30-second VERIFY countdown after RTC PREPARE;
-- return `SKIPPED` instead of DUT `FAIL` when RTC VERIFY is started before 30 seconds;
-- keep the RTC baseline file after a premature VERIFY;
-- separate fixture cross-wiring from DUT failure;
-- mirror full-run results into the individual frontend cards;
-- prevent pytest from treating the imported `TestStatus` enum as a test class.
-
-## Validation status
-
-The initial Windows run completed with `50 passed`. Additional coverage now includes:
-
-- RTC premature VERIFY state;
-- aggregate full-test ordering, result aggregation, prerequisite blocking and JSON naming;
-- concurrent exclusion, progress persistence, refresh recovery, interrupted WAITING/RUNNING recovery and exception-safe lock release;
-- precise shared HMI/X2X ownership validation;
-- automatic HMI behavior for shared and separate adapters.
-
-Expected next Windows result:
+The Windows test suite expected for this release is:
 
 ```text
 64 passed, 1 warning
 ```
 
-The remaining warning is the external Starlette/httpx deprecation warning. Hardware execution remains required for correctly mapped FieldSensor ports, Ethernet, HMI, Flash A/B, watchdog reset and RTC retention after a real power cycle.
+The remaining warning is external to the project and originates from the Starlette/httpx compatibility layer.
