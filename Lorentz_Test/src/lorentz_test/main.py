@@ -31,6 +31,7 @@ from lorentz_test.models.tests import (
     LcpWatchdogResetResult,
 )
 from lorentz_test.paths import frontend_dir
+from lorentz_test.precheck_api import router as precheck_router
 from lorentz_test.reporting.json_report import report_writer
 from lorentz_test.serial_ports import list_serial_ports
 from lorentz_test.services.lcp_active_ethernet import run_lcp_active_ethernet
@@ -57,6 +58,7 @@ APP_HOST = "127.0.0.1"
 APP_PORT = 8765
 
 app = FastAPI(title="Lorentz Test", version=__version__)
+app.include_router(precheck_router)
 
 T = TypeVar("T")
 
