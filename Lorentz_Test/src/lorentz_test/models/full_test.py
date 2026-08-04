@@ -58,7 +58,7 @@ class FullTestSummary(BaseModel):
 
 class LcpFullTestResult(BaseModel):
     utility_version: str = __version__
-    frontend_build: str = "0.9.0-p1"
+    frontend_build: str = "0.9.0-p2"
     test_profile_version: str = "lcp2116-full-sequential-v1.1"
     test_id: str = "lcp_full_sequential"
     device_type: str = "LCP2116"
