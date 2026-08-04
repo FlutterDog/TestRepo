@@ -113,6 +113,7 @@ async function gateFullTestWithPrecheck(event) {
       );
       return;
     }
+    await new Promise((resolve) => setTimeout(resolve, 500));
     fullTestPrecheckApproved = true;
     fullTestGateButton.disabled = false;
     launched = true;
