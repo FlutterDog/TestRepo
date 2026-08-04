@@ -2,6 +2,8 @@
 
 const runPrecheckButton = document.getElementById("run-precheck");
 const precheckResult = document.getElementById("precheck-result");
+const fullTestGateButton = document.getElementById("run-full-test");
+let fullTestPrecheckApproved = false;
 
 function precheckStatusCss(status) {
   if (status === "PASS" || status === "READY") return "pass";
@@ -82,5 +84,44 @@ async function runStandalonePrecheck() {
   }
 }
 
+async function gateFullTestWithPrecheck(event) {
+  if (fullTestPrecheckApproved) {
+    fullTestPrecheckApproved = false;
+    return;
+  }
+
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  const identity = testIdentity();
+  if (identity.error) {
+    setResult(precheckResult, identity.error, "fail", "validation");
+    identity.focus?.focus();
+    return;
+  }
+
+  const previousDisabled = fullTestGateButton.disabled;
+  fullTestGateButton.disabled = true;
+  try {
+    const result = await executePrecheck(identity);
+    if (!result.ready) {
+      setResult(
+        fullTestResult,
+        "NOT STARTED — устраните блокирующие проблемы pre-check.",
+        "fail",
+        "validation",
+      );
+      return;
+    }
+    fullTestPrecheckApproved = true;
+    fullTestGateButton.disabled = false;
+    fullTestGateButton.click();
+  } catch (error) {
+    setResult(fullTestResult, `NOT STARTED — ${error.message}`, "fail", "validation");
+  } finally {
+    if (!fullTestPrecheckApproved) fullTestGateButton.disabled = previousDisabled;
+  }
+}
+
 runPrecheckButton.addEventListener("click", runStandalonePrecheck);
+fullTestGateButton.addEventListener("click", gateFullTestWithPrecheck, true);
 window.lorentzPrecheck = {execute: executePrecheck, render: renderPrecheck};
