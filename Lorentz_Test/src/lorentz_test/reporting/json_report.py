@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from typing import Protocol
 
+from lorentz_test import __version__
 from lorentz_test.models.full_test import LcpFullTestResult
 from lorentz_test.models.tests import (
     LcpActiveEthernetResult,
@@ -52,6 +53,8 @@ class JsonReportWriter:
         target = self.directory / filename
         temporary = target.with_suffix(target.suffix + ".tmp")
 
+        if hasattr(result, "utility_version"):
+            result.utility_version = __version__
         result.report_file = str(target.resolve())
         try:
             temporary.write_text(result.model_dump_json(indent=2) + "\n", encoding="utf-8")
