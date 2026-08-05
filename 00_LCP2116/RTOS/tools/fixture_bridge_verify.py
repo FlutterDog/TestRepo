@@ -25,7 +25,7 @@ import serial
 
 
 DEFAULT_FIXTURE_ENDPOINT = "socket://192.168.1.200:2101"
-DEFAULT_LENGTHS = (1, 2, 3, 7, 8, 16, 31, 64, 127)
+DEFAULT_LENGTHS = (1, 2, 3, 7, 8, 16, 31, 48, 64)
 
 
 def utc_now() -> str:
@@ -50,11 +50,11 @@ def open_endpoint(url: str, baudrate: int, timeout: float) -> serial.SerialBase:
 def safe_reset(endpoint: serial.SerialBase) -> None:
     try:
         endpoint.reset_input_buffer()
-    except (serial.SerialException, OSError):
+    except (AttributeError, serial.SerialException, OSError):
         pass
     try:
         endpoint.reset_output_buffer()
-    except (serial.SerialException, OSError):
+    except (AttributeError, serial.SerialException, OSError):
         pass
 
 
@@ -171,8 +171,10 @@ def query_fixture_usb(port: str, command: str = "status") -> str:
 
 def parse_lengths(value: str) -> tuple[int, ...]:
     lengths = tuple(int(item.strip()) for item in value.split(",") if item.strip())
-    if not lengths or any(length < 1 or length > 512 for length in lengths):
-        raise argparse.ArgumentTypeError("lengths must contain values from 1 to 512")
+    if not lengths or any(length < 1 or length > 64 for length in lengths):
+        raise argparse.ArgumentTypeError(
+            "first S1 proof lengths must contain values from 1 to 64"
+        )
     return lengths
 
 
