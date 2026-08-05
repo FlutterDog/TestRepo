@@ -1,19 +1,19 @@
 ﻿/**
  * @file main.cpp
- * @brief Точка входа baseline-прошивки LCP под управлением FreeRTOS.
+ * @brief Точка входа специализированной прошивки Lorentz Fixture Bridge.
  */
 
 #include "sam.h"
-#include "app/app.hpp"
+#include "app/fixture/fixture_firmware.hpp"
 
 extern "C" void SystemInit(void);
 
 int main(void)
 {
     SystemInit();
-    app_rtos_start();
+    fixture_firmware::start();
 
-    /* app_rtos_start() возвращается только при ошибке запуска планировщика. */
+    /* start() возвращается только при ошибке запуска планировщика. */
     for (;;)
     {
     }
